@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Presentations on Mathematical Michael</title>
+    <title>Presentations on Resume of Michael Pilosov</title>
     <link>https://www.michaelpilosov.com/talk/</link>
-    <description>Recent content in Presentations on Mathematical Michael</description>
+    <description>Recent content in Presentations on Resume of Michael Pilosov</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
@@ -165,7 +165,7 @@ Unfortunately, this conference was not well-documented online. It was a local co
       <pubDate>Tue, 16 Apr 2013 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/talk/great13-coffee/</guid>
-      <description></description>
+      <description>[Here is a paper][http://lasa-4.univ.pitt.edu/LARR/prot/fulltext/Vol49no1/49-1_155-177_fischer-victor.pdf] that gives some surrounding context.</description>
     </item>
     
     <item>

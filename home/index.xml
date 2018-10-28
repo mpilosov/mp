@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Homes on Mathematical Michael</title>
+    <title>Homes on Resume of Michael Pilosov</title>
     <link>https://www.michaelpilosov.com/home/</link>
-    <description>Recent content in Homes on Mathematical Michael</description>
+    <description>Recent content in Homes on Resume of Michael Pilosov</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
@@ -43,6 +43,15 @@ If you are curious about whether you have a problem that can benefit from risk a
     </item>
     
     <item>
+      <title></title>
+      <link>https://www.michaelpilosov.com/home/resume/</link>
+      <pubDate>Tue, 21 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/home/resume/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Projects</title>
       <link>https://www.michaelpilosov.com/home/projects/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
@@ -61,11 +70,11 @@ If you are curious about whether you have a problem that can benefit from risk a
     </item>
     
     <item>
-      <title>Presentations</title>
-      <link>https://www.michaelpilosov.com/home/talks/</link>
+      <title>Selected Talks</title>
+      <link>https://www.michaelpilosov.com/home/talks_selected/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
       
-      <guid>https://www.michaelpilosov.com/home/talks/</guid>
+      <guid>https://www.michaelpilosov.com/home/talks_selected/</guid>
       <description></description>
     </item>
     
@@ -83,11 +92,11 @@ Latest release
     </item>
     
     <item>
-      <title>Selected Talks</title>
-      <link>https://www.michaelpilosov.com/home/talks_selected/</link>
+      <title>Presentations</title>
+      <link>https://www.michaelpilosov.com/home/talks/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
       
-      <guid>https://www.michaelpilosov.com/home/talks_selected/</guid>
+      <guid>https://www.michaelpilosov.com/home/talks/</guid>
       <description></description>
     </item>
     
@@ -130,20 +139,11 @@ I am a teaching instructor for the following courses at University X:
     </item>
     
     <item>
-      <title>Recent Thoughts</title>
+      <title>Recent Writing</title>
       <link>https://www.michaelpilosov.com/home/posts/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/home/posts/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://www.michaelpilosov.com/home/resume/</link>
-      <pubDate>Tue, 21 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/home/resume/</guid>
       <description></description>
     </item>
     

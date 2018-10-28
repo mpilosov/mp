@@ -511,15 +511,6 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/</loc>
-      <lastmod>2018-01-01T00:00:00-07:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>https://www.michaelpilosov.com/tags/national-lab/</loc>
       <lastmod>2018-07-21T00:00:00-06:00</lastmod>
       <priority>0</priority>
@@ -558,6 +549,15 @@
     
       <loc>https://www.michaelpilosov.com/resources/</loc>
       <lastmod>2018-08-27T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/</loc>
+      <lastmod>2018-01-01T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     
