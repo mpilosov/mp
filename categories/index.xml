@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Fri, 24 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Jul 2018 00:00:00 -0600</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Academia</title>
       <link>https://www.michaelpilosov.com/categories/academia/</link>
-      <pubDate>Fri, 24 Aug 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/categories/academia/</guid>
       <description></description>
@@ -27,15 +27,6 @@
       <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/categories/environment/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Outreach</title>
-      <link>https://www.michaelpilosov.com/categories/outreach/</link>
-      <pubDate>Mon, 27 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/categories/outreach/</guid>
       <description></description>
     </item>
     
