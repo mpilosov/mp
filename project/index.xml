@@ -40,5 +40,14 @@
       <description></description>
     </item>
     
+    <item>
+      <title>Internal Project</title>
+      <link>https://www.michaelpilosov.com/project/internal-project/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/internal-project/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</description>
+    </item>
+    
   </channel>
 </rss>
