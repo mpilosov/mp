@@ -11,6 +11,117 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Changelog</title>
+      <link>https://www.michaelpilosov.com/post/changelog/</link>
+      <pubDate>Wed, 19 Dec 2018 18:16:07 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/post/changelog/</guid>
+      <description>&lt;p&gt;This documents the changes made to the academic theme to make this website work when upgrading from Hugo v.0.47 and theme version&amp;hellip; unknown. A couple back, for sure.&lt;/p&gt;
+
+&lt;p&gt;The upgrade for this website was performed on 12-19-2018.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Removed Weibo sharing icon in &lt;code&gt;/layouts/partials/share&lt;/code&gt; in the theme directory.&lt;/li&gt;
+&lt;li&gt;Changed footer in &lt;code&gt;layouts/partials/footer_section.html&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Re-did &lt;code&gt;config.toml&lt;/code&gt; line-by-line, disabled night/day mode.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Created slides and docs based on the &lt;code&gt;exampleSite&lt;/code&gt; folder, including creating the directory &lt;code&gt;/assets/css/reveal_custom.css&lt;/code&gt; for the Reveal.js slideshows.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;added &lt;code&gt;boards.jpg&lt;/code&gt; to &lt;code&gt;/static/img/&lt;/code&gt; to test headers and embeds in the example slideshow.&lt;/li&gt;
+&lt;li&gt;created &lt;code&gt;slides.md&lt;/code&gt; in &lt;code&gt;/content/&lt;/code&gt; to link to &lt;code&gt;/content/slides/&lt;/code&gt; folder since using an index file does not work to list the available slideshows in that folder.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;created &lt;code&gt;/wid/&lt;/code&gt; and &lt;code&gt;/dockerhub/&lt;/code&gt; to experiment with new &lt;code&gt;docs&lt;/code&gt; template.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;copied over dummy project files, still need to migrate own projects to new formatting, remove dummy projects.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Use-Cases</title>
+      <link>https://www.michaelpilosov.com/dockerhub/usage/</link>
+      <pubDate>Mon, 17 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/dockerhub/usage/</guid>
+      <description>
+
+&lt;p&gt;In this tutorial, I&amp;rsquo;ll share my top 10 tips for getting started with Academic:&lt;/p&gt;
+
+&lt;h2 id=&#34;tip-1&#34;&gt;Tip 1&lt;/h2&gt;
+
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+
+&lt;h2 id=&#34;tip-2&#34;&gt;Tip 2&lt;/h2&gt;
+
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>https://www.michaelpilosov.com/dockerhub/intro/</link>
+      <pubDate>Sun, 16 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/dockerhub/intro/</guid>
+      <description>
+
+&lt;p&gt;In this tutorial, I&amp;rsquo;ll share my top 10 tips for getting started with Academic:&lt;/p&gt;
+
+&lt;h2 id=&#34;tip-1&#34;&gt;Tip 1&lt;/h2&gt;
+
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+
+&lt;h2 id=&#34;tip-2&#34;&gt;Tip 2&lt;/h2&gt;
+
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Deployment</title>
+      <link>https://www.michaelpilosov.com/dockerhub/deploy/</link>
+      <pubDate>Thu, 13 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/dockerhub/deploy/</guid>
+      <description>
+
+&lt;p&gt;In this tutorial, I&amp;rsquo;ll share my top 10 tips for getting started with Academic:&lt;/p&gt;
+
+&lt;h2 id=&#34;tip-1&#34;&gt;Tip 1&lt;/h2&gt;
+
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+
+&lt;h2 id=&#34;tip-2&#34;&gt;Tip 2&lt;/h2&gt;
+
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Presentations</title>
+      <link>https://www.michaelpilosov.com/resume/presentations/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/resume/presentations/</guid>
+      <description>&lt;p&gt;Presentations can be sorted/viewed on the &lt;a href=&#34;https://www.michaelpilosov.com/presentation&#34;&gt;Presentations Page&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>https://www.michaelpilosov.com/resume/publications/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/resume/publications/</guid>
+      <description>&lt;p&gt;Publications can be sorted/viewed on the &lt;a href=&#34;https://www.michaelpilosov.com/publication&#34;&gt;Publications Page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Manuscripts in review are not shown.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>A New Game of Poker</title>
       <link>https://www.michaelpilosov.com/project/poker/</link>
       <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
@@ -218,8 +329,8 @@ Game concept by Dr. Burt Simon. Copyright 2016 E. Regan &amp; M. Pilosov.
       <pubDate>Thu, 28 Jun 2018 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/privacy/</guid>
-      <description>&lt;p&gt;This website uses no cookies and has no tracking enabled whatsoever.
-Except Google Analytics, which already knows everything about you. 😆&lt;/p&gt;
+      <description>&lt;p&gt;This website uses no cookies and has no tracking enabled whatsoever on the server on which this site is hosted.
+However, Google Analytics is enabled (as it is on much of the web), which does take anonymized data about visitors to the site.&lt;/p&gt;
 </description>
     </item>
     
@@ -243,10 +354,10 @@ Except Google Analytics, which already knows everything about you. 😆&lt;/p&gt
     
     <item>
       <title>Employment</title>
-      <link>https://www.michaelpilosov.com/resume/employment/</link>
+      <link>https://www.michaelpilosov.com/resume/colorado/</link>
       <pubDate>Thu, 01 Mar 2018 00:00:00 -0700</pubDate>
       
-      <guid>https://www.michaelpilosov.com/resume/employment/</guid>
+      <guid>https://www.michaelpilosov.com/resume/colorado/</guid>
       <description>
 
 &lt;p align=&#34;center&#34;&gt;
@@ -268,6 +379,20 @@ Except Google Analytics, which already knows everything about you. 😆&lt;/p&gt
 &lt;/ul&gt;
 
 &lt;hr /&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Employment</title>
+      <link>https://www.michaelpilosov.com/resume/newyork/</link>
+      <pubDate>Thu, 01 Mar 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/resume/newyork/</guid>
+      <description>
+
+&lt;p align=&#34;center&#34;&gt;
+(only showing academic jobs)
+&lt;/p&gt;
 
 &lt;h3 id=&#34;state-university-of-new-york-college-at-geneseo&#34;&gt;State University of New York: College at Geneseo&lt;/h3&gt;
 
@@ -354,205 +479,6 @@ Score: 10 points, ranked &lt;sup&gt;1324&lt;/sup&gt;&amp;frasl;&lt;sub&gt;4113&l
 
 &lt;p&gt;2009-10&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Technical Skills</title>
-      <link>https://www.michaelpilosov.com/resume/techskills/</link>
-      <pubDate>Thu, 01 Mar 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/resume/techskills/</guid>
-      <description>
-
-&lt;h2 id=&#34;python&#34;&gt;Python&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;lead developer of &lt;a href=&#34;www.github.com/mpilosov/cbayes&#34; target=&#34;_blank&#34;&gt;cbayes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;contributor and researcher on &lt;a href=&#34;www.github.com/UT-CHG/BET&#34; target=&#34;_blank&#34;&gt;BET&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;extensive experience generating technical notebooks with varying levels of interactivity&lt;/li&gt;
-&lt;li&gt;familiarity with JupyterHub, JupyterLab&lt;/li&gt;
-&lt;li&gt;deep interest in reproducible open science and removing all friction towards such an end&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;matlab&#34;&gt;Matlab&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;first language, used for countless projects. I have since moved away from it in favor of open-source alternatives&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;git&#34;&gt;Git&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;familiarity with basic repository management&lt;/li&gt;
-&lt;li&gt;have used Github, Bitbucket, and Gitlab&lt;/li&gt;
-&lt;li&gt;I use it to track changes to nearly all the work I do&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;latex&#34;&gt;LaTeX&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;preferred document-generation language (pdfs)&lt;/li&gt;
-&lt;li&gt;basic familiarity with publishing formatting for large documents&lt;/li&gt;
-&lt;li&gt;extensive experience writing technical reports&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;terminal-bash-shell&#34;&gt;Terminal (Bash/Shell)&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Almost everything I do with respect to programming happens in a bash shell&lt;/li&gt;
-&lt;li&gt;Much of my work is done remotely through ssh&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;vim&#34;&gt;Vim&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;My preferred text-editor and distraction-free organizational tool&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;adobe-suite&#34;&gt;Adobe Suite&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;experienced in Photoshop for general graphic design (posters, figures)&lt;/li&gt;
-&lt;li&gt;familiar with Illustrator&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;microsoft-suite&#34;&gt;Microsoft Suite&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;comfortable in Excel, though I prefer not to use it for anything related to analyzing data. I mostly use it for data entry.&lt;/li&gt;
-&lt;li&gt;comfortable with Microsoft Word, but prefer to use LaTeX for its type-setting flexibility.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;clangs&#34;&gt;CLangs&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I have coded in C++ in the past, but these days mostly use it when programming Arduinos&lt;/li&gt;
-&lt;li&gt;Look, give me a piece of code in any C language, and I&amp;rsquo;ll likely be able to tell you what it does, but I don&amp;rsquo;t program in it (anymore). For scientific computing, Python is just more preferable overall&lt;/li&gt;
-&lt;li&gt;Given some time, I can bind C libraries to Python wrappers if need be&lt;/li&gt;
-&lt;li&gt;I can manipulate an existing codebase, but writing one from scratch is a poor use of my time and skillsets at this point (I would rather collaborate with someone more proficient in the language)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;r&#34;&gt;R&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I have used it a lot over the years but these days prefer Python for anything that I would have once done in R&lt;/li&gt;
-&lt;li&gt;Basically, if asked, I could translate ConsistentBayes into a non-optimized R-library in a couple weeks, I would just prefer not to&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;wolfram&#34;&gt;Wolfram&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I use WolframAlpha (free) a bit, but I resist learning it because I cannot afford their licenses&lt;/li&gt;
-&lt;li&gt;I wish nothing more than for them to open their code base. I fear that if they do not, their innovative notebooks will soon be associated primarily with Jupyter&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;web-lanugages&#34;&gt;Web-lanugages&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I can manipulate HTML but cannot really write anything for the web from scratch.&lt;/li&gt;
-&lt;li&gt;Pretty clueless with CSS but can guess-and-check my way around when necessary&amp;hellip;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;java&#34;&gt;Java&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Can read it, have used it, just not in a long time. I have no desire to pick it back up unless someone makes a compelling argument to me for why I should. =)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p align=&#34;center&#34;&gt;
-... And that about summarizes my experience with programming languages.
-&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>More Information About What I Do</title>
-      <link>https://www.michaelpilosov.com/more/</link>
-      <pubDate>Tue, 27 Jun 2017 17:39:21 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/more/</guid>
-      <description>&lt;p&gt;I work in the field of Uncertainty Quantification, specifically on inverse problems (usually with models involving physics).&lt;/p&gt;
-
-&lt;p&gt;I am concerned about how experimental data impacts predictions.&lt;/p&gt;
-
-&lt;p&gt;Sometimes that means getting the most out of what limited data is available.&lt;/p&gt;
-
-&lt;p&gt;Other times it involves designing the experiment so that each measurement is as informative as possible.&lt;/p&gt;
-
-&lt;p&gt;Not all data are equally useful.
-I help decide what is worth measuring.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;The applications of my academic research are numerous.&lt;/p&gt;
-
-&lt;p&gt;Examples include groundwater contamination and remediation, storm surge prediction, oil recovery or exploration, and imaging technology.&lt;/p&gt;
-
-&lt;p&gt;I have my advisor—Dr. Troy Butler—to thank for opening the door to such broadly applicable and practical research.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;../&#34;&gt;back&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>[ Organizer ]</title>
-      <link>https://www.michaelpilosov.com/talk/framsc17/</link>
-      <pubDate>Sat, 04 Mar 2017 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/talk/framsc17/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Advancements in Simulation-Based Optimal Experimental Design</title>
-      <link>https://www.michaelpilosov.com/talk/siam_cse17/</link>
-      <pubDate>Mon, 27 Feb 2017 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/talk/siam_cse17/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Group-level events are catalysts in the evolution of cooperation</title>
-      <link>https://www.michaelpilosov.com/publication/cooperation/</link>
-      <pubDate>Mon, 15 Aug 2016 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/publication/cooperation/</guid>
-      <description>
-
-&lt;h1 id=&#34;some-notes-from-the-co-author&#34;&gt;Some Notes from the (co)author&lt;/h1&gt;
-
-&lt;p&gt;I worked on this topic primarily in summer 2014, with occasional contributions into early 2016.
-There is ample room for extending the work, but ultimately I did not venture into this field for my doctoral research.&lt;/p&gt;
-
-&lt;p&gt;I now recognize that we were, however, attempting to answer an inverse problem in this paper and managed to get a glimpse of the solution by solving many forward problems, holding certain parameters fixed.&lt;/p&gt;
-
-&lt;p&gt;The motivation behind the linguistic choice of &amp;ldquo;catalyst&amp;rdquo; refers to the broadening of favorable conditions when group-level effects are factored into a population model.&lt;/p&gt;
-
-&lt;p&gt;Were I to redo this, I would define our Quantity of Interest as &amp;ldquo;Time to x% Cooperation,&amp;rdquo; and invert a density that represents a reasonable time period for the evolution of cooperation.&lt;/p&gt;
-
-&lt;p&gt;Undoubtedly, this would yield a set-valued solution that holistically describes the various conditions under which cooperation could have taken hold in societies under our proposed model.&lt;/p&gt;
-
-&lt;p&gt;It would be very interesting to see the relative likelihoods on parameters relating to group-level and population-level events, but ultimately it would make the same point as was shown in the paper: there are more conditions under which a &amp;ldquo;mutation of cooperation&amp;rdquo; could become established as the prevalent trait in a population.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Consistent Bayes</title>
-      <link>https://www.michaelpilosov.com/project/consistentbayes/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/consistentbayes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>[ Volunteer ]</title>
-      <link>https://www.michaelpilosov.com/talk/framsc16/</link>
-      <pubDate>Sat, 05 Mar 2016 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/talk/framsc16/</guid>
-      <description></description>
     </item>
     
   </channel>

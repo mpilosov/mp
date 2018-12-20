@@ -1,24 +1,53 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Resumes on Resume of Michael Pilosov</title>
+    <title>Resume on Resume of Michael Pilosov</title>
     <link>https://www.michaelpilosov.com/resume/</link>
-    <description>Recent content in Resumes on Resume of Michael Pilosov</description>
+    <description>Recent content in Resume on Resume of Michael Pilosov</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Thu, 01 Mar 2018 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 09 Sep 2018 00:00:00 -0600</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/resume/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Presentations</title>
+      <link>https://www.michaelpilosov.com/resume/presentations/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/resume/presentations/</guid>
+      <description>Presentations can be sorted/viewed on the Presentations Page.</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>https://www.michaelpilosov.com/resume/publications/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/resume/publications/</guid>
+      <description>Publications can be sorted/viewed on the Publications Page.
+Manuscripts in review are not shown.</description>
+    </item>
+    
+    <item>
       <title>Employment</title>
-      <link>https://www.michaelpilosov.com/resume/employment/</link>
+      <link>https://www.michaelpilosov.com/resume/colorado/</link>
       <pubDate>Thu, 01 Mar 2018 00:00:00 -0700</pubDate>
       
-      <guid>https://www.michaelpilosov.com/resume/employment/</guid>
-      <description>(only showing academic jobs) University of Colorado: Denver (Downtown Campus)  Student Teaching Assistant, Calculus I (Aug-Dec 2016) Student Research Assistant (Jan-Aug 2016) &amp;ldquo;DiaMonD: An Integrated Multifaceted Approach to Mathematics at the Interfaces of Data, Models, and Decisions,&amp;rdquo; DE-SC0009279 Student Teaching Assistant, Calculus I (Aug-Dec 2015) Tutor, Mathematics Education Research Center (Aug-Dec 2015) Student Research Assistant (Aug 2014-May 2015) &amp;ldquo;CAREER: Foundations for Understanding and Reaching the Limits of Standard Numerical Linear Algebra,&amp;rdquo; NSF CCF 1054864 Student Research Assistant (Jun-Aug 2014) &amp;ldquo;SI2-SSI: Collaborative Research: Sustained Innovation for Linear Algebra Software (SILAS),&amp;rdquo; NSF ACI 1339797  State University of New York: College at Geneseo  Teaching Assistant for Linear Programming &amp;amp; Operations Research (Jan-May 2014) Geneseo Research Foundation Undergraduate STEM Summer Research Fellow (Jun-Aug 2013)  Volunteer Data Analyst for As Green As It Gets (Nov-Dec 2012)</description>
+      <guid>https://www.michaelpilosov.com/resume/colorado/</guid>
+      <description> (only showing academic jobs) University of Colorado: Denver (Downtown Campus)  Student Teaching Assistant, Calculus I (Aug-Dec 2016) Student Research Assistant (Jan-Aug 2016) &amp;ldquo;DiaMonD: An Integrated Multifaceted Approach to Mathematics at the Interfaces of Data, Models, and Decisions,&amp;rdquo; DE-SC0009279 Student Teaching Assistant, Calculus I (Aug-Dec 2015) Tutor, Mathematics Education Research Center (Aug-Dec 2015) Student Research Assistant (Aug 2014-May 2015) &amp;ldquo;CAREER: Foundations for Understanding and Reaching the Limits of Standard Numerical Linear Algebra,&amp;rdquo; NSF CCF 1054864 Student Research Assistant (Jun-Aug 2014) &amp;ldquo;SI2-SSI: Collaborative Research: Sustained Innovation for Linear Algebra Software (SILAS),&amp;rdquo; NSF ACI 1339797  </description>
+    </item>
+    
+    <item>
+      <title>Employment</title>
+      <link>https://www.michaelpilosov.com/resume/newyork/</link>
+      <pubDate>Thu, 01 Mar 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/resume/newyork/</guid>
+      <description>(only showing academic jobs) State University of New York: College at Geneseo  Teaching Assistant for Linear Programming &amp;amp; Operations Research (Jan-May 2014) Geneseo Research Foundation Undergraduate STEM Summer Research Fellow (Jun-Aug 2013)  Volunteer Data Analyst for As Green As It Gets (Nov-Dec 2012)
+Private Tutor in Mathematics (Summer-Fall 2013)</description>
     </item>
     
     <item>

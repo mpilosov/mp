@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jupyterhub for Classrooms on Resume of Michael Pilosov</title>
+    <link>https://www.michaelpilosov.com/dockerhub/</link>
+    <description>Recent content in Jupyterhub for Classrooms on Resume of Michael Pilosov</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sun, 09 Sep 2018 00:00:00 -0600</lastBuildDate>
+    
+	<atom:link href="https://www.michaelpilosov.com/dockerhub/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Use-Cases</title>
+      <link>https://www.michaelpilosov.com/dockerhub/usage/</link>
+      <pubDate>Mon, 17 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/dockerhub/usage/</guid>
+      <description>In this tutorial, I&amp;rsquo;ll share my top 10 tips for getting started with Academic:
+Tip 1 &amp;hellip;
+Tip 2 &amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>https://www.michaelpilosov.com/dockerhub/intro/</link>
+      <pubDate>Sun, 16 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/dockerhub/intro/</guid>
+      <description>In this tutorial, I&amp;rsquo;ll share my top 10 tips for getting started with Academic:
+Tip 1 &amp;hellip;
+Tip 2 &amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Deployment</title>
+      <link>https://www.michaelpilosov.com/dockerhub/deploy/</link>
+      <pubDate>Thu, 13 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/dockerhub/deploy/</guid>
+      <description>In this tutorial, I&amp;rsquo;ll share my top 10 tips for getting started with Academic:
+Tip 1 &amp;hellip;
+Tip 2 &amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>

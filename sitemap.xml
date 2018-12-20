@@ -4,6 +4,78 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/post/changelog/</loc>
+      <lastmod>2018-12-19T18:16:07-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/dockerhub/usage/</loc>
+      <lastmod>2018-12-17T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/dockerhub/intro/</loc>
+      <lastmod>2018-12-17T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/dockerhub/deploy/</loc>
+      <lastmod>2018-12-13T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/dockerhub/</loc>
+      <lastmod>2018-09-09T00:00:00-06:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/wid/</loc>
+      <lastmod>2018-09-09T00:00:00-06:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/resume/presentations/</loc>
+      <lastmod>2018-12-19T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/resume/publications/</loc>
+      <lastmod>2018-12-19T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/resume/</loc>
+      <lastmod>2018-12-19T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/project/poker/</loc>
       <lastmod>2018-07-21T00:00:00-06:00</lastmod>
     </url>
@@ -52,8 +124,16 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/resume/employment/</loc>
-      <lastmod>2018-03-01T00:00:00-07:00</lastmod>
+      <loc>https://www.michaelpilosov.com/resume/colorado/</loc>
+      <lastmod>2018-12-19T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/resume/newyork/</loc>
+      <lastmod>2018-12-19T00:00:00-07:00</lastmod>
     </url>
     
   
@@ -61,7 +141,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/resume/honors/</loc>
-      <lastmod>2018-03-01T00:00:00-07:00</lastmod>
+      <lastmod>2018-12-19T00:00:00-07:00</lastmod>
     </url>
     
   
@@ -76,9 +156,11 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/more/</loc>
-      <lastmod>2017-06-27T17:39:21-07:00</lastmod>
+      <loc>https://www.michaelpilosov.com/slides/</loc>
+      <lastmod>2017-12-19T00:00:00-07:00</lastmod>
     </url>
+    
+  
     
   
     
@@ -94,6 +176,14 @@
     
       <loc>https://www.michaelpilosov.com/talk/siam_cse17/</loc>
       <lastmod>2017-02-27T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/post/</loc>
+      <lastmod>2017-01-01T00:00:00-07:00</lastmod>
     </url>
     
   
@@ -127,6 +217,16 @@
       <loc>https://www.michaelpilosov.com/project/consistentbayes/</loc>
       <lastmod>2016-04-27T00:00:00-06:00</lastmod>
     </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/post/getting-started/</loc>
+      <lastmod>2018-01-13T00:00:00-07:00</lastmod>
+    </url>
+    
+  
     
   
     
@@ -245,6 +345,81 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/tags/academic/</loc>
+      <lastmod>2018-01-13T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/categories/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/slides/test/</loc>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/</loc>
+      <lastmod>2018-07-21T00:00:00-06:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/publication_types/</loc>
+      <lastmod>2016-08-15T00:00:00-06:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/</loc>
+      <lastmod>2018-01-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/slides/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/slides/example-slides/</loc>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/</loc>
+      <lastmod>2018-01-13T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/categories/academia/</loc>
       <lastmod>2018-07-21T00:00:00-06:00</lastmod>
       <priority>0</priority>
@@ -256,15 +431,6 @@
     
       <loc>https://www.michaelpilosov.com/tags/biology/</loc>
       <lastmod>2016-08-15T00:00:00-06:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://www.michaelpilosov.com/categories/</loc>
-      <lastmod>2018-07-21T00:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -319,51 +485,6 @@
     
       <loc>https://www.michaelpilosov.com/tags/national-lab/</loc>
       <lastmod>2018-07-21T00:00:00-06:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://www.michaelpilosov.com/project/</loc>
-      <lastmod>2018-07-21T00:00:00-06:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://www.michaelpilosov.com/publication_types/</loc>
-      <lastmod>2016-08-15T00:00:00-06:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://www.michaelpilosov.com/</loc>
-      <lastmod>2018-01-01T00:00:00-07:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://www.michaelpilosov.com/resume/</loc>
-      <lastmod>2018-03-01T00:00:00-07:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://www.michaelpilosov.com/tags/</loc>
-      <lastmod>2016-08-15T00:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
