@@ -35,6 +35,18 @@
 &lt;li&gt;&lt;p&gt;created &lt;code&gt;/wid/&lt;/code&gt; and &lt;code&gt;/dockerhub/&lt;/code&gt; to experiment with new &lt;code&gt;docs&lt;/code&gt; template.&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;copied over dummy project files, still need to migrate own projects to new formatting, remove dummy projects.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Changed &lt;code&gt;work&lt;/code&gt; hyperlink and &lt;code&gt;resume&lt;/code&gt; to reflect new migration to the &lt;code&gt;docs&lt;/code&gt; template.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;resume widget changed to hyperlink to resume doc.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Need To-Do&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;header/feature images for post, check how fb/twitter scrapes them.&lt;/li&gt;
+&lt;li&gt;migrate any posts/projects to new formatting.&lt;/li&gt;
+&lt;li&gt;think about how to migrate MathematicalMichael.&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -105,7 +117,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/resume/presentations/</guid>
-      <description>&lt;p&gt;Presentations can be sorted/viewed on the &lt;a href=&#34;https://www.michaelpilosov.com/presentation&#34;&gt;Presentations Page&lt;/a&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;Presentations can be sorted/viewed on the &lt;a href=&#34;https://www.michaelpilosov.com/talk&#34;&gt;Presentations Page&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
