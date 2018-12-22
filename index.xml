@@ -1201,6 +1201,10 @@ docker export $ID | docker import – flat-image-name
 gzip -dc image.tgz | docker import - flat-image-name
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 
 &lt;hr /&gt;
