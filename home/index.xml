@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Homes on Michael Pilosov | Academic Website</title>
+    <title>Homes on Resume of Michael Pilosov</title>
     <link>https://www.michaelpilosov.com/home/</link>
-    <description>Recent content in Homes on Michael Pilosov | Academic Website</description>
+    <description>Recent content in Homes on Resume of Michael Pilosov</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
+    <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Mon, 01 Jan 2018 00:00:00 -0700</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/home/index.xml" rel="self" type="application/rss+xml" />
@@ -159,7 +159,7 @@ I am a teaching instructor for the following courses at University X:
     <item>
       <title>Contact</title>
       <link>https://www.michaelpilosov.com/home/contact/</link>
-      <pubDate>Fri, 20 Apr 2018 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/home/contact/</guid>
       <description></description>
