@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Resume of Michael Pilosov on Resume of Michael Pilosov</title>
+    <title>Michael Pilosov | Academic Website on Michael Pilosov | Academic Website</title>
     <link>https://www.michaelpilosov.com/</link>
-    <description>Recent content in Resume of Michael Pilosov on Resume of Michael Pilosov</description>
+    <description>Recent content in Michael Pilosov | Academic Website on Michael Pilosov | Academic Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
@@ -35,6 +35,44 @@
       
       <guid>https://www.michaelpilosov.com/wid/posts/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Remote Connection</title>
+      <link>https://www.michaelpilosov.com/openscience/remote/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/remote/</guid>
+      <description>
+
+&lt;p&gt;As previously mentioned, the Jupyter Notebook runs in the client (browser) and connects to a server (either running locally or remotely) to perform necessary calculations in a given language.&lt;/p&gt;
+
+&lt;p&gt;The kernels provide the means for establishing this communication, and are effectively what &lt;code&gt;jupyter&lt;/code&gt; (the program) is set up to manage.&lt;/p&gt;
+
+&lt;p&gt;Here, we demonstrate why this approach is so valuable.&lt;/p&gt;
+
+&lt;h1 id=&#34;motivation&#34;&gt;Motivation&lt;/h1&gt;
+
+&lt;p&gt;Assuming you followed the instructions in &lt;a href=&#34;https://www.michaelpilosov.com/openscience/anaconda&#34;&gt;Installing Anaconda&lt;/a&gt; on your local machine, you&amp;rsquo;ll notice that you establish a connection to the server (running in your Terminal session, likely outputting information with green-highlighted time-stamps) through the &amp;ldquo;address&amp;rdquo; &lt;code&gt;localhost&lt;/code&gt;, which references the fact that you are running this server locally.&lt;/p&gt;
+
+&lt;p&gt;However, this means that you can follow those instructions on any server, and with some additional commands (which we will review here), have the ability to connect to your Jupyter session from anywhere!&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:remote&#34;&gt;&lt;a href=&#34;#fn:remote&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;There are a few situations you might find yourself in, and we attempt to address several common ones here.
+If there is a scenario that is not covered here that you would like us to write about, please &lt;a href=&#34;https://www.michaelpilosov.com/#contact&#34;&gt;contact us&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;server-on-campus&#34;&gt;Server on Campus&lt;/h1&gt;
+
+&lt;h1 id=&#34;rented-server&#34;&gt;Rented Server&lt;/h1&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:remote&#34;&gt;Provided the machine running Jupyter is one that is publicly accessible. More on that later.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:remote&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -210,18 +248,25 @@ jupyter nbextension enable --sys-prefix --py ipyparallel
 
 &lt;h1 id=&#34;jupyterhub&#34;&gt;JupyterHub&lt;/h1&gt;
 
+&lt;h2 id=&#34;introduction-2&#34;&gt;Introduction&lt;/h2&gt;
+
 &lt;p&gt;More information here about installation would be helpful, but we&amp;rsquo;ll be going through this in more detail at another time since JupyterHub will form the basis for the solutions we will use for our classroom environments.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://jupyterhub.readthedocs.io/en/0.7.2/getting-started.html&#34; target=&#34;_blank&#34;&gt;https://jupyterhub.readthedocs.io/en/0.7.2/getting-started.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 
-&lt;p&gt;Running a notebook server:&lt;br /&gt;
-&lt;a href=&#34;https://jupyter-notebook.readthedocs.io/en/latest/public_server.html&#34; target=&#34;_blank&#34;&gt;https://jupyter-notebook.readthedocs.io/en/latest/public_server.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;(for personal use)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jupyterhub.readthedocs.io/en/stable/getting-started/&#34; target=&#34;_blank&#34;&gt;Getting Started&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jupyter-notebook.readthedocs.io/en/latest/public_server.html&#34; target=&#34;_blank&#34;&gt;Running a notebook server&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;h1 id=&#34;jupyterlab&#34;&gt;JupyterLab&lt;/h1&gt;
 
-&lt;h2 id=&#34;introduction-2&#34;&gt;Introduction&lt;/h2&gt;
+&lt;h2 id=&#34;introduction-3&#34;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;I love this environment but it is a little tricky to set up properly and get everything working as expected. Though once you do, I doubt you will want to use anything else.&lt;/p&gt;
 
@@ -697,167 +742,6 @@ This is an especially huge time-saver for workshops.&lt;/p&gt;
       <description>&lt;p&gt;Publications can be sorted/viewed on the &lt;a href=&#34;https://www.michaelpilosov.com/publication&#34;&gt;Publications Page&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Manuscripts in review are not shown.&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>A New Game of Poker</title>
-      <link>https://www.michaelpilosov.com/project/poker/</link>
-      <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/poker/</guid>
-      <description>&lt;p&gt;This was a really fun project I undertook for a Math Club game night in 2016 with my friend &lt;a href=&#34;http://elliottregan.com&#34; target=&#34;_blank&#34;&gt;Elliott Regan&lt;/a&gt;.&lt;/p&gt;
-
-
-&lt;div class=&#34;plot-container&#34;&gt;
-  &lt;canvas id=&#34;plotCanvas&#34; class=&#34;plot-canvas&#34; width=&#34;250px&#34; height=&#34;250px&#34;&gt;&lt;/canvas&gt;
-  
-  &lt;div class=&#34;printout&#34;&gt;
-
-    &lt;div class=&#34;value_group&#34;&gt;
-      &lt;label&gt;current&lt;/label&gt;
-      &lt;input type=&#34;text&#34; id=&#34;mytext&#34;&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;value_group&#34;&gt;
-      &lt;label&gt;min&lt;/label&gt;
-      &lt;input type=&#34;text&#34; id=&#34;mytext2&#34;&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;value_group&#34;&gt;
-      &lt;label&gt;max&lt;/label&gt;
-      &lt;input type=&#34;text&#34; id=&#34;mytext3&#34;&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;button type=&#34;button&#34; class=&#34;reset-btn&#34; onclick=&#34;reset()&#34; color=&#34;grey&#34;&gt;&lt;u&gt;Start New Game&lt;/u&gt;&lt;/button&gt;
-&lt;/div&gt;
-&lt;br&gt;
-&lt;br&gt;
-
-&lt;script&gt; 
-var canvas = document.getElementById(&#39;plotCanvas&#39;);
-var ctx = canvas.getContext(&#39;2d&#39;);
-
-var num, maxnum, minnum;
-
-var interval = 5;
-
-var B = [0]
-var brakes = 200; 
-var ht = canvas.height;
-var n = canvas.width;
-var alpha = 5;
-
-initPlot();
-drawWalk();
-
-function reset() {
-  B = [0];
-  var id = window.setTimeout(function() {}, 0);
-  while (id--) {
-    window.clearTimeout(id); 
-  }
-  document.getElementById(&#34;mytext2&#34;).value = 0;
-  document.getElementById(&#34;mytext3&#34;).value = 0;
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  initPlot()
-  drawWalk();
-}
-
-function initPlot() {
-  ctx.font = &#34;16px sans-serif&#34;;
-  ctx.filStyle = &#34;light&#34;;
-  
-  ctx.font = &#34;36px serif&#34;;
-  
-
-  ctx.beginPath();
-  ctx.moveTo(0, canvas.height / 2)
-  ctx.lineTo(canvas.width, canvas.height / 2)
-  ctx.stroke();
-
-  var tick_length = 7;
-  var tick_its = 8;
-
-  for (var i = 1; i &lt; tick_its; i++) {
-    
-    ctx.moveTo(i * canvas.width / tick_its, canvas.height / 2 - tick_length)
-    ctx.lineTo(i * canvas.width / tick_its, canvas.height / 2 + tick_length)
-    ctx.stroke();
-    
-    
-    
-    
-  }
-}
-
-function drawWalk() {
-  function plot(delay) {
-
-    window.setTimeout(function() {
-      
-      if (Math.random() &lt; 0.5) {
-        B.push(B[delay] - alpha / n);
-      } else {
-        B.push(B[delay] + alpha / n);
-      }
-      
-      ctx.lineTo(delay, B[delay] * 100 + ht / 2);
-      ctx.stroke();
-
-      num = (-ht / 8 * B[delay]).toFixed(); 
-      maxnum = (-ht / 8 * Math.min.apply(null, B)).toFixed(); 
-      minnum = (-ht / 8 * Math.max.apply(null, B)).toFixed(); 
-      document.getElementById(&#34;mytext&#34;).value = num;
-      var txtbox = document.getElementById(&#34;mytext&#34;);
-      txtbox.style[&#34;width&#34;] = &#34;60px&#34;;
-      txtbox.style[&#34;height&#34;] = &#34;40px&#34;;
-      txtbox.style.fontSize = &#34;large&#34;;
-
-      document.getElementById(&#34;mytext2&#34;).value = minnum;
-      var txtbox2 = document.getElementById(&#34;mytext2&#34;);
-      txtbox2.style[&#34;width&#34;] = &#34;60px&#34;;
-      txtbox2.style[&#34;height&#34;] = &#34;30px&#34;;
-      txtbox2.style.fontSize = &#34;small&#34;;
-
-      document.getElementById(&#34;mytext3&#34;).value = maxnum;
-      var txtbox3 = document.getElementById(&#34;mytext3&#34;);
-      txtbox3.style[&#34;width&#34;] = &#34;60px&#34;;
-      txtbox3.style[&#34;height&#34;] = &#34;30px&#34;;
-      txtbox3.style.fontSize = &#34;small&#34;;
-
-    }, delay * brakes);
-  }
-
-  ctx.beginPath();
-
-  for (var i = 0; i &lt; n; i++) {
-    plot(i);
-  }
-}
-
-
-
-
-
-&lt;/script&gt;
-
-Flip a coin, heads you earn a point, tails you lose one. 
-&lt;br&gt;
-&lt;br&gt;
-Now repeat this rapidly–no, in fact, let the computer do it–and keep your running score hidden to yourself. 
-This webpage is your hand. 
-&lt;br&gt;
-&lt;br&gt;
-Your opponents each have one of their own and bet on their hands.
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-Game concept by Dr. Burt Simon. Copyright 2016 E. Regan &amp; M. Pilosov.
-
-
-&lt;p&gt;Enjoy.&lt;/p&gt;
-
-&lt;p&gt;If you have any questions&amp;hellip;&lt;/p&gt;
 </description>
     </item>
     

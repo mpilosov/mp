@@ -10,6 +10,14 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/openscience/remote/</loc>
+      <lastmod>2018-12-21T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/openscience/demo/</loc>
       <lastmod>2018-12-21T00:00:00-07:00</lastmod>
     </url>
@@ -459,6 +467,15 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/</loc>
+      <lastmod>2018-01-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/slides/test/</loc>
     </url>
     
@@ -477,15 +494,6 @@
     
       <loc>https://www.michaelpilosov.com/publication_types/</loc>
       <lastmod>2016-08-15T00:00:00-06:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://www.michaelpilosov.com/</loc>
-      <lastmod>2018-01-01T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     

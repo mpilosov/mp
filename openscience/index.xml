@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Open Science on Resume of Michael Pilosov</title>
+    <title>Open Science on Michael Pilosov | Academic Website</title>
     <link>https://www.michaelpilosov.com/openscience/</link>
-    <description>Recent content in Open Science on Resume of Michael Pilosov</description>
+    <description>Recent content in Open Science on Michael Pilosov | Academic Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
@@ -11,6 +11,18 @@
     
 	<atom:link href="https://www.michaelpilosov.com/openscience/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Remote Connection</title>
+      <link>https://www.michaelpilosov.com/openscience/remote/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/remote/</guid>
+      <description>As previously mentioned, the Jupyter Notebook runs in the client (browser) and connects to a server (either running locally or remotely) to perform necessary calculations in a given language.
+The kernels provide the means for establishing this communication, and are effectively what jupyter (the program) is set up to manage.
+Here, we demonstrate why this approach is so valuable.
+Motivation Assuming you followed the instructions in Installing Anaconda on your local machine, you&amp;rsquo;ll notice that you establish a connection to the server (running in your Terminal session, likely outputting information with green-highlighted time-stamps) through the &amp;ldquo;address&amp;rdquo; localhost, which references the fact that you are running this server locally.</description>
+    </item>
     
     <item>
       <title>Demonstration with Jupyter Lab</title>
