@@ -15,8 +15,8 @@
   
     
   
-  <meta name="description" content="Introduction Let&rsquo;s first get a feel for the possibilities, and see what is possible by checking out some existing websites, organizations, and repositories. The idea of removing installation complexities, platform dependencies, etc. from your end-users is beautifully demonstrated by some of the recent advancements made over at Project Jupyter, all visible on their Github repository
-Example My favorite example that demonstrates how slick this new approach to setting up programming environmnents is JupyterLab &#43; Binder.">
+  <meta name="description" content="Basics In this documentation, we will research and likely leverage (most if not all of) the following open-source projects. We will eventually address each in depth within this documentation and will update this section with relevant links as necessary. For now, we provide a brief overview and summary of what we are looking into.
+Widgets If you have ever tried developing a graphical user interface (GUI) for your code, you&rsquo;ll know how cumbersome it can be.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/openscience/getting-started/">
@@ -122,12 +122,12 @@ Example My favorite example that demonstrates how slick this new approach to set
   
   <meta property="og:site_name" content="Resume of Michael Pilosov">
   <meta property="og:url" content="https://www.michaelpilosov.com/openscience/getting-started/">
-  <meta property="og:title" content="Getting Started | Resume of Michael Pilosov">
-  <meta property="og:description" content="Introduction Let&rsquo;s first get a feel for the possibilities, and see what is possible by checking out some existing websites, organizations, and repositories. The idea of removing installation complexities, platform dependencies, etc. from your end-users is beautifully demonstrated by some of the recent advancements made over at Project Jupyter, all visible on their Github repository
-Example My favorite example that demonstrates how slick this new approach to setting up programming environmnents is JupyterLab &#43; Binder."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
+  <meta property="og:title" content="Relevant Projects | Resume of Michael Pilosov">
+  <meta property="og:description" content="Basics In this documentation, we will research and likely leverage (most if not all of) the following open-source projects. We will eventually address each in depth within this documentation and will update this section with relevant links as necessary. For now, we provide a brief overview and summary of what we are looking into.
+Widgets If you have ever tried developing a graphical user interface (GUI) for your code, you&rsquo;ll know how cumbersome it can be."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2018-12-17T00:00:00-07:00">
+  <meta property="article:published_time" content="2018-12-21T00:00:00-07:00">
   
   <meta property="article:modified_time" content="2018-12-21T00:00:00-07:00">
   
@@ -136,7 +136,7 @@ Example My favorite example that demonstrates how slick this new approach to set
 
   
 
-  <title>Getting Started | Resume of Michael Pilosov</title>
+  <title>Relevant Projects | Resume of Michael Pilosov</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
@@ -317,6 +317,19 @@ Example My favorite example that demonstrates how slick this new approach to set
   </div>
   
   <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/example/">1. Motivation</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/openscience/example/">Example Demo</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
     <a class="docs-toc-link" href="/openscience/intro/">1. Motivations</a>
     <ul class="nav docs-sidenav">
       
@@ -328,8 +341,21 @@ Example My favorite example that demonstrates how slick this new approach to set
         <a href="/openscience/usage/">Use-Cases</a>
       </li>
       
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/getting-started/">2. Getting Started</a>
+    <ul class="nav docs-sidenav">
+      
       <li class="active">
-        <a href="/openscience/getting-started/">Getting Started</a>
+        <a href="/openscience/getting-started/">Relevant Projects</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/anaconda/">Installing Anaconda</a>
       </li>
       
     </ul>
@@ -363,18 +389,21 @@ Example My favorite example that demonstrates how slick this new approach to set
 
       <nav id="TableOfContents">
 <ul>
-<li><a href="#introduction">Introduction</a>
+<li><a href="#basics">Basics</a>
 <ul>
-<li><a href="#example">Example</a></li>
-<li><a href="#history">History</a></li>
 <li><a href="#widgets">Widgets</a></li>
 <li><a href="#jupyter-nbviewer">Jupyter nbviewer</a></li>
+<li><a href="#docker">Docker</a></li>
+<li><a href="#github">Github</a></li>
+<li><a href="#anaconda">Anaconda</a></li>
 </ul></li>
-<li><a href="#relevant-projects">Relevant Projects</a>
+<li><a href="#binderhub">BinderHub</a>
 <ul>
-<li><a href="#binderhub">BinderHub</a></li>
 <li><a href="#repo2docker">Repo2Docker</a></li>
-<li><a href="#jupyterhub">JupyterHub</a></li>
+<li><a href="#kubernetes">Kubernetes</a></li>
+</ul></li>
+<li><a href="#jupyterhub">JupyterHub</a>
+<ul>
 <li><a href="#technical-overview">Technical overview</a></li>
 </ul></li>
 </ul>
@@ -393,58 +422,16 @@ Example My favorite example that demonstrates how slick this new approach to set
       <article class="article" itemscope itemtype="http://schema.org/Article">
 
         <div class="docs-article-container">
-          <h1 itemprop="name">Getting Started</h1>
+          <h1 itemprop="name">Relevant Projects</h1>
 
           <div class="article-style" itemprop="articleBody">
             
 
-<h1 id="introduction">Introduction</h1>
+<h1 id="basics">Basics</h1>
 
-<p>Let&rsquo;s first get a feel for the possibilities, and <strong>see</strong> what is possible by checking out some existing websites, organizations, and repositories.
-The idea of removing installation complexities, platform dependencies, etc. from your end-users is beautifully demonstrated by some of the recent advancements made over at <a href="https://jupyter.org" target="_blank">Project Jupyter</a>, all visible on <a href="https://github.com/jupyter/" target="_blank">their Github repository</a></p>
-
-<h2 id="example">Example</h2>
-
-<p>My favorite example that demonstrates how slick this new approach to setting up programming environmnents is <a href="https://github.com/binder-examples/jupyterlab" target="_blank">JupyterLab + Binder</a>.
-Head on over there, click on the little badge that reads &ldquo;launch | binder,&rdquo; and it will automatically open up a notebook for you.<sup class="footnote-ref" id="fnref:timeout"><a href="#fn:timeout">1</a></sup>
-Have a look around, run code, do whatever you like.</p>
-
-<p>To then see how easy adding functionality is, run the following in a new code-cell in the notebook that opens:</p>
-
-<pre><code class="language-python">!jupyter labextension install @jupyter-widgets/jupyterlab-manager 
-</code></pre>
-
-<p>The exclamation point tells the notebook to run the command using <code>bash.</code><sup class="footnote-ref" id="fnref:bash"><a href="#fn:bash">2</a></sup>.
-Since widgets are already pre-packaged, all we have to do to enable them is to tell JupyterLab to get the necessary Javascript resources to show them to you in your client (web-browser).
-A bunch of dialogue should show up, and then once it finishes, replace the code you just ran with</p>
-
-<pre><code class="language-python">import ipywidgets as wd
-wd.FloatSlider()
-</code></pre>
-
-<p>and you should see a slider pop up.</p>
-
-<p>To avoid this step and ensure that the widget functionality is ready-to-go, one can fork the <a href="https://github.com/binder-examples/jupyterlab" target="_blank">repository</a>, and edit the file <code>binder/postBuild</code>, which runs after the initial repository is built (using <a href="https://github.com/jupyter/repo2docker" target="_blank">repo2docker</a> on the backend) but before the client displays the interface.</p>
-
-<h2 id="history">History</h2>
-
-<p>(This brief history represents the view of the author of this webpage and may not be completely accurate).
-Project Jupyter is the maturation of the iPython project, a command-line program that allowed for an interactive Python shell, and what I relied on in my early days of learning Python.
-Their flagship development/breakthrough was the <a href="http://jupyter.org/install" target="_blank">Notebook</a>, which forms the foundation for all the other products.
-The <em>notebook is an HTML page</em> that is served for you by a <em>jupyter notebook server</em>.
-It looks and feels like a desktop application.</p>
-
-<p>It was undoubtedly inspired by Mathematica&rsquo;s &ldquo;Notebooks,&rdquo; but released as an open-source project, leading to its rapidly-expanding adoption in the scientific community.
-The key to understanding why the notebook is so special is that it allows the web-browser to interact with code running on any computer (be it your own or a remote server).
-By divorcing the computation from the rendering, the developers allow for a unified framework so that scientists can focus on writing code and not on keeping up with dev-ops architecture.</p>
-
-<p>The idea is simply that once one adapts to the Jupyter ecosystem, they are freed from platform considerations.
-Code is shareable across Windows/Mac/Linux, and viewable in the same environment that it was developed in by using a web-browser.
-It seeks to completely replace IDEs (Integrated Development Environments), which were the best solutions for setting up someone who was new to programming.</p>
-
-<p>Basically, there was a serious desire to make getting up-and-running with software development easier.
-Now, thanks to Jupyter, a teacher can set up isolated computing environments for every student and be sure that their experiences are uniform.
-This is an especially huge time-saver for workshops.</p>
+<p>In this documentation, we will research and likely leverage (most if not all of) the following open-source projects.
+We will eventually address each in depth within this documentation and will update this section with relevant links as necessary.
+For now, we provide a brief overview and summary of what we are looking into.</p>
 
 <h2 id="widgets">Widgets</h2>
 
@@ -455,17 +442,17 @@ Thankfully, the <a href="http://jupyter.org/widgets" target="_blank">Widgets</a>
 
 <h2 id="jupyter-nbviewer">Jupyter nbviewer</h2>
 
-<p>Paste a link to a notebook into <a href="https://nbviewer.jupyter.org/" target="_blank">this form</a></p>
+<p>Paste a link to a notebook into <a href="https://nbviewer.jupyter.org/" target="_blank">this form</a> and this website will render the notebook for your reading pleasure.</p>
+
+<h2 id="docker">Docker</h2>
+
+<h2 id="github">Github</h2>
+
+<h2 id="anaconda">Anaconda</h2>
 
 <hr />
 
-<h1 id="relevant-projects">Relevant Projects</h1>
-
-<p>In this documentation, we will research and likely leverage (most if not all of) the following open-source projects.
-We will eventually address each in depth within this documentation and will update this section with relevant links as necessary.
-For now, we provide a brief overview and summary of what we are looking into.</p>
-
-<h2 id="binderhub">BinderHub</h2>
+<h1 id="binderhub">BinderHub</h1>
 
 <p><a href="https://github.com/jupyterhub/binderhub" target="_blank">BinderHub</a></p>
 
@@ -489,7 +476,13 @@ For now, we provide a brief overview and summary of what we are looking into.</p
 
 <p>Binder leverages this to then serve the contents of the image in conjuction with JupyterHub.</p>
 
-<h2 id="jupyterhub">JupyterHub</h2>
+<h2 id="kubernetes">Kubernetes</h2>
+
+<p>Google is a provider. Links/info should go here to a couple other platforms, some basic information.</p>
+
+<hr />
+
+<h1 id="jupyterhub">JupyterHub</h1>
 
 <p><a href="https://github.com/jupyterhub/jupyterhub" target="_blank">JupyterHub</a></p>
 
@@ -533,17 +526,6 @@ for administration of the Hub and its users.</p>
 
 <p>I personally run Jupyterhub on a remote server so that I always have access to a secure and familiar environment if I ever need to test out some code and find myself without my laptop.
 By default, it accepts the login information of just the user who is running it, but we will see later how it can be configured for its intended use as a multi-user authentication hub.</p>
-<div class="footnotes">
-
-<hr />
-
-<ol>
-<li id="fn:timeout"><em>Be warned</em>: After a few minutes of inactivity, the <a href="https://mybinder.org" target="_blank">mybinder.org</a> service that is hosting the docker container which serves this web application will time-out. This means that it will assume you are done with it and clean up the resources it created for you. Say goodbye to whatever you were working on.
- <a class="footnote-return" href="#fnref:timeout"><sup>^</sup></a></li>
-<li id="fn:bash">Alternatively, you could open a new Terminal instance in JupyterLab and run the same code (without the exclamation mark).
- <a class="footnote-return" href="#fnref:bash"><sup>^</sup></a></li>
-</ol>
-</div>
 
           </div>
 

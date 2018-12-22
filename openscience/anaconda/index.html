@@ -15,12 +15,13 @@
   
     
   
-  <meta name="description" content="Here we describe the necessary steps for deployment.
-Please pardon the state of this document as it is a living and breathing set of instructions, and this part of the project has yet to be addressed.
-Kubernetes What is it? Why use it? Possibilities &ldquo;Bare Metal&rdquo; What is it? Why use it? Perhaps you have old computers lying around (if at a university, these may be more than enough for a considerable server) and are looking to repurpose them.">
+  <meta name="description" content="These instructions originally appeared on the &ldquo;Resources&rdquo; page of my website, where I link to my Github Gist. As of Dec 21, 2018, I am abandoning the aforementioned gist and will keep this webpage updated as my primary source of information for installing Anaconda1.
+Anaconda Basics Introduction It is a package manager.
+WRITE MORE ABOUT WHAT A PACKAGE MANAGER IS/DOES AND WHY IT SHOULD BE USED
+Download Go download it from https://www.">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/openscience/deploy/">
+  <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/openscience/anaconda/">
 
   
 
@@ -108,7 +109,7 @@ Kubernetes What is it? Why use it? Possibilities &ldquo;Bare Metal&rdquo; What i
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://www.michaelpilosov.com/openscience/deploy/">
+  <link rel="canonical" href="https://www.michaelpilosov.com/openscience/anaconda/">
 
   
   
@@ -122,14 +123,15 @@ Kubernetes What is it? Why use it? Possibilities &ldquo;Bare Metal&rdquo; What i
   <meta property="twitter:creator" content="@Mathematical_MP">
   
   <meta property="og:site_name" content="Resume of Michael Pilosov">
-  <meta property="og:url" content="https://www.michaelpilosov.com/openscience/deploy/">
-  <meta property="og:title" content="Deployment | Resume of Michael Pilosov">
-  <meta property="og:description" content="Here we describe the necessary steps for deployment.
-Please pardon the state of this document as it is a living and breathing set of instructions, and this part of the project has yet to be addressed.
-Kubernetes What is it? Why use it? Possibilities &ldquo;Bare Metal&rdquo; What is it? Why use it? Perhaps you have old computers lying around (if at a university, these may be more than enough for a considerable server) and are looking to repurpose them."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
+  <meta property="og:url" content="https://www.michaelpilosov.com/openscience/anaconda/">
+  <meta property="og:title" content="Installing Anaconda | Resume of Michael Pilosov">
+  <meta property="og:description" content="These instructions originally appeared on the &ldquo;Resources&rdquo; page of my website, where I link to my Github Gist. As of Dec 21, 2018, I am abandoning the aforementioned gist and will keep this webpage updated as my primary source of information for installing Anaconda1.
+Anaconda Basics Introduction It is a package manager.
+WRITE MORE ABOUT WHAT A PACKAGE MANAGER IS/DOES AND WHY IT SHOULD BE USED
+Download Go download it from https://www."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2018-12-18T00:00:00-07:00">
+  <meta property="article:published_time" content="2018-12-21T00:00:00-07:00">
   
   <meta property="article:modified_time" content="2018-12-21T00:00:00-07:00">
   
@@ -138,7 +140,7 @@ Kubernetes What is it? Why use it? Possibilities &ldquo;Bare Metal&rdquo; What i
 
   
 
-  <title>Deployment | Resume of Michael Pilosov</title>
+  <title>Installing Anaconda | Resume of Michael Pilosov</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
@@ -356,7 +358,7 @@ Kubernetes What is it? Why use it? Possibilities &ldquo;Bare Metal&rdquo; What i
         <a href="/openscience/getting-started/">Relevant Projects</a>
       </li>
       
-      <li >
+      <li class="active">
         <a href="/openscience/anaconda/">Installing Anaconda</a>
       </li>
       
@@ -369,7 +371,7 @@ Kubernetes What is it? Why use it? Possibilities &ldquo;Bare Metal&rdquo; What i
     <a class="docs-toc-link" href="/openscience/deploy/">4. Deploy</a>
     <ul class="nav docs-sidenav">
       
-      <li class="active">
+      <li >
         <a href="/openscience/deploy/">Choosing Your Platform</a>
       </li>
       
@@ -391,21 +393,36 @@ Kubernetes What is it? Why use it? Possibilities &ldquo;Bare Metal&rdquo; What i
 
       <nav id="TableOfContents">
 <ul>
-<li><a href="#kubernetes">Kubernetes</a>
+<li><a href="#anaconda-basics">Anaconda Basics</a>
 <ul>
-<li><a href="#what-is-it">What is it?</a></li>
-<li><a href="#why-use-it">Why use it?</a></li>
-<li><a href="#possibilities">Possibilities</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#download">Download</a></li>
+<li><a href="#install">Install</a></li>
+<li><a href="#environments">Environments</a></li>
 </ul></li>
-<li><a href="#bare-metal">&ldquo;Bare Metal&rdquo;</a>
+<li><a href="#diving-deeper">Diving Deeper</a>
 <ul>
-<li><a href="#what-is-it-1">What is it?</a></li>
-<li><a href="#why-use-it-1">Why use it?</a></li>
+<li><a href="#widgets">Widgets</a></li>
+<li><a href="#ipyparallel">iPyParallel</a></li>
 </ul></li>
-<li><a href="#binder">Binder</a>
+<li><a href="#kernels">Kernels</a>
 <ul>
-<li><a href="#what-is-it-2">What is it?</a></li>
-<li><a href="#setting-up-kubernetes-for-binder">Setting up Kubernetes for Binder</a></li>
+<li><a href="#introduction-1">Introduction</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#management">Management</a></li>
+</ul></li>
+<li><a href="#jupyterhub">JupyterHub</a></li>
+<li><a href="#jupyterlab">JupyterLab</a>
+<ul>
+<li><a href="#introduction-2">Introduction</a></li>
+<li><a href="#install-1">Install</a></li>
+<li><a href="#widget-extensions">Widget Extensions</a></li>
+</ul></li>
+<li><a href="#sharing">Sharing</a>
+<ul>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#exporting">Exporting</a></li>
+<li><a href="#cloning">Cloning</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -423,43 +440,194 @@ Kubernetes What is it? Why use it? Possibilities &ldquo;Bare Metal&rdquo; What i
       <article class="article" itemscope itemtype="http://schema.org/Article">
 
         <div class="docs-article-container">
-          <h1 itemprop="name">Deployment</h1>
+          <h1 itemprop="name">Installing Anaconda</h1>
 
           <div class="article-style" itemprop="articleBody">
             
 
-<p>Here we describe the necessary steps for deployment.</p>
+<p>These instructions originally appeared on the <a href="https://www.mathematicalmichael.com" target="_blank">&ldquo;Resources&rdquo; page of my website</a>, where I link to my <a href="https://gist.github.com/mpilosov/233ccfae58d182d43f690be209b58ba5" target="_blank">Github Gist</a>.
+As of <em>Dec 21, 2018</em>, I am abandoning the aforementioned gist and will keep this webpage updated as my primary source of information for installing Anaconda<sup class="footnote-ref" id="fnref:note"><a href="#fn:note">1</a></sup>.</p>
 
-<p><em>Please pardon the state of this document as it is a living and breathing set of instructions, and this part of the project has yet to be addressed.</em></p>
+<h1 id="anaconda-basics">Anaconda Basics</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>It is a package manager.</p>
+
+<p><code>WRITE MORE ABOUT WHAT A PACKAGE MANAGER IS/DOES AND WHY IT SHOULD BE USED</code></p>
+
+<h2 id="download">Download</h2>
+
+<p>Go download it from
+<a href="https://www.anaconda.com/download/" target="_blank">https://www.anaconda.com/download/</a>
+for your Linux/Windows/OSX</p>
+
+<p>I like to use</p>
+
+<p><code>wget http://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh</code></p>
+
+<p>or if I want to keep things lightweight (may lead to more manual installations later on):</p>
+
+<p><code>wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh</code></p>
+
+<h2 id="install">Install</h2>
+
+<p>It will likely be saved in the Downloads folder, so you will install it with something like</p>
+
+<p><code>bash ~/Downloads/Anaconda3-5.0.1-Linux-x86_64.sh</code></p>
+
+<p>Use all the defaults, agree to everything, and at the end, hit <code>ENTER</code> to prepend it to your <code>PATH</code></p>
+
+<h2 id="environments">Environments</h2>
+
+<p>Now let&rsquo;s create an environment for python3:<br />
+<code>conda create -n py3 python=3.6</code> where <code>py3</code> is just my personal preferred shorthand for python 3. Feel free to use your own.</p>
+
+<p>And one for python2:<br />
+<code>conda create -n py2 python=2.7</code></p>
+
+<p>To remove:<br />
+<code>conda remove --name py2 --all</code></p>
+
+<p>We can now switch between versions of python with commands like<br />
+<code>source activate py3</code> and <code>source activate py2</code> and then <code>source deactivate</code> when you&rsquo;re ready to be done.</p>
+
+<h1 id="diving-deeper">Diving Deeper</h1>
+
+<h2 id="widgets">Widgets</h2>
+
+<p>Overview:</p>
+
+<p><code>pip install ipywidgets</code><br />
+<code>jupyter nbextension install --py --user widgetsnbextension</code><br />
+<code>jupyter nbextension enable --py widgetsnbextension</code></p>
+
+<p>More information about widgets <a href="https://ipywidgets.readthedocs.io/en/stable/user_install.html" target="_blank">can be found here</a></p>
+
+<p>Alternatively, in each of these environments, run<br />
+<code>conda install -c conda-forge ipywidgets</code></p>
+
+<p>which will install all sorts of dependencies, including Jupyter notebooks<sup class="footnote-ref" id="fnref:notebooks"><a href="#fn:notebooks">2</a></sup>. It supposedly enables the widgets too but you can run</p>
+
+<p><code>jupyter nbextension enable --py widgetsnbextension</code> to make sure.</p>
+
+<p><code>python -m ipykernel install --name py3 --user</code> will then link the kernel to jupyter.</p>
+
+<p>Then <code>--name py3</code> flag is optional and just assigns a name of your choosing to that kernel.
+The version of python used for the kernel is whatever is returned when you ask bash <code>which python</code> (so if you used source <code>activate</code> earlier, it will be the version associated with the kernel whose name is in parentheses in your Terminal session).
+<strong>The <code>--user</code> flag is necessary.</strong></p>
+
+<h2 id="ipyparallel">iPyParallel</h2>
+
+<p><a href="https://github.com/ipython/ipyparallel" target="_blank">https://github.com/ipython/ipyparallel</a><br />
+<code>pip install ipyparallel</code> to install.<br />
+<code>ipcluster nbextension enable</code> (add the <code>--user</code> flag as well if you encounter an error).
+This one also seems to be necessary to get the clusters to show up:<br />
+<code>jupyter serverextension enable --sys-prefix --py ipyparallel</code></p>
+
+<p>To install for all users (as root):</p>
+
+<pre><code>jupyter nbextension install --sys-prefix --py ipyparallel
+jupyter nbextension enable --sys-prefix --py ipyparallel
+</code></pre>
 
 <hr />
 
-<h1 id="kubernetes">Kubernetes</h1>
+<h1 id="kernels">Kernels</h1>
 
-<h2 id="what-is-it">What is it?</h2>
+<h2 id="introduction-1">Introduction</h2>
 
-<h2 id="why-use-it">Why use it?</h2>
+<p><code>TODO: WRITE MORE ABOUT MULTI-KERNEL SUPPORT, provide an example.</code></p>
 
-<h2 id="possibilities">Possibilities</h2>
+<h2 id="overview">Overview</h2>
 
-<hr />
+<p>To see all the kernels jupyter is aware of:
+<code>jupyter kernelspec list</code></p>
 
-<h1 id="bare-metal">&ldquo;Bare Metal&rdquo;</h1>
+<h2 id="management">Management</h2>
 
-<h2 id="what-is-it-1">What is it?</h2>
-
-<h2 id="why-use-it-1">Why use it?</h2>
-
-<p>Perhaps you have old computers lying around (if at a university, these may be more than enough for a considerable server) and are looking to repurpose them.
-Alternatively, your university or company may already have available server resources that you can access for such purposes as classrooms or workshops.</p>
+<p>To remove kernels, use <code>jupyter kernelspec remove</code></p>
 
 <hr />
 
-<h1 id="binder">Binder</h1>
+<h1 id="jupyterhub">JupyterHub</h1>
 
-<h2 id="what-is-it-2">What is it?</h2>
+<p>More information here about installation would be helpful, but we&rsquo;ll be going through this in more detail at another time since JupyterHub will form the basis for the solutions we will use for our classroom environments.</p>
 
-<h2 id="setting-up-kubernetes-for-binder">Setting up Kubernetes for Binder</h2>
+<p><a href="https://jupyterhub.readthedocs.io/en/0.7.2/getting-started.html" target="_blank">https://jupyterhub.readthedocs.io/en/0.7.2/getting-started.html</a></p>
+
+<p>Running a notebook server:<br />
+<a href="https://jupyter-notebook.readthedocs.io/en/latest/public_server.html" target="_blank">https://jupyter-notebook.readthedocs.io/en/latest/public_server.html</a></p>
+
+<hr />
+
+<h1 id="jupyterlab">JupyterLab</h1>
+
+<h2 id="introduction-2">Introduction</h2>
+
+<p>I love this environment but it is a little tricky to set up properly and get everything working as expected. Though once you do, I doubt you will want to use anything else.</p>
+
+<h2 id="install-1">Install</h2>
+
+<p>Once Jupyter Lab is installed, go ahead and run it the same way you would a notebook:</p>
+
+<p><code>jupyter lab (--no-browser)</code></p>
+
+<h2 id="widget-extensions">Widget Extensions</h2>
+
+<p>By default (as of Dec 2018), it will be accessible through <code>localhost:8888</code></p>
+
+<p>Go ahead and launch an instance of Python and see if widgets work.</p>
+
+<pre><code>import ipywidgets as wd
+wd.FloatSlider()
+</code></pre>
+
+<p>If the output of the following is text instead of a widget, try running the following in the command-line (shutdown the server with <code>Ctrl-C</code> twice, then</p>
+
+<p><code>jupyter labextension install @jupyter-widgets/jupyterlab-manager</code></p>
+
+<p>And relaunch JupyterLab (if you didn&rsquo;t close your browswer window, a simple refresh will work to re-establish the connection and pick up where you left off), and try the example above again.</p>
+
+<p><em>Something that came up once</em></p>
+
+<p>I saw my server output spitting out <code>TypeError: __init__() got an unexpected keyword argument 'io_loop'</code> over and over again when any kernel was started. Something was going on with the WebSocket I/O communication (whatever that means), but the following downgrade of the Python Web Framework worked to <a href="https://stackoverflow.com/questions/48090119/jupyter-notebook-typeerror-init-got-an-unexpected-keyword-argument-io-l" target="_blank">fix it</a>:</p>
+
+<p><code>pip install tornado==4.5.3</code></p>
+
+<hr />
+
+<h1 id="sharing">Sharing</h1>
+
+<h2 id="motivation">Motivation</h2>
+
+<p><code>TODO</code> write about why this is useful</p>
+
+<h2 id="exporting">Exporting</h2>
+
+<p><code>conda env export &gt; environment.yml</code></p>
+
+<p>Which you then load up with
+<code>conda env create -f environment.yml</code></p>
+
+<h2 id="cloning">Cloning</h2>
+
+<p>You can make an exact copy of an environment by creating a clone of it:<br />
+<code>conda create --name myclone --clone myenv</code></p>
+
+<p>To verify that the copy was made:<br />
+<code>conda info --envs</code></p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:note">Github Gists are actually surprisingly difficult to sort through, and navigating to this webpage will be much easier, anyway.
+ <a class="footnote-return" href="#fnref:note"><sup>^</sup></a></li>
+<li id="fn:notebooks">It does appear though that <code>notebooks</code> is pre-packaged now with Anaconda, so it will likely already be installed.
+ <a class="footnote-return" href="#fnref:notebooks"><sup>^</sup></a></li>
+</ol>
+</div>
 
           </div>
 

@@ -38,6 +38,447 @@
     </item>
     
     <item>
+      <title>Example Demonstration</title>
+      <link>https://www.michaelpilosov.com/openscience/example/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/example/</guid>
+      <description>
+
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;Let&amp;rsquo;s first get a feel for the possibilities, and &lt;strong&gt;see&lt;/strong&gt; what is possible by checking out some existing websites, organizations, and repositories.
+The idea of removing installation complexities, platform dependencies, etc. from your end-users is beautifully demonstrated by some of the recent advancements made over at &lt;a href=&#34;https://jupyter.org&#34; target=&#34;_blank&#34;&gt;Project Jupyter&lt;/a&gt;, all visible on &lt;a href=&#34;https://github.com/jupyter/&#34; target=&#34;_blank&#34;&gt;their Github repository&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;example&#34;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;My favorite example that demonstrates how slick this new approach to setting up programming environmnents is &lt;a href=&#34;https://github.com/binder-examples/jupyterlab&#34; target=&#34;_blank&#34;&gt;JupyterLab + Binder&lt;/a&gt;.
+Head on over there, click on the little badge that reads &amp;ldquo;launch | binder,&amp;rdquo; and it will automatically open up a notebook for you.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:timeout&#34;&gt;&lt;a href=&#34;#fn:timeout&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;
+Have a look around, run code, do whatever you like.&lt;/p&gt;
+
+&lt;p&gt;To then see how easy adding functionality is, run the following in a new code-cell in the notebook that opens:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;!jupyter labextension install @jupyter-widgets/jupyterlab-manager 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The exclamation point tells the notebook to run the command using &lt;code&gt;bash.&lt;/code&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:bash&#34;&gt;&lt;a href=&#34;#fn:bash&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;.
+Since widgets are already pre-packaged, all we have to do to enable them is to tell JupyterLab to get the necessary Javascript resources to show them to you in your client (web-browser).
+A bunch of dialogue should show up, and then once it finishes, replace the code you just ran with&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import ipywidgets as wd
+wd.FloatSlider()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and you should see a slider pop up.&lt;/p&gt;
+
+&lt;p&gt;To avoid this step and ensure that the widget functionality is ready-to-go, one can fork the &lt;a href=&#34;https://github.com/binder-examples/jupyterlab&#34; target=&#34;_blank&#34;&gt;repository&lt;/a&gt;, and edit the file &lt;code&gt;binder/postBuild&lt;/code&gt;, which runs after the initial repository is built (using &lt;a href=&#34;https://github.com/jupyter/repo2docker&#34; target=&#34;_blank&#34;&gt;repo2docker&lt;/a&gt; on the backend) but before the client displays the interface.&lt;/p&gt;
+
+&lt;h2 id=&#34;widgets&#34;&gt;Widgets&lt;/h2&gt;
+
+&lt;p&gt;If you have ever tried developing a graphical user interface (GUI) for your code, you&amp;rsquo;ll know how cumbersome it can be.
+Thankfully, the &lt;a href=&#34;http://jupyter.org/widgets&#34; target=&#34;_blank&#34;&gt;Widgets&lt;/a&gt; package from Project Jupyter greatly simplifies linking your code to a large library of existing &amp;ldquo;widgets,&amp;rdquo; which do everything from giving you sliders to fully-interactive maps.&lt;/p&gt;
+
+&lt;p&gt;I highly encourage you to see what is possible to embed in your notebooks (and webpages) by scrolling through their &lt;a href=&#34;http://jupyter.org/widgets&#34; target=&#34;_blank&#34;&gt;examples&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;jupyter-nbviewer&#34;&gt;Jupyter nbviewer&lt;/h2&gt;
+
+&lt;p&gt;Paste a link to a notebook into &lt;a href=&#34;https://nbviewer.jupyter.org/&#34; target=&#34;_blank&#34;&gt;this form&lt;/a&gt; and this website will render the notebook for your reading pleasure.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;relevant-projects&#34;&gt;Relevant Projects&lt;/h1&gt;
+
+&lt;p&gt;In this documentation, we will research and likely leverage (most if not all of) the following open-source projects.
+We will eventually address each in depth within this documentation and will update this section with relevant links as necessary.
+For now, we provide a brief overview and summary of what we are looking into.&lt;/p&gt;
+
+&lt;h2 id=&#34;binderhub&#34;&gt;BinderHub&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jupyterhub/binderhub&#34; target=&#34;_blank&#34;&gt;BinderHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;BinderHub allows you to &lt;code&gt;BUILD&lt;/code&gt; and &lt;code&gt;REGISTER&lt;/code&gt; a Docker image using a GitHub repository, then CONNECT with JupyterHub, allowing you to create a public IP address that allows users to interact with the code and environment within a live JupyterHub instance. You can select a specific branch name, commit, or tag to serve.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;repo2docker&#34;&gt;Repo2Docker&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jupyter/repo2docker&#34; target=&#34;_blank&#34;&gt;repo2docker&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;As the title suggest, this package turns a github repository into a docker image that can be built.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;repo2docker fetches a git repository and builds a container image based on the configuration files found in the repository.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Binder leverages this to then serve the contents of the image in conjuction with JupyterHub.&lt;/p&gt;
+
+&lt;h2 id=&#34;jupyterhub&#34;&gt;JupyterHub&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jupyterhub/jupyterhub&#34; target=&#34;_blank&#34;&gt;JupyterHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;With &lt;a href=&#34;https://jupyterhub.readthedocs.io&#34; target=&#34;_blank&#34;&gt;JupyterHub&lt;/a&gt; you can create a
+&lt;strong&gt;multi-user Hub&lt;/strong&gt; which spawns, manages, and proxies multiple instances of the
+single-user &lt;a href=&#34;https://jupyter-notebook.readthedocs.io&#34; target=&#34;_blank&#34;&gt;Jupyter notebook&lt;/a&gt;
+server.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jupyter.org&#34; target=&#34;_blank&#34;&gt;Project Jupyter&lt;/a&gt; created JupyterHub to support many
+users. The Hub can offer notebook servers to a class of students, a corporate
+data science workgroup, a scientific research project, or a high performance
+computing group.&lt;/p&gt;
+
+&lt;h2 id=&#34;technical-overview&#34;&gt;Technical overview&lt;/h2&gt;
+
+&lt;p&gt;Three main actors make up JupyterHub:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;multi-user &lt;strong&gt;Hub&lt;/strong&gt; (tornado process)&lt;/li&gt;
+&lt;li&gt;configurable http &lt;strong&gt;proxy&lt;/strong&gt; (node-http-proxy)&lt;/li&gt;
+&lt;li&gt;multiple &lt;strong&gt;single-user Jupyter notebook servers&lt;/strong&gt; (Python/Jupyter/tornado)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Basic principles for operation are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Hub launches a proxy.&lt;/li&gt;
+&lt;li&gt;Proxy forwards all requests to Hub by default.&lt;/li&gt;
+&lt;li&gt;Hub handles login, and spawns single-user servers on demand.&lt;/li&gt;
+&lt;li&gt;Hub configures proxy to forward url prefixes to the single-user notebook
+servers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;JupyterHub also provides a
+&lt;a href=&#34;http://petstore.swagger.io/?url=https://raw.githubusercontent.com/jupyter/jupyterhub/master/docs/rest-api.yml#/default&#34; target=&#34;_blank&#34;&gt;REST API&lt;/a&gt;
+for administration of the Hub and its users.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I personally run Jupyterhub on a remote server so that I always have access to a secure and familiar environment if I ever need to test out some code and find myself without my laptop.
+By default, it accepts the login information of just the user who is running it, but we will see later how it can be configured for its intended use as a multi-user authentication hub.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:timeout&#34;&gt;&lt;em&gt;Be warned&lt;/em&gt;: After a few minutes of inactivity, the &lt;a href=&#34;https://mybinder.org&#34; target=&#34;_blank&#34;&gt;mybinder.org&lt;/a&gt; service that is hosting the docker container which serves this web application will time-out. This means that it will assume you are done with it and clean up the resources it created for you. Say goodbye to whatever you were working on.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:timeout&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:bash&#34;&gt;Alternatively, you could open a new Terminal instance in JupyterLab and run the same code (without the exclamation mark).
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:bash&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installing Anaconda</title>
+      <link>https://www.michaelpilosov.com/openscience/anaconda/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/anaconda/</guid>
+      <description>
+
+&lt;p&gt;These instructions originally appeared on the &lt;a href=&#34;https://www.mathematicalmichael.com&#34; target=&#34;_blank&#34;&gt;&amp;ldquo;Resources&amp;rdquo; page of my website&lt;/a&gt;, where I link to my &lt;a href=&#34;https://gist.github.com/mpilosov/233ccfae58d182d43f690be209b58ba5&#34; target=&#34;_blank&#34;&gt;Github Gist&lt;/a&gt;.
+As of &lt;em&gt;Dec 21, 2018&lt;/em&gt;, I am abandoning the aforementioned gist and will keep this webpage updated as my primary source of information for installing Anaconda&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:note&#34;&gt;&lt;a href=&#34;#fn:note&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;anaconda-basics&#34;&gt;Anaconda Basics&lt;/h1&gt;
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;It is a package manager.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;WRITE MORE ABOUT WHAT A PACKAGE MANAGER IS/DOES AND WHY IT SHOULD BE USED&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;download&#34;&gt;Download&lt;/h2&gt;
+
+&lt;p&gt;Go download it from
+&lt;a href=&#34;https://www.anaconda.com/download/&#34; target=&#34;_blank&#34;&gt;https://www.anaconda.com/download/&lt;/a&gt;
+for your Linux/Windows/OSX&lt;/p&gt;
+
+&lt;p&gt;I like to use&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;wget http://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;or if I want to keep things lightweight (may lead to more manual installations later on):&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;install&#34;&gt;Install&lt;/h2&gt;
+
+&lt;p&gt;It will likely be saved in the Downloads folder, so you will install it with something like&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;bash ~/Downloads/Anaconda3-5.0.1-Linux-x86_64.sh&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Use all the defaults, agree to everything, and at the end, hit &lt;code&gt;ENTER&lt;/code&gt; to prepend it to your &lt;code&gt;PATH&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;environments&#34;&gt;Environments&lt;/h2&gt;
+
+&lt;p&gt;Now let&amp;rsquo;s create an environment for python3:&lt;br /&gt;
+&lt;code&gt;conda create -n py3 python=3.6&lt;/code&gt; where &lt;code&gt;py3&lt;/code&gt; is just my personal preferred shorthand for python 3. Feel free to use your own.&lt;/p&gt;
+
+&lt;p&gt;And one for python2:&lt;br /&gt;
+&lt;code&gt;conda create -n py2 python=2.7&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;To remove:&lt;br /&gt;
+&lt;code&gt;conda remove --name py2 --all&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;We can now switch between versions of python with commands like&lt;br /&gt;
+&lt;code&gt;source activate py3&lt;/code&gt; and &lt;code&gt;source activate py2&lt;/code&gt; and then &lt;code&gt;source deactivate&lt;/code&gt; when you&amp;rsquo;re ready to be done.&lt;/p&gt;
+
+&lt;h1 id=&#34;diving-deeper&#34;&gt;Diving Deeper&lt;/h1&gt;
+
+&lt;h2 id=&#34;widgets&#34;&gt;Widgets&lt;/h2&gt;
+
+&lt;p&gt;Overview:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;pip install ipywidgets&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;jupyter nbextension install --py --user widgetsnbextension&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;jupyter nbextension enable --py widgetsnbextension&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;More information about widgets &lt;a href=&#34;https://ipywidgets.readthedocs.io/en/stable/user_install.html&#34; target=&#34;_blank&#34;&gt;can be found here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Alternatively, in each of these environments, run&lt;br /&gt;
+&lt;code&gt;conda install -c conda-forge ipywidgets&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;which will install all sorts of dependencies, including Jupyter notebooks&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:notebooks&#34;&gt;&lt;a href=&#34;#fn:notebooks&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. It supposedly enables the widgets too but you can run&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;jupyter nbextension enable --py widgetsnbextension&lt;/code&gt; to make sure.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;python -m ipykernel install --name py3 --user&lt;/code&gt; will then link the kernel to jupyter.&lt;/p&gt;
+
+&lt;p&gt;Then &lt;code&gt;--name py3&lt;/code&gt; flag is optional and just assigns a name of your choosing to that kernel.
+The version of python used for the kernel is whatever is returned when you ask bash &lt;code&gt;which python&lt;/code&gt; (so if you used source &lt;code&gt;activate&lt;/code&gt; earlier, it will be the version associated with the kernel whose name is in parentheses in your Terminal session).
+&lt;strong&gt;The &lt;code&gt;--user&lt;/code&gt; flag is necessary.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;ipyparallel&#34;&gt;iPyParallel&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/ipython/ipyparallel&#34; target=&#34;_blank&#34;&gt;https://github.com/ipython/ipyparallel&lt;/a&gt;&lt;br /&gt;
+&lt;code&gt;pip install ipyparallel&lt;/code&gt; to install.&lt;br /&gt;
+&lt;code&gt;ipcluster nbextension enable&lt;/code&gt; (add the &lt;code&gt;--user&lt;/code&gt; flag as well if you encounter an error).
+This one also seems to be necessary to get the clusters to show up:&lt;br /&gt;
+&lt;code&gt;jupyter serverextension enable --sys-prefix --py ipyparallel&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;To install for all users (as root):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;jupyter nbextension install --sys-prefix --py ipyparallel
+jupyter nbextension enable --sys-prefix --py ipyparallel
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;kernels&#34;&gt;Kernels&lt;/h1&gt;
+
+&lt;h2 id=&#34;introduction-1&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;TODO: WRITE MORE ABOUT MULTI-KERNEL SUPPORT, provide an example.&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;To see all the kernels jupyter is aware of:
+&lt;code&gt;jupyter kernelspec list&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;management&#34;&gt;Management&lt;/h2&gt;
+
+&lt;p&gt;To remove kernels, use &lt;code&gt;jupyter kernelspec remove&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;jupyterhub&#34;&gt;JupyterHub&lt;/h1&gt;
+
+&lt;p&gt;More information here about installation would be helpful, but we&amp;rsquo;ll be going through this in more detail at another time since JupyterHub will form the basis for the solutions we will use for our classroom environments.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jupyterhub.readthedocs.io/en/0.7.2/getting-started.html&#34; target=&#34;_blank&#34;&gt;https://jupyterhub.readthedocs.io/en/0.7.2/getting-started.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Running a notebook server:&lt;br /&gt;
+&lt;a href=&#34;https://jupyter-notebook.readthedocs.io/en/latest/public_server.html&#34; target=&#34;_blank&#34;&gt;https://jupyter-notebook.readthedocs.io/en/latest/public_server.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;jupyterlab&#34;&gt;JupyterLab&lt;/h1&gt;
+
+&lt;h2 id=&#34;introduction-2&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;I love this environment but it is a little tricky to set up properly and get everything working as expected. Though once you do, I doubt you will want to use anything else.&lt;/p&gt;
+
+&lt;h2 id=&#34;install-1&#34;&gt;Install&lt;/h2&gt;
+
+&lt;p&gt;Once Jupyter Lab is installed, go ahead and run it the same way you would a notebook:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;jupyter lab (--no-browser)&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;widget-extensions&#34;&gt;Widget Extensions&lt;/h2&gt;
+
+&lt;p&gt;By default (as of Dec 2018), it will be accessible through &lt;code&gt;localhost:8888&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Go ahead and launch an instance of Python and see if widgets work.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import ipywidgets as wd
+wd.FloatSlider()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If the output of the following is text instead of a widget, try running the following in the command-line (shutdown the server with &lt;code&gt;Ctrl-C&lt;/code&gt; twice, then&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;jupyter labextension install @jupyter-widgets/jupyterlab-manager&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And relaunch JupyterLab (if you didn&amp;rsquo;t close your browswer window, a simple refresh will work to re-establish the connection and pick up where you left off), and try the example above again.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Something that came up once&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I saw my server output spitting out &lt;code&gt;TypeError: __init__() got an unexpected keyword argument &#39;io_loop&#39;&lt;/code&gt; over and over again when any kernel was started. Something was going on with the WebSocket I/O communication (whatever that means), but the following downgrade of the Python Web Framework worked to &lt;a href=&#34;https://stackoverflow.com/questions/48090119/jupyter-notebook-typeerror-init-got-an-unexpected-keyword-argument-io-l&#34; target=&#34;_blank&#34;&gt;fix it&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;pip install tornado==4.5.3&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;sharing&#34;&gt;Sharing&lt;/h1&gt;
+
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;TODO&lt;/code&gt; write about why this is useful&lt;/p&gt;
+
+&lt;h2 id=&#34;exporting&#34;&gt;Exporting&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;conda env export &amp;gt; environment.yml&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Which you then load up with
+&lt;code&gt;conda env create -f environment.yml&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;cloning&#34;&gt;Cloning&lt;/h2&gt;
+
+&lt;p&gt;You can make an exact copy of an environment by creating a clone of it:&lt;br /&gt;
+&lt;code&gt;conda create --name myclone --clone myenv&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;To verify that the copy was made:&lt;br /&gt;
+&lt;code&gt;conda info --envs&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:note&#34;&gt;Github Gists are actually surprisingly difficult to sort through, and navigating to this webpage will be much easier, anyway.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:note&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:notebooks&#34;&gt;It does appear though that &lt;code&gt;notebooks&lt;/code&gt; is pre-packaged now with Anaconda, so it will likely already be installed.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:notebooks&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Relevant Projects</title>
+      <link>https://www.michaelpilosov.com/openscience/getting-started/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/getting-started/</guid>
+      <description>
+
+&lt;h1 id=&#34;basics&#34;&gt;Basics&lt;/h1&gt;
+
+&lt;p&gt;In this documentation, we will research and likely leverage (most if not all of) the following open-source projects.
+We will eventually address each in depth within this documentation and will update this section with relevant links as necessary.
+For now, we provide a brief overview and summary of what we are looking into.&lt;/p&gt;
+
+&lt;h2 id=&#34;widgets&#34;&gt;Widgets&lt;/h2&gt;
+
+&lt;p&gt;If you have ever tried developing a graphical user interface (GUI) for your code, you&amp;rsquo;ll know how cumbersome it can be.
+Thankfully, the &lt;a href=&#34;http://jupyter.org/widgets&#34; target=&#34;_blank&#34;&gt;Widgets&lt;/a&gt; package from Project Jupyter greatly simplifies linking your code to a large library of existing &amp;ldquo;widgets,&amp;rdquo; which do everything from giving you sliders to fully-interactive maps.&lt;/p&gt;
+
+&lt;p&gt;I highly encourage you to see what is possible to embed in your notebooks (and webpages) by scrolling through their &lt;a href=&#34;http://jupyter.org/widgets&#34; target=&#34;_blank&#34;&gt;examples&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;jupyter-nbviewer&#34;&gt;Jupyter nbviewer&lt;/h2&gt;
+
+&lt;p&gt;Paste a link to a notebook into &lt;a href=&#34;https://nbviewer.jupyter.org/&#34; target=&#34;_blank&#34;&gt;this form&lt;/a&gt; and this website will render the notebook for your reading pleasure.&lt;/p&gt;
+
+&lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
+
+&lt;h2 id=&#34;github&#34;&gt;Github&lt;/h2&gt;
+
+&lt;h2 id=&#34;anaconda&#34;&gt;Anaconda&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;binderhub&#34;&gt;BinderHub&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jupyterhub/binderhub&#34; target=&#34;_blank&#34;&gt;BinderHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;BinderHub allows you to &lt;code&gt;BUILD&lt;/code&gt; and &lt;code&gt;REGISTER&lt;/code&gt; a Docker image using a GitHub repository, then CONNECT with JupyterHub, allowing you to create a public IP address that allows users to interact with the code and environment within a live JupyterHub instance. You can select a specific branch name, commit, or tag to serve.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;repo2docker&#34;&gt;Repo2Docker&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jupyter/repo2docker&#34; target=&#34;_blank&#34;&gt;repo2docker&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;As the title suggest, this package turns a github repository into a docker image that can be built.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;repo2docker fetches a git repository and builds a container image based on the configuration files found in the repository.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Binder leverages this to then serve the contents of the image in conjuction with JupyterHub.&lt;/p&gt;
+
+&lt;h2 id=&#34;kubernetes&#34;&gt;Kubernetes&lt;/h2&gt;
+
+&lt;p&gt;Google is a provider. Links/info should go here to a couple other platforms, some basic information.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;jupyterhub&#34;&gt;JupyterHub&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jupyterhub/jupyterhub&#34; target=&#34;_blank&#34;&gt;JupyterHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;With &lt;a href=&#34;https://jupyterhub.readthedocs.io&#34; target=&#34;_blank&#34;&gt;JupyterHub&lt;/a&gt; you can create a
+&lt;strong&gt;multi-user Hub&lt;/strong&gt; which spawns, manages, and proxies multiple instances of the
+single-user &lt;a href=&#34;https://jupyter-notebook.readthedocs.io&#34; target=&#34;_blank&#34;&gt;Jupyter notebook&lt;/a&gt;
+server.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jupyter.org&#34; target=&#34;_blank&#34;&gt;Project Jupyter&lt;/a&gt; created JupyterHub to support many
+users. The Hub can offer notebook servers to a class of students, a corporate
+data science workgroup, a scientific research project, or a high performance
+computing group.&lt;/p&gt;
+
+&lt;h2 id=&#34;technical-overview&#34;&gt;Technical overview&lt;/h2&gt;
+
+&lt;p&gt;Three main actors make up JupyterHub:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;multi-user &lt;strong&gt;Hub&lt;/strong&gt; (tornado process)&lt;/li&gt;
+&lt;li&gt;configurable http &lt;strong&gt;proxy&lt;/strong&gt; (node-http-proxy)&lt;/li&gt;
+&lt;li&gt;multiple &lt;strong&gt;single-user Jupyter notebook servers&lt;/strong&gt; (Python/Jupyter/tornado)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Basic principles for operation are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Hub launches a proxy.&lt;/li&gt;
+&lt;li&gt;Proxy forwards all requests to Hub by default.&lt;/li&gt;
+&lt;li&gt;Hub handles login, and spawns single-user servers on demand.&lt;/li&gt;
+&lt;li&gt;Hub configures proxy to forward url prefixes to the single-user notebook
+servers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;JupyterHub also provides a
+&lt;a href=&#34;http://petstore.swagger.io/?url=https://raw.githubusercontent.com/jupyter/jupyterhub/master/docs/rest-api.yml#/default&#34; target=&#34;_blank&#34;&gt;REST API&lt;/a&gt;
+for administration of the Hub and its users.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I personally run Jupyterhub on a remote server so that I always have access to a secure and familiar environment if I ever need to test out some code and find myself without my laptop.
+By default, it accepts the login information of just the user who is running it, but we will see later how it can be configured for its intended use as a multi-user authentication hub.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Day 1</title>
       <link>https://www.michaelpilosov.com/changelog/day1/</link>
       <pubDate>Wed, 19 Dec 2018 18:16:07 -0700</pubDate>
@@ -197,163 +638,6 @@ Alternatively, your university or company may already have available server reso
     </item>
     
     <item>
-      <title>Getting Started</title>
-      <link>https://www.michaelpilosov.com/openscience/getting-started/</link>
-      <pubDate>Mon, 17 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/openscience/getting-started/</guid>
-      <description>
-
-&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-
-&lt;p&gt;Let&amp;rsquo;s first get a feel for the possibilities, and &lt;strong&gt;see&lt;/strong&gt; what is possible by checking out some existing websites, organizations, and repositories.
-The idea of removing installation complexities, platform dependencies, etc. from your end-users is beautifully demonstrated by some of the recent advancements made over at &lt;a href=&#34;https://jupyter.org&#34; target=&#34;_blank&#34;&gt;Project Jupyter&lt;/a&gt;, all visible on &lt;a href=&#34;https://github.com/jupyter/&#34; target=&#34;_blank&#34;&gt;their Github repository&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;example&#34;&gt;Example&lt;/h2&gt;
-
-&lt;p&gt;My favorite example that demonstrates how slick this new approach to setting up programming environmnents is &lt;a href=&#34;https://github.com/binder-examples/jupyterlab&#34; target=&#34;_blank&#34;&gt;JupyterLab + Binder&lt;/a&gt;.
-Head on over there, click on the little badge that reads &amp;ldquo;launch | binder,&amp;rdquo; and it will automatically open up a notebook for you.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:timeout&#34;&gt;&lt;a href=&#34;#fn:timeout&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;
-Have a look around, run code, do whatever you like.&lt;/p&gt;
-
-&lt;p&gt;To then see how easy adding functionality is, run the following in a new code-cell in the notebook that opens:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;!jupyter labextension install @jupyter-widgets/jupyterlab-manager 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The exclamation point tells the notebook to run the command using &lt;code&gt;bash.&lt;/code&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:bash&#34;&gt;&lt;a href=&#34;#fn:bash&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;.
-Since widgets are already pre-packaged, all we have to do to enable them is to tell JupyterLab to get the necessary Javascript resources to show them to you in your client (web-browser).
-A bunch of dialogue should show up, and then once it finishes, replace the code you just ran with&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import ipywidgets as wd
-wd.FloatSlider()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;and you should see a slider pop up.&lt;/p&gt;
-
-&lt;p&gt;To avoid this step and ensure that the widget functionality is ready-to-go, one can fork the &lt;a href=&#34;https://github.com/binder-examples/jupyterlab&#34; target=&#34;_blank&#34;&gt;repository&lt;/a&gt;, and edit the file &lt;code&gt;binder/postBuild&lt;/code&gt;, which runs after the initial repository is built (using &lt;a href=&#34;https://github.com/jupyter/repo2docker&#34; target=&#34;_blank&#34;&gt;repo2docker&lt;/a&gt; on the backend) but before the client displays the interface.&lt;/p&gt;
-
-&lt;h2 id=&#34;history&#34;&gt;History&lt;/h2&gt;
-
-&lt;p&gt;(This brief history represents the view of the author of this webpage and may not be completely accurate).
-Project Jupyter is the maturation of the iPython project, a command-line program that allowed for an interactive Python shell, and what I relied on in my early days of learning Python.
-Their flagship development/breakthrough was the &lt;a href=&#34;http://jupyter.org/install&#34; target=&#34;_blank&#34;&gt;Notebook&lt;/a&gt;, which forms the foundation for all the other products.
-The &lt;em&gt;notebook is an HTML page&lt;/em&gt; that is served for you by a &lt;em&gt;jupyter notebook server&lt;/em&gt;.
-It looks and feels like a desktop application.&lt;/p&gt;
-
-&lt;p&gt;It was undoubtedly inspired by Mathematica&amp;rsquo;s &amp;ldquo;Notebooks,&amp;rdquo; but released as an open-source project, leading to its rapidly-expanding adoption in the scientific community.
-The key to understanding why the notebook is so special is that it allows the web-browser to interact with code running on any computer (be it your own or a remote server).
-By divorcing the computation from the rendering, the developers allow for a unified framework so that scientists can focus on writing code and not on keeping up with dev-ops architecture.&lt;/p&gt;
-
-&lt;p&gt;The idea is simply that once one adapts to the Jupyter ecosystem, they are freed from platform considerations.
-Code is shareable across Windows/Mac/Linux, and viewable in the same environment that it was developed in by using a web-browser.
-It seeks to completely replace IDEs (Integrated Development Environments), which were the best solutions for setting up someone who was new to programming.&lt;/p&gt;
-
-&lt;p&gt;Basically, there was a serious desire to make getting up-and-running with software development easier.
-Now, thanks to Jupyter, a teacher can set up isolated computing environments for every student and be sure that their experiences are uniform.
-This is an especially huge time-saver for workshops.&lt;/p&gt;
-
-&lt;h2 id=&#34;widgets&#34;&gt;Widgets&lt;/h2&gt;
-
-&lt;p&gt;If you have ever tried developing a graphical user interface (GUI) for your code, you&amp;rsquo;ll know how cumbersome it can be.
-Thankfully, the &lt;a href=&#34;http://jupyter.org/widgets&#34; target=&#34;_blank&#34;&gt;Widgets&lt;/a&gt; package from Project Jupyter greatly simplifies linking your code to a large library of existing &amp;ldquo;widgets,&amp;rdquo; which do everything from giving you sliders to fully-interactive maps.&lt;/p&gt;
-
-&lt;p&gt;I highly encourage you to see what is possible to embed in your notebooks (and webpages) by scrolling through their &lt;a href=&#34;http://jupyter.org/widgets&#34; target=&#34;_blank&#34;&gt;examples&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;jupyter-nbviewer&#34;&gt;Jupyter nbviewer&lt;/h2&gt;
-
-&lt;p&gt;Paste a link to a notebook into &lt;a href=&#34;https://nbviewer.jupyter.org/&#34; target=&#34;_blank&#34;&gt;this form&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;relevant-projects&#34;&gt;Relevant Projects&lt;/h1&gt;
-
-&lt;p&gt;In this documentation, we will research and likely leverage (most if not all of) the following open-source projects.
-We will eventually address each in depth within this documentation and will update this section with relevant links as necessary.
-For now, we provide a brief overview and summary of what we are looking into.&lt;/p&gt;
-
-&lt;h2 id=&#34;binderhub&#34;&gt;BinderHub&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/jupyterhub/binderhub&#34; target=&#34;_blank&#34;&gt;BinderHub&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;BinderHub allows you to &lt;code&gt;BUILD&lt;/code&gt; and &lt;code&gt;REGISTER&lt;/code&gt; a Docker image using a GitHub repository, then CONNECT with JupyterHub, allowing you to create a public IP address that allows users to interact with the code and environment within a live JupyterHub instance. You can select a specific branch name, commit, or tag to serve.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;repo2docker&#34;&gt;Repo2Docker&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/jupyter/repo2docker&#34; target=&#34;_blank&#34;&gt;repo2docker&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;As the title suggest, this package turns a github repository into a docker image that can be built.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;repo2docker fetches a git repository and builds a container image based on the configuration files found in the repository.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Binder leverages this to then serve the contents of the image in conjuction with JupyterHub.&lt;/p&gt;
-
-&lt;h2 id=&#34;jupyterhub&#34;&gt;JupyterHub&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/jupyterhub/jupyterhub&#34; target=&#34;_blank&#34;&gt;JupyterHub&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;With &lt;a href=&#34;https://jupyterhub.readthedocs.io&#34; target=&#34;_blank&#34;&gt;JupyterHub&lt;/a&gt; you can create a
-&lt;strong&gt;multi-user Hub&lt;/strong&gt; which spawns, manages, and proxies multiple instances of the
-single-user &lt;a href=&#34;https://jupyter-notebook.readthedocs.io&#34; target=&#34;_blank&#34;&gt;Jupyter notebook&lt;/a&gt;
-server.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://jupyter.org&#34; target=&#34;_blank&#34;&gt;Project Jupyter&lt;/a&gt; created JupyterHub to support many
-users. The Hub can offer notebook servers to a class of students, a corporate
-data science workgroup, a scientific research project, or a high performance
-computing group.&lt;/p&gt;
-
-&lt;h2 id=&#34;technical-overview&#34;&gt;Technical overview&lt;/h2&gt;
-
-&lt;p&gt;Three main actors make up JupyterHub:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;multi-user &lt;strong&gt;Hub&lt;/strong&gt; (tornado process)&lt;/li&gt;
-&lt;li&gt;configurable http &lt;strong&gt;proxy&lt;/strong&gt; (node-http-proxy)&lt;/li&gt;
-&lt;li&gt;multiple &lt;strong&gt;single-user Jupyter notebook servers&lt;/strong&gt; (Python/Jupyter/tornado)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Basic principles for operation are:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Hub launches a proxy.&lt;/li&gt;
-&lt;li&gt;Proxy forwards all requests to Hub by default.&lt;/li&gt;
-&lt;li&gt;Hub handles login, and spawns single-user servers on demand.&lt;/li&gt;
-&lt;li&gt;Hub configures proxy to forward url prefixes to the single-user notebook
-servers.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;JupyterHub also provides a
-&lt;a href=&#34;http://petstore.swagger.io/?url=https://raw.githubusercontent.com/jupyter/jupyterhub/master/docs/rest-api.yml#/default&#34; target=&#34;_blank&#34;&gt;REST API&lt;/a&gt;
-for administration of the Hub and its users.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;I personally run Jupyterhub on a remote server so that I always have access to a secure and familiar environment if I ever need to test out some code and find myself without my laptop.
-By default, it accepts the login information of just the user who is running it, but we will see later how it can be configured for its intended use as a multi-user authentication hub.&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-&lt;li id=&#34;fn:timeout&#34;&gt;&lt;em&gt;Be warned&lt;/em&gt;: After a few minutes of inactivity, the &lt;a href=&#34;https://mybinder.org&#34; target=&#34;_blank&#34;&gt;mybinder.org&lt;/a&gt; service that is hosting the docker container which serves this web application will time-out. This means that it will assume you are done with it and clean up the resources it created for you. Say goodbye to whatever you were working on.
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:timeout&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li id=&#34;fn:bash&#34;&gt;Alternatively, you could open a new Terminal instance in JupyterLab and run the same code (without the exclamation mark).
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:bash&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Use-Cases</title>
       <link>https://www.michaelpilosov.com/openscience/usage/</link>
       <pubDate>Mon, 17 Dec 2018 00:00:00 -0700</pubDate>
@@ -439,13 +723,37 @@ In theory (as of this writing), the same Docker image can be used with slight mo
       <pubDate>Sun, 16 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/openscience/intro/</guid>
-      <description>&lt;p&gt;Here we briefly describe some of the available resources and possible directions this documentation might take.&lt;/p&gt;
+      <description>
+
+&lt;p&gt;Here we briefly describe some of the available resources and possible directions this documentation might take.&lt;/p&gt;
 
 &lt;p&gt;Most notably, there is &lt;a href=&#34;https://mybinder.org&#34; target=&#34;_blank&#34;&gt;Binder&lt;/a&gt;, which allows you to recreate an entire environment as-needed in an isolated instance that is destroyed once it is no longer needed.
 The ideal scenario is to have Binder installed on a server, and we discuss the process of setting up such a server in this documentation, but for now we address setting up an environment on your own computer.&lt;/p&gt;
 
 &lt;p&gt;We focus here on Python, and rely on &lt;a href=&#34;https://www.anaconda.com/download&#34; target=&#34;_blank&#34;&gt;Anaconda&lt;/a&gt; deployed on a Linux distribution.
 Here, we use Ubuntu 18.04, but the instructions should be comparable on previous versions as well as on Mac and Windows, though some of the interactions in the command-line will be different for Windows users.&lt;/p&gt;
+
+&lt;h2 id=&#34;history&#34;&gt;History&lt;/h2&gt;
+
+&lt;p&gt;(This brief history represents the view of the author of this webpage and may not be completely accurate).&lt;/p&gt;
+
+&lt;p&gt;Project Jupyter is the maturation of the iPython project, a command-line program that allowed for an interactive Python shell, and what I relied on in my early days of learning Python.
+Their flagship development/breakthrough was the &lt;a href=&#34;http://jupyter.org/install&#34; target=&#34;_blank&#34;&gt;Notebook&lt;/a&gt;, which forms the foundation for all the other products.&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;notebook is an HTML page&lt;/em&gt; that is served for you by a &lt;em&gt;jupyter notebook server&lt;/em&gt;.
+It looks and feels like a desktop application.
+It was undoubtedly inspired by Mathematica&amp;rsquo;s &amp;ldquo;Notebooks,&amp;rdquo; but released as an open-source project, leading to its rapidly-expanding adoption in the scientific community.&lt;/p&gt;
+
+&lt;p&gt;The key to understanding why the notebook is so special is that it allows the web-browser to interact with code running on any computer (be it your own or a remote server).
+By divorcing the computation from the rendering, the developers allow for a unified framework so that scientists can focus on writing code and not on keeping up with dev-ops architecture.&lt;/p&gt;
+
+&lt;p&gt;The idea is simply that once one adapts to the Jupyter ecosystem, they are freed from platform considerations.
+Code is shareable across Windows/Mac/Linux, and viewable in the same environment that it was developed in by using a web-browser.
+It seeks to completely replace IDEs (Integrated Development Environments), which were the best solutions for setting up someone who was new to programming.&lt;/p&gt;
+
+&lt;p&gt;Basically, there was a serious desire to make getting up-and-running with software development easier.
+Now, thanks to Jupyter, a teacher can set up isolated computing environments for every student and be sure that their experiences are uniform.
+This is an especially huge time-saver for workshops.&lt;/p&gt;
 </description>
     </item>
     
@@ -639,26 +947,6 @@ Game concept by Dr. Burt Simon. Copyright 2016 E. Regan &amp; M. Pilosov.
       
       <guid>https://www.michaelpilosov.com/project/contaminant-transport/</guid>
       <description>&lt;p&gt;More to Come Soon.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>A Consistent Bayesian Inference Problem with Time Series Data</title>
-      <link>https://www.michaelpilosov.com/talk/siam_an18/</link>
-      <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/talk/siam_an18/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Privacy Policy</title>
-      <link>https://www.michaelpilosov.com/privacy/</link>
-      <pubDate>Thu, 28 Jun 2018 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/privacy/</guid>
-      <description>&lt;p&gt;This website uses no cookies and has no tracking enabled whatsoever on the server on which this site is hosted.
-However, Google Analytics is enabled (as it is on much of the web), which does take anonymized data about visitors to the site.&lt;/p&gt;
 </description>
     </item>
     

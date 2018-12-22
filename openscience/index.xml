@@ -13,6 +13,38 @@
     
     
     <item>
+      <title>Example Demonstration</title>
+      <link>https://www.michaelpilosov.com/openscience/example/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/example/</guid>
+      <description>Introduction Let&amp;rsquo;s first get a feel for the possibilities, and see what is possible by checking out some existing websites, organizations, and repositories. The idea of removing installation complexities, platform dependencies, etc. from your end-users is beautifully demonstrated by some of the recent advancements made over at Project Jupyter, all visible on their Github repository
+Example My favorite example that demonstrates how slick this new approach to setting up programming environmnents is JupyterLab + Binder.</description>
+    </item>
+    
+    <item>
+      <title>Installing Anaconda</title>
+      <link>https://www.michaelpilosov.com/openscience/anaconda/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/anaconda/</guid>
+      <description>These instructions originally appeared on the &amp;ldquo;Resources&amp;rdquo; page of my website, where I link to my Github Gist. As of Dec 21, 2018, I am abandoning the aforementioned gist and will keep this webpage updated as my primary source of information for installing Anaconda1.
+Anaconda Basics Introduction It is a package manager.
+WRITE MORE ABOUT WHAT A PACKAGE MANAGER IS/DOES AND WHY IT SHOULD BE USED
+Download Go download it from https://www.</description>
+    </item>
+    
+    <item>
+      <title>Relevant Projects</title>
+      <link>https://www.michaelpilosov.com/openscience/getting-started/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/getting-started/</guid>
+      <description>Basics In this documentation, we will research and likely leverage (most if not all of) the following open-source projects. We will eventually address each in depth within this documentation and will update this section with relevant links as necessary. For now, we provide a brief overview and summary of what we are looking into.
+Widgets If you have ever tried developing a graphical user interface (GUI) for your code, you&amp;rsquo;ll know how cumbersome it can be.</description>
+    </item>
+    
+    <item>
       <title>Deployment</title>
       <link>https://www.michaelpilosov.com/openscience/deploy/</link>
       <pubDate>Tue, 18 Dec 2018 00:00:00 -0700</pubDate>
@@ -21,16 +53,6 @@
       <description>Here we describe the necessary steps for deployment.
 Please pardon the state of this document as it is a living and breathing set of instructions, and this part of the project has yet to be addressed.
 Kubernetes What is it? Why use it? Possibilities &amp;ldquo;Bare Metal&amp;rdquo; What is it? Why use it? Perhaps you have old computers lying around (if at a university, these may be more than enough for a considerable server) and are looking to repurpose them.</description>
-    </item>
-    
-    <item>
-      <title>Getting Started</title>
-      <link>https://www.michaelpilosov.com/openscience/getting-started/</link>
-      <pubDate>Mon, 17 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/openscience/getting-started/</guid>
-      <description>Introduction Let&amp;rsquo;s first get a feel for the possibilities, and see what is possible by checking out some existing websites, organizations, and repositories. The idea of removing installation complexities, platform dependencies, etc. from your end-users is beautifully demonstrated by some of the recent advancements made over at Project Jupyter, all visible on their Github repository
-Example My favorite example that demonstrates how slick this new approach to setting up programming environmnents is JupyterLab + Binder.</description>
     </item>
     
     <item>
