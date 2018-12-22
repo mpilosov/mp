@@ -353,11 +353,38 @@ Memory and swap accounting incur an overhead of about 1% of the total available 
 
 &lt;p&gt;The following is full &lt;a href=&#34;https://github.com/wsargent/docker-cheat-sheet&#34; target=&#34;_blank&#34;&gt;Cheat Sheet&lt;/a&gt; mentioned earlier, and presented here for convenience. Feel free to use the table of contents on the right sidebar (or duplicated below for mobile users) to more easily navigate this page than on the Github Gist &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:gist&#34;&gt;&lt;a href=&#34;#fn:gist&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;images-1&#34;&gt;Images&lt;/h2&gt;
+
+&lt;p&gt;Images are just &lt;a href=&#34;https://docs.docker.com/engine/understanding-docker/#how-does-a-docker-image-work&#34; target=&#34;_blank&#34;&gt;templates for docker containers&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;lifecycle&#34;&gt;Lifecycle&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/images&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker images&lt;/code&gt;&lt;/a&gt; shows all images.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/import&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker import&lt;/code&gt;&lt;/a&gt; creates an image from a tarball.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/build&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker build&lt;/code&gt;&lt;/a&gt; creates image from Dockerfile.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/commit&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker commit&lt;/code&gt;&lt;/a&gt; creates image from a container, pausing it temporarily if it is running.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/rmi&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker rmi&lt;/code&gt;&lt;/a&gt; removes an image.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/load&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker load&lt;/code&gt;&lt;/a&gt; loads an image from a tar archive as STDIN, including images and tags (as of 0.7).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/save&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker save&lt;/code&gt;&lt;/a&gt; saves an image to a tar archive stream to STDOUT with all parent layers, tags &amp;amp; versions (as of 0.7).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;info&#34;&gt;Info&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/history&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker history&lt;/code&gt;&lt;/a&gt; shows history of image.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/tag&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker tag&lt;/code&gt;&lt;/a&gt; tags an image to a name (local or registry).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
 &lt;h2 id=&#34;containers-1&#34;&gt;Containers&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://etherealmind.com/basics-docker-containers-hypervisors-coreos/&#34; target=&#34;_blank&#34;&gt;Your basic isolated Docker process&lt;/a&gt;. Containers are to Virtual Machines as threads are to processes. Or you can think of them as chroots on steroids.&lt;/p&gt;
 
-&lt;h3 id=&#34;lifecycle&#34;&gt;Lifecycle&lt;/h3&gt;
+&lt;h3 id=&#34;lifecycle-1&#34;&gt;Lifecycle&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/create&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker create&lt;/code&gt;&lt;/a&gt; creates a container but does not start it.&lt;/li&gt;
@@ -442,7 +469,7 @@ Memory and swap accounting incur an overhead of about 1% of the total available 
 
 &lt;p&gt;more info about privileged containers &lt;a href=&#34;https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;info&#34;&gt;Info&lt;/h3&gt;
+&lt;h3 id=&#34;info-1&#34;&gt;Info&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/ps&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker ps&lt;/code&gt;&lt;/a&gt; shows running containers.&lt;/li&gt;
@@ -474,28 +501,68 @@ Memory and swap accounting incur an overhead of about 1% of the total available 
 
 &lt;p&gt;To enter a running container, attach a new shell process to a running container called foo, use: &lt;code&gt;docker exec -it foo /bin/bash&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;images-1&#34;&gt;Images&lt;/h2&gt;
+&lt;hr /&gt;
 
-&lt;p&gt;Images are just &lt;a href=&#34;https://docs.docker.com/engine/understanding-docker/#how-does-a-docker-image-work&#34; target=&#34;_blank&#34;&gt;templates for docker containers&lt;/a&gt;.&lt;/p&gt;
+&lt;hr /&gt;
 
-&lt;h3 id=&#34;lifecycle-1&#34;&gt;Lifecycle&lt;/h3&gt;
+&lt;h2 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h2&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/images&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker images&lt;/code&gt;&lt;/a&gt; shows all images.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/import&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker import&lt;/code&gt;&lt;/a&gt; creates an image from a tarball.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/build&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker build&lt;/code&gt;&lt;/a&gt; creates image from Dockerfile.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/commit&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker commit&lt;/code&gt;&lt;/a&gt; creates image from a container, pausing it temporarily if it is running.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/rmi&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker rmi&lt;/code&gt;&lt;/a&gt; removes an image.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/load&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker load&lt;/code&gt;&lt;/a&gt; loads an image from a tar archive as STDIN, including images and tags (as of 0.7).&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/save&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker save&lt;/code&gt;&lt;/a&gt; saves an image to a tar archive stream to STDOUT with all parent layers, tags &amp;amp; versions (as of 0.7).&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/&#34; target=&#34;_blank&#34;&gt;The configuration file&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;info-1&#34;&gt;Info&lt;/h3&gt;
+&lt;p&gt;Sets up a Docker container when you run &lt;code&gt;docker build&lt;/code&gt; on it. Vastly preferable to &lt;code&gt;docker commit&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here are some common text editors and their syntax highlighting modules you could use to create Dockerfiles:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/history&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker history&lt;/code&gt;&lt;/a&gt; shows history of image.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/tag&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker tag&lt;/code&gt;&lt;/a&gt; tags an image to a name (local or registry).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://packagecontrol.io/packages/Dockerfile%20Syntax%20Highlighting&#34; target=&#34;_blank&#34;&gt;Sublime Text 2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://atom.io/packages/language-docker&#34; target=&#34;_blank&#34;&gt;Atom&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ekalinin/Dockerfile.vim&#34; target=&#34;_blank&#34;&gt;Vim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/spotify/dockerfile-mode&#34; target=&#34;_blank&#34;&gt;Emacs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Also see &lt;a href=&#34;https://domeide.github.io/&#34; target=&#34;_blank&#34;&gt;Docker meets the IDE&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&#34;instructions&#34;&gt;Instructions&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#dockerignore-file&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;.dockerignore&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#from&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;FROM&lt;/code&gt;&lt;/a&gt; Sets the Base Image for subsequent instructions.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#maintainer-deprecated&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;MAINTAINER&lt;/code&gt; (deprecated - use LABEL instead)&lt;/a&gt; Set the Author field of the generated images.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#run&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;RUN&lt;/code&gt;&lt;/a&gt; execute any commands in a new layer on top of the current image and commit the results.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#cmd&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;CMD&lt;/code&gt;&lt;/a&gt; provide defaults for an executing container.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#expose&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;EXPOSE&lt;/code&gt;&lt;/a&gt; informs Docker that the container listens on the specified network ports at runtime.  NOTE: does not actually make ports accessible.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#env&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;ENV&lt;/code&gt;&lt;/a&gt; sets environment variable.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#add&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;ADD&lt;/code&gt;&lt;/a&gt; copies new files, directories or remote file to container.  Invalidates caches. Avoid &lt;code&gt;ADD&lt;/code&gt; and use &lt;code&gt;COPY&lt;/code&gt; instead.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#copy&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;COPY&lt;/code&gt;&lt;/a&gt; copies new files or directories to container.  Note that this only copies as root, so you have to chown manually regardless of your USER / WORKDIR setting.  See &lt;a href=&#34;https://github.com/moby/moby/issues/30110&#34; target=&#34;_blank&#34;&gt;https://github.com/moby/moby/issues/30110&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#entrypoint&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;ENTRYPOINT&lt;/code&gt;&lt;/a&gt; configures a container that will run as an executable.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#volume&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;VOLUME&lt;/code&gt;&lt;/a&gt; creates a mount point for externally mounted volumes or other containers.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#user&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;USER&lt;/code&gt;&lt;/a&gt; sets the user name for following RUN / CMD / ENTRYPOINT commands.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#workdir&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;WORKDIR&lt;/code&gt;&lt;/a&gt; sets the working directory.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#arg&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;ARG&lt;/code&gt;&lt;/a&gt; defines a build-time variable.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#onbuild&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;ONBUILD&lt;/code&gt;&lt;/a&gt; adds a trigger instruction when the image is used as the base for another build.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#stopsignal&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;STOPSIGNAL&lt;/code&gt;&lt;/a&gt; sets the system call signal that will be sent to the container to exit.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/userguide/labels-custom-metadata/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;LABEL&lt;/code&gt;&lt;/a&gt; apply key/value metadata to your images, containers, or daemons.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;tutorial&#34;&gt;Tutorial&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://flux7.com/blogs/docker/docker-tutorial-series-part-3-automation-is-the-word-using-dockerfile/&#34; target=&#34;_blank&#34;&gt;Flux7&amp;rsquo;s Dockerfile Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;examples&#34;&gt;Examples&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#dockerfile-examples&#34; target=&#34;_blank&#34;&gt;Examples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/&#34; target=&#34;_blank&#34;&gt;Best practices for writing Dockerfiles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://crosbymichael.com/&#34; target=&#34;_blank&#34;&gt;Michael Crosby&lt;/a&gt; has some more &lt;a href=&#34;http://crosbymichael.com/dockerfile-best-practices.html&#34; target=&#34;_blank&#34;&gt;Dockerfiles best practices&lt;/a&gt; / &lt;a href=&#34;http://crosbymichael.com/dockerfile-best-practices-take-2.html&#34; target=&#34;_blank&#34;&gt;take 2&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jonathan.bergknoff.com/journal/building-good-docker-images&#34; target=&#34;_blank&#34;&gt;Building Good Docker Images&lt;/a&gt; / &lt;a href=&#34;http://jonathan.bergknoff.com/journal/building-better-docker-images&#34; target=&#34;_blank&#34;&gt;Building Better Docker Images&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/garethr/managing-container-configuration-with-metadata&#34; target=&#34;_blank&#34;&gt;Managing Container Configuration with Metadata&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://rock-it.pl/how-to-write-excellent-dockerfiles/&#34; target=&#34;_blank&#34;&gt;How to write excellent Dockerfiles&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
 
 &lt;h2 id=&#34;docker-version&#34;&gt;Docker Version&lt;/h2&gt;
 
@@ -560,65 +627,6 @@ That said let see how to know what version of docker we have running currently&l
 
 Loading an image using the &lt;code&gt;load&lt;/code&gt; command creates a new image including its history.&lt;br /&gt;
 Importing a container as an image using the &lt;code&gt;import&lt;/code&gt; command creates a new image, &lt;strong&gt;excluding the history,&lt;/strong&gt; which results in a &lt;em&gt;smaller image size compared to loading an image&lt;/em&gt;.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/&#34; target=&#34;_blank&#34;&gt;The configuration file&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Sets up a Docker container when you run &lt;code&gt;docker build&lt;/code&gt; on it. Vastly preferable to &lt;code&gt;docker commit&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Here are some common text editors and their syntax highlighting modules you could use to create Dockerfiles:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://packagecontrol.io/packages/Dockerfile%20Syntax%20Highlighting&#34; target=&#34;_blank&#34;&gt;Sublime Text 2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://atom.io/packages/language-docker&#34; target=&#34;_blank&#34;&gt;Atom&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/ekalinin/Dockerfile.vim&#34; target=&#34;_blank&#34;&gt;Vim&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/spotify/dockerfile-mode&#34; target=&#34;_blank&#34;&gt;Emacs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Also see &lt;a href=&#34;https://domeide.github.io/&#34; target=&#34;_blank&#34;&gt;Docker meets the IDE&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;instructions&#34;&gt;Instructions&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#dockerignore-file&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;.dockerignore&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#from&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;FROM&lt;/code&gt;&lt;/a&gt; Sets the Base Image for subsequent instructions.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#maintainer-deprecated&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;MAINTAINER&lt;/code&gt; (deprecated - use LABEL instead)&lt;/a&gt; Set the Author field of the generated images.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#run&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;RUN&lt;/code&gt;&lt;/a&gt; execute any commands in a new layer on top of the current image and commit the results.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#cmd&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;CMD&lt;/code&gt;&lt;/a&gt; provide defaults for an executing container.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#expose&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;EXPOSE&lt;/code&gt;&lt;/a&gt; informs Docker that the container listens on the specified network ports at runtime.  NOTE: does not actually make ports accessible.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#env&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;ENV&lt;/code&gt;&lt;/a&gt; sets environment variable.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#add&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;ADD&lt;/code&gt;&lt;/a&gt; copies new files, directories or remote file to container.  Invalidates caches. Avoid &lt;code&gt;ADD&lt;/code&gt; and use &lt;code&gt;COPY&lt;/code&gt; instead.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#copy&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;COPY&lt;/code&gt;&lt;/a&gt; copies new files or directories to container.  Note that this only copies as root, so you have to chown manually regardless of your USER / WORKDIR setting.  See &lt;a href=&#34;https://github.com/moby/moby/issues/30110&#34; target=&#34;_blank&#34;&gt;https://github.com/moby/moby/issues/30110&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#entrypoint&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;ENTRYPOINT&lt;/code&gt;&lt;/a&gt; configures a container that will run as an executable.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#volume&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;VOLUME&lt;/code&gt;&lt;/a&gt; creates a mount point for externally mounted volumes or other containers.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#user&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;USER&lt;/code&gt;&lt;/a&gt; sets the user name for following RUN / CMD / ENTRYPOINT commands.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#workdir&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;WORKDIR&lt;/code&gt;&lt;/a&gt; sets the working directory.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#arg&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;ARG&lt;/code&gt;&lt;/a&gt; defines a build-time variable.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#onbuild&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;ONBUILD&lt;/code&gt;&lt;/a&gt; adds a trigger instruction when the image is used as the base for another build.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#stopsignal&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;STOPSIGNAL&lt;/code&gt;&lt;/a&gt; sets the system call signal that will be sent to the container to exit.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/userguide/labels-custom-metadata/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;LABEL&lt;/code&gt;&lt;/a&gt; apply key/value metadata to your images, containers, or daemons.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;tutorial&#34;&gt;Tutorial&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://flux7.com/blogs/docker/docker-tutorial-series-part-3-automation-is-the-word-using-dockerfile/&#34; target=&#34;_blank&#34;&gt;Flux7&amp;rsquo;s Dockerfile Tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;examples&#34;&gt;Examples&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/builder/#dockerfile-examples&#34; target=&#34;_blank&#34;&gt;Examples&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/&#34; target=&#34;_blank&#34;&gt;Best practices for writing Dockerfiles&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://crosbymichael.com/&#34; target=&#34;_blank&#34;&gt;Michael Crosby&lt;/a&gt; has some more &lt;a href=&#34;http://crosbymichael.com/dockerfile-best-practices.html&#34; target=&#34;_blank&#34;&gt;Dockerfiles best practices&lt;/a&gt; / &lt;a href=&#34;http://crosbymichael.com/dockerfile-best-practices-take-2.html&#34; target=&#34;_blank&#34;&gt;take 2&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://jonathan.bergknoff.com/journal/building-good-docker-images&#34; target=&#34;_blank&#34;&gt;Building Good Docker Images&lt;/a&gt; / &lt;a href=&#34;http://jonathan.bergknoff.com/journal/building-better-docker-images&#34; target=&#34;_blank&#34;&gt;Building Better Docker Images&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/garethr/managing-container-configuration-with-metadata&#34; target=&#34;_blank&#34;&gt;Managing Container Configuration with Metadata&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://rock-it.pl/how-to-write-excellent-dockerfiles/&#34; target=&#34;_blank&#34;&gt;How to write excellent Dockerfiles&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;hr /&gt;
 

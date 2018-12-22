@@ -430,35 +430,35 @@ Containerization is increasingly popular because containers are:
 </ul></li>
 <li><a href="#cheat-sheet">Cheat Sheet</a>
 <ul>
-<li><a href="#containers-1">Containers</a>
+<li><a href="#images-1">Images</a>
 <ul>
 <li><a href="#lifecycle">Lifecycle</a></li>
+<li><a href="#info">Info</a></li>
+</ul></li>
+<li><a href="#containers-1">Containers</a>
+<ul>
+<li><a href="#lifecycle-1">Lifecycle</a></li>
 <li><a href="#starting-and-stopping">Starting and Stopping</a>
 <ul>
 <li><a href="#cpu-constraints">CPU Constraints</a></li>
 <li><a href="#memory-constraints">Memory Constraints</a></li>
 <li><a href="#capabilities">Capabilities</a></li>
 </ul></li>
-<li><a href="#info">Info</a></li>
+<li><a href="#info-1">Info</a></li>
 <li><a href="#import-export">Import / Export</a></li>
 <li><a href="#executing-commands">Executing Commands</a></li>
-</ul></li>
-<li><a href="#images-1">Images</a>
-<ul>
-<li><a href="#lifecycle-1">Lifecycle</a></li>
-<li><a href="#info-1">Info</a></li>
-</ul></li>
-<li><a href="#docker-version">Docker Version</a>
-<ul>
-<li><a href="#cleaning-up">Cleaning up</a></li>
-<li><a href="#load-save-image">Load/Save image</a></li>
-<li><a href="#import-export-container">Import/Export container</a></li>
 </ul></li>
 <li><a href="#dockerfile">Dockerfile</a>
 <ul>
 <li><a href="#instructions">Instructions</a></li>
 <li><a href="#tutorial">Tutorial</a></li>
 <li><a href="#examples">Examples</a></li>
+</ul></li>
+<li><a href="#docker-version">Docker Version</a>
+<ul>
+<li><a href="#cleaning-up">Cleaning up</a></li>
+<li><a href="#load-save-image">Load/Save image</a></li>
+<li><a href="#import-export-container">Import/Export container</a></li>
 </ul></li>
 <li><a href="#networks">Networks</a>
 <ul>
@@ -841,11 +841,38 @@ Memory and swap accounting incur an overhead of about 1% of the total available 
 
 <p>The following is full <a href="https://github.com/wsargent/docker-cheat-sheet" target="_blank">Cheat Sheet</a> mentioned earlier, and presented here for convenience. Feel free to use the table of contents on the right sidebar (or duplicated below for mobile users) to more easily navigate this page than on the Github Gist <sup class="footnote-ref" id="fnref:gist"><a href="#fn:gist">4</a></sup>.</p>
 
+<hr />
+
+<h2 id="images-1">Images</h2>
+
+<p>Images are just <a href="https://docs.docker.com/engine/understanding-docker/#how-does-a-docker-image-work" target="_blank">templates for docker containers</a>.</p>
+
+<h3 id="lifecycle">Lifecycle</h3>
+
+<ul>
+<li><a href="https://docs.docker.com/engine/reference/commandline/images" target="_blank"><code>docker images</code></a> shows all images.</li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/import" target="_blank"><code>docker import</code></a> creates an image from a tarball.</li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/build" target="_blank"><code>docker build</code></a> creates image from Dockerfile.</li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/commit" target="_blank"><code>docker commit</code></a> creates image from a container, pausing it temporarily if it is running.</li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/rmi" target="_blank"><code>docker rmi</code></a> removes an image.</li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/load" target="_blank"><code>docker load</code></a> loads an image from a tar archive as STDIN, including images and tags (as of 0.7).</li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/save" target="_blank"><code>docker save</code></a> saves an image to a tar archive stream to STDOUT with all parent layers, tags &amp; versions (as of 0.7).</li>
+</ul>
+
+<h3 id="info">Info</h3>
+
+<ul>
+<li><a href="https://docs.docker.com/engine/reference/commandline/history" target="_blank"><code>docker history</code></a> shows history of image.</li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/tag" target="_blank"><code>docker tag</code></a> tags an image to a name (local or registry).</li>
+</ul>
+
+<hr />
+
 <h2 id="containers-1">Containers</h2>
 
 <p><a href="http://etherealmind.com/basics-docker-containers-hypervisors-coreos/" target="_blank">Your basic isolated Docker process</a>. Containers are to Virtual Machines as threads are to processes. Or you can think of them as chroots on steroids.</p>
 
-<h3 id="lifecycle">Lifecycle</h3>
+<h3 id="lifecycle-1">Lifecycle</h3>
 
 <ul>
 <li><a href="https://docs.docker.com/engine/reference/commandline/create" target="_blank"><code>docker create</code></a> creates a container but does not start it.</li>
@@ -930,7 +957,7 @@ Memory and swap accounting incur an overhead of about 1% of the total available 
 
 <p>more info about privileged containers <a href="https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities" target="_blank">here</a></p>
 
-<h3 id="info">Info</h3>
+<h3 id="info-1">Info</h3>
 
 <ul>
 <li><a href="https://docs.docker.com/engine/reference/commandline/ps" target="_blank"><code>docker ps</code></a> shows running containers.</li>
@@ -962,28 +989,68 @@ Memory and swap accounting incur an overhead of about 1% of the total available 
 
 <p>To enter a running container, attach a new shell process to a running container called foo, use: <code>docker exec -it foo /bin/bash</code>.</p>
 
-<h2 id="images-1">Images</h2>
+<hr />
 
-<p>Images are just <a href="https://docs.docker.com/engine/understanding-docker/#how-does-a-docker-image-work" target="_blank">templates for docker containers</a>.</p>
+<hr />
 
-<h3 id="lifecycle-1">Lifecycle</h3>
+<h2 id="dockerfile">Dockerfile</h2>
 
-<ul>
-<li><a href="https://docs.docker.com/engine/reference/commandline/images" target="_blank"><code>docker images</code></a> shows all images.</li>
-<li><a href="https://docs.docker.com/engine/reference/commandline/import" target="_blank"><code>docker import</code></a> creates an image from a tarball.</li>
-<li><a href="https://docs.docker.com/engine/reference/commandline/build" target="_blank"><code>docker build</code></a> creates image from Dockerfile.</li>
-<li><a href="https://docs.docker.com/engine/reference/commandline/commit" target="_blank"><code>docker commit</code></a> creates image from a container, pausing it temporarily if it is running.</li>
-<li><a href="https://docs.docker.com/engine/reference/commandline/rmi" target="_blank"><code>docker rmi</code></a> removes an image.</li>
-<li><a href="https://docs.docker.com/engine/reference/commandline/load" target="_blank"><code>docker load</code></a> loads an image from a tar archive as STDIN, including images and tags (as of 0.7).</li>
-<li><a href="https://docs.docker.com/engine/reference/commandline/save" target="_blank"><code>docker save</code></a> saves an image to a tar archive stream to STDOUT with all parent layers, tags &amp; versions (as of 0.7).</li>
-</ul>
+<p><a href="https://docs.docker.com/engine/reference/builder/" target="_blank">The configuration file</a>.</p>
 
-<h3 id="info-1">Info</h3>
+<p>Sets up a Docker container when you run <code>docker build</code> on it. Vastly preferable to <code>docker commit</code>.</p>
+
+<p>Here are some common text editors and their syntax highlighting modules you could use to create Dockerfiles:</p>
 
 <ul>
-<li><a href="https://docs.docker.com/engine/reference/commandline/history" target="_blank"><code>docker history</code></a> shows history of image.</li>
-<li><a href="https://docs.docker.com/engine/reference/commandline/tag" target="_blank"><code>docker tag</code></a> tags an image to a name (local or registry).</li>
+<li><a href="https://packagecontrol.io/packages/Dockerfile%20Syntax%20Highlighting" target="_blank">Sublime Text 2</a></li>
+<li><a href="https://atom.io/packages/language-docker" target="_blank">Atom</a></li>
+<li><a href="https://github.com/ekalinin/Dockerfile.vim" target="_blank">Vim</a></li>
+<li><a href="https://github.com/spotify/dockerfile-mode" target="_blank">Emacs</a></li>
+<li>Also see <a href="https://domeide.github.io/" target="_blank">Docker meets the IDE</a></li>
 </ul>
+
+<h3 id="instructions">Instructions</h3>
+
+<ul>
+<li><a href="https://docs.docker.com/engine/reference/builder/#dockerignore-file" target="_blank"><code>.dockerignore</code></a></li>
+<li><a href="https://docs.docker.com/engine/reference/builder/#from" target="_blank"><code>FROM</code></a> Sets the Base Image for subsequent instructions.</li>
+<li><a href="https://docs.docker.com/engine/reference/builder/#maintainer-deprecated" target="_blank"><code>MAINTAINER</code> (deprecated - use LABEL instead)</a> Set the Author field of the generated images.</li>
+<li><a href="https://docs.docker.com/engine/reference/builder/#run" target="_blank"><code>RUN</code></a> execute any commands in a new layer on top of the current image and commit the results.</li>
+<li><a href="https://docs.docker.com/engine/reference/builder/#cmd" target="_blank"><code>CMD</code></a> provide defaults for an executing container.</li>
+<li><a href="https://docs.docker.com/engine/reference/builder/#expose" target="_blank"><code>EXPOSE</code></a> informs Docker that the container listens on the specified network ports at runtime.  NOTE: does not actually make ports accessible.</li>
+<li><a href="https://docs.docker.com/engine/reference/builder/#env" target="_blank"><code>ENV</code></a> sets environment variable.</li>
+<li><a href="https://docs.docker.com/engine/reference/builder/#add" target="_blank"><code>ADD</code></a> copies new files, directories or remote file to container.  Invalidates caches. Avoid <code>ADD</code> and use <code>COPY</code> instead.</li>
+<li><a href="https://docs.docker.com/engine/reference/builder/#copy" target="_blank"><code>COPY</code></a> copies new files or directories to container.  Note that this only copies as root, so you have to chown manually regardless of your USER / WORKDIR setting.  See <a href="https://github.com/moby/moby/issues/30110" target="_blank">https://github.com/moby/moby/issues/30110</a></li>
+<li><a href="https://docs.docker.com/engine/reference/builder/#entrypoint" target="_blank"><code>ENTRYPOINT</code></a> configures a container that will run as an executable.</li>
+<li><a href="https://docs.docker.com/engine/reference/builder/#volume" target="_blank"><code>VOLUME</code></a> creates a mount point for externally mounted volumes or other containers.</li>
+<li><a href="https://docs.docker.com/engine/reference/builder/#user" target="_blank"><code>USER</code></a> sets the user name for following RUN / CMD / ENTRYPOINT commands.</li>
+<li><a href="https://docs.docker.com/engine/reference/builder/#workdir" target="_blank"><code>WORKDIR</code></a> sets the working directory.</li>
+<li><a href="https://docs.docker.com/engine/reference/builder/#arg" target="_blank"><code>ARG</code></a> defines a build-time variable.</li>
+<li><a href="https://docs.docker.com/engine/reference/builder/#onbuild" target="_blank"><code>ONBUILD</code></a> adds a trigger instruction when the image is used as the base for another build.</li>
+<li><a href="https://docs.docker.com/engine/reference/builder/#stopsignal" target="_blank"><code>STOPSIGNAL</code></a> sets the system call signal that will be sent to the container to exit.</li>
+<li><a href="https://docs.docker.com/engine/userguide/labels-custom-metadata/" target="_blank"><code>LABEL</code></a> apply key/value metadata to your images, containers, or daemons.</li>
+</ul>
+
+<h3 id="tutorial">Tutorial</h3>
+
+<ul>
+<li><a href="http://flux7.com/blogs/docker/docker-tutorial-series-part-3-automation-is-the-word-using-dockerfile/" target="_blank">Flux7&rsquo;s Dockerfile Tutorial</a></li>
+</ul>
+
+<h3 id="examples">Examples</h3>
+
+<ul>
+<li><a href="https://docs.docker.com/engine/reference/builder/#dockerfile-examples" target="_blank">Examples</a></li>
+<li><a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/" target="_blank">Best practices for writing Dockerfiles</a></li>
+<li><a href="http://crosbymichael.com/" target="_blank">Michael Crosby</a> has some more <a href="http://crosbymichael.com/dockerfile-best-practices.html" target="_blank">Dockerfiles best practices</a> / <a href="http://crosbymichael.com/dockerfile-best-practices-take-2.html" target="_blank">take 2</a>.</li>
+<li><a href="http://jonathan.bergknoff.com/journal/building-good-docker-images" target="_blank">Building Good Docker Images</a> / <a href="http://jonathan.bergknoff.com/journal/building-better-docker-images" target="_blank">Building Better Docker Images</a></li>
+<li><a href="https://speakerdeck.com/garethr/managing-container-configuration-with-metadata" target="_blank">Managing Container Configuration with Metadata</a></li>
+<li><a href="https://rock-it.pl/how-to-write-excellent-dockerfiles/" target="_blank">How to write excellent Dockerfiles</a></li>
+</ul>
+
+<hr />
+
+<hr />
 
 <h2 id="docker-version">Docker Version</h2>
 
@@ -1048,65 +1115,6 @@ That said let see how to know what version of docker we have running currently</
 
 Loading an image using the <code>load</code> command creates a new image including its history.<br />
 Importing a container as an image using the <code>import</code> command creates a new image, <strong>excluding the history,</strong> which results in a <em>smaller image size compared to loading an image</em>.</p>
-
-<hr />
-
-<hr />
-
-<h2 id="dockerfile">Dockerfile</h2>
-
-<p><a href="https://docs.docker.com/engine/reference/builder/" target="_blank">The configuration file</a>.</p>
-
-<p>Sets up a Docker container when you run <code>docker build</code> on it. Vastly preferable to <code>docker commit</code>.</p>
-
-<p>Here are some common text editors and their syntax highlighting modules you could use to create Dockerfiles:</p>
-
-<ul>
-<li><a href="https://packagecontrol.io/packages/Dockerfile%20Syntax%20Highlighting" target="_blank">Sublime Text 2</a></li>
-<li><a href="https://atom.io/packages/language-docker" target="_blank">Atom</a></li>
-<li><a href="https://github.com/ekalinin/Dockerfile.vim" target="_blank">Vim</a></li>
-<li><a href="https://github.com/spotify/dockerfile-mode" target="_blank">Emacs</a></li>
-<li>Also see <a href="https://domeide.github.io/" target="_blank">Docker meets the IDE</a></li>
-</ul>
-
-<h3 id="instructions">Instructions</h3>
-
-<ul>
-<li><a href="https://docs.docker.com/engine/reference/builder/#dockerignore-file" target="_blank"><code>.dockerignore</code></a></li>
-<li><a href="https://docs.docker.com/engine/reference/builder/#from" target="_blank"><code>FROM</code></a> Sets the Base Image for subsequent instructions.</li>
-<li><a href="https://docs.docker.com/engine/reference/builder/#maintainer-deprecated" target="_blank"><code>MAINTAINER</code> (deprecated - use LABEL instead)</a> Set the Author field of the generated images.</li>
-<li><a href="https://docs.docker.com/engine/reference/builder/#run" target="_blank"><code>RUN</code></a> execute any commands in a new layer on top of the current image and commit the results.</li>
-<li><a href="https://docs.docker.com/engine/reference/builder/#cmd" target="_blank"><code>CMD</code></a> provide defaults for an executing container.</li>
-<li><a href="https://docs.docker.com/engine/reference/builder/#expose" target="_blank"><code>EXPOSE</code></a> informs Docker that the container listens on the specified network ports at runtime.  NOTE: does not actually make ports accessible.</li>
-<li><a href="https://docs.docker.com/engine/reference/builder/#env" target="_blank"><code>ENV</code></a> sets environment variable.</li>
-<li><a href="https://docs.docker.com/engine/reference/builder/#add" target="_blank"><code>ADD</code></a> copies new files, directories or remote file to container.  Invalidates caches. Avoid <code>ADD</code> and use <code>COPY</code> instead.</li>
-<li><a href="https://docs.docker.com/engine/reference/builder/#copy" target="_blank"><code>COPY</code></a> copies new files or directories to container.  Note that this only copies as root, so you have to chown manually regardless of your USER / WORKDIR setting.  See <a href="https://github.com/moby/moby/issues/30110" target="_blank">https://github.com/moby/moby/issues/30110</a></li>
-<li><a href="https://docs.docker.com/engine/reference/builder/#entrypoint" target="_blank"><code>ENTRYPOINT</code></a> configures a container that will run as an executable.</li>
-<li><a href="https://docs.docker.com/engine/reference/builder/#volume" target="_blank"><code>VOLUME</code></a> creates a mount point for externally mounted volumes or other containers.</li>
-<li><a href="https://docs.docker.com/engine/reference/builder/#user" target="_blank"><code>USER</code></a> sets the user name for following RUN / CMD / ENTRYPOINT commands.</li>
-<li><a href="https://docs.docker.com/engine/reference/builder/#workdir" target="_blank"><code>WORKDIR</code></a> sets the working directory.</li>
-<li><a href="https://docs.docker.com/engine/reference/builder/#arg" target="_blank"><code>ARG</code></a> defines a build-time variable.</li>
-<li><a href="https://docs.docker.com/engine/reference/builder/#onbuild" target="_blank"><code>ONBUILD</code></a> adds a trigger instruction when the image is used as the base for another build.</li>
-<li><a href="https://docs.docker.com/engine/reference/builder/#stopsignal" target="_blank"><code>STOPSIGNAL</code></a> sets the system call signal that will be sent to the container to exit.</li>
-<li><a href="https://docs.docker.com/engine/userguide/labels-custom-metadata/" target="_blank"><code>LABEL</code></a> apply key/value metadata to your images, containers, or daemons.</li>
-</ul>
-
-<h3 id="tutorial">Tutorial</h3>
-
-<ul>
-<li><a href="http://flux7.com/blogs/docker/docker-tutorial-series-part-3-automation-is-the-word-using-dockerfile/" target="_blank">Flux7&rsquo;s Dockerfile Tutorial</a></li>
-</ul>
-
-<h3 id="examples">Examples</h3>
-
-<ul>
-<li><a href="https://docs.docker.com/engine/reference/builder/#dockerfile-examples" target="_blank">Examples</a></li>
-<li><a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/" target="_blank">Best practices for writing Dockerfiles</a></li>
-<li><a href="http://crosbymichael.com/" target="_blank">Michael Crosby</a> has some more <a href="http://crosbymichael.com/dockerfile-best-practices.html" target="_blank">Dockerfiles best practices</a> / <a href="http://crosbymichael.com/dockerfile-best-practices-take-2.html" target="_blank">take 2</a>.</li>
-<li><a href="http://jonathan.bergknoff.com/journal/building-good-docker-images" target="_blank">Building Good Docker Images</a> / <a href="http://jonathan.bergknoff.com/journal/building-better-docker-images" target="_blank">Building Better Docker Images</a></li>
-<li><a href="https://speakerdeck.com/garethr/managing-container-configuration-with-metadata" target="_blank">Managing Container Configuration with Metadata</a></li>
-<li><a href="https://rock-it.pl/how-to-write-excellent-dockerfiles/" target="_blank">How to write excellent Dockerfiles</a></li>
-</ul>
 
 <hr />
 
