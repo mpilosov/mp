@@ -15,7 +15,7 @@
   
     
   
-  <meta name="description" content="Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info  Containers  Lifecycle Starting and Stopping  CPU Constraints Memory Constraints Capabilities  Info Import / Export Executing Commands  Dockerfile  Instructions Tutorial Examples  Version  Cleaning up Load/Save image Import/Export container  Networks  Lifecycle Info Connection  Registries  Registries v.">
+  <meta name="description" content="Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info  Layers Containers  Lifecycle Starting and Stopping  CPU Constraints Memory Constraints Capabilities  Info Import / Export Executing Commands  Dockerfile  Instructions Tutorial Examples  Version  Cleaning up Load/Save image Import/Export container  Networks  Lifecycle Info Connection  Registries  Registries v.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/openscience/docker/">
@@ -78,6 +78,8 @@
 
   <link rel="stylesheet" href="/styles.css">
   
+  <link rel="stylesheet" href="/css/custom_css.css">
+  
 
   
   
@@ -122,7 +124,7 @@
   <meta property="og:site_name" content="Michael Pilosov | Academic Website">
   <meta property="og:url" content="https://www.michaelpilosov.com/openscience/docker/">
   <meta property="og:title" content="Docker | Michael Pilosov | Academic Website">
-  <meta property="og:description" content="Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info  Containers  Lifecycle Starting and Stopping  CPU Constraints Memory Constraints Capabilities  Info Import / Export Executing Commands  Dockerfile  Instructions Tutorial Examples  Version  Cleaning up Load/Save image Import/Export container  Networks  Lifecycle Info Connection  Registries  Registries v."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
+  <meta property="og:description" content="Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info  Layers Containers  Lifecycle Starting and Stopping  CPU Constraints Memory Constraints Capabilities  Info Import / Export Executing Commands  Dockerfile  Instructions Tutorial Examples  Version  Cleaning up Load/Save image Import/Export container  Networks  Lifecycle Info Connection  Registries  Registries v."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-12-22T00:00:00-07:00">
@@ -463,6 +465,7 @@
 <li><a href="#lifecycle">Lifecycle</a></li>
 <li><a href="#info">Info</a></li>
 </ul></li>
+<li><a href="#layers">Layers</a></li>
 <li><a href="#containers-1">Containers</a>
 <ul>
 <li><a href="#lifecycle-1">Lifecycle</a></li>
@@ -498,7 +501,6 @@
 <ul>
 <li><a href="#registries-v-repositories">Registries v. Repositories</a></li>
 <li><a href="#run-local-registry">Run local registry</a></li>
-<li><a href="#layers">Layers</a></li>
 </ul></li>
 <li><a href="#links">Links</a></li>
 <li><a href="#volumes">Volumes</a>
@@ -613,6 +615,7 @@
 <li><a href="#lifecycle">Lifecycle</a></li>
 <li><a href="#info">Info</a></li>
 </ul></li>
+<li><a href="#layers">Layers</a></li>
 <li><a href="#containers-1">Containers</a>
 <ul>
 <li><a href="#lifecycle-1">Lifecycle</a></li>
@@ -648,7 +651,6 @@
 <ul>
 <li><a href="#registries-v-repositories">Registries v. Repositories</a></li>
 <li><a href="#run-local-registry">Run local registry</a></li>
-<li><a href="#layers">Layers</a></li>
 </ul></li>
 <li><a href="#links">Links</a></li>
 <li><a href="#volumes">Volumes</a>
@@ -1245,6 +1247,27 @@ There is an AppArmor policy generator called <a href="https://github.com/jfrazel
 
 <hr />
 
+<h2 id="layers">Layers</h2>
+
+<p>The versioned filesystem in Docker is based on layers. They&rsquo;re like <a href="https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/" target="_blank">git commits or changesets for filesystems</a>.</p>
+
+<p>Eventually you&rsquo;ll want to make changes to an existing image, and will find yourself manipulating the <code>Dockerfile</code> that defines the build and configuration of the image.
+You can think of this as mimicking the keystrokes a user would have to enter in order to set up each application on a fresh computer.</p>
+
+<p>Pretty much every image we&rsquo;ll be interested in will have it&rsquo;s origin in some version of a Linux distribution on top of which a number of commands are run to define the files necessary for the use-case.</p>
+
+<p>Since each &ldquo;version&rdquo; of an image is an entire filesystem, building one version of an image based on a previous one can lead to lots of unnecessary files being tracked.</p>
+
+<p>As stated in the <a href="#dockerfile">Dockerfile section</a>, the command <code>RUN</code> executes any commands in a <em>new layer</em> <strong>on top</strong> of the current image, and commits the results.</p>
+
+<p>This &ldquo;on top&rdquo; part is especially important to understand, and several things can be done to keep subsequent changes to an image relatively &ldquo;lightweight.&rdquo;</p>
+
+<p>For example, make sure to <a href="#efficiency">clean up</a> the <code>APT</code> repositories.</p>
+
+<hr />
+
+<hr />
+
 <h2 id="containers-1">Containers</h2>
 
 <p><a href="http://etherealmind.com/basics-docker-containers-hypervisors-coreos/" target="_blank">Your basic isolated Docker process</a>. Containers are to Virtual Machines as threads are to processes. Or you can think of them as chroots on steroids.</p>
@@ -1578,10 +1601,6 @@ $ curl 203.0.113.2
 <p>You can run a local registry by using the <a href="https://github.com/docker/distribution" target="_blank">docker distribution</a> project and looking at the <a href="https://github.com/docker/docker.github.io/blob/master/registry/deploying.md" target="_blank">local deploy</a> instructions.</p>
 
 <p>Also see the <a href="https://groups.google.com/a/dockerproject.org/forum/#!forum/distribution" target="_blank">mailing list</a>.</p>
-
-<h3 id="layers">Layers</h3>
-
-<p>The versioned filesystem in Docker is based on layers. They&rsquo;re like <a href="https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/" target="_blank">git commits or changesets for filesystems</a>.</p>
 
 <hr />
 

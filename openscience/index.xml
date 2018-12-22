@@ -27,7 +27,7 @@
       <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/openscience/docker/</guid>
-      <description>Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info  Containers  Lifecycle Starting and Stopping  CPU Constraints Memory Constraints Capabilities  Info Import / Export Executing Commands  Dockerfile  Instructions Tutorial Examples  Version  Cleaning up Load/Save image Import/Export container  Networks  Lifecycle Info Connection  Registries  Registries v.</description>
+      <description>Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info  Layers Containers  Lifecycle Starting and Stopping  CPU Constraints Memory Constraints Capabilities  Info Import / Export Executing Commands  Dockerfile  Instructions Tutorial Examples  Version  Cleaning up Load/Save image Import/Export container  Networks  Lifecycle Info Connection  Registries  Registries v.</description>
     </item>
     
     <item>

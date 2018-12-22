@@ -47,6 +47,25 @@
     </item>
     
     <item>
+      <title>Day 4</title>
+      <link>https://www.michaelpilosov.com/changelog/day4/</link>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/changelog/day4/</guid>
+      <description>&lt;p&gt;Today I began to structure and fill in the basic information for the &lt;a href=&#34;https://www.michaelpilosov.com/openscience/docker&#34;&gt;Open Science/Docker&lt;/a&gt; Documentation.&lt;/p&gt;
+
+&lt;p&gt;I also realized I needed to edit the table of contents with some custom CSS.&lt;/p&gt;
+
+&lt;p&gt;Create a custom file in &lt;code&gt;/static/css&lt;/code&gt; and link it to line &lt;code&gt;custom_css = []&lt;/code&gt; in &lt;code&gt;config.toml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#TableOfContents{
+    padding-left: 10px
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Docker</title>
       <link>https://www.michaelpilosov.com/openscience/docker/</link>
       <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
@@ -105,6 +124,7 @@
 &lt;li&gt;&lt;a href=&#34;#lifecycle&#34;&gt;Lifecycle&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#info&#34;&gt;Info&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#layers&#34;&gt;Layers&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#containers-1&#34;&gt;Containers&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#lifecycle-1&#34;&gt;Lifecycle&lt;/a&gt;&lt;/li&gt;
@@ -140,7 +160,6 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#registries-v-repositories&#34;&gt;Registries v. Repositories&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#run-local-registry&#34;&gt;Run local registry&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#layers&#34;&gt;Layers&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#links&#34;&gt;Links&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#volumes&#34;&gt;Volumes&lt;/a&gt;
@@ -737,6 +756,27 @@ There is an AppArmor policy generator called &lt;a href=&#34;https://github.com/
 
 &lt;hr /&gt;
 
+&lt;h2 id=&#34;layers&#34;&gt;Layers&lt;/h2&gt;
+
+&lt;p&gt;The versioned filesystem in Docker is based on layers. They&amp;rsquo;re like &lt;a href=&#34;https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/&#34; target=&#34;_blank&#34;&gt;git commits or changesets for filesystems&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Eventually you&amp;rsquo;ll want to make changes to an existing image, and will find yourself manipulating the &lt;code&gt;Dockerfile&lt;/code&gt; that defines the build and configuration of the image.
+You can think of this as mimicking the keystrokes a user would have to enter in order to set up each application on a fresh computer.&lt;/p&gt;
+
+&lt;p&gt;Pretty much every image we&amp;rsquo;ll be interested in will have it&amp;rsquo;s origin in some version of a Linux distribution on top of which a number of commands are run to define the files necessary for the use-case.&lt;/p&gt;
+
+&lt;p&gt;Since each &amp;ldquo;version&amp;rdquo; of an image is an entire filesystem, building one version of an image based on a previous one can lead to lots of unnecessary files being tracked.&lt;/p&gt;
+
+&lt;p&gt;As stated in the &lt;a href=&#34;#dockerfile&#34;&gt;Dockerfile section&lt;/a&gt;, the command &lt;code&gt;RUN&lt;/code&gt; executes any commands in a &lt;em&gt;new layer&lt;/em&gt; &lt;strong&gt;on top&lt;/strong&gt; of the current image, and commits the results.&lt;/p&gt;
+
+&lt;p&gt;This &amp;ldquo;on top&amp;rdquo; part is especially important to understand, and several things can be done to keep subsequent changes to an image relatively &amp;ldquo;lightweight.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;For example, make sure to &lt;a href=&#34;#efficiency&#34;&gt;clean up&lt;/a&gt; the &lt;code&gt;APT&lt;/code&gt; repositories.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
 &lt;h2 id=&#34;containers-1&#34;&gt;Containers&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://etherealmind.com/basics-docker-containers-hypervisors-coreos/&#34; target=&#34;_blank&#34;&gt;Your basic isolated Docker process&lt;/a&gt;. Containers are to Virtual Machines as threads are to processes. Or you can think of them as chroots on steroids.&lt;/p&gt;
@@ -1070,10 +1110,6 @@ $ curl 203.0.113.2
 &lt;p&gt;You can run a local registry by using the &lt;a href=&#34;https://github.com/docker/distribution&#34; target=&#34;_blank&#34;&gt;docker distribution&lt;/a&gt; project and looking at the &lt;a href=&#34;https://github.com/docker/docker.github.io/blob/master/registry/deploying.md&#34; target=&#34;_blank&#34;&gt;local deploy&lt;/a&gt; instructions.&lt;/p&gt;
 
 &lt;p&gt;Also see the &lt;a href=&#34;https://groups.google.com/a/dockerproject.org/forum/#!forum/distribution&#34; target=&#34;_blank&#34;&gt;mailing list&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;layers&#34;&gt;Layers&lt;/h3&gt;
-
-&lt;p&gt;The versioned filesystem in Docker is based on layers. They&amp;rsquo;re like &lt;a href=&#34;https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/&#34; target=&#34;_blank&#34;&gt;git commits or changesets for filesystems&lt;/a&gt;.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -2198,38 +2234,6 @@ for administration of the Hub and its users.&lt;/p&gt;
 
 &lt;p&gt;I personally run Jupyterhub on a remote server so that I always have access to a secure and familiar environment if I ever need to test out some code and find myself without my laptop.
 By default, it accepts the login information of just the user who is running it, but we will see later how it can be configured for its intended use as a multi-user authentication hub.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Day 2</title>
-      <link>https://www.michaelpilosov.com/changelog/day2/</link>
-      <pubDate>Thu, 20 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/changelog/day2/</guid>
-      <description>
-
-&lt;h1 id=&#34;summary&#34;&gt;Summary&lt;/h1&gt;
-
-&lt;p&gt;I spent the day working with the widget library and understanding how interpolating polynomials are handled by &lt;code&gt;scipy&lt;/code&gt;.
-Most of today&amp;rsquo;s developments were concerned with my random art and animation libraries, and I completed some of the most important components of the interface: setting time-dependent functions (independent of frames), and creating a widget that properly reads/writes data to a dictionary.&lt;/p&gt;
-
-&lt;p&gt;I still need to link the interfaces for the existing GUIs that write the properties.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Allow removal feature?&lt;/li&gt;
-&lt;li&gt;scrape the widgets and write to dictionary.&lt;/li&gt;
-&lt;li&gt;New GUI for stacking effects, connecting each effect to the needed time-series based on available entries in aforementioned dictionary.&lt;/li&gt;
-&lt;li&gt;All effects get applied with their time series, passed to animation function to be written to file.&lt;/li&gt;
-&lt;li&gt;Maybe use the Play button to preview? (Have a GUI focused on the &lt;code&gt;num_frames&lt;/code&gt; perspective). It is linked to the index.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;notes&#34;&gt;Notes&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Still having trouble with the mybinder.org connections with my &lt;code&gt;giftplanning&lt;/code&gt; library that tests out my deployment solutions for interactive blogs.&lt;/li&gt;
-&lt;li&gt;After conversing with Elliott last night, I think that writing a simple WebSocket atop Flask with his help may be a good solution. A JSON file gets passed back and forth, manipulations happen on a server. Still would prefer to just learn how to make the widgets do this part.&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

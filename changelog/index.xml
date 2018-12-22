@@ -13,6 +13,18 @@
     
     
     <item>
+      <title>Day 4</title>
+      <link>https://www.michaelpilosov.com/changelog/day4/</link>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/changelog/day4/</guid>
+      <description>Today I began to structure and fill in the basic information for the Open Science/Docker Documentation.
+I also realized I needed to edit the table of contents with some custom CSS.
+Create a custom file in /static/css and link it to line custom_css = [] in config.toml:
+#TableOfContents{ padding-left: 10px }  </description>
+    </item>
+    
+    <item>
       <title>Day 3</title>
       <link>https://www.michaelpilosov.com/changelog/day3/</link>
       <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
