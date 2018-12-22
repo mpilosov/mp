@@ -15,10 +15,7 @@
   
     
   
-  <meta name="description" content="Introduction From the Docker Documentation:
- Docker is a platform for developers and sysadmins to develop, deploy, and run applications with containers. &gt; The use of Linux containers to deploy applications is called containerization. Containers are not new, but their use for easily deploying applications is.
-Containerization is increasingly popular because containers are:
- Flexible: Even the most complex applications can be containerized. Lightweight: Containers leverage and share the host kernel.">
+  <meta name="description" content="Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info  Containers  Lifecycle Starting and Stopping  CPU Constraints Memory Constraints Capabilities  Info Import / Export Executing Commands  Dockerfile  Instructions Tutorial Examples  Version  Cleaning up Load/Save image Import/Export container  Networks  Lifecycle Info Connection  Registries  Registries v.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/openscience/docker/">
@@ -125,10 +122,7 @@ Containerization is increasingly popular because containers are:
   <meta property="og:site_name" content="Michael Pilosov | Academic Website">
   <meta property="og:url" content="https://www.michaelpilosov.com/openscience/docker/">
   <meta property="og:title" content="Docker | Michael Pilosov | Academic Website">
-  <meta property="og:description" content="Introduction From the Docker Documentation:
- Docker is a platform for developers and sysadmins to develop, deploy, and run applications with containers. &gt; The use of Linux containers to deploy applications is called containerization. Containers are not new, but their use for easily deploying applications is.
-Containerization is increasingly popular because containers are:
- Flexible: Even the most complex applications can be containerized. Lightweight: Containers leverage and share the host kernel."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
+  <meta property="og:description" content="Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info  Containers  Lifecycle Starting and Stopping  CPU Constraints Memory Constraints Capabilities  Info Import / Export Executing Commands  Dockerfile  Instructions Tutorial Examples  Version  Cleaning up Load/Save image Import/Export container  Networks  Lifecycle Info Connection  Registries  Registries v."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-12-22T00:00:00-07:00">
@@ -438,13 +432,28 @@ Containerization is increasingly popular because containers are:
 </ul></li>
 <li><a href="#configure">Configure</a>
 <ul>
-<li><a href="#sudo-permissions">Sudo permissions</a></li>
+<li><a href="#permissions">Permissions</a></li>
 <li><a href="#start-on-boot">Start on boot</a></li>
 <li><a href="#re-route-ip">Re-route IP</a></li>
 <li><a href="#troubleshooting">Troubleshooting</a>
 <ul>
 <li><a href="#ip-forwarding">IP Forwarding</a></li>
 <li><a href="#limiting">Limiting</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#security">Security</a>
+<ul>
+<li><a href="#security-tips">Security Tips</a></li>
+<li><a href="#deployment">Deployment</a>
+<ul>
+<li><a href="#making-docker-safe-for-production">Making Docker Safe for Production</a></li>
+</ul></li>
+<li><a href="#port-exposal">Port-Exposal</a></li>
+<li><a href="#more">More</a>
+<ul>
+<li><a href="#user-namespaces">User Namespaces</a></li>
+<li><a href="#the-security-roadmap">The Security Roadmap</a></li>
+<li><a href="#security-videos">Security Videos</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#cheat-sheet">Cheat Sheet</a>
@@ -473,7 +482,7 @@ Containerization is increasingly popular because containers are:
 <li><a href="#tutorial">Tutorial</a></li>
 <li><a href="#examples">Examples</a></li>
 </ul></li>
-<li><a href="#docker-version">Docker Version</a>
+<li><a href="#version">Version</a>
 <ul>
 <li><a href="#cleaning-up">Cleaning up</a></li>
 <li><a href="#load-save-image">Load/Save image</a></li>
@@ -485,8 +494,9 @@ Containerization is increasingly popular because containers are:
 <li><a href="#info-2">Info</a></li>
 <li><a href="#connection">Connection</a></li>
 </ul></li>
-<li><a href="#registry-repository">Registry &amp; Repository</a>
+<li><a href="#registries">Registries</a>
 <ul>
+<li><a href="#registries-v-repositories">Registries v. Repositories</a></li>
 <li><a href="#run-local-registry">Run local registry</a></li>
 <li><a href="#layers">Layers</a></li>
 </ul></li>
@@ -495,16 +505,6 @@ Containerization is increasingly popular because containers are:
 <ul>
 <li><a href="#lifecycle-3">Lifecycle</a></li>
 <li><a href="#info-3">Info</a></li>
-</ul></li>
-<li><a href="#exposing-ports">Exposing ports</a></li>
-<li><a href="#best-practices">Best Practices</a></li>
-<li><a href="#security">Security</a>
-<ul>
-<li><a href="#security-tips">Security Tips</a></li>
-<li><a href="#making-docker-safe-for-production">Making Docker Safe for Production</a></li>
-<li><a href="#user-namespaces">User Namespaces</a></li>
-<li><a href="#security-videos">Security Videos</a></li>
-<li><a href="#security-roadmap">Security Roadmap</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#useful-commands-tips">Useful Commands/Tips</a>
@@ -539,6 +539,7 @@ Containerization is increasingly popular because containers are:
 <li><a href="#volumes-can-be-files">Volumes can be files</a></li>
 </ul></li>
 <li><a href="#efficiency">Efficiency</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -560,6 +561,145 @@ Containerization is increasingly popular because containers are:
 
           <div class="article-style" itemprop="articleBody">
             
+
+<h2>Table of Contents</h2>
+<nav id="TableOfContents">
+<ul>
+<li><a href="#introduction">Introduction</a>
+<ul>
+<li><a href="#images">Images</a></li>
+<li><a href="#containers">Containers</a>
+<ul>
+<li><a href="#comparison-to-virtual-machines">Comparison to Virtual Machines</a></li>
+</ul></li>
+<li><a href="#documentation">Documentation</a></li>
+</ul></li>
+<li><a href="#install">Install</a>
+<ul>
+<li><a href="#linux">Linux</a></li>
+<li><a href="#macos">macOS</a></li>
+<li><a href="#windows">Windows</a></li>
+</ul></li>
+<li><a href="#configure">Configure</a>
+<ul>
+<li><a href="#permissions">Permissions</a></li>
+<li><a href="#start-on-boot">Start on boot</a></li>
+<li><a href="#re-route-ip">Re-route IP</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li><a href="#ip-forwarding">IP Forwarding</a></li>
+<li><a href="#limiting">Limiting</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#security">Security</a>
+<ul>
+<li><a href="#security-tips">Security Tips</a></li>
+<li><a href="#deployment">Deployment</a>
+<ul>
+<li><a href="#making-docker-safe-for-production">Making Docker Safe for Production</a></li>
+</ul></li>
+<li><a href="#port-exposal">Port-Exposal</a></li>
+<li><a href="#more">More</a>
+<ul>
+<li><a href="#user-namespaces">User Namespaces</a></li>
+<li><a href="#the-security-roadmap">The Security Roadmap</a></li>
+<li><a href="#security-videos">Security Videos</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#cheat-sheet">Cheat Sheet</a>
+<ul>
+<li><a href="#images-1">Images</a>
+<ul>
+<li><a href="#lifecycle">Lifecycle</a></li>
+<li><a href="#info">Info</a></li>
+</ul></li>
+<li><a href="#containers-1">Containers</a>
+<ul>
+<li><a href="#lifecycle-1">Lifecycle</a></li>
+<li><a href="#starting-and-stopping">Starting and Stopping</a>
+<ul>
+<li><a href="#cpu-constraints">CPU Constraints</a></li>
+<li><a href="#memory-constraints">Memory Constraints</a></li>
+<li><a href="#capabilities">Capabilities</a></li>
+</ul></li>
+<li><a href="#info-1">Info</a></li>
+<li><a href="#import-export">Import / Export</a></li>
+<li><a href="#executing-commands">Executing Commands</a></li>
+</ul></li>
+<li><a href="#dockerfile">Dockerfile</a>
+<ul>
+<li><a href="#instructions">Instructions</a></li>
+<li><a href="#tutorial">Tutorial</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul></li>
+<li><a href="#version">Version</a>
+<ul>
+<li><a href="#cleaning-up">Cleaning up</a></li>
+<li><a href="#load-save-image">Load/Save image</a></li>
+<li><a href="#import-export-container">Import/Export container</a></li>
+</ul></li>
+<li><a href="#networks">Networks</a>
+<ul>
+<li><a href="#lifecycle-2">Lifecycle</a></li>
+<li><a href="#info-2">Info</a></li>
+<li><a href="#connection">Connection</a></li>
+</ul></li>
+<li><a href="#registries">Registries</a>
+<ul>
+<li><a href="#registries-v-repositories">Registries v. Repositories</a></li>
+<li><a href="#run-local-registry">Run local registry</a></li>
+<li><a href="#layers">Layers</a></li>
+</ul></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#volumes">Volumes</a>
+<ul>
+<li><a href="#lifecycle-3">Lifecycle</a></li>
+<li><a href="#info-3">Info</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#useful-commands-tips">Useful Commands/Tips</a>
+<ul>
+<li><a href="#basics">Basics</a>
+<ul>
+<li><a href="#get-ip-address">Get IP Address</a></li>
+<li><a href="#get-port-mapping">Get Port Mapping</a></li>
+</ul></li>
+<li><a href="#management">Management</a>
+<ul>
+<li><a href="#find-containers-using-regular-expression">Find containers using regular expression:</a></li>
+<li><a href="#get-environment-settings">Get environment settings</a></li>
+<li><a href="#kill-running-containers">Kill running containers</a></li>
+<li><a href="#delete-all-containers-force-running-or-stopped-containers">Delete all containers (force!! running or stopped containers)</a></li>
+<li><a href="#delete-old-containers">Delete old containers</a></li>
+<li><a href="#delete-stopped-containers">Delete stopped containers</a></li>
+<li><a href="#delete-containers-after-stopping">Delete containers after stopping</a></li>
+<li><a href="#delete-dangling-images">Delete dangling images</a></li>
+<li><a href="#delete-all-images">Delete all images</a></li>
+<li><a href="#delete-dangling-volumes">Delete dangling volumes</a></li>
+<li><a href="#show-image-dependencies">Show image dependencies</a></li>
+<li><a href="#df">df</a></li>
+<li><a href="#heredoc-docker-container">Heredoc Docker Container</a></li>
+<li><a href="#prune">Prune</a></li>
+<li><a href="#last-ids">Last Ids</a></li>
+<li><a href="#commit">Commit</a></li>
+</ul></li>
+<li><a href="#monitoring">Monitoring</a>
+<ul>
+<li><a href="#monitor-system-resource-utilization-for-running-containers">Monitor system resource utilization for running containers</a></li>
+<li><a href="#volumes-can-be-files">Volumes can be files</a></li>
+</ul></li>
+<li><a href="#efficiency">Efficiency</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
+</ul></li>
+</ul>
+</nav>
+
+
+<hr />
+
+<hr />
+
+<hr />
 
 <h1 id="introduction">Introduction</h1>
 
@@ -620,6 +760,10 @@ It is a user process with a state and need for access to resources.</p>
 
 <p>Here is the <a href="https://github.com/wsargent/docker-cheat-sheet" target="_blank">Cheatsheet</a> from which I will be pulling much of what is in this post.</p>
 
+<p><a href="#table-of-contents">back to top</a></p>
+
+<hr />
+
 <hr />
 
 <hr />
@@ -663,6 +807,10 @@ If you are a complete Docker newbie, you should follow the <a href="https://docs
 It should be fairly straightforward for Windows 10 Users.
 My suggestion is to simply go with Linux, since our focus is on using Docker for deploying to servers, which are unlikely to be running Windows for the use-cases we have in mind. That said, <em>should be doable, if you insist on it.</em></p>
 
+<p><a href="#table-of-contents">back to top</a></p>
+
+<hr />
+
 <hr />
 
 <hr />
@@ -676,7 +824,7 @@ To avoid permission errors (and the use of sudo), add your user to the <code>doc
 
 <hr />
 
-<h2 id="sudo-permissions">Sudo permissions</h2>
+<h2 id="permissions">Permissions</h2>
 
 <p>To create the docker group and add your user:</p>
 
@@ -852,13 +1000,221 @@ Memory and swap accounting incur an overhead of about 1% of the total available 
  The changes take effect when the system is rebooted.</p>
 </blockquote>
 
+<p><a href="#table-of-contents">back to top</a></p>
+
+<hr />
+
+<hr />
+
+<hr />
+
+<h1 id="security">Security</h1>
+
+<blockquote>
+<p>This is where security tips about Docker go. The Docker <a href="https://docs.docker.com/engine/security/security/" target="_blank">security</a> page goes into more detail.</p>
+</blockquote>
+
+<p>First things first: <strong>Docker runs as root.</strong></p>
+
+<p>If you are in the <code>docker</code> group, you effectively <a href="http://reventlov.com/advisories/using-the-docker-command-to-root-the-host" target="_blank">have root access</a>.</p>
+
+<div class="alert alert-">
+  <p>If you <em>expose the docker UNIX socket to a container</em>, you are giving the container <a href="https://www.lvh.io/posts/dont-expose-the-docker-socket-not-even-to-a-container.html" target="_blank">root access to the host</a>.</p>
+
+</div>
+
+
+<div class="alert alert-warning">
+  <p>Docker should not be your only defense. You should secure and harden it.</p>
+
+</div>
+
+
+<p>The security tips following are useful if you&rsquo;ve already hardened containers in the past, but are <strong>not a substitute for understanding.</strong> <sup class="footnote-ref" id="fnref:security"><a href="#fn:security">4</a></sup></p>
+
+<h2 id="security-tips">Security Tips</h2>
+
+<div class="alert alert-warning">
+  <p>For greatest security, you want to run Docker inside a virtual machine.
+(Source: Docker Security Team Lead  <a href="http://www.slideshare.net/jpetazzo/linux-containers-lxc-docker-and-security" target="_blank">slides</a> / <a href="http://www.projectatomic.io/blog/2014/08/is-it-safe-a-look-at-docker-and-security-from-linuxcon/" target="_blank">notes</a>.</p>
+
+</div>
+
+
+<p>Then, run with AppArmor / seccomp / SELinux / grsec etc to <a href="http://linux-audit.com/docker-security-best-practices-for-your-vessel-and-containers/" target="_blank">limit the container permissions</a>. See the <a href="https://blog.docker.com/2016/02/docker-engine-1-10-security/" target="_blank">Docker 1.10 security features</a> for more details.</p>
+
+<div class="alert alert-warning">
+  <p>Docker image ids are <a href="https://medium.com/@quayio/your-docker-image-ids-are-secrets-and-its-time-you-treated-them-that-way-f55e9f14c1a4" target="_blank">sensitive information</a> and should not be exposed to the outside world. Treat them like passwords.</p>
+
+</div>
+
+
+<p>See the <a href="https://github.com/konstruktoid/Docker/blob/master/Security/CheatSheet.adoc" target="_blank">Docker Security Cheat Sheet</a> by <a href="https://github.com/konstruktoid" target="_blank">Thomas Sjögren</a>: some good stuff about container hardening in there.</p>
+
+<div class="alert alert-">
+  <p>Check out the <strong><a href="https://github.com/docker/docker-bench-security" target="_blank">docker bench security script</a></strong> for a security benchmark.</p>
+
+</div>
+
+
+<blockquote>
+<p>Download the <a href="https://blog.docker.com/2015/05/understanding-docker-security-and-best-practices/" target="_blank">white papers</a> and subscribe to the <a href="https://www.docker.com/docker-security" target="_blank">mailing lists</a> (unfortunately Docker does not have a unique mailing list, only dev / user). To begin with, see this (foot)note from the cheatsheet <sup class="footnote-ref" id="fnref:begin"><a href="#fn:begin">5</a></sup>.</p>
+</blockquote>
+
+<hr />
+
+<hr />
+
+<h2 id="deployment">Deployment</h2>
+
+<h3 id="making-docker-safe-for-production">Making Docker Safe for Production</h3>
+
+<div class="alert alert-">
+  <p>Since Docker 1.11, you can easily limit the number of active processes running inside a container to prevent fork bombs.</p>
+
+</div>
+
+
+<p>This requires a Linux kernel &gt;= 4.3 with <code>CGROUP_PIDS=y</code> to be in the kernel configuration.</p>
+
+<pre><code>docker run --pids-limit=64
+</code></pre>
+
+<div class="alert alert-">
+  <p>Also available since docker 1.11 is the ability to prevent processes from gaining new privileges.</p>
+
+</div>
+
+
+<p>This feature have been in the Linux kernel since version 3.5. You can read more about it in <a href="http://www.projectatomic.io/blog/2016/03/no-new-privs-docker/" target="_blank">this</a> blog post.</p>
+
+<pre><code>docker run --security-opt=no-new-privileges
+</code></pre>
+
+<blockquote>
+<p>From the <a href="http://container-solutions.com/content/uploads/2015/06/15.06.15_DockerCheatSheet_A2.pdf" target="_blank">Docker Security Cheat Sheet</a> (it&rsquo;s in PDF which makes it hard to use, so copying below) by <a href="(http://container-solutions.com/is-docker-safe-for-production/)" target="_blank">Container Solutions</a> :</p>
+</blockquote>
+
+<div class="alert alert-warning">
+  <p>Be aware that the following may affect the performance of your applications in unexpected ways if you are not sure what kinds of communications requirements you need.</p>
+
+<p>Proceed with caution. Reference the [presentation above][docker-production].</p>
+
+</div>
+
+
+<blockquote>
+<p>Turn off interprocess communication with:</p>
+
+<pre><code>docker -d --icc=false --iptables
+</code></pre>
+
+<p>Set the container to be read-only:</p>
+
+<pre><code>docker run --read-only
+</code></pre>
+
+<p>Verify images with a hashsum:</p>
+
+<pre><code>docker pull debian@sha256:a25306f3850e1bd44541976aa7b5fd0a29be
+</code></pre>
+
+<p>Set volumes to be read only:</p>
+
+<pre><code>docker run -v $(pwd)/secrets:/secrets:ro debian
+</code></pre>
+
+<p>Define and run a user in your Dockerfile so you don&rsquo;t run as root inside the container:</p>
+
+<pre><code>RUN groupadd -r user &amp;&amp; useradd -r -g user user
+USER user
+</code></pre>
+</blockquote>
+
+<hr />
+
+<hr />
+
+<h2 id="port-exposal">Port-Exposal</h2>
+
+<div class="alert alert-">
+  <p>Exposing incoming ports through the host container is <a href="https://docs.docker.com/engine/reference/run/#expose-incoming-ports" target="_blank">fiddly but doable</a>.</p>
+
+</div>
+
+
+<p>This is done by mapping the container port to the host port (only using localhost interface) using <code>-p</code>:</p>
+
+<pre><code>docker run -p 127.0.0.1:$HOSTPORT:$CONTAINERPORT --name CONTAINER -t someimage
+</code></pre>
+
+<p>You can tell Docker that the container listens on the specified network ports at runtime by using <a href="https://docs.docker.com/engine/reference/builder/#expose" target="_blank">EXPOSE</a>:</p>
+
+<pre><code>EXPOSE &lt;CONTAINERPORT&gt;
+</code></pre>
+
+<p>Note that EXPOSE does not expose the port itself &ndash; only <code>-p</code> will do that. To expose the container&rsquo;s port on your localhost&rsquo;s port:</p>
+
+<pre><code>iptables -t nat -A DOCKER -p tcp --dport &lt;LOCALHOSTPORT&gt; -j DNAT --to-destination &lt;CONTAINERIP&gt;:&lt;PORT&gt;
+</code></pre>
+
+<p>If you&rsquo;re running Docker in Virtualbox, you then need to forward the port there as well, using <a href="https://docs.vagrantup.com/v2/networking/forwarded_ports.html" target="_blank">forwarded_port</a>. Define a range of ports in your Vagrantfile like this so you can dynamically map them:</p>
+
+<pre><code>Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  ...
+
+  (49000..49900).each do |port|
+    config.vm.network :forwarded_port, :host =&gt; port, :guest =&gt; port
+  end
+
+  ...
+end
+</code></pre>
+
+<p>If you forget what you mapped the port to on the host container, use <code>docker port</code> to show it:</p>
+
+<pre><code>docker port CONTAINER $CONTAINERPORT
+</code></pre>
+
+<hr />
+
+<hr />
+
+<h2 id="more">More</h2>
+
+<h3 id="user-namespaces">User Namespaces</h3>
+
+<p>There&rsquo;s also work on <a href="https://s3hh.wordpress.com/2013/07/19/creating-and-using-containers-without-privilege/" target="_blank">user namespaces</a> &ndash; it is in 1.10 but is not enabled by default.</p>
+
+<p>To enable user namespaces (&ldquo;remap the userns&rdquo;) in Ubuntu 15.10, <a href="https://raesene.github.io/blog/2016/02/04/Docker-User-Namespaces/" target="_blank">follow the blog example</a>.</p>
+
+<h3 id="the-security-roadmap">The Security Roadmap</h3>
+
+<p>The Docker roadmap talks about <a href="https://github.com/docker/docker/blob/master/ROADMAP.md#11-security" target="_blank">seccomp support</a>.
+There is an AppArmor policy generator called <a href="https://github.com/jfrazelle/bane" target="_blank">bane</a>, and they&rsquo;re working on <a href="https://github.com/docker/docker/issues/17142" target="_blank">security profiles</a>.</p>
+
+<h3 id="security-videos">Security Videos</h3>
+
+<ul>
+<li><a href="https://youtu.be/04LOuMgNj9U" target="_blank">Using Docker Safely</a></li>
+<li><a href="https://youtu.be/KmxOXmPhZbk" target="_blank">Securing your applications using Docker</a></li>
+<li><a href="https://youtu.be/a9lE9Urr6AQ" target="_blank">Container security: Do containers actually contain?</a></li>
+<li><a href="https://www.youtube.com/watch?v=iN6QbszB1R8" target="_blank">Linux Containers: Future or Fantasy?</a></li>
+</ul>
+
+<p><a href="#table-of-contents">back to top</a></p>
+
+<hr />
+
 <hr />
 
 <hr />
 
 <h1 id="cheat-sheet">Cheat Sheet</h1>
 
-<p>The following is full <a href="https://github.com/wsargent/docker-cheat-sheet" target="_blank">Cheat Sheet</a> mentioned earlier, and presented here for convenience. Feel free to use the table of contents on the right sidebar (or duplicated below for mobile users) to more easily navigate this page than on the Github Gist <sup class="footnote-ref" id="fnref:gist"><a href="#fn:gist">4</a></sup>.</p>
+<p>The following is full <a href="https://github.com/wsargent/docker-cheat-sheet" target="_blank">Cheat Sheet</a> mentioned earlier, and presented here for convenience. Feel free to use the table of contents on the right sidebar (or duplicated below for mobile users) to more easily navigate this page than on the Github Gist <sup class="footnote-ref" id="fnref:gist"><a href="#fn:gist">6</a></sup>.</p>
+
+<p><a href="#table-of-contents">Table of Contents</a></p>
 
 <hr />
 
@@ -884,6 +1240,8 @@ Memory and swap accounting incur an overhead of about 1% of the total available 
 <li><a href="https://docs.docker.com/engine/reference/commandline/history" target="_blank"><code>docker history</code></a> shows history of image.</li>
 <li><a href="https://docs.docker.com/engine/reference/commandline/tag" target="_blank"><code>docker tag</code></a> tags an image to a name (local or registry).</li>
 </ul>
+
+<hr />
 
 <hr />
 
@@ -1071,7 +1429,7 @@ Memory and swap accounting incur an overhead of about 1% of the total available 
 
 <hr />
 
-<h2 id="docker-version">Docker Version</h2>
+<h2 id="version">Version</h2>
 
 <blockquote>
 <p><em>It is very important that you always know the current version of Docker you are currently running on at any point in time.</em>
@@ -1183,11 +1541,23 @@ $ curl 203.0.113.2
 
 <hr />
 
-<h2 id="registry-repository">Registry &amp; Repository</h2>
+<hr />
 
-<p>A repository is a <em>hosted</em> collection of tagged images that together create the file system for a container.</p>
+<h2 id="registries">Registries</h2>
 
-<p>A registry is a <em>host</em> &ndash; a server that stores repositories and provides an HTTP API for <a href="https://docs.docker.com/engine/tutorials/dockerrepos/" target="_blank">managing the uploading and downloading of repositories</a>.</p>
+<h3 id="registries-v-repositories">Registries v. Repositories</h3>
+
+<div class="alert alert-">
+  <p>A repository is a <em>hosted</em> collection of tagged images that together create the file system for a container.</p>
+
+</div>
+
+
+<div class="alert alert-">
+  <p>A registry is a <em>host</em> &ndash; a server that stores repositories and provides an HTTP API for <a href="https://docs.docker.com/engine/tutorials/dockerrepos/" target="_blank">managing the uploading and downloading of repositories</a>.</p>
+
+</div>
+
 
 <blockquote>
 <p>Docker.com hosts its own <a href="https://hub.docker.com/" target="_blank">index</a> to a central registry which contains a large number of repositories.</p>
@@ -1212,6 +1582,8 @@ $ curl 203.0.113.2
 <h3 id="layers">Layers</h3>
 
 <p>The versioned filesystem in Docker is based on layers. They&rsquo;re like <a href="https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/" target="_blank">git commits or changesets for filesystems</a>.</p>
+
+<hr />
 
 <hr />
 
@@ -1244,6 +1616,8 @@ $ALIAS_PORT_1337_TCP_ADDR
 <p>To delete links, use <code>docker rm --link</code>.</p>
 
 <p>Generally, linking between docker services is a subset of &ldquo;service discovery&rdquo;, a big problem if you&rsquo;re planning to use Docker at scale in production.  Please read <a href="https://www.digitalocean.com/community/tutorials/the-docker-ecosystem-service-discovery-and-distributed-configuration-stores" target="_blank">The Docker Ecosystem: Service Discovery and Distributed Configuration Stores</a> for more info.</p>
+
+<hr />
 
 <hr />
 
@@ -1284,185 +1658,7 @@ $ALIAS_PORT_1337_TCP_ADDR
 
 <p><a href="#volumes-can-be-files">Be aware that you can mount files as volumes.</a></p>
 
-<h2 id="exposing-ports">Exposing ports</h2>
-
-<p>Exposing incoming ports through the host container is <a href="https://docs.docker.com/engine/reference/run/#expose-incoming-ports" target="_blank">fiddly but doable</a>.</p>
-
-<p>This is done by mapping the container port to the host port (only using localhost interface) using <code>-p</code>:</p>
-
-<pre><code>docker run -p 127.0.0.1:$HOSTPORT:$CONTAINERPORT --name CONTAINER -t someimage
-</code></pre>
-
-<p>You can tell Docker that the container listens on the specified network ports at runtime by using <a href="https://docs.docker.com/engine/reference/builder/#expose" target="_blank">EXPOSE</a>:</p>
-
-<pre><code>EXPOSE &lt;CONTAINERPORT&gt;
-</code></pre>
-
-<p>Note that EXPOSE does not expose the port itself &ndash; only <code>-p</code> will do that. To expose the container&rsquo;s port on your localhost&rsquo;s port:</p>
-
-<pre><code>iptables -t nat -A DOCKER -p tcp --dport &lt;LOCALHOSTPORT&gt; -j DNAT --to-destination &lt;CONTAINERIP&gt;:&lt;PORT&gt;
-</code></pre>
-
-<p>If you&rsquo;re running Docker in Virtualbox, you then need to forward the port there as well, using <a href="https://docs.vagrantup.com/v2/networking/forwarded_ports.html" target="_blank">forwarded_port</a>. Define a range of ports in your Vagrantfile like this so you can dynamically map them:</p>
-
-<pre><code>Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  ...
-
-  (49000..49900).each do |port|
-    config.vm.network :forwarded_port, :host =&gt; port, :guest =&gt; port
-  end
-
-  ...
-end
-</code></pre>
-
-<p>If you forget what you mapped the port to on the host container, use <code>docker port</code> to show it:</p>
-
-<pre><code>docker port CONTAINER $CONTAINERPORT
-</code></pre>
-
-<hr />
-
-<h2 id="best-practices">Best Practices</h2>
-
-<p>This is where general Docker best practices and war stories go:</p>
-
-<ul>
-<li><a href="http://gregoryszorc.com/blog/2014/10/16/the-rabbit-hole-of-using-docker-in-automated-tests/" target="_blank">The Rabbit Hole of Using Docker in Automated Tests</a></li>
-<li><a href="https://twitter.com/bridgetkromhout" target="_blank">Bridget Kromhout</a> has a useful blog post on <a href="http://sysadvent.blogspot.co.uk/2014/12/day-1-docker-in-production-reality-not.html" target="_blank">running Docker in production</a> at Dramafever.</li>
-<li>There&rsquo;s also a best practices <a href="http://developers.lyst.com/devops/2014/12/08/docker/" target="_blank">blog post</a> from Lyst.</li>
-<li><a href="https://tersesystems.com/2013/11/20/building-a-development-environment-with-docker/" target="_blank">Building a Development Environment With Docker</a></li>
-<li><a href="https://samsaffron.com/archive/2013/11/07/discourse-in-a-docker-container" target="_blank">Discourse in a Docker Container</a></li>
-</ul>
-
-<hr />
-
-<h2 id="security">Security</h2>
-
-<blockquote>
-<p>This is where security tips about Docker go. The Docker <a href="https://docs.docker.com/engine/security/security/" target="_blank">security</a> page goes into more detail.</p>
-</blockquote>
-
-<p>First things first: <strong>Docker runs as root.</strong></p>
-
-<p>If you are in the <code>docker</code> group, you effectively <a href="http://reventlov.com/advisories/using-the-docker-command-to-root-the-host" target="_blank">have root access</a>.</p>
-
-<div class="alert alert-">
-  <p>If you <em>expose the docker UNIX socket to a container</em>, you are giving the container <a href="https://www.lvh.io/posts/dont-expose-the-docker-socket-not-even-to-a-container.html" target="_blank">root access to the host</a>.</p>
-
-</div>
-
-
-<div class="alert alert-warning">
-  <p>Docker should not be your only defense. You should secure and harden it.</p>
-
-</div>
-
-
-<p>The security tips following are useful if you&rsquo;ve already hardened containers in the past, but are <strong>not a substitute for understanding.</strong> <sup class="footnote-ref" id="fnref:security"><a href="#fn:security">5</a></sup></p>
-
-<h3 id="security-tips">Security Tips</h3>
-
-<div class="alert alert-warning">
-  <p>For greatest security, you want to run Docker inside a virtual machine.
-(Source: Docker Security Team Lead  <a href="http://www.slideshare.net/jpetazzo/linux-containers-lxc-docker-and-security" target="_blank">slides</a> / <a href="http://www.projectatomic.io/blog/2014/08/is-it-safe-a-look-at-docker-and-security-from-linuxcon/" target="_blank">notes</a>.</p>
-
-</div>
-
-
-<p>Then, run with AppArmor / seccomp / SELinux / grsec etc to <a href="http://linux-audit.com/docker-security-best-practices-for-your-vessel-and-containers/" target="_blank">limit the container permissions</a>. See the <a href="https://blog.docker.com/2016/02/docker-engine-1-10-security/" target="_blank">Docker 1.10 security features</a> for more details.</p>
-
-<div class="alert alert-warning">
-  <p>Docker image ids are <a href="https://medium.com/@quayio/your-docker-image-ids-are-secrets-and-its-time-you-treated-them-that-way-f55e9f14c1a4" target="_blank">sensitive information</a> and should not be exposed to the outside world. Treat them like passwords.</p>
-
-</div>
-
-
-<p>See the <a href="https://github.com/konstruktoid/Docker/blob/master/Security/CheatSheet.adoc" target="_blank">Docker Security Cheat Sheet</a> by <a href="https://github.com/konstruktoid" target="_blank">Thomas Sjögren</a>: some good stuff about container hardening in there.</p>
-
-<div class="alert alert-">
-  <p>Check out the <strong><a href="https://github.com/docker/docker-bench-security" target="_blank">docker bench security script</a></strong> for a security benchmark.</p>
-
-</div>
-
-
-<blockquote>
-<p>Download the <a href="https://blog.docker.com/2015/05/understanding-docker-security-and-best-practices/" target="_blank">white papers</a> and subscribe to the <a href="https://www.docker.com/docker-security" target="_blank">mailing lists</a> (unfortunately Docker does not have a unique mailing list, only dev / user). To begin with, see this (foot)note from the cheatsheet <sup class="footnote-ref" id="fnref:begin"><a href="#fn:begin">6</a></sup>.</p>
-</blockquote>
-
-<div class="alert alert-">
-  <p>Since Docker 1.11, you can easily limit the number of active processes running inside a container to prevent fork bombs.</p>
-
-</div>
-
-
-<p>This requires a Linux kernel &gt;= 4.3 with <code>CGROUP_PIDS=y</code> to be in the kernel configuration.</p>
-
-<pre><code>docker run --pids-limit=64
-</code></pre>
-
-<div class="alert alert-">
-  <p>Also available since docker 1.11 is the ability to prevent processes from gaining new privileges.</p>
-
-</div>
-
-
-<p>This feature have been in the Linux kernel since version 3.5. You can read more about it in <a href="http://www.projectatomic.io/blog/2016/03/no-new-privs-docker/" target="_blank">this</a> blog post.</p>
-
-<pre><code>docker run --security-opt=no-new-privileges
-</code></pre>
-
-<p>From the <a href="http://container-solutions.com/content/uploads/2015/06/15.06.15_DockerCheatSheet_A2.pdf" target="_blank">Docker Security Cheat Sheet</a> (it&rsquo;s in PDF which makes it hard to use, so copying below) by <a href="http://container-solutions.com/is-docker-safe-for-production/" target="_blank">Container Solutions</a>:</p>
-
-<h3 id="making-docker-safe-for-production">Making Docker Safe for Production</h3>
-
-<blockquote>
-<p>Turn off interprocess communication with:</p>
-
-<pre><code>docker -d --icc=false --iptables
-</code></pre>
-
-<p>Set the container to be read-only:</p>
-
-<pre><code>docker run --read-only
-</code></pre>
-
-<p>Verify images with a hashsum:</p>
-
-<pre><code>docker pull debian@sha256:a25306f3850e1bd44541976aa7b5fd0a29be
-</code></pre>
-
-<p>Set volumes to be read only:</p>
-
-<pre><code>docker run -v $(pwd)/secrets:/secrets:ro debian
-</code></pre>
-
-<p>Define and run a user in your Dockerfile so you don&rsquo;t run as root inside the container:</p>
-
-<pre><code>RUN groupadd -r user &amp;&amp; useradd -r -g user user
-USER user
-</code></pre>
-</blockquote>
-
-<h3 id="user-namespaces">User Namespaces</h3>
-
-<p>There&rsquo;s also work on <a href="https://s3hh.wordpress.com/2013/07/19/creating-and-using-containers-without-privilege/" target="_blank">user namespaces</a> &ndash; it is in 1.10 but is not enabled by default.</p>
-
-<p>To enable user namespaces (&ldquo;remap the userns&rdquo;) in Ubuntu 15.10, <a href="https://raesene.github.io/blog/2016/02/04/Docker-User-Namespaces/" target="_blank">follow the blog example</a>.</p>
-
-<h3 id="security-videos">Security Videos</h3>
-
-<ul>
-<li><a href="https://youtu.be/04LOuMgNj9U" target="_blank">Using Docker Safely</a></li>
-<li><a href="https://youtu.be/KmxOXmPhZbk" target="_blank">Securing your applications using Docker</a></li>
-<li><a href="https://youtu.be/a9lE9Urr6AQ" target="_blank">Container security: Do containers actually contain?</a></li>
-<li><a href="https://www.youtube.com/watch?v=iN6QbszB1R8" target="_blank">Linux Containers: Future or Fantasy?</a></li>
-</ul>
-
-<h3 id="security-roadmap">Security Roadmap</h3>
-
-<p>The Docker roadmap talks about <a href="https://github.com/docker/docker/blob/master/ROADMAP.md#11-security" target="_blank">seccomp support</a>.
-There is an AppArmor policy generator called <a href="https://github.com/jfrazelle/bane" target="_blank">bane</a>, and they&rsquo;re working on <a href="https://github.com/docker/docker/issues/17142" target="_blank">security profiles</a>.</p>
+<p><a href="#table-of-contents">back to top</a></p>
 
 <hr />
 
@@ -1712,6 +1908,24 @@ gzip -dc image.tgz | docker import - flat-image-name
 <hr />
 
 <hr />
+
+<h2 id="best-practices">Best Practices</h2>
+
+<p>This is where general Docker best practices and war stories go:</p>
+
+<ul>
+<li><a href="http://gregoryszorc.com/blog/2014/10/16/the-rabbit-hole-of-using-docker-in-automated-tests/" target="_blank">The Rabbit Hole of Using Docker in Automated Tests</a></li>
+<li><a href="https://twitter.com/bridgetkromhout" target="_blank">Bridget Kromhout</a> has a useful blog post on <a href="http://sysadvent.blogspot.co.uk/2014/12/day-1-docker-in-production-reality-not.html" target="_blank">running Docker in production</a> (2014) at Dramafever.</li>
+<li>There&rsquo;s also a best practices <a href="http://developers.lyst.com/devops/2014/12/08/docker/" target="_blank">blog post</a> (2014) from Lyst.</li>
+<li><a href="https://tersesystems.com/2013/11/20/building-a-development-environment-with-docker/" target="_blank">Building a Development Environment With Docker</a> (2013)</li>
+<li><a href="https://samsaffron.com/archive/2013/11/07/discourse-in-a-docker-container" target="_blank">Discourse in a Docker Container</a> (2013)</li>
+</ul>
+
+<hr />
+
+<hr />
+
+<hr />
 <div class="footnotes">
 
 <hr />
@@ -1723,12 +1937,12 @@ gzip -dc image.tgz | docker import - flat-image-name
  <a class="footnote-return" href="#fnref:usergroup-caveats"><sup>^</sup></a></li>
 <li id="fn:linux-version">Ubuntu 14.10 and below use <code>upstart</code>. See the <a href="https://docs.docker.com/install/linux/linux-postinstall/" target="_blank">post-installation</a> instructions for support.
  <a class="footnote-return" href="#fnref:linux-version"><sup>^</sup></a></li>
-<li id="fn:gist">The gist was scraped and mildly edited on <em>12/22/18</em>, so it may behoove you to check the original source for any updates. If you find typos/corrections/updates that should be included below, please <a href="/#contact">get in touch</a>.
- <a class="footnote-return" href="#fnref:gist"><sup>^</sup></a></li>
 <li id="fn:security">For an understanding of what containers leave exposed, you should read <a href="https://www.nccgroup.trust/globalassets/our-research/us/whitepapers/2016/april/ncc_group_understanding_hardening_linux_containers-1-1.pdf" target="_blank">Understanding and Hardening Linux Containers</a> by <a href="https://twitter.com/dyn___" target="_blank">Aaron Grattafiori</a>. This is a complete and comprehensive guide to the issues involved with containers, with a plethora of links and footnotes leading on to yet more useful content.
  <a class="footnote-return" href="#fnref:security"><sup>^</sup></a></li>
 <li id="fn:begin">You should start off by using a kernel with unstable patches for <code>grsecurity / pax</code> compiled in, such as <a href="https://en.wikipedia.org/wiki/Alpine_Linux" target="_blank">Alpine Linux</a>. If you are using <code>grsecurity</code> in production, you should spring for <a href="https://grsecurity.net/business_support.php" target="_blank">commercial support</a> for the <a href="https://grsecurity.net/announce.php" target="_blank">stable patches</a>, same as you would do for RedHat. It&rsquo;s $200 a month, which is nothing to your devops budget.
  <a class="footnote-return" href="#fnref:begin"><sup>^</sup></a></li>
+<li id="fn:gist">The gist was scraped and mildly edited on <em>12/22/18</em>, so it may behoove you to check the original source for any updates. If you find typos/corrections/updates that should be included below, please <a href="/#contact">get in touch</a>.
+ <a class="footnote-return" href="#fnref:gist"><sup>^</sup></a></li>
 <li id="fn:clean">This should be done in the same layer as other apt commands. Otherwise, the previous layers still persist the original information and your images will still be fat.
  <a class="footnote-return" href="#fnref:clean"><sup>^</sup></a></li>
 </ol>
