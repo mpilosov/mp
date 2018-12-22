@@ -420,10 +420,12 @@ Containerization is increasingly popular because containers are:
 <li><a href="#configure">Configure</a>
 <ul>
 <li><a href="#sudo-permissions">Sudo permissions</a></li>
+<li><a href="#start-on-boot">Start on boot</a></li>
 <li><a href="#re-route-ip">Re-route IP</a></li>
 <li><a href="#troubleshooting">Troubleshooting</a>
 <ul>
 <li><a href="#ip-forwarding">IP Forwarding</a></li>
+<li><a href="#limiting">Limiting</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#cheat-sheet">Cheat Sheet</a>
@@ -679,28 +681,27 @@ sudo usermod -aG docker $USER
 <blockquote>
 <p>If you initially ran Docker CLI commands using sudo before adding your user to the docker group, you may see the following error, which indicates that your <code>~/.docker/</code> directory was created with incorrect permissions due to the sudo commands.</p>
 
-<pre><code class="language-bash">&gt;  WARNING: Error loading config file: /home/user/.docker/config.json 
-&gt;  - stat /home/user/.docker/config.json: permission denied
-&gt;  ```
-&gt;  To fix this problem, either remove the `~/.docker/ directory` (it is recreated automatically, but any custom settings are lost), or change its ownership and permissions using the following commands:
-&gt;  
-&gt;  ```bash
-&gt;  sudo chown &quot;$USER&quot;:&quot;$USER&quot; /home/&quot;$USER&quot;/.docker -R
-&gt;  sudo chmod g+rwx &quot;$HOME/.docker&quot; -R
-&gt;  ```
+<pre><code class="language-bash">WARNING: Error loading config file: /home/user/.docker/config.json 
+- stat /home/user/.docker/config.json: permission denied
+</code></pre>
 
----
+<p>To fix this problem, either remove the <code>~/.docker/ directory</code> (it is recreated automatically, but any custom settings are lost), or change its ownership and permissions using the following commands:</p>
 
-## Start on boot
-
-Sometimes you want Docker to be the main thing running on a server and thus started up on boot (for the occasional restart). 
-This feature may be desired for servers that host critical processes using Docker.
-Most current Linux distributions (RHEL, CentOS, Fedora, Ubuntu 16.04 and higher) use `systemd` to manage which services start when the system boots. [^linux-version] 
-
-```bash
-sudo systemctl enable docker
+<pre><code class="language-bash">sudo chown &quot;$USER&quot;:&quot;$USER&quot; /home/&quot;$USER&quot;/.docker -R
+sudo chmod g+rwx &quot;$HOME/.docker&quot; -R
 </code></pre>
 </blockquote>
+
+<hr />
+
+<h2 id="start-on-boot">Start on boot</h2>
+
+<p>Sometimes you want Docker to be the main thing running on a server and thus started up on boot (for the occasional restart).
+This feature may be desired for servers that host critical processes using Docker.
+Most current Linux distributions (RHEL, CentOS, Fedora, Ubuntu 16.04 and higher) use <code>systemd</code> to manage which services start when the system boots. <sup class="footnote-ref" id="fnref:linux-version"><a href="#fn:linux-version">3</a></sup></p>
+
+<pre><code class="language-bash">sudo systemctl enable docker
+</code></pre>
 
 <p>To disable this behavior, use <code>disable</code> instead.</p>
 
@@ -786,25 +787,25 @@ It also conflicts with Docker’s behavior of enabling the <code>net.ipv4.conf.a
 <blockquote>
 <p>To work around this on RHEL, CentOS, or Fedora, edit the <code>&lt;interface&gt;.network</code> file in <code>/usr/lib/systemd/network/</code> on your Docker host (ex: <code>/usr/lib/systemd/network/80-container-host0.network</code>) and add the following block within the <code>[Network]</code> section.</p>
 
-<pre><code>&gt;  [Network]
-&gt;  ...
-&gt;  IPForward=kernel
-&gt;  # OR
-&gt;  IPForward=true
-&gt;  ...
-&gt;  ```
-&gt;  
-&gt;  This configuration allows IP forwarding from the container as expected.
+<pre><code>[Network]
+...
+IPForward=kernel
+# OR
+IPForward=true
+...
+</code></pre>
+</blockquote>
 
+<p>This configuration allows IP forwarding from the container as expected.</p>
 
-### Limiting 
+<h3 id="limiting">Limiting</h3>
 
-You may see 
+<p>You may see</p>
 
-```bash
-WARNING: Your kernel does not support swap limit capabilities. Limitation discarded.
+<pre><code class="language-bash">WARNING: Your kernel does not support swap limit capabilities. Limitation discarded.
 </code></pre>
 
+<blockquote>
 <p>This warning does not occur on RPM-based systems, which enable these capabilities by default.
 If you don’t need these capabilities, you can ignore the warning.</p>
 </blockquote>
@@ -838,7 +839,7 @@ Memory and swap accounting incur an overhead of about 1% of the total available 
 
 <h1 id="cheat-sheet">Cheat Sheet</h1>
 
-<p>The following is full <a href="https://github.com/wsargent/docker-cheat-sheet" target="_blank">Cheat Sheet</a> mentioned earlier, and presented here for convenience. Feel free to use the table of contents on the right sidebar (or duplicated below for mobile users) to more easily navigate this page than on the Github Gist <sup class="footnote-ref" id="fnref:gist"><a href="#fn:gist">3</a></sup>.</p>
+<p>The following is full <a href="https://github.com/wsargent/docker-cheat-sheet" target="_blank">Cheat Sheet</a> mentioned earlier, and presented here for convenience. Feel free to use the table of contents on the right sidebar (or duplicated below for mobile users) to more easily navigate this page than on the Github Gist <sup class="footnote-ref" id="fnref:gist"><a href="#fn:gist">4</a></sup>.</p>
 
 <h2 id="containers-1">Containers</h2>
 
@@ -1331,11 +1332,7 @@ end
 </div>
 
 
-<blockquote>
-<p>For an understanding of what containers leave exposed, you should read <a href="https://www.nccgroup.trust/globalassets/our-research/us/whitepapers/2016/april/ncc_group_understanding_hardening_linux_containers-1-1.pdf" target="_blank">Understanding and Hardening Linux Containers</a> by <a href="https://twitter.com/dyn___" target="_blank">Aaron Grattafiori</a>.</p>
-
-<p>This is a complete and comprehensive guide to the issues involved with containers, with a plethora of links and footnotes leading on to yet more useful content. The security tips following are useful if you&rsquo;ve already hardened containers in the past, but are not a substitute for understanding.</p>
-</blockquote>
+<p>The security tips following are useful if you&rsquo;ve already hardened containers in the past, but are <strong>not a substitute for understanding.</strong> <sup class="footnote-ref" id="fnref:security"><a href="#fn:security">5</a></sup></p>
 
 <h3 id="security-tips">Security Tips</h3>
 
@@ -1354,13 +1351,16 @@ end
 </div>
 
 
-<blockquote>
 <p>See the <a href="https://github.com/konstruktoid/Docker/blob/master/Security/CheatSheet.adoc" target="_blank">Docker Security Cheat Sheet</a> by <a href="https://github.com/konstruktoid" target="_blank">Thomas Sjögren</a>: some good stuff about container hardening in there.</p>
 
-<p>Check out the <a href="https://github.com/docker/docker-bench-security" target="_blank">docker bench security script</a>, download the <a href="https://blog.docker.com/2015/05/understanding-docker-security-and-best-practices/" target="_blank">white papers</a> and subscribe to the <a href="https://www.docker.com/docker-security" target="_blank">mailing lists</a> (unfortunately Docker does not have a unique mailing list, only dev / user).</p>
+<div class="alert alert-">
+  <p>Check out the <strong><a href="https://github.com/docker/docker-bench-security" target="_blank">docker bench security script</a></strong> for a security benchmark.</p>
 
-<p>You should start off by using a kernel with unstable patches for <code>grsecurity / pax</code> compiled in, such as <a href="https://en.wikipedia.org/wiki/Alpine_Linux" target="_blank">Alpine Linux</a>.
-If you are using <code>grsecurity</code> in production, you should spring for <a href="https://grsecurity.net/business_support.php" target="_blank">commercial support</a> for the <a href="https://grsecurity.net/announce.php" target="_blank">stable patches</a>, same as you would do for RedHat. It&rsquo;s $200 a month, which is nothing to your devops budget.</p>
+</div>
+
+
+<blockquote>
+<p>Download the <a href="https://blog.docker.com/2015/05/understanding-docker-security-and-best-practices/" target="_blank">white papers</a> and subscribe to the <a href="https://www.docker.com/docker-security" target="_blank">mailing lists</a> (unfortunately Docker does not have a unique mailing list, only dev / user). To begin with, see this (foot)note from the cheatsheet <sup class="footnote-ref" id="fnref:begin"><a href="#fn:begin">6</a></sup>.</p>
 </blockquote>
 
 <div class="alert alert-">
@@ -1661,7 +1661,7 @@ docker run --rm -ti -v &quot;$PWD/httpd.conf:/usr/local/apache2/conf/httpd.conf:
 <h2 id="efficiency">Efficiency</h2>
 
 <ul>
-<li><p>Cleaning <code>APT</code> in a <code>RUN</code> layer. <em>Note</em> <sup class="footnote-ref" id="fnref:clean"><a href="#fn:clean">4</a></sup></p>
+<li><p>Cleaning <code>APT</code> in a <code>RUN</code> layer. <em>Note</em> <sup class="footnote-ref" id="fnref:clean"><a href="#fn:clean">7</a></sup></p>
 
 <pre><code>RUN {apt commands} \
 &amp;&amp; apt-get clean \
@@ -1690,8 +1690,14 @@ gzip -dc image.tgz | docker import - flat-image-name
  <a class="footnote-return" href="#fnref:os-footnote"><sup>^</sup></a></li>
 <li id="fn:usergroup-caveats">If testing on a virtual machine, it may be necessary to restart the virtual machine for changes to take effect. On a desktop Linux environment such as X Windows, log out of your session completely and then log back in.
  <a class="footnote-return" href="#fnref:usergroup-caveats"><sup>^</sup></a></li>
+<li id="fn:linux-version">Ubuntu 14.10 and below use <code>upstart</code>. See the <a href="https://docs.docker.com/install/linux/linux-postinstall/" target="_blank">post-installation</a> instructions for support.
+ <a class="footnote-return" href="#fnref:linux-version"><sup>^</sup></a></li>
 <li id="fn:gist">The gist was scraped and mildly edited on <em>12/22/18</em>, so it may behoove you to check the original source for any updates. If you find typos/corrections/updates that should be included below, please <a href="/#contact">get in touch</a>.
  <a class="footnote-return" href="#fnref:gist"><sup>^</sup></a></li>
+<li id="fn:security">For an understanding of what containers leave exposed, you should read <a href="https://www.nccgroup.trust/globalassets/our-research/us/whitepapers/2016/april/ncc_group_understanding_hardening_linux_containers-1-1.pdf" target="_blank">Understanding and Hardening Linux Containers</a> by <a href="https://twitter.com/dyn___" target="_blank">Aaron Grattafiori</a>. This is a complete and comprehensive guide to the issues involved with containers, with a plethora of links and footnotes leading on to yet more useful content.
+ <a class="footnote-return" href="#fnref:security"><sup>^</sup></a></li>
+<li id="fn:begin">You should start off by using a kernel with unstable patches for <code>grsecurity / pax</code> compiled in, such as <a href="https://en.wikipedia.org/wiki/Alpine_Linux" target="_blank">Alpine Linux</a>. If you are using <code>grsecurity</code> in production, you should spring for <a href="https://grsecurity.net/business_support.php" target="_blank">commercial support</a> for the <a href="https://grsecurity.net/announce.php" target="_blank">stable patches</a>, same as you would do for RedHat. It&rsquo;s $200 a month, which is nothing to your devops budget.
+ <a class="footnote-return" href="#fnref:begin"><sup>^</sup></a></li>
 <li id="fn:clean">This should be done in the same layer as other apt commands. Otherwise, the previous layers still persist the original information and your images will still be fat.
  <a class="footnote-return" href="#fnref:clean"><sup>^</sup></a></li>
 </ol>
