@@ -13,13 +13,23 @@
     
     
     <item>
-      <title>Example Demonstration</title>
+      <title>Demonstration with Jupyter Lab</title>
+      <link>https://www.michaelpilosov.com/openscience/demo/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/demo/</guid>
+      <description>Let&amp;rsquo;s first get a feel for the possibilities, and see what is possible by checking out some existing websites, organizations, and repositories. The idea of removing installation complexities, platform dependencies, etc. from your end-users is beautifully demonstrated by some of the recent advancements made over at Project Jupyter, all visible on their Github repository
+My favorite example that demonstrates how slick this new approach to setting up programming environmnents is the repository demonstration with JupyterLab + Binder from the binder-examples repository collection.</description>
+    </item>
+    
+    <item>
+      <title>Examples of Existing Projects</title>
       <link>https://www.michaelpilosov.com/openscience/example/</link>
       <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/openscience/example/</guid>
-      <description>Introduction Let&amp;rsquo;s first get a feel for the possibilities, and see what is possible by checking out some existing websites, organizations, and repositories. The idea of removing installation complexities, platform dependencies, etc. from your end-users is beautifully demonstrated by some of the recent advancements made over at Project Jupyter, all visible on their Github repository
-Example My favorite example that demonstrates how slick this new approach to setting up programming environmnents is JupyterLab + Binder.</description>
+      <description>There are a number of organizations with deployments you can experiment with.
+We list some of them here, along with useful links for more information (some of these may be turned into future pages).</description>
     </item>
     
     <item>
