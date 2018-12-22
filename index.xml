@@ -76,6 +76,30 @@ If there is a scenario that is not covered here that you would like us to write 
     </item>
     
     <item>
+      <title>Day 3</title>
+      <link>https://www.michaelpilosov.com/changelog/day3/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/changelog/day3/</guid>
+      <description>&lt;p&gt;Today I began to structure and fill in the basic information for the &lt;a href=&#34;https://www.michaelpilosov.com/openscience&#34;&gt;Open Science&lt;/a&gt; Documentation.
+It involved some research and collection of resources from disparated places and things I&amp;rsquo;ve done before.&lt;/p&gt;
+
+&lt;p&gt;I also sat down and in a couple minutes managed to figure out the &amp;ldquo;breaking changes&amp;rdquo; to my MathematicalMichael website under Hugo v0.52.
+The only file that needed to be changed (before updating the theme, that is) was the &lt;code&gt;$i,&lt;/code&gt; reference in a file I made myself:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vim themes/academic/layouts/partials/artwork_links.html 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next step was to copy the theme from &lt;code&gt;michaelpilosov/&lt;/code&gt; (which pulled from the github repo only a few days prior, and to which some minor changes were made) into &lt;code&gt;mathematicalmichael/themes/&lt;/code&gt; along with a copy of the config file.&lt;/p&gt;
+
+&lt;p&gt;Once the reference to the new theme is made, I expect a number of things to break.
+Here I will attempt to document one-by-one the changes I had to make to port my theme over, which I will attempt to do by leveraging the &amp;ldquo;lookup structure&amp;rdquo; of Hugo (something I read online).
+The idea is that rather than make changes to a theme that result in deviations that make merging new changes difficult, one makes changes by copying files into directories that are checked first, before &lt;code&gt;themes/&lt;/code&gt; is searched for &lt;code&gt;layouts&lt;/code&gt; or &lt;code&gt;partials&lt;/code&gt; files.
+My hope is that this will aid in future upgrades, since less differences will exist between my version of the theme and the master branch.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Demonstration with Jupyter Lab</title>
       <link>https://www.michaelpilosov.com/openscience/demo/</link>
       <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
@@ -445,6 +469,38 @@ By default, it accepts the login information of just the user who is running it,
     </item>
     
     <item>
+      <title>Day 2</title>
+      <link>https://www.michaelpilosov.com/changelog/day2/</link>
+      <pubDate>Thu, 20 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/changelog/day2/</guid>
+      <description>
+
+&lt;h1 id=&#34;summary&#34;&gt;Summary&lt;/h1&gt;
+
+&lt;p&gt;I spent the day working with the widget library and understanding how interpolating polynomials are handled by &lt;code&gt;scipy&lt;/code&gt;.
+Most of today&amp;rsquo;s developments were concerned with my random art and animation libraries, and I completed some of the most important components of the interface: setting time-dependent functions (independent of frames), and creating a widget that properly reads/writes data to a dictionary.&lt;/p&gt;
+
+&lt;p&gt;I still need to link the interfaces for the existing GUIs that write the properties.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Allow removal feature?&lt;/li&gt;
+&lt;li&gt;scrape the widgets and write to dictionary.&lt;/li&gt;
+&lt;li&gt;New GUI for stacking effects, connecting each effect to the needed time-series based on available entries in aforementioned dictionary.&lt;/li&gt;
+&lt;li&gt;All effects get applied with their time series, passed to animation function to be written to file.&lt;/li&gt;
+&lt;li&gt;Maybe use the Play button to preview? (Have a GUI focused on the &lt;code&gt;num_frames&lt;/code&gt; perspective). It is linked to the index.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;notes&#34;&gt;Notes&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Still having trouble with the mybinder.org connections with my &lt;code&gt;giftplanning&lt;/code&gt; library that tests out my deployment solutions for interactive blogs.&lt;/li&gt;
+&lt;li&gt;After conversing with Elliott last night, I think that writing a simple WebSocket atop Flask with his help may be a good solution. A JSON file gets passed back and forth, manipulations happen on a server. Still would prefer to just learn how to make the widgets do this part.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Day 1</title>
       <link>https://www.michaelpilosov.com/changelog/day1/</link>
       <pubDate>Wed, 19 Dec 2018 18:16:07 -0700</pubDate>
@@ -524,38 +580,6 @@ By default, it accepts the login information of just the user who is running it,
 &lt;li&gt;Phase 6: Merge with Animation code/projects. Talk about goals, current progress. Random animations on non-random images&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;Have another to tell the story of &lt;code&gt;Moving Pictures&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Day 2</title>
-      <link>https://www.michaelpilosov.com/changelog/day2/</link>
-      <pubDate>Wed, 19 Dec 2018 18:16:07 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/changelog/day2/</guid>
-      <description>
-
-&lt;h1 id=&#34;summary&#34;&gt;Summary&lt;/h1&gt;
-
-&lt;p&gt;I spent the day working with the widget library and understanding how interpolating polynomials are handled by &lt;code&gt;scipy&lt;/code&gt;.
-Most of today&amp;rsquo;s developments were concerned with my random art and animation libraries, and I completed some of the most important components of the interface: setting time-dependent functions (independent of frames), and creating a widget that properly reads/writes data to a dictionary.&lt;/p&gt;
-
-&lt;p&gt;I still need to link the interfaces for the existing GUIs that write the properties.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Allow removal feature?&lt;/li&gt;
-&lt;li&gt;scrape the widgets and write to dictionary.&lt;/li&gt;
-&lt;li&gt;New GUI for stacking effects, connecting each effect to the needed time-series based on available entries in aforementioned dictionary.&lt;/li&gt;
-&lt;li&gt;All effects get applied with their time series, passed to animation function to be written to file.&lt;/li&gt;
-&lt;li&gt;Maybe use the Play button to preview? (Have a GUI focused on the &lt;code&gt;num_frames&lt;/code&gt; perspective). It is linked to the index.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;notes&#34;&gt;Notes&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Still having trouble with the mybinder.org connections with my &lt;code&gt;giftplanning&lt;/code&gt; library that tests out my deployment solutions for interactive blogs.&lt;/li&gt;
-&lt;li&gt;After conversing with Elliott last night, I think that writing a simple WebSocket atop Flask with his help may be a good solution. A JSON file gets passed back and forth, manipulations happen on a server. Still would prefer to just learn how to make the widgets do this part.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -730,18 +754,6 @@ This is an especially huge time-saver for workshops.&lt;/p&gt;
       
       <guid>https://www.michaelpilosov.com/resume/presentations/</guid>
       <description>&lt;p&gt;Presentations can be sorted/viewed on the &lt;a href=&#34;https://www.michaelpilosov.com/talk&#34;&gt;Presentations Page&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Publications</title>
-      <link>https://www.michaelpilosov.com/resume/publications/</link>
-      <pubDate>Sun, 09 Sep 2018 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/resume/publications/</guid>
-      <description>&lt;p&gt;Publications can be sorted/viewed on the &lt;a href=&#34;https://www.michaelpilosov.com/publication&#34;&gt;Publications Page&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Manuscripts in review are not shown.&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
     
