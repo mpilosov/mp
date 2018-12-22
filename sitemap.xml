@@ -2,9 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     
+  
+    
+  
+    
+  
+    
     <url>
     
-      <loc>https://www.michaelpilosov.com/post/changelog/</loc>
+      <loc>https://www.michaelpilosov.com/changelog/</loc>
       <lastmod>2018-12-19T18:16:07-07:00</lastmod>
     </url>
     
@@ -12,32 +18,56 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/dockerhub/usage/</loc>
-      <lastmod>2018-12-17T00:00:00-07:00</lastmod>
+      <loc>https://www.michaelpilosov.com/changelog/day1/</loc>
+      <lastmod>2018-12-19T18:16:07-07:00</lastmod>
     </url>
     
   
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/dockerhub/intro/</loc>
-      <lastmod>2018-12-17T00:00:00-07:00</lastmod>
+      <loc>https://www.michaelpilosov.com/changelog/day2/</loc>
+      <lastmod>2018-12-19T18:16:07-07:00</lastmod>
     </url>
     
   
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/dockerhub/deploy/</loc>
-      <lastmod>2018-12-13T00:00:00-07:00</lastmod>
+      <loc>https://www.michaelpilosov.com/openscience/deploy/</loc>
+      <lastmod>2018-12-21T00:00:00-07:00</lastmod>
     </url>
     
   
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/dockerhub/</loc>
-      <lastmod>2018-09-09T00:00:00-06:00</lastmod>
+      <loc>https://www.michaelpilosov.com/openscience/</loc>
+      <lastmod>2018-12-21T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/openscience/getting-started/</loc>
+      <lastmod>2018-12-21T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/openscience/usage/</loc>
+      <lastmod>2018-12-21T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/openscience/intro/</loc>
+      <lastmod>2018-12-21T00:00:00-07:00</lastmod>
     </url>
     
   
@@ -182,7 +212,23 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/blog/</loc>
+      <lastmod>2017-01-01T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/post/</loc>
+      <lastmod>2017-01-01T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/post/2018/</loc>
       <lastmod>2017-01-01T00:00:00-07:00</lastmod>
     </url>
     
@@ -230,7 +276,7 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/post/getting-started/</loc>
+      <loc>https://www.michaelpilosov.com/post/2018/getting-started/</loc>
       <lastmod>2018-01-13T00:00:00-07:00</lastmod>
     </url>
     
@@ -362,7 +408,26 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/categories/artwork/</loc>
+      <lastmod>2018-12-19T18:16:07-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/categories/</loc>
+      <lastmod>2018-12-19T18:16:07-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/demo/</loc>
+      <lastmod>2018-01-13T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -428,6 +493,14 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/tags/test/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/categories/academia/</loc>
       <lastmod>2018-07-21T00:00:00-06:00</lastmod>
       <priority>0</priority>
@@ -457,6 +530,24 @@
     
       <loc>https://www.michaelpilosov.com/tags/computation/</loc>
       <lastmod>2018-07-21T00:00:00-06:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/demo/</loc>
+      <lastmod>2018-01-13T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/categories/documentation/</loc>
+      <lastmod>2018-12-19T18:16:07-07:00</lastmod>
       <priority>0</priority>
     </url>
     

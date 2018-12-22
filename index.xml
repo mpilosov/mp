@@ -11,14 +11,49 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Changelog</title>
-      <link>https://www.michaelpilosov.com/post/changelog/</link>
+      <title>Overview</title>
+      <link>https://www.michaelpilosov.com/wid/experience/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/wid/experience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Resources</title>
+      <link>https://www.michaelpilosov.com/wid/resources/</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/wid/resources/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recent Galleries</title>
+      <link>https://www.michaelpilosov.com/wid/posts/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/wid/posts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Day 1</title>
+      <link>https://www.michaelpilosov.com/changelog/day1/</link>
       <pubDate>Wed, 19 Dec 2018 18:16:07 -0700</pubDate>
       
-      <guid>https://www.michaelpilosov.com/post/changelog/</guid>
-      <description>&lt;p&gt;This documents the changes made to the academic theme to make this website work when upgrading from Hugo v.0.47 and theme version&amp;hellip; unknown. A couple back, for sure.&lt;/p&gt;
+      <guid>https://www.michaelpilosov.com/changelog/day1/</guid>
+      <description>
+
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;This documents the changes made to the academic theme to make this website work when upgrading from Hugo ver=0.47 and Academic Theme ver=2.4.&lt;/p&gt;
 
 &lt;p&gt;The upgrade for this website was performed on 12-19-2018.&lt;/p&gt;
+
+&lt;p&gt;All in all, it took the better part of an entire day to get familiar with all the nooks and crannies of the new updates and plan out the migration of the more complicated website&amp;hellip; &lt;a href=&#34;https://www.mathematicalmichael.com&#34; target=&#34;_blank&#34;&gt;Mathematical Michael&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;changes-made&#34;&gt;Changes Made&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Removed Weibo sharing icon in &lt;code&gt;/layouts/partials/share&lt;/code&gt; in the theme directory.&lt;/li&gt;
@@ -41,53 +76,376 @@
 &lt;li&gt;&lt;p&gt;resume widget changed to hyperlink to resume doc.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;em&gt;Need To-Do&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;to-do&#34;&gt;To-Do&lt;/h1&gt;
 
 &lt;ul&gt;
-&lt;li&gt;header/feature images for post, check how fb/twitter scrapes them.&lt;/li&gt;
+&lt;li&gt;header/feature images for post, check how fb/twitter scrapes them.
+
+&lt;ul&gt;
+&lt;li&gt;optional feature image without becoming header will be useful for posts that are galleries.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;migrate any posts/projects to new formatting.&lt;/li&gt;
 &lt;li&gt;think about how to migrate MathematicalMichael.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;next-steps&#34;&gt;Next Steps&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;Things I&amp;rsquo;m Considering&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;No need to re-make publication type.
+
+&lt;ul&gt;
+&lt;li&gt;Since posts can be linked to projects, and filters can be applied within widgets, we should have all the flexibility we need.&lt;/li&gt;
+&lt;li&gt;Taken with the new folder structure of pages, the overall directory structure remains quite clean.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Use widgets pagetype to construct/mimick the &lt;code&gt;/artwork&lt;/code&gt; page.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Have carousels and project widgets linking to galleries and slideshows.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Can additionally link out to a &lt;code&gt;docs&lt;/code&gt; page that describes the art in more depth, also linked to from the projects page of &lt;code&gt;Probably Art&lt;/code&gt; to tell the &amp;ldquo;story&amp;rdquo; of this project over time and in its phases.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Phase 1: Directed Study&lt;/li&gt;
+&lt;li&gt;Phase 2: Pickup with Pocket CHIP, restart coding in Python&lt;/li&gt;
+&lt;li&gt;Phase 3: After some time, picked it up again and added a whole bunch of functionality, attempted to get random art automated in Squarespace&lt;/li&gt;
+&lt;li&gt;Phase 4: Pick up again when I get into GCode. Adds functionality.&lt;/li&gt;
+&lt;li&gt;Phase 5: Lapse again. Then finally tackle creating a framework that will work long-term. Talk about requirements. How is has to be in Python, based on stable packages, recreatable and deterministic. GCode scalable. Talk about some to-do&amp;rsquo;s (bumpers, bash scripts that wrap around to position plotter better). Show images of getting plotter back up again.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Phase 6: Merge with Animation code/projects. Talk about goals, current progress. Random animations on non-random images&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Have another to tell the story of &lt;code&gt;Moving Pictures&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
     
     <item>
-      <title>Use-Cases</title>
-      <link>https://www.michaelpilosov.com/dockerhub/usage/</link>
-      <pubDate>Mon, 17 Dec 2018 00:00:00 -0700</pubDate>
+      <title>Day 2</title>
+      <link>https://www.michaelpilosov.com/changelog/day2/</link>
+      <pubDate>Wed, 19 Dec 2018 18:16:07 -0700</pubDate>
       
-      <guid>https://www.michaelpilosov.com/dockerhub/usage/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;../test/blob_[007_002_2500]_r[Betax100_20000_[15000_52000]_t[Beta360_008_[1000_1000]].png&#34; alt=&#34;img&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Introduction</title>
-      <link>https://www.michaelpilosov.com/dockerhub/intro/</link>
-      <pubDate>Sun, 16 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/dockerhub/intro/</guid>
+      <guid>https://www.michaelpilosov.com/changelog/day2/</guid>
       <description>
 
-&lt;p&gt;In this tutorial, I&amp;rsquo;ll share my top 10 tips for getting started with Academic:&lt;/p&gt;
+&lt;h1 id=&#34;summary&#34;&gt;Summary&lt;/h1&gt;
 
-&lt;h2 id=&#34;tip-1&#34;&gt;Tip 1&lt;/h2&gt;
+&lt;p&gt;I spent the day working with the widget library and understanding how interpolating polynomials are handled by &lt;code&gt;scipy&lt;/code&gt;.
+Most of today&amp;rsquo;s developments were concerned with my random art and animation libraries, and I completed some of the most important components of the interface: setting time-dependent functions (independent of frames), and creating a widget that properly reads/writes data to a dictionary.&lt;/p&gt;
 
-&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;I still need to link the interfaces for the existing GUIs that write the properties.&lt;/p&gt;
 
-&lt;h2 id=&#34;tip-2&#34;&gt;Tip 2&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Allow removal feature?&lt;/li&gt;
+&lt;li&gt;scrape the widgets and write to dictionary.&lt;/li&gt;
+&lt;li&gt;New GUI for stacking effects, connecting each effect to the needed time-series based on available entries in aforementioned dictionary.&lt;/li&gt;
+&lt;li&gt;All effects get applied with their time series, passed to animation function to be written to file.&lt;/li&gt;
+&lt;li&gt;Maybe use the Play button to preview? (Have a GUI focused on the &lt;code&gt;num_frames&lt;/code&gt; perspective). It is linked to the index.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;h1 id=&#34;notes&#34;&gt;Notes&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Still having trouble with the mybinder.org connections with my &lt;code&gt;giftplanning&lt;/code&gt; library that tests out my deployment solutions for interactive blogs.&lt;/li&gt;
+&lt;li&gt;After conversing with Elliott last night, I think that writing a simple WebSocket atop Flask with his help may be a good solution. A JSON file gets passed back and forth, manipulations happen on a server. Still would prefer to just learn how to make the widgets do this part.&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
     <item>
       <title>Deployment</title>
-      <link>https://www.michaelpilosov.com/dockerhub/deploy/</link>
-      <pubDate>Thu, 13 Dec 2018 00:00:00 -0700</pubDate>
+      <link>https://www.michaelpilosov.com/openscience/deploy/</link>
+      <pubDate>Tue, 18 Dec 2018 00:00:00 -0700</pubDate>
       
-      <guid>https://www.michaelpilosov.com/dockerhub/deploy/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/4dKKlcK.gif&#34; alt=&#34;animation-of-experiment&#34; /&gt;&lt;/p&gt;
+      <guid>https://www.michaelpilosov.com/openscience/deploy/</guid>
+      <description>
+
+&lt;p&gt;Here we describe the necessary steps for deployment.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Please pardon the state of this document as it is a living and breathing set of instructions, and this part of the project has yet to be addressed.&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;kubernetes&#34;&gt;Kubernetes&lt;/h1&gt;
+
+&lt;h2 id=&#34;what-is-it&#34;&gt;What is it?&lt;/h2&gt;
+
+&lt;h2 id=&#34;why-use-it&#34;&gt;Why use it?&lt;/h2&gt;
+
+&lt;h2 id=&#34;possibilities&#34;&gt;Possibilities&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;bare-metal&#34;&gt;&amp;ldquo;Bare Metal&amp;rdquo;&lt;/h1&gt;
+
+&lt;h2 id=&#34;what-is-it-1&#34;&gt;What is it?&lt;/h2&gt;
+
+&lt;h2 id=&#34;why-use-it-1&#34;&gt;Why use it?&lt;/h2&gt;
+
+&lt;p&gt;Perhaps you have old computers lying around (if at a university, these may be more than enough for a considerable server) and are looking to repurpose them.
+Alternatively, your university or company may already have available server resources that you can access for such purposes as classrooms or workshops.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;binder&#34;&gt;Binder&lt;/h1&gt;
+
+&lt;h2 id=&#34;what-is-it-2&#34;&gt;What is it?&lt;/h2&gt;
+
+&lt;h2 id=&#34;setting-up-kubernetes-for-binder&#34;&gt;Setting up Kubernetes for Binder&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Getting Started</title>
+      <link>https://www.michaelpilosov.com/openscience/getting-started/</link>
+      <pubDate>Mon, 17 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/getting-started/</guid>
+      <description>
+
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;Let&amp;rsquo;s first get a feel for the possibilities, and &lt;strong&gt;see&lt;/strong&gt; what is possible by checking out some existing websites, organizations, and repositories.
+The idea of removing installation complexities, platform dependencies, etc. from your end-users is beautifully demonstrated by some of the recent advancements made over at &lt;a href=&#34;https://jupyter.org&#34; target=&#34;_blank&#34;&gt;Project Jupyter&lt;/a&gt;, all visible on &lt;a href=&#34;https://github.com/jupyter/&#34; target=&#34;_blank&#34;&gt;their Github repository&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;example&#34;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;My favorite example that demonstrates how slick this new approach to setting up programming environmnents is &lt;a href=&#34;https://github.com/binder-examples/jupyterlab&#34; target=&#34;_blank&#34;&gt;JupyterLab + Binder&lt;/a&gt;.
+Head on over there, click on the little badge that reads &amp;ldquo;launch | binder,&amp;rdquo; and it will automatically open up a notebook for you.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:timeout&#34;&gt;&lt;a href=&#34;#fn:timeout&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;
+Have a look around, run code, do whatever you like.&lt;/p&gt;
+
+&lt;p&gt;To then see how easy adding functionality is, run the following in a new code-cell in the notebook that opens:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;!jupyter labextension install @jupyter-widgets/jupyterlab-manager 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The exclamation point tells the notebook to run the command using &lt;code&gt;bash.&lt;/code&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:bash&#34;&gt;&lt;a href=&#34;#fn:bash&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;.
+Since widgets are already pre-packaged, all we have to do to enable them is to tell JupyterLab to get the necessary Javascript resources to show them to you in your client (web-browser).
+A bunch of dialogue should show up, and then once it finishes, replace the code you just ran with&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import ipywidgets as wd
+wd.FloatSlider()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and you should see a slider pop up.&lt;/p&gt;
+
+&lt;p&gt;To avoid this step and ensure that the widget functionality is ready-to-go, one can fork the &lt;a href=&#34;https://github.com/binder-examples/jupyterlab&#34; target=&#34;_blank&#34;&gt;repository&lt;/a&gt;, and edit the file &lt;code&gt;binder/postBuild&lt;/code&gt;, which runs after the initial repository is built (using &lt;a href=&#34;https://github.com/jupyter/repo2docker&#34; target=&#34;_blank&#34;&gt;repo2docker&lt;/a&gt; on the backend) but before the client displays the interface.&lt;/p&gt;
+
+&lt;h2 id=&#34;history&#34;&gt;History&lt;/h2&gt;
+
+&lt;p&gt;(This brief history represents the view of the author of this webpage and may not be completely accurate).
+Project Jupyter is the maturation of the iPython project, a command-line program that allowed for an interactive Python shell, and what I relied on in my early days of learning Python.
+Their flagship development/breakthrough was the &lt;a href=&#34;http://jupyter.org/install&#34; target=&#34;_blank&#34;&gt;Notebook&lt;/a&gt;, which forms the foundation for all the other products.
+The &lt;em&gt;notebook is an HTML page&lt;/em&gt; that is served for you by a &lt;em&gt;jupyter notebook server&lt;/em&gt;.
+It looks and feels like a desktop application.&lt;/p&gt;
+
+&lt;p&gt;It was undoubtedly inspired by Mathematica&amp;rsquo;s &amp;ldquo;Notebooks,&amp;rdquo; but released as an open-source project, leading to its rapidly-expanding adoption in the scientific community.
+The key to understanding why the notebook is so special is that it allows the web-browser to interact with code running on any computer (be it your own or a remote server).
+By divorcing the computation from the rendering, the developers allow for a unified framework so that scientists can focus on writing code and not on keeping up with dev-ops architecture.&lt;/p&gt;
+
+&lt;p&gt;The idea is simply that once one adapts to the Jupyter ecosystem, they are freed from platform considerations.
+Code is shareable across Windows/Mac/Linux, and viewable in the same environment that it was developed in by using a web-browser.
+It seeks to completely replace IDEs (Integrated Development Environments), which were the best solutions for setting up someone who was new to programming.&lt;/p&gt;
+
+&lt;p&gt;Basically, there was a serious desire to make getting up-and-running with software development easier.
+Now, thanks to Jupyter, a teacher can set up isolated computing environments for every student and be sure that their experiences are uniform.
+This is an especially huge time-saver for workshops.&lt;/p&gt;
+
+&lt;h2 id=&#34;widgets&#34;&gt;Widgets&lt;/h2&gt;
+
+&lt;p&gt;If you have ever tried developing a graphical user interface (GUI) for your code, you&amp;rsquo;ll know how cumbersome it can be.
+Thankfully, the &lt;a href=&#34;http://jupyter.org/widgets&#34; target=&#34;_blank&#34;&gt;Widgets&lt;/a&gt; package from Project Jupyter greatly simplifies linking your code to a large library of existing &amp;ldquo;widgets,&amp;rdquo; which do everything from giving you sliders to fully-interactive maps.&lt;/p&gt;
+
+&lt;p&gt;I highly encourage you to see what is possible to embed in your notebooks (and webpages) by scrolling through their &lt;a href=&#34;http://jupyter.org/widgets&#34; target=&#34;_blank&#34;&gt;examples&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;jupyter-nbviewer&#34;&gt;Jupyter nbviewer&lt;/h2&gt;
+
+&lt;p&gt;Paste a link to a notebook into &lt;a href=&#34;https://nbviewer.jupyter.org/&#34; target=&#34;_blank&#34;&gt;this form&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;relevant-projects&#34;&gt;Relevant Projects&lt;/h1&gt;
+
+&lt;p&gt;In this documentation, we will research and likely leverage (most if not all of) the following open-source projects.
+We will eventually address each in depth within this documentation and will update this section with relevant links as necessary.
+For now, we provide a brief overview and summary of what we are looking into.&lt;/p&gt;
+
+&lt;h2 id=&#34;binderhub&#34;&gt;BinderHub&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jupyterhub/binderhub&#34; target=&#34;_blank&#34;&gt;BinderHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;BinderHub allows you to &lt;code&gt;BUILD&lt;/code&gt; and &lt;code&gt;REGISTER&lt;/code&gt; a Docker image using a GitHub repository, then CONNECT with JupyterHub, allowing you to create a public IP address that allows users to interact with the code and environment within a live JupyterHub instance. You can select a specific branch name, commit, or tag to serve.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;repo2docker&#34;&gt;Repo2Docker&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jupyter/repo2docker&#34; target=&#34;_blank&#34;&gt;repo2docker&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;As the title suggest, this package turns a github repository into a docker image that can be built.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;repo2docker fetches a git repository and builds a container image based on the configuration files found in the repository.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Binder leverages this to then serve the contents of the image in conjuction with JupyterHub.&lt;/p&gt;
+
+&lt;h2 id=&#34;jupyterhub&#34;&gt;JupyterHub&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jupyterhub/jupyterhub&#34; target=&#34;_blank&#34;&gt;JupyterHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;With &lt;a href=&#34;https://jupyterhub.readthedocs.io&#34; target=&#34;_blank&#34;&gt;JupyterHub&lt;/a&gt; you can create a
+&lt;strong&gt;multi-user Hub&lt;/strong&gt; which spawns, manages, and proxies multiple instances of the
+single-user &lt;a href=&#34;https://jupyter-notebook.readthedocs.io&#34; target=&#34;_blank&#34;&gt;Jupyter notebook&lt;/a&gt;
+server.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jupyter.org&#34; target=&#34;_blank&#34;&gt;Project Jupyter&lt;/a&gt; created JupyterHub to support many
+users. The Hub can offer notebook servers to a class of students, a corporate
+data science workgroup, a scientific research project, or a high performance
+computing group.&lt;/p&gt;
+
+&lt;h2 id=&#34;technical-overview&#34;&gt;Technical overview&lt;/h2&gt;
+
+&lt;p&gt;Three main actors make up JupyterHub:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;multi-user &lt;strong&gt;Hub&lt;/strong&gt; (tornado process)&lt;/li&gt;
+&lt;li&gt;configurable http &lt;strong&gt;proxy&lt;/strong&gt; (node-http-proxy)&lt;/li&gt;
+&lt;li&gt;multiple &lt;strong&gt;single-user Jupyter notebook servers&lt;/strong&gt; (Python/Jupyter/tornado)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Basic principles for operation are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Hub launches a proxy.&lt;/li&gt;
+&lt;li&gt;Proxy forwards all requests to Hub by default.&lt;/li&gt;
+&lt;li&gt;Hub handles login, and spawns single-user servers on demand.&lt;/li&gt;
+&lt;li&gt;Hub configures proxy to forward url prefixes to the single-user notebook
+servers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;JupyterHub also provides a
+&lt;a href=&#34;http://petstore.swagger.io/?url=https://raw.githubusercontent.com/jupyter/jupyterhub/master/docs/rest-api.yml#/default&#34; target=&#34;_blank&#34;&gt;REST API&lt;/a&gt;
+for administration of the Hub and its users.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I personally run Jupyterhub on a remote server so that I always have access to a secure and familiar environment if I ever need to test out some code and find myself without my laptop.
+By default, it accepts the login information of just the user who is running it, but we will see later how it can be configured for its intended use as a multi-user authentication hub.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:timeout&#34;&gt;&lt;em&gt;Be warned&lt;/em&gt;: After a few minutes of inactivity, the &lt;a href=&#34;https://mybinder.org&#34; target=&#34;_blank&#34;&gt;mybinder.org&lt;/a&gt; service that is hosting the docker container which serves this web application will time-out. This means that it will assume you are done with it and clean up the resources it created for you. Say goodbye to whatever you were working on.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:timeout&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:bash&#34;&gt;Alternatively, you could open a new Terminal instance in JupyterLab and run the same code (without the exclamation mark).
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:bash&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Use-Cases</title>
+      <link>https://www.michaelpilosov.com/openscience/usage/</link>
+      <pubDate>Mon, 17 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/usage/</guid>
+      <description>
+
+&lt;p&gt;Here we describe the several use-cases we hope to address within this documentation.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;local-laboratory&#34;&gt;Local Laboratory&lt;/h1&gt;
+
+&lt;p&gt;Here is how one sets up Jupyter on one&amp;rsquo;s own machine (&amp;ldquo;local installation&amp;rdquo;).
+Since Project Jupyter relies on web frameworks and operates through your browser, the instructions will also apply for installing on a remote server.&lt;/p&gt;
+
+&lt;p&gt;The instructions for doing so can be found on the &lt;a href=&#34;./conda&#34;&gt;Install Anaconda&lt;/a&gt; page.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;classroom-resources&#34;&gt;Classroom Resources&lt;/h1&gt;
+
+&lt;p&gt;You are a teacher with a small-to-medium sized classroom and want to set up a centralized server for your students to have access to notebooks you wrote. You want:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;An account for each student that they can use to log in from any (modern) web-browser.&lt;/li&gt;
+&lt;li&gt;The ability to add/remove/edit files in each student&amp;rsquo;s file-system, perhaps for
+
+&lt;ul&gt;
+&lt;li&gt;updates to a classroom github/gitlab/bitbucket repository (without teaching the students git)&lt;/li&gt;
+&lt;li&gt;troubleshooting for projects/homework&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Isolated environments so that students cannot interfere witth eachothers files
+
+&lt;ul&gt;
+&lt;li&gt;Functionality for groups of students to be able to access shared files, collaboration (without git)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;The ability to control the appearance of the web-browser
+
+&lt;ul&gt;
+&lt;li&gt;(This should all be possible but is low priority)&lt;/li&gt;
+&lt;li&gt;Add university branding&lt;/li&gt;
+&lt;li&gt;Restrict features (such as Terminal)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Handles simultaneous users (up to the whole class at one time)&lt;/li&gt;
+&lt;li&gt;Be able to control how much resources each student has (CPU, memory, etc)
+
+&lt;ul&gt;
+&lt;li&gt;Should be controllable if using Docker (?)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;workshops&#34;&gt;Workshops&lt;/h1&gt;
+
+&lt;p&gt;You want to run a short workshop (perhaps at a conference, or on a weekend at your university), and want similar functionality to the classroom environment, but you care less about the permanence of files.
+Once the workshop is over, you plan to delete everything.&lt;/p&gt;
+
+&lt;p&gt;We will cover how this is done.
+In theory (as of this writing), the same Docker image can be used with slight modifications, then deleted whenever one chooses to do so.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;interactive-publishing&#34;&gt;Interactive Publishing&lt;/h1&gt;
+
+&lt;p&gt;You wrote a scientific paper, developed most of the code in Python (perhaps using Jupyter Notebooks/Lab), and want to write interactive visualizations for your webpage or some online publication.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:languages&#34;&gt;&lt;a href=&#34;#fn:languages&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:languages&#34;&gt;We hope to address doing this with R or Julia (or any other kernel), but since there are language-specific tools (such as Shiny for R, Dash for Python), we focus on the most directly-applicable use-case for the &lt;a href=&#34;https://www.mathematicalmichael.com&#34; target=&#34;_blank&#34;&gt;author&lt;/a&gt;, which is to convert &lt;code&gt;ipywidgets&lt;/code&gt; embedded in a notebook into embeddable HTML pages.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:languages&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>https://www.michaelpilosov.com/openscience/intro/</link>
+      <pubDate>Sun, 16 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/intro/</guid>
+      <description>&lt;p&gt;Here we briefly describe some of the available resources and possible directions this documentation might take.&lt;/p&gt;
+
+&lt;p&gt;Most notably, there is &lt;a href=&#34;https://mybinder.org&#34; target=&#34;_blank&#34;&gt;Binder&lt;/a&gt;, which allows you to recreate an entire environment as-needed in an isolated instance that is destroyed once it is no longer needed.
+The ideal scenario is to have Binder installed on a server, and we discuss the process of setting up such a server in this documentation, but for now we address setting up an environment on your own computer.&lt;/p&gt;
+
+&lt;p&gt;We focus here on Python, and rely on &lt;a href=&#34;https://www.anaconda.com/download&#34; target=&#34;_blank&#34;&gt;Anaconda&lt;/a&gt; deployed on a Linux distribution.
+Here, we use Ubuntu 18.04, but the instructions should be comparable on previous versions as well as on Mac and Windows, though some of the interactions in the command-line will be different for Windows users.&lt;/p&gt;
 </description>
     </item>
     
@@ -271,28 +629,6 @@ Game concept by Dr. Burt Simon. Copyright 2016 E. Regan &amp; M. Pilosov.
 &lt;p&gt;Enjoy.&lt;/p&gt;
 
 &lt;p&gt;If you have any questions&amp;hellip;&lt;/p&gt;
-
-&lt;section class=&#34;contact&#34; id=&#34;contact&#34;&gt;
-
-
-
-    &lt;form id=&#34;form-contact&#34; action=&#34;https://formspree.io/mpilosov@gmail.com&#34; method=&#34;POST&#34;&gt;
-      
-        &lt;div class=&#34;col-xs-12 col-sm-6&#34;&gt;&lt;input type=&#34;text&#34; name=&#34;name&#34; placeholder=&#34;Name&#34; required&gt;&lt;/div&gt;
-        &lt;div class=&#34;col-xs-12 col-sm-6&#34;&gt;&lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;Email&#34; required&gt;&lt;/div&gt;
-        &lt;div class=&#34;col-xs-12&#34;&gt;&lt;input type=&#34;text&#34; name=&#34;_subject&#34; placeholder=&#34;Subject&#34; required&gt;&lt;/div&gt;
-        &lt;div class=&#34;col-xs-12&#34;&gt;&lt;textarea name=&#34;message&#34; placeholder=&#34;Message&#34; required&gt;&lt;/textarea&gt;&lt;/div&gt;
-        &lt;input type=&#34;text&#34; name=&#34;_gotcha&#34; style=&#34;display:none&#34;&gt;
-        &lt;input type=&#34;hidden&#34; name=&#34;_next&#34; value=&#34;/&#34;&gt;
-        &lt;div class=&#34;col-xs-12 contact-submit&#34;&gt;
-          &lt;input id=&#34;form-submit&#34; type=&#34;submit&#34; value=&#34;Send&#34;&gt;
-          &lt;span id=&#34;form-thankyou&#34; style=&#34;visibility:hidden&#34;&gt;Thanks for your email! I&#39;ll be in touch shortly.&lt;/span&gt;
-        &lt;/div&gt;
-      
-    &lt;/form&gt;
-
-&lt;/section&gt;
-
 </description>
     </item>
     
@@ -323,153 +659,6 @@ Game concept by Dr. Burt Simon. Copyright 2016 E. Regan &amp; M. Pilosov.
       <guid>https://www.michaelpilosov.com/privacy/</guid>
       <description>&lt;p&gt;This website uses no cookies and has no tracking enabled whatsoever on the server on which this site is hosted.
 However, Google Analytics is enabled (as it is on much of the web), which does take anonymized data about visitors to the site.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Optimal Experimental Design of Time Series Data in a Consistent Bayesian Framework</title>
-      <link>https://www.michaelpilosov.com/talk/siam_uq18/</link>
-      <pubDate>Sun, 01 Apr 2018 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/talk/siam_uq18/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>That’s an Inverse Problem!</title>
-      <link>https://www.michaelpilosov.com/talk/framsc18/</link>
-      <pubDate>Mon, 05 Mar 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/talk/framsc18/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Employment</title>
-      <link>https://www.michaelpilosov.com/resume/colorado/</link>
-      <pubDate>Thu, 01 Mar 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/resume/colorado/</guid>
-      <description>
-
-&lt;p align=&#34;center&#34;&gt;
-(only showing academic jobs)
-&lt;/p&gt;
-
-&lt;h3 id=&#34;university-of-colorado-denver-downtown-campus&#34;&gt;University of Colorado: Denver (Downtown Campus)&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Student Teaching Assistant, Calculus I (Aug-Dec 2016)&lt;/li&gt;
-&lt;li&gt;Student Research Assistant (Jan-Aug 2016)&lt;/li&gt;
-&lt;li&gt;&amp;ldquo;DiaMonD: An Integrated Multifaceted Approach to Mathematics at the Interfaces of Data, Models, and Decisions,&amp;rdquo; DE-SC0009279&lt;/li&gt;
-&lt;li&gt;Student Teaching Assistant, Calculus I (Aug-Dec 2015)&lt;/li&gt;
-&lt;li&gt;Tutor, Mathematics Education Research Center (Aug-Dec 2015)&lt;/li&gt;
-&lt;li&gt;Student Research Assistant (Aug 2014-May 2015)&lt;/li&gt;
-&lt;li&gt;&amp;ldquo;CAREER: Foundations for Understanding and Reaching the Limits of Standard Numerical Linear Algebra,&amp;rdquo; NSF CCF 1054864&lt;/li&gt;
-&lt;li&gt;Student Research Assistant (Jun-Aug 2014)&lt;/li&gt;
-&lt;li&gt;&amp;ldquo;SI2-SSI: Collaborative Research: Sustained Innovation for Linear Algebra Software (SILAS),&amp;rdquo; NSF ACI 1339797&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Employment</title>
-      <link>https://www.michaelpilosov.com/resume/newyork/</link>
-      <pubDate>Thu, 01 Mar 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/resume/newyork/</guid>
-      <description>
-
-&lt;p align=&#34;center&#34;&gt;
-(only showing academic jobs)
-&lt;/p&gt;
-
-&lt;h3 id=&#34;state-university-of-new-york-college-at-geneseo&#34;&gt;State University of New York: College at Geneseo&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Teaching Assistant for Linear Programming &amp;amp; Operations Research (Jan-May 2014)&lt;/li&gt;
-&lt;li&gt;Geneseo Research Foundation Undergraduate STEM Summer Research Fellow (Jun-Aug 2013)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Volunteer Data Analyst for As Green As It Gets (Nov-Dec 2012)&lt;/p&gt;
-
-&lt;p&gt;Private Tutor in Mathematics (Summer-Fall 2013)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Honors &amp; Awards</title>
-      <link>https://www.michaelpilosov.com/resume/honors/</link>
-      <pubDate>Thu, 01 Mar 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/resume/honors/</guid>
-      <description>
-
-&lt;h3 id=&#34;lynn-bateman-teaching-fellowship&#34;&gt;Lynn Bateman Teaching Fellowship&lt;/h3&gt;
-
-&lt;p&gt;2018, CU Denver&lt;/p&gt;
-
-&lt;h3 id=&#34;phi-beta-kappa-society&#34;&gt;Phi Beta Kappa Society&lt;/h3&gt;
-
-&lt;p&gt;2014, SUNY Geneseo, &lt;a href=&#34;https://www.geneseo.edu/pbk/student_members&#34; target=&#34;_blank&#34;&gt;Alpha Omega Chapter&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;pi-mu-epsilon-mathematics-honor-society&#34;&gt;Pi Mu Epsilon Mathematics Honor Society&lt;/h3&gt;
-
-&lt;p&gt;2014, SUNY Geneseo, &lt;a href=&#34;https://www.geneseo.edu/math/honorary_society&#34; target=&#34;_blank&#34;&gt;New York Alpha Delta Chapter&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;golden-key-international-honor-society&#34;&gt;Golden Key International Honor Society&lt;/h3&gt;
-
-&lt;p&gt;2014, SUNY Geneseo&lt;/p&gt;
-
-&lt;h3 id=&#34;suny-geneseo-award-for-excellence-in-mathematics&#34;&gt;SUNY Geneseo Award for Excellence in Mathematics&lt;/h3&gt;
-
-&lt;p&gt;2014-2015 (&lt;a href=&#34;https://www.geneseo.edu/math/scholarship_photos_2014&#34; target=&#34;_blank&#34;&gt;photos&lt;/a&gt;)&lt;/p&gt;
-
-&lt;h3 id=&#34;74th-annual-william-lowell-putnam-math-competition&#34;&gt;74th annual William Lowell Putnam Math Competition&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.geneseo.edu/math/scholarships&#34; target=&#34;_blank&#34;&gt;First Place&lt;/a&gt;, Pi Mu Epsilon Alpha Delta Chapter&lt;br&gt;
-Score: 10 points, ranked &lt;sup&gt;1324&lt;/sup&gt;&amp;frasl;&lt;sub&gt;4113&lt;/sub&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;2014-university-of-rochester-math-olympiad&#34;&gt;2014 University of Rochester Math Olympiad&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.geneseo.edu/math/scholarships&#34; target=&#34;_blank&#34;&gt;First Place&lt;/a&gt;, Pi Mu Epsilon Alpha Delta Chapter&lt;/p&gt;
-
-&lt;h3 id=&#34;president-s-list&#34;&gt;President&amp;rsquo;s List&lt;/h3&gt;
-
-&lt;p&gt;Spring 2014&lt;/p&gt;
-
-&lt;h3 id=&#34;dean-s-list&#34;&gt;Dean&amp;rsquo;s List&lt;/h3&gt;
-
-&lt;p&gt;Fall 2011, 13; Spring 2012, 13&lt;/p&gt;
-
-&lt;h3 id=&#34;full-scholarship-to-partake-in-the-summer-suny-oswego-global-laboratory-project-in-brazil&#34;&gt;Full Scholarship to partake in the Summer SUNY Oswego Global Laboratory Project in Brazil&lt;/h3&gt;
-
-&lt;p&gt;2014, (declined)&lt;/p&gt;
-
-&lt;h3 id=&#34;geneseo-foundation-stem-undergraduate-summer-research-fellowship-grant&#34;&gt;Geneseo Foundation STEM Undergraduate Summer Research Fellowship Grant&lt;/h3&gt;
-
-&lt;p&gt;2013&lt;/p&gt;
-
-&lt;h3 id=&#34;suny-research-foundation-summer-research-assistantship-grant&#34;&gt;SUNY Research Foundation Summer Research Assistantship Grant&lt;/h3&gt;
-
-&lt;p&gt;2012, (declined)&lt;/p&gt;
-
-&lt;h3 id=&#34;geneseo-open-chess-tournament-unrated-section&#34;&gt;Geneseo Open Chess Tournament (unrated section)&lt;/h3&gt;
-
-&lt;p&gt;1st place (Spring &amp;lsquo;13)&lt;br&gt;
-2nd place (Fall &amp;lsquo;13)&lt;/p&gt;
-
-&lt;h3 id=&#34;sarah-lawrence-college-poetry-festival-public-school-initiative&#34;&gt;Sarah Lawrence College Poetry Festival Public School Initiative&lt;/h3&gt;
-
-&lt;p&gt;First Place, 2009 Contest&lt;/p&gt;
-
-&lt;h3 id=&#34;mathematics-league-certificate-of-merit-for-superior-achievement-in-the-high-school-contest&#34;&gt;Mathematics League Certificate of Merit for Superior Achievement in the High School Contest&lt;/h3&gt;
-
-&lt;p&gt;2009-10&lt;/p&gt;
 </description>
     </item>
     

@@ -12,27 +12,5 @@
 	<atom:link href="https://www.michaelpilosov.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
-    <item>
-      <title>Changelog</title>
-      <link>https://www.michaelpilosov.com/post/changelog/</link>
-      <pubDate>Wed, 19 Dec 2018 18:16:07 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/post/changelog/</guid>
-      <description>This documents the changes made to the academic theme to make this website work when upgrading from Hugo v.0.47 and theme version&amp;hellip; unknown. A couple back, for sure.
-The upgrade for this website was performed on 12-19-2018.
- Removed Weibo sharing icon in /layouts/partials/share in the theme directory. Changed footer in layouts/partials/footer_section.html Re-did config.toml line-by-line, disabled night/day mode. Created slides and docs based on the exampleSite folder, including creating the directory /assets/css/reveal_custom.</description>
-    </item>
-    
-    <item>
-      <title>Academic: the website designer for Hugo</title>
-      <link>https://www.michaelpilosov.com/post/getting-started/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/post/getting-started/</guid>
-      <description>Academic makes it easy to create a beautiful website for free using Markdown. Customize anything on your site with widgets, themes, and language packs.
-Follow our easy step by step guide to learn how to build your own free website with Academic. Check out the personal demo or the business demo of what you&amp;rsquo;ll get in less than 10 minutes.
- View the documentation Ask a question Request a feature or report a bug Updating?</description>
-    </item>
-    
   </channel>
 </rss>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Artwork on Resume of Michael Pilosov</title>
+    <link>https://www.michaelpilosov.com/categories/artwork/</link>
+    <description>Recent content in Artwork on Resume of Michael Pilosov</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Wed, 19 Dec 2018 18:16:07 -0700</lastBuildDate>
+    
+	<atom:link href="https://www.michaelpilosov.com/categories/artwork/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Changelog</title>
+      <link>https://www.michaelpilosov.com/changelog/</link>
+      <pubDate>Wed, 19 Dec 2018 18:16:07 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/changelog/</guid>
+      <description>The purpose of this document is to record the changes made to this website and various other notes that I may want to come back to. I do not expect it to be of particular use to anyone other than myself.</description>
+    </item>
+    
+    <item>
+      <title>Academic: the website designer for Hugo</title>
+      <link>https://www.michaelpilosov.com/post/2018/getting-started/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/post/2018/getting-started/</guid>
+      <description>Academic makes it easy to create a beautiful website for free using Markdown. Customize anything on your site with widgets, themes, and language packs.
+Follow our easy step by step guide to learn how to build your own free website with Academic. Check out the personal demo or the business demo of what you&amp;rsquo;ll get in less than 10 minutes.
+ View the documentation Ask a question Request a feature or report a bug Updating?</description>
+    </item>
+    
+  </channel>
+</rss>
