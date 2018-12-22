@@ -317,8 +317,12 @@
         <a href="/changelog/day1/">Day 1</a>
       </li>
       
+      <li >
+        <a href="/changelog/day2/">Day 2</a>
+      </li>
+      
       <li class="active">
-        <a href="/changelog/day3/">Day 2</a>
+        <a href="/changelog/day3/">Day 3</a>
       </li>
       
     </ul>
@@ -337,7 +341,11 @@
       <p class="docs-toc-title">On this page</p>
       
 
-      
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#to-do">To Do</a></li>
+</ul>
+</nav>
 
       <ul class="nav toc-top">
         <li><a href="#">Back to top</a></li>
@@ -355,7 +363,9 @@
           <h1 itemprop="name">Day 3</h1>
 
           <div class="article-style" itemprop="articleBody">
-            <p>Today I began to structure and fill in the basic information for the <a href="/openscience">Open Science</a> Documentation.
+            
+
+<p>Today I began to structure and fill in the basic information for the <a href="/openscience">Open Science</a> Documentation.
 It involved some research and collection of resources from disparated places and things I&rsquo;ve done before.</p>
 
 <p>I also sat down and in a couple minutes managed to figure out the &ldquo;breaking changes&rdquo; to my MathematicalMichael website under Hugo v0.52.
@@ -369,7 +379,256 @@ The only file that needed to be changed (before updating the theme, that is) was
 <p>Once the reference to the new theme is made, I expect a number of things to break.
 Here I will attempt to document one-by-one the changes I had to make to port my theme over, which I will attempt to do by leveraging the &ldquo;lookup structure&rdquo; of Hugo (something I read online).
 The idea is that rather than make changes to a theme that result in deviations that make merging new changes difficult, one makes changes by copying files into directories that are checked first, before <code>themes/</code> is searched for <code>layouts</code> or <code>partials</code> files.
-My hope is that this will aid in future upgrades, since less differences will exist between my version of the theme and the master branch.</p>
+My hope is that this will aid in future upgrades, since less differences will exist between my version of the theme and the master branch.
+A really useful command (for comparing files), that I used to see what needed to change in the master configuration file for my theme (compared to the updated one from this website) was:</p>
+
+<pre><code class="language-bash">diff -y file1.md file2.md
+</code></pre>
+
+<p>which will print out two files side-by-side directly into the UNIX Terminal. Excellent.</p>
+
+<p>After making the appropriate changes to the <code>config.toml</code> file (which were all straightforward), I ensured that the site built with the new Hugo <em>and</em> the new configuration file but <em>without</em> the new theme. It did. All was well.</p>
+
+<p>Then I changed the theme to point to the updated one:</p>
+
+<pre><code>theme = &quot;hugo-academic&quot;
+</code></pre>
+
+<p>which yielded the following error (kind of expected to be honest):</p>
+
+<pre><code class="language-bash">Error: 
+Error building site: 
+failed to render pages: 
+render of &quot;home&quot; failed: 
+execute of template failed: 
+template: index.html:4:3: 
+executing &quot;index.html&quot; at &lt;partial &quot;widget_page...&gt;: 
+
+error calling partial: 
+&quot;/media/mathematicalmichael/HANK/repos/mathematicalmichael/themes/hugo-academic/layouts/partials/widget_page.html:23:9&quot;: 
+execute of template failed: 
+template: partials/widget_page.html:23:9: 
+executing &quot;partials/widget_page.html&quot; at &lt;partial $widget $par...&gt;: 
+
+error calling partial: 
+Partial &quot;widgets/artworks.html&quot; not found
+</code></pre>
+
+<p>So why did this happen?</p>
+
+<p>Well, I had defined my own template page called <code>artworks</code> that was modeled on the <code>publications</code> style of page.
+I used this to publish a webpage for each piece of art, complete with a rich tagging-system automated through Python.
+I made random art and had written code that created pages for that art to live on.
+Any changes made to the front-matter could be easily applied later.</p>
+
+<p>I believe that simply moving some files to directories that exist <em>above</em> <code>themes</code> will resolve my problems.</p>
+
+<p>However, I know there will be an opportunity to switch to page-bundles and leverage the <code>image-gallery</code> feature in <code>v3.0</code> of <code>Hugo-Academic</code>. My thinking is as follows:</p>
+
+<ul>
+<li>Instead of daily pages, make weekly ones as galleries.</li>
+<li>Alternatively, keep daily postings as-is, and add galleries additionally. See if you can link images to the main folder, so all art can continue to live in one folder without duplicates.</li>
+<li>You can make galleries using page-bundles as a separate way to interact with the art.</li>
+
+<li><p>Definitely need to integrate a widget page that hosts all the art. I don&rsquo;t want to clutter the home page with everything.</p>
+
+<ul>
+<li>I think that clicking from the main menu to <code>art/</code> should suffice.</li>
+<li>Curate the experience, minimize contact with <code>/artwork/</code> page (i.e. make slideshows link to other content rather than the search they perform now, which can be a bit slow.</li>
+</ul></li>
+
+<li><p>Since slideshows are just a markdown file, we should have no trouble linking to images in another folder!</p>
+
+<ul>
+<li>will take some playing around to figure out exactly the right directory structure.</li>
+</ul></li>
+</ul>
+
+<p>** Main Goal ** for the time being is to make sure the site builds with the new theme. We can add features and functionality later on.
+Today&rsquo;s agenda is simply to allow migration to Hugo v0.52 on my Macbook by ensuring the site builds with the new version.
+Having the new theme work would be an added bonus.</p>
+
+<blockquote>
+<p>I suspect all that needs to happen is a little migration of <code>partials</code> and <code>shortcodes</code>.</p>
+</blockquote>
+
+<pre><code class="language-bash">cp themes/academic/layouts/partials/artwork_* layouts/partials/
+</code></pre>
+
+<p>Did not change the error.</p>
+
+<pre><code class="language-bash">mkdir layouts/partials/widgets/
+cp themes/academic/layouts/partials/widgets/artworks* layouts/partials/widgets/
+</code></pre>
+
+<p>Resolved that but sprang a new error:</p>
+
+<pre><code class="language-bash">Error: 
+Error building site: 
+failed to render pages: 
+render of &quot;home&quot; failed: 
+execute of template failed: 
+template: 
+index.html:4:3: 
+executing &quot;index.html&quot; at &lt;partial &quot;widget_page...&gt;: 
+error calling partial: 
+&quot;/media/mathematicalmichael/HANK/repos/mathematicalmichael/themes/hugo-academic/layouts/partials/widget_page.html:23:9&quot;: 
+execute of template failed: 
+template: 
+partials/widget_page.html:23:9: 
+executing &quot;partials/widget_page.html&quot; at &lt;partial $widget $par...&gt;: 
+error calling partial: 
+Partial &quot;widgets/search.html&quot; not found
+</code></pre>
+
+<p>Okay, so let&rsquo;s move <code>widgets/search.html</code> over?</p>
+
+<pre><code class="language-bash">cp themes/academic/layouts/partials/widgets/search.html layouts/partials/widgets/
+</code></pre>
+
+<pre><code class="language-bash">hugo server --disableFastRender
+</code></pre>
+
+<p>And that did it! Wow, relatively painless. Now let&rsquo;s see how it looks.</p>
+
+<p>The layout is dark for some reason&hellip; Enabling light/dark mode shows me the white I want to see but with inverted header.
+<code>:mailto</code> icon is broken. Change to &ldquo;fas&rdquo; instead of &ldquo;fab&rdquo; in <code>config.toml</code>, line 293.</p>
+
+<p>Back to the theme.. let&rsquo;s grab a file and move it to the root directory and figure out where to put it.</p>
+
+<pre><code class="language-bash">cp themes/hugo-academic/data/themes/dark.toml .
+mkdir data
+mkdir data/themes
+mv dark.toml data/themes/
+</code></pre>
+
+<p>I then proceeded to change some things to get the right colors. Still not sure if this is correct. I also changed the theme to <code>self.toml</code> and referenced that in the <code>config.toml</code> file.</p>
+
+<p>Next test: Day/Night mode (re-enable, see what happens).</p>
+
+<p>Day Mode is fine.
+Night mode makes my logos look weird (though I do like the look overall). Top bar is also white instead of black for some reason.</p>
+
+<p>Editing <code>data/themes/self.toml</code> to rename the theme (mistake to not have done that before), and toggle <code>light = true</code>, since I did make it into a light theme.</p>
+
+<pre><code># Theme metadata
+name = &quot;Self&quot;
+
+# Is theme light or dark?
+light = true
+
+# Primary
+primary = &quot;hsl(339, 90%, 68%)&quot;
+primary_light = &quot;hsl(339, 90%, 78%)&quot;
+primary_dark = &quot;hsl(339, 90%, 58%)&quot;
+
+# Menu
+menu_primary = &quot;#fff&quot;
+menu_text = &quot;rgba(0,0,0,0.6)&quot;
+menu_text_active = &quot;hsl(339, 90%, 68%)&quot;
+menu_title = &quot;#2b2b2b&quot;
+
+# Home sections
+home_section_odd = &quot;rgb(255, 255, 255)&quot;
+home_section_even = &quot;rgb(247, 247, 247)&quot;
+</code></pre>
+
+<p><em>Note</em>: Also broken is the search widget. Sad.</p>
+
+<p>Disable search widget&hellip; Should not have moved it in the first place!
+<em>There is a new search feature</em> that renders this one useless. I will now remove the <code>search.html</code> widget (and <code>search.md</code> from <code>content/home/</code></p>
+
+<p>Contact form&hellip;
+Had to paste in the new format. I was using a custom partial code (note to self&hellip; <em>delete that</em>) to make a formspree link. Now I don&rsquo;t have to!</p>
+
+<p>Also, remove <code>Search</code> from menu in <code>config.toml</code>.
+After deleting <code>layouts/shortcodes/contactme.html</code> (my custom formspree link), in favor of using the one the upgraded theme provided, it appears that my website is now settled into the new theme. I did have to remove all references to this deleted shortcode, of course.</p>
+
+<p>Day/night mode works correctly. (would like to make my logo transparent though).</p>
+
+<p>Okay, well I knew it was too good to be true that things just worked. While pages loaded correctly, before building the final site, I made sure to investigate the directories a bit more and found that a bunch of files prepended with <code>._XXX.md</code> had populated my website directories.
+<em>This must be how they&rsquo;re ensuring backward-compatibility.</em></p>
+
+<p>Well, I refactored the pages into page bundles with this shell script:</p>
+
+<pre><code class="language-bash">#!/bin/sh
+
+# Helps migrate from v2.4.0 to v3.0.0
+#
+# Refactor a page named `X.md` to `content/&lt;section&gt;/X/index.md` to use the
+# new page bundles and featured image system
+#
+# - E.g. a post `content/post/X.md` is converted to `content/post/X/index.md`
+
+refactor_pages_to_page_bundles()
+{
+  if [ ! -d ./content/ ]; then
+    echo &quot;Please run script from root of hugo site&quot;
+  fi
+  local files=&quot;$(find ./content/ -iname '*.md' -not -iname '*index.md' -not -ipath './content/home/*')&quot;
+  for file in ${files}; do
+    local pagedir=&quot;${file%.md}&quot;
+
+    echo &quot;${file} -&gt; ${pagedir}/index.md&quot;
+    if [ ! -d &quot;${pagedir}&quot; ]; then
+      mkdir &quot;${pagedir}&quot;
+    fi
+
+    mv &quot;${file}&quot; &quot;${pagedir}/index.md&quot;
+  done
+}
+
+# Bash Strict Mode
+set -eu
+
+# set -x
+refactor_pages_to_page_bundles &quot;$@&quot;
+
+</code></pre>
+
+<p><a href="https://github.com/sourcethemes/academic-scripts/blob/master/refactor-pages-to-page-bundles.sh" target="_blank">Source</a></p>
+
+<p>After poking around, it looks like the pages obey the proper structure now (for the most part)&hellip; There are a few stray <code>.md</code> files around.</p>
+
+<p>I will push the changes live but later on go through both websites to ensure that bundles are everywhere and no stray pages are left.</p>
+
+<hr />
+
+<h1 id="to-do">To Do</h1>
+
+<p>Notably, I will need to</p>
+
+<ul>
+<li>update my python script that writes project pages and art pages.</li>
+<li>ensure featured images (optional) are properly handled</li>
+<li>find out how galleries can work with the <code>artwork/images</code> directory, which so far doesn&rsquo;t seem to be conflicting with the page-bundle format.</li>
+<li>Make sure the artwork search works. Seems to be broken, though <code>publications</code> search still works.</li>
+</ul>
+
+<p>Oh, I think all that needs to happen is to move
+<code>/themes/academic/layouts/artwork</code> into the <code>layouts</code> folder I have in my root directory.</p>
+
+<pre><code class="language-bash">mv themes/academic/layouts/artwork/ layouts/
+</code></pre>
+
+<p>But that led to an error regarding <code>partial header_image.html</code>. Thus, it seems like I will need to copy the new publication template over and edit it again. At least this time I will document it.</p>
+
+<pre><code class="language-bash">cp themes/hugo-academic/layouts/publication/single.html  layouts/artwork/
+</code></pre>
+
+<p>And then I replaced all instances of <code>publication</code> with <code>artwork</code></p>
+
+<p>But that still didn&rsquo;t lead to the filter-ability that I wanted.</p>
+
+<p>The default behavior was to paginate and list all of the art, which doesn&rsquo;t have image previews but honestly is just fine, especially since it loads quickly.</p>
+
+<p>The widget on the homepage that links to the search of artwork though is now broken as a consequence. I can fall back on searching by tags, or disable the widget temporarily until I set up galleries for the artworks.</p>
+
+<ul>
+<li>If I write a python script that scrapes the <code>artwork/images</code> folder and creates galleries linked to that, well that would be just perfect.</li>
+<li>This widget can be linked to those galleries, or slideshows.</li>
+<li>Disable it for now.</li>
+</ul>
 
           </div>
 
@@ -400,7 +659,7 @@ My hope is that this will aid in future upgrades, since less differences will ex
   
 
   <p class="powered-by">
-    &copy; 2018 &middot; 
+    &copy; 2018 Michael Pilosov &middot; 
 
     
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic</a> +
