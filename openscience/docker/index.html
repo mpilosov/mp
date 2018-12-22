@@ -15,7 +15,7 @@
   
     
   
-  <meta name="description" content="Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info  Layers Containers  Lifecycle Starting and Stopping  CPU Constraints Memory Constraints Capabilities  Info Import / Export Executing Commands  Dockerfile  Instructions Tutorial Examples  Version  Cleaning up Load/Save image Import/Export container  Networks  Lifecycle Info Connection  Registries  Registries v.">
+  <meta name="description" content="Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info  Layers Containers  Lifecycle Starting and Stopping Info Import / Export Executing Commands CPU Constraints Memory Constraints Capabilities  Dockerfile  Instructions Tutorial Examples  Version  Cleaning up Load/Save image Import/Export container  Networks  Lifecycle Info Connection  Registries  Registries v.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/openscience/docker/">
@@ -124,7 +124,7 @@
   <meta property="og:site_name" content="Michael Pilosov | Academic Website">
   <meta property="og:url" content="https://www.michaelpilosov.com/openscience/docker/">
   <meta property="og:title" content="Docker | Michael Pilosov | Academic Website">
-  <meta property="og:description" content="Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info  Layers Containers  Lifecycle Starting and Stopping  CPU Constraints Memory Constraints Capabilities  Info Import / Export Executing Commands  Dockerfile  Instructions Tutorial Examples  Version  Cleaning up Load/Save image Import/Export container  Networks  Lifecycle Info Connection  Registries  Registries v."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
+  <meta property="og:description" content="Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info  Layers Containers  Lifecycle Starting and Stopping Info Import / Export Executing Commands CPU Constraints Memory Constraints Capabilities  Dockerfile  Instructions Tutorial Examples  Version  Cleaning up Load/Save image Import/Export container  Networks  Lifecycle Info Connection  Registries  Registries v."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-12-22T00:00:00-07:00">
@@ -280,6 +280,10 @@
 
         
 
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
         
 
       </ul>
@@ -469,15 +473,13 @@
 <li><a href="#containers-1">Containers</a>
 <ul>
 <li><a href="#lifecycle-1">Lifecycle</a></li>
-<li><a href="#starting-and-stopping">Starting and Stopping</a>
-<ul>
-<li><a href="#cpu-constraints">CPU Constraints</a></li>
-<li><a href="#memory-constraints">Memory Constraints</a></li>
-<li><a href="#capabilities">Capabilities</a></li>
-</ul></li>
+<li><a href="#starting-and-stopping">Starting and Stopping</a></li>
 <li><a href="#info-1">Info</a></li>
 <li><a href="#import-export">Import / Export</a></li>
 <li><a href="#executing-commands">Executing Commands</a></li>
+<li><a href="#cpu-constraints">CPU Constraints</a></li>
+<li><a href="#memory-constraints">Memory Constraints</a></li>
+<li><a href="#capabilities">Capabilities</a></li>
 </ul></li>
 <li><a href="#dockerfile">Dockerfile</a>
 <ul>
@@ -619,15 +621,13 @@
 <li><a href="#containers-1">Containers</a>
 <ul>
 <li><a href="#lifecycle-1">Lifecycle</a></li>
-<li><a href="#starting-and-stopping">Starting and Stopping</a>
-<ul>
-<li><a href="#cpu-constraints">CPU Constraints</a></li>
-<li><a href="#memory-constraints">Memory Constraints</a></li>
-<li><a href="#capabilities">Capabilities</a></li>
-</ul></li>
+<li><a href="#starting-and-stopping">Starting and Stopping</a></li>
 <li><a href="#info-1">Info</a></li>
 <li><a href="#import-export">Import / Export</a></li>
 <li><a href="#executing-commands">Executing Commands</a></li>
+<li><a href="#cpu-constraints">CPU Constraints</a></li>
+<li><a href="#memory-constraints">Memory Constraints</a></li>
+<li><a href="#capabilities">Capabilities</a></li>
 </ul></li>
 <li><a href="#dockerfile">Dockerfile</a>
 <ul>
@@ -1313,50 +1313,6 @@ You can think of this as mimicking the keystrokes a user would have to enter in 
 
 <p>Restart policies on crashed docker instances are <a href="http://container42.com/2014/09/30/docker-restart-policies/" target="_blank">covered here</a>.</p>
 
-<h4 id="cpu-constraints">CPU Constraints</h4>
-
-<p>You can limit CPU, either using a percentage of all CPUs, or by using specific cores.</p>
-
-<p>For example, you can tell the <a href="https://docs.docker.com/engine/reference/run/#/cpu-share-constraint" target="_blank"><code>cpu-shares</code></a> setting.  The setting is a bit strange &ndash; 1024 means 100% of the CPU, so if you want the container to take 50% of all CPU cores, you should specify 512.  See <a href="https://goldmann.pl/blog/2014/09/11/resource-management-in-docker/#_cpu" target="_blank">https://goldmann.pl/blog/2014/09/11/resource-management-in-docker/#_cpu</a> for more:</p>
-
-<pre><code>docker run -ti -c 512 agileek/cpuset-test
-</code></pre>
-
-<p>You can also only use some CPU cores using <a href="https://docs.docker.com/engine/reference/run/#/cpuset-constraint" target="_blank"><code>cpuset-cpus</code></a>.  See <a href="https://agileek.github.io/docker/2014/08/06/docker-cpuset/" target="_blank">https://agileek.github.io/docker/2014/08/06/docker-cpuset/</a> for details and some nice videos:</p>
-
-<pre><code>docker run -ti --cpuset-cpus=0,4,6 agileek/cpuset-test
-</code></pre>
-
-<p>Note that Docker can still <strong>see</strong> all of the CPUs inside the container &ndash; it just isn&rsquo;t using all of them.  See <a href="https://github.com/docker/docker/issues/20770" target="_blank">https://github.com/docker/docker/issues/20770</a> for more details.</p>
-
-<h4 id="memory-constraints">Memory Constraints</h4>
-
-<p>You can also set <a href="https://docs.docker.com/engine/reference/run/#/user-memory-constraints" target="_blank">memory constraints</a> on Docker:</p>
-
-<pre><code>docker run -it -m 300M ubuntu:14.04 /bin/bash
-</code></pre>
-
-<h4 id="capabilities">Capabilities</h4>
-
-<p>Linux capabilities can be set by using <code>cap-add</code> and <code>cap-drop</code>.  See <a href="https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities" target="_blank">https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities</a> for details.  This should be used for greater security.</p>
-
-<p>To mount a FUSE based filesystem, you need to combine both &ndash;cap-add and &ndash;device:</p>
-
-<pre><code>docker run --rm -it --cap-add SYS_ADMIN --device /dev/fuse sshfs
-</code></pre>
-
-<p>Give access to a single device:</p>
-
-<pre><code>docker run -it --device=/dev/ttyUSB0 debian bash
-</code></pre>
-
-<p>Give access to all devices:</p>
-
-<pre><code>docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb debian bash
-</code></pre>
-
-<p>more info about privileged containers <a href="https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities" target="_blank">here</a></p>
-
 <h3 id="info-1">Info</h3>
 
 <ul>
@@ -1388,6 +1344,55 @@ You can think of this as mimicking the keystrokes a user would have to enter in 
 </ul>
 
 <p>To enter a running container, attach a new shell process to a running container called foo, use: <code>docker exec -it foo /bin/bash</code>.</p>
+
+<h3 id="cpu-constraints">CPU Constraints</h3>
+
+<p>You can limit CPU, either using a percentage of all CPUs, or by using specific cores.</p>
+
+<p>For example, you can tell the <a href="https://docs.docker.com/engine/reference/run/#/cpu-share-constraint" target="_blank"><code>cpu-shares</code></a> setting.  The setting is a bit strange &ndash; 1024 means 100% of the CPU, so if you want the container to take 50% of all CPU cores, you should specify 512.  See <a href="https://goldmann.pl/blog/2014/09/11/resource-management-in-docker/#_cpu" target="_blank">https://goldmann.pl/blog/2014/09/11/resource-management-in-docker/#_cpu</a> for more:</p>
+
+<pre><code>docker run -ti -c 512 agileek/cpuset-test
+</code></pre>
+
+<p>You can also only use some CPU cores using <a href="https://docs.docker.com/engine/reference/run/#/cpuset-constraint" target="_blank"><code>cpuset-cpus</code></a>.  See <a href="https://agileek.github.io/docker/2014/08/06/docker-cpuset/" target="_blank">https://agileek.github.io/docker/2014/08/06/docker-cpuset/</a> for details and some nice videos:</p>
+
+<pre><code>docker run -ti --cpuset-cpus=0,4,6 agileek/cpuset-test
+</code></pre>
+
+<p>Note that Docker can still <strong>see</strong> all of the CPUs inside the container &ndash; it just isn&rsquo;t using all of them.  See <a href="https://github.com/docker/docker/issues/20770" target="_blank">https://github.com/docker/docker/issues/20770</a> for more details.</p>
+
+<h3 id="memory-constraints">Memory Constraints</h3>
+
+<p>You can also set <a href="https://docs.docker.com/engine/reference/run/#/user-memory-constraints" target="_blank">memory constraints</a> on Docker:</p>
+
+<pre><code>docker run -it -m 300M ubuntu:14.04 /bin/bash
+</code></pre>
+
+<h3 id="capabilities">Capabilities</h3>
+
+<p>Linux capabilities can be set by using <code>cap-add</code> and <code>cap-drop</code>.  See <a href="https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities" target="_blank">https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities</a> for details.</p>
+
+<p><div class="alert alert-warning">
+  <p>This should be used for greater security.</p>
+
+</div>
+
+To mount a FUSE based filesystem, you need to combine both &ndash;cap-add and &ndash;device:</p>
+
+<pre><code>docker run --rm -it --cap-add SYS_ADMIN --device /dev/fuse sshfs
+</code></pre>
+
+<p>Give access to a single device:</p>
+
+<pre><code>docker run -it --device=/dev/ttyUSB0 debian bash
+</code></pre>
+
+<p>Give access to all devices:</p>
+
+<pre><code>docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb debian bash
+</code></pre>
+
+<p>more info about privileged containers <a href="https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities" target="_blank">here</a></p>
 
 <hr />
 

@@ -128,15 +128,13 @@
 &lt;li&gt;&lt;a href=&#34;#containers-1&#34;&gt;Containers&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#lifecycle-1&#34;&gt;Lifecycle&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#starting-and-stopping&#34;&gt;Starting and Stopping&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#cpu-constraints&#34;&gt;CPU Constraints&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#memory-constraints&#34;&gt;Memory Constraints&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#capabilities&#34;&gt;Capabilities&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#starting-and-stopping&#34;&gt;Starting and Stopping&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#info-1&#34;&gt;Info&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#import-export&#34;&gt;Import / Export&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#executing-commands&#34;&gt;Executing Commands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cpu-constraints&#34;&gt;CPU Constraints&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#memory-constraints&#34;&gt;Memory Constraints&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#capabilities&#34;&gt;Capabilities&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#dockerfile&#34;&gt;Dockerfile&lt;/a&gt;
 &lt;ul&gt;
@@ -822,50 +820,6 @@ You can think of this as mimicking the keystrokes a user would have to enter in 
 
 &lt;p&gt;Restart policies on crashed docker instances are &lt;a href=&#34;http://container42.com/2014/09/30/docker-restart-policies/&#34; target=&#34;_blank&#34;&gt;covered here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h4 id=&#34;cpu-constraints&#34;&gt;CPU Constraints&lt;/h4&gt;
-
-&lt;p&gt;You can limit CPU, either using a percentage of all CPUs, or by using specific cores.&lt;/p&gt;
-
-&lt;p&gt;For example, you can tell the &lt;a href=&#34;https://docs.docker.com/engine/reference/run/#/cpu-share-constraint&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;cpu-shares&lt;/code&gt;&lt;/a&gt; setting.  The setting is a bit strange &amp;ndash; 1024 means 100% of the CPU, so if you want the container to take 50% of all CPU cores, you should specify 512.  See &lt;a href=&#34;https://goldmann.pl/blog/2014/09/11/resource-management-in-docker/#_cpu&#34; target=&#34;_blank&#34;&gt;https://goldmann.pl/blog/2014/09/11/resource-management-in-docker/#_cpu&lt;/a&gt; for more:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker run -ti -c 512 agileek/cpuset-test
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You can also only use some CPU cores using &lt;a href=&#34;https://docs.docker.com/engine/reference/run/#/cpuset-constraint&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;cpuset-cpus&lt;/code&gt;&lt;/a&gt;.  See &lt;a href=&#34;https://agileek.github.io/docker/2014/08/06/docker-cpuset/&#34; target=&#34;_blank&#34;&gt;https://agileek.github.io/docker/2014/08/06/docker-cpuset/&lt;/a&gt; for details and some nice videos:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker run -ti --cpuset-cpus=0,4,6 agileek/cpuset-test
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Note that Docker can still &lt;strong&gt;see&lt;/strong&gt; all of the CPUs inside the container &amp;ndash; it just isn&amp;rsquo;t using all of them.  See &lt;a href=&#34;https://github.com/docker/docker/issues/20770&#34; target=&#34;_blank&#34;&gt;https://github.com/docker/docker/issues/20770&lt;/a&gt; for more details.&lt;/p&gt;
-
-&lt;h4 id=&#34;memory-constraints&#34;&gt;Memory Constraints&lt;/h4&gt;
-
-&lt;p&gt;You can also set &lt;a href=&#34;https://docs.docker.com/engine/reference/run/#/user-memory-constraints&#34; target=&#34;_blank&#34;&gt;memory constraints&lt;/a&gt; on Docker:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker run -it -m 300M ubuntu:14.04 /bin/bash
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;capabilities&#34;&gt;Capabilities&lt;/h4&gt;
-
-&lt;p&gt;Linux capabilities can be set by using &lt;code&gt;cap-add&lt;/code&gt; and &lt;code&gt;cap-drop&lt;/code&gt;.  See &lt;a href=&#34;https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities&#34; target=&#34;_blank&#34;&gt;https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities&lt;/a&gt; for details.  This should be used for greater security.&lt;/p&gt;
-
-&lt;p&gt;To mount a FUSE based filesystem, you need to combine both &amp;ndash;cap-add and &amp;ndash;device:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker run --rm -it --cap-add SYS_ADMIN --device /dev/fuse sshfs
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Give access to a single device:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker run -it --device=/dev/ttyUSB0 debian bash
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Give access to all devices:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb debian bash
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;more info about privileged containers &lt;a href=&#34;https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
-
 &lt;h3 id=&#34;info-1&#34;&gt;Info&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -897,6 +851,55 @@ You can think of this as mimicking the keystrokes a user would have to enter in 
 &lt;/ul&gt;
 
 &lt;p&gt;To enter a running container, attach a new shell process to a running container called foo, use: &lt;code&gt;docker exec -it foo /bin/bash&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;cpu-constraints&#34;&gt;CPU Constraints&lt;/h3&gt;
+
+&lt;p&gt;You can limit CPU, either using a percentage of all CPUs, or by using specific cores.&lt;/p&gt;
+
+&lt;p&gt;For example, you can tell the &lt;a href=&#34;https://docs.docker.com/engine/reference/run/#/cpu-share-constraint&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;cpu-shares&lt;/code&gt;&lt;/a&gt; setting.  The setting is a bit strange &amp;ndash; 1024 means 100% of the CPU, so if you want the container to take 50% of all CPU cores, you should specify 512.  See &lt;a href=&#34;https://goldmann.pl/blog/2014/09/11/resource-management-in-docker/#_cpu&#34; target=&#34;_blank&#34;&gt;https://goldmann.pl/blog/2014/09/11/resource-management-in-docker/#_cpu&lt;/a&gt; for more:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -ti -c 512 agileek/cpuset-test
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can also only use some CPU cores using &lt;a href=&#34;https://docs.docker.com/engine/reference/run/#/cpuset-constraint&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;cpuset-cpus&lt;/code&gt;&lt;/a&gt;.  See &lt;a href=&#34;https://agileek.github.io/docker/2014/08/06/docker-cpuset/&#34; target=&#34;_blank&#34;&gt;https://agileek.github.io/docker/2014/08/06/docker-cpuset/&lt;/a&gt; for details and some nice videos:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -ti --cpuset-cpus=0,4,6 agileek/cpuset-test
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that Docker can still &lt;strong&gt;see&lt;/strong&gt; all of the CPUs inside the container &amp;ndash; it just isn&amp;rsquo;t using all of them.  See &lt;a href=&#34;https://github.com/docker/docker/issues/20770&#34; target=&#34;_blank&#34;&gt;https://github.com/docker/docker/issues/20770&lt;/a&gt; for more details.&lt;/p&gt;
+
+&lt;h3 id=&#34;memory-constraints&#34;&gt;Memory Constraints&lt;/h3&gt;
+
+&lt;p&gt;You can also set &lt;a href=&#34;https://docs.docker.com/engine/reference/run/#/user-memory-constraints&#34; target=&#34;_blank&#34;&gt;memory constraints&lt;/a&gt; on Docker:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -it -m 300M ubuntu:14.04 /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;capabilities&#34;&gt;Capabilities&lt;/h3&gt;
+
+&lt;p&gt;Linux capabilities can be set by using &lt;code&gt;cap-add&lt;/code&gt; and &lt;code&gt;cap-drop&lt;/code&gt;.  See &lt;a href=&#34;https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities&#34; target=&#34;_blank&#34;&gt;https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities&lt;/a&gt; for details.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;This should be used for greater security.&lt;/p&gt;
+
+&lt;/div&gt;
+
+To mount a FUSE based filesystem, you need to combine both &amp;ndash;cap-add and &amp;ndash;device:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run --rm -it --cap-add SYS_ADMIN --device /dev/fuse sshfs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Give access to a single device:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -it --device=/dev/ttyUSB0 debian bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Give access to all devices:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb debian bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;more info about privileged containers &lt;a href=&#34;https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
