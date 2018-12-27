@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>documentation on Michael Pilosov | Academic Website</title>
-    <link>https://www.michaelpilosov.com/categories/documentation/</link>
-    <description>Recent content in documentation on Michael Pilosov | Academic Website</description>
+    <title>dev on Michael Pilosov | Academic Website</title>
+    <link>https://www.michaelpilosov.com/tags/dev/</link>
+    <description>Recent content in dev on Michael Pilosov | Academic Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
     <lastBuildDate>Tue, 25 Dec 2018 00:00:00 -0700</lastBuildDate>
     
-	<atom:link href="https://www.michaelpilosov.com/categories/documentation/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.michaelpilosov.com/tags/dev/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -75,6 +75,15 @@ I still need to link the interfaces for the existing GUIs that write the propert
       <description>Introduction This documents the changes made to the academic theme to make this website work when upgrading from Hugo ver=0.47 and Academic Theme ver=2.4.
 The upgrade for this website was performed on 12-19-2018.
 All in all, it took the better part of an entire day to get familiar with all the nooks and crannies of the new updates and plan out the migration of the more complicated website&amp;hellip; Mathematical Michael.</description>
+    </item>
+    
+    <item>
+      <title>devlog</title>
+      <link>https://www.michaelpilosov.com/devlog/</link>
+      <pubDate>Wed, 19 Dec 2018 18:16:07 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/devlog/</guid>
+      <description>The purpose of this document is to record the changes made to this website and various other notes that I may want to come back to. I do not expect it to be of particular use to anyone other than myself.</description>
     </item>
     
   </channel>

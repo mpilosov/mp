@@ -67,11 +67,20 @@
     </item>
     
     <item>
-      <title>demo</title>
-      <link>https://www.michaelpilosov.com/tags/demo/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      <title>dev</title>
+      <link>https://www.michaelpilosov.com/tags/dev/</link>
+      <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
       
-      <guid>https://www.michaelpilosov.com/tags/demo/</guid>
+      <guid>https://www.michaelpilosov.com/tags/dev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://www.michaelpilosov.com/tags/docker/</link>
+      <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/docker/</guid>
       <description></description>
     </item>
     
@@ -94,11 +103,38 @@
     </item>
     
     <item>
+      <title>jupyter</title>
+      <link>https://www.michaelpilosov.com/tags/jupyter/</link>
+      <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/jupyter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>national lab</title>
       <link>https://www.michaelpilosov.com/tags/national-lab/</link>
       <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/national-lab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openscience</title>
+      <link>https://www.michaelpilosov.com/tags/openscience/</link>
+      <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/openscience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>webdev</title>
+      <link>https://www.michaelpilosov.com/tags/webdev/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/webdev/</guid>
       <description></description>
     </item>
     

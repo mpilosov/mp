@@ -38,6 +38,1125 @@
     </item>
     
     <item>
+      <title>Day 6</title>
+      <link>https://www.michaelpilosov.com/devlog/day6/</link>
+      <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/devlog/day6/</guid>
+      <description>
+
+&lt;h1 id=&#34;status-report&#34;&gt;Status Report&lt;/h1&gt;
+
+&lt;p&gt;Okay so where are we at?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Spawner&lt;/code&gt; needs to be sussed out. Right now I really like DockerSpawner, and it seems to persist storage.
+
+&lt;ul&gt;
+&lt;li&gt;Each student gets a user account but it&amp;rsquo;s only used for authenetication right now. Can&amp;rsquo;t figure out volume-mapping.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;With &lt;code&gt;dockerspawner.DockerSpawner&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Each time someone is logged in, a container is either loaded up or built from &lt;code&gt;jupyterlab_img&lt;/code&gt; container. These are very flexible, many stacks available.&lt;/li&gt;
+&lt;li&gt;In this set-up, each student gets a container, which is a full-fledged linux machine. Since Docker is managing these alongside Dockerhub in the network, communication between containers is not possible right now. &lt;em&gt;should be&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;One hour of inactivity results in shutdown of container thanks to a python script from jupyter.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;What we want: &lt;code&gt;dockerspawner.SystemUserSpawner&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;with maps to home directories that exist on the &lt;code&gt;jupyterhub&lt;/code&gt; container.&lt;/li&gt;
+&lt;li&gt;this way a teacher opens the docker container with the &amp;ldquo;hub&amp;rdquo; and all the students are there.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;What we have now:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;each student has a container with their name on it. each is its own linux machine&lt;/li&gt;
+&lt;li&gt;to get into their linux machines, run &lt;code&gt;docker exec -ti jupyter-{surname} /bin/bash&lt;/code&gt;, do your thing, &lt;code&gt;Ctrl-D&lt;/code&gt; to exit.&lt;/li&gt;
+&lt;li&gt;The script that gets installed in the hub container stops idle single-user servers (&lt;em&gt;I think this means it shuts down the containers that are inactive&lt;/em&gt;).&lt;/li&gt;
+&lt;li&gt;The containers are spun up based on a jupyterlab image.
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;What happens when we update this? Perhaps to include files for every student?&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Alternatively, you have all of them learn to manage push/pull from a class repository&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;It appears that to do this, we &lt;a href=&#34;https://github.com/jupyterhub/dockerspawner/issues/172&#34; target=&#34;_blank&#34;&gt;sub-class the Spawner&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;    from dockerspawner import DockerSpawner
+    class MyDockerSpawner(DockerSpawner):
+        team_map = {
+            &#39;user1&#39;: &#39;team1&#39;,
+            &#39;user2&#39;: &#39;team1&#39;,
+            &#39;user3&#39;: &#39;team2&#39;,
+        }
+
+        def start(self):
+            team = self.team_map[self.user.name]
+            # add team volume to volumes
+            self.volumes[&#39;jupyterhub-team-{}&#39;.format(team)] = {
+                &#39;bind&#39;: &#39;/home/shared/{}&#39;.format(team),
+                &#39;mode&#39;: &#39;rw&#39;,  # or ro for read-only
+            }
+
+    c.JupyterHub.spawner_class = MyDockerSpawner
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;new-server&#34;&gt;New Server&lt;/h1&gt;
+
+&lt;p&gt;As root:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository &amp;quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&amp;quot;
+sudo apt-get update
+apt-cache policy docker-ce
+sudo apt-get install -y docker-ce
+
+sudo groupadd docker
+sudo usermod -aG docker $USER
+# also add any users you want to be running docker. 
+# I added `michael` on my machine. will have to log out/in to refresh group membership. 
+
+sudo apt-get install -y docker-compose
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As user &lt;code&gt;michael&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd repos/
+git clone git clone https://github.com/mathematicalmichael/hubsetup.git
+cd hubsetup/
+
+# make sure you clean up images/volumes/containers. I didn&#39;t have much there from before, did have hello-world.
+
+docker-compose build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This came up, may be a problem?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;WARNING: The COMPOSE_PROJECT_NAME variable is not set. Defaulting to a blank string.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;But it kept going&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;but then.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ERROR: Service &#39;jupyterlab&#39; failed to build: failed to register layer: Error processing tar file(exit status 1): write /opt/conda/lib/python3.6/site-packages/pandas/_libs/tslibs/timestamps.cpython-36m-x86_64-linux-gnu.so: no space left on device
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So I went ahead and deleted a couple GB of space by removing unused conda environments and Lucas&amp;rsquo; user account.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker-compose u
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;fairly sure this will fail because of a mis-specified IP address.
+Should also enable security since now I have them on this server.&lt;/p&gt;
+
+&lt;p&gt;the SSL is messing with me since I already have it set up on the server.&lt;/p&gt;
+
+&lt;p&gt;trying to launch jupyterhub with dockerspawner with jupyterhub local install.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;export DOCKER_JUPYTER_IMAGE=jupyter/datascience-notebook:7254cdcfa22b&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Okay well the hub worked and spawner did not.&lt;/p&gt;
+
+&lt;p&gt;I dove into making a custom spawner (may be necessary?), but it was a rabbit hole.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;next-day&#34;&gt;Next Day&lt;/h1&gt;
+
+&lt;p&gt;Messed around with apache but couldn&amp;rsquo;t make it work.
+&lt;a href=&#34;https://jupyterhub.readthedocs.io/en/latest/reference/config-proxy.html&#34; target=&#34;_blank&#34;&gt;Documentation on Jupyter&amp;rsquo;s website is god awful&lt;/a&gt;, there are numerous omissions and a typo in the configuration files (including ones from the &lt;a href=&#34;https://github.com/jupyterhub/oauthenticator/tree/master/examples/full&#34; target=&#34;_blank&#34;&gt;repository&lt;/a&gt; I got my original setup files), no context or setup instructions. They just assume you know what you are doing.&lt;/p&gt;
+
+&lt;p&gt;I do not, though. So let&amp;rsquo;s go through it.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s what a reverse-proxy is doing.
+It catches requests to a website and handles them.&lt;/p&gt;
+
+&lt;p&gt;When you hit &lt;a href=&#34;consistentbayes.com&#34; target=&#34;_blank&#34;&gt;consistentbayes.com&lt;/a&gt;, it directs you to a folder with a bunch of files that make up my website. I had that working with Apache but couldn&amp;rsquo;t do what I wanted, which was direct traffic to &amp;ldquo;hub.consistentbayes.com&amp;rdquo; instead.&lt;/p&gt;
+
+&lt;p&gt;I got the &amp;ldquo;hub&amp;rdquo; part set up by adding an &lt;code&gt;A Record&lt;/code&gt; into my DNS Control Panel (talk more about that later). Now the proxy just had to be able to handle and direct that request to a jupyterhub instance running in a docker container that was exposing itself on &lt;code&gt;http://127.0.0.1:8000&lt;/code&gt; (I&amp;rsquo;ll show config files later). The hub would be in a container that is just a Linux machine, with users and everything in there.&lt;/p&gt;
+
+&lt;p&gt;If the container name is &amp;ldquo;nostalgic_colden&amp;rdquo; (TO DO: figure out how to name these)&amp;hellip; then running&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker exec -ti -u mpilosov nostalgic_colden /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;will log you into the linux computer as &amp;ldquo;mpilosov&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;The user accounts are handled at build-time, but can be managed within the computer just as you would on a linux machine (to log in as &lt;code&gt;root&lt;/code&gt;, omit &lt;code&gt;-u mpilosov&lt;/code&gt; above).&lt;/p&gt;
+
+&lt;p&gt;So&amp;hellip; those accounts.
+Github usernames. By far the best authentication method I found, but it relied on having a Fully Qualified Domain Name (website name, which the server at school would not let me do).
+But&amp;hellip; we can loop the authenticator to whatever we want.&lt;/p&gt;
+
+&lt;p&gt;Here are my nginx configurations:&lt;/p&gt;
+
+&lt;p&gt;In &lt;code&gt;/etc/nginx/sites-enabled/consistentbayes.conf&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;server {
+    listen 80;
+    server_name NO_HUB.DOMAIN.TLD;
+
+    # Tell all requests to port 80 to be 302 redirected to HTTPS
+    return 302 https://$host$request_uri;
+}
+
+server {
+    listen 443;
+    ssl on;
+
+    # INSERT OTHER SSL PARAMETERS HERE AS ABOVE
+    # SSL cert may differ
+
+    # Set the appropriate root directory
+    root /var/www/html;
+
+    # Set URI handling
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # Managing requests to verify letsencrypt host
+    location ~ /.well-known {
+        allow all;
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In &lt;code&gt;/etc/nginx/sites-enabled/jupyterhub.conf&lt;/code&gt; (titles dont matter it seems).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# top-level http config for websocket headers
+# If Upgrade is defined, Connection = upgrade
+# If Upgrade is empty, Connection = close
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    &#39;&#39;      close;
+}
+
+# HTTP server to redirect all 80 traffic to SSL/HTTPS
+server {
+    listen 80;
+    server_name HUB.DOMAIN.TLD;
+
+    # Tell all requests to port 80 to be 302 redirected to HTTPS
+    return 302 https://$host$request_uri;
+}
+
+# HTTPS server to handle JupyterHub
+server {
+    listen 443;
+    ssl on;
+
+    server_name HUB.DOMAIN.TLD;
+
+    ssl_certificate /etc/letsencrypt/live/HUB.DOMAIN.TLD/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/HUB.DOMAIN.TLD/privkey.pem;
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+    ssl_ciphers &#39;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA&#39;;
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:SSL:50m;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    add_header Strict-Transport-Security max-age=15768000;
+
+    # Managing literal requests to the JupyterHub front end
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        # websocket headers
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+    }
+
+    # Managing requests to verify letsencrypt host
+    location ~ /.well-known {
+        allow all;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Talk about how you had to generate letsencrypt scripts for nginx with &lt;code&gt;certbot&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt install python-certbot-nginx
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install python-certbot-nginx 
+sudo certbot --nginx certonly
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I actually ran into trouble being unable to start nginx with the sites enabled. Kind of a catch-22. Removed letsencrypt files&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo certbot certonly --webroot -w /var/www/example -d example.com -d www.example.com -w /var/www/thing -d thing.is -d m.thing.is
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This command will obtain a single cert for example.com, www.example.com, thing.is, and m.thing.is; it will place files below /var/www/example to prove control of the first two domains, and under /var/www/thing for the second pair.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;I dont quite want that. Let&amp;rsquo;s try the interactive.;&lt;/em&gt;
+&lt;code&gt;sudo certbot certonly&lt;/code&gt;
+Hit 1, enter website names (consistentbayes.com, www.consistentbayes.com),&lt;/p&gt;
+
+&lt;p&gt;Then do the same again for the hub.consistentbayes.com&lt;/p&gt;
+
+&lt;p&gt;And we&amp;rsquo;re golden. The files have been placed where nginx is expecting them to be. (e.g. &lt;code&gt;/etc/letsencrypt/live/hub.consistentbayes.com/fullchain.pem&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;And also you will need to issue the following command once.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And then go ahead and make the &lt;code&gt;Dockerfile&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Designed to be run as
+#
+# docker run -it -p 8000:8000 jupyterhub/oauthenticator
+
+FROM jupyterhub/jupyterhub
+
+MAINTAINER Project Jupyter &amp;lt;ipython-dev@scipy.org&amp;gt;
+
+# Install oauthenticator from git
+RUN python3 -m pip install oauthenticator
+RUN python3 -m pip install notebook&amp;gt;=4.0
+# Create oauthenticator directory and put necessary files in it
+RUN mkdir /srv/oauthenticator
+WORKDIR /srv/oauthenticator
+ENV OAUTHENTICATOR_DIR /srv/oauthenticator
+ADD jupyterhub_config.py jupyterhub_config.py
+ADD addusers.sh /srv/oauthenticator/addusers.sh
+ADD userlist /srv/oauthenticator/userlist
+ADD ssl /srv/oauthenticator/ssl
+RUN chmod 700 /srv/oauthenticator
+
+RUN [&amp;quot;sh&amp;quot;, &amp;quot;/srv/oauthenticator/addusers.sh&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then this bash script &lt;code&gt;addusers.sh&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/sh
+
+IFS=&amp;quot;
+&amp;quot;
+for line in `cat userlist`; do
+  test -z &amp;quot;$line&amp;quot; &amp;amp;&amp;amp; continue
+  user=`echo $line | cut -f 1 -d&#39; &#39;`
+  echo &amp;quot;adding user $user&amp;quot;
+  useradd -m -s /bin/bash $user
+#  cp -r /srv/ipython/examples /home/$user/examples
+  mkdir /home/$user/examples
+# may only be necessary since we are copying files from root above.
+  chown -R $user /home/$user/examples
+done
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And, for now, the simplest version of our &lt;code&gt;jupyterhub_config.py&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Configuration file for Jupyter Hub
+
+c = get_config()
+
+c.JupyterHub.log_level = 10
+from oauthenticator.github import LocalGitHubOAuthenticator
+c.JupyterHub.authenticator_class = LocalGitHubOAuthenticator
+c.GenericOAuthenticator.login_service = &#39;my service&#39;
+
+c.LocalGitHubOAuthenticator.create_system_users = True
+
+c.Authenticator.whitelist = whitelist = set()
+c.JupyterHub.admin_users = admin = set()
+
+import os
+import sys
+
+join = os.path.join
+
+here = os.path.dirname(__file__)
+root = os.environ.get(&#39;OAUTHENTICATOR_DIR&#39;, here)
+sys.path.insert(0, root)
+
+with open(join(root, &#39;userlist&#39;)) as f:
+    for line in f:
+        if not line:
+            continue
+        parts = line.split()
+        name = parts[0]
+        whitelist.add(name)
+        if len(parts) &amp;gt; 1 and parts[1] == &#39;admin&#39;:
+            admin.add(name)
+
+c.GitHubOAuthenticator.oauth_callback_url = os.environ[&#39;OAUTH_CALLBACK_URL&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A &lt;code&gt;userlist&lt;/code&gt; file with github usernames&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:admin&#34;&gt;&lt;a href=&#34;#fn:admin&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mpilosov admin
+mathematicalmichael
+eescu 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A &lt;code&gt;ssl&lt;/code&gt; folder with encryption keys in them (which we won&amp;rsquo;t use!)
+(We don&amp;rsquo;t use them because we expose Jupyterhub in http, and use the reverse-proxy to handle the security).&lt;/p&gt;
+
+&lt;p&gt;And an &lt;code&gt;env&lt;/code&gt; file&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# add your github oauth config to this file,
+# and run the container with `docker run -it -p 9000:8000 --env-file=env jupyterhub-oauth`
+OAUTH_CLIENT_ID=
+OAUTH_CLIENT_SECRET=
+OAUTH_CALLBACK_URL=https://hub.consistentbayes.com/hub/oauth_callback
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which you get when you register the application on Github. (I filled in the third to show you, the first two are secrets!)&lt;/p&gt;
+
+&lt;p&gt;So from here on, we can start tweaking the spawner, volume persistence, do checks on memory limits, etc. Write up detailed instructions. Jupyterhub from docker like this is nice.&lt;/p&gt;
+
+&lt;p&gt;I think we can test directory-mounting right to the linux machine to be honest.&lt;/p&gt;
+
+&lt;p&gt;OMG I RAN THIS AND IT WORKED. I mounted volumes to folders on a per-user basis (since users live inside the container that jupyterhub is in). No write permissions, but they can see files just fine. Cant duplicate.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -it -p 8000:8000 -v /home/michael/repos/:/home/mathematicalmichael/examples -v /home/michael/repos:/home/mpilosov/examples --env-file=env --name hubtest jupyterhub-oauth
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Problem with relying on user data in the hub is potential updates could cause loss of files. mounting volumes would fix this for sure. But they can&amp;rsquo;t write files in this new directory, so&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;I think the best storage solution is each student has their own container. &lt;code&gt;hubname-studentname&lt;/code&gt; that a teacher can get into. For workshops, the solution presented as-is works great.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Make sure to upgrade pip, no one seems to.&lt;/li&gt;
+&lt;li&gt;volume permissions are probably things joe knows about.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:admin&#34;&gt;Fun note, it may be possible to accidentally revoke admin privileges from everyone. &lt;em&gt;Test this&lt;/em&gt;. But editing the config file in the container as root should be able to make it work again.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:admin&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Day 5</title>
+      <link>https://www.michaelpilosov.com/devlog/day5/</link>
+      <pubDate>Mon, 24 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/devlog/day5/</guid>
+      <description>
+
+&lt;p&gt;Today I started by watching a video to be aware of the problems I might face going forward with JupyterHub.
+I watched someone from Berkeley describe how they&amp;rsquo;ve scaled to thousands of users across many professors and managed to not grow their IT team while doing so.&lt;/p&gt;
+
+&lt;p&gt;I will start by using this space here to take notes on the following video(s):&lt;/p&gt;
+
+&lt;h2 id=&#34;deploying-jupyter-notebooks-for-students-and-researchers-pydata-2016&#34;&gt;Deploying Jupyter Notebooks for Students and Researchers (PyData 2016)&lt;/h2&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/gSVvxOchT8Y&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;managing-a-1000-student-jupyterhub-without-losing-your-sanity-jupytercon-2018&#34;&gt;Managing a 1000+ Student JupyterHub without Losing your Sanity (JupyterCon 2018)&lt;/h2&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/ivswAxysfTk&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;Here are the stated goals in the video:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[7:30] Infrastructure Shouldn&amp;rsquo;t Bottleneck
+
+&lt;ul&gt;
+&lt;li&gt;Instructors should be able to install packages as needed&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;[8:00] Anyone can Deploy
+
+&lt;ul&gt;
+&lt;li&gt;Treat Admins as Equal (grad students, teachers, etc)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;[9:00] Automate Workflows
+
+&lt;ul&gt;
+&lt;li&gt;Avoid manual processes. No one-off scripts to bootstrap solutions&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;[9:30] Reduce Human Maintenance
+
+&lt;ul&gt;
+&lt;li&gt;Build on top of tools that already exist&lt;/li&gt;
+&lt;li&gt;Let academic edit Dockerfile directly on Github, issue pull-request.&lt;/li&gt;
+&lt;li&gt;Travis Process builds image, and if successful, requests to merge&lt;/li&gt;
+&lt;li&gt;Rather than CLI, hit a couple buttons to set off other Travis Processes to update Helm&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;[13:55]: Reproducibility
+
+&lt;ul&gt;
+&lt;li&gt;Tag versions, everything.&lt;/li&gt;
+&lt;li&gt;The release cycles of the core infrastructure components do not align with each other.&lt;/li&gt;
+&lt;li&gt;In pip file, in Dockerfile, all of it.&lt;/li&gt;
+&lt;li&gt;Get git hashes for latest commits.&lt;/li&gt;
+&lt;li&gt;Tag Docker images with the hashes of the repositories that generated them&lt;/li&gt;
+&lt;li&gt;This makes it much easier to re-deploy!&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;[15:30] Horror Story of Hub failing during Finals week because a Cloud bill was unpaid (grant ran out)
+
+&lt;ul&gt;
+&lt;li&gt;All the versioning helped saved them&lt;/li&gt;
+&lt;li&gt;Despite coming up on different nodes, the same hub came out of it.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;[17:00] Observability
+
+&lt;ul&gt;
+&lt;li&gt;Monitoring (container provider may have analytics)&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;This may be less of a problem for us if we deploy on our own servers.&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Figure out needs of students to figure out how many nodes.&lt;/li&gt;
+&lt;li&gt;After observing, they noticed most students used under 1GB, allowing them to double capacity per node. Students that went above were writing runaway processes anyway.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;[19:30] Incident Reporting
+
+&lt;ul&gt;
+&lt;li&gt;any time something goes down, write a report.&lt;/li&gt;
+&lt;li&gt;[Incident Reports at Berkeley][github.com/data-8/infrastructure]&lt;/li&gt;
+&lt;li&gt;Improves deployment.&lt;/li&gt;
+&lt;li&gt;Event summary, timeline, conclusion, and action items.&lt;/li&gt;
+&lt;li&gt;Reports are &amp;ldquo;blameless&amp;rdquo; to encourage transparency with relevant details&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;[21:30] Generalization
+
+&lt;ul&gt;
+&lt;li&gt;Be a good open-source citizen&lt;/li&gt;
+&lt;li&gt;This means digging into problems and reporting bugs&lt;/li&gt;
+&lt;li&gt;Not every problem is your fault. Sometimes an upstream thing breaks it, and if you report it, you may save other people time/effort.&lt;/li&gt;
+&lt;li&gt;Don&amp;rsquo;t rely on forks and custom patches. Contribute. Think about reproducible deployment scenarios.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;[24:30] Contact Information (encouraged)
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;mailto:rylo@berkeley.edu&#34; target=&#34;_blank&#34;&gt;Ryan Lovett&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;mailto:yuvipanda@berkeley.edu&#34; target=&#34;_blank&#34;&gt;Yuvi Panda&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;scaling-jupyterhub-to-many-users-pydata-tel-aviv-2018&#34;&gt;Scaling JupyterHub to many users (PyData Tel-Aviv 2018)&lt;/h2&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/QN8T9zdnyLc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;jupyterhub-and-jupyterlab-perfect-together-pydata-2018&#34;&gt;&amp;ldquo;JupyterHub and JupyterLab: Perfect Together (PyData 2018)&amp;rdquo;&lt;/h2&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/AXCo39qMn1E&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;jupyterhub-with-kubernetes&#34;&gt;JupyterHub with Kubernetes:&lt;/h2&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/uiLUmuecU7I&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;log&#34;&gt;Log&lt;/h2&gt;
+
+&lt;p&gt;A lot of solutions exist for using docker to handle the file storage and user authentication.&lt;/p&gt;
+
+&lt;p&gt;Here is the solution that I think will work best for workshops:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://opendreamkit.org/2018/10/17/jupyterhub-docker/&#34; target=&#34;_blank&#34;&gt;Open DreamKit&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;[11:37 AM] Pilosov, Michael&lt;/p&gt;
+
+&lt;p&gt;Okay, can&amp;rsquo;t confirm until I try it, but I am reasonably certain that while this set-up is useful in many contexts.
+It doesn&amp;rsquo;t address the teacher/student/group collab management that we quite wanted (and that I focused on getting working first and have done already).
+​&lt;/p&gt;
+
+&lt;p&gt;[11:39 AM] Pilosov, Michael&lt;/p&gt;
+
+&lt;p&gt;The way the build works here with data management is actually much &amp;ldquo;slimmer&amp;rdquo; in fact, and I think there&amp;rsquo;s a use for it for us for sure&amp;hellip; but I suspect it doesn&amp;rsquo;t allow two users to share data, or a super-user to poke around in files.
+​&lt;/p&gt;
+
+&lt;p&gt;[11:41 AM] Pilosov, Michael&lt;/p&gt;
+
+&lt;p&gt;But it would allow for secure authentication for like, a workshop, just using people&amp;rsquo;s github accounts, and data-persistence and management would be more ideal in that sense since you can turn on permanence for each user, destroy it when the workshop is over as superuser (but without ever being able to poke around in their files, which is a nice security feature for the user I suppose&amp;hellip;).&lt;/p&gt;
+
+&lt;p&gt;[11:52 AM] Pilosov, Michael&lt;/p&gt;
+
+&lt;p&gt;In short, what we want instead is for docker to launch up a virtual LINUX machine, where all memory persists within the container.
+It&amp;rsquo;s as if you set up a &amp;ldquo;new computer&amp;rdquo; for each class/workshop. Each class gets its own port.
+Importantly, this makes &amp;ldquo;management&amp;rdquo; very familiar, identical to what you already know how to do, rather than having to &amp;ldquo;learn docker&amp;rdquo; to manage student&amp;rsquo;s work.
+also, updating things can be done this way without re-building images through docker. which is really nice for on-the-fly changes.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;What&amp;rsquo;s the downside you ask?&lt;/em&gt;
+It&amp;rsquo;s definitely less memory efficient, but it&amp;rsquo;s not a problem at all. we&amp;rsquo;re talking like&amp;hellip; cheap laptop levels of storage, nothing major.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;[12:20 AM]
+Finished watching the first video and going throught he tutorial above for the most part.
+I still think the Linux within each container is the simplest option for someone to manage on their own.
+it is definitely the most familiar environment.&lt;/p&gt;
+
+&lt;p&gt;To start, let me &lt;code&gt;ssh&lt;/code&gt; into my workstation and see if I can revive the docker container from the summer workshop. I will log my commands here!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# start the server
+docker run -td -p 80:8000 --name=labhub mathematicalmichael/labhub-test
+
+# check that it is up
+docker ps
+
+# look for ip under process associated with your machine. look for 
+# inet addr: &amp;lt;XXX.XXX.XXX.XXX&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then we connect to auraria-anywhere via Cisco AnyConnect and attempt to connect to &lt;XXX.XXX.XXX.XXX&gt;:8000 via our browser.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;This site can&amp;rsquo;t be reached&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;Debug mode:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker logs labhub
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;showed me that&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Creating 3 new users...
+Created user0 with password Breckenridge0_g2s3
+Created user1 with password Breckenridge1_g2s3
+Created user2 with password Breckenridge2_g2s3
+*** Running /etc/rc.local...
+*** Booting runit daemon...
+*** Runit started as PID 66
+*** Running jupyterhub --Spawner.cmd=&#39;jupyter-labhub&#39; --no-ssl...
+*** jupyterhub --Spawner.cmd=&#39;jupyter-labhub&#39; --no-ssl exited with status 127.
+*** Shutting down runit daemon (PID 66)...
+*** Killing all processes...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So that tells me I messed up the .Dockerfile.
+It might be instructive to just learn from what they did. I don&amp;rsquo;t really need their libraries (which is what I believe was causing the build to fail before).&lt;/p&gt;
+
+&lt;p&gt;** It will definitely be better to start with a fresh Linux image and go from there, since we want to build on top of the newest release anyway, and make sure we understand how its done, keep images/layers light. **&lt;/p&gt;
+
+&lt;p&gt;From &lt;a href=&#34;https://github.com/g2s3-2018/hippylib-hub&#34; target=&#34;_blank&#34;&gt;MUQ-Hippylib&lt;/a&gt; (see &lt;a href=&#34;https://bitbucket.org/mituq/&#34; target=&#34;_blank&#34;&gt;muq&lt;/a&gt; for more info)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FROM quay.io/fenicsproject/stable:2017.2.0.r3
+MAINTAINER U. Villa
+
+USER root
+
+RUN apt-get update &amp;amp;&amp;amp; \
+    apt-get install -yy pwgen npm nodejs-legacy python3-pip libgeos-dev&amp;amp;&amp;amp; \
+    npm install -g configurable-http-proxy &amp;amp;&amp;amp; \
+    pip3 install jupyterhub==0.8.1 &amp;amp;&amp;amp; \
+    pip3 install ipython[notebook]==6.2.1 h5py pandas &amp;amp;&amp;amp; \
+    pip install --user https://github.com/matplotlib/basemap/archive/master.zip
+
+RUN apt-get clean &amp;amp;&amp;amp; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+#RUN mkdir /etc/certs
+#RUN touch /etc/certs/ssl.key
+#RUN touch /etc/certs/ssl.crt
+#RUN openssl req -x509 -nodes -days 730 -newkey rsa:2048 \
+#                 -subj &amp;quot;/C=XY/ST=XYZ/L=XYZ/O=XYZ/CN=example.com&amp;quot; \
+#                 -keyout /etc/certs/ssl.key -out /etc/certs/ssl.crt
+
+USER fenics
+
+# Install MUQ
+RUN cd /home/fenics &amp;amp;&amp;amp; \
+    mkdir Installations; mkdir Installations/MUQ_INSTALL &amp;amp;&amp;amp; \
+    git clone --depth 1 https://bitbucket.org/mituq/muq2.git &amp;amp;&amp;amp; \
+    cd muq2/; mkdir build; cd build;  \
+    cmake -DCMAKE_INSTALL_PREFIX=/home/fenics/Installations/MUQ_INSTALL -DMUQ_USE_PYTHON=ON ../ &amp;amp;&amp;amp; \
+    make install
+
+# Install hIPPYlib
+RUN cd /home/fenics/Installations &amp;amp;&amp;amp; \
+    git clone https://github.com/hippylib/hippylib.git &amp;amp;&amp;amp; \
+    chmod -R o+rx hippylib
+
+# Copy the notebooks
+RUN cd /home/fenics/Installations &amp;amp;&amp;amp; \
+    git clone https://github.com/g2s3-2018/labs.git
+
+COPY python3_config.json /usr/local/share/jupyter/kernels/python3/kernel.json
+ENV LD_LIBRARY_PATH /home/fenics/Installations/MUQ_INSTALL/lib:/home/fenics/Installations/MUQ_INSTALL/muq_external/lib
+ENV PYTHONPATH /home/fenics/Installations/MUQ_INSTALL/lib:/home/fenics/Installations/hippylib
+
+USER root
+
+COPY jupyterhub_config.py /home/fenics/jupyterhub_config.py
+COPY make-users-std-password.sh /etc/my_init.d/make-users-std-password.sh
+RUN chmod +x /etc/my_init.d/make-users-std-password.sh
+RUN rm /etc/my_init.d/set-home-permissions.sh
+COPY update_lab.sh /home/fenics/update_lab.sh
+RUN chmod +x /home/fenics/update_lab.sh
+RUN mkdir -p /home/fenics/.jupyter
+COPY jupyter_notebook_config.py /home/fenics/.jupyter/jupyter_notebook_config.py
+
+
+ENV NUMBER_OF_USERS 60
+WORKDIR /home/fenics/
+ENTRYPOINT [&amp;quot;/sbin/my_init&amp;quot;,&amp;quot;--&amp;quot;]
+CMD [&amp;quot;jupyterhub&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So it appears that we&amp;rsquo;re starting with a root image from the Fenics Project.
+&lt;a href=&#34;https://quay.io/repository/fenicsproject/stable?tag=latest&amp;amp;tab=tags&#34; target=&#34;_blank&#34;&gt;Quay.io&lt;/a&gt; has a summary of security vulnerabilities for each repository tag.&lt;/p&gt;
+
+&lt;p&gt;The one used by Dr. Umberto Villa had 3 High-Risk Vulnerabilities and 151 fixable. More modern ones such as &lt;code&gt;2018.1.0.r3&lt;/code&gt; have only 57 Medium-Risk ones and 25 fixable.&lt;/p&gt;
+
+&lt;p&gt;This is a considerable advantage and thus I believe the correct place to start from. It is also evident that the developers have been working on reducing image sizes, with a clear downward-trend each time a new one comes up.
+The latest does also seem to be built on top of the Ubuntu 18.04, which is exactly what we wanted!!!&lt;/p&gt;
+
+&lt;p&gt;Wonderful.&lt;/p&gt;
+
+&lt;p&gt;Okay, but before I go on building my customized version[^builderrors], I want to remember how to get the &lt;code&gt;hippylib-muq&lt;/code&gt; one working. I have the Dockerhub image from &lt;code&gt;mparno/hippylib-muq&lt;/code&gt; and can run it (create an instance) with&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker run -td -p 80:8000 --name=labhub mparno/muq-hippylib
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So this creates an instance that will map to port 80 (default address when you land on an IP, something we should map with sub-domains later on to have &lt;code&gt;classhub.math.ucdenver.edu&lt;/code&gt; rather than ports to memorize).
+This &amp;ldquo;instance&amp;rdquo; (container) is now created and the ports mapped, so now we have to start it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker start labhub
+
+# now can go to base IP address and log in! 
+
+# later on... stop it.
+docker stop labhub
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Alright, that&amp;rsquo;s fine and well. We have a baseline set of instructions to go off now, and can learn from.
+ However, seeing as quite a lot is happening in those instructions, and no SSL security has been established, I would like to perhaps instead start with Dockerfiles from the Jupyter Project. Moreover, these will be newer versions and should come with Lab enabled already since it is finally in a stable release.&lt;/p&gt;
+
+&lt;p&gt;[^builderrors] I remember that some updates to MUQ&amp;hellip; likely because of a lack of pinning to specific releases, caused build errors when I tried to start up my labhub. Though it might have been the initial commands, based on the readout above.&lt;/p&gt;
+
+&lt;p&gt;SO we&amp;rsquo;ll have to do two things:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Get Hub/Lab up and running with a single user based on the instructions from Project Jupyter.&lt;/li&gt;
+&lt;li&gt;Use this on top of the Fenics build to get &lt;code&gt;import dolfin&lt;/code&gt; working inside of the Hub.&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt; The ease of sharing memory for class-uses is actually a BRAND NEW effort from Jupyter (a week old?). &lt;a href=&#34;https://github.com/jupyterhub/hubshare&#34; target=&#34;_blank&#34;&gt;See here&lt;/a&gt;, which should remove the need for the solution we&amp;rsquo;re building, allow for much better and more lightweight scalability.&lt;/p&gt;
+
+&lt;p&gt;I just came across &lt;a href=&#34;https://github.com/jupyterhub/dockerspawner&#34; target=&#34;_blank&#34;&gt;dockerspawner&lt;/a&gt;
+which can be enabled with the following in &lt;code&gt;jupyterhub_config.py&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;c.JupyterHub.spawner_class = &#39;dockerspawner.DockerSpawner&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More appropriate for the use case we have is &lt;code&gt;SystemUserSpawner&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;If you want to spawn notebook servers for users that correspond to system users, you can use the SystemUserSpawner instead. Add the following to your jupyterhub_config.py:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;c.JupyterHub.spawner_class = &#39;dockerspawner.SystemUserSpawner&#39;&lt;/code&gt;
+The SystemUserSpawner will also need to know where the user home directories are on the host. By default, it expects them to be in &lt;code&gt;/home/&amp;lt;username&amp;gt;&lt;/code&gt;, but if you want to change this, you&amp;rsquo;ll need to further modify the &lt;code&gt;jupyterhub_config.py&lt;/code&gt;. For example, the following will look for a user&amp;rsquo;s home directory on the host system at &lt;code&gt;/volumes/user/&amp;lt;username&amp;gt;&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;c.SystemUserSpawner.host_homedir_format_string = &#39;/volumes/user/{username}&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For a full example of how SystemUserSpawner is used, see the &lt;a href=&#34;https://github.com/jhamrick/compmodels-jupyterhub&#34; target=&#34;_blank&#34;&gt;compmodels-jupyterhub&lt;/a&gt; (warning: old) repository (this additionally runs the JupyterHub server within a docker container, and authenticates users using GitHub OAuth).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;I believe the correct entry-point for us will actually be &lt;a href=&#34;https://github.com/jupyterhub/jupyterhub-deploy-docker&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;, at Project Jupyter&amp;rsquo;s Deploy-Docker repository.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;jupyterhub-deploy-docker&lt;/code&gt; provides a reference deployment of JupyterHub, a multi-user Jupyter Notebook environment, on a single host using Docker.
+This deployment is NOT intended for a production environment. It is a reference implementation that does not meet traditional requirements in terms of availability nor scalability.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/jupyterhub/jupyterhub-deploy-docker/raw/master/internal/jupyterhub-docker.png&#34; alt=&#34;schematic&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Okay, so this is actually a great solution, but it&amp;rsquo;s the same thing more/less as the &amp;ldquo;french&amp;rdquo; solution, with the encryption being handled directly by Jupyterhub.&lt;/p&gt;
+
+&lt;p&gt;Since we want to be building Linux images and then running a Hub on each one, we basically just need to paste installation instructions into the Dockerfile.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;conda install -c conda-forge jupyterhub
+conda install jupyterlab
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;docker-jupyter-stacks&#34;&gt;Docker Jupyter Stacks&lt;/h1&gt;
+
+&lt;p&gt;However, I then came across &lt;a href=&#34;https://github.com/jupyter/docker-stacks&#34; target=&#34;_blank&#34;&gt;Jupyter Docker Stacks&lt;/a&gt;, which appear to be a number of recipes I can start with.&lt;/p&gt;
+
+&lt;p&gt;So let&amp;rsquo;s go ahead and try this on the server.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Example 2: This command pulls the jupyter/datascience-notebook image tagged 3772fffc4aa4 from Docker Hub if it is not already present on the local host.
+It then starts an ephemeral container running a Jupyter Notebook server and exposes the server on host port 10000. The command mounts the current working directory on the host as /home/jovyan/work in the container. The server logs appear in the terminal. Visiting http://&lt;hostname&gt;:10000/?token=&lt;token&gt; in a browser loads JupyterLab, where hostname is the name of the computer running docker and token is the secret token printed in the console. Docker destroys the container after notebook server exit, but any files written to ~/work in the container remain intact on the host.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v &amp;quot;$PWD&amp;quot;:/home/jovyan/work jupyter/datascience-notebook:3772fffc4aa4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;My workstation was unable to find the image locally so it began to pull it from docker-cloud. &lt;em&gt;This took a moment.&lt;/em&gt; Appears to be several gb large.&lt;/p&gt;
+
+&lt;p&gt;Okay, well I managed to connect to it by visiting &lt;code&gt;&amp;lt;IP&amp;gt;:10000/?token=XXXX...XXXX&lt;/code&gt;, where I grabbed the token from the output of the terminal window.&lt;/p&gt;
+
+&lt;p&gt;This is great functionality, but it&amp;rsquo;s not the hub we&amp;rsquo;re looking for. That said, the &lt;a href=&#34;https://github.com/jupyter/docker-stacks&#34; target=&#34;_blank&#34;&gt;included dockerfiles&lt;/a&gt; are very instructive.&lt;/p&gt;
+
+&lt;p&gt;Here is the dependency list. Each one is a root image of the next.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;base-notebook&lt;/code&gt; &amp;gt; &lt;code&gt;minimal-notebook&lt;/code&gt; &amp;gt;  &lt;code&gt;scipy-notebook&lt;/code&gt; &amp;gt; &lt;code&gt;datascience-notebook&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The last install, the [&lt;code&gt;datascience-notebook&lt;/code&gt;][&lt;a href=&#34;https://github.com/jupyter/docker-stacks/blob/master/datascience-notebook/Dockerfile&#34; target=&#34;_blank&#34;&gt;https://github.com/jupyter/docker-stacks/blob/master/datascience-notebook/Dockerfile&lt;/a&gt;] includes R and Julia on top of Python. The heavy &lt;code&gt;HDF5&lt;/code&gt; dependency for Julia is not included if the build is in test-mode (see line 10 and 73).
+It will also link the kernels together.
+As tempting as it is to start here, I&amp;rsquo;d like to start earlier.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;scipy-notebook&lt;/code&gt;&lt;/a&gt; features installs of widgets and more, and is the minimum requirement for most of what we need.&lt;/p&gt;
+
+&lt;p&gt;Something I noticed was that it includes an old version of pip.
+If you launch the container, it mounts whatever directory you were in when you executed the &lt;code&gt;docker run&lt;/code&gt; command to a &amp;ldquo;fake one&amp;rdquo; inside docker (so &lt;code&gt;pwd&lt;/code&gt; returns &lt;code&gt;/home/jovyan/work&lt;/code&gt;).
+This is actually kind of nice. If volumes of students can be mounted by the professor to have a look around, that would be great. That would, of course, require learning some docker.
+Students can even install additional libraries as needed, but they will disappear next time they connect (though the files stick around!).&lt;/p&gt;
+
+&lt;p&gt;What we need to do (I think), is merge this Dockerfile with the JupyterHub deployments. I think this just comes down to configuring the authenticator correctly (and referencing Umberto&amp;rsquo;s file above).&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s look at the &lt;a href=&#34;https://github.com/jupyter/docker-stacks/blob/master/base-notebook/Dockerfile&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;base-notebook&lt;/code&gt;&lt;/a&gt;, since it seems that &lt;a href=&#34;https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;scipy-notebook&lt;/code&gt;&lt;/a&gt; just adds bells and whistles (widgets already is calling jupyterlab extension manager).
+And yes, it appears hub is installed!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Copyright (c) Jupyter Development Team.
+# Distributed under the terms of the Modified BSD License.
+
+# Ubuntu 18.04 (bionic) from 2018-05-26
+# https://github.com/docker-library/official-images/commit/aac6a45b9eb2bffb8102353c350d341a410fb169
+ARG BASE_CONTAINER=ubuntu:bionic-20180526@sha256:c8c275751219dadad8fa56b3ac41ca6cb22219ff117ca98fe82b42f24e1ba64e
+FROM $BASE_CONTAINER
+
+LABEL maintainer=&amp;quot;Jupyter Project &amp;lt;jupyter@googlegroups.com&amp;gt;&amp;quot;
+ARG NB_USER=&amp;quot;jovyan&amp;quot;
+ARG NB_UID=&amp;quot;1000&amp;quot;
+ARG NB_GID=&amp;quot;100&amp;quot;
+
+USER root
+
+# Install all OS dependencies for notebook server that starts but lacks all
+# features (e.g., download as all possible file formats)
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update &amp;amp;&amp;amp; apt-get -yq dist-upgrade \
+ &amp;amp;&amp;amp; apt-get install -yq --no-install-recommends \
+    wget \
+    bzip2 \
+    ca-certificates \
+    sudo \
+    locales \
+    fonts-liberation \
+ &amp;amp;&amp;amp; rm -rf /var/lib/apt/lists/*
+
+RUN echo &amp;quot;en_US.UTF-8 UTF-8&amp;quot; &amp;gt; /etc/locale.gen &amp;amp;&amp;amp; \
+    locale-gen
+
+# Configure environment
+ENV CONDA_DIR=/opt/conda \
+    SHELL=/bin/bash \
+    NB_USER=$NB_USER \
+    NB_UID=$NB_UID \
+    NB_GID=$NB_GID \
+    LC_ALL=en_US.UTF-8 \
+    LANG=en_US.UTF-8 \
+    LANGUAGE=en_US.UTF-8
+ENV PATH=$CONDA_DIR/bin:$PATH \
+    HOME=/home/$NB_USER
+
+ADD fix-permissions /usr/local/bin/fix-permissions
+# Create jovyan user with UID=1000 and in the &#39;users&#39; group
+# and make sure these dirs are writable by the `users` group.
+RUN groupadd wheel -g 11 &amp;amp;&amp;amp; \
+    echo &amp;quot;auth required pam_wheel.so use_uid&amp;quot; &amp;gt;&amp;gt; /etc/pam.d/su &amp;amp;&amp;amp; \
+    useradd -m -s /bin/bash -N -u $NB_UID $NB_USER &amp;amp;&amp;amp; \
+    mkdir -p $CONDA_DIR &amp;amp;&amp;amp; \
+    chown $NB_USER:$NB_GID $CONDA_DIR &amp;amp;&amp;amp; \
+    chmod g+w /etc/passwd &amp;amp;&amp;amp; \
+    fix-permissions $HOME &amp;amp;&amp;amp; \
+    fix-permissions $CONDA_DIR
+
+USER $NB_UID
+
+# Setup work directory for backward-compatibility
+RUN mkdir /home/$NB_USER/work &amp;amp;&amp;amp; \
+    fix-permissions /home/$NB_USER
+
+# Install conda as jovyan and check the md5 sum provided on the download site
+ENV MINICONDA_VERSION 4.5.11
+RUN cd /tmp &amp;amp;&amp;amp; \
+    wget --quiet https://repo.continuum.io/miniconda/Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh &amp;amp;&amp;amp; \
+    echo &amp;quot;e1045ee415162f944b6aebfe560b8fee *Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh&amp;quot; | md5sum -c - &amp;amp;&amp;amp; \
+    /bin/bash Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh -f -b -p $CONDA_DIR &amp;amp;&amp;amp; \
+    rm Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh &amp;amp;&amp;amp; \
+    $CONDA_DIR/bin/conda config --system --prepend channels conda-forge &amp;amp;&amp;amp; \
+    $CONDA_DIR/bin/conda config --system --set auto_update_conda false &amp;amp;&amp;amp; \
+    $CONDA_DIR/bin/conda config --system --set show_channel_urls true &amp;amp;&amp;amp; \
+    $CONDA_DIR/bin/conda install --quiet --yes conda=&amp;quot;${MINICONDA_VERSION%.*}.*&amp;quot; &amp;amp;&amp;amp; \
+    $CONDA_DIR/bin/conda update --all --quiet --yes &amp;amp;&amp;amp; \
+    conda clean -tipsy &amp;amp;&amp;amp; \
+    rm -rf /home/$NB_USER/.cache/yarn &amp;amp;&amp;amp; \
+    fix-permissions $CONDA_DIR &amp;amp;&amp;amp; \
+    fix-permissions /home/$NB_USER
+
+# Install Tini
+RUN conda install --quiet --yes &#39;tini=0.18.0&#39; &amp;amp;&amp;amp; \
+    conda list tini | grep tini | tr -s &#39; &#39; | cut -d &#39; &#39; -f 1,2 &amp;gt;&amp;gt; $CONDA_DIR/conda-meta/pinned &amp;amp;&amp;amp; \
+    conda clean -tipsy &amp;amp;&amp;amp; \
+    fix-permissions $CONDA_DIR &amp;amp;&amp;amp; \
+    fix-permissions /home/$NB_USER
+
+# Install Jupyter Notebook, Lab, and Hub
+# Generate a notebook server config
+# Cleanup temporary files
+# Correct permissions
+# Do all this in a single RUN command to avoid duplicating all of the
+# files across image layers when the permissions change
+RUN conda install --quiet --yes \
+    &#39;notebook=5.7.2&#39; \
+    &#39;jupyterhub=0.9.4&#39; \
+    &#39;jupyterlab=0.35.4&#39; &amp;amp;&amp;amp; \
+    conda clean -tipsy &amp;amp;&amp;amp; \
+    jupyter labextension install @jupyterlab/hub-extension@^0.12.0 &amp;amp;&amp;amp; \
+    npm cache clean --force &amp;amp;&amp;amp; \
+    jupyter notebook --generate-config &amp;amp;&amp;amp; \
+    rm -rf $CONDA_DIR/share/jupyter/lab/staging &amp;amp;&amp;amp; \
+    rm -rf /home/$NB_USER/.cache/yarn &amp;amp;&amp;amp; \
+    fix-permissions $CONDA_DIR &amp;amp;&amp;amp; \
+    fix-permissions /home/$NB_USER
+
+USER root
+
+EXPOSE 8888
+WORKDIR $HOME
+
+# Configure container startup
+ENTRYPOINT [&amp;quot;tini&amp;quot;, &amp;quot;-g&amp;quot;, &amp;quot;--&amp;quot;]
+CMD [&amp;quot;start-notebook.sh&amp;quot;]
+
+# Add local files as late as possible to avoid cache busting
+COPY start.sh /usr/local/bin/
+COPY start-notebook.sh /usr/local/bin/
+COPY start-singleuser.sh /usr/local/bin/
+COPY jupyter_notebook_config.py /etc/jupyter/
+RUN fix-permissions /etc/jupyter/
+
+# Switch back to jovyan to avoid accidental container runs as root
+USER $NB_UID
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It seems that the implementation at the &lt;a href=&#34;https://github.com/jupyterhub/jupyterhub-deploy-docker&#34; target=&#34;_blank&#34;&gt;Deploy-Docker&lt;/a&gt; repository actually handles multi-users, and you can CHOOSE ANY OF the aforementioned builds from &lt;a href=&#34;https://hub.docker.com/u/jupyter&#34; target=&#34;_blank&#34;&gt;Jupyter&amp;rsquo;s Page on Docker Cloud&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I think I will try this approach. The key difference here is that users are isolated through where docker mounts their directories, not through permissions.&lt;/p&gt;
+
+&lt;p&gt;So the idea is that you have a Linux machine running docker. All the students files are in some directory there. The Hub spawns up a Docker container on-demand for each student, mounting them appropriately. A teacher can access the files since they are simply the user that is using Docker. (anyone with sudo permissions on the UNIX machine? or just part of the correct usergroup? Joe can help there.) When the teachers log in, their accounts get mounted in a place they can see the whole class, but not other instructor&amp;rsquo;s classes!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Virtualization can be used to segment classes, or they can run together. It doesn&amp;rsquo;t matter. Port-forwarding with sub-addresses can be used to direct to the correct hub for login. One hub runs per class. One docker instance manages all the hubs.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m going to try it this way first, rather than the isolated UNIX-machine way.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;the-correct-way&#34;&gt;The &amp;ldquo;Correct Way&amp;rdquo;&lt;/h1&gt;
+
+&lt;p&gt;We will be using &lt;a href=&#34;https://github.com/jupyterhub/dockerspawner&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;dockerspawner&lt;/code&gt;&lt;/a&gt;, and the directions in their &lt;code&gt;README&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Actually&amp;hellip;&lt;/em&gt;
+It seems this is what the point of &lt;a href=&#34;https://github.com/jupyterhub/jupyterhub-deploy-docker&#34; target=&#34;_blank&#34;&gt;Deploy Docker&lt;/a&gt; is. Slight modifications are made so that the &lt;code&gt;dockerspawner&lt;/code&gt; launches up our chosen base-image!&lt;/p&gt;
+
+&lt;p&gt;Choose a pinned image on &lt;a href=&#34;https://hub.docker.com/u/jupyter&#34; target=&#34;_blank&#34;&gt;docker cloud&lt;/a&gt; based on the builds from the &lt;a href=&#34;https://github.com/jupyter/docker-stacks&#34; target=&#34;_blank&#34;&gt;stacks on github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Since we really need all the stuff included in the  &lt;a href=&#34;https://hub.docker.com/r/jupyter/scipy-notebook/tags&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;scipy&lt;/code&gt;&lt;/a&gt; stack, and these images are no smaller than 2GB, we might as well spring for the &lt;a href=&#34;https://hub.docker.com/r/jupyter/datascience-notebook/tags&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;datascience&lt;/code&gt;&lt;/a&gt; stack since they are the same size and include R and Julia, which our colleagues may appreciate.&lt;/p&gt;
+
+&lt;p&gt;As of this writing, here is a recent tag: &lt;code&gt;7254cdcfa22b&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;when running, be aware that no sudo priviledges will be granted. &lt;code&gt;-e GRANT_SUDO=yes&lt;/code&gt; needs to be included upon docker run.&lt;/p&gt;
+
+&lt;p&gt;So, following the Deploy-Docker Dockerfile, I can see that it is running relatively recent versions of &lt;code&gt;jupyterhub&lt;/code&gt; and &lt;code&gt;dockerspawner&lt;/code&gt;, despite many files being unchanged for years. That&amp;rsquo;s actually kind of promising for maintenance purposes.&lt;/p&gt;
+
+&lt;p&gt;Starting from Zero&amp;hellip; SSH into my main machine. Move into a directory to perform the cloning. Needed to first run&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sudo apt install docker-compose&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/jupyterhub/jupyterhub-deploy-docker.git
+cd jupyterhub-deploy-docker
+
+mkdir -p secrets
+cd secrets
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem
+
+# bad idea?
+mv mycert.pem jupyterhub.crt 
+mv mykey.key jupyterhub.key
+
+cd ..
+mv .env
+
+# change line 19 to 
+DOCKER_NOTEBOOK_IMAGE=jupyter/datascience-notebook:7254cdcfa22b
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In &lt;code&gt;jupyterhub_config.py&lt;/code&gt; add the lines&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;c.DockerSpawner.environment = { &#39;JUPYTER_ENABLE_LAB&#39;: &#39;yes&#39; }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we face the authentication problem. We did generate a self-signed cert (hopefully), but the IP address of my workstation is not public. For extra security, best to keep it this way.&lt;/p&gt;
+
+&lt;p&gt;We want to change authentication to users&amp;hellip;
+The problem is that I don&amp;rsquo;t want to be setting up github users accounts. Lines 56-57 in &lt;code&gt;juptyerhub_config.py&lt;/code&gt; are the problem:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;c.JupyterHub.authenticator_class = &#39;oauthenticator.GitHubOAuthenticator&#39;
+c.GitHubOAuthenticator.oauth_callback_url = os.environ[&#39;OAUTH_CALLBACK_URL&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;I think by commenting it out, PAMAuthenticator is default. Should be good enough?&lt;/em&gt;
+Well now if we change this we will have to create user accounts to log in with.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s create a userlist file in the root directory &lt;code&gt;vim userlist&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;michael admin
+troy admin
+varis
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now to actually create these users. Let&amp;rsquo;s see how this was done in &lt;code&gt;hippylib-hub&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/bash
+
+echo &amp;quot;Update Lab materials from GitHub&amp;quot;
+cd /home/fenics/Installations/labs &amp;amp;&amp;amp; git pull
+
+echo &amp;quot;Creating ${NUMBER_OF_USERS} new users...&amp;quot;
+for ((i = 0; i &amp;lt; ${NUMBER_OF_USERS}; i++));
+do
+    password=&amp;quot;Breckenridge${i}_g2s3&amp;quot;
+    useradd &amp;quot;user${i}&amp;quot; -m -s /bin/bash
+    echo &amp;quot;user${i}:${password}&amp;quot; | chpasswd user${i}
+    
+    cp -rf /home/fenics/.jupyter /home/user${i}/.jupyter
+    chown -R user${i} /home/user${i}/.jupyter
+    chmod -R u+rX /home/user${i}/.jupyter
+    
+    cp -r /home/fenics/Installations/labs/Labs /home/user${i}/
+    chown -R user${i} /home/user${i}/Labs
+    chmod -R u+rX /home/user${i}/Labs
+ 
+    echo &amp;quot;Created user${i} with password ${password}&amp;quot;
+done
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So we have to translate this into our &lt;code&gt;Dockerfile.jupyterhub&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Copyright (c) Jupyter Development Team.
+# Distributed under the terms of the Modified BSD License.
+ARG JUPYTERHUB_VERSION
+FROM jupyterhub/jupyterhub-onbuild:$JUPYTERHUB_VERSION
+
+# Install dockerspawner, oauth, postgres
+RUN /opt/conda/bin/conda install -yq psycopg2=2.7 &amp;amp;&amp;amp; \
+    /opt/conda/bin/conda clean -tipsy &amp;amp;&amp;amp; \
+    /opt/conda/bin/pip install --no-cache-dir \
+        oauthenticator==0.8.* \
+        dockerspawner==0.9.*
+
+# We make additions here.
+RUN useradd michael -m -s /bin/bash
+RUN echo &amp;quot;michael:test_password&amp;quot; | chpasswd michael
+RUN echo &amp;quot;Created user Michael&amp;quot;
+
+# Copy TLS certificate and key
+ENV SSL_CERT /srv/jupyterhub/secrets/jupyterhub.crt
+ENV SSL_KEY /srv/jupyterhub/secrets/jupyterhub.key
+COPY ./secrets/*.crt $SSL_CERT
+COPY ./secrets/*.key $SSL_KEY
+RUN chmod 700 /srv/jupyterhub/secrets &amp;amp;&amp;amp; \
+    chmod 600 /srv/jupyterhub/secrets/*
+
+COPY ./userlist /srv/jupyterhub/userlist
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let&amp;rsquo;s try it?? The instructions say all I need now is to run &lt;code&gt;make build&lt;/code&gt; in the root directory.&lt;/p&gt;
+
+&lt;p&gt;Failed. Commenting out lines referencing GitHub in &lt;code&gt;Makefile&lt;/code&gt; (lines 23-24) and &lt;code&gt;secrets/oauth.env&lt;/code&gt; (line 48).&lt;/p&gt;
+
+&lt;p&gt;I dont have any clue what is going on in the secrets files. Doing my best but unable to make it work.&lt;/p&gt;
+
+&lt;p&gt;Okay let&amp;rsquo;s try this.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -p 8000:8000 -d --name jupyterhub jupyterhub/jupyterhub jupyterhub
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;My errors seem to be caused by outdated docker. Since I was running on 16.04, the apt repositories didn&amp;rsquo;t have newer versions, so I needed to manually add the updates:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository &amp;quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&amp;quot;
+sudo apt-get update
+apt-cache policy docker-ce
+sudo apt-get install -y docker-ce
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;after setting
+&lt;code&gt;ARG JUPYTERHUB_VERSION=0.90&lt;/code&gt; in the header, I was able to finally run &lt;code&gt;make build&lt;/code&gt; (but who knows how it will work).&lt;/p&gt;
+
+&lt;p&gt;There&amp;rsquo;s no particular reason Hub has to run in a docker container. It can still spawn up new processes with docker.&lt;/p&gt;
+
+&lt;p&gt;Once &lt;code&gt;make build&lt;/code&gt; finished, I had to run &lt;code&gt;docker-compose up -d&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker ps&lt;/code&gt; revealed two containers. One is a database of some sort (what was causing me trouble with installation earlier before I faked the files).&lt;/p&gt;
+
+&lt;p&gt;Logs are showing me that my problem is indeed with &lt;code&gt;POSTGRES_PASSWORD&lt;/code&gt; &amp;hellip; and this part is certainly a bit above my paygrade.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Binder</title>
       <link>https://www.michaelpilosov.com/openscience/binder/</link>
       <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
@@ -48,10 +1167,10 @@
     
     <item>
       <title>Day 4</title>
-      <link>https://www.michaelpilosov.com/changelog/day4/</link>
+      <link>https://www.michaelpilosov.com/devlog/day4/</link>
       <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
       
-      <guid>https://www.michaelpilosov.com/changelog/day4/</guid>
+      <guid>https://www.michaelpilosov.com/devlog/day4/</guid>
       <description>&lt;p&gt;Today I began to structure and fill in the basic information for the &lt;a href=&#34;https://www.michaelpilosov.com/openscience/docker&#34;&gt;Open Science/Docker&lt;/a&gt; Documentation.&lt;/p&gt;
 
 &lt;p&gt;I also realized I needed to edit the table of contents with some custom CSS.&lt;/p&gt;
@@ -123,6 +1242,8 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#lifecycle&#34;&gt;Lifecycle&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#info&#34;&gt;Info&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cleaning-up&#34;&gt;Cleaning up&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#load-save-image&#34;&gt;Load/Save image&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#layers&#34;&gt;Layers&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#containers-1&#34;&gt;Containers&lt;/a&gt;
@@ -132,6 +1253,10 @@
 &lt;li&gt;&lt;a href=&#34;#info-1&#34;&gt;Info&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#import-export&#34;&gt;Import / Export&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#executing-commands&#34;&gt;Executing Commands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#container-import-export&#34;&gt;Container Import/Export&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#management&#34;&gt;Management&lt;/a&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#cpu-constraints&#34;&gt;CPU Constraints&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#memory-constraints&#34;&gt;Memory Constraints&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#capabilities&#34;&gt;Capabilities&lt;/a&gt;&lt;/li&gt;
@@ -141,12 +1266,6 @@
 &lt;li&gt;&lt;a href=&#34;#instructions&#34;&gt;Instructions&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#tutorial&#34;&gt;Tutorial&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#examples&#34;&gt;Examples&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#version&#34;&gt;Version&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#cleaning-up&#34;&gt;Cleaning up&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#load-save-image&#34;&gt;Load/Save image&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#import-export-container&#34;&gt;Import/Export container&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#networks&#34;&gt;Networks&lt;/a&gt;
 &lt;ul&gt;
@@ -168,12 +1287,13 @@
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#useful-commands-tips&#34;&gt;Useful Commands/Tips&lt;/a&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#versions&#34;&gt;Versions&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#basics&#34;&gt;Basics&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#get-ip-address&#34;&gt;Get IP Address&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#get-port-mapping&#34;&gt;Get Port Mapping&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#management&#34;&gt;Management&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;#general&#34;&gt;General&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#find-containers-using-regular-expression&#34;&gt;Find containers using regular expression:&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#get-environment-settings&#34;&gt;Get environment settings&lt;/a&gt;&lt;/li&gt;
@@ -727,6 +1847,8 @@ There is an AppArmor policy generator called &lt;a href=&#34;https://github.com/
 
 &lt;hr /&gt;
 
+&lt;hr /&gt;
+
 &lt;h2 id=&#34;images-1&#34;&gt;Images&lt;/h2&gt;
 
 &lt;p&gt;Images are just &lt;a href=&#34;https://docs.docker.com/engine/understanding-docker/#how-does-a-docker-image-work&#34; target=&#34;_blank&#34;&gt;templates for docker containers&lt;/a&gt;.&lt;/p&gt;
@@ -749,6 +1871,22 @@ There is an AppArmor policy generator called &lt;a href=&#34;https://github.com/
 &lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/history&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker history&lt;/code&gt;&lt;/a&gt; shows history of image.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/tag&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker tag&lt;/code&gt;&lt;/a&gt; tags an image to a name (local or registry).&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&#34;cleaning-up&#34;&gt;Cleaning up&lt;/h3&gt;
+
+&lt;p&gt;While you can use the &lt;code&gt;docker rmi&lt;/code&gt; command to remove specific images, there&amp;rsquo;s a tool called &lt;a href=&#34;https://github.com/spotify/docker-gc&#34; target=&#34;_blank&#34;&gt;docker-gc&lt;/a&gt; that will safely clean up images that are no longer used by any containers.&lt;/p&gt;
+
+&lt;h3 id=&#34;load-save-image&#34;&gt;Load/Save image&lt;/h3&gt;
+
+&lt;p&gt;Load an image from file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker load &amp;lt; my_image.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Save an existing image:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker save my_image:my_tag | gzip &amp;gt; my_image.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;hr /&gt;
 
@@ -801,6 +1939,8 @@ You can think of this as mimicking the keystrokes a user would have to enter in 
 
 &lt;p&gt;Another useful option is &lt;code&gt;docker run --name yourname docker_image&lt;/code&gt; because when you specify the &lt;code&gt;--name&lt;/code&gt; inside the run command this will allow you to start and stop a container by calling it with the name the you specified when you created it.&lt;/p&gt;
 
+&lt;hr /&gt;
+
 &lt;h3 id=&#34;starting-and-stopping&#34;&gt;Starting and Stopping&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -820,6 +1960,8 @@ You can think of this as mimicking the keystrokes a user would have to enter in 
 
 &lt;p&gt;Restart policies on crashed docker instances are &lt;a href=&#34;http://container42.com/2014/09/30/docker-restart-policies/&#34; target=&#34;_blank&#34;&gt;covered here&lt;/a&gt;.&lt;/p&gt;
 
+&lt;hr /&gt;
+
 &lt;h3 id=&#34;info-1&#34;&gt;Info&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -837,12 +1979,16 @@ You can think of this as mimicking the keystrokes a user would have to enter in 
 
 &lt;p&gt;&lt;code&gt;docker stats --all&lt;/code&gt; shows a running list of containers.&lt;/p&gt;
 
+&lt;hr /&gt;
+
 &lt;h3 id=&#34;import-export&#34;&gt;Import / Export&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/cp&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker cp&lt;/code&gt;&lt;/a&gt; copies files or folders between a container and the local filesystem.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/export&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker export&lt;/code&gt;&lt;/a&gt; turns container filesystem into tarball archive stream to STDOUT.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;hr /&gt;
 
 &lt;h3 id=&#34;executing-commands&#34;&gt;Executing Commands&lt;/h3&gt;
 
@@ -851,6 +1997,40 @@ You can think of this as mimicking the keystrokes a user would have to enter in 
 &lt;/ul&gt;
 
 &lt;p&gt;To enter a running container, attach a new shell process to a running container called foo, use: &lt;code&gt;docker exec -it foo /bin/bash&lt;/code&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;container-import-export&#34;&gt;Container Import/Export&lt;/h3&gt;
+
+&lt;p&gt;Import a container as an image from file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cat my_container.tar.gz | docker import - my_image:my_tag
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Export an existing container:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker export my_container | gzip &amp;gt; my_container.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;The difference between &lt;em&gt;loading a saved image&lt;/em&gt; and importing an exported &lt;em&gt;container as an image&lt;/em&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;Loading an image using the &lt;code&gt;load&lt;/code&gt; command creates a new image including its history.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;Importing a container as an image using the &lt;code&gt;import&lt;/code&gt; command creates a new image, &lt;strong&gt;excluding the history,&lt;/strong&gt; which results in a &lt;em&gt;smaller image size compared to loading an image&lt;/em&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;management&#34;&gt;Management&lt;/h2&gt;
 
 &lt;h3 id=&#34;cpu-constraints&#34;&gt;CPU Constraints&lt;/h3&gt;
 
@@ -868,12 +2048,16 @@ You can think of this as mimicking the keystrokes a user would have to enter in 
 
 &lt;p&gt;Note that Docker can still &lt;strong&gt;see&lt;/strong&gt; all of the CPUs inside the container &amp;ndash; it just isn&amp;rsquo;t using all of them.  See &lt;a href=&#34;https://github.com/docker/docker/issues/20770&#34; target=&#34;_blank&#34;&gt;https://github.com/docker/docker/issues/20770&lt;/a&gt; for more details.&lt;/p&gt;
 
+&lt;hr /&gt;
+
 &lt;h3 id=&#34;memory-constraints&#34;&gt;Memory Constraints&lt;/h3&gt;
 
 &lt;p&gt;You can also set &lt;a href=&#34;https://docs.docker.com/engine/reference/run/#/user-memory-constraints&#34; target=&#34;_blank&#34;&gt;memory constraints&lt;/a&gt; on Docker:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;docker run -it -m 300M ubuntu:14.04 /bin/bash
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
 
 &lt;h3 id=&#34;capabilities&#34;&gt;Capabilities&lt;/h3&gt;
 
@@ -959,74 +2143,6 @@ To mount a FUSE based filesystem, you need to combine both &amp;ndash;cap-add an
 &lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/garethr/managing-container-configuration-with-metadata&#34; target=&#34;_blank&#34;&gt;Managing Container Configuration with Metadata&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://rock-it.pl/how-to-write-excellent-dockerfiles/&#34; target=&#34;_blank&#34;&gt;How to write excellent Dockerfiles&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;version&#34;&gt;Version&lt;/h2&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;It is very important that you always know the current version of Docker you are currently running on at any point in time.&lt;/em&gt;
-This is very helpful because you get to know what features are compatible with what you have running.
-This is also important because you know what containers to run from the docker store when you are trying to get template containers.
-That said let see how to know what version of docker we have running currently&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/version/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker version&lt;/code&gt;&lt;/a&gt; checks what version of docker you have running&lt;/li&gt;
-&lt;li&gt;Usage: &lt;code&gt;docker version [OPTIONS]&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Get the server version&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker version --format &#39;{{.Server.Version}}&#39;
-
-1.8.0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Dump raw JSON data&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker version --format &#39;{{json .}}&#39;
-
-{&amp;quot;Client&amp;quot;:{&amp;quot;Version&amp;quot;:&amp;quot;1.8.0&amp;quot;,&amp;quot;ApiVersion&amp;quot;:&amp;quot;1.20&amp;quot;,&amp;quot;GitCommit&amp;quot;:&amp;quot;f5bae0a&amp;quot;,&amp;quot;GoVersion&amp;quot;:&amp;quot;go1.4.2&amp;quot;,&amp;quot;Os&amp;quot;:&amp;quot;linux&amp;quot;,&amp;quot;Arch&amp;quot;:&amp;quot;am&amp;quot;}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;cleaning-up&#34;&gt;Cleaning up&lt;/h3&gt;
-
-&lt;p&gt;While you can use the &lt;code&gt;docker rmi&lt;/code&gt; command to remove specific images, there&amp;rsquo;s a tool called &lt;a href=&#34;https://github.com/spotify/docker-gc&#34; target=&#34;_blank&#34;&gt;docker-gc&lt;/a&gt; that will safely clean up images that are no longer used by any containers.&lt;/p&gt;
-
-&lt;h3 id=&#34;load-save-image&#34;&gt;Load/Save image&lt;/h3&gt;
-
-&lt;p&gt;Load an image from file:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker load &amp;lt; my_image.tar.gz
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Save an existing image:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker save my_image:my_tag | gzip &amp;gt; my_image.tar.gz
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;import-export-container&#34;&gt;Import/Export container&lt;/h3&gt;
-
-&lt;p&gt;Import a container as an image from file:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cat my_container.tar.gz | docker import - my_image:my_tag
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Export an existing container:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker export my_container | gzip &amp;gt; my_container.tar.gz
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;div class=&#34;alert alert-&#34;&gt;
-  &lt;p&gt;The difference between &lt;em&gt;loading a saved image&lt;/em&gt; and importing an exported &lt;em&gt;container as an image&lt;/em&gt;&lt;/p&gt;
-
-&lt;/div&gt;
-
-Loading an image using the &lt;code&gt;load&lt;/code&gt; command creates a new image including its history.&lt;br /&gt;
-Importing a container as an image using the &lt;code&gt;import&lt;/code&gt; command creates a new image, &lt;strong&gt;excluding the history,&lt;/strong&gt; which results in a &lt;em&gt;smaller image size compared to loading an image&lt;/em&gt;.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -1208,6 +2324,36 @@ $ALIAS_PORT_1337_TCP_ADDR
 
 &lt;hr /&gt;
 
+&lt;h2 id=&#34;versions&#34;&gt;Versions&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;It is very important that you always know the current version of Docker you are currently running on at any point in time.&lt;/em&gt;
+This is very helpful because you get to know what features are compatible with what you have running.
+This is also important because you know what containers to run from the docker store when you are trying to get template containers.
+That said let see how to know what version of docker we have running currently&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/version/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;docker version&lt;/code&gt;&lt;/a&gt; checks what version of docker you have running&lt;/li&gt;
+&lt;li&gt;Usage: &lt;code&gt;docker version [OPTIONS]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Get the server version&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker version --format &#39;{{.Server.Version}}&#39;
+
+1.8.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dump raw JSON data&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker version --format &#39;{{json .}}&#39;
+
+{&amp;quot;Client&amp;quot;:{&amp;quot;Version&amp;quot;:&amp;quot;1.8.0&amp;quot;,&amp;quot;ApiVersion&amp;quot;:&amp;quot;1.20&amp;quot;,&amp;quot;GitCommit&amp;quot;:&amp;quot;f5bae0a&amp;quot;,&amp;quot;GoVersion&amp;quot;:&amp;quot;go1.4.2&amp;quot;,&amp;quot;Os&amp;quot;:&amp;quot;linux&amp;quot;,&amp;quot;Arch&amp;quot;:&amp;quot;am&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
 &lt;h2 id=&#34;basics&#34;&gt;Basics&lt;/h2&gt;
 
 &lt;h3 id=&#34;get-ip-address&#34;&gt;Get IP Address&lt;/h3&gt;
@@ -1246,7 +2392,7 @@ docker build \
 
 &lt;hr /&gt;
 
-&lt;h2 id=&#34;management&#34;&gt;Management&lt;/h2&gt;
+&lt;h2 id=&#34;general&#34;&gt;General&lt;/h2&gt;
 
 &lt;h3 id=&#34;find-containers-using-regular-expression&#34;&gt;Find containers using regular expression:&lt;/h3&gt;
 
@@ -1575,10 +2721,10 @@ If there is a scenario that is not covered here that you would like us to write 
     
     <item>
       <title>Day 3</title>
-      <link>https://www.michaelpilosov.com/changelog/day3/</link>
+      <link>https://www.michaelpilosov.com/devlog/day3/</link>
       <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
       
-      <guid>https://www.michaelpilosov.com/changelog/day3/</guid>
+      <guid>https://www.michaelpilosov.com/devlog/day3/</guid>
       <description>
 
 &lt;p&gt;Today I began to structure and fill in the basic information for the &lt;a href=&#34;https://www.michaelpilosov.com/openscience&#34;&gt;Open Science&lt;/a&gt; Documentation.
@@ -1926,317 +3072,6 @@ wd.FloatSlider()
       <description>&lt;p&gt;There are a number of organizations with deployments you can experiment with.&lt;/p&gt;
 
 &lt;p&gt;We list some of them here, along with useful links for more information (some of these may be turned into future pages).&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Installing Anaconda</title>
-      <link>https://www.michaelpilosov.com/openscience/anaconda/</link>
-      <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/openscience/anaconda/</guid>
-      <description>
-
-&lt;p&gt;These instructions originally appeared on the &lt;a href=&#34;https://www.mathematicalmichael.com&#34; target=&#34;_blank&#34;&gt;&amp;ldquo;Resources&amp;rdquo; page of my website&lt;/a&gt;, where I link to my &lt;a href=&#34;https://gist.github.com/mpilosov/233ccfae58d182d43f690be209b58ba5&#34; target=&#34;_blank&#34;&gt;Github Gist&lt;/a&gt;.
-As of &lt;em&gt;Dec 21, 2018&lt;/em&gt;, I am abandoning the aforementioned gist and will keep this webpage updated as my primary source of information for installing Anaconda&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:note&#34;&gt;&lt;a href=&#34;#fn:note&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-
-&lt;h1 id=&#34;anaconda-basics&#34;&gt;Anaconda Basics&lt;/h1&gt;
-
-&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;It is a package manager.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;WRITE MORE ABOUT WHAT A PACKAGE MANAGER IS/DOES AND WHY IT SHOULD BE USED&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;download&#34;&gt;Download&lt;/h2&gt;
-
-&lt;p&gt;Go download it from
-&lt;a href=&#34;https://www.anaconda.com/download/&#34; target=&#34;_blank&#34;&gt;https://www.anaconda.com/download/&lt;/a&gt;
-for your Linux/Windows/OSX&lt;/p&gt;
-
-&lt;p&gt;I like to use&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;wget http://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;or if I want to keep things lightweight (may lead to more manual installations later on):&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;install&#34;&gt;Install&lt;/h2&gt;
-
-&lt;p&gt;It will likely be saved in the Downloads folder, so you will install it with something like&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;bash ~/Downloads/Anaconda3-5.0.1-Linux-x86_64.sh&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Use all the defaults, agree to everything, and at the end, hit &lt;code&gt;ENTER&lt;/code&gt; to prepend it to your &lt;code&gt;PATH&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;environments&#34;&gt;Environments&lt;/h2&gt;
-
-&lt;p&gt;Now let&amp;rsquo;s create an environment for python3:&lt;br /&gt;
-&lt;code&gt;conda create -n py3 python=3.6&lt;/code&gt; where &lt;code&gt;py3&lt;/code&gt; is just my personal preferred shorthand for python 3. Feel free to use your own.&lt;/p&gt;
-
-&lt;p&gt;And one for python2:&lt;br /&gt;
-&lt;code&gt;conda create -n py2 python=2.7&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;To remove:&lt;br /&gt;
-&lt;code&gt;conda remove --name py2 --all&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;We can now switch between versions of python with commands like&lt;br /&gt;
-&lt;code&gt;source activate py3&lt;/code&gt; and &lt;code&gt;source activate py2&lt;/code&gt; and then &lt;code&gt;source deactivate&lt;/code&gt; when you&amp;rsquo;re ready to be done.&lt;/p&gt;
-
-&lt;h1 id=&#34;diving-deeper&#34;&gt;Diving Deeper&lt;/h1&gt;
-
-&lt;h2 id=&#34;widgets&#34;&gt;Widgets&lt;/h2&gt;
-
-&lt;p&gt;Overview:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;pip install ipywidgets&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;jupyter nbextension install --py --user widgetsnbextension&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;jupyter nbextension enable --py widgetsnbextension&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;More information about widgets &lt;a href=&#34;https://ipywidgets.readthedocs.io/en/stable/user_install.html&#34; target=&#34;_blank&#34;&gt;can be found here&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Alternatively, in each of these environments, run&lt;br /&gt;
-&lt;code&gt;conda install -c conda-forge ipywidgets&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;which will install all sorts of dependencies, including Jupyter notebooks&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:notebooks&#34;&gt;&lt;a href=&#34;#fn:notebooks&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. It supposedly enables the widgets too but you can run&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;jupyter nbextension enable --py widgetsnbextension&lt;/code&gt; to make sure.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;python -m ipykernel install --name py3 --user&lt;/code&gt; will then link the kernel to jupyter.&lt;/p&gt;
-
-&lt;p&gt;Then &lt;code&gt;--name py3&lt;/code&gt; flag is optional and just assigns a name of your choosing to that kernel.
-The version of python used for the kernel is whatever is returned when you ask bash &lt;code&gt;which python&lt;/code&gt; (so if you used source &lt;code&gt;activate&lt;/code&gt; earlier, it will be the version associated with the kernel whose name is in parentheses in your Terminal session).
-&lt;strong&gt;The &lt;code&gt;--user&lt;/code&gt; flag is necessary.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;ipyparallel&#34;&gt;iPyParallel&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/ipython/ipyparallel&#34; target=&#34;_blank&#34;&gt;https://github.com/ipython/ipyparallel&lt;/a&gt;&lt;br /&gt;
-&lt;code&gt;pip install ipyparallel&lt;/code&gt; to install.&lt;br /&gt;
-&lt;code&gt;ipcluster nbextension enable&lt;/code&gt; (add the &lt;code&gt;--user&lt;/code&gt; flag as well if you encounter an error).
-This one also seems to be necessary to get the clusters to show up:&lt;br /&gt;
-&lt;code&gt;jupyter serverextension enable --sys-prefix --py ipyparallel&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;To install for all users (as root):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;jupyter nbextension install --sys-prefix --py ipyparallel
-jupyter nbextension enable --sys-prefix --py ipyparallel
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;kernels&#34;&gt;Kernels&lt;/h1&gt;
-
-&lt;h2 id=&#34;introduction-1&#34;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;TODO: WRITE MORE ABOUT MULTI-KERNEL SUPPORT, provide an example.&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;To see all the kernels jupyter is aware of:
-&lt;code&gt;jupyter kernelspec list&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;management&#34;&gt;Management&lt;/h2&gt;
-
-&lt;p&gt;To remove kernels, use &lt;code&gt;jupyter kernelspec remove&lt;/code&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;jupyterhub&#34;&gt;JupyterHub&lt;/h1&gt;
-
-&lt;h2 id=&#34;introduction-2&#34;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;More information here about installation would be helpful, but we&amp;rsquo;ll be going through this in more detail at another time since JupyterHub will form the basis for the solutions we will use for our classroom environments.&lt;/p&gt;
-
-&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
-
-&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
-
-&lt;p&gt;(for personal use)&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://jupyterhub.readthedocs.io/en/stable/getting-started/&#34; target=&#34;_blank&#34;&gt;Getting Started&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://jupyter-notebook.readthedocs.io/en/latest/public_server.html&#34; target=&#34;_blank&#34;&gt;Running a notebook server&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;jupyterlab&#34;&gt;JupyterLab&lt;/h1&gt;
-
-&lt;h2 id=&#34;introduction-3&#34;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;I love this environment but it is a little tricky to set up properly and get everything working as expected. Though once you do, I doubt you will want to use anything else.&lt;/p&gt;
-
-&lt;h2 id=&#34;install-1&#34;&gt;Install&lt;/h2&gt;
-
-&lt;p&gt;Once Jupyter Lab is installed, go ahead and run it the same way you would a notebook:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;jupyter lab (--no-browser)&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;widget-extensions&#34;&gt;Widget Extensions&lt;/h2&gt;
-
-&lt;p&gt;By default (as of Dec 2018), it will be accessible through &lt;code&gt;localhost:8888&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Go ahead and launch an instance of Python and see if widgets work.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;import ipywidgets as wd
-wd.FloatSlider()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If the output of the following is text instead of a widget, try running the following in the command-line (shutdown the server with &lt;code&gt;Ctrl-C&lt;/code&gt; twice, then&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;jupyter labextension install @jupyter-widgets/jupyterlab-manager&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;And relaunch JupyterLab (if you didn&amp;rsquo;t close your browswer window, a simple refresh will work to re-establish the connection and pick up where you left off), and try the example above again.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Something that came up once&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;I saw my server output spitting out &lt;code&gt;TypeError: __init__() got an unexpected keyword argument &#39;io_loop&#39;&lt;/code&gt; over and over again when any kernel was started. Something was going on with the WebSocket I/O communication (whatever that means), but the following downgrade of the Python Web Framework worked to &lt;a href=&#34;https://stackoverflow.com/questions/48090119/jupyter-notebook-typeerror-init-got-an-unexpected-keyword-argument-io-l&#34; target=&#34;_blank&#34;&gt;fix it&lt;/a&gt;:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;pip install tornado==4.5.3&lt;/code&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;sharing&#34;&gt;Sharing&lt;/h1&gt;
-
-&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;TODO&lt;/code&gt; write about why this is useful&lt;/p&gt;
-
-&lt;h2 id=&#34;exporting&#34;&gt;Exporting&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;conda env export &amp;gt; environment.yml&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Which you then load up with
-&lt;code&gt;conda env create -f environment.yml&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;cloning&#34;&gt;Cloning&lt;/h2&gt;
-
-&lt;p&gt;You can make an exact copy of an environment by creating a clone of it:&lt;br /&gt;
-&lt;code&gt;conda create --name myclone --clone myenv&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;To verify that the copy was made:&lt;br /&gt;
-&lt;code&gt;conda info --envs&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-&lt;li id=&#34;fn:note&#34;&gt;Github Gists are actually surprisingly difficult to sort through, and navigating to this webpage will be much easier, anyway.
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:note&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li id=&#34;fn:notebooks&#34;&gt;It does appear though that &lt;code&gt;notebooks&lt;/code&gt; is pre-packaged now with Anaconda, so it will likely already be installed.
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:notebooks&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Relevant Projects</title>
-      <link>https://www.michaelpilosov.com/openscience/getting-started/</link>
-      <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/openscience/getting-started/</guid>
-      <description>
-
-&lt;h1 id=&#34;basics&#34;&gt;Basics&lt;/h1&gt;
-
-&lt;p&gt;In this documentation, we will research and likely leverage (most if not all of) the following open-source projects.
-We will eventually address each in depth within this documentation and will update this section with relevant links as necessary.
-For now, we provide a brief overview and summary of what we are looking into.&lt;/p&gt;
-
-&lt;h2 id=&#34;widgets&#34;&gt;Widgets&lt;/h2&gt;
-
-&lt;p&gt;If you have ever tried developing a graphical user interface (GUI) for your code, you&amp;rsquo;ll know how cumbersome it can be.
-Thankfully, the &lt;a href=&#34;http://jupyter.org/widgets&#34; target=&#34;_blank&#34;&gt;Widgets&lt;/a&gt; package from Project Jupyter greatly simplifies linking your code to a large library of existing &amp;ldquo;widgets,&amp;rdquo; which do everything from giving you sliders to fully-interactive maps.&lt;/p&gt;
-
-&lt;p&gt;I highly encourage you to see what is possible to embed in your notebooks (and webpages) by scrolling through their &lt;a href=&#34;http://jupyter.org/widgets&#34; target=&#34;_blank&#34;&gt;examples&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;jupyter-nbviewer&#34;&gt;Jupyter nbviewer&lt;/h2&gt;
-
-&lt;p&gt;Paste a link to a notebook into &lt;a href=&#34;https://nbviewer.jupyter.org/&#34; target=&#34;_blank&#34;&gt;this form&lt;/a&gt; and this website will render the notebook for your reading pleasure.&lt;/p&gt;
-
-&lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
-
-&lt;h2 id=&#34;github&#34;&gt;Github&lt;/h2&gt;
-
-&lt;h2 id=&#34;anaconda&#34;&gt;Anaconda&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;binderhub&#34;&gt;BinderHub&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/jupyterhub/binderhub&#34; target=&#34;_blank&#34;&gt;BinderHub&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;BinderHub allows you to &lt;code&gt;BUILD&lt;/code&gt; and &lt;code&gt;REGISTER&lt;/code&gt; a Docker image using a GitHub repository, then CONNECT with JupyterHub, allowing you to create a public IP address that allows users to interact with the code and environment within a live JupyterHub instance. You can select a specific branch name, commit, or tag to serve.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;repo2docker&#34;&gt;Repo2Docker&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/jupyter/repo2docker&#34; target=&#34;_blank&#34;&gt;repo2docker&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;As the title suggest, this package turns a github repository into a docker image that can be built.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;repo2docker fetches a git repository and builds a container image based on the configuration files found in the repository.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Binder leverages this to then serve the contents of the image in conjuction with JupyterHub.&lt;/p&gt;
-
-&lt;h2 id=&#34;kubernetes&#34;&gt;Kubernetes&lt;/h2&gt;
-
-&lt;p&gt;Google is a provider. Links/info should go here to a couple other platforms, some basic information.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;jupyterhub&#34;&gt;JupyterHub&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/jupyterhub/jupyterhub&#34; target=&#34;_blank&#34;&gt;JupyterHub&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;With &lt;a href=&#34;https://jupyterhub.readthedocs.io&#34; target=&#34;_blank&#34;&gt;JupyterHub&lt;/a&gt; you can create a
-&lt;strong&gt;multi-user Hub&lt;/strong&gt; which spawns, manages, and proxies multiple instances of the
-single-user &lt;a href=&#34;https://jupyter-notebook.readthedocs.io&#34; target=&#34;_blank&#34;&gt;Jupyter notebook&lt;/a&gt;
-server.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://jupyter.org&#34; target=&#34;_blank&#34;&gt;Project Jupyter&lt;/a&gt; created JupyterHub to support many
-users. The Hub can offer notebook servers to a class of students, a corporate
-data science workgroup, a scientific research project, or a high performance
-computing group.&lt;/p&gt;
-
-&lt;h2 id=&#34;technical-overview&#34;&gt;Technical overview&lt;/h2&gt;
-
-&lt;p&gt;Three main actors make up JupyterHub:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;multi-user &lt;strong&gt;Hub&lt;/strong&gt; (tornado process)&lt;/li&gt;
-&lt;li&gt;configurable http &lt;strong&gt;proxy&lt;/strong&gt; (node-http-proxy)&lt;/li&gt;
-&lt;li&gt;multiple &lt;strong&gt;single-user Jupyter notebook servers&lt;/strong&gt; (Python/Jupyter/tornado)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Basic principles for operation are:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Hub launches a proxy.&lt;/li&gt;
-&lt;li&gt;Proxy forwards all requests to Hub by default.&lt;/li&gt;
-&lt;li&gt;Hub handles login, and spawns single-user servers on demand.&lt;/li&gt;
-&lt;li&gt;Hub configures proxy to forward url prefixes to the single-user notebook
-servers.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;JupyterHub also provides a
-&lt;a href=&#34;http://petstore.swagger.io/?url=https://raw.githubusercontent.com/jupyter/jupyterhub/master/docs/rest-api.yml#/default&#34; target=&#34;_blank&#34;&gt;REST API&lt;/a&gt;
-for administration of the Hub and its users.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;I personally run Jupyterhub on a remote server so that I always have access to a secure and familiar environment if I ever need to test out some code and find myself without my laptop.
-By default, it accepts the login information of just the user who is running it, but we will see later how it can be configured for its intended use as a multi-user authentication hub.&lt;/p&gt;
 </description>
     </item>
     

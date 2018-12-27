@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jupyter on Michael Pilosov | Academic Website</title>
+    <link>https://www.michaelpilosov.com/tags/jupyter/</link>
+    <description>Recent content in jupyter on Michael Pilosov | Academic Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
+    <lastBuildDate>Tue, 25 Dec 2018 00:00:00 -0700</lastBuildDate>
+    
+	<atom:link href="https://www.michaelpilosov.com/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Day 6</title>
+      <link>https://www.michaelpilosov.com/devlog/day6/</link>
+      <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/devlog/day6/</guid>
+      <description>Status Report Okay so where are we at?
+ Spawner needs to be sussed out. Right now I really like DockerSpawner, and it seems to persist storage.  Each student gets a user account but it&amp;rsquo;s only used for authenetication right now. Can&amp;rsquo;t figure out volume-mapping.  With dockerspawner.DockerSpawner:
+ Each time someone is logged in, a container is either loaded up or built from jupyterlab_img container. These are very flexible, many stacks available.</description>
+    </item>
+    
+    <item>
+      <title>Day 5</title>
+      <link>https://www.michaelpilosov.com/devlog/day5/</link>
+      <pubDate>Mon, 24 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/devlog/day5/</guid>
+      <description>Today I started by watching a video to be aware of the problems I might face going forward with JupyterHub. I watched someone from Berkeley describe how they&amp;rsquo;ve scaled to thousands of users across many professors and managed to not grow their IT team while doing so.
+I will start by using this space here to take notes on the following video(s):
+Deploying Jupyter Notebooks for Students and Researchers (PyData 2016)   Managing a 1000+ Student JupyterHub without Losing your Sanity (JupyterCon 2018)   Here are the stated goals in the video:</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -15,7 +15,7 @@
   
     
   
-  <meta name="description" content="Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info  Layers Containers  Lifecycle Starting and Stopping Info Import / Export Executing Commands CPU Constraints Memory Constraints Capabilities  Dockerfile  Instructions Tutorial Examples  Version  Cleaning up Load/Save image Import/Export container  Networks  Lifecycle Info Connection  Registries  Registries v.">
+  <meta name="description" content="Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info Cleaning up Load/Save image  Layers Containers  Lifecycle Starting and Stopping Info Import / Export Executing Commands Container Import/Export  Management  CPU Constraints Memory Constraints Capabilities  Dockerfile  Instructions Tutorial Examples  Networks  Lifecycle Info Connection  Registries  Registries v.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/openscience/docker/">
@@ -124,7 +124,7 @@
   <meta property="og:site_name" content="Michael Pilosov | Academic Website">
   <meta property="og:url" content="https://www.michaelpilosov.com/openscience/docker/">
   <meta property="og:title" content="Docker | Michael Pilosov | Academic Website">
-  <meta property="og:description" content="Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info  Layers Containers  Lifecycle Starting and Stopping Info Import / Export Executing Commands CPU Constraints Memory Constraints Capabilities  Dockerfile  Instructions Tutorial Examples  Version  Cleaning up Load/Save image Import/Export container  Networks  Lifecycle Info Connection  Registries  Registries v."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
+  <meta property="og:description" content="Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info Cleaning up Load/Save image  Layers Containers  Lifecycle Starting and Stopping Info Import / Export Executing Commands Container Import/Export  Management  CPU Constraints Memory Constraints Capabilities  Dockerfile  Instructions Tutorial Examples  Networks  Lifecycle Info Connection  Registries  Registries v."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-12-22T00:00:00-07:00">
@@ -468,6 +468,8 @@
 <ul>
 <li><a href="#lifecycle">Lifecycle</a></li>
 <li><a href="#info">Info</a></li>
+<li><a href="#cleaning-up">Cleaning up</a></li>
+<li><a href="#load-save-image">Load/Save image</a></li>
 </ul></li>
 <li><a href="#layers">Layers</a></li>
 <li><a href="#containers-1">Containers</a>
@@ -477,6 +479,10 @@
 <li><a href="#info-1">Info</a></li>
 <li><a href="#import-export">Import / Export</a></li>
 <li><a href="#executing-commands">Executing Commands</a></li>
+<li><a href="#container-import-export">Container Import/Export</a></li>
+</ul></li>
+<li><a href="#management">Management</a>
+<ul>
 <li><a href="#cpu-constraints">CPU Constraints</a></li>
 <li><a href="#memory-constraints">Memory Constraints</a></li>
 <li><a href="#capabilities">Capabilities</a></li>
@@ -486,12 +492,6 @@
 <li><a href="#instructions">Instructions</a></li>
 <li><a href="#tutorial">Tutorial</a></li>
 <li><a href="#examples">Examples</a></li>
-</ul></li>
-<li><a href="#version">Version</a>
-<ul>
-<li><a href="#cleaning-up">Cleaning up</a></li>
-<li><a href="#load-save-image">Load/Save image</a></li>
-<li><a href="#import-export-container">Import/Export container</a></li>
 </ul></li>
 <li><a href="#networks">Networks</a>
 <ul>
@@ -513,12 +513,13 @@
 </ul></li>
 <li><a href="#useful-commands-tips">Useful Commands/Tips</a>
 <ul>
+<li><a href="#versions">Versions</a></li>
 <li><a href="#basics">Basics</a>
 <ul>
 <li><a href="#get-ip-address">Get IP Address</a></li>
 <li><a href="#get-port-mapping">Get Port Mapping</a></li>
 </ul></li>
-<li><a href="#management">Management</a>
+<li><a href="#general">General</a>
 <ul>
 <li><a href="#find-containers-using-regular-expression">Find containers using regular expression:</a></li>
 <li><a href="#get-environment-settings">Get environment settings</a></li>
@@ -616,6 +617,8 @@
 <ul>
 <li><a href="#lifecycle">Lifecycle</a></li>
 <li><a href="#info">Info</a></li>
+<li><a href="#cleaning-up">Cleaning up</a></li>
+<li><a href="#load-save-image">Load/Save image</a></li>
 </ul></li>
 <li><a href="#layers">Layers</a></li>
 <li><a href="#containers-1">Containers</a>
@@ -625,6 +628,10 @@
 <li><a href="#info-1">Info</a></li>
 <li><a href="#import-export">Import / Export</a></li>
 <li><a href="#executing-commands">Executing Commands</a></li>
+<li><a href="#container-import-export">Container Import/Export</a></li>
+</ul></li>
+<li><a href="#management">Management</a>
+<ul>
 <li><a href="#cpu-constraints">CPU Constraints</a></li>
 <li><a href="#memory-constraints">Memory Constraints</a></li>
 <li><a href="#capabilities">Capabilities</a></li>
@@ -634,12 +641,6 @@
 <li><a href="#instructions">Instructions</a></li>
 <li><a href="#tutorial">Tutorial</a></li>
 <li><a href="#examples">Examples</a></li>
-</ul></li>
-<li><a href="#version">Version</a>
-<ul>
-<li><a href="#cleaning-up">Cleaning up</a></li>
-<li><a href="#load-save-image">Load/Save image</a></li>
-<li><a href="#import-export-container">Import/Export container</a></li>
 </ul></li>
 <li><a href="#networks">Networks</a>
 <ul>
@@ -661,12 +662,13 @@
 </ul></li>
 <li><a href="#useful-commands-tips">Useful Commands/Tips</a>
 <ul>
+<li><a href="#versions">Versions</a></li>
 <li><a href="#basics">Basics</a>
 <ul>
 <li><a href="#get-ip-address">Get IP Address</a></li>
 <li><a href="#get-port-mapping">Get Port Mapping</a></li>
 </ul></li>
-<li><a href="#management">Management</a>
+<li><a href="#general">General</a>
 <ul>
 <li><a href="#find-containers-using-regular-expression">Find containers using regular expression:</a></li>
 <li><a href="#get-environment-settings">Get environment settings</a></li>
@@ -1220,6 +1222,8 @@ There is an AppArmor policy generator called <a href="https://github.com/jfrazel
 
 <hr />
 
+<hr />
+
 <h2 id="images-1">Images</h2>
 
 <p>Images are just <a href="https://docs.docker.com/engine/understanding-docker/#how-does-a-docker-image-work" target="_blank">templates for docker containers</a>.</p>
@@ -1242,6 +1246,22 @@ There is an AppArmor policy generator called <a href="https://github.com/jfrazel
 <li><a href="https://docs.docker.com/engine/reference/commandline/history" target="_blank"><code>docker history</code></a> shows history of image.</li>
 <li><a href="https://docs.docker.com/engine/reference/commandline/tag" target="_blank"><code>docker tag</code></a> tags an image to a name (local or registry).</li>
 </ul>
+
+<h3 id="cleaning-up">Cleaning up</h3>
+
+<p>While you can use the <code>docker rmi</code> command to remove specific images, there&rsquo;s a tool called <a href="https://github.com/spotify/docker-gc" target="_blank">docker-gc</a> that will safely clean up images that are no longer used by any containers.</p>
+
+<h3 id="load-save-image">Load/Save image</h3>
+
+<p>Load an image from file:</p>
+
+<pre><code>docker load &lt; my_image.tar.gz
+</code></pre>
+
+<p>Save an existing image:</p>
+
+<pre><code>docker save my_image:my_tag | gzip &gt; my_image.tar.gz
+</code></pre>
 
 <hr />
 
@@ -1294,6 +1314,8 @@ You can think of this as mimicking the keystrokes a user would have to enter in 
 
 <p>Another useful option is <code>docker run --name yourname docker_image</code> because when you specify the <code>--name</code> inside the run command this will allow you to start and stop a container by calling it with the name the you specified when you created it.</p>
 
+<hr />
+
 <h3 id="starting-and-stopping">Starting and Stopping</h3>
 
 <ul>
@@ -1313,6 +1335,8 @@ You can think of this as mimicking the keystrokes a user would have to enter in 
 
 <p>Restart policies on crashed docker instances are <a href="http://container42.com/2014/09/30/docker-restart-policies/" target="_blank">covered here</a>.</p>
 
+<hr />
+
 <h3 id="info-1">Info</h3>
 
 <ul>
@@ -1330,12 +1354,16 @@ You can think of this as mimicking the keystrokes a user would have to enter in 
 
 <p><code>docker stats --all</code> shows a running list of containers.</p>
 
+<hr />
+
 <h3 id="import-export">Import / Export</h3>
 
 <ul>
 <li><a href="https://docs.docker.com/engine/reference/commandline/cp" target="_blank"><code>docker cp</code></a> copies files or folders between a container and the local filesystem.</li>
 <li><a href="https://docs.docker.com/engine/reference/commandline/export" target="_blank"><code>docker export</code></a> turns container filesystem into tarball archive stream to STDOUT.</li>
 </ul>
+
+<hr />
 
 <h3 id="executing-commands">Executing Commands</h3>
 
@@ -1344,6 +1372,40 @@ You can think of this as mimicking the keystrokes a user would have to enter in 
 </ul>
 
 <p>To enter a running container, attach a new shell process to a running container called foo, use: <code>docker exec -it foo /bin/bash</code>.</p>
+
+<hr />
+
+<h3 id="container-import-export">Container Import/Export</h3>
+
+<p>Import a container as an image from file:</p>
+
+<pre><code>cat my_container.tar.gz | docker import - my_image:my_tag
+</code></pre>
+
+<p>Export an existing container:</p>
+
+<pre><code>docker export my_container | gzip &gt; my_container.tar.gz
+</code></pre>
+
+<div class="alert alert-">
+  <p>The difference between <em>loading a saved image</em> and importing an exported <em>container as an image</em></p>
+
+</div>
+
+
+<p>Loading an image using the <code>load</code> command creates a new image including its history.</p>
+
+<div class="alert alert-">
+  <p>Importing a container as an image using the <code>import</code> command creates a new image, <strong>excluding the history,</strong> which results in a <em>smaller image size compared to loading an image</em>.</p>
+
+</div>
+
+
+<hr />
+
+<hr />
+
+<h2 id="management">Management</h2>
 
 <h3 id="cpu-constraints">CPU Constraints</h3>
 
@@ -1361,12 +1423,16 @@ You can think of this as mimicking the keystrokes a user would have to enter in 
 
 <p>Note that Docker can still <strong>see</strong> all of the CPUs inside the container &ndash; it just isn&rsquo;t using all of them.  See <a href="https://github.com/docker/docker/issues/20770" target="_blank">https://github.com/docker/docker/issues/20770</a> for more details.</p>
 
+<hr />
+
 <h3 id="memory-constraints">Memory Constraints</h3>
 
 <p>You can also set <a href="https://docs.docker.com/engine/reference/run/#/user-memory-constraints" target="_blank">memory constraints</a> on Docker:</p>
 
 <pre><code>docker run -it -m 300M ubuntu:14.04 /bin/bash
 </code></pre>
+
+<hr />
 
 <h3 id="capabilities">Capabilities</h3>
 
@@ -1452,74 +1518,6 @@ To mount a FUSE based filesystem, you need to combine both &ndash;cap-add and &n
 <li><a href="https://speakerdeck.com/garethr/managing-container-configuration-with-metadata" target="_blank">Managing Container Configuration with Metadata</a></li>
 <li><a href="https://rock-it.pl/how-to-write-excellent-dockerfiles/" target="_blank">How to write excellent Dockerfiles</a></li>
 </ul>
-
-<hr />
-
-<hr />
-
-<h2 id="version">Version</h2>
-
-<blockquote>
-<p><em>It is very important that you always know the current version of Docker you are currently running on at any point in time.</em>
-This is very helpful because you get to know what features are compatible with what you have running.
-This is also important because you know what containers to run from the docker store when you are trying to get template containers.
-That said let see how to know what version of docker we have running currently</p>
-</blockquote>
-
-<ul>
-<li><a href="https://docs.docker.com/engine/reference/commandline/version/" target="_blank"><code>docker version</code></a> checks what version of docker you have running</li>
-<li>Usage: <code>docker version [OPTIONS]</code></li>
-</ul>
-
-<p>Get the server version</p>
-
-<pre><code class="language-bash">$ docker version --format '{{.Server.Version}}'
-
-1.8.0
-</code></pre>
-
-<p>Dump raw JSON data</p>
-
-<pre><code class="language-bash">$ docker version --format '{{json .}}'
-
-{&quot;Client&quot;:{&quot;Version&quot;:&quot;1.8.0&quot;,&quot;ApiVersion&quot;:&quot;1.20&quot;,&quot;GitCommit&quot;:&quot;f5bae0a&quot;,&quot;GoVersion&quot;:&quot;go1.4.2&quot;,&quot;Os&quot;:&quot;linux&quot;,&quot;Arch&quot;:&quot;am&quot;}
-</code></pre>
-
-<h3 id="cleaning-up">Cleaning up</h3>
-
-<p>While you can use the <code>docker rmi</code> command to remove specific images, there&rsquo;s a tool called <a href="https://github.com/spotify/docker-gc" target="_blank">docker-gc</a> that will safely clean up images that are no longer used by any containers.</p>
-
-<h3 id="load-save-image">Load/Save image</h3>
-
-<p>Load an image from file:</p>
-
-<pre><code>docker load &lt; my_image.tar.gz
-</code></pre>
-
-<p>Save an existing image:</p>
-
-<pre><code>docker save my_image:my_tag | gzip &gt; my_image.tar.gz
-</code></pre>
-
-<h3 id="import-export-container">Import/Export container</h3>
-
-<p>Import a container as an image from file:</p>
-
-<pre><code>cat my_container.tar.gz | docker import - my_image:my_tag
-</code></pre>
-
-<p>Export an existing container:</p>
-
-<pre><code>docker export my_container | gzip &gt; my_container.tar.gz
-</code></pre>
-
-<p><div class="alert alert-">
-  <p>The difference between <em>loading a saved image</em> and importing an exported <em>container as an image</em></p>
-
-</div>
-
-Loading an image using the <code>load</code> command creates a new image including its history.<br />
-Importing a container as an image using the <code>import</code> command creates a new image, <strong>excluding the history,</strong> which results in a <em>smaller image size compared to loading an image</em>.</p>
 
 <hr />
 
@@ -1701,6 +1699,36 @@ $ALIAS_PORT_1337_TCP_ADDR
 
 <hr />
 
+<h2 id="versions">Versions</h2>
+
+<blockquote>
+<p><em>It is very important that you always know the current version of Docker you are currently running on at any point in time.</em>
+This is very helpful because you get to know what features are compatible with what you have running.
+This is also important because you know what containers to run from the docker store when you are trying to get template containers.
+That said let see how to know what version of docker we have running currently</p>
+</blockquote>
+
+<ul>
+<li><a href="https://docs.docker.com/engine/reference/commandline/version/" target="_blank"><code>docker version</code></a> checks what version of docker you have running</li>
+<li>Usage: <code>docker version [OPTIONS]</code></li>
+</ul>
+
+<p>Get the server version</p>
+
+<pre><code class="language-bash">$ docker version --format '{{.Server.Version}}'
+
+1.8.0
+</code></pre>
+
+<p>Dump raw JSON data</p>
+
+<pre><code class="language-bash">$ docker version --format '{{json .}}'
+
+{&quot;Client&quot;:{&quot;Version&quot;:&quot;1.8.0&quot;,&quot;ApiVersion&quot;:&quot;1.20&quot;,&quot;GitCommit&quot;:&quot;f5bae0a&quot;,&quot;GoVersion&quot;:&quot;go1.4.2&quot;,&quot;Os&quot;:&quot;linux&quot;,&quot;Arch&quot;:&quot;am&quot;}
+</code></pre>
+
+<hr />
+
 <h2 id="basics">Basics</h2>
 
 <h3 id="get-ip-address">Get IP Address</h3>
@@ -1739,7 +1767,7 @@ docker build \
 
 <hr />
 
-<h2 id="management">Management</h2>
+<h2 id="general">General</h2>
 
 <h3 id="find-containers-using-regular-expression">Find containers using regular expression:</h3>
 
