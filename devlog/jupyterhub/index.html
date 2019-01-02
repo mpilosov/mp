@@ -18,7 +18,7 @@
   <meta name="description" content="Yet More JupyterHub">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/devlog/day6/">
+  <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/devlog/jupyterhub/">
 
   
 
@@ -108,7 +108,7 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://www.michaelpilosov.com/devlog/day6/">
+  <link rel="canonical" href="https://www.michaelpilosov.com/devlog/jupyterhub/">
 
   
   
@@ -122,21 +122,21 @@
   <meta property="twitter:creator" content="@Mathematical_MP">
   
   <meta property="og:site_name" content="Michael Pilosov | Academic Website">
-  <meta property="og:url" content="https://www.michaelpilosov.com/devlog/day6/">
-  <meta property="og:title" content="Day 6 | Michael Pilosov | Academic Website">
+  <meta property="og:url" content="https://www.michaelpilosov.com/devlog/jupyterhub/">
+  <meta property="og:title" content="Jupyterhub | Michael Pilosov | Academic Website">
   <meta property="og:description" content="Yet More JupyterHub"><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-12-25T00:00:00-07:00">
   
-  <meta property="article:modified_time" content="2018-12-25T00:00:00-07:00">
+  <meta property="article:modified_time" content="2019-01-01T14:43:00-07:00">
   
 
   
 
   
 
-  <title>Day 6 | Michael Pilosov | Academic Website</title>
+  <title>Jupyterhub | Michael Pilosov | Academic Website</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
@@ -316,31 +316,36 @@
   
   
   <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/devlog/academicupgrades/">Website</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/devlog/academicupgrades/">Upgrading</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
     <a class="docs-toc-link" href="/devlog/">devlog</a>
     <ul class="nav docs-sidenav">
       
       <li >
-        <a href="/devlog/day1/">Day 1</a>
-      </li>
-      
-      <li >
-        <a href="/devlog/day2/">Day 2</a>
-      </li>
-      
-      <li >
-        <a href="/devlog/day3/">Day 3</a>
-      </li>
-      
-      <li >
-        <a href="/devlog/day4/">Day 4</a>
-      </li>
-      
-      <li >
-        <a href="/devlog/day5/">Day 5</a>
+        <a href="/devlog/docker/">Day 5</a>
       </li>
       
       <li class="active">
-        <a href="/devlog/day6/">Day 6</a>
+        <a href="/devlog/jupyterhub/">Jupyterhub</a>
+      </li>
+      
+      <li >
+        <a href="/devlog/openscience/">Open Science</a>
+      </li>
+      
+      <li >
+        <a href="/devlog/widgets/">Widgets</a>
       </li>
       
     </ul>
@@ -364,6 +369,7 @@
 <li><a href="#status-report">Status Report</a></li>
 <li><a href="#new-server">New Server</a></li>
 <li><a href="#next-day">Next Day</a></li>
+<li><a href="#volumes-working">VOLUMES WORKING!</a></li>
 </ul>
 </nav>
 
@@ -380,7 +386,7 @@
       <article class="article" itemscope itemtype="http://schema.org/Article">
 
         <div class="docs-article-container">
-          <h1 itemprop="name">Day 6</h1>
+          <h1 itemprop="name">Jupyterhub</h1>
 
           <div class="article-style" itemprop="articleBody">
             
@@ -781,6 +787,156 @@ OAUTH_CALLBACK_URL=https://hub.consistentbayes.com/hub/oauth_callback
 <li>Make sure to upgrade pip, no one seems to.</li>
 <li>volume permissions are probably things joe knows about.</li>
 </ul>
+
+<h1 id="volumes-working">VOLUMES WORKING!</h1>
+
+<p><code>--mount</code> creates directories if they dont exist, whereas <code>--volume</code> does not. Good to create up at root one <code>/shared</code> directory. Additionally we can link them to volumes to host their data instead, managed via docker. Ideally we use a mix of the two.
+Adding a volume (even if it doesn&rsquo;t exist) to be managed by docker would be accomplished with -v <code>volume-name:/directory/to/mount</code></p>
+
+<p>So we should think about what in our docker-compose we can automatically mount. Additionally (or in replacement), volumes can be handled via the spawner.</p>
+
+<p>In either set up, we can shut down and restart the container all we want and data persists. We can even re-build the image. Volumes seem to just be symbolic links to directories on your unix machine, anyway, visible via <code>docker inspect volume-name</code>.</p>
+
+<pre><code>docker run -d -it -p 8000:8000 --mount source=/home/michael/repos/packages/lyricalart,type=bind,target=/home/mpilosov/examples/shared-folder-mp/,bind-propagation=rshared --mount source=/home/michael/repos/packages/lyricalart,type=bind,target=/home/mathematicalmichael/shared-folder-mm/,bind-propagation=rshared --env-file=env --name hub jupyterhub-oauth
+</code></pre>
+
+<p>Now that we&rsquo;ve got this figured out&hellip; It would be nice to figure out how to get that <code>docker-compose</code> up and running, including with the nginx server, all based on a configuration file that takes in the website name, ip of host, etc. so you can get in, git clone, run bash script, edit the ip, and close out knowing it will work.</p>
+
+<p>To build everything, we did <code>docker build -t jupyterhub-oauth .</code> in the directory we set up.</p>
+
+<p>Definitely want to containerize each student. Currently it&rsquo;s possible to get into the directories mounted above as shared by going through Terminal. Can move files in/out&hellip; not good.</p>
+
+<p>To destroy containers after they close down, simply add <code>.remove = True</code> to the <code>c.DockerSpawner</code> attributes.</p>
+
+<p>[8:59 PM] Pilosov, Michael
+oficially did it on hub.consistentbayes.com! holy shit that took forever but I linked up the pieces. Now it spawns up containers per user, with BOTH volumes that persist even as containers change and shared directories accessible by all users, automatically mounted to every user.
+One environment file controls everything. the version of jupyterhub, the docker image you want to spawn, etc.
+​
+[9:04 PM] Pilosov, Michael
+that is our ideal set up.. the shared folders can be determined by rules such as group membership (students within class or even, and the environment to spawn can be similarly chosen. This means we can use one hub for every student across every class with total ease. No containers stick around. At all. They just get appropriately mounted to volumes when they are created. the decision to make one hub per class is purely an aesthetic one. the hub can spin up dozens of different configurations depending on what the user needs.
+I&rsquo;m going to package this all nice so that I can deploy to a powerful server that I can rent for like &hellip;. a couple hours for testing. Throw a whole bunch of simultaneous use-cases at it.
+​
+[9:08 PM] Pilosov, Michael
+we can even use the admin panel to start/stop servers instead of logging in simultaneously. if each single-user server has a heavy python script to run on startup, we can simulate heavy loads. I played around a little already and saw the containers being created (not restarted, created!) when I &ldquo;started&rdquo; the single-user server and then thrown away when I clicked &ldquo;stop&rdquo; which keeps our physical memory literally AT THE LOWEST possible limit at any given time since stopped containers dont have to sit around.</p>
+
+<p>So, how?</p>
+
+<p>I cloned the jupyterhub-deploy-docker repo. (again), and made my fixes&hellip;</p>
+
+<p>I don&rsquo;t know why the Makefile doesn&rsquo;t handle this, but
+<code>echo &quot;POSTGRES_PASSWORD=$( openssl rand -hex 32)&quot; &gt;&gt; secrets/postgres.env</code> will create a necessary file for <code>make build</code> to work. And after that works, run <code>make notebook_image</code> to create the necessary image to be spawned based on the  <code>.env</code> file in the root directory.</p>
+
+<p>I commented out lines 40-49 in the <code>Makefile</code> since I want to handle certification on my own through the reverse proxy.</p>
+
+<p>Would be nice to get this working with nginx as well. But all that stuff can be handled from the bash script.</p>
+
+<p>In the <code>jupyterhub_config.py</code> file, I removed references to SSL and set up shared volumes.
+It would be great to learn how to sub-class the spawner now and create rules for mounting volumes. A simple restart lets students gain new files.</p>
+
+<p>I also removed SSL references from <code>Dockerfile.jupyerhub</code></p>
+
+<p>[Docker-compose guidelines][docker-compose]</p>
+
+<p>Just tested the containerized solution and love it (even though i built small containers). I can log in, add nbextensions as root, and the changes are reflected <em>without touching docker</em>. No restarting required.</p>
+
+<p>Can add user accounts as admin through the cPanel. If they don&rsquo;t exist, a home directory or volume is created on their behalf.
+I wouldn&rsquo;t suggest sharing directories automatically for the containerized solutions. <em>That part</em> should be part of a custom spawner (and require hub restart, which can also be done through cpanel since it runs on another port!).</p>
+
+<p>Admin is powerful! You can start/stop servers at your whim and launch them to poke around on your own. Very cool.</p>
+
+<p>For a smaller class, auto-mounting some shared directory is a great idea.</p>
+
+<hr />
+
+<p>Here is something interesting for version-controlling notebooks.
+<a href="https://github.com/mwouts/jupytext" target="_blank">https://github.com/mwouts/jupytext</a></p>
+
+<p>Here is an introduction to the notebook format.
+<a href="https://nbformat.readthedocs.io/en/latest/format_description.html" target="_blank">https://nbformat.readthedocs.io/en/latest/format_description.html</a>
+You should turn this into a write-up.</p>
+
+<p>The basic examples in here are actually a great demo of publishing LaTeX documents right from Jupyter.
+<a href="https://github.com/jupyter/nbconvert-examples" target="_blank">https://github.com/jupyter/nbconvert-examples</a></p>
+
+<hr />
+
+<p>Nice article
+<a href="https://blog.dominodatalab.com/data-science-vs-engineering-tension-points/" target="_blank">https://blog.dominodatalab.com/data-science-vs-engineering-tension-points/</a></p>
+
+<p>This might be how to set up binderhub on your own &ndash; minikube
+<a href="https://github.com/jupyterhub/binderhub/blob/master/CONTRIBUTING.md" target="_blank">https://github.com/jupyterhub/binderhub/blob/master/CONTRIBUTING.md</a></p>
+
+<p>Other Projects for sharing results:
+<a href="https://github.com/minrk/thebelab" target="_blank">https://github.com/minrk/thebelab</a>
+<a href="https://github.com/QuantStack/voila" target="_blank">https://github.com/QuantStack/voila</a>
+Write about them in a new section summarizing sharing results.</p>
+
+<p><a href="https://github.com/jupyter/dashboards" target="_blank">https://github.com/jupyter/dashboards</a></p>
+
+<p>Adding extra libraries to the jupyter-stacks image
+<a href="https://github.com/binder-examples/jupyter-stacks" target="_blank">https://github.com/binder-examples/jupyter-stacks</a></p>
+
+<p>Allowing students to get latest files without knowing git
+<a href="https://github.com/jupyterhub/nbgitpuller" target="_blank">https://github.com/jupyterhub/nbgitpuller</a></p>
+
+<blockquote>
+<p>When a link is clicked, we try to make opinionated intelligent guesses on how to do a merge automatically, without making the user do a conflict resolution. nbgitpuller is designed to be used by folks who do not know that git is being used underneath, and are only pulling content one way from a source and modifying it - not pushing it back. So we have made the following opinionated decisions.</p>
+
+<ul>
+<li>If content has changed in both places, prefer local changes over remote changes.</li>
+<li>If a file was deleted locally but present in the remote, remote file is restored to local repository. This allows users to get a &lsquo;fresh copy&rsquo; of a file by just deleting the file locally &amp; clicking the link again.</li>
+<li>If a file exists locally but is untracked by git (maybe someone uploaded it manually), then rename the file, and pull in remote copy.</li>
+</ul>
+</blockquote>
+
+<p>Hippylib-Hub, example to follow.
+<a href="https://github.com/g2s3-2018/hippylib-hub" target="_blank">https://github.com/g2s3-2018/hippylib-hub</a></p>
+
+<p>Want:
+    - Dockerspawner is nice (can restart hub without issues).
+    - Although, restarting if all-in-one isn&rsquo;t that bad, either. Temporary inconvenience.</p>
+
+<p>Add this to installations!!! It&rsquo;s amazing.
+<a href="https://github.com/yuvipanda/nbresuse" target="_blank">https://github.com/yuvipanda/nbresuse</a></p>
+
+<p>This might be a good thing to test on our server.
+<a href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/" target="_blank">https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/</a></p>
+
+<p>USEFUL: in Vim:
+<code>r:! openssl rand -hex 32</code> will paste a token into a file like <code>config.yaml</code></p>
+
+<pre><code>proxy:
+    secretToken: xxxx
+</code></pre>
+
+<p>To-Do today:</p>
+
+<ul>
+<li>Documentation on Projects.</li>
+<li>Galleries</li>
+<li>Art for 2019?</li>
+<li>Documentation for Jupyterhub, convert devlogs.</li>
+<li>Build shell script for deployments, fenics?</li>
+</ul>
+
+<p>Wow I can&rsquo;t believe this exists.
+<a href="https://www.katacoda.com/" target="_blank">https://www.katacoda.com/</a></p>
+
+<p>This is a good file-storage solution
+<a href="https://www.youtube.com/watch?v=hqE5c5pyfrk" target="_blank">https://www.youtube.com/watch?v=hqE5c5pyfrk</a>
+<a href="https://storageos.com/developers/" target="_blank">https://storageos.com/developers/</a>
+another alternative, which appears to be a bit more complicated to set-up (though helm-chart should be available by now), but is open-source and from redhat: <a href="https://www.youtube.com/watch?v=Fgpr2lMnBVY" target="_blank">https://www.youtube.com/watch?v=Fgpr2lMnBVY</a> [16:30]</p>
+
+<p>Kubernetes 101 introduction
+<a href="https://medium.com/google-cloud/kubernetes-101-pods-nodes-containers-and-clusters-c1509e409e16" target="_blank">https://medium.com/google-cloud/kubernetes-101-pods-nodes-containers-and-clusters-c1509e409e16</a></p>
+
+<p>The monitoring of my memory usage led me to discover that repeated execution of plotting cells led to memory usage going through the roof. The solution was to add this cell-magic to the top of any plotting-cell: <code>%reset -f out</code>. What this does is purge the output of the cell</p>
+
+<hr />
+
+<p>To get a bash script for the set-up, you need to package the reverse-proxy with docker-compose. Let&rsquo;s figure out how to use Traefik. Between these two sources, you should be able to figure it out:
+<a href="https://github.com/defeo/jupyterhub-docker/blob/master/docker-compose.yml" target="_blank">https://github.com/defeo/jupyterhub-docker/blob/master/docker-compose.yml</a>
+<a href="https://github.com/containous/traefik/blob/master/examples/quickstart/docker-compose.yml" target="_blank">https://github.com/containous/traefik/blob/master/examples/quickstart/docker-compose.yml</a></p>
 <div class="footnotes">
 
 <hr />
@@ -813,7 +969,7 @@ OAUTH_CALLBACK_URL=https://hub.consistentbayes.com/hub/oauth_callback
         </div>
 
         <div class="body-footer">
-          Last updated on Dec 25, 2018
+          Last updated on Jan 1, 2019
         </div>
 
       </article>

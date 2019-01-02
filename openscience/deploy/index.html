@@ -495,6 +495,161 @@ Alternatively, your university or company may already have available server reso
 
 <h2 id="setting-up-kubernetes-for-binder">Setting up Kubernetes for Binder</h2>
 
+<hr />
+
+<hr />
+
+<hr />
+
+<p><a href="https://blog.ssdnodes.com/blog/traefik-multiple-ssl-websites/" target="_blank">Traefik</a> is really cool and powerful.</p>
+
+<p>Getting <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04" target="_blank">Docker</a>, <a href="https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04" target="_blank">Docker-Compose</a>, configuring basics of Nginx]<a href="https://docs.docker.com/samples/library/nginx/#hosting-some-simple-static-content" target="_blank">nginx-install</a> etc.</p>
+
+<p>What this does is add repositories to <code>apt-get</code> that instruct Ubuntu on where to get the latest Docker-CE versions, then installs it (rather than from the default <code>apt-get</code> repositories). It then adds the current user (non-root admin).</p>
+
+<p><em>Note:</em> This first creates an <code>admin</code> user with sudo privileges, prompts you for the password (and will again a couple of times)</p>
+
+<p>As root: (TODO: grab bash scripts for set up to make environment more pleasant.</p>
+
+<pre><code>useradd admin -m -s /bin/bash
+chpasswd admin:default_password_goes_here
+usermod -aG sudo admin
+</code></pre>
+
+<pre><code>su - admin
+export DOCKER_COMPOSE_VERSION=1.23.2
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable&quot;
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install docker-ce
+
+docker --version 
+sudo usermod -aG docker root
+sudo usermod -aG docker ${USER}
+su - ${USER}
+
+sudo curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+docker-compose --version
+</code></pre>
+
+<p>Have your <code>public_html</code> out in this top directory. We&rsquo;ll be looking for it to serve the baseline-version of your website.</p>
+
+<p>We need some environment variables based on what we&rsquo;ve done above..</p>
+
+<p><code>.env</code></p>
+
+<pre><code>DOMAIN_NAME=consistentbayes.com
+EMAIL=consistentbayes@gmail.com
+COMPOSE_PROJECT_NAME=masterhub
+JUPYTER_HUB_IMAGE_NAME=jupyterhub
+JUPYTER_SINGLE_NAME=jupyter-singleuser_img
+
+</code></pre>
+
+<p><code>vi docker-compose.yml</code> (<em>Note:</em> may remove <code>--logLevel=DEBUG</code> later?)</p>
+
+<pre><code>version: '3'
+
+services:
+  reverse-proxy:
+    image: traefik:latest
+    command: --docker --docker.domain=${DOMAIN_NAME}.local --logLevel=DEBUG
+    networks:
+      - traefik-network
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.toml:/traefik.toml
+      - ./secrets/acme.json:/acme.json
+          
+
+  nginx:
+    image: nginx:latest
+    labels:
+      - &quot;traefik.frontend.rule=Host:${DOMAIN_NAME},www.${DOMAIN_NAME}&quot;
+    networks:
+      - traefik-network
+    volumes:
+      - public_html:/usr/share/nginx/html
+
+
+networks:
+  traefik-network:
+    external: true
+
+</code></pre>
+
+<p><code>vi traefik.toml</code></p>
+
+<pre><code>logLevel = &quot;DEBUG&quot;
+defaultEntryPoints = [&quot;http&quot;, &quot;https&quot;]
+
+[web]
+address = &quot;:8080&quot;
+
+[docker]
+domain = &quot;${DOMAIN_NAME}.local&quot;
+watch = true
+
+[entryPoints]
+  [entryPoints.http]
+  address = &quot;:80&quot;
+    [entryPoints.http.redirect]
+    entryPoint = &quot;https&quot;
+  [entryPoints.https]
+  address = &quot;:443&quot;
+    [entryPoints.https.tls]
+ 
+[acme]
+  email=&quot;${EMAIL}&quot;
+  storage=&quot;acme.json&quot;
+  entryPoint=&quot;https&quot;
+  acmeLogging=true
+  onDemand=false
+  OnHostRule=true
+
+[acme.httpChallenge]
+  entryPoint = &quot;http&quot;
+</code></pre>
+
+<blockquote>
+<p>The above Traefik configuration file sets the log level to debug and allows both HTTP and HTTPS requests to the frontend. We then force HTTP (80) traffic to redirect to HTTPS (443) in <code>entrypoints</code> section. The Traefik web interface is configured on port <code>8080</code>, and the Docker section instructs Traefik to use Docker as a configuration source.</p>
+
+<p>The acme section is used by Traefik to fetch a Let’s Encrypt certificate for the domain that appears in the <code>docker-compose.yml</code>. The great thing about Traefik is that these certificates are dynamic, meaning that if you add a new domain or subdomain to <code>docker-compose.yml</code>, Traefik will automatically fetch the key/certificate and store them in <code>acme.json</code>.</p>
+
+<p>The <code>onDemand</code>option in <code>acme</code> section will let Traefik request certificates whenever a web request is received for a domain or subdomain which does not already have a certificate. The <code>onHostRule</code> only requests new certificates for domain names that are listed in the <code>docker-compose.yml</code> file.</p>
+
+<p>Create an empty JSON file to hold Let’s Encrypt data that and make this file readable/writable to only the present user.</p>
+</blockquote>
+
+<p>Should just need to make my version of <a href="https://github.com/jupyterhub/jupyterhub-deploy-docker.git" target="_blank">the jupyterhub-deploy-docker</a> repository include <code>labels</code> for the jupyterhub so that traefik can forward them.</p>
+
+<pre><code>labels:                          # Traefik configuration.
+  - &quot;traefik.enable=true&quot;
+  - &quot;traefik.frontend.rule=Host:hub.consistentbayes.com&quot;
+</code></pre>
+
+<p>or <code>&quot;traefik.frontend.rule=Host:hub.consistentbayes.com&quot;</code>
+Furthermore, this will let me create hubs at any <code>website.com/hubname</code>, etc. Traefik will handle a lot of things for me.</p>
+
+<pre><code>su admin
+touch secrets/acme.json
+touch secrets/postgres.env
+make secrets/postgres.env
+make secrets/acme.json
+make build
+
+docker-compose up -d 
+</code></pre>
+
           </div>
 
           

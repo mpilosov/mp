@@ -10,16 +10,16 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/devlog/day6/</loc>
-      <lastmod>2018-12-25T00:00:00-07:00</lastmod>
+      <loc>https://www.michaelpilosov.com/devlog/jupyterhub/</loc>
+      <lastmod>2019-01-01T14:43:00-07:00</lastmod>
     </url>
     
   
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/devlog/day5/</loc>
-      <lastmod>2018-12-24T00:00:00-07:00</lastmod>
+      <loc>https://www.michaelpilosov.com/devlog/docker/</loc>
+      <lastmod>2019-01-01T14:43:00-07:00</lastmod>
     </url>
     
   
@@ -27,14 +27,6 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/openscience/binder/</loc>
-      <lastmod>2018-12-22T00:00:00-07:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://www.michaelpilosov.com/devlog/day4/</loc>
       <lastmod>2018-12-22T00:00:00-07:00</lastmod>
     </url>
     
@@ -74,15 +66,15 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/openscience/remote/</loc>
-      <lastmod>2018-12-21T00:00:00-07:00</lastmod>
+      <loc>https://www.michaelpilosov.com/devlog/openscience/</loc>
+      <lastmod>2019-01-01T14:40:00-07:00</lastmod>
     </url>
     
   
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/devlog/day3/</loc>
+      <loc>https://www.michaelpilosov.com/openscience/remote/</loc>
       <lastmod>2018-12-21T00:00:00-07:00</lastmod>
     </url>
     
@@ -122,16 +114,16 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/devlog/day2/</loc>
-      <lastmod>2018-12-20T00:00:00-07:00</lastmod>
+      <loc>https://www.michaelpilosov.com/devlog/widgets/</loc>
+      <lastmod>2019-01-01T14:23:00-07:00</lastmod>
     </url>
     
   
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/devlog/day1/</loc>
-      <lastmod>2018-12-19T18:16:07-07:00</lastmod>
+      <loc>https://www.michaelpilosov.com/devlog/academicupgrades/</loc>
+      <lastmod>2019-01-01T14:25:00-07:00</lastmod>
     </url>
     
   
@@ -642,7 +634,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/dev/</loc>
-      <lastmod>2018-12-25T00:00:00-07:00</lastmod>
+      <lastmod>2019-01-01T14:43:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -651,7 +643,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/docker/</loc>
-      <lastmod>2018-12-25T00:00:00-07:00</lastmod>
+      <lastmod>2019-01-01T14:43:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -660,7 +652,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/categories/documentation/</loc>
-      <lastmod>2018-12-25T00:00:00-07:00</lastmod>
+      <lastmod>2019-01-01T14:43:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -696,7 +688,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/jupyter/</loc>
-      <lastmod>2018-12-25T00:00:00-07:00</lastmod>
+      <lastmod>2019-01-01T14:43:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -714,7 +706,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/openscience/</loc>
-      <lastmod>2018-12-25T00:00:00-07:00</lastmod>
+      <lastmod>2019-01-01T14:43:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -723,7 +715,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/webdev/</loc>
-      <lastmod>2018-12-21T00:00:00-07:00</lastmod>
+      <lastmod>2019-01-01T14:23:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     

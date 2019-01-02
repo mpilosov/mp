@@ -15,10 +15,10 @@
   
     
   
-  <meta name="description" content="Filling in the Docs">
+  <meta name="description" content="Cataloging changes made to the Academic theme.">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/devlog/day3/">
+  <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/devlog/academicupgrades/">
 
   
 
@@ -108,7 +108,7 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://www.michaelpilosov.com/devlog/day3/">
+  <link rel="canonical" href="https://www.michaelpilosov.com/devlog/academicupgrades/">
 
   
   
@@ -122,21 +122,21 @@
   <meta property="twitter:creator" content="@Mathematical_MP">
   
   <meta property="og:site_name" content="Michael Pilosov | Academic Website">
-  <meta property="og:url" content="https://www.michaelpilosov.com/devlog/day3/">
-  <meta property="og:title" content="Day 3 | Michael Pilosov | Academic Website">
-  <meta property="og:description" content="Filling in the Docs"><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
+  <meta property="og:url" content="https://www.michaelpilosov.com/devlog/academicupgrades/">
+  <meta property="og:title" content="Website Upgrading Logs | Michael Pilosov | Academic Website">
+  <meta property="og:description" content="Cataloging changes made to the Academic theme."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2018-12-21T00:00:00-07:00">
+  <meta property="article:published_time" content="2018-12-19T18:16:07-07:00">
   
-  <meta property="article:modified_time" content="2018-12-21T00:00:00-07:00">
-  
-
+  <meta property="article:modified_time" content="2019-01-01T14:25:00-07:00">
   
 
   
 
-  <title>Day 3 | Michael Pilosov | Academic Website</title>
+  
+
+  <title>Website Upgrading Logs | Michael Pilosov | Academic Website</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
@@ -316,31 +316,36 @@
   
   
   <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/devlog/academicupgrades/">Website</a>
+    <ul class="nav docs-sidenav">
+      
+      <li class="active">
+        <a href="/devlog/academicupgrades/">Upgrading</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
     <a class="docs-toc-link" href="/devlog/">devlog</a>
     <ul class="nav docs-sidenav">
       
       <li >
-        <a href="/devlog/day1/">Day 1</a>
+        <a href="/devlog/docker/">Day 5</a>
       </li>
       
       <li >
-        <a href="/devlog/day2/">Day 2</a>
-      </li>
-      
-      <li class="active">
-        <a href="/devlog/day3/">Day 3</a>
+        <a href="/devlog/jupyterhub/">Jupyterhub</a>
       </li>
       
       <li >
-        <a href="/devlog/day4/">Day 4</a>
+        <a href="/devlog/openscience/">Open Science</a>
       </li>
       
       <li >
-        <a href="/devlog/day5/">Day 5</a>
-      </li>
-      
-      <li >
-        <a href="/devlog/day6/">Day 6</a>
+        <a href="/devlog/widgets/">Widgets</a>
       </li>
       
     </ul>
@@ -361,7 +366,22 @@
 
       <nav id="TableOfContents">
 <ul>
-<li><a href="#to-do">To Do</a></li>
+<li><a href="#introduction">Introduction</a>
+<ul>
+<li><a href="#changes-made-to-theme">Changes Made to Theme</a></li>
+<li><a href="#to-do">To-Do</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul></li>
+<li><a href="#upgrading-to-hugo-v0-52">Upgrading to Hugo v0.52</a>
+<ul>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#academic-theme-v0-3-32">Academic Theme v0.3.32</a></li>
+<li><a href="#image-galleries">Image Galleries</a></li>
+<li><a href="#dark-mode">Dark Mode</a></li>
+<li><a href="#page-bundles">Page Bundles</a></li>
+<li><a href="#search-filter">Search/Filter</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+</ul></li>
 </ul>
 </nav>
 
@@ -378,10 +398,92 @@
       <article class="article" itemscope itemtype="http://schema.org/Article">
 
         <div class="docs-article-container">
-          <h1 itemprop="name">Day 3</h1>
+          <h1 itemprop="name">Website Upgrading Logs</h1>
 
           <div class="article-style" itemprop="articleBody">
             
+
+<h1 id="introduction">Introduction</h1>
+
+<p>This documents the changes made to the academic theme to make this website work when upgrading from Hugo ver=0.47 and Academic Theme ver=2.4.</p>
+
+<p>The upgrade for this website was performed on 12-19-2018.</p>
+
+<p>All in all, it took the better part of an entire day to get familiar with all the nooks and crannies of the new updates and plan out the migration of the more complicated website&hellip; <a href="https://www.mathematicalmichael.com" target="_blank">Mathematical Michael</a>.</p>
+
+<h2 id="changes-made-to-theme">Changes Made to Theme</h2>
+
+<ul>
+<li>Removed Weibo sharing icon in <code>/layouts/partials/share</code> in the theme directory.</li>
+<li>Changed footer in <code>layouts/partials/footer_section.html</code></li>
+<li>Re-did <code>config.toml</code> line-by-line, disabled night/day mode.</li>
+
+<li><p>Created slides and docs based on the <code>exampleSite</code> folder, including creating the directory <code>/assets/css/reveal_custom.css</code> for the Reveal.js slideshows.</p>
+
+<ul>
+<li>added <code>boards.jpg</code> to <code>/static/img/</code> to test headers and embeds in the example slideshow.</li>
+<li>created <code>slides.md</code> in <code>/content/</code> to link to <code>/content/slides/</code> folder since using an index file does not work to list the available slideshows in that folder.</li>
+</ul></li>
+
+<li><p>created <code>/wid/</code> and <code>/dockerhub/</code> to experiment with new <code>docs</code> template.</p></li>
+
+<li><p>copied over dummy project files, still need to migrate own projects to new formatting, remove dummy projects.</p></li>
+
+<li><p>Changed <code>work</code> hyperlink and <code>resume</code> to reflect new migration to the <code>docs</code> template.</p></li>
+
+<li><p>resume widget changed to hyperlink to resume doc.</p></li>
+</ul>
+
+<h2 id="to-do">To-Do</h2>
+
+<ul>
+<li>header/feature images for post, check how fb/twitter scrapes them.
+
+<ul>
+<li>optional feature image without becoming header will be useful for posts that are galleries.</li>
+</ul></li>
+<li>migrate any posts/projects to new formatting.</li>
+<li>think about how to migrate MathematicalMichael.<br /></li>
+</ul>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p><em>Things I&rsquo;m Considering</em></p>
+
+<ul>
+<li>No need to re-make publication type.
+
+<ul>
+<li>Since posts can be linked to projects, and filters can be applied within widgets, we should have all the flexibility we need.</li>
+<li>Taken with the new folder structure of pages, the overall directory structure remains quite clean.</li>
+</ul></li>
+
+<li><p>Use widgets pagetype to construct/mimick the <code>/artwork</code> page.</p>
+
+<ul>
+<li>Have carousels and project widgets linking to galleries and slideshows.</li>
+</ul></li>
+
+<li><p>Can additionally link out to a <code>docs</code> page that describes the art in more depth, also linked to from the projects page of <code>Probably Art</code> to tell the &ldquo;story&rdquo; of this project over time and in its phases.</p>
+
+<ul>
+<li>Phase 1: Directed Study</li>
+<li>Phase 2: Pickup with Pocket CHIP, restart coding in Python</li>
+<li>Phase 3: After some time, picked it up again and added a whole bunch of functionality, attempted to get random art automated in Squarespace</li>
+<li>Phase 4: Pick up again when I get into GCode. Adds functionality.</li>
+<li>Phase 5: Lapse again. Then finally tackle creating a framework that will work long-term. Talk about requirements. How is has to be in Python, based on stable packages, recreatable and deterministic. GCode scalable. Talk about some to-do&rsquo;s (bumpers, bash scripts that wrap around to position plotter better). Show images of getting plotter back up again.<br /></li>
+<li>Phase 6: Merge with Animation code/projects. Talk about goals, current progress. Random animations on non-random images<br /></li>
+<li>Have another to tell the story of <code>Moving Pictures</code></li>
+</ul></li>
+</ul>
+
+<hr />
+
+<hr />
+
+<h1 id="upgrading-to-hugo-v0-52">Upgrading to Hugo v0.52</h1>
+
+<p>Date: 12/21/18</p>
 
 <p>Today I began to structure and fill in the basic information for the <a href="/openscience">Open Science</a> Documentation.
 It involved some research and collection of resources from disparated places and things I&rsquo;ve done before.</p>
@@ -394,9 +496,15 @@ The only file that needed to be changed (before updating the theme, that is) was
 
 <p>Next step was to copy the theme from <code>michaelpilosov/</code> (which pulled from the github repo only a few days prior, and to which some minor changes were made) into <code>mathematicalmichael/themes/</code> along with a copy of the config file.</p>
 
-<p>Once the reference to the new theme is made, I expect a number of things to break.
-Here I will attempt to document one-by-one the changes I had to make to port my theme over, which I will attempt to do by leveraging the &ldquo;lookup structure&rdquo; of Hugo (something I read online).
-The idea is that rather than make changes to a theme that result in deviations that make merging new changes difficult, one makes changes by copying files into directories that are checked first, before <code>themes/</code> is searched for <code>layouts</code> or <code>partials</code> files.
+<h2 id="motivation">Motivation</h2>
+
+<p>Once the reference to the new theme is made, I expect a number of things to break.</p>
+
+<blockquote>
+<p>Here I will attempt to document one-by-one the changes I had to make to port my theme over, which I will attempt to do by leveraging the &ldquo;lookup structure&rdquo; of Hugo (something I read online).</p>
+</blockquote>
+
+<p>The idea is that rather than make changes to a theme that result in deviations that make merging new changes difficult, one makes changes by copying files into directories that are checked first, before <code>themes/</code> is searched for <code>layouts</code> or <code>partials</code> files.
 My hope is that this will aid in future upgrades, since less differences will exist between my version of the theme and the master branch.
 A really useful command (for comparing files), that I used to see what needed to change in the master configuration file for my theme (compared to the updated one from this website) was:</p>
 
@@ -404,6 +512,8 @@ A really useful command (for comparing files), that I used to see what needed to
 </code></pre>
 
 <p>which will print out two files side-by-side directly into the UNIX Terminal. Excellent.</p>
+
+<h2 id="academic-theme-v0-3-32">Academic Theme v0.3.32</h2>
 
 <p>After making the appropriate changes to the <code>config.toml</code> file (which were all straightforward), I ensured that the site built with the new Hugo <em>and</em> the new configuration file but <em>without</em> the new theme. It did. All was well.</p>
 
@@ -420,14 +530,12 @@ failed to render pages:
 render of &quot;home&quot; failed: 
 execute of template failed: 
 template: index.html:4:3: 
-executing &quot;index.html&quot; at &lt;partial &quot;widget_page...&gt;: 
-
+executing &quot;index.html&quot; at &lt;partial widget_page...&gt;: 
 error calling partial: 
 &quot;/media/mathematicalmichael/HANK/repos/mathematicalmichael/themes/hugo-academic/layouts/partials/widget_page.html:23:9&quot;: 
 execute of template failed: 
 template: partials/widget_page.html:23:9: 
 executing &quot;partials/widget_page.html&quot; at &lt;partial $widget $par...&gt;: 
-
 error calling partial: 
 Partial &quot;widgets/artworks.html&quot; not found
 </code></pre>
@@ -440,6 +548,8 @@ I made random art and had written code that created pages for that art to live o
 Any changes made to the front-matter could be easily applied later.</p>
 
 <p>I believe that simply moving some files to directories that exist <em>above</em> <code>themes</code> will resolve my problems.</p>
+
+<h2 id="image-galleries">Image Galleries</h2>
 
 <p>However, I know there will be an opportunity to switch to page-bundles and leverage the <code>image-gallery</code> feature in <code>v3.0</code> of <code>Hugo-Academic</code>. My thinking is as follows:</p>
 
@@ -462,8 +572,9 @@ Any changes made to the front-matter could be easily applied later.</p>
 </ul></li>
 </ul>
 
-<p>** Main Goal ** for the time being is to make sure the site builds with the new theme. We can add features and functionality later on.
-Today&rsquo;s agenda is simply to allow migration to Hugo v0.52 on my Macbook by ensuring the site builds with the new version.
+<p>** Main Goal ** for the time being is to make sure the site builds with the new theme. We can add features and functionality later on.</p>
+
+<p>Today&rsquo;s agenda is simply to allow migration to Hugo v0.52 on my Macbook by ensuring the site builds with the new version.
 Having the new theme work would be an added bonus.</p>
 
 <blockquote>
@@ -488,7 +599,7 @@ render of &quot;home&quot; failed:
 execute of template failed: 
 template: 
 index.html:4:3: 
-executing &quot;index.html&quot; at &lt;partial &quot;widget_page...&gt;: 
+executing &quot;index.html&quot; at &lt;partial widget_page...&gt;: 
 error calling partial: 
 &quot;/media/mathematicalmichael/HANK/repos/mathematicalmichael/themes/hugo-academic/layouts/partials/widget_page.html:23:9&quot;: 
 execute of template failed: 
@@ -521,6 +632,8 @@ mv dark.toml data/themes/
 </code></pre>
 
 <p>I then proceeded to change some things to get the right colors. Still not sure if this is correct. I also changed the theme to <code>self.toml</code> and referenced that in the <code>config.toml</code> file.</p>
+
+<h2 id="dark-mode">Dark Mode</h2>
 
 <p>Next test: Day/Night mode (re-enable, see what happens).</p>
 
@@ -563,6 +676,8 @@ Had to paste in the new format. I was using a custom partial code (note to self&
 After deleting <code>layouts/shortcodes/contactme.html</code> (my custom formspree link), in favor of using the one the upgraded theme provided, it appears that my website is now settled into the new theme. I did have to remove all references to this deleted shortcode, of course.</p>
 
 <p>Day/night mode works correctly. (would like to make my logo transparent though).</p>
+
+<h2 id="page-bundles">Page Bundles</h2>
 
 <p>Okay, well I knew it was too good to be true that things just worked. While pages loaded correctly, before building the final site, I made sure to investigate the directories a bit more and found that a bunch of files prepended with <code>._XXX.md</code> had populated my website directories.
 <em>This must be how they&rsquo;re ensuring backward-compatibility.</em></p>
@@ -612,7 +727,7 @@ refactor_pages_to_page_bundles &quot;$@&quot;
 
 <hr />
 
-<h1 id="to-do">To Do</h1>
+<h2 id="search-filter">Search/Filter</h2>
 
 <p>Notably, I will need to</p>
 
@@ -671,6 +786,17 @@ refactor_pages_to_page_bundles &quot;$@&quot;
 
 <p><a href="https://www.mathematicalmichael.com/project/rnr" target="_blank">See here for example</a>.</p>
 
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<p>I also realized I needed to edit the table of contents with some custom CSS.</p>
+
+<p>Create a custom file in <code>/static/css</code> and link it to line <code>custom_css = []</code> in <code>config.toml</code>:</p>
+
+<pre><code>#TableOfContents{
+    padding-left: 10px
+}
+</code></pre>
+
           </div>
 
           
@@ -689,7 +815,7 @@ refactor_pages_to_page_bundles &quot;$@&quot;
         </div>
 
         <div class="body-footer">
-          Last updated on Dec 21, 2018
+          Last updated on Jan 1, 2019
         </div>
 
       </article>

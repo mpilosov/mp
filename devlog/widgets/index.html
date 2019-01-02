@@ -15,10 +15,10 @@
   
     
   
-  <meta name="description" content="Cataloging changes made to the Academic theme.">
+  <meta name="description" content="An artistic day">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/devlog/day1/">
+  <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/devlog/widgets/">
 
   
 
@@ -108,7 +108,7 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://www.michaelpilosov.com/devlog/day1/">
+  <link rel="canonical" href="https://www.michaelpilosov.com/devlog/widgets/">
 
   
   
@@ -122,21 +122,21 @@
   <meta property="twitter:creator" content="@Mathematical_MP">
   
   <meta property="og:site_name" content="Michael Pilosov | Academic Website">
-  <meta property="og:url" content="https://www.michaelpilosov.com/devlog/day1/">
-  <meta property="og:title" content="Day 1 | Michael Pilosov | Academic Website">
-  <meta property="og:description" content="Cataloging changes made to the Academic theme."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
+  <meta property="og:url" content="https://www.michaelpilosov.com/devlog/widgets/">
+  <meta property="og:title" content="Day 2 | Michael Pilosov | Academic Website">
+  <meta property="og:description" content="An artistic day"><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2018-12-19T18:16:07-07:00">
+  <meta property="article:published_time" content="2018-12-20T00:00:00-07:00">
   
-  <meta property="article:modified_time" content="2018-12-19T18:16:07-07:00">
-  
-
+  <meta property="article:modified_time" content="2019-01-01T14:23:00-07:00">
   
 
   
 
-  <title>Day 1 | Michael Pilosov | Academic Website</title>
+  
+
+  <title>Day 2 | Michael Pilosov | Academic Website</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
@@ -316,31 +316,36 @@
   
   
   <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/devlog/academicupgrades/">Website</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/devlog/academicupgrades/">Upgrading</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
     <a class="docs-toc-link" href="/devlog/">devlog</a>
     <ul class="nav docs-sidenav">
       
+      <li >
+        <a href="/devlog/docker/">Day 5</a>
+      </li>
+      
+      <li >
+        <a href="/devlog/jupyterhub/">Jupyterhub</a>
+      </li>
+      
+      <li >
+        <a href="/devlog/openscience/">Open Science</a>
+      </li>
+      
       <li class="active">
-        <a href="/devlog/day1/">Day 1</a>
-      </li>
-      
-      <li >
-        <a href="/devlog/day2/">Day 2</a>
-      </li>
-      
-      <li >
-        <a href="/devlog/day3/">Day 3</a>
-      </li>
-      
-      <li >
-        <a href="/devlog/day4/">Day 4</a>
-      </li>
-      
-      <li >
-        <a href="/devlog/day5/">Day 5</a>
-      </li>
-      
-      <li >
-        <a href="/devlog/day6/">Day 6</a>
+        <a href="/devlog/widgets/">Widgets</a>
       </li>
       
     </ul>
@@ -361,10 +366,8 @@
 
       <nav id="TableOfContents">
 <ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#changes-made">Changes Made</a></li>
-<li><a href="#to-do">To-Do</a></li>
-<li><a href="#next-steps">Next Steps</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#notes">Notes</a></li>
 </ul>
 </nav>
 
@@ -381,83 +384,37 @@
       <article class="article" itemscope itemtype="http://schema.org/Article">
 
         <div class="docs-article-container">
-          <h1 itemprop="name">Day 1</h1>
+          <h1 itemprop="name">Day 2</h1>
 
           <div class="article-style" itemprop="articleBody">
             
 
-<h1 id="introduction">Introduction</h1>
+<h1 id="summary">Summary</h1>
 
-<p>This documents the changes made to the academic theme to make this website work when upgrading from Hugo ver=0.47 and Academic Theme ver=2.4.</p>
+<p>I spent the day working with the widget library and understanding how interpolating polynomials are handled by <code>scipy</code>.
+Most of today&rsquo;s developments were concerned with my random art and animation libraries, and I completed some of the most important components of the interface: setting time-dependent functions (independent of frames), and creating a widget that properly reads/writes data to a dictionary.</p>
 
-<p>The upgrade for this website was performed on 12-19-2018.</p>
-
-<p>All in all, it took the better part of an entire day to get familiar with all the nooks and crannies of the new updates and plan out the migration of the more complicated website&hellip; <a href="https://www.mathematicalmichael.com" target="_blank">Mathematical Michael</a>.</p>
-
-<h1 id="changes-made">Changes Made</h1>
+<p>I still need to link the interfaces for the existing GUIs that write the properties.</p>
 
 <ul>
-<li>Removed Weibo sharing icon in <code>/layouts/partials/share</code> in the theme directory.</li>
-<li>Changed footer in <code>layouts/partials/footer_section.html</code></li>
-<li>Re-did <code>config.toml</code> line-by-line, disabled night/day mode.</li>
-
-<li><p>Created slides and docs based on the <code>exampleSite</code> folder, including creating the directory <code>/assets/css/reveal_custom.css</code> for the Reveal.js slideshows.</p>
-
-<ul>
-<li>added <code>boards.jpg</code> to <code>/static/img/</code> to test headers and embeds in the example slideshow.</li>
-<li>created <code>slides.md</code> in <code>/content/</code> to link to <code>/content/slides/</code> folder since using an index file does not work to list the available slideshows in that folder.</li>
-</ul></li>
-
-<li><p>created <code>/wid/</code> and <code>/dockerhub/</code> to experiment with new <code>docs</code> template.</p></li>
-
-<li><p>copied over dummy project files, still need to migrate own projects to new formatting, remove dummy projects.</p></li>
-
-<li><p>Changed <code>work</code> hyperlink and <code>resume</code> to reflect new migration to the <code>docs</code> template.</p></li>
-
-<li><p>resume widget changed to hyperlink to resume doc.</p></li>
+<li>Allow removal feature?</li>
+<li>scrape the widgets and write to dictionary.</li>
+<li>New GUI for stacking effects, connecting each effect to the needed time-series based on available entries in aforementioned dictionary.</li>
+<li>All effects get applied with their time series, passed to animation function to be written to file.</li>
+<li>Maybe use the Play button to preview? (Have a GUI focused on the <code>num_frames</code> perspective). It is linked to the index.</li>
 </ul>
 
-<h1 id="to-do">To-Do</h1>
+<p><em>Update:</em> As of 01/01/19, dictionary writing is working. Preview button is segmented out. Play button implemented. No removal, bare-bones working time-series manipulation. Need to add in hyperbolic tangent functions (should also write blog about these).</p>
+
+<h1 id="notes">Notes</h1>
 
 <ul>
-<li>header/feature images for post, check how fb/twitter scrapes them.
+<li><p>Still having trouble with the mybinder.org connections with my <code>giftplanning</code> library that tests out my deployment solutions for interactive blogs.
+<em>Update:</em> As of 01/01/19, devs and I have been in touch on <a href="https://gitter.im/nbinteract/Lobby" target="_blank">gitter</a>. Sam pushed a fix to unpkg.com and my site started to work again.
+TO DO: Go make a publicly accessible redundant copy of JS script, query it. Ask Elliott how to only trigger it if the first one fails.</p></li>
 
-<ul>
-<li>optional feature image without becoming header will be useful for posts that are galleries.</li>
-</ul></li>
-<li>migrate any posts/projects to new formatting.</li>
-<li>think about how to migrate MathematicalMichael.<br /></li>
-</ul>
-
-<h1 id="next-steps">Next Steps</h1>
-
-<p><em>Things I&rsquo;m Considering</em></p>
-
-<ul>
-<li>No need to re-make publication type.
-
-<ul>
-<li>Since posts can be linked to projects, and filters can be applied within widgets, we should have all the flexibility we need.</li>
-<li>Taken with the new folder structure of pages, the overall directory structure remains quite clean.</li>
-</ul></li>
-
-<li><p>Use widgets pagetype to construct/mimick the <code>/artwork</code> page.</p>
-
-<ul>
-<li>Have carousels and project widgets linking to galleries and slideshows.</li>
-</ul></li>
-
-<li><p>Can additionally link out to a <code>docs</code> page that describes the art in more depth, also linked to from the projects page of <code>Probably Art</code> to tell the &ldquo;story&rdquo; of this project over time and in its phases.</p>
-
-<ul>
-<li>Phase 1: Directed Study</li>
-<li>Phase 2: Pickup with Pocket CHIP, restart coding in Python</li>
-<li>Phase 3: After some time, picked it up again and added a whole bunch of functionality, attempted to get random art automated in Squarespace</li>
-<li>Phase 4: Pick up again when I get into GCode. Adds functionality.</li>
-<li>Phase 5: Lapse again. Then finally tackle creating a framework that will work long-term. Talk about requirements. How is has to be in Python, based on stable packages, recreatable and deterministic. GCode scalable. Talk about some to-do&rsquo;s (bumpers, bash scripts that wrap around to position plotter better). Show images of getting plotter back up again.<br /></li>
-<li>Phase 6: Merge with Animation code/projects. Talk about goals, current progress. Random animations on non-random images<br /></li>
-<li>Have another to tell the story of <code>Moving Pictures</code></li>
-</ul></li>
+<li><p>After conversing with Elliott last night (12/19/19), I think that writing a simple WebSocket atop Flask with his help may be a good solution. A JSON file gets passed back and forth, manipulations happen on a server. Still would prefer to just learn how to make the widgets do this part.
+<em>Update:</em> As of 01/01/19, I have found numerous other solutions and there is a <a href="https://github.com/SamLau95/nbinteract/issues/101" target="_blank">feature request</a> submitted for the nbinteract library that would enable me to run the nbserver that mybinder.org is providing on a machine that I own instead, which would greatly reduce latency. Would docker be able to automatically re-start it? Load balance? Etc. (probably, but that&rsquo;s for later. For now, mybinder.org is fine, but steps should be taken to ensure the visualizations work in posterity). Should also attempt to get their plotting to work again (maybe one of their updates have fixed this?)</p></li>
 </ul>
 
           </div>
@@ -478,7 +435,7 @@
         </div>
 
         <div class="body-footer">
-          Last updated on Dec 19, 2018
+          Last updated on Jan 1, 2019
         </div>
 
       </article>
