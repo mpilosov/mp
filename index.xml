@@ -2670,11 +2670,12 @@ The Hub launches such a server for each user that successfully logs in.&lt;/p&gt
 
 &lt;p&gt;Jupyterhub is thus made up of:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;- An Authenticator (that lets people in or keeps them out), 
-- a Spawner (which defines individual environments),
-- a Database (to store users), and
-- a Server (to connect all of it).
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;An Authenticator (that lets people in or keeps them out),&lt;/li&gt;
+&lt;li&gt;a Spawner (which defines individual environments),&lt;/li&gt;
+&lt;li&gt;a Database (to store users), and&lt;/li&gt;
+&lt;li&gt;a Server (to connect all of it).&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://github.com/jupyterhub/jupyterhub-deploy-docker/raw/master/internal/jupyterhub-docker.png&#34; alt=&#34;schematic&#34; /&gt;&lt;/p&gt;
 
