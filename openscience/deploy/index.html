@@ -379,19 +379,7 @@ Kubernetes What is it? Why use it? Possibilities &ldquo;Bare Metal&rdquo; What i
       </li>
       
       <li >
-        <a href="/openscience/jupyternb/">Jupyter Notebook</a>
-      </li>
-      
-      <li >
-        <a href="/openscience/jupyterlab/">JupyterLab</a>
-      </li>
-      
-      <li >
         <a href="/openscience/jupyterhub/">JupyterHub</a>
-      </li>
-      
-      <li >
-        <a href="/openscience/binder/">Binder</a>
       </li>
       
     </ul>
@@ -511,6 +499,8 @@ Alternatively, your university or company may already have available server reso
 
 <p>As root: (TODO: grab bash scripts for set up to make environment more pleasant.</p>
 
+<p>Grab stuff from  <a href="https://github.com/mathematicalmichael/jupyterhub-deploy-docker.git" target="_blank">https://github.com/mathematicalmichael/jupyterhub-deploy-docker.git</a></p>
+
 <pre><code>useradd admin -m -s /bin/bash
 chpasswd admin:default_password_goes_here
 usermod -aG sudo admin
@@ -518,6 +508,7 @@ usermod -aG sudo admin
 
 <pre><code>su - admin
 export DOCKER_COMPOSE_VERSION=1.23.2
+
 sudo apt update
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -536,6 +527,8 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 docker-compose --version
 </code></pre>
+
+<hr />
 
 <p>Have your <code>public_html</code> out in this top directory. We&rsquo;ll be looking for it to serve the baseline-version of your website.</p>
 

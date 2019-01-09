@@ -15,7 +15,7 @@
   
     
   
-  <meta name="description" content="Yet More JupyterHub">
+  <meta name="description" content="Notes from configuring Jupyterhub">
 
   
   <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/devlog/jupyterhub/">
@@ -123,8 +123,8 @@
   
   <meta property="og:site_name" content="Michael Pilosov | Academic Website">
   <meta property="og:url" content="https://www.michaelpilosov.com/devlog/jupyterhub/">
-  <meta property="og:title" content="Jupyterhub | Michael Pilosov | Academic Website">
-  <meta property="og:description" content="Yet More JupyterHub"><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
+  <meta property="og:title" content="Jupyterhub Configuration | Michael Pilosov | Academic Website">
+  <meta property="og:description" content="Notes from configuring Jupyterhub"><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-12-25T00:00:00-07:00">
@@ -136,7 +136,7 @@
 
   
 
-  <title>Jupyterhub | Michael Pilosov | Academic Website</title>
+  <title>Jupyterhub Configuration | Michael Pilosov | Academic Website</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
@@ -333,15 +333,15 @@
     <ul class="nav docs-sidenav">
       
       <li >
-        <a href="/devlog/docker/">Day 5</a>
-      </li>
-      
-      <li class="active">
-        <a href="/devlog/jupyterhub/">Jupyterhub</a>
+        <a href="/devlog/docker/">Phase 0</a>
       </li>
       
       <li >
-        <a href="/devlog/openscience/">Open Science</a>
+        <a href="/devlog/openscience/">Phase 1</a>
+      </li>
+      
+      <li class="active">
+        <a href="/devlog/jupyterhub/">Phase 2</a>
       </li>
       
       <li >
@@ -366,10 +366,33 @@
 
       <nav id="TableOfContents">
 <ul>
+<li><a href="#jan-1-2019">Jan 1, 2019</a>
+<ul>
 <li><a href="#status-report">Status Report</a></li>
 <li><a href="#new-server">New Server</a></li>
-<li><a href="#next-day">Next Day</a></li>
-<li><a href="#volumes-working">VOLUMES WORKING!</a></li>
+</ul></li>
+<li><a href="#jan-2-3-2019">Jan 2-3, 2019</a>
+<ul>
+<li><a href="#useful-reading">Useful Reading</a></li>
+<li><a href="#dockerspawner">Dockerspawner</a></li>
+<li><a href="#file-storage">File Storage</a></li>
+<li><a href="#kubernetes">Kubernetes</a></li>
+</ul></li>
+<li><a href="#jan-4-5-2019">Jan 4-5, 2019</a>
+<ul>
+<li><a href="#file-permissions">File permissions</a></li>
+<li><a href="#database">Database</a></li>
+<li><a href="#multiple-spawners">Multiple Spawners</a></li>
+</ul></li>
+<li><a href="#jan-6-7-2019">Jan 6-7, 2019</a>
+<ul>
+<li><a href="#math-hub">Math-hub</a></li>
+</ul></li>
+<li><a href="#jan-8-2019">Jan 8, 2019</a>
+<ul>
+<li><a href="#python-2">Python 2</a></li>
+<li><a href="#mixed-authentication">Mixed Authentication</a></li>
+</ul></li>
 </ul>
 </nav>
 
@@ -386,12 +409,14 @@
       <article class="article" itemscope itemtype="http://schema.org/Article">
 
         <div class="docs-article-container">
-          <h1 itemprop="name">Jupyterhub</h1>
+          <h1 itemprop="name">Jupyterhub Configuration</h1>
 
           <div class="article-style" itemprop="articleBody">
             
 
-<h1 id="status-report">Status Report</h1>
+<h1 id="jan-1-2019">Jan 1, 2019</h1>
+
+<h2 id="status-report">Status Report</h2>
 
 <p>Okay so where are we at?</p>
 
@@ -454,7 +479,7 @@
 
 <hr />
 
-<h1 id="new-server">New Server</h1>
+<h2 id="new-server">New Server</h2>
 
 <p>As root:</p>
 
@@ -497,7 +522,7 @@ docker-compose build
 
 <p>So I went ahead and deleted a couple GB of space by removing unused conda environments and Lucas&rsquo; user account.</p>
 
-<pre><code>docker-compose u
+<pre><code>docker-compose up 
 </code></pre>
 
 <p>fairly sure this will fail because of a mis-specified IP address.
@@ -513,352 +538,25 @@ Should also enable security since now I have them on this server.</p>
 
 <p>I dove into making a custom spawner (may be necessary?), but it was a rabbit hole.</p>
 
+<p><em>Note from 1/8/19:</em> The image needs to be available on the machine. It is separate from the hub, so just make sure the names line up correctly by checking <code>docker images</code> against the <code>jupyterhub_config.py</code> file.</p>
+
 <hr />
 
-<h1 id="next-day">Next Day</h1>
+<h1 id="jan-2-3-2019">Jan 2-3, 2019</h1>
 
-<p>Messed around with apache but couldn&rsquo;t make it work.
-<a href="https://jupyterhub.readthedocs.io/en/latest/reference/config-proxy.html" target="_blank">Documentation on Jupyter&rsquo;s website is god awful</a>, there are numerous omissions and a typo in the configuration files (including ones from the <a href="https://github.com/jupyterhub/oauthenticator/tree/master/examples/full" target="_blank">repository</a> I got my original setup files), no context or setup instructions. They just assume you know what you are doing.</p>
+<p>See <a href="/devlog/proxy">proxy</a> page.</p>
 
-<p>I do not, though. So let&rsquo;s go through it.</p>
-
-<p>Here&rsquo;s what a reverse-proxy is doing.
-It catches requests to a website and handles them.</p>
-
-<p>When you hit <a href="consistentbayes.com" target="_blank">consistentbayes.com</a>, it directs you to a folder with a bunch of files that make up my website. I had that working with Apache but couldn&rsquo;t do what I wanted, which was direct traffic to &ldquo;hub.consistentbayes.com&rdquo; instead.</p>
-
-<p>I got the &ldquo;hub&rdquo; part set up by adding an <code>A Record</code> into my DNS Control Panel (talk more about that later). Now the proxy just had to be able to handle and direct that request to a jupyterhub instance running in a docker container that was exposing itself on <code>http://127.0.0.1:8000</code> (I&rsquo;ll show config files later). The hub would be in a container that is just a Linux machine, with users and everything in there.</p>
-
-<p>If the container name is &ldquo;nostalgic_colden&rdquo; (TO DO: figure out how to name these)&hellip; then running</p>
-
-<pre><code>docker exec -ti -u mpilosov nostalgic_colden /bin/bash
-</code></pre>
-
-<p>will log you into the linux computer as &ldquo;mpilosov&rdquo;</p>
-
-<p>The user accounts are handled at build-time, but can be managed within the computer just as you would on a linux machine (to log in as <code>root</code>, omit <code>-u mpilosov</code> above).</p>
-
-<p>So&hellip; those accounts.
-Github usernames. By far the best authentication method I found, but it relied on having a Fully Qualified Domain Name (website name, which the server at school would not let me do).
-But&hellip; we can loop the authenticator to whatever we want.</p>
-
-<p>Here are my nginx configurations:</p>
-
-<p>In <code>/etc/nginx/sites-enabled/consistentbayes.conf</code></p>
-
-<pre><code>server {
-    listen 80;
-    server_name NO_HUB.DOMAIN.TLD;
-
-    # Tell all requests to port 80 to be 302 redirected to HTTPS
-    return 302 https://$host$request_uri;
-}
-
-server {
-    listen 443;
-    ssl on;
-
-    # INSERT OTHER SSL PARAMETERS HERE AS ABOVE
-    # SSL cert may differ
-
-    # Set the appropriate root directory
-    root /var/www/html;
-
-    # Set URI handling
-    location / {
-        try_files $uri $uri/ =404;
-    }
-
-    # Managing requests to verify letsencrypt host
-    location ~ /.well-known {
-        allow all;
-    }
-
-}
-</code></pre>
-
-<p>In <code>/etc/nginx/sites-enabled/jupyterhub.conf</code> (titles dont matter it seems).</p>
-
-<pre><code># top-level http config for websocket headers
-# If Upgrade is defined, Connection = upgrade
-# If Upgrade is empty, Connection = close
-map $http_upgrade $connection_upgrade {
-    default upgrade;
-    ''      close;
-}
-
-# HTTP server to redirect all 80 traffic to SSL/HTTPS
-server {
-    listen 80;
-    server_name HUB.DOMAIN.TLD;
-
-    # Tell all requests to port 80 to be 302 redirected to HTTPS
-    return 302 https://$host$request_uri;
-}
-
-# HTTPS server to handle JupyterHub
-server {
-    listen 443;
-    ssl on;
-
-    server_name HUB.DOMAIN.TLD;
-
-    ssl_certificate /etc/letsencrypt/live/HUB.DOMAIN.TLD/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/HUB.DOMAIN.TLD/privkey.pem;
-
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_prefer_server_ciphers on;
-    ssl_dhparam /etc/ssl/certs/dhparam.pem;
-    ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA';
-    ssl_session_timeout 1d;
-    ssl_session_cache shared:SSL:50m;
-    ssl_stapling on;
-    ssl_stapling_verify on;
-    add_header Strict-Transport-Security max-age=15768000;
-
-    # Managing literal requests to the JupyterHub front end
-    location / {
-        proxy_pass http://127.0.0.1:8000;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-
-        # websocket headers
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection $connection_upgrade;
-    }
-
-    # Managing requests to verify letsencrypt host
-    location ~ /.well-known {
-        allow all;
-    }
-}
-</code></pre>
-
-<p>Talk about how you had to generate letsencrypt scripts for nginx with <code>certbot</code>.</p>
-
-<pre><code>sudo apt install python-certbot-nginx
-sudo apt-get update
-sudo apt-get install software-properties-common
-sudo add-apt-repository universe
-sudo add-apt-repository ppa:certbot/certbot
-sudo apt-get update
-sudo apt-get install python-certbot-nginx 
-sudo certbot --nginx certonly
-</code></pre>
-
-<p>I actually ran into trouble being unable to start nginx with the sites enabled. Kind of a catch-22. Removed letsencrypt files</p>
-
-<pre><code>$ sudo certbot certonly --webroot -w /var/www/example -d example.com -d www.example.com -w /var/www/thing -d thing.is -d m.thing.is
-</code></pre>
-
-<p>This command will obtain a single cert for example.com, www.example.com, thing.is, and m.thing.is; it will place files below /var/www/example to prove control of the first two domains, and under /var/www/thing for the second pair.</p>
-
-<p><em>I dont quite want that. Let&rsquo;s try the interactive.;</em>
-<code>sudo certbot certonly</code>
-Hit 1, enter website names (consistentbayes.com, www.consistentbayes.com),</p>
-
-<p>Then do the same again for the hub.consistentbayes.com</p>
-
-<p>And we&rsquo;re golden. The files have been placed where nginx is expecting them to be. (e.g. <code>/etc/letsencrypt/live/hub.consistentbayes.com/fullchain.pem</code>)</p>
-
-<p>And also you will need to issue the following command once.</p>
-
-<pre><code>openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096
-</code></pre>
-
-<p>And then go ahead and make the <code>Dockerfile</code>:</p>
-
-<pre><code># Designed to be run as
-#
-# docker run -it -p 8000:8000 jupyterhub/oauthenticator
-
-FROM jupyterhub/jupyterhub
-
-MAINTAINER Project Jupyter &lt;ipython-dev@scipy.org&gt;
-
-# Install oauthenticator from git
-RUN python3 -m pip install oauthenticator
-RUN python3 -m pip install notebook&gt;=4.0
-# Create oauthenticator directory and put necessary files in it
-RUN mkdir /srv/oauthenticator
-WORKDIR /srv/oauthenticator
-ENV OAUTHENTICATOR_DIR /srv/oauthenticator
-ADD jupyterhub_config.py jupyterhub_config.py
-ADD addusers.sh /srv/oauthenticator/addusers.sh
-ADD userlist /srv/oauthenticator/userlist
-ADD ssl /srv/oauthenticator/ssl
-RUN chmod 700 /srv/oauthenticator
-
-RUN [&quot;sh&quot;, &quot;/srv/oauthenticator/addusers.sh&quot;]
-</code></pre>
-
-<p>Then this bash script <code>addusers.sh</code>:</p>
-
-<pre><code>#!/bin/sh
-
-IFS=&quot;
-&quot;
-for line in `cat userlist`; do
-  test -z &quot;$line&quot; &amp;&amp; continue
-  user=`echo $line | cut -f 1 -d' '`
-  echo &quot;adding user $user&quot;
-  useradd -m -s /bin/bash $user
-#  cp -r /srv/ipython/examples /home/$user/examples
-  mkdir /home/$user/examples
-# may only be necessary since we are copying files from root above.
-  chown -R $user /home/$user/examples
-done
-</code></pre>
-
-<p>And, for now, the simplest version of our <code>jupyterhub_config.py</code>:</p>
-
-<pre><code># Configuration file for Jupyter Hub
-
-c = get_config()
-
-c.JupyterHub.log_level = 10
-from oauthenticator.github import LocalGitHubOAuthenticator
-c.JupyterHub.authenticator_class = LocalGitHubOAuthenticator
-c.GenericOAuthenticator.login_service = 'my service'
-
-c.LocalGitHubOAuthenticator.create_system_users = True
-
-c.Authenticator.whitelist = whitelist = set()
-c.JupyterHub.admin_users = admin = set()
-
-import os
-import sys
-
-join = os.path.join
-
-here = os.path.dirname(__file__)
-root = os.environ.get('OAUTHENTICATOR_DIR', here)
-sys.path.insert(0, root)
-
-with open(join(root, 'userlist')) as f:
-    for line in f:
-        if not line:
-            continue
-        parts = line.split()
-        name = parts[0]
-        whitelist.add(name)
-        if len(parts) &gt; 1 and parts[1] == 'admin':
-            admin.add(name)
-
-c.GitHubOAuthenticator.oauth_callback_url = os.environ['OAUTH_CALLBACK_URL']
-</code></pre>
-
-<p>A <code>userlist</code> file with github usernames<sup class="footnote-ref" id="fnref:admin"><a href="#fn:admin">1</a></sup></p>
-
-<pre><code>mpilosov admin
-mathematicalmichael
-eescu 
-</code></pre>
-
-<p>A <code>ssl</code> folder with encryption keys in them (which we won&rsquo;t use!)
-(We don&rsquo;t use them because we expose Jupyterhub in http, and use the reverse-proxy to handle the security).</p>
-
-<p>And an <code>env</code> file</p>
-
-<pre><code># add your github oauth config to this file,
-# and run the container with `docker run -it -p 9000:8000 --env-file=env jupyterhub-oauth`
-OAUTH_CLIENT_ID=
-OAUTH_CLIENT_SECRET=
-OAUTH_CALLBACK_URL=https://hub.consistentbayes.com/hub/oauth_callback
-</code></pre>
-
-<p>Which you get when you register the application on Github. (I filled in the third to show you, the first two are secrets!)</p>
-
-<p>So from here on, we can start tweaking the spawner, volume persistence, do checks on memory limits, etc. Write up detailed instructions. Jupyterhub from docker like this is nice.</p>
-
-<p>I think we can test directory-mounting right to the linux machine to be honest.</p>
-
-<p>OMG I RAN THIS AND IT WORKED. I mounted volumes to folders on a per-user basis (since users live inside the container that jupyterhub is in). No write permissions, but they can see files just fine. Cant duplicate.</p>
-
-<pre><code>docker run -it -p 8000:8000 -v /home/michael/repos/:/home/mathematicalmichael/examples -v /home/michael/repos:/home/mpilosov/examples --env-file=env --name hubtest jupyterhub-oauth
-</code></pre>
-
-<p>Problem with relying on user data in the hub is potential updates could cause loss of files. mounting volumes would fix this for sure. But they can&rsquo;t write files in this new directory, so&hellip;</p>
-
-<p>I think the best storage solution is each student has their own container. <code>hubname-studentname</code> that a teacher can get into. For workshops, the solution presented as-is works great.</p>
-
-<ul>
-<li>Make sure to upgrade pip, no one seems to.</li>
-<li>volume permissions are probably things joe knows about.</li>
-</ul>
-
-<h1 id="volumes-working">VOLUMES WORKING!</h1>
-
-<p><code>--mount</code> creates directories if they dont exist, whereas <code>--volume</code> does not. Good to create up at root one <code>/shared</code> directory. Additionally we can link them to volumes to host their data instead, managed via docker. Ideally we use a mix of the two.
-Adding a volume (even if it doesn&rsquo;t exist) to be managed by docker would be accomplished with -v <code>volume-name:/directory/to/mount</code></p>
-
-<p>So we should think about what in our docker-compose we can automatically mount. Additionally (or in replacement), volumes can be handled via the spawner.</p>
-
-<p>In either set up, we can shut down and restart the container all we want and data persists. We can even re-build the image. Volumes seem to just be symbolic links to directories on your unix machine, anyway, visible via <code>docker inspect volume-name</code>.</p>
-
-<pre><code>docker run -d -it -p 8000:8000 --mount source=/home/michael/repos/packages/lyricalart,type=bind,target=/home/mpilosov/examples/shared-folder-mp/,bind-propagation=rshared --mount source=/home/michael/repos/packages/lyricalart,type=bind,target=/home/mathematicalmichael/shared-folder-mm/,bind-propagation=rshared --env-file=env --name hub jupyterhub-oauth
-</code></pre>
-
-<p>Now that we&rsquo;ve got this figured out&hellip; It would be nice to figure out how to get that <code>docker-compose</code> up and running, including with the nginx server, all based on a configuration file that takes in the website name, ip of host, etc. so you can get in, git clone, run bash script, edit the ip, and close out knowing it will work.</p>
-
-<p>To build everything, we did <code>docker build -t jupyterhub-oauth .</code> in the directory we set up.</p>
-
-<p>Definitely want to containerize each student. Currently it&rsquo;s possible to get into the directories mounted above as shared by going through Terminal. Can move files in/out&hellip; not good.</p>
-
-<p>To destroy containers after they close down, simply add <code>.remove = True</code> to the <code>c.DockerSpawner</code> attributes.</p>
-
-<p>[8:59 PM] Pilosov, Michael
-oficially did it on hub.consistentbayes.com! holy shit that took forever but I linked up the pieces. Now it spawns up containers per user, with BOTH volumes that persist even as containers change and shared directories accessible by all users, automatically mounted to every user.
-One environment file controls everything. the version of jupyterhub, the docker image you want to spawn, etc.
-​
-[9:04 PM] Pilosov, Michael
-that is our ideal set up.. the shared folders can be determined by rules such as group membership (students within class or even, and the environment to spawn can be similarly chosen. This means we can use one hub for every student across every class with total ease. No containers stick around. At all. They just get appropriately mounted to volumes when they are created. the decision to make one hub per class is purely an aesthetic one. the hub can spin up dozens of different configurations depending on what the user needs.
-I&rsquo;m going to package this all nice so that I can deploy to a powerful server that I can rent for like &hellip;. a couple hours for testing. Throw a whole bunch of simultaneous use-cases at it.
-​
-[9:08 PM] Pilosov, Michael
-we can even use the admin panel to start/stop servers instead of logging in simultaneously. if each single-user server has a heavy python script to run on startup, we can simulate heavy loads. I played around a little already and saw the containers being created (not restarted, created!) when I &ldquo;started&rdquo; the single-user server and then thrown away when I clicked &ldquo;stop&rdquo; which keeps our physical memory literally AT THE LOWEST possible limit at any given time since stopped containers dont have to sit around.</p>
-
-<p>So, how?</p>
-
-<p>I cloned the jupyterhub-deploy-docker repo. (again), and made my fixes&hellip;</p>
-
-<p>I don&rsquo;t know why the Makefile doesn&rsquo;t handle this, but
-<code>echo &quot;POSTGRES_PASSWORD=$( openssl rand -hex 32)&quot; &gt;&gt; secrets/postgres.env</code> will create a necessary file for <code>make build</code> to work. And after that works, run <code>make notebook_image</code> to create the necessary image to be spawned based on the  <code>.env</code> file in the root directory.</p>
-
-<p>I commented out lines 40-49 in the <code>Makefile</code> since I want to handle certification on my own through the reverse proxy.</p>
-
-<p>Would be nice to get this working with nginx as well. But all that stuff can be handled from the bash script.</p>
-
-<p>In the <code>jupyterhub_config.py</code> file, I removed references to SSL and set up shared volumes.
-It would be great to learn how to sub-class the spawner now and create rules for mounting volumes. A simple restart lets students gain new files.</p>
-
-<p>I also removed SSL references from <code>Dockerfile.jupyerhub</code></p>
-
-<p>[Docker-compose guidelines][docker-compose]</p>
-
-<p>Just tested the containerized solution and love it (even though i built small containers). I can log in, add nbextensions as root, and the changes are reflected <em>without touching docker</em>. No restarting required.</p>
-
-<p>Can add user accounts as admin through the cPanel. If they don&rsquo;t exist, a home directory or volume is created on their behalf.
-I wouldn&rsquo;t suggest sharing directories automatically for the containerized solutions. <em>That part</em> should be part of a custom spawner (and require hub restart, which can also be done through cpanel since it runs on another port!).</p>
-
-<p>Admin is powerful! You can start/stop servers at your whim and launch them to poke around on your own. Very cool.</p>
-
-<p>For a smaller class, auto-mounting some shared directory is a great idea.</p>
-
-<hr />
+<h2 id="useful-reading">Useful Reading</h2>
 
 <p>Here is something interesting for version-controlling notebooks.
 <a href="https://github.com/mwouts/jupytext" target="_blank">https://github.com/mwouts/jupytext</a></p>
 
 <p>Here is an introduction to the notebook format.
 <a href="https://nbformat.readthedocs.io/en/latest/format_description.html" target="_blank">https://nbformat.readthedocs.io/en/latest/format_description.html</a>
-You should turn this into a write-up.</p>
+<em>TODO:</em> You should turn this into a write-up.</p>
 
 <p>The basic examples in here are actually a great demo of publishing LaTeX documents right from Jupyter.
 <a href="https://github.com/jupyter/nbconvert-examples" target="_blank">https://github.com/jupyter/nbconvert-examples</a></p>
-
-<hr />
 
 <p>Nice article
 <a href="https://blog.dominodatalab.com/data-science-vs-engineering-tension-points/" target="_blank">https://blog.dominodatalab.com/data-science-vs-engineering-tension-points/</a></p>
@@ -892,6 +590,8 @@ Write about them in a new section summarizing sharing results.</p>
 <p>Hippylib-Hub, example to follow.
 <a href="https://github.com/g2s3-2018/hippylib-hub" target="_blank">https://github.com/g2s3-2018/hippylib-hub</a></p>
 
+<h2 id="dockerspawner">Dockerspawner</h2>
+
 <p>Want:
     - Dockerspawner is nice (can restart hub without issues).
     - Although, restarting if all-in-one isn&rsquo;t that bad, either. Temporary inconvenience.</p>
@@ -909,15 +609,7 @@ Write about them in a new section summarizing sharing results.</p>
     secretToken: xxxx
 </code></pre>
 
-<p>To-Do today:</p>
-
-<ul>
-<li>Documentation on Projects.</li>
-<li>Galleries</li>
-<li>Art for 2019?</li>
-<li>Documentation for Jupyterhub, convert devlogs.</li>
-<li>Build shell script for deployments, fenics?</li>
-</ul>
+<h2 id="file-storage">File Storage</h2>
 
 <p>Wow I can&rsquo;t believe this exists.
 <a href="https://www.katacoda.com/" target="_blank">https://www.katacoda.com/</a></p>
@@ -927,6 +619,8 @@ Write about them in a new section summarizing sharing results.</p>
 <a href="https://storageos.com/developers/" target="_blank">https://storageos.com/developers/</a>
 another alternative, which appears to be a bit more complicated to set-up (though helm-chart should be available by now), but is open-source and from redhat: <a href="https://www.youtube.com/watch?v=Fgpr2lMnBVY" target="_blank">https://www.youtube.com/watch?v=Fgpr2lMnBVY</a> [16:30]</p>
 
+<h2 id="kubernetes">Kubernetes</h2>
+
 <p>Kubernetes 101 introduction
 <a href="https://medium.com/google-cloud/kubernetes-101-pods-nodes-containers-and-clusters-c1509e409e16" target="_blank">https://medium.com/google-cloud/kubernetes-101-pods-nodes-containers-and-clusters-c1509e409e16</a></p>
 
@@ -934,18 +628,204 @@ another alternative, which appears to be a bit more complicated to set-up (thoug
 
 <hr />
 
-<p>To get a bash script for the set-up, you need to package the reverse-proxy with docker-compose. Let&rsquo;s figure out how to use Traefik. Between these two sources, you should be able to figure it out:
-<a href="https://github.com/defeo/jupyterhub-docker/blob/master/docker-compose.yml" target="_blank">https://github.com/defeo/jupyterhub-docker/blob/master/docker-compose.yml</a>
-<a href="https://github.com/containous/traefik/blob/master/examples/quickstart/docker-compose.yml" target="_blank">https://github.com/containous/traefik/blob/master/examples/quickstart/docker-compose.yml</a></p>
-<div class="footnotes">
+<h1 id="jan-4-5-2019">Jan 4-5, 2019</h1>
+
+<p>Tried and failed to get Traefik working. See <a href="/devlog/proxy">proxy</a> notes. Took some time to relax.</p>
+
+<p>Note</p>
+
+<p>If you base a Dockerfile on this image:</p>
+
+<p>FROM juptyerhub/jupyterhub-onbuild:0.6
+&hellip;
+then your jupyterhub_config.py adjacent to your Dockerfile will be loaded into the image and used by JupyterHub.</p>
+
+<h2 id="file-permissions">File permissions</h2>
+
+<p>Correct permissions for exposed shared directories require
+<code>chmod -R 777</code> for the folder at the top</p>
+
+<p>What this means:</p>
+
+<p>Permissions:
+1 – can execute
+2 – can write
+4 – can read</p>
+
+<p>The octal number is the sum of those free permissions, i.e.
+3 (1+2) – can execute and write
+6 (2+4) – can write and read</p>
+
+<p>Position of the digit in value:
+1 – what owner can
+2 – what users in the file group(class) can
+3 – what users <em>not</em> in the file group(class) can</p>
+
+<p>So the third is what we care about since no we don&rsquo;t want to create users on the machine running docker.</p>
+
+<h2 id="database">Database</h2>
+
+<p><a href="https://jupyterhub.readthedocs.io/en/stable/reference/database.html" target="_blank">https://jupyterhub.readthedocs.io/en/stable/reference/database.html</a>
+It comes pre-packaged with one, but it is recommended to use something else for production, which we will do!</p>
+
+<p>Hash authentication&hellip; Very nice
+<a href="https://github.com/thedataincubator/jupyterhub-hashauthenticator" target="_blank">https://github.com/thedataincubator/jupyterhub-hashauthenticator</a></p>
+
+<p>You can generate a good <code>secret key</code> with <code>openssl rand -hex 32</code>.</p>
+
+<pre><code>c.JupyterHub.authenticator_class = 'hashauthenticator.HashAuthenticator'
+c.HashAuthenticator.secret_key = 'my secret key'  # Defaults to ''
+c.HashAuthenticator.password_length = 10          # Defaults to 6
+c.HashAuthenticator.show_logins = True            # Optional, defaults to False
+</code></pre>
+
+<p>If the <code>show_logins</code> option is set to <code>True</code>, a CSV file containing login names and passwords will be served (to admins only) at <code>/hub/login_list</code>. <em>Do we want this?</em> Maybe for analytics? If possible.</p>
+
+<p>To figure out my password, I used
+<code>hashauthpw --length 10 mathematicalmichael [secret key]</code> on any computer that has run <code>pip install jupyterhub-hashauthenticator</code></p>
+
+<h2 id="multiple-spawners">Multiple Spawners</h2>
+
+<p>multiple spawners! definitely my favorite way to go. Says this will allow them to choose upon login.
+If so&hellip; amazing.</p>
+
+<p>[multiple spawners issue on github][<a href="https://github.com/jupyterhub/dockerspawner/issues/236]:" target="_blank">https://github.com/jupyterhub/dockerspawner/issues/236]:</a></p>
+
+<pre><code>from dockerspawner import SystemUserSpawner
+
+class MultiDockerImageSpawner(SystemUserSpawner):
+    images = {
+        'SciPy': 'jupyter/scipy-notebook:0f73f7488fa0',
+        'Tensorflow': 'jupyter/tensorflow-notebook:59904dd7776a',
+        'R': 'jupyter/r-notebook:59904dd7776a',
+    }
+    def _options_form_default(self):
+        outval = &quot;&quot;&quot;
+        &lt;label for=&quot;image&quot;&gt;Docker Image&lt;/label&gt;
+        &lt;select name=&quot;image&quot;&gt;
+        &quot;&quot;&quot;
+        for name, image in self.images.items():
+            outval += &quot;&lt;option value=\&quot;%s\&quot;&gt;%s (%s)&lt;/option&gt;&quot; % (name, name, image)
+
+        outval += &quot;&quot;&quot;
+        &lt;/select&gt;
+        &quot;&quot;&quot;
+        return outval
+
+    def options_from_form(self, formdata):
+        options = {}
+        options['image'] = formdata.get('image', ['SciPy'])[0]
+        self.image = self.images[options['image']]
+        return options
+</code></pre>
+
+<p>Everything is now up and running! New images can be added with total ease, the hub restart only has minimal disruption.</p>
+
+<p><em>A note on startup files:</em>
+&gt; IPython startup files, placed in ~/.ipython/profile_default/startup will be executed. These can be Python scripts (.py) or IPython scripts (.ipy with %magic commands). Notebooks aren&rsquo;t supported as startup files, but if it really needs to be a notebook, you can use %run /path/to/notebook.ipynb in a .ipy startup file.</p>
+
+<p>This means that for testing, we can create an image with a file that gets run at startup, set it as the temporary default, and launch servers.</p>
+
+<p>I GOT RSTUDIO WORKING.
+Okay, so just, build any image you want, and reference it in the spawner.
+If you can execute the following and see the same output, you&rsquo;ll have something working properly.</p>
+
+<pre><code>mpilosov@math-ws-204:~/Packages/deploy/singleuser$ docker run --rm -ti rstudio_test
+Executing the command: jupyter notebook
+[I 22:39:24.130 NotebookApp] Writing notebook server cookie secret to /home/jovyan/.local/share/jupyter/runtime/notebook_cookie_secret
+[I 22:39:24.745 NotebookApp] JupyterLab extension loaded from /opt/conda/lib/python3.7/site-packages/jupyterlab
+[I 22:39:24.745 NotebookApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
+[I 22:39:24.748 NotebookApp] Serving notebooks from local directory: /home/jovyan
+[I 22:39:24.748 NotebookApp] The Jupyter Notebook is running at:
+[I 22:39:24.748 NotebookApp] http://(620acce394ce or 127.0.0.1):8888/?token=cbf208a110db20a3fce4814d5cf1bf2e41aca5e4a165c69d
+[I 22:39:24.749 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 22:39:24.749 NotebookApp]
+
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://(620acce394ce or 127.0.0.1):8888/?token=cbf208a110db20a3fce4814d5cf1bf2e41aca5e4a165c69d
+^C[I 22:39:36.445 NotebookApp] interrupted
+Serving notebooks from local directory: /home/jovyan
+0 active kernels
+The Jupyter Notebook is running at:
+http://(620acce394ce or 127.0.0.1):8888/?token=cbf208a110db20a3fce4814d5cf1bf2e41aca5e4a165c69d
+Shutdown this notebook server (y/[n])? ^C[C 22:39:37.364 NotebookApp] received signal 2, stopping
+[I 22:39:37.366 NotebookApp] Shutting down 0 kernels
+</code></pre>
 
 <hr />
 
-<ol>
-<li id="fn:admin">Fun note, it may be possible to accidentally revoke admin privileges from everyone. <em>Test this</em>. But editing the config file in the container as root should be able to make it work again.
- <a class="footnote-return" href="#fnref:admin"><sup>^</sup></a></li>
-</ol>
-</div>
+<h1 id="jan-6-7-2019">Jan 6-7, 2019</h1>
+
+<h2 id="math-hub">Math-hub</h2>
+
+<p>everything is up and running on math-hub,
+100 notebooks idle take up 8gb of ram.</p>
+
+<p>I managed to mount volumes easily, but if you create a new volume with docker, use <code>docker inspect</code> to find out where it is and change the permissions.</p>
+
+<pre><code>pilosovm@math-hub:~/repos/deploy$ docker inspect rw_shared_volume
+[
+    {
+        &quot;CreatedAt&quot;: &quot;2019-01-04T17:57:04-07:00&quot;,
+        &quot;Driver&quot;: &quot;local&quot;,
+        &quot;Labels&quot;: {},
+        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/rw_shared_volume/_data&quot;,
+        &quot;Name&quot;: &quot;rw_shared_volume&quot;,
+        &quot;Options&quot;: {},
+        &quot;Scope&quot;: &quot;local&quot;
+    }
+]
+pilosovm@math-hub:~/repos/deploy$ sudo chmod 777 /var/lib/docker/volumes/rw_shared_volume/_data
+[sudo] password for pilosovm:
+pilosovm@math-hub:~/repos/deploy$
+</code></pre>
+
+<p>startup scripts: bootstrap scripts <a href="https://github.com/jupyterhub/jupyterhub/tree/master/examples/bootstrap-script" target="_blank">https://github.com/jupyterhub/jupyterhub/tree/master/examples/bootstrap-script</a></p>
+
+<hr />
+
+<h1 id="jan-8-2019">Jan 8, 2019</h1>
+
+<p><a href="https://www.paraview.org/web/" target="_blank">https://www.paraview.org/web/</a>
+Paraview in-browser is now a thing&hellip; Can we somehow create a container that includes the ability to launch this application?</p>
+
+<p><a href="https://jupyter-docker-stacks.readthedocs.io/en/latest/using/recipes.html" target="_blank">https://jupyter-docker-stacks.readthedocs.io/en/latest/using/recipes.html</a>
+Jupyter Docker-Stacks</p>
+
+<h2 id="python-2">Python 2</h2>
+
+<p>Adding Python 2:
+dd a Python 2.x environment
+Python 2.x was removed from all images on August 10th, 2017, starting in tag cc9feab481f7. You can add a Python 2.x environment by defining your own Dockerfile inheriting from one of the images like so:</p>
+
+<pre><code># Choose your desired base image
+FROM jupyter/scipy-notebook:latest
+
+# Create a Python 2.x environment using conda including at least the ipython kernel
+# and the kernda utility. Add any additional packages you want available for use
+# in a Python 2 notebook to the first line here (e.g., pandas, matplotlib, etc.)
+RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 ipython ipykernel kernda numpy pandas matplotlib ipywidgets yaml &amp;&amp; \
+    conda clean -tipsy
+
+USER root
+
+# Create a global kernelspec in the image and modify it so that it properly activates
+# the python2 conda environment.
+RUN $CONDA_DIR/envs/python2/bin/python -m ipykernel install &amp;&amp; \
+$CONDA_DIR/envs/python2/bin/kernda -o -y /usr/local/share/jupyter/kernels/python2/kernel.json
+
+USER $NB_USER
+</code></pre>
+
+<h2 id="mixed-authentication">Mixed Authentication</h2>
+
+<p>The main <a href="https://github.com/jupyterhub/jupyterhub/wiki/Authenticators" target="_blank">authentication page</a> on the Jupyterhub wiki is pretty useful but also kind of incomplete.</p>
+
+<p>Right now I am creating users based on the folders in <code>/home/math</code>, authenticating with <code>HashAuthenticator</code>, but <a href="https://github.com/compmodels/jupyterhub/blob/master/docker_oauth.py" target="_blank">this example</a> demonstrates how to mix Authentication methods.</p>
+
+<p><em>TO DO</em>
+Try <a href="https://github.com/jupyterhub/oauthenticator#google-setup" target="_blank">google authentication</a> on your own website.</p>
 
           </div>
 

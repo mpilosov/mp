@@ -13,35 +13,34 @@
     
     
     <item>
-      <title>Jupyterhub</title>
+      <title>Jupyterhub Configuration</title>
       <link>https://www.michaelpilosov.com/devlog/jupyterhub/</link>
       <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/devlog/jupyterhub/</guid>
-      <description>Status Report Okay so where are we at?
+      <description>Jan 1, 2019 Status Report Okay so where are we at?
  Spawner needs to be sussed out. Right now I really like DockerSpawner, and it seems to persist storage.  Each student gets a user account but it&amp;rsquo;s only used for authenetication right now. Can&amp;rsquo;t figure out volume-mapping.  With dockerspawner.DockerSpawner:
- Each time someone is logged in, a container is either loaded up or built from jupyterlab_img container. These are very flexible, many stacks available.</description>
+ Each time someone is logged in, a container is either loaded up or built from jupyterlab_img container.</description>
     </item>
     
     <item>
-      <title>Day 5</title>
+      <title>Early Exploration with Docker &amp; Kubernetes</title>
       <link>https://www.michaelpilosov.com/devlog/docker/</link>
       <pubDate>Mon, 24 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/devlog/docker/</guid>
-      <description>Today I started by watching a video to be aware of the problems I might face going forward with JupyterHub. I watched someone from Berkeley describe how they&amp;rsquo;ve scaled to thousands of users across many professors and managed to not grow their IT team while doing so.
-I will start by using this space here to take notes on the following video(s):
-Deploying Jupyter Notebooks for Students and Researchers (PyData 2016)   Managing a 1000+ Student JupyterHub without Losing your Sanity (JupyterCon 2018)   Here are the stated goals in the video:</description>
+      <description>Dec 22, 2018 Today I began to structure and fill in the basic information for the Open Science/Docker Documentation.
+12/24/2019 - 01/01/2019
+Today I started by watching a video to be aware of the problems I might face going forward with JupyterHub. I watched someone from Berkeley describe how they&amp;rsquo;ve scaled to thousands of users across many professors and managed to not grow their IT team while doing so.</description>
     </item>
     
     <item>
-      <title>Open Science</title>
+      <title>Open Science: Working towards reproducibility</title>
       <link>https://www.michaelpilosov.com/devlog/openscience/</link>
       <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/devlog/openscience/</guid>
-      <description>Date: 12/22/18 Today I began to structure and fill in the basic information for the Open Science/Docker Documentation.
-Date: 01/01/19 Today I split up the documentation here on devlog and began the write-ups for Jupyterhub. I think I should segment out a section that goes through the entire process of deployment
+      <description>Jan 1, 2019 Today I split up the documentation here on devlog and began the write-ups for Jupyterhub. I think I should segment out a section that goes through the entire process of deployment
 Notes: - bash script to give you nice shortcuts - SSH key generated ahead of time, ready to log in without passwords - get Traefik proxy working - It seems extremely straightforward except that I do not know how to direct traffic to a folder.</description>
     </item>
     

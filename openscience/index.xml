@@ -13,15 +13,6 @@
     
     
     <item>
-      <title>Binder</title>
-      <link>https://www.michaelpilosov.com/openscience/binder/</link>
-      <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/openscience/binder/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Docker</title>
       <link>https://www.michaelpilosov.com/openscience/docker/</link>
       <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
@@ -31,30 +22,12 @@
     </item>
     
     <item>
-      <title>Jupyter Notebook</title>
-      <link>https://www.michaelpilosov.com/openscience/jupyternb/</link>
-      <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/openscience/jupyternb/</guid>
-      <description> Documentation Install Configure </description>
-    </item>
-    
-    <item>
       <title>JupyterHub</title>
       <link>https://www.michaelpilosov.com/openscience/jupyterhub/</link>
       <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/openscience/jupyterhub/</guid>
-      <description> Introduction Example Documentation LabHub </description>
-    </item>
-    
-    <item>
-      <title>JupyterLab</title>
-      <link>https://www.michaelpilosov.com/openscience/jupyterlab/</link>
-      <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/openscience/jupyterlab/</guid>
-      <description> Introduction Example Documentation Install Configure </description>
+      <description>The End-User Experience You go to a web-address and are confronted with the Jupyterhub login portal. Once you log in, you see a drop-down menu that allows you to choose what &amp;ldquo;stack&amp;rdquo; of software dependencies you would like to use. After you make your selection, you are redirected to an in-browser interface where all your files are available. Jupyter Notebooks, R Scripts, anything you want, can now be run directly through this interface.</description>
     </item>
     
     <item>

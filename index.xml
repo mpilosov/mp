@@ -38,14 +38,16 @@
     </item>
     
     <item>
-      <title>Jupyterhub</title>
+      <title>Jupyterhub Configuration</title>
       <link>https://www.michaelpilosov.com/devlog/jupyterhub/</link>
       <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/devlog/jupyterhub/</guid>
       <description>
 
-&lt;h1 id=&#34;status-report&#34;&gt;Status Report&lt;/h1&gt;
+&lt;h1 id=&#34;jan-1-2019&#34;&gt;Jan 1, 2019&lt;/h1&gt;
+
+&lt;h2 id=&#34;status-report&#34;&gt;Status Report&lt;/h2&gt;
 
 &lt;p&gt;Okay so where are we at?&lt;/p&gt;
 
@@ -108,7 +110,7 @@
 
 &lt;hr /&gt;
 
-&lt;h1 id=&#34;new-server&#34;&gt;New Server&lt;/h1&gt;
+&lt;h2 id=&#34;new-server&#34;&gt;New Server&lt;/h2&gt;
 
 &lt;p&gt;As root:&lt;/p&gt;
 
@@ -151,7 +153,7 @@ docker-compose build
 
 &lt;p&gt;So I went ahead and deleted a couple GB of space by removing unused conda environments and Lucas&amp;rsquo; user account.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;docker-compose u
+&lt;pre&gt;&lt;code&gt;docker-compose up 
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;fairly sure this will fail because of a mis-specified IP address.
@@ -167,352 +169,25 @@ Should also enable security since now I have them on this server.&lt;/p&gt;
 
 &lt;p&gt;I dove into making a custom spawner (may be necessary?), but it was a rabbit hole.&lt;/p&gt;
 
+&lt;p&gt;&lt;em&gt;Note from 1/8/19:&lt;/em&gt; The image needs to be available on the machine. It is separate from the hub, so just make sure the names line up correctly by checking &lt;code&gt;docker images&lt;/code&gt; against the &lt;code&gt;jupyterhub_config.py&lt;/code&gt; file.&lt;/p&gt;
+
 &lt;hr /&gt;
 
-&lt;h1 id=&#34;next-day&#34;&gt;Next Day&lt;/h1&gt;
+&lt;h1 id=&#34;jan-2-3-2019&#34;&gt;Jan 2-3, 2019&lt;/h1&gt;
 
-&lt;p&gt;Messed around with apache but couldn&amp;rsquo;t make it work.
-&lt;a href=&#34;https://jupyterhub.readthedocs.io/en/latest/reference/config-proxy.html&#34; target=&#34;_blank&#34;&gt;Documentation on Jupyter&amp;rsquo;s website is god awful&lt;/a&gt;, there are numerous omissions and a typo in the configuration files (including ones from the &lt;a href=&#34;https://github.com/jupyterhub/oauthenticator/tree/master/examples/full&#34; target=&#34;_blank&#34;&gt;repository&lt;/a&gt; I got my original setup files), no context or setup instructions. They just assume you know what you are doing.&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&#34;https://www.michaelpilosov.com/devlog/proxy&#34;&gt;proxy&lt;/a&gt; page.&lt;/p&gt;
 
-&lt;p&gt;I do not, though. So let&amp;rsquo;s go through it.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;rsquo;s what a reverse-proxy is doing.
-It catches requests to a website and handles them.&lt;/p&gt;
-
-&lt;p&gt;When you hit &lt;a href=&#34;consistentbayes.com&#34; target=&#34;_blank&#34;&gt;consistentbayes.com&lt;/a&gt;, it directs you to a folder with a bunch of files that make up my website. I had that working with Apache but couldn&amp;rsquo;t do what I wanted, which was direct traffic to &amp;ldquo;hub.consistentbayes.com&amp;rdquo; instead.&lt;/p&gt;
-
-&lt;p&gt;I got the &amp;ldquo;hub&amp;rdquo; part set up by adding an &lt;code&gt;A Record&lt;/code&gt; into my DNS Control Panel (talk more about that later). Now the proxy just had to be able to handle and direct that request to a jupyterhub instance running in a docker container that was exposing itself on &lt;code&gt;http://127.0.0.1:8000&lt;/code&gt; (I&amp;rsquo;ll show config files later). The hub would be in a container that is just a Linux machine, with users and everything in there.&lt;/p&gt;
-
-&lt;p&gt;If the container name is &amp;ldquo;nostalgic_colden&amp;rdquo; (TO DO: figure out how to name these)&amp;hellip; then running&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker exec -ti -u mpilosov nostalgic_colden /bin/bash
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;will log you into the linux computer as &amp;ldquo;mpilosov&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;The user accounts are handled at build-time, but can be managed within the computer just as you would on a linux machine (to log in as &lt;code&gt;root&lt;/code&gt;, omit &lt;code&gt;-u mpilosov&lt;/code&gt; above).&lt;/p&gt;
-
-&lt;p&gt;So&amp;hellip; those accounts.
-Github usernames. By far the best authentication method I found, but it relied on having a Fully Qualified Domain Name (website name, which the server at school would not let me do).
-But&amp;hellip; we can loop the authenticator to whatever we want.&lt;/p&gt;
-
-&lt;p&gt;Here are my nginx configurations:&lt;/p&gt;
-
-&lt;p&gt;In &lt;code&gt;/etc/nginx/sites-enabled/consistentbayes.conf&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;server {
-    listen 80;
-    server_name NO_HUB.DOMAIN.TLD;
-
-    # Tell all requests to port 80 to be 302 redirected to HTTPS
-    return 302 https://$host$request_uri;
-}
-
-server {
-    listen 443;
-    ssl on;
-
-    # INSERT OTHER SSL PARAMETERS HERE AS ABOVE
-    # SSL cert may differ
-
-    # Set the appropriate root directory
-    root /var/www/html;
-
-    # Set URI handling
-    location / {
-        try_files $uri $uri/ =404;
-    }
-
-    # Managing requests to verify letsencrypt host
-    location ~ /.well-known {
-        allow all;
-    }
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In &lt;code&gt;/etc/nginx/sites-enabled/jupyterhub.conf&lt;/code&gt; (titles dont matter it seems).&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# top-level http config for websocket headers
-# If Upgrade is defined, Connection = upgrade
-# If Upgrade is empty, Connection = close
-map $http_upgrade $connection_upgrade {
-    default upgrade;
-    &#39;&#39;      close;
-}
-
-# HTTP server to redirect all 80 traffic to SSL/HTTPS
-server {
-    listen 80;
-    server_name HUB.DOMAIN.TLD;
-
-    # Tell all requests to port 80 to be 302 redirected to HTTPS
-    return 302 https://$host$request_uri;
-}
-
-# HTTPS server to handle JupyterHub
-server {
-    listen 443;
-    ssl on;
-
-    server_name HUB.DOMAIN.TLD;
-
-    ssl_certificate /etc/letsencrypt/live/HUB.DOMAIN.TLD/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/HUB.DOMAIN.TLD/privkey.pem;
-
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_prefer_server_ciphers on;
-    ssl_dhparam /etc/ssl/certs/dhparam.pem;
-    ssl_ciphers &#39;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA&#39;;
-    ssl_session_timeout 1d;
-    ssl_session_cache shared:SSL:50m;
-    ssl_stapling on;
-    ssl_stapling_verify on;
-    add_header Strict-Transport-Security max-age=15768000;
-
-    # Managing literal requests to the JupyterHub front end
-    location / {
-        proxy_pass http://127.0.0.1:8000;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-
-        # websocket headers
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection $connection_upgrade;
-    }
-
-    # Managing requests to verify letsencrypt host
-    location ~ /.well-known {
-        allow all;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Talk about how you had to generate letsencrypt scripts for nginx with &lt;code&gt;certbot&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt install python-certbot-nginx
-sudo apt-get update
-sudo apt-get install software-properties-common
-sudo add-apt-repository universe
-sudo add-apt-repository ppa:certbot/certbot
-sudo apt-get update
-sudo apt-get install python-certbot-nginx 
-sudo certbot --nginx certonly
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;I actually ran into trouble being unable to start nginx with the sites enabled. Kind of a catch-22. Removed letsencrypt files&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo certbot certonly --webroot -w /var/www/example -d example.com -d www.example.com -w /var/www/thing -d thing.is -d m.thing.is
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This command will obtain a single cert for example.com, www.example.com, thing.is, and m.thing.is; it will place files below /var/www/example to prove control of the first two domains, and under /var/www/thing for the second pair.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;I dont quite want that. Let&amp;rsquo;s try the interactive.;&lt;/em&gt;
-&lt;code&gt;sudo certbot certonly&lt;/code&gt;
-Hit 1, enter website names (consistentbayes.com, www.consistentbayes.com),&lt;/p&gt;
-
-&lt;p&gt;Then do the same again for the hub.consistentbayes.com&lt;/p&gt;
-
-&lt;p&gt;And we&amp;rsquo;re golden. The files have been placed where nginx is expecting them to be. (e.g. &lt;code&gt;/etc/letsencrypt/live/hub.consistentbayes.com/fullchain.pem&lt;/code&gt;)&lt;/p&gt;
-
-&lt;p&gt;And also you will need to issue the following command once.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And then go ahead and make the &lt;code&gt;Dockerfile&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# Designed to be run as
-#
-# docker run -it -p 8000:8000 jupyterhub/oauthenticator
-
-FROM jupyterhub/jupyterhub
-
-MAINTAINER Project Jupyter &amp;lt;ipython-dev@scipy.org&amp;gt;
-
-# Install oauthenticator from git
-RUN python3 -m pip install oauthenticator
-RUN python3 -m pip install notebook&amp;gt;=4.0
-# Create oauthenticator directory and put necessary files in it
-RUN mkdir /srv/oauthenticator
-WORKDIR /srv/oauthenticator
-ENV OAUTHENTICATOR_DIR /srv/oauthenticator
-ADD jupyterhub_config.py jupyterhub_config.py
-ADD addusers.sh /srv/oauthenticator/addusers.sh
-ADD userlist /srv/oauthenticator/userlist
-ADD ssl /srv/oauthenticator/ssl
-RUN chmod 700 /srv/oauthenticator
-
-RUN [&amp;quot;sh&amp;quot;, &amp;quot;/srv/oauthenticator/addusers.sh&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Then this bash script &lt;code&gt;addusers.sh&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/bin/sh
-
-IFS=&amp;quot;
-&amp;quot;
-for line in `cat userlist`; do
-  test -z &amp;quot;$line&amp;quot; &amp;amp;&amp;amp; continue
-  user=`echo $line | cut -f 1 -d&#39; &#39;`
-  echo &amp;quot;adding user $user&amp;quot;
-  useradd -m -s /bin/bash $user
-#  cp -r /srv/ipython/examples /home/$user/examples
-  mkdir /home/$user/examples
-# may only be necessary since we are copying files from root above.
-  chown -R $user /home/$user/examples
-done
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And, for now, the simplest version of our &lt;code&gt;jupyterhub_config.py&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# Configuration file for Jupyter Hub
-
-c = get_config()
-
-c.JupyterHub.log_level = 10
-from oauthenticator.github import LocalGitHubOAuthenticator
-c.JupyterHub.authenticator_class = LocalGitHubOAuthenticator
-c.GenericOAuthenticator.login_service = &#39;my service&#39;
-
-c.LocalGitHubOAuthenticator.create_system_users = True
-
-c.Authenticator.whitelist = whitelist = set()
-c.JupyterHub.admin_users = admin = set()
-
-import os
-import sys
-
-join = os.path.join
-
-here = os.path.dirname(__file__)
-root = os.environ.get(&#39;OAUTHENTICATOR_DIR&#39;, here)
-sys.path.insert(0, root)
-
-with open(join(root, &#39;userlist&#39;)) as f:
-    for line in f:
-        if not line:
-            continue
-        parts = line.split()
-        name = parts[0]
-        whitelist.add(name)
-        if len(parts) &amp;gt; 1 and parts[1] == &#39;admin&#39;:
-            admin.add(name)
-
-c.GitHubOAuthenticator.oauth_callback_url = os.environ[&#39;OAUTH_CALLBACK_URL&#39;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;A &lt;code&gt;userlist&lt;/code&gt; file with github usernames&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:admin&#34;&gt;&lt;a href=&#34;#fn:admin&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;mpilosov admin
-mathematicalmichael
-eescu 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;A &lt;code&gt;ssl&lt;/code&gt; folder with encryption keys in them (which we won&amp;rsquo;t use!)
-(We don&amp;rsquo;t use them because we expose Jupyterhub in http, and use the reverse-proxy to handle the security).&lt;/p&gt;
-
-&lt;p&gt;And an &lt;code&gt;env&lt;/code&gt; file&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# add your github oauth config to this file,
-# and run the container with `docker run -it -p 9000:8000 --env-file=env jupyterhub-oauth`
-OAUTH_CLIENT_ID=
-OAUTH_CLIENT_SECRET=
-OAUTH_CALLBACK_URL=https://hub.consistentbayes.com/hub/oauth_callback
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Which you get when you register the application on Github. (I filled in the third to show you, the first two are secrets!)&lt;/p&gt;
-
-&lt;p&gt;So from here on, we can start tweaking the spawner, volume persistence, do checks on memory limits, etc. Write up detailed instructions. Jupyterhub from docker like this is nice.&lt;/p&gt;
-
-&lt;p&gt;I think we can test directory-mounting right to the linux machine to be honest.&lt;/p&gt;
-
-&lt;p&gt;OMG I RAN THIS AND IT WORKED. I mounted volumes to folders on a per-user basis (since users live inside the container that jupyterhub is in). No write permissions, but they can see files just fine. Cant duplicate.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker run -it -p 8000:8000 -v /home/michael/repos/:/home/mathematicalmichael/examples -v /home/michael/repos:/home/mpilosov/examples --env-file=env --name hubtest jupyterhub-oauth
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Problem with relying on user data in the hub is potential updates could cause loss of files. mounting volumes would fix this for sure. But they can&amp;rsquo;t write files in this new directory, so&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;I think the best storage solution is each student has their own container. &lt;code&gt;hubname-studentname&lt;/code&gt; that a teacher can get into. For workshops, the solution presented as-is works great.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Make sure to upgrade pip, no one seems to.&lt;/li&gt;
-&lt;li&gt;volume permissions are probably things joe knows about.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;volumes-working&#34;&gt;VOLUMES WORKING!&lt;/h1&gt;
-
-&lt;p&gt;&lt;code&gt;--mount&lt;/code&gt; creates directories if they dont exist, whereas &lt;code&gt;--volume&lt;/code&gt; does not. Good to create up at root one &lt;code&gt;/shared&lt;/code&gt; directory. Additionally we can link them to volumes to host their data instead, managed via docker. Ideally we use a mix of the two.
-Adding a volume (even if it doesn&amp;rsquo;t exist) to be managed by docker would be accomplished with -v &lt;code&gt;volume-name:/directory/to/mount&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;So we should think about what in our docker-compose we can automatically mount. Additionally (or in replacement), volumes can be handled via the spawner.&lt;/p&gt;
-
-&lt;p&gt;In either set up, we can shut down and restart the container all we want and data persists. We can even re-build the image. Volumes seem to just be symbolic links to directories on your unix machine, anyway, visible via &lt;code&gt;docker inspect volume-name&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker run -d -it -p 8000:8000 --mount source=/home/michael/repos/packages/lyricalart,type=bind,target=/home/mpilosov/examples/shared-folder-mp/,bind-propagation=rshared --mount source=/home/michael/repos/packages/lyricalart,type=bind,target=/home/mathematicalmichael/shared-folder-mm/,bind-propagation=rshared --env-file=env --name hub jupyterhub-oauth
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now that we&amp;rsquo;ve got this figured out&amp;hellip; It would be nice to figure out how to get that &lt;code&gt;docker-compose&lt;/code&gt; up and running, including with the nginx server, all based on a configuration file that takes in the website name, ip of host, etc. so you can get in, git clone, run bash script, edit the ip, and close out knowing it will work.&lt;/p&gt;
-
-&lt;p&gt;To build everything, we did &lt;code&gt;docker build -t jupyterhub-oauth .&lt;/code&gt; in the directory we set up.&lt;/p&gt;
-
-&lt;p&gt;Definitely want to containerize each student. Currently it&amp;rsquo;s possible to get into the directories mounted above as shared by going through Terminal. Can move files in/out&amp;hellip; not good.&lt;/p&gt;
-
-&lt;p&gt;To destroy containers after they close down, simply add &lt;code&gt;.remove = True&lt;/code&gt; to the &lt;code&gt;c.DockerSpawner&lt;/code&gt; attributes.&lt;/p&gt;
-
-&lt;p&gt;[8:59 PM] Pilosov, Michael
-oficially did it on hub.consistentbayes.com! holy shit that took forever but I linked up the pieces. Now it spawns up containers per user, with BOTH volumes that persist even as containers change and shared directories accessible by all users, automatically mounted to every user.
-One environment file controls everything. the version of jupyterhub, the docker image you want to spawn, etc.
-​
-[9:04 PM] Pilosov, Michael
-that is our ideal set up.. the shared folders can be determined by rules such as group membership (students within class or even, and the environment to spawn can be similarly chosen. This means we can use one hub for every student across every class with total ease. No containers stick around. At all. They just get appropriately mounted to volumes when they are created. the decision to make one hub per class is purely an aesthetic one. the hub can spin up dozens of different configurations depending on what the user needs.
-I&amp;rsquo;m going to package this all nice so that I can deploy to a powerful server that I can rent for like &amp;hellip;. a couple hours for testing. Throw a whole bunch of simultaneous use-cases at it.
-​
-[9:08 PM] Pilosov, Michael
-we can even use the admin panel to start/stop servers instead of logging in simultaneously. if each single-user server has a heavy python script to run on startup, we can simulate heavy loads. I played around a little already and saw the containers being created (not restarted, created!) when I &amp;ldquo;started&amp;rdquo; the single-user server and then thrown away when I clicked &amp;ldquo;stop&amp;rdquo; which keeps our physical memory literally AT THE LOWEST possible limit at any given time since stopped containers dont have to sit around.&lt;/p&gt;
-
-&lt;p&gt;So, how?&lt;/p&gt;
-
-&lt;p&gt;I cloned the jupyterhub-deploy-docker repo. (again), and made my fixes&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;I don&amp;rsquo;t know why the Makefile doesn&amp;rsquo;t handle this, but
-&lt;code&gt;echo &amp;quot;POSTGRES_PASSWORD=$( openssl rand -hex 32)&amp;quot; &amp;gt;&amp;gt; secrets/postgres.env&lt;/code&gt; will create a necessary file for &lt;code&gt;make build&lt;/code&gt; to work. And after that works, run &lt;code&gt;make notebook_image&lt;/code&gt; to create the necessary image to be spawned based on the  &lt;code&gt;.env&lt;/code&gt; file in the root directory.&lt;/p&gt;
-
-&lt;p&gt;I commented out lines 40-49 in the &lt;code&gt;Makefile&lt;/code&gt; since I want to handle certification on my own through the reverse proxy.&lt;/p&gt;
-
-&lt;p&gt;Would be nice to get this working with nginx as well. But all that stuff can be handled from the bash script.&lt;/p&gt;
-
-&lt;p&gt;In the &lt;code&gt;jupyterhub_config.py&lt;/code&gt; file, I removed references to SSL and set up shared volumes.
-It would be great to learn how to sub-class the spawner now and create rules for mounting volumes. A simple restart lets students gain new files.&lt;/p&gt;
-
-&lt;p&gt;I also removed SSL references from &lt;code&gt;Dockerfile.jupyerhub&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;[Docker-compose guidelines][docker-compose]&lt;/p&gt;
-
-&lt;p&gt;Just tested the containerized solution and love it (even though i built small containers). I can log in, add nbextensions as root, and the changes are reflected &lt;em&gt;without touching docker&lt;/em&gt;. No restarting required.&lt;/p&gt;
-
-&lt;p&gt;Can add user accounts as admin through the cPanel. If they don&amp;rsquo;t exist, a home directory or volume is created on their behalf.
-I wouldn&amp;rsquo;t suggest sharing directories automatically for the containerized solutions. &lt;em&gt;That part&lt;/em&gt; should be part of a custom spawner (and require hub restart, which can also be done through cpanel since it runs on another port!).&lt;/p&gt;
-
-&lt;p&gt;Admin is powerful! You can start/stop servers at your whim and launch them to poke around on your own. Very cool.&lt;/p&gt;
-
-&lt;p&gt;For a smaller class, auto-mounting some shared directory is a great idea.&lt;/p&gt;
-
-&lt;hr /&gt;
+&lt;h2 id=&#34;useful-reading&#34;&gt;Useful Reading&lt;/h2&gt;
 
 &lt;p&gt;Here is something interesting for version-controlling notebooks.
 &lt;a href=&#34;https://github.com/mwouts/jupytext&#34; target=&#34;_blank&#34;&gt;https://github.com/mwouts/jupytext&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Here is an introduction to the notebook format.
 &lt;a href=&#34;https://nbformat.readthedocs.io/en/latest/format_description.html&#34; target=&#34;_blank&#34;&gt;https://nbformat.readthedocs.io/en/latest/format_description.html&lt;/a&gt;
-You should turn this into a write-up.&lt;/p&gt;
+&lt;em&gt;TODO:&lt;/em&gt; You should turn this into a write-up.&lt;/p&gt;
 
 &lt;p&gt;The basic examples in here are actually a great demo of publishing LaTeX documents right from Jupyter.
 &lt;a href=&#34;https://github.com/jupyter/nbconvert-examples&#34; target=&#34;_blank&#34;&gt;https://github.com/jupyter/nbconvert-examples&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
 
 &lt;p&gt;Nice article
 &lt;a href=&#34;https://blog.dominodatalab.com/data-science-vs-engineering-tension-points/&#34; target=&#34;_blank&#34;&gt;https://blog.dominodatalab.com/data-science-vs-engineering-tension-points/&lt;/a&gt;&lt;/p&gt;
@@ -546,6 +221,8 @@ Write about them in a new section summarizing sharing results.&lt;/p&gt;
 &lt;p&gt;Hippylib-Hub, example to follow.
 &lt;a href=&#34;https://github.com/g2s3-2018/hippylib-hub&#34; target=&#34;_blank&#34;&gt;https://github.com/g2s3-2018/hippylib-hub&lt;/a&gt;&lt;/p&gt;
 
+&lt;h2 id=&#34;dockerspawner&#34;&gt;Dockerspawner&lt;/h2&gt;
+
 &lt;p&gt;Want:
     - Dockerspawner is nice (can restart hub without issues).
     - Although, restarting if all-in-one isn&amp;rsquo;t that bad, either. Temporary inconvenience.&lt;/p&gt;
@@ -563,15 +240,7 @@ Write about them in a new section summarizing sharing results.&lt;/p&gt;
     secretToken: xxxx
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;To-Do today:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Documentation on Projects.&lt;/li&gt;
-&lt;li&gt;Galleries&lt;/li&gt;
-&lt;li&gt;Art for 2019?&lt;/li&gt;
-&lt;li&gt;Documentation for Jupyterhub, convert devlogs.&lt;/li&gt;
-&lt;li&gt;Build shell script for deployments, fenics?&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&#34;file-storage&#34;&gt;File Storage&lt;/h2&gt;
 
 &lt;p&gt;Wow I can&amp;rsquo;t believe this exists.
 &lt;a href=&#34;https://www.katacoda.com/&#34; target=&#34;_blank&#34;&gt;https://www.katacoda.com/&lt;/a&gt;&lt;/p&gt;
@@ -581,6 +250,8 @@ Write about them in a new section summarizing sharing results.&lt;/p&gt;
 &lt;a href=&#34;https://storageos.com/developers/&#34; target=&#34;_blank&#34;&gt;https://storageos.com/developers/&lt;/a&gt;
 another alternative, which appears to be a bit more complicated to set-up (though helm-chart should be available by now), but is open-source and from redhat: &lt;a href=&#34;https://www.youtube.com/watch?v=Fgpr2lMnBVY&#34; target=&#34;_blank&#34;&gt;https://www.youtube.com/watch?v=Fgpr2lMnBVY&lt;/a&gt; [16:30]&lt;/p&gt;
 
+&lt;h2 id=&#34;kubernetes&#34;&gt;Kubernetes&lt;/h2&gt;
+
 &lt;p&gt;Kubernetes 101 introduction
 &lt;a href=&#34;https://medium.com/google-cloud/kubernetes-101-pods-nodes-containers-and-clusters-c1509e409e16&#34; target=&#34;_blank&#34;&gt;https://medium.com/google-cloud/kubernetes-101-pods-nodes-containers-and-clusters-c1509e409e16&lt;/a&gt;&lt;/p&gt;
 
@@ -588,28 +259,219 @@ another alternative, which appears to be a bit more complicated to set-up (thoug
 
 &lt;hr /&gt;
 
-&lt;p&gt;To get a bash script for the set-up, you need to package the reverse-proxy with docker-compose. Let&amp;rsquo;s figure out how to use Traefik. Between these two sources, you should be able to figure it out:
-&lt;a href=&#34;https://github.com/defeo/jupyterhub-docker/blob/master/docker-compose.yml&#34; target=&#34;_blank&#34;&gt;https://github.com/defeo/jupyterhub-docker/blob/master/docker-compose.yml&lt;/a&gt;
-&lt;a href=&#34;https://github.com/containous/traefik/blob/master/examples/quickstart/docker-compose.yml&#34; target=&#34;_blank&#34;&gt;https://github.com/containous/traefik/blob/master/examples/quickstart/docker-compose.yml&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
+&lt;h1 id=&#34;jan-4-5-2019&#34;&gt;Jan 4-5, 2019&lt;/h1&gt;
+
+&lt;p&gt;Tried and failed to get Traefik working. See &lt;a href=&#34;https://www.michaelpilosov.com/devlog/proxy&#34;&gt;proxy&lt;/a&gt; notes. Took some time to relax.&lt;/p&gt;
+
+&lt;p&gt;Note&lt;/p&gt;
+
+&lt;p&gt;If you base a Dockerfile on this image:&lt;/p&gt;
+
+&lt;p&gt;FROM juptyerhub/jupyterhub-onbuild:0.6
+&amp;hellip;
+then your jupyterhub_config.py adjacent to your Dockerfile will be loaded into the image and used by JupyterHub.&lt;/p&gt;
+
+&lt;h2 id=&#34;file-permissions&#34;&gt;File permissions&lt;/h2&gt;
+
+&lt;p&gt;Correct permissions for exposed shared directories require
+&lt;code&gt;chmod -R 777&lt;/code&gt; for the folder at the top&lt;/p&gt;
+
+&lt;p&gt;What this means:&lt;/p&gt;
+
+&lt;p&gt;Permissions:
+1 – can execute
+2 – can write
+4 – can read&lt;/p&gt;
+
+&lt;p&gt;The octal number is the sum of those free permissions, i.e.
+3 (1+2) – can execute and write
+6 (2+4) – can write and read&lt;/p&gt;
+
+&lt;p&gt;Position of the digit in value:
+1 – what owner can
+2 – what users in the file group(class) can
+3 – what users &lt;em&gt;not&lt;/em&gt; in the file group(class) can&lt;/p&gt;
+
+&lt;p&gt;So the third is what we care about since no we don&amp;rsquo;t want to create users on the machine running docker.&lt;/p&gt;
+
+&lt;h2 id=&#34;database&#34;&gt;Database&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jupyterhub.readthedocs.io/en/stable/reference/database.html&#34; target=&#34;_blank&#34;&gt;https://jupyterhub.readthedocs.io/en/stable/reference/database.html&lt;/a&gt;
+It comes pre-packaged with one, but it is recommended to use something else for production, which we will do!&lt;/p&gt;
+
+&lt;p&gt;Hash authentication&amp;hellip; Very nice
+&lt;a href=&#34;https://github.com/thedataincubator/jupyterhub-hashauthenticator&#34; target=&#34;_blank&#34;&gt;https://github.com/thedataincubator/jupyterhub-hashauthenticator&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can generate a good &lt;code&gt;secret key&lt;/code&gt; with &lt;code&gt;openssl rand -hex 32&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;c.JupyterHub.authenticator_class = &#39;hashauthenticator.HashAuthenticator&#39;
+c.HashAuthenticator.secret_key = &#39;my secret key&#39;  # Defaults to &#39;&#39;
+c.HashAuthenticator.password_length = 10          # Defaults to 6
+c.HashAuthenticator.show_logins = True            # Optional, defaults to False
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If the &lt;code&gt;show_logins&lt;/code&gt; option is set to &lt;code&gt;True&lt;/code&gt;, a CSV file containing login names and passwords will be served (to admins only) at &lt;code&gt;/hub/login_list&lt;/code&gt;. &lt;em&gt;Do we want this?&lt;/em&gt; Maybe for analytics? If possible.&lt;/p&gt;
+
+&lt;p&gt;To figure out my password, I used
+&lt;code&gt;hashauthpw --length 10 mathematicalmichael [secret key]&lt;/code&gt; on any computer that has run &lt;code&gt;pip install jupyterhub-hashauthenticator&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;multiple-spawners&#34;&gt;Multiple Spawners&lt;/h2&gt;
+
+&lt;p&gt;multiple spawners! definitely my favorite way to go. Says this will allow them to choose upon login.
+If so&amp;hellip; amazing.&lt;/p&gt;
+
+&lt;p&gt;[multiple spawners issue on github][&lt;a href=&#34;https://github.com/jupyterhub/dockerspawner/issues/236]:&#34; target=&#34;_blank&#34;&gt;https://github.com/jupyterhub/dockerspawner/issues/236]:&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;from dockerspawner import SystemUserSpawner
+
+class MultiDockerImageSpawner(SystemUserSpawner):
+    images = {
+        &#39;SciPy&#39;: &#39;jupyter/scipy-notebook:0f73f7488fa0&#39;,
+        &#39;Tensorflow&#39;: &#39;jupyter/tensorflow-notebook:59904dd7776a&#39;,
+        &#39;R&#39;: &#39;jupyter/r-notebook:59904dd7776a&#39;,
+    }
+    def _options_form_default(self):
+        outval = &amp;quot;&amp;quot;&amp;quot;
+        &amp;lt;label for=&amp;quot;image&amp;quot;&amp;gt;Docker Image&amp;lt;/label&amp;gt;
+        &amp;lt;select name=&amp;quot;image&amp;quot;&amp;gt;
+        &amp;quot;&amp;quot;&amp;quot;
+        for name, image in self.images.items():
+            outval += &amp;quot;&amp;lt;option value=\&amp;quot;%s\&amp;quot;&amp;gt;%s (%s)&amp;lt;/option&amp;gt;&amp;quot; % (name, name, image)
+
+        outval += &amp;quot;&amp;quot;&amp;quot;
+        &amp;lt;/select&amp;gt;
+        &amp;quot;&amp;quot;&amp;quot;
+        return outval
+
+    def options_from_form(self, formdata):
+        options = {}
+        options[&#39;image&#39;] = formdata.get(&#39;image&#39;, [&#39;SciPy&#39;])[0]
+        self.image = self.images[options[&#39;image&#39;]]
+        return options
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Everything is now up and running! New images can be added with total ease, the hub restart only has minimal disruption.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;A note on startup files:&lt;/em&gt;
+&amp;gt; IPython startup files, placed in ~/.ipython/profile_default/startup will be executed. These can be Python scripts (.py) or IPython scripts (.ipy with %magic commands). Notebooks aren&amp;rsquo;t supported as startup files, but if it really needs to be a notebook, you can use %run /path/to/notebook.ipynb in a .ipy startup file.&lt;/p&gt;
+
+&lt;p&gt;This means that for testing, we can create an image with a file that gets run at startup, set it as the temporary default, and launch servers.&lt;/p&gt;
+
+&lt;p&gt;I GOT RSTUDIO WORKING.
+Okay, so just, build any image you want, and reference it in the spawner.
+If you can execute the following and see the same output, you&amp;rsquo;ll have something working properly.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mpilosov@math-ws-204:~/Packages/deploy/singleuser$ docker run --rm -ti rstudio_test
+Executing the command: jupyter notebook
+[I 22:39:24.130 NotebookApp] Writing notebook server cookie secret to /home/jovyan/.local/share/jupyter/runtime/notebook_cookie_secret
+[I 22:39:24.745 NotebookApp] JupyterLab extension loaded from /opt/conda/lib/python3.7/site-packages/jupyterlab
+[I 22:39:24.745 NotebookApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
+[I 22:39:24.748 NotebookApp] Serving notebooks from local directory: /home/jovyan
+[I 22:39:24.748 NotebookApp] The Jupyter Notebook is running at:
+[I 22:39:24.748 NotebookApp] http://(620acce394ce or 127.0.0.1):8888/?token=cbf208a110db20a3fce4814d5cf1bf2e41aca5e4a165c69d
+[I 22:39:24.749 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 22:39:24.749 NotebookApp]
+
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://(620acce394ce or 127.0.0.1):8888/?token=cbf208a110db20a3fce4814d5cf1bf2e41aca5e4a165c69d
+^C[I 22:39:36.445 NotebookApp] interrupted
+Serving notebooks from local directory: /home/jovyan
+0 active kernels
+The Jupyter Notebook is running at:
+http://(620acce394ce or 127.0.0.1):8888/?token=cbf208a110db20a3fce4814d5cf1bf2e41aca5e4a165c69d
+Shutdown this notebook server (y/[n])? ^C[C 22:39:37.364 NotebookApp] received signal 2, stopping
+[I 22:39:37.366 NotebookApp] Shutting down 0 kernels
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;hr /&gt;
 
-&lt;ol&gt;
-&lt;li id=&#34;fn:admin&#34;&gt;Fun note, it may be possible to accidentally revoke admin privileges from everyone. &lt;em&gt;Test this&lt;/em&gt;. But editing the config file in the container as root should be able to make it work again.
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:admin&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
+&lt;h1 id=&#34;jan-6-7-2019&#34;&gt;Jan 6-7, 2019&lt;/h1&gt;
+
+&lt;h2 id=&#34;math-hub&#34;&gt;Math-hub&lt;/h2&gt;
+
+&lt;p&gt;everything is up and running on math-hub,
+100 notebooks idle take up 8gb of ram.&lt;/p&gt;
+
+&lt;p&gt;I managed to mount volumes easily, but if you create a new volume with docker, use &lt;code&gt;docker inspect&lt;/code&gt; to find out where it is and change the permissions.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pilosovm@math-hub:~/repos/deploy$ docker inspect rw_shared_volume
+[
+    {
+        &amp;quot;CreatedAt&amp;quot;: &amp;quot;2019-01-04T17:57:04-07:00&amp;quot;,
+        &amp;quot;Driver&amp;quot;: &amp;quot;local&amp;quot;,
+        &amp;quot;Labels&amp;quot;: {},
+        &amp;quot;Mountpoint&amp;quot;: &amp;quot;/var/lib/docker/volumes/rw_shared_volume/_data&amp;quot;,
+        &amp;quot;Name&amp;quot;: &amp;quot;rw_shared_volume&amp;quot;,
+        &amp;quot;Options&amp;quot;: {},
+        &amp;quot;Scope&amp;quot;: &amp;quot;local&amp;quot;
+    }
+]
+pilosovm@math-hub:~/repos/deploy$ sudo chmod 777 /var/lib/docker/volumes/rw_shared_volume/_data
+[sudo] password for pilosovm:
+pilosovm@math-hub:~/repos/deploy$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;startup scripts: bootstrap scripts &lt;a href=&#34;https://github.com/jupyterhub/jupyterhub/tree/master/examples/bootstrap-script&#34; target=&#34;_blank&#34;&gt;https://github.com/jupyterhub/jupyterhub/tree/master/examples/bootstrap-script&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;jan-8-2019&#34;&gt;Jan 8, 2019&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.paraview.org/web/&#34; target=&#34;_blank&#34;&gt;https://www.paraview.org/web/&lt;/a&gt;
+Paraview in-browser is now a thing&amp;hellip; Can we somehow create a container that includes the ability to launch this application?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jupyter-docker-stacks.readthedocs.io/en/latest/using/recipes.html&#34; target=&#34;_blank&#34;&gt;https://jupyter-docker-stacks.readthedocs.io/en/latest/using/recipes.html&lt;/a&gt;
+Jupyter Docker-Stacks&lt;/p&gt;
+
+&lt;h2 id=&#34;python-2&#34;&gt;Python 2&lt;/h2&gt;
+
+&lt;p&gt;Adding Python 2:
+dd a Python 2.x environment
+Python 2.x was removed from all images on August 10th, 2017, starting in tag cc9feab481f7. You can add a Python 2.x environment by defining your own Dockerfile inheriting from one of the images like so:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Choose your desired base image
+FROM jupyter/scipy-notebook:latest
+
+# Create a Python 2.x environment using conda including at least the ipython kernel
+# and the kernda utility. Add any additional packages you want available for use
+# in a Python 2 notebook to the first line here (e.g., pandas, matplotlib, etc.)
+RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 ipython ipykernel kernda numpy pandas matplotlib ipywidgets yaml &amp;amp;&amp;amp; \
+    conda clean -tipsy
+
+USER root
+
+# Create a global kernelspec in the image and modify it so that it properly activates
+# the python2 conda environment.
+RUN $CONDA_DIR/envs/python2/bin/python -m ipykernel install &amp;amp;&amp;amp; \
+$CONDA_DIR/envs/python2/bin/kernda -o -y /usr/local/share/jupyter/kernels/python2/kernel.json
+
+USER $NB_USER
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;mixed-authentication&#34;&gt;Mixed Authentication&lt;/h2&gt;
+
+&lt;p&gt;The main &lt;a href=&#34;https://github.com/jupyterhub/jupyterhub/wiki/Authenticators&#34; target=&#34;_blank&#34;&gt;authentication page&lt;/a&gt; on the Jupyterhub wiki is pretty useful but also kind of incomplete.&lt;/p&gt;
+
+&lt;p&gt;Right now I am creating users based on the folders in &lt;code&gt;/home/math&lt;/code&gt;, authenticating with &lt;code&gt;HashAuthenticator&lt;/code&gt;, but &lt;a href=&#34;https://github.com/compmodels/jupyterhub/blob/master/docker_oauth.py&#34; target=&#34;_blank&#34;&gt;this example&lt;/a&gt; demonstrates how to mix Authentication methods.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;TO DO&lt;/em&gt;
+Try &lt;a href=&#34;https://github.com/jupyterhub/oauthenticator#google-setup&#34; target=&#34;_blank&#34;&gt;google authentication&lt;/a&gt; on your own website.&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>Day 5</title>
+      <title>Early Exploration with Docker &amp; Kubernetes</title>
       <link>https://www.michaelpilosov.com/devlog/docker/</link>
       <pubDate>Mon, 24 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/devlog/docker/</guid>
       <description>
+
+&lt;p&gt;Dec 22, 2018
+Today I began to structure and fill in the basic information for the &lt;a href=&#34;https://www.michaelpilosov.com/openscience/docker&#34;&gt;Open Science/Docker&lt;/a&gt; Documentation.&lt;/p&gt;
+
+&lt;p&gt;12/24/2019 - 01/01/2019&lt;/p&gt;
 
 &lt;p&gt;Today I started by watching a video to be aware of the problems I might face going forward with JupyterHub.
 I watched someone from Berkeley describe how they&amp;rsquo;ve scaled to thousands of users across many professors and managed to not grow their IT team while doing so.&lt;/p&gt;
@@ -1304,15 +1166,6 @@ sudo apt-get install -y docker-ce
 
 &lt;p&gt;Logs are showing me that my problem is indeed with &lt;code&gt;POSTGRES_PASSWORD&lt;/code&gt; &amp;hellip; and this part is certainly a bit above my paygrade.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Binder</title>
-      <link>https://www.michaelpilosov.com/openscience/binder/</link>
-      <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/openscience/binder/</guid>
-      <description></description>
     </item>
     
     <item>
@@ -2759,22 +2612,6 @@ gzip -dc image.tgz | docker import - flat-image-name
     </item>
     
     <item>
-      <title>Jupyter Notebook</title>
-      <link>https://www.michaelpilosov.com/openscience/jupyternb/</link>
-      <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/openscience/jupyternb/</guid>
-      <description>
-
-&lt;h1 id=&#34;documentation&#34;&gt;Documentation&lt;/h1&gt;
-
-&lt;h1 id=&#34;install&#34;&gt;Install&lt;/h1&gt;
-
-&lt;h1 id=&#34;configure&#34;&gt;Configure&lt;/h1&gt;
-</description>
-    </item>
-    
-    <item>
       <title>JupyterHub</title>
       <link>https://www.michaelpilosov.com/openscience/jupyterhub/</link>
       <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
@@ -2782,49 +2619,200 @@ gzip -dc image.tgz | docker import - flat-image-name
       <guid>https://www.michaelpilosov.com/openscience/jupyterhub/</guid>
       <description>
 
-&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;h1 id=&#34;the-end-user-experience&#34;&gt;The End-User Experience&lt;/h1&gt;
 
-&lt;h1 id=&#34;example&#34;&gt;Example&lt;/h1&gt;
+&lt;p&gt;You go to a web-address and are confronted with the Jupyterhub login portal.
+Once you log in, you see a drop-down menu that allows you to choose what &amp;ldquo;stack&amp;rdquo; of software dependencies you would like to use.
+After you make your selection, you are redirected to an in-browser interface where all your files are available.
+Jupyter Notebooks, R Scripts, anything you want, can now be run directly through this interface.&lt;/p&gt;
 
-&lt;h1 id=&#34;documentation&#34;&gt;Documentation&lt;/h1&gt;
+&lt;p&gt;The work is performed &amp;ldquo;in the cloud.&amp;rdquo; What this means is that a connection is established between your browser window (the client) and a server (the host) elsewhere that is capable of performing the calculations you need.&lt;/p&gt;
 
-&lt;h1 id=&#34;labhub&#34;&gt;LabHub&lt;/h1&gt;
+&lt;h2 id=&#34;benefits&#34;&gt;Benefits&lt;/h2&gt;
+
+&lt;p&gt;You do not have to worry about installing software dependencies, since the administrator has already loaded them into the environment that you selected.
+The machine you are working on will not be doing anything except communicating commands to the host and displaying the result, which means your computer will run on less energy.&lt;/p&gt;
+
+&lt;p&gt;Moreover, it means that since &lt;em&gt;all you need is a functional internet browser,&lt;/em&gt; you can do all of your scientific work with a budget laptop (or in a pinch, a phone/tablet).
+For academic institutions, this means that entire laboratories of computers can be re-purposed for better uses, since students will not be limited by the technology they can afford.&lt;/p&gt;
+
+&lt;p&gt;If you are an administrative user, you can add other users through a control-panel available through this interface, and even be able to see when these users are logged in.
+If configured by the system administrator who set all this up, you may also be able to start an environment &lt;em&gt;as&lt;/em&gt; any of these users, and look around their folders/files, perhaps as a teacher helping de-bug some code during remotely-held office hours.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Sounds neat, doesn&amp;rsquo;t it?&lt;/em&gt;
+Especially for academics, this lowering of friction to programming is especially appealing.
+The hardest parts of setting up a class with the resources they need to start learning how to code have all been abstracted away for both the students and teachers who serve as administrators.
+All of this is already possible, and there are &lt;em&gt;a lot&lt;/em&gt; of ways to set this exact thing up, which makes navigating how to do so a little difficult.
+We will discuss this later after building up the proper motivation.&lt;/p&gt;
+
+&lt;h2 id=&#34;application-architecture&#34;&gt;Application Architecture&lt;/h2&gt;
+
+&lt;p&gt;This separation of where work is performed and where its results are shown is actually essential to understanding how most modern  &amp;ldquo;applications&amp;rdquo; are built.
+By not burdening end-users with installation dependencies that vary with the technology they own, application developers avoid worrying about cross-platform support.
+Most applications are now simply re-skinned versions of a browser called Chromium&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:chrome&#34;&gt;&lt;a href=&#34;#fn:chrome&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, which direct you to the company&amp;rsquo;s servers where all the work is performed.&lt;/p&gt;
+
+&lt;p&gt;In this spirit, the Jupyter Project has done the same thing for scientists and programmers.
+The open-source community that powers most of the work done by Jupyter is largely concentrated at UC Berkeley, and the adoption of their work is spreading fast across the world.
+However, due to the rapid pace of development, a cohesive narrative that explains how all the technologies developed by the Jupyter Project are connected is hard to come by.
+We attempt to address this problem with this document, stepping through the layers of abstraction and building up a story that helps develop an understanding of how these underlying technologies interface and the many ways in which they can be configured&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:config&#34;&gt;&lt;a href=&#34;#fn:config&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;jupyterhub&#34;&gt;Jupyterhub&lt;/h1&gt;
+
+&lt;p&gt;The management of users and the environments they are able to use is done through the interface known as Jupyterhub (the &amp;ldquo;Hub&amp;rdquo; for short).
+The Hub controls who is allowed to access a notebook server through an &lt;em&gt;Authenticator&lt;/em&gt;.
+This can be a username/password combination, or a one-click login through a third-party such as Github, Gitlab, Google, Azure, or your university&amp;rsquo;s login page.&lt;/p&gt;
+
+&lt;p&gt;Jupyterhub passes information to an Authenticator, which returns a &amp;ldquo;successful&amp;rdquo; (or not) message to the Hub, which (if successful) then performs some action.
+In the example above, the action is performed was to first display a drop-down menu that allows a user to select an environment.
+(This can be bypassed if you want every end-user to have the same environment).
+Jupyterhub then &amp;ldquo;spawns&amp;rdquo; a &amp;ldquo;single-user (notebook) server&amp;rdquo; to establish the connection between computational resources and the user-facing interface through the browser&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:server&#34;&gt;&lt;a href=&#34;#fn:server&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;.
+The Hub launches such a server for each user that successfully logs in.&lt;/p&gt;
+
+&lt;p&gt;Jupyterhub is thus made up of:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;- An Authenticator (that lets people in or keeps them out), 
+- a Spawner (which defines individual environments),
+- a Database (to store users), and
+- a Server (to connect all of it).
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/jupyterhub/jupyterhub-deploy-docker/raw/master/internal/jupyterhub-docker.png&#34; alt=&#34;schematic&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;notebook-server&#34;&gt;Notebook Server&lt;/h2&gt;
+
+&lt;p&gt;At the heart of the system is the Jupyter Notebook (server).
+The notebook server communicates with the relevant processes on the host machine to carry out the computations that you (the client) asked it to perform through your browser interface.
+The machine running the notebook server has all the necessary dependencies to perform the work, and your end-user experienced is managed through the Jupyter notebook server.&lt;/p&gt;
+
+&lt;p&gt;The native file-format for the interface the notebook server is the &amp;ldquo;interactive notebook&amp;rdquo; (which has the &lt;code&gt;.ipynb&lt;/code&gt; ending).
+All that these notebooks are is a collection of key-value pairs (dictionaries, linked lists, many words exist), each of which corresponds to one &amp;ldquo;cell&amp;rdquo; in the notebook and carries input/output information along with formatting specifications.
+Since it is best to see by example, here is an abstraction of what this looks like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;{&amp;quot;cell_1&amp;quot;: {info} }
+{&amp;quot;cell_2&amp;quot;: {info} }
+{&amp;quot;cell_3&amp;quot;: {info} }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;where each one of these &lt;code&gt;{info}&lt;/code&gt; elements corresponds to a dictionary itself, which might look something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;{&amp;quot;input&amp;quot;: &amp;lt;&amp;gt;, 
+ &amp;quot;output&amp;quot;: &amp;lt;&amp;gt;,
+ &amp;quot;execution_count&amp;quot;: &amp;lt;&amp;gt;, 
+ &amp;quot;kernel&amp;quot;: &amp;lt;&amp;gt;, ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All of this information is used to format an HTML page that is then rendered by a browser of your choice, since at this point it is simply a web page.&lt;/p&gt;
+
+&lt;p&gt;Now, it is important to note at this time that if you are using a computer that has all the required software dependencies you need, then you can become the &amp;ldquo;host&amp;rdquo; yourself, and run the notebook server locally.
+In the event that you do this, the website you visit to see the notebook server file-browsing interface and work with notebooks will look something like &lt;code&gt;http://localhost:8000&lt;/code&gt;, where &lt;code&gt;localhost&lt;/code&gt; is telling your browser that &amp;hellip; well, the host is &lt;em&gt;local&lt;/em&gt;, not somewhere &lt;em&gt;remote&lt;/em&gt;&amp;hellip;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:web&#34;&gt;&lt;a href=&#34;#fn:web&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;.
+The &lt;code&gt;:8000&lt;/code&gt; (the number can differ) is the &lt;em&gt;port&lt;/em&gt; that is being opened on the machine to allow for input/output connections, which is what is handled by the server.
+&lt;em&gt;(Remember this&amp;hellip; it&amp;rsquo;ll come up later).&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;An Analogy&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If the website is considered the &amp;ldquo;address&amp;rdquo; of the machine(s), the port is the &amp;ldquo;apartment number.&amp;rdquo;
+Many &amp;ldquo;tenants&amp;rdquo; (applications) can &amp;ldquo;live&amp;rdquo; (be hosted) at the same &amp;ldquo;address&amp;rdquo; (website).
+Some buildings choose to have a doorman, so you can ask for directions to the right place &lt;em&gt;by name&lt;/em&gt; instead of apartment number.
+So if you do not see a port number (&lt;code&gt;:XXXX&lt;/code&gt;) anywhere in the browser address, you can assume that the configuration implemented has a &amp;ldquo;doorman&amp;rdquo; (proxy) directing traffic to the right places.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This about sums up what you need to know about the notebook server.
+&lt;em&gt;Somewhere there exists a machine that can do what you want.
+By running a notebook server on this machine, you can connect to it through a web-browser.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;spawning&#34;&gt;Spawning&lt;/h2&gt;
+
+&lt;p&gt;There are many ways to start the (single-user) notebook servers.
+They can be started as individual processes on the same machine that the Hub is running on, which is the default behavior, and the implementation used in &lt;a href=&#34;https://github.com/jupyterhub/the-littlest-jupyterhub&#34; target=&#34;_blank&#34;&gt;The Littlest Jupyterhub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;However, in the spirit of modularity, they can also be started on machines elsewhere in the world.
+These machines may be set up with all the dependencies, waiting for authenticated connections from Hub, or they can be created (and destroyed) &lt;em&gt;on-demand.&lt;/em&gt;
+They can be physical machines, or &amp;ldquo;virtual machines,&amp;rdquo; which (as the name suggests) are emulations of computers that run as processes on top of some existing architecture.&lt;/p&gt;
+
+&lt;h3 id=&#34;containerization&#34;&gt;Containerization&lt;/h3&gt;
+
+&lt;p&gt;Virtual machines allow for something called &amp;ldquo;containerization,&amp;rdquo; which isolated applications in (usually Linux) virtual environments that contain little else but the bare necessities for running a given application.&lt;/p&gt;
+
+&lt;p&gt;To scale to millions of users, services exist that allow for the creation and destruction of virtual machines on-demand, with low latency, and pricing computed by the second.
+Such services sit atop a software platform called Kubernetes, and require a decent amount of technical experience to configure.
+Jupyterhub can be configured to &amp;ldquo;spawn&amp;rdquo; single-user notebook servers through such a service using an extension called &amp;ldquo;Kubespawner.&amp;rdquo;
+However, we do not provide any more information about this herein because the wiki for Jupyterhub is written specifically for this implementation case.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;We focus on a solution that is capable of scaling to hundreds of users and can be built with existing server resources that a department may have that are underutilized, but is a little more technically challenging to implement than &lt;a href=&#34;https://github.com/jupyterhub/the-littlest-jupyterhub&#34; target=&#34;_blank&#34;&gt;The Littlest Jupyterhub&lt;/a&gt;, which basically functions as a one-click install and provides its own set of configuration scripts.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;docker&#34;&gt;Docker&lt;/h3&gt;
+
+&lt;p&gt;A simpler solution though, can be achieved through &lt;a href=&#34;https://www.michaelpilosov.com/openscience/docker&#34;&gt;Docker&lt;/a&gt;, which (although it has a learning curve), is capable of scaling to very large workloads and can be configured to connect multiple servers and balance traffic amongst them.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;We choose to run Jupyterhub within a Docker container, the Database in another container, and then spawn single-user notebook servers each in isolated containers as well.
+The latter containers are ephemeral, which means that once a user shuts down their single-user server (or it is shut down due to inactivity after a predetermined amount of time), the container is destroyed.
+Containerizing every aspect of this project allows for a really simple deployment scenario, which we walk through on the &lt;a href=&#34;https://www.michaelpilosov.com/openscience/deploy&#34;&gt;Deployment&lt;/a&gt; page.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;We can &amp;ldquo;containerize&amp;rdquo; the environments we want our users to experience in their single-user notebook servers through the use of a &amp;ldquo;Dockerfile,&amp;rdquo; which simply lists a set of instructions to configure a brand-new Ubuntu (Linux distribution) machine to handle all the dependencies.&lt;/p&gt;
+
+&lt;p&gt;The single-user notebook servers can be launched from a choice of &lt;a href=&#34;https://www.michaelpilosov.com/openscience/docker/#images&#34;&gt;&amp;ldquo;images,&amp;rdquo;&lt;/a&gt; which define the containers that are created/destroyed on-demand.&lt;/p&gt;
+
+&lt;p&gt;In this way, our applications are &amp;ldquo;stateless,&amp;rdquo; which means that all the information (files, data, configuration) is connected to the application virtually (Docker handles these connections through something called &lt;a href=&#34;https://www.michaelpilosov.com/openscience/docker#volumes&#34;&gt;&amp;ldquo;volumes&amp;rdquo;&lt;/a&gt;.
+So, if properly configured, &lt;em&gt;a student can launch any environment they want and still see the same set of files.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;database&#34;&gt;Database&lt;/h2&gt;
+
+&lt;p&gt;A basic SQL database comes prepackaged and configured with Jupyterhub, but for &amp;ldquo;production&amp;rdquo; purposes, the developers in the Jupyter Project advise using a more resilient database such as PostgresDB, which is the solution we implemented, following the &lt;a href=&#34;https://github.com/jupyterhub/jupyterhub-deploy-docker&#34; target=&#34;_blank&#34;&gt;Deployment Example&lt;/a&gt; provided by Jupyter.&lt;/p&gt;
+
+&lt;p&gt;This postgres database will exist inside its own container and be connected to an external volume (managed by Docker), so that we can create/destroy the Hub and not lose any of our user data.&lt;/p&gt;
+
+&lt;h2 id=&#34;authenticator&#34;&gt;Authenticator&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/jupyterhub/jupyterhub/wiki/Authenticators&#34; target=&#34;_blank&#34;&gt;Wiki&lt;/a&gt; has a list of authenticator options.
+The default behavior is to check the system users on the machine running Jupyterhub.
+In the &lt;code&gt;jupyterhub_config.py&lt;/code&gt; file which is used to set up the Hub, a &lt;code&gt;whitelist&lt;/code&gt; and &lt;code&gt;admins&lt;/code&gt; attribute are defined to control who is allowed in.
+If inside a container, this means that users must be created inside of there!
+The nice thing about using an authentication service such as OAuth is that it simplifies the login entirely, since accounts exist on other platforms to verify users.
+The downside is that you must own a &amp;ldquo;fully qualified domain name&amp;rdquo; in order to do this, which means you must own the website (can be as low as $2-10/year, available via &lt;a href=&#34;https://namecheap.com or similar provider&#34; target=&#34;_blank&#34;&gt;Namecheap&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h2 id=&#34;proxy&#34;&gt;Proxy&lt;/h2&gt;
+
+&lt;p&gt;As mentioned in the analogy in &lt;a href=&#34;./#notebook-server&#34;&gt;earlier sections&lt;/a&gt;, the &amp;ldquo;doorman&amp;rdquo; that directs traffic around is the component of this application known as the &amp;ldquo;proxy&amp;rdquo;, and is the last part left in securing and configuring your server.&lt;/p&gt;
+
+&lt;h2 id=&#34;volumes&#34;&gt;Volumes&lt;/h2&gt;
+
+&lt;p&gt;Files and folders, as mentioned, persist on the machine that is hosting the application, and can even be configured (e.g., with symbolic links), to connect to file-servers elsewhere.
+My university, for example, has a system for all of us to be able to store files on a remote server, and we can &amp;ldquo;mount&amp;rdquo; these connections appropriately by configuring Jupyterhub so that students can more readily access such resources.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:chrome&#34;&gt;which serves as the backbone for Google Chrome.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:chrome&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:config&#34;&gt;We note that the reason that there are so many possible ways to set up such a system is because the developers ensured the modularity of all the application components. There is a lot of segmentation that allows for this technology to scale to thousands of users. The lessons learned by mobile developers about scaling in popularity have all been implemented here.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:config&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:server&#34;&gt;The distinction is made for (single-user) servers since Jupyterhub itself is a server communicating with other applications/servers.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:server&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:web&#34;&gt;I suppose this would be a good time to mention that any website you visit is simply an alias for an &amp;ldquo;address&amp;rdquo; to some other computer elsewhere in the world. The address system used on the internet is known as the &amp;ldquo;IP address&amp;rdquo;, so the &lt;code&gt;localhost&lt;/code&gt; is telling the browser to look for a connection on the same machine.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:web&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 </description>
     </item>
     
     <item>
-      <title>JupyterLab</title>
-      <link>https://www.michaelpilosov.com/openscience/jupyterlab/</link>
-      <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/openscience/jupyterlab/</guid>
-      <description>
-
-&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-
-&lt;h1 id=&#34;example&#34;&gt;Example&lt;/h1&gt;
-
-&lt;h1 id=&#34;documentation&#34;&gt;Documentation&lt;/h1&gt;
-
-&lt;h1 id=&#34;install&#34;&gt;Install&lt;/h1&gt;
-
-&lt;h1 id=&#34;configure&#34;&gt;Configure&lt;/h1&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Open Science</title>
+      <title>Open Science: Working towards reproducibility</title>
       <link>https://www.michaelpilosov.com/devlog/openscience/</link>
       <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/devlog/openscience/</guid>
       <description>
 
-&lt;p&gt;Date: 12/22/18
-Today I began to structure and fill in the basic information for the &lt;a href=&#34;https://www.michaelpilosov.com/openscience/docker&#34;&gt;Open Science/Docker&lt;/a&gt; Documentation.&lt;/p&gt;
+&lt;h1 id=&#34;jan-1-2019&#34;&gt;Jan 1, 2019&lt;/h1&gt;
 
-&lt;p&gt;Date: 01/01/19
-Today I split up the documentation here on devlog and began the write-ups for Jupyterhub.
+&lt;p&gt;Today I split up the documentation here on devlog and began the write-ups for Jupyterhub.
 I think I should segment out a section that goes through the entire process of deployment&lt;/p&gt;
 
 &lt;p&gt;Notes:
@@ -2937,13 +2925,368 @@ server {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;traefik-problems&#34;&gt;Traefik Problems&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;netstat -ltnp | grep -w &#39;:80&#39;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Traefik Problems&lt;/em&gt;
+&lt;code&gt;netstat -ltnp | grep -w &#39;:80&#39;&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;So far this is the easiest I&amp;rsquo;ve had it configuring the set-up.. with nginx. Talk to Joe about getting Traefik to work.
 &lt;a href=&#34;https://blog.raveland.org/post/traefik_le/&#34; target=&#34;_blank&#34;&gt;https://blog.raveland.org/post/traefik_le/&lt;/a&gt;
-maybe that will help???&lt;/p&gt;
+maybe that will help???
+&lt;a href=&#34;https://www.bennadel.com/blog/3420-obtaining-a-wildcard-ssl-certificate-from-letsencrypt-using-the-dns-challenge.htm&#34; target=&#34;_blank&#34;&gt;https://www.bennadel.com/blog/3420-obtaining-a-wildcard-ssl-certificate-from-letsencrypt-using-the-dns-challenge.htm&lt;/a&gt;
+or that&amp;hellip; (it is important to note that you need to follow instructions after feb 18 due to letsencrypt changing something major).&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;jan-2-2019&#34;&gt;Jan 2, 2019&lt;/h1&gt;
+
+&lt;p&gt;Spent day configuring proxy. Succeeded eventually on my domain, but not with a reverse proxy. Just a regular one&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Messed around with apache but couldn&amp;rsquo;t make it work.
+&lt;a href=&#34;https://jupyterhub.readthedocs.io/en/latest/reference/config-proxy.html&#34; target=&#34;_blank&#34;&gt;Documentation on Jupyter&amp;rsquo;s website is god awful&lt;/a&gt;, there are numerous omissions and a typo in the configuration files (including ones from the &lt;a href=&#34;https://github.com/jupyterhub/oauthenticator/tree/master/examples/full&#34; target=&#34;_blank&#34;&gt;repository&lt;/a&gt; I got my original setup files), no context or setup instructions. They just assume you know what you are doing.&lt;/p&gt;
+
+&lt;p&gt;I do not, though. So let&amp;rsquo;s go through it.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s what a reverse-proxy is doing.
+It catches requests to a website and handles them.&lt;/p&gt;
+
+&lt;p&gt;When you hit &lt;a href=&#34;consistentbayes.com&#34; target=&#34;_blank&#34;&gt;consistentbayes.com&lt;/a&gt;, it directs you to a folder with a bunch of files that make up my website. I had that working with Apache but couldn&amp;rsquo;t do what I wanted, which was direct traffic to &amp;ldquo;hub.consistentbayes.com&amp;rdquo; instead.&lt;/p&gt;
+
+&lt;p&gt;I got the &amp;ldquo;hub&amp;rdquo; part set up by adding an &lt;code&gt;A Record&lt;/code&gt; into my DNS Control Panel (talk more about that later). Now the proxy just had to be able to handle and direct that request to a jupyterhub instance running in a docker container that was exposing itself on &lt;code&gt;http://127.0.0.1:8000&lt;/code&gt; (I&amp;rsquo;ll show config files later). The hub would be in a container that is just a Linux machine, with users and everything in there.&lt;/p&gt;
+
+&lt;p&gt;If the container name is &amp;ldquo;nostalgic_colden&amp;rdquo; (TO DO: figure out how to name these)&amp;hellip; then running&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker exec -ti -u mpilosov nostalgic_colden /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;will log you into the linux computer as &amp;ldquo;mpilosov&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;The user accounts are handled at build-time, but can be managed within the computer just as you would on a linux machine (to log in as &lt;code&gt;root&lt;/code&gt;, omit &lt;code&gt;-u mpilosov&lt;/code&gt; above).&lt;/p&gt;
+
+&lt;p&gt;So&amp;hellip; those accounts.
+Github usernames. By far the best authentication method I found, but it relied on having a Fully Qualified Domain Name (website name, which the server at school would not let me do).
+But&amp;hellip; we can loop the authenticator to whatever we want.&lt;/p&gt;
+
+&lt;p&gt;Here are my nginx configurations:&lt;/p&gt;
+
+&lt;p&gt;In &lt;code&gt;/etc/nginx/sites-enabled/consistentbayes.conf&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;server {
+    listen 80;
+    server_name NO_HUB.DOMAIN.TLD;
+
+    # Tell all requests to port 80 to be 302 redirected to HTTPS
+    return 302 https://$host$request_uri;
+}
+
+server {
+    listen 443;
+    ssl on;
+
+    # INSERT OTHER SSL PARAMETERS HERE AS ABOVE
+    # SSL cert may differ
+
+    # Set the appropriate root directory
+    root /var/www/html;
+
+    # Set URI handling
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # Managing requests to verify letsencrypt host
+    location ~ /.well-known {
+        allow all;
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In &lt;code&gt;/etc/nginx/sites-enabled/jupyterhub.conf&lt;/code&gt; (titles dont matter it seems).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# top-level http config for websocket headers
+# If Upgrade is defined, Connection = upgrade
+# If Upgrade is empty, Connection = close
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    &#39;&#39;      close;
+}
+
+# HTTP server to redirect all 80 traffic to SSL/HTTPS
+server {
+    listen 80;
+    server_name HUB.DOMAIN.TLD;
+
+    # Tell all requests to port 80 to be 302 redirected to HTTPS
+    return 302 https://$host$request_uri;
+}
+
+# HTTPS server to handle JupyterHub
+server {
+    listen 443;
+    ssl on;
+
+    server_name HUB.DOMAIN.TLD;
+
+    ssl_certificate /etc/letsencrypt/live/HUB.DOMAIN.TLD/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/HUB.DOMAIN.TLD/privkey.pem;
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+    ssl_ciphers &#39;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA&#39;;
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:SSL:50m;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    add_header Strict-Transport-Security max-age=15768000;
+
+    # Managing literal requests to the JupyterHub front end
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        # websocket headers
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+    }
+
+    # Managing requests to verify letsencrypt host
+    location ~ /.well-known {
+        allow all;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Talk about how you had to generate letsencrypt scripts for nginx with &lt;code&gt;certbot&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt install python-certbot-nginx
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install python-certbot-nginx 
+sudo certbot --nginx certonly
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I actually ran into trouble being unable to start nginx with the sites enabled. Kind of a catch-22. Removed letsencrypt files&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo certbot certonly --webroot -w /var/www/example -d example.com -d www.example.com -w /var/www/thing -d thing.is -d m.thing.is
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This command will obtain a single cert for example.com, www.example.com, thing.is, and m.thing.is; it will place files below /var/www/example to prove control of the first two domains, and under /var/www/thing for the second pair.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;I dont quite want that. Let&amp;rsquo;s try the interactive.;&lt;/em&gt;
+&lt;code&gt;sudo certbot certonly&lt;/code&gt;
+Hit 1, enter website names (consistentbayes.com, www.consistentbayes.com),&lt;/p&gt;
+
+&lt;p&gt;Then do the same again for the hub.consistentbayes.com&lt;/p&gt;
+
+&lt;p&gt;And we&amp;rsquo;re golden. The files have been placed where nginx is expecting them to be. (e.g. &lt;code&gt;/etc/letsencrypt/live/hub.consistentbayes.com/fullchain.pem&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;And also you will need to issue the following command once.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And then go ahead and make the &lt;code&gt;Dockerfile&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Designed to be run as
+#
+# docker run -it -p 8000:8000 jupyterhub/oauthenticator
+
+FROM jupyterhub/jupyterhub
+
+MAINTAINER Project Jupyter &amp;lt;ipython-dev@scipy.org&amp;gt;
+
+# Install oauthenticator from git
+RUN python3 -m pip install oauthenticator
+RUN python3 -m pip install notebook&amp;gt;=4.0
+# Create oauthenticator directory and put necessary files in it
+RUN mkdir /srv/oauthenticator
+WORKDIR /srv/oauthenticator
+ENV OAUTHENTICATOR_DIR /srv/oauthenticator
+ADD jupyterhub_config.py jupyterhub_config.py
+ADD addusers.sh /srv/oauthenticator/addusers.sh
+ADD userlist /srv/oauthenticator/userlist
+ADD ssl /srv/oauthenticator/ssl
+RUN chmod 700 /srv/oauthenticator
+
+RUN [&amp;quot;sh&amp;quot;, &amp;quot;/srv/oauthenticator/addusers.sh&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then this bash script &lt;code&gt;addusers.sh&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/sh
+
+IFS=&amp;quot;
+&amp;quot;
+for line in `cat userlist`; do
+  test -z &amp;quot;$line&amp;quot; &amp;amp;&amp;amp; continue
+  user=`echo $line | cut -f 1 -d&#39; &#39;`
+  echo &amp;quot;adding user $user&amp;quot;
+  useradd -m -s /bin/bash $user
+#  cp -r /srv/ipython/examples /home/$user/examples
+  mkdir /home/$user/examples
+# may only be necessary since we are copying files from root above.
+  chown -R $user /home/$user/examples
+done
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And, for now, the simplest version of our &lt;code&gt;jupyterhub_config.py&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Configuration file for Jupyter Hub
+
+c = get_config()
+
+c.JupyterHub.log_level = 10
+from oauthenticator.github import LocalGitHubOAuthenticator
+c.JupyterHub.authenticator_class = LocalGitHubOAuthenticator
+c.GenericOAuthenticator.login_service = &#39;my service&#39;
+
+c.LocalGitHubOAuthenticator.create_system_users = True
+
+c.Authenticator.whitelist = whitelist = set()
+c.JupyterHub.admin_users = admin = set()
+
+import os
+import sys
+
+join = os.path.join
+
+here = os.path.dirname(__file__)
+root = os.environ.get(&#39;OAUTHENTICATOR_DIR&#39;, here)
+sys.path.insert(0, root)
+
+with open(join(root, &#39;userlist&#39;)) as f:
+    for line in f:
+        if not line:
+            continue
+        parts = line.split()
+        name = parts[0]
+        whitelist.add(name)
+        if len(parts) &amp;gt; 1 and parts[1] == &#39;admin&#39;:
+            admin.add(name)
+
+c.GitHubOAuthenticator.oauth_callback_url = os.environ[&#39;OAUTH_CALLBACK_URL&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A &lt;code&gt;userlist&lt;/code&gt; file with github usernames&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:admin&#34;&gt;&lt;a href=&#34;#fn:admin&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mpilosov admin
+mathematicalmichael
+eescu 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A &lt;code&gt;ssl&lt;/code&gt; folder with encryption keys in them (which we won&amp;rsquo;t use!)
+(We don&amp;rsquo;t use them because we expose Jupyterhub in http, and use the reverse-proxy to handle the security).&lt;/p&gt;
+
+&lt;p&gt;And an &lt;code&gt;env&lt;/code&gt; file&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# add your github oauth config to this file,
+# and run the container with `docker run -it -p 9000:8000 --env-file=env jupyterhub-oauth`
+OAUTH_CLIENT_ID=
+OAUTH_CLIENT_SECRET=
+OAUTH_CALLBACK_URL=https://hub.consistentbayes.com/hub/oauth_callback
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which you get when you register the application on Github. (I filled in the third to show you, the first two are secrets!)&lt;/p&gt;
+
+&lt;p&gt;So from here on, we can start tweaking the spawner, volume persistence, do checks on memory limits, etc. Write up detailed instructions. Jupyterhub from docker like this is nice.&lt;/p&gt;
+
+&lt;p&gt;I think we can test directory-mounting right to the linux machine to be honest.&lt;/p&gt;
+
+&lt;p&gt;OMG I RAN THIS AND IT WORKED. I mounted volumes to folders on a per-user basis (since users live inside the container that jupyterhub is in). No write permissions, but they can see files just fine. Cant duplicate.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -it -p 8000:8000 -v /home/michael/repos/:/home/mathematicalmichael/examples -v /home/michael/repos:/home/mpilosov/examples --env-file=env --name hubtest jupyterhub-oauth
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Problem with relying on user data in the hub is potential updates could cause loss of files. mounting volumes would fix this for sure. But they can&amp;rsquo;t write files in this new directory, so&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;I think the best storage solution is each student has their own container. &lt;code&gt;hubname-studentname&lt;/code&gt; that a teacher can get into. For workshops, the solution presented as-is works great.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Make sure to upgrade pip, no one seems to.&lt;/li&gt;
+&lt;li&gt;volume permissions are probably things joe knows about.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;volumes-working&#34;&gt;VOLUMES WORKING!&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;--mount&lt;/code&gt; creates directories if they dont exist, whereas &lt;code&gt;--volume&lt;/code&gt; does not. Good to create up at root one &lt;code&gt;/shared&lt;/code&gt; directory. Additionally we can link them to volumes to host their data instead, managed via docker. Ideally we use a mix of the two.
+Adding a volume (even if it doesn&amp;rsquo;t exist) to be managed by docker would be accomplished with -v &lt;code&gt;volume-name:/directory/to/mount&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;So we should think about what in our docker-compose we can automatically mount. Additionally (or in replacement), volumes can be handled via the spawner.&lt;/p&gt;
+
+&lt;p&gt;In either set up, we can shut down and restart the container all we want and data persists. We can even re-build the image. Volumes seem to just be symbolic links to directories on your unix machine, anyway, visible via &lt;code&gt;docker inspect volume-name&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker run -d -it -p 8000:8000 --mount source=/home/michael/repos/packages/lyricalart,type=bind,target=/home/mpilosov/examples/shared-folder-mp/,bind-propagation=rshared --mount source=/home/michael/repos/packages/lyricalart,type=bind,target=/home/mathematicalmichael/shared-folder-mm/,bind-propagation=rshared --env-file=env --name hub jupyterhub-oauth
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now that we&amp;rsquo;ve got this figured out&amp;hellip; It would be nice to figure out how to get that &lt;code&gt;docker-compose&lt;/code&gt; up and running, including with the nginx server, all based on a configuration file that takes in the website name, ip of host, etc. so you can get in, git clone, run bash script, edit the ip, and close out knowing it will work.&lt;/p&gt;
+
+&lt;p&gt;To build everything, we did &lt;code&gt;docker build -t jupyterhub-oauth .&lt;/code&gt; in the directory we set up.&lt;/p&gt;
+
+&lt;p&gt;Definitely want to containerize each student. Currently it&amp;rsquo;s possible to get into the directories mounted above as shared by going through Terminal. Can move files in/out&amp;hellip; not good.&lt;/p&gt;
+
+&lt;p&gt;To destroy containers after they close down, simply add &lt;code&gt;.remove = True&lt;/code&gt; to the &lt;code&gt;c.DockerSpawner&lt;/code&gt; attributes.&lt;/p&gt;
+
+&lt;p&gt;[8:59 PM] Pilosov, Michael
+oficially did it on hub.consistentbayes.com! holy shit that took forever but I linked up the pieces. Now it spawns up containers per user, with BOTH volumes that persist even as containers change and shared directories accessible by all users, automatically mounted to every user.
+One environment file controls everything. the version of jupyterhub, the docker image you want to spawn, etc.
+​
+[9:04 PM] Pilosov, Michael
+that is our ideal set up.. the shared folders can be determined by rules such as group membership (students within class or even, and the environment to spawn can be similarly chosen. This means we can use one hub for every student across every class with total ease. No containers stick around. At all. They just get appropriately mounted to volumes when they are created. the decision to make one hub per class is purely an aesthetic one. the hub can spin up dozens of different configurations depending on what the user needs.
+I&amp;rsquo;m going to package this all nice so that I can deploy to a powerful server that I can rent for like &amp;hellip;. a couple hours for testing. Throw a whole bunch of simultaneous use-cases at it.
+​
+[9:08 PM] Pilosov, Michael
+we can even use the admin panel to start/stop servers instead of logging in simultaneously. if each single-user server has a heavy python script to run on startup, we can simulate heavy loads. I played around a little already and saw the containers being created (not restarted, created!) when I &amp;ldquo;started&amp;rdquo; the single-user server and then thrown away when I clicked &amp;ldquo;stop&amp;rdquo; which keeps our physical memory literally AT THE LOWEST possible limit at any given time since stopped containers dont have to sit around.&lt;/p&gt;
+
+&lt;p&gt;So, how?&lt;/p&gt;
+
+&lt;p&gt;I cloned the jupyterhub-deploy-docker repo. (again), and made my fixes&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;I don&amp;rsquo;t know why the Makefile doesn&amp;rsquo;t handle this, but
+&lt;code&gt;echo &amp;quot;POSTGRES_PASSWORD=$( openssl rand -hex 32)&amp;quot; &amp;gt;&amp;gt; secrets/postgres.env&lt;/code&gt; will create a necessary file for &lt;code&gt;make build&lt;/code&gt; to work. And after that works, run &lt;code&gt;make notebook_image&lt;/code&gt; to create the necessary image to be spawned based on the  &lt;code&gt;.env&lt;/code&gt; file in the root directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note from 1/8/2019:&lt;/em&gt; Just run &lt;code&gt;make secrets/postgres.env&lt;/code&gt; or whatever other file it needs, and it will create and set permissions. If it doesn&amp;rsquo;t create the file, then simply add it with &lt;code&gt;touch&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I commented out lines 40-49 in the &lt;code&gt;Makefile&lt;/code&gt; since I want to handle certification on my own through the reverse proxy.&lt;/p&gt;
+
+&lt;p&gt;Would be nice to get this working with nginx as well. But all that stuff can be handled from the bash script.&lt;/p&gt;
+
+&lt;p&gt;In the &lt;code&gt;jupyterhub_config.py&lt;/code&gt; file, I removed references to SSL and set up shared volumes.
+It would be great to learn how to sub-class the spawner now and create rules for mounting volumes. A simple restart lets students gain new files.&lt;/p&gt;
+
+&lt;p&gt;I also removed SSL references from &lt;code&gt;Dockerfile.jupyerhub&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.docker.com/compose/compose-file/&#34; target=&#34;_blank&#34;&gt;Docker-compose guidelines&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Just tested the containerized solution and love it (even though i built small containers). I can log in, add nbextensions as root, and the changes are reflected &lt;em&gt;without touching docker&lt;/em&gt;. No restarting required.&lt;/p&gt;
+
+&lt;p&gt;Can add user accounts as admin through the cPanel. If they don&amp;rsquo;t exist, a home directory or volume is created on their behalf.
+I wouldn&amp;rsquo;t suggest sharing directories automatically for the containerized solutions. &lt;em&gt;That part&lt;/em&gt; should be part of a custom spawner (and require hub restart, which can also be done through cpanel since it runs on another port!).&lt;/p&gt;
+
+&lt;p&gt;Admin is powerful! You can start/stop servers at your whim and launch them to poke around on your own. Very cool.&lt;/p&gt;
+
+&lt;p&gt;For a smaller class, auto-mounting some shared directory is a great idea.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;jan-5-2019&#34;&gt;Jan 5, 2019&lt;/h1&gt;
+
+&lt;p&gt;To get a bash script for the set-up, you need to package the reverse-proxy with docker-compose. Let&amp;rsquo;s figure out how to use Traefik. Between these two sources, you should be able to figure it out:
+&lt;a href=&#34;https://github.com/defeo/jupyterhub-docker/blob/master/docker-compose.yml&#34; target=&#34;_blank&#34;&gt;https://github.com/defeo/jupyterhub-docker/blob/master/docker-compose.yml&lt;/a&gt;
+&lt;a href=&#34;https://github.com/containous/traefik/blob/master/examples/quickstart/docker-compose.yml&#34; target=&#34;_blank&#34;&gt;https://github.com/containous/traefik/blob/master/examples/quickstart/docker-compose.yml&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:admin&#34;&gt;Fun note, it may be possible to accidentally revoke admin privileges from everyone. &lt;em&gt;Test this&lt;/em&gt;. But editing the config file in the container as root should be able to make it work again.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:admin&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 </description>
     </item>
     
@@ -3241,6 +3584,558 @@ wd.FloatSlider()
  &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:notebooks&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Relevant Projects</title>
+      <link>https://www.michaelpilosov.com/openscience/getting-started/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/getting-started/</guid>
+      <description>
+
+&lt;h1 id=&#34;basics&#34;&gt;Basics&lt;/h1&gt;
+
+&lt;p&gt;In this documentation, we will research and likely leverage (most if not all of) the following open-source projects.
+We will eventually address each in depth within this documentation and will update this section with relevant links as necessary.
+For now, we provide a brief overview and summary of what we are looking into.&lt;/p&gt;
+
+&lt;h2 id=&#34;widgets&#34;&gt;Widgets&lt;/h2&gt;
+
+&lt;p&gt;If you have ever tried developing a graphical user interface (GUI) for your code, you&amp;rsquo;ll know how cumbersome it can be.
+Thankfully, the &lt;a href=&#34;http://jupyter.org/widgets&#34; target=&#34;_blank&#34;&gt;Widgets&lt;/a&gt; package from Project Jupyter greatly simplifies linking your code to a large library of existing &amp;ldquo;widgets,&amp;rdquo; which do everything from giving you sliders to fully-interactive maps.&lt;/p&gt;
+
+&lt;p&gt;I highly encourage you to see what is possible to embed in your notebooks (and webpages) by scrolling through their &lt;a href=&#34;http://jupyter.org/widgets&#34; target=&#34;_blank&#34;&gt;examples&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;jupyter-nbviewer&#34;&gt;Jupyter nbviewer&lt;/h2&gt;
+
+&lt;p&gt;Paste a link to a notebook into &lt;a href=&#34;https://nbviewer.jupyter.org/&#34; target=&#34;_blank&#34;&gt;this form&lt;/a&gt; and this website will render the notebook for your reading pleasure.&lt;/p&gt;
+
+&lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
+
+&lt;h2 id=&#34;github&#34;&gt;Github&lt;/h2&gt;
+
+&lt;h2 id=&#34;anaconda&#34;&gt;Anaconda&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;binderhub&#34;&gt;BinderHub&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jupyterhub/binderhub&#34; target=&#34;_blank&#34;&gt;BinderHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;BinderHub allows you to &lt;code&gt;BUILD&lt;/code&gt; and &lt;code&gt;REGISTER&lt;/code&gt; a Docker image using a GitHub repository, then CONNECT with JupyterHub, allowing you to create a public IP address that allows users to interact with the code and environment within a live JupyterHub instance. You can select a specific branch name, commit, or tag to serve.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;repo2docker&#34;&gt;Repo2Docker&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jupyter/repo2docker&#34; target=&#34;_blank&#34;&gt;repo2docker&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;As the title suggest, this package turns a github repository into a docker image that can be built.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;repo2docker fetches a git repository and builds a container image based on the configuration files found in the repository.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Binder leverages this to then serve the contents of the image in conjuction with JupyterHub.&lt;/p&gt;
+
+&lt;h2 id=&#34;kubernetes&#34;&gt;Kubernetes&lt;/h2&gt;
+
+&lt;p&gt;Google is a provider. Links/info should go here to a couple other platforms, some basic information.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;jupyterhub&#34;&gt;JupyterHub&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jupyterhub/jupyterhub&#34; target=&#34;_blank&#34;&gt;JupyterHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;With &lt;a href=&#34;https://jupyterhub.readthedocs.io&#34; target=&#34;_blank&#34;&gt;JupyterHub&lt;/a&gt; you can create a
+&lt;strong&gt;multi-user Hub&lt;/strong&gt; which spawns, manages, and proxies multiple instances of the
+single-user &lt;a href=&#34;https://jupyter-notebook.readthedocs.io&#34; target=&#34;_blank&#34;&gt;Jupyter notebook&lt;/a&gt;
+server.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jupyter.org&#34; target=&#34;_blank&#34;&gt;Project Jupyter&lt;/a&gt; created JupyterHub to support many
+users. The Hub can offer notebook servers to a class of students, a corporate
+data science workgroup, a scientific research project, or a high performance
+computing group.&lt;/p&gt;
+
+&lt;h2 id=&#34;technical-overview&#34;&gt;Technical overview&lt;/h2&gt;
+
+&lt;p&gt;Three main actors make up JupyterHub:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;multi-user &lt;strong&gt;Hub&lt;/strong&gt; (tornado process)&lt;/li&gt;
+&lt;li&gt;configurable http &lt;strong&gt;proxy&lt;/strong&gt; (node-http-proxy)&lt;/li&gt;
+&lt;li&gt;multiple &lt;strong&gt;single-user Jupyter notebook servers&lt;/strong&gt; (Python/Jupyter/tornado)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Basic principles for operation are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Hub launches a proxy.&lt;/li&gt;
+&lt;li&gt;Proxy forwards all requests to Hub by default.&lt;/li&gt;
+&lt;li&gt;Hub handles login, and spawns single-user servers on demand.&lt;/li&gt;
+&lt;li&gt;Hub configures proxy to forward url prefixes to the single-user notebook
+servers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;JupyterHub also provides a
+&lt;a href=&#34;http://petstore.swagger.io/?url=https://raw.githubusercontent.com/jupyter/jupyterhub/master/docs/rest-api.yml#/default&#34; target=&#34;_blank&#34;&gt;REST API&lt;/a&gt;
+for administration of the Hub and its users.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I personally run Jupyterhub on a remote server so that I always have access to a secure and familiar environment if I ever need to test out some code and find myself without my laptop.
+By default, it accepts the login information of just the user who is running it, but we will see later how it can be configured for its intended use as a multi-user authentication hub.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Day 2</title>
+      <link>https://www.michaelpilosov.com/devlog/widgets/</link>
+      <pubDate>Thu, 20 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/devlog/widgets/</guid>
+      <description>
+
+&lt;h1 id=&#34;summary&#34;&gt;Summary&lt;/h1&gt;
+
+&lt;p&gt;I spent the day working with the widget library and understanding how interpolating polynomials are handled by &lt;code&gt;scipy&lt;/code&gt;.
+Most of today&amp;rsquo;s developments were concerned with my random art and animation libraries, and I completed some of the most important components of the interface: setting time-dependent functions (independent of frames), and creating a widget that properly reads/writes data to a dictionary.&lt;/p&gt;
+
+&lt;p&gt;I still need to link the interfaces for the existing GUIs that write the properties.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Allow removal feature?&lt;/li&gt;
+&lt;li&gt;scrape the widgets and write to dictionary.&lt;/li&gt;
+&lt;li&gt;New GUI for stacking effects, connecting each effect to the needed time-series based on available entries in aforementioned dictionary.&lt;/li&gt;
+&lt;li&gt;All effects get applied with their time series, passed to animation function to be written to file.&lt;/li&gt;
+&lt;li&gt;Maybe use the Play button to preview? (Have a GUI focused on the &lt;code&gt;num_frames&lt;/code&gt; perspective). It is linked to the index.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Update:&lt;/em&gt; As of 01/01/19, dictionary writing is working. Preview button is segmented out. Play button implemented. No removal, bare-bones working time-series manipulation. Need to add in hyperbolic tangent functions (should also write blog about these).&lt;/p&gt;
+
+&lt;h1 id=&#34;notes&#34;&gt;Notes&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Still having trouble with the mybinder.org connections with my &lt;code&gt;giftplanning&lt;/code&gt; library that tests out my deployment solutions for interactive blogs.
+&lt;em&gt;Update:&lt;/em&gt; As of 01/01/19, devs and I have been in touch on &lt;a href=&#34;https://gitter.im/nbinteract/Lobby&#34; target=&#34;_blank&#34;&gt;gitter&lt;/a&gt;. Sam pushed a fix to unpkg.com and my site started to work again.
+TO DO: Go make a publicly accessible redundant copy of JS script, query it. Ask Elliott how to only trigger it if the first one fails.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;After conversing with Elliott last night (12/19/19), I think that writing a simple WebSocket atop Flask with his help may be a good solution. A JSON file gets passed back and forth, manipulations happen on a server. Still would prefer to just learn how to make the widgets do this part.
+&lt;em&gt;Update:&lt;/em&gt; As of 01/01/19, I have found numerous other solutions and there is a &lt;a href=&#34;https://github.com/SamLau95/nbinteract/issues/101&#34; target=&#34;_blank&#34;&gt;feature request&lt;/a&gt; submitted for the nbinteract library that would enable me to run the nbserver that mybinder.org is providing on a machine that I own instead, which would greatly reduce latency. Would docker be able to automatically re-start it? Load balance? Etc. (probably, but that&amp;rsquo;s for later. For now, mybinder.org is fine, but steps should be taken to ensure the visualizations work in posterity). Should also attempt to get their plotting to work again (maybe one of their updates have fixed this?)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Website Upgrading Logs</title>
+      <link>https://www.michaelpilosov.com/devlog/academicupgrades/</link>
+      <pubDate>Wed, 19 Dec 2018 18:16:07 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/devlog/academicupgrades/</guid>
+      <description>
+
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;This documents the changes made to the academic theme to make this website work when upgrading from Hugo ver=0.47 and Academic Theme ver=2.4.&lt;/p&gt;
+
+&lt;p&gt;The upgrade for this website was performed on 12-19-2018.&lt;/p&gt;
+
+&lt;p&gt;All in all, it took the better part of an entire day to get familiar with all the nooks and crannies of the new updates and plan out the migration of the more complicated website&amp;hellip; &lt;a href=&#34;https://www.mathematicalmichael.com&#34; target=&#34;_blank&#34;&gt;Mathematical Michael&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;changes-made-to-theme&#34;&gt;Changes Made to Theme&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Removed Weibo sharing icon in &lt;code&gt;/layouts/partials/share&lt;/code&gt; in the theme directory.&lt;/li&gt;
+&lt;li&gt;Changed footer in &lt;code&gt;layouts/partials/footer_section.html&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Re-did &lt;code&gt;config.toml&lt;/code&gt; line-by-line, disabled night/day mode.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Created slides and docs based on the &lt;code&gt;exampleSite&lt;/code&gt; folder, including creating the directory &lt;code&gt;/assets/css/reveal_custom.css&lt;/code&gt; for the Reveal.js slideshows.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;added &lt;code&gt;boards.jpg&lt;/code&gt; to &lt;code&gt;/static/img/&lt;/code&gt; to test headers and embeds in the example slideshow.&lt;/li&gt;
+&lt;li&gt;created &lt;code&gt;slides.md&lt;/code&gt; in &lt;code&gt;/content/&lt;/code&gt; to link to &lt;code&gt;/content/slides/&lt;/code&gt; folder since using an index file does not work to list the available slideshows in that folder.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;created &lt;code&gt;/wid/&lt;/code&gt; and &lt;code&gt;/dockerhub/&lt;/code&gt; to experiment with new &lt;code&gt;docs&lt;/code&gt; template.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;copied over dummy project files, still need to migrate own projects to new formatting, remove dummy projects.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Changed &lt;code&gt;work&lt;/code&gt; hyperlink and &lt;code&gt;resume&lt;/code&gt; to reflect new migration to the &lt;code&gt;docs&lt;/code&gt; template.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;resume widget changed to hyperlink to resume doc.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;to-do&#34;&gt;To-Do&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;header/feature images for post, check how fb/twitter scrapes them.
+
+&lt;ul&gt;
+&lt;li&gt;optional feature image without becoming header will be useful for posts that are galleries.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;migrate any posts/projects to new formatting.&lt;/li&gt;
+&lt;li&gt;think about how to migrate MathematicalMichael.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;next-steps&#34;&gt;Next Steps&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Things I&amp;rsquo;m Considering&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;No need to re-make publication type.
+
+&lt;ul&gt;
+&lt;li&gt;Since posts can be linked to projects, and filters can be applied within widgets, we should have all the flexibility we need.&lt;/li&gt;
+&lt;li&gt;Taken with the new folder structure of pages, the overall directory structure remains quite clean.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Use widgets pagetype to construct/mimick the &lt;code&gt;/artwork&lt;/code&gt; page.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Have carousels and project widgets linking to galleries and slideshows.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Can additionally link out to a &lt;code&gt;docs&lt;/code&gt; page that describes the art in more depth, also linked to from the projects page of &lt;code&gt;Probably Art&lt;/code&gt; to tell the &amp;ldquo;story&amp;rdquo; of this project over time and in its phases.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Phase 1: Directed Study&lt;/li&gt;
+&lt;li&gt;Phase 2: Pickup with Pocket CHIP, restart coding in Python&lt;/li&gt;
+&lt;li&gt;Phase 3: After some time, picked it up again and added a whole bunch of functionality, attempted to get random art automated in Squarespace&lt;/li&gt;
+&lt;li&gt;Phase 4: Pick up again when I get into GCode. Adds functionality.&lt;/li&gt;
+&lt;li&gt;Phase 5: Lapse again. Then finally tackle creating a framework that will work long-term. Talk about requirements. How is has to be in Python, based on stable packages, recreatable and deterministic. GCode scalable. Talk about some to-do&amp;rsquo;s (bumpers, bash scripts that wrap around to position plotter better). Show images of getting plotter back up again.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Phase 6: Merge with Animation code/projects. Talk about goals, current progress. Random animations on non-random images&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Have another to tell the story of &lt;code&gt;Moving Pictures&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;upgrading-to-hugo-v0-52&#34;&gt;Upgrading to Hugo v0.52&lt;/h1&gt;
+
+&lt;p&gt;Date: 12/21/18&lt;/p&gt;
+
+&lt;p&gt;Today I began to structure and fill in the basic information for the &lt;a href=&#34;https://www.michaelpilosov.com/openscience&#34;&gt;Open Science&lt;/a&gt; Documentation.
+It involved some research and collection of resources from disparated places and things I&amp;rsquo;ve done before.&lt;/p&gt;
+
+&lt;p&gt;I also sat down and in a couple minutes managed to figure out the &amp;ldquo;breaking changes&amp;rdquo; to my MathematicalMichael website under Hugo v0.52.
+The only file that needed to be changed (before updating the theme, that is) was the &lt;code&gt;$i,&lt;/code&gt; reference in a file I made myself:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vim themes/academic/layouts/partials/artwork_links.html 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next step was to copy the theme from &lt;code&gt;michaelpilosov/&lt;/code&gt; (which pulled from the github repo only a few days prior, and to which some minor changes were made) into &lt;code&gt;mathematicalmichael/themes/&lt;/code&gt; along with a copy of the config file.&lt;/p&gt;
+
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+
+&lt;p&gt;Once the reference to the new theme is made, I expect a number of things to break.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Here I will attempt to document one-by-one the changes I had to make to port my theme over, which I will attempt to do by leveraging the &amp;ldquo;lookup structure&amp;rdquo; of Hugo (something I read online).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The idea is that rather than make changes to a theme that result in deviations that make merging new changes difficult, one makes changes by copying files into directories that are checked first, before &lt;code&gt;themes/&lt;/code&gt; is searched for &lt;code&gt;layouts&lt;/code&gt; or &lt;code&gt;partials&lt;/code&gt; files.
+My hope is that this will aid in future upgrades, since less differences will exist between my version of the theme and the master branch.
+A really useful command (for comparing files), that I used to see what needed to change in the master configuration file for my theme (compared to the updated one from this website) was:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;diff -y file1.md file2.md
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;which will print out two files side-by-side directly into the UNIX Terminal. Excellent.&lt;/p&gt;
+
+&lt;h2 id=&#34;academic-theme-v0-3-32&#34;&gt;Academic Theme v0.3.32&lt;/h2&gt;
+
+&lt;p&gt;After making the appropriate changes to the &lt;code&gt;config.toml&lt;/code&gt; file (which were all straightforward), I ensured that the site built with the new Hugo &lt;em&gt;and&lt;/em&gt; the new configuration file but &lt;em&gt;without&lt;/em&gt; the new theme. It did. All was well.&lt;/p&gt;
+
+&lt;p&gt;Then I changed the theme to point to the updated one:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;theme = &amp;quot;hugo-academic&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;which yielded the following error (kind of expected to be honest):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Error: 
+Error building site: 
+failed to render pages: 
+render of &amp;quot;home&amp;quot; failed: 
+execute of template failed: 
+template: index.html:4:3: 
+executing &amp;quot;index.html&amp;quot; at &amp;lt;partial widget_page...&amp;gt;: 
+error calling partial: 
+&amp;quot;/media/mathematicalmichael/HANK/repos/mathematicalmichael/themes/hugo-academic/layouts/partials/widget_page.html:23:9&amp;quot;: 
+execute of template failed: 
+template: partials/widget_page.html:23:9: 
+executing &amp;quot;partials/widget_page.html&amp;quot; at &amp;lt;partial $widget $par...&amp;gt;: 
+error calling partial: 
+Partial &amp;quot;widgets/artworks.html&amp;quot; not found
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So why did this happen?&lt;/p&gt;
+
+&lt;p&gt;Well, I had defined my own template page called &lt;code&gt;artworks&lt;/code&gt; that was modeled on the &lt;code&gt;publications&lt;/code&gt; style of page.
+I used this to publish a webpage for each piece of art, complete with a rich tagging-system automated through Python.
+I made random art and had written code that created pages for that art to live on.
+Any changes made to the front-matter could be easily applied later.&lt;/p&gt;
+
+&lt;p&gt;I believe that simply moving some files to directories that exist &lt;em&gt;above&lt;/em&gt; &lt;code&gt;themes&lt;/code&gt; will resolve my problems.&lt;/p&gt;
+
+&lt;h2 id=&#34;image-galleries&#34;&gt;Image Galleries&lt;/h2&gt;
+
+&lt;p&gt;However, I know there will be an opportunity to switch to page-bundles and leverage the &lt;code&gt;image-gallery&lt;/code&gt; feature in &lt;code&gt;v3.0&lt;/code&gt; of &lt;code&gt;Hugo-Academic&lt;/code&gt;. My thinking is as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Instead of daily pages, make weekly ones as galleries.&lt;/li&gt;
+&lt;li&gt;Alternatively, keep daily postings as-is, and add galleries additionally. See if you can link images to the main folder, so all art can continue to live in one folder without duplicates.&lt;/li&gt;
+&lt;li&gt;You can make galleries using page-bundles as a separate way to interact with the art.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Definitely need to integrate a widget page that hosts all the art. I don&amp;rsquo;t want to clutter the home page with everything.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I think that clicking from the main menu to &lt;code&gt;art/&lt;/code&gt; should suffice.&lt;/li&gt;
+&lt;li&gt;Curate the experience, minimize contact with &lt;code&gt;/artwork/&lt;/code&gt; page (i.e. make slideshows link to other content rather than the search they perform now, which can be a bit slow.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Since slideshows are just a markdown file, we should have no trouble linking to images in another folder!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;will take some playing around to figure out exactly the right directory structure.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;** Main Goal ** for the time being is to make sure the site builds with the new theme. We can add features and functionality later on.&lt;/p&gt;
+
+&lt;p&gt;Today&amp;rsquo;s agenda is simply to allow migration to Hugo v0.52 on my Macbook by ensuring the site builds with the new version.
+Having the new theme work would be an added bonus.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;I suspect all that needs to happen is a little migration of &lt;code&gt;partials&lt;/code&gt; and &lt;code&gt;shortcodes&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cp themes/academic/layouts/partials/artwork_* layouts/partials/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Did not change the error.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mkdir layouts/partials/widgets/
+cp themes/academic/layouts/partials/widgets/artworks* layouts/partials/widgets/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Resolved that but sprang a new error:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Error: 
+Error building site: 
+failed to render pages: 
+render of &amp;quot;home&amp;quot; failed: 
+execute of template failed: 
+template: 
+index.html:4:3: 
+executing &amp;quot;index.html&amp;quot; at &amp;lt;partial widget_page...&amp;gt;: 
+error calling partial: 
+&amp;quot;/media/mathematicalmichael/HANK/repos/mathematicalmichael/themes/hugo-academic/layouts/partials/widget_page.html:23:9&amp;quot;: 
+execute of template failed: 
+template: 
+partials/widget_page.html:23:9: 
+executing &amp;quot;partials/widget_page.html&amp;quot; at &amp;lt;partial $widget $par...&amp;gt;: 
+error calling partial: 
+Partial &amp;quot;widgets/search.html&amp;quot; not found
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Okay, so let&amp;rsquo;s move &lt;code&gt;widgets/search.html&lt;/code&gt; over?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cp themes/academic/layouts/partials/widgets/search.html layouts/partials/widgets/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hugo server --disableFastRender
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that did it! Wow, relatively painless. Now let&amp;rsquo;s see how it looks.&lt;/p&gt;
+
+&lt;p&gt;The layout is dark for some reason&amp;hellip; Enabling light/dark mode shows me the white I want to see but with inverted header.
+&lt;code&gt;:mailto&lt;/code&gt; icon is broken. Change to &amp;ldquo;fas&amp;rdquo; instead of &amp;ldquo;fab&amp;rdquo; in &lt;code&gt;config.toml&lt;/code&gt;, line 293.&lt;/p&gt;
+
+&lt;p&gt;Back to the theme.. let&amp;rsquo;s grab a file and move it to the root directory and figure out where to put it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cp themes/hugo-academic/data/themes/dark.toml .
+mkdir data
+mkdir data/themes
+mv dark.toml data/themes/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I then proceeded to change some things to get the right colors. Still not sure if this is correct. I also changed the theme to &lt;code&gt;self.toml&lt;/code&gt; and referenced that in the &lt;code&gt;config.toml&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;h2 id=&#34;dark-mode&#34;&gt;Dark Mode&lt;/h2&gt;
+
+&lt;p&gt;Next test: Day/Night mode (re-enable, see what happens).&lt;/p&gt;
+
+&lt;p&gt;Day Mode is fine.
+Night mode makes my logos look weird (though I do like the look overall). Top bar is also white instead of black for some reason.&lt;/p&gt;
+
+&lt;p&gt;Editing &lt;code&gt;data/themes/self.toml&lt;/code&gt; to rename the theme (mistake to not have done that before), and toggle &lt;code&gt;light = true&lt;/code&gt;, since I did make it into a light theme.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Theme metadata
+name = &amp;quot;Self&amp;quot;
+
+# Is theme light or dark?
+light = true
+
+# Primary
+primary = &amp;quot;hsl(339, 90%, 68%)&amp;quot;
+primary_light = &amp;quot;hsl(339, 90%, 78%)&amp;quot;
+primary_dark = &amp;quot;hsl(339, 90%, 58%)&amp;quot;
+
+# Menu
+menu_primary = &amp;quot;#fff&amp;quot;
+menu_text = &amp;quot;rgba(0,0,0,0.6)&amp;quot;
+menu_text_active = &amp;quot;hsl(339, 90%, 68%)&amp;quot;
+menu_title = &amp;quot;#2b2b2b&amp;quot;
+
+# Home sections
+home_section_odd = &amp;quot;rgb(255, 255, 255)&amp;quot;
+home_section_even = &amp;quot;rgb(247, 247, 247)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Note&lt;/em&gt;: Also broken is the search widget. Sad.&lt;/p&gt;
+
+&lt;p&gt;Disable search widget&amp;hellip; Should not have moved it in the first place!
+&lt;em&gt;There is a new search feature&lt;/em&gt; that renders this one useless. I will now remove the &lt;code&gt;search.html&lt;/code&gt; widget (and &lt;code&gt;search.md&lt;/code&gt; from &lt;code&gt;content/home/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Contact form&amp;hellip;
+Had to paste in the new format. I was using a custom partial code (note to self&amp;hellip; &lt;em&gt;delete that&lt;/em&gt;) to make a formspree link. Now I don&amp;rsquo;t have to!&lt;/p&gt;
+
+&lt;p&gt;Also, remove &lt;code&gt;Search&lt;/code&gt; from menu in &lt;code&gt;config.toml&lt;/code&gt;.
+After deleting &lt;code&gt;layouts/shortcodes/contactme.html&lt;/code&gt; (my custom formspree link), in favor of using the one the upgraded theme provided, it appears that my website is now settled into the new theme. I did have to remove all references to this deleted shortcode, of course.&lt;/p&gt;
+
+&lt;p&gt;Day/night mode works correctly. (would like to make my logo transparent though).&lt;/p&gt;
+
+&lt;h2 id=&#34;page-bundles&#34;&gt;Page Bundles&lt;/h2&gt;
+
+&lt;p&gt;Okay, well I knew it was too good to be true that things just worked. While pages loaded correctly, before building the final site, I made sure to investigate the directories a bit more and found that a bunch of files prepended with &lt;code&gt;._XXX.md&lt;/code&gt; had populated my website directories.
+&lt;em&gt;This must be how they&amp;rsquo;re ensuring backward-compatibility.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Well, I refactored the pages into page bundles with this shell script:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
+
+# Helps migrate from v2.4.0 to v3.0.0
+#
+# Refactor a page named `X.md` to `content/&amp;lt;section&amp;gt;/X/index.md` to use the
+# new page bundles and featured image system
+#
+# - E.g. a post `content/post/X.md` is converted to `content/post/X/index.md`
+
+refactor_pages_to_page_bundles()
+{
+  if [ ! -d ./content/ ]; then
+    echo &amp;quot;Please run script from root of hugo site&amp;quot;
+  fi
+  local files=&amp;quot;$(find ./content/ -iname &#39;*.md&#39; -not -iname &#39;*index.md&#39; -not -ipath &#39;./content/home/*&#39;)&amp;quot;
+  for file in ${files}; do
+    local pagedir=&amp;quot;${file%.md}&amp;quot;
+
+    echo &amp;quot;${file} -&amp;gt; ${pagedir}/index.md&amp;quot;
+    if [ ! -d &amp;quot;${pagedir}&amp;quot; ]; then
+      mkdir &amp;quot;${pagedir}&amp;quot;
+    fi
+
+    mv &amp;quot;${file}&amp;quot; &amp;quot;${pagedir}/index.md&amp;quot;
+  done
+}
+
+# Bash Strict Mode
+set -eu
+
+# set -x
+refactor_pages_to_page_bundles &amp;quot;$@&amp;quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/sourcethemes/academic-scripts/blob/master/refactor-pages-to-page-bundles.sh&#34; target=&#34;_blank&#34;&gt;Source&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;After poking around, it looks like the pages obey the proper structure now (for the most part)&amp;hellip; There are a few stray &lt;code&gt;.md&lt;/code&gt; files around.&lt;/p&gt;
+
+&lt;p&gt;I will push the changes live but later on go through both websites to ensure that bundles are everywhere and no stray pages are left.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;search-filter&#34;&gt;Search/Filter&lt;/h2&gt;
+
+&lt;p&gt;Notably, I will need to&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;update my python script that writes project pages and art pages.&lt;/li&gt;
+&lt;li&gt;ensure featured images (optional) are properly handled&lt;/li&gt;
+&lt;li&gt;find out how galleries can work with the &lt;code&gt;artwork/images&lt;/code&gt; directory, which so far doesn&amp;rsquo;t seem to be conflicting with the page-bundle format.&lt;/li&gt;
+&lt;li&gt;Make sure the artwork search works. Seems to be broken, though &lt;code&gt;publications&lt;/code&gt; search still works.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Oh, I think all that needs to happen is to move
+&lt;code&gt;/themes/academic/layouts/artwork&lt;/code&gt; into the &lt;code&gt;layouts&lt;/code&gt; folder I have in my root directory.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mv themes/academic/layouts/artwork/ layouts/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;But that led to an error regarding &lt;code&gt;partial header_image.html&lt;/code&gt;. Thus, it seems like I will need to copy the new publication template over and edit it again. At least this time I will document it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cp themes/hugo-academic/layouts/publication/single.html  layouts/artwork/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And then I replaced all instances of &lt;code&gt;publication&lt;/code&gt; with &lt;code&gt;artwork&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;But that still didn&amp;rsquo;t lead to the filter-ability that I wanted.&lt;/p&gt;
+
+&lt;p&gt;The default behavior was to paginate and list all of the art, which doesn&amp;rsquo;t have image previews but honestly is just fine, especially since it loads quickly.&lt;/p&gt;
+
+&lt;p&gt;The widget on the homepage that links to the search of artwork though is now broken as a consequence. I can fall back on searching by tags, or disable the widget temporarily until I set up galleries for the artworks.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If I write a python script that scrapes the &lt;code&gt;artwork/images&lt;/code&gt; folder and creates galleries linked to that, well that would be just perfect.&lt;/li&gt;
+&lt;li&gt;This widget can be linked to those galleries, or slideshows.&lt;/li&gt;
+&lt;li&gt;Disable it for now.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Okay, later at night I had to come across this as well, but I wanted the listing of artworks in their projects, so I copied the new &lt;code&gt;layouts/partials/project/single.html&lt;/code&gt; into the &lt;code&gt;layouts/partials/projects/&lt;/code&gt; directory I created and pasted the following relevant chunk of code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;br&amp;gt;
+      &amp;lt;h4&amp;gt; Archive &amp;lt;/h4&amp;gt;
+      {{ $items := where (where .Site.RegularPages &amp;quot;Type&amp;quot; &amp;quot;artwork&amp;quot;) &amp;quot;.Params.projects&amp;quot; &amp;quot;intersect&amp;quot; (slice $project) }}
+      {{ $items := $items | union (where (where .Site.RegularPages &amp;quot;Type&amp;quot; &amp;quot;artwork&amp;quot;) &amp;quot;.Params.url_project&amp;quot; $project_path) }}
+      {{ $arts_len := len $items }}
+      {{ if ge $arts_len 1 }}
+        &amp;lt;h4&amp;gt;{{ (i18n &amp;quot;artworks&amp;quot;) }}&amp;lt;/h4&amp;gt;
+        {{ range $items }}
+          {{ if eq $page.Site.Params.projects.artwork_format 1 }}
+            {{ partial &amp;quot;artwork_li_detailed&amp;quot; . }}
+          {{ else }}
+            {{ partial &amp;quot;artwork_li_simple&amp;quot; . }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And I got my desired lists!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.mathematicalmichael.com/project/rnr&#34; target=&#34;_blank&#34;&gt;See here for example&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;p&gt;I also realized I needed to edit the table of contents with some custom CSS.&lt;/p&gt;
+
+&lt;p&gt;Create a custom file in &lt;code&gt;/static/css&lt;/code&gt; and link it to line &lt;code&gt;custom_css = []&lt;/code&gt; in &lt;code&gt;config.toml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#TableOfContents{
+    padding-left: 10px
+}
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
