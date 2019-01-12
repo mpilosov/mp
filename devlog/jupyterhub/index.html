@@ -393,6 +393,15 @@
 <li><a href="#python-2">Python 2</a></li>
 <li><a href="#mixed-authentication">Mixed Authentication</a></li>
 </ul></li>
+<li><a href="#jan-8-10-2019">Jan 8-10, 2019</a>
+<ul>
+<li><a href="#final-challenges">Final Challenges</a></li>
+</ul></li>
+<li><a href="#jan-11-2019">Jan 11, 2019</a>
+<ul>
+<li><a href="#finishing-touches">Finishing Touches</a></li>
+<li><a href="#customizing-spawning-options">Customizing Spawning Options</a></li>
+</ul></li>
 </ul>
 </nav>
 
@@ -826,6 +835,81 @@ USER $NB_USER
 
 <p><em>TO DO</em>
 Try <a href="https://github.com/jupyterhub/oauthenticator#google-setup" target="_blank">google authentication</a> on your own website.</p>
+
+<hr />
+
+<h1 id="jan-8-10-2019">Jan 8-10, 2019</h1>
+
+<h2 id="final-challenges">Final Challenges</h2>
+
+<p>Proxy stress, user testing, configuration, security.</p>
+
+<p>I spoke with Audrey about setting up a hub.
+She wants very clear set of instructions.</p>
+
+<hr />
+
+<h1 id="jan-11-2019">Jan 11, 2019</h1>
+
+<h2 id="finishing-touches">Finishing Touches</h2>
+
+<p>Need to write up an entire summary.</p>
+
+<p>Here&rsquo;s what needs to happen:</p>
+
+<ol>
+<li>Project Name (minimal changes)</li>
+<li>Document Process on Hub using newest version of repo.</li>
+<li>Nginx / Letsencrypt Instructions</li>
+<li>Re-do with math.computer on a new Droplet, screen cap?</li>
+<li>Wrap procedure into bash script?</li>
+</ol>
+
+<p>Changes for a user to make to set up a new hub:
+- touch <code>secrets/postgres.env</code> and <code>touch userlist</code>
+- rename project folder <em>before</em> running anything else.
+- change <code>.env</code> to reflect project name, include the port in there (no changes should be necessary to any other files)
+- (optional) tweak limits in <code>jupyterhub_config.py</code>
+- (goal: no secrets, auth, etc). try to edit <code>makefile</code> so that it takes care of all of that stuff. (or wrap into a <code>first_run.sh</code> script).
+- get password the first time? hashauth&hellip; (or automate it so that it&rsquo;s printed to a file)?</p>
+
+<h2 id="customizing-spawning-options">Customizing Spawning Options</h2>
+
+<p>Based on users&hellip;</p>
+
+<pre><code class="language-python">from dockerspawner import DockerSpawner
+class MyDockerSpawner(DockerSpawner):
+    team_map = {
+        'username1': 'team-a',
+        'username2': 'team-b',
+        'username3': 'team-a',
+    }
+
+    def start(self):
+        if self.user.name in self.team_map:
+            team = self.team_map[self.user.name]
+            # add team volume to volumes
+            self.volumes['/directory/jupyterhub-team-{}'.format(team)] = {
+                'bind': '/home/jovyan/teamfolder',
+                'mode': 'rw',  # or ro for read-only
+            }
+        return super().start()
+
+c.JupyterHub.spawner_class = MyDockerSpawner
+</code></pre>
+
+<p>So, with that, refer to <code>jupyterhub_config.py</code> for instances of <code>DockerSpawner</code> and the children of that subclass. You can modify these properties (such as <code>image</code>)</p>
+
+<pre><code class="language-bash">mathematicalmichael@math-hub:~$ docker images
+REPOSITORY                      TAG                 IMAGE ID            CREATED             SIZE
+math-user                       latest              64698da59274        3 hours ago         11.5GB
+math                            latest              7368bc798b20        4 hours ago         1.05GB
+postgres                        9.5                 fc003c9dded6        29 hours ago        227MB
+jupyter/datascience-notebook    latest              18c805bb3afb        3 days ago          6.32GB
+jupyterhub/jupyterhub-onbuild   0.9.4               9ca16c1a77c3        3 months ago        812MB
+</code></pre>
+
+<p>However, my Disk-Usage on Digital Ocean reads 15GB. This tells me that <code>math-user</code> includes the size <code>jupyter/datascience-notebook</code>, since the sum of these two alone would exceed 15GB.</p>
 
           </div>
 

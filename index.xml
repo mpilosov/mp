@@ -457,6 +457,81 @@ USER $NB_USER
 
 &lt;p&gt;&lt;em&gt;TO DO&lt;/em&gt;
 Try &lt;a href=&#34;https://github.com/jupyterhub/oauthenticator#google-setup&#34; target=&#34;_blank&#34;&gt;google authentication&lt;/a&gt; on your own website.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;jan-8-10-2019&#34;&gt;Jan 8-10, 2019&lt;/h1&gt;
+
+&lt;h2 id=&#34;final-challenges&#34;&gt;Final Challenges&lt;/h2&gt;
+
+&lt;p&gt;Proxy stress, user testing, configuration, security.&lt;/p&gt;
+
+&lt;p&gt;I spoke with Audrey about setting up a hub.
+She wants very clear set of instructions.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;jan-11-2019&#34;&gt;Jan 11, 2019&lt;/h1&gt;
+
+&lt;h2 id=&#34;finishing-touches&#34;&gt;Finishing Touches&lt;/h2&gt;
+
+&lt;p&gt;Need to write up an entire summary.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s what needs to happen:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Project Name (minimal changes)&lt;/li&gt;
+&lt;li&gt;Document Process on Hub using newest version of repo.&lt;/li&gt;
+&lt;li&gt;Nginx / Letsencrypt Instructions&lt;/li&gt;
+&lt;li&gt;Re-do with math.computer on a new Droplet, screen cap?&lt;/li&gt;
+&lt;li&gt;Wrap procedure into bash script?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Changes for a user to make to set up a new hub:
+- touch &lt;code&gt;secrets/postgres.env&lt;/code&gt; and &lt;code&gt;touch userlist&lt;/code&gt;
+- rename project folder &lt;em&gt;before&lt;/em&gt; running anything else.
+- change &lt;code&gt;.env&lt;/code&gt; to reflect project name, include the port in there (no changes should be necessary to any other files)
+- (optional) tweak limits in &lt;code&gt;jupyterhub_config.py&lt;/code&gt;
+- (goal: no secrets, auth, etc). try to edit &lt;code&gt;makefile&lt;/code&gt; so that it takes care of all of that stuff. (or wrap into a &lt;code&gt;first_run.sh&lt;/code&gt; script).
+- get password the first time? hashauth&amp;hellip; (or automate it so that it&amp;rsquo;s printed to a file)?&lt;/p&gt;
+
+&lt;h2 id=&#34;customizing-spawning-options&#34;&gt;Customizing Spawning Options&lt;/h2&gt;
+
+&lt;p&gt;Based on users&amp;hellip;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from dockerspawner import DockerSpawner
+class MyDockerSpawner(DockerSpawner):
+    team_map = {
+        &#39;username1&#39;: &#39;team-a&#39;,
+        &#39;username2&#39;: &#39;team-b&#39;,
+        &#39;username3&#39;: &#39;team-a&#39;,
+    }
+
+    def start(self):
+        if self.user.name in self.team_map:
+            team = self.team_map[self.user.name]
+            # add team volume to volumes
+            self.volumes[&#39;/directory/jupyterhub-team-{}&#39;.format(team)] = {
+                &#39;bind&#39;: &#39;/home/jovyan/teamfolder&#39;,
+                &#39;mode&#39;: &#39;rw&#39;,  # or ro for read-only
+            }
+        return super().start()
+
+c.JupyterHub.spawner_class = MyDockerSpawner
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So, with that, refer to &lt;code&gt;jupyterhub_config.py&lt;/code&gt; for instances of &lt;code&gt;DockerSpawner&lt;/code&gt; and the children of that subclass. You can modify these properties (such as &lt;code&gt;image&lt;/code&gt;)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mathematicalmichael@math-hub:~$ docker images
+REPOSITORY                      TAG                 IMAGE ID            CREATED             SIZE
+math-user                       latest              64698da59274        3 hours ago         11.5GB
+math                            latest              7368bc798b20        4 hours ago         1.05GB
+postgres                        9.5                 fc003c9dded6        29 hours ago        227MB
+jupyter/datascience-notebook    latest              18c805bb3afb        3 days ago          6.32GB
+jupyterhub/jupyterhub-onbuild   0.9.4               9ca16c1a77c3        3 months ago        812MB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;However, my Disk-Usage on Digital Ocean reads 15GB. This tells me that &lt;code&gt;math-user&lt;/code&gt; includes the size &lt;code&gt;jupyter/datascience-notebook&lt;/code&gt;, since the sum of these two alone would exceed 15GB.&lt;/p&gt;
 </description>
     </item>
     
@@ -3061,14 +3136,14 @@ server {
 
 &lt;p&gt;Talk about how you had to generate letsencrypt scripts for nginx with &lt;code&gt;certbot&lt;/code&gt;.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo apt install python-certbot-nginx
+&lt;pre&gt;&lt;code&gt;sudo apt install python-certbot
 sudo apt-get update
 sudo apt-get install software-properties-common
 sudo add-apt-repository universe
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
 sudo apt-get install python-certbot-nginx 
-sudo certbot --nginx certonly
+sudo certbot certonly
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;I actually ran into trouble being unable to start nginx with the sites enabled. Kind of a catch-22. Removed letsencrypt files&lt;/p&gt;
@@ -3288,6 +3363,419 @@ I wouldn&amp;rsquo;t suggest sharing directories automatically for the container
  &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:admin&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Deploying</title>
+      <link>https://www.michaelpilosov.com/openscience/walkthrough/</link>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/walkthrough/</guid>
+      <description>
+
+&lt;h1 id=&#34;deployment&#34;&gt;Deployment&lt;/h1&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;I presume the use of &lt;code&gt;vim&lt;/code&gt; in a few of these commands. If you are more comfortable using &lt;code&gt;nano&lt;/code&gt; for editing text, please be sure to make the appropriate substitutions.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;On a brand new server&amp;hellip;
+(Change the top line to be your name)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;export USER_NAME=mathematicalmichael
+sudo apt update -y &amp;amp;&amp;amp; sudo apt upgrade -y
+sudo apt install vim htop make -y
+useradd $USER_NAME -m -s /bin/bash
+passwd $USER_NAME
+usermod -aG sudo $USER_NAME
+su - $USER_NAME
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now set your password.
+We then set privileges and switch to this new user (and new shell, which should appear in color!).&lt;/p&gt;
+
+&lt;p&gt;If you already had an account with &lt;code&gt;sudo&lt;/code&gt; privileges, then you can start from here assuming you are logged in as such. The code that follows installs Docker, and runs a little test by checking the version to make sure everything worked.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;export DOCKER_COMPOSE_VERSION=1.23.2
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(You will be prompted for your password)&lt;/p&gt;
+
+&lt;h2 id=&#34;docker-install&#34;&gt;Docker Install&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository &amp;quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable&amp;quot;
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install docker-ce -y
+docker --version 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Success?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo usermod -aG docker root
+sudo usermod -aG docker ${USER}
+sudo curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Success?&lt;/p&gt;
+
+&lt;h2 id=&#34;ssh-keys&#34;&gt;SSH Keys&lt;/h2&gt;
+
+&lt;p&gt;Now is a good time to reboot the machine since we just updated and installed a bunch of things. Before we do that, let us make sure we can &lt;code&gt;ssh&lt;/code&gt; in with either of the usernames now.
+Hit enter at the prompt.
+&lt;em&gt;YOUR COMPUTER WILL REBOOT AFTER&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh-keygen 
+sudo cat /root/.ssh/authorized_keys &amp;gt; ~/.ssh/authorized_keys
+reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;Your computer/server might take a minute or two to reboot.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;hub-setup&#34;&gt;Hub Setup&lt;/h2&gt;
+
+&lt;p&gt;Then &lt;code&gt;ssh&lt;/code&gt; in as &lt;code&gt;your-name@your-website.com&lt;/code&gt;. Now we will handle setting up the hub.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git clone https://github.com/mathematicalmichael/jupyterhub-deploy-docker.git
+mv jupyterhub-deploy-docker/ deploy/
+cd deploy
+mkdir secrets
+make secrets/postgres.env
+make secrets/oauth.env
+make userlist
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You will see some dialogue regarding how to add users to the hub initially.
+We only need to be concerned with adding one administrative user at this time since we can add users later through the Hub&amp;rsquo;s interface.
+Run the following command and edit the &lt;code&gt;userlist&lt;/code&gt; according to the prompt you just saw.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vim userlist
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(optional): &lt;code&gt;vim .env&lt;/code&gt; to change the name of your hub and some of the settings.&lt;/p&gt;
+
+&lt;p&gt;For testing purposes, let us edit &lt;code&gt;jupyterhub_config.py&lt;/code&gt; and comment out the following line (at or around 107):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#c.JupyterHub.base_url = u&#39;/%s/&#39;%hub_name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This way, we will be able to access our hub to make sure it is running before we handle securing it behind a proxy and encryption.&lt;/p&gt;
+
+&lt;h2 id=&#34;single-user-notebooks&#34;&gt;Single-User Notebooks&lt;/h2&gt;
+
+&lt;p&gt;The noteboook image that gets built by default is quite sizable.
+You may consider changing this in the &lt;code&gt;.env&lt;/code&gt; file (&lt;code&gt;$DOCKER_NOTEBOOK_IMAGE&lt;/code&gt;) if you&amp;rsquo;re just testing it out and want to make sure it works (perhaps to &lt;code&gt;jupyter/minimal-notebook&lt;/code&gt;).
+But, the one we ship is &lt;em&gt;feature-rich&lt;/em&gt;. Consider it a &amp;ldquo;show off what this can do&amp;rdquo; example.&lt;/p&gt;
+
+&lt;p&gt;To change the image, edit &lt;code&gt;singleuser/Dockerfile&lt;/code&gt; and delete as much as you would like. This file along with the &lt;code&gt;$DOCKER_NOTEBOOK_IMAGE&lt;/code&gt; line in &lt;code&gt;.env&lt;/code&gt; determine the notebook that gets launched.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;At any point you can re-build this image with &lt;code&gt;make notebook_image&lt;/code&gt; (which we will run in a moment in the next step).&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;hub-build&#34;&gt;Hub Build&lt;/h2&gt;
+
+&lt;p&gt;We are now ready to build our hub! The last line also &lt;em&gt;runs&lt;/em&gt; it as a background process.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;make build
+make notebook_image
+docker-compose up -d
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that is all. Sit back and wait.
+It will take a while.&lt;/p&gt;
+
+&lt;p&gt;When you want to destroy the images that &lt;code&gt;build&lt;/code&gt; (&lt;code&gt;make build&lt;/code&gt; runs &lt;code&gt;docker-compose build&lt;/code&gt; with some other options to configure it properly), creates, and the associated containers created from them, you can run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker-compose down
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;If successful, you should see green &lt;code&gt;done&lt;/code&gt; output at the very end.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;h3 id=&#34;troubleshooting&#34;&gt;Troubleshooting&lt;/h3&gt;
+
+&lt;p&gt;You might see a bunch of red messages like these fly by during the build process.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chgrp: changing group of &#39;/opt/conda/var/cache/fontconfig/0c78243b-3123-48a4-91b4-49cb45a27aaf-le64.cache-7&#39;: Operation not permitted
+chgrp: changing group of &#39;/opt/conda/var/cache/fontconfig/2fd305a6-4303-4a09-8894-d1594f7ec636-le64.cache-7&#39;: Operation not permitted
+.
+.
+.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As far as I can tell, this is not a problem and occurs somewhere outside of the instructions I have added on top of the pre-built images supplied by Jupyter.&lt;/p&gt;
+
+&lt;h2 id=&#34;configurations&#34;&gt;Configurations&lt;/h2&gt;
+
+&lt;p&gt;While you wait for the build, feel free to open up another terminal and do the following. It will make&lt;/p&gt;
+
+&lt;p&gt;Here are some aliases I like to have in my &lt;code&gt;~/.bash_aliases&lt;/code&gt; file:
+&lt;code&gt;vim ~/.bash_aliases&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# show users logged into the hub who have open sessions.
+alias dpsu=&#39;docker ps --format &amp;quot;table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}&amp;quot; -f &amp;quot;name=r*user*&amp;quot;&#39;
+# both of these show/filter docker processes with prettier formatting. 
+alias dps=&#39;docker ps --format &amp;quot;table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}&amp;quot;&#39;
+
+alias ..=&#39;cd ../&#39;                         # Move up 1 directory
+alias ...=&#39;cd ../../&#39;                     # Move up 2 directories
+alias ....=&#39;cd ../../../&#39;                 # Move up 3 directories
+alias clc=&#39;clear&#39;
+alias ll=&#39;ls -ltr&#39; ## see list of files in reverse chronological order.
+alias la=&#39;ls -A&#39; ## show hidden files (can add a/A to the above too... preference)
+
+# completion from history. VERY USEFUL
+alias cic=&#39;set completion-ignore-case On&#39;
+alias cico=&#39;set completion-ignore-case Off&#39;
+alias rr=&#39;source ~/.bashrc&#39; # refresh environment
+alias erc=&#39;vim ~/.bash_aliases&#39; # shortcut to edit my shortcuts.
+
+# don&#39;t put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don&#39;t overwrite it
+shopt -s histappend
+HISTSIZE=10000
+HISTFILESIZE=5000
+# the following bind up/down to history search
+bind &#39;&amp;quot;\e[A&amp;quot;: history-search-backward&#39;
+bind &#39;&amp;quot;\e[B&amp;quot;: history-search-forward&#39;
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then run &lt;code&gt;source ~/.bashrc&lt;/code&gt; and you&amp;rsquo;ll have a nice environment.&lt;/p&gt;
+
+&lt;h2 id=&#34;logging-in&#34;&gt;Logging in&lt;/h2&gt;
+
+&lt;p&gt;Check out &lt;code&gt;dps&lt;/code&gt; (if you added the aliases above, if not, go copy that line instead). Your hub and database should now be live (&lt;code&gt;website.com:port&lt;/code&gt;). The port it is on is given in &lt;code&gt;.env&lt;/code&gt; and will match what you see in this output.&lt;/p&gt;
+
+&lt;p&gt;To get your password, &lt;code&gt;vim Makefile&lt;/code&gt; and uncomment the following line (around 5): &lt;code&gt;include secrets/oauth.env&lt;/code&gt;
+(Alternatively, you can just run &lt;code&gt;source secrets/oauth.env)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Once that is done, you can run &lt;code&gt;make login&lt;/code&gt; to find out the password for whatever user is specified in &lt;code&gt;.env&lt;/code&gt; (hopefully it matches at least one of the admin users you put in &lt;code&gt;userlist&lt;/code&gt;, otherwise you would be querying passwords for non-existent users).&lt;/p&gt;
+
+&lt;p&gt;You can now log in and see that everything works out of the box!!!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;[hub-admin]:&#34; alt=&#34;snapshot-of-login&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can add users through &lt;code&gt;Control Panel &amp;gt; Admin&lt;/code&gt;!
+![snapshot-of-admin][hub-admin]&lt;/p&gt;
+
+&lt;p&gt;If you navigate to &lt;code&gt;/hub/login_list&lt;/code&gt; you will see passwords for everyone in &lt;code&gt;userlist&lt;/code&gt;. Since the connection is not yet secure, do not do this yet.&lt;/p&gt;
+
+&lt;p&gt;To secure our connection:
+&lt;code&gt;vim hub.conf&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That last section starting with &lt;code&gt;location&lt;/code&gt; is what we&amp;rsquo;ll be tweaking if we want to host this at &lt;code&gt;hub.mathfight.club&lt;/code&gt; or &lt;code&gt;mathfight.club/hub/&lt;/code&gt; or whatever we want. (Although in the case of a directory &lt;code&gt;/suffix/&lt;/code&gt; format, we will have to make sure the line from the &lt;code&gt;jupyterhub_config.py&lt;/code&gt; that we commented out above matches this configuration file.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;The assumption (by default) is that the &lt;code&gt;$HUB_NAME&lt;/code&gt; is used as the suffix. &lt;code&gt;example.com/math/&lt;/code&gt; is the default &lt;code&gt;location&lt;/code&gt; we will have to set. The idea here is that we can set up multiple hubs simply by changing the &lt;code&gt;.env&lt;/code&gt; file to choose a new name and port number.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;As long as we point to the correct port, nginx (our proxy) will handle the rest. The &lt;code&gt;/&lt;/code&gt; refers to the fact that we want the hub to be hosted at &lt;code&gt;mathfight.club&lt;/code&gt; (with nothing appended/prepended).&lt;/p&gt;
+
+&lt;p&gt;If you want some kind of homepage instead of a Hub login, you can configure that to be the case with the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;TO DO : root code.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;management&#34;&gt;Management&lt;/h1&gt;
+
+&lt;h2 id=&#34;adding-packages&#34;&gt;Adding Packages&lt;/h2&gt;
+
+&lt;h2 id=&#34;managing-users-work&#34;&gt;Managing Users/Work&lt;/h2&gt;
+
+&lt;h2 id=&#34;group-sharing&#34;&gt;Group Sharing&lt;/h2&gt;
+
+&lt;p&gt;Sharing files between groups is a feature I personally coded into the &lt;code&gt;jupyterhub_config.py&lt;/code&gt; file. Towards the top of the script, the file &lt;code&gt;userlist&lt;/code&gt; is opened (in the container&amp;hellip; so if you update it, you can run &lt;code&gt;docker restart hub-name&lt;/code&gt; since this configuration file only runs at hub startup). Better yet, do this from the Admin menu directly.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;Each line in &lt;code&gt;userlist&lt;/code&gt; has the name of the student, followed by their group names, separated by spaces.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;Instead of restarting through the docker command, you can &amp;ldquo;Power Down&amp;rdquo; the Hub from the Control Panel in JupyterHub. This has the effect of propagating changes to lists of users. Docker takes care of re-starting the hub automatically.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;If userlist is given the right permissions with &lt;code&gt;chown 777 userlist&lt;/code&gt;, and mounted inside the professor&amp;rsquo;s directory, it may be possible to manage group memberships  without ever logging into the math-hub server (except to update the single-user notebook image), editing the &lt;code&gt;userlist&lt;/code&gt; right from the web-interface, provided the group volume permissions have previously been set correctly.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;jupyterhub_config.py&lt;/code&gt; will check the user&amp;rsquo;s groups and mount all appropriate volumes. A volume is created for the group if one does not exist.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;By default, when volumes are created, the permissions are not set in a way where users can write files.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;To fix this, you would find the shared group volume in question, use &lt;code&gt;docker inspect&lt;/code&gt; to find out where it is, and change the permissions with &lt;code&gt;chmod&lt;/code&gt;. Here is an example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pilosovm@math-hub:~$ docker volume ls | grep &amp;quot;shared-*&amp;quot; | awk &#39;{print $2}&#39;
+ro_shared_volume
+rw_shared_volume
+shared-broncos
+shared-test-group
+pilosovm@math-hub:~$
+pilosovm@math-hub:~$ docker volume inspect shared-broncos | grep &amp;quot;Mountpoint&amp;quot;
+        &amp;quot;Mountpoint&amp;quot;: &amp;quot;/var/lib/docker/volumes/shared-broncos/_data&amp;quot;,
+pilosovm@math-hub:~$ chmod 777 /var/lib/docker/volumes/shared-broncos/_data
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;In this manner, you can create new volumes (e.g. &lt;code&gt;docker volume create shared-groupname&lt;/code&gt;) and set the permissions as desired with &lt;code&gt;chmod&lt;/code&gt;, modifying &lt;code&gt;userlist&lt;/code&gt; to add &lt;code&gt;groupname&lt;/code&gt; to the appropriate users.&lt;/p&gt;
+
+&lt;p&gt;Rinse, repeat.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;The architecture implemented here mounts volumes based on the words that follow the username in &lt;code&gt;userlist&lt;/code&gt; and prepends them with &lt;code&gt;shared&lt;/code&gt;. If you want to avoid naming conflicts, use group names such as &lt;code&gt;math8660-group1&lt;/code&gt;, &lt;code&gt;math8660-group2&lt;/code&gt;, etc., or something unique chosen by the group members). &lt;strong&gt;It is up to you to avoid naming conflicts across multiple hubs when sharing group volumes.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;More customization is possible. For example, you can have multiple hubs set up on the same server (e.g. at &lt;code&gt;math.computer/hub1/&lt;/code&gt; and &lt;code&gt;math.computer/hub2/&lt;/code&gt;, etc.) but create one &lt;code&gt;shared-admin&lt;/code&gt; volume that every administrator has access to. To accomplish this, (&lt;em&gt;or to add any new group volume&lt;/em&gt;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker volume create shared-admin
+docker volume inspect shared-admin | grep &amp;quot;Mountpoint&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;then use &lt;code&gt;chmod 777 PATH&lt;/code&gt; where &lt;code&gt;PATH&lt;/code&gt; matches the path in the output of the last command. Now this volume is visible to anyone for whom it is mounted.&lt;/p&gt;
+
+&lt;p&gt;However, in &lt;code&gt;jupyterhub_config.py&lt;/code&gt;, we have this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;33                 for i in range(1,len(parts)):
+34                     group_id = parts.pop()
+35                     if group_id != &#39;admin&#39;: # no need for an admin group.
+36                         group_map[user_name].append(group_id)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We purposefully disable this from happening by default. To enable it, simply change the logic here. Erase line 35, un-indent line 36, and the &lt;code&gt;shared-admin&lt;/code&gt; volume will be mounted for all admins of all hubs. Don&amp;rsquo;t forget to restart your hub for the changes to take effect.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;security&#34;&gt;Security&lt;/h1&gt;
+
+&lt;p&gt;We will use this guy&amp;rsquo;s &lt;a href=&#34;https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71&#34; target=&#34;_blank&#34;&gt;walkthrough&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -L https://raw.githubusercontent.com/wmnnd/nginx-certbot/master/init-letsencrypt.sh &amp;gt; init-letsencrypt.sh
+sed &#39;s/example.com/mathfight.club/g&#39; init-letsencrypt.sh &amp;gt; letsencrypt.sh
+mv letsencrypt.sh init-letsencrypt.sh
+chmod +x init-letsencrypt.sh
+sudo ./init-letsencrypt.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Had to edit some lines, ran out of requests for letsencrypt.&lt;/p&gt;
+
+&lt;p&gt;Here is how you do it without a container:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get update
+sudo apt install nginx
+sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install certbot 
+sudo certbot certonly
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Follow prompts, enter in info for your site.
+Then run the following,
+&lt;code&gt;sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;nginx-config&#34;&gt;Nginx Config&lt;/h2&gt;
+
+&lt;p&gt;move the &lt;code&gt;hub.conf&lt;/code&gt; file to &lt;code&gt;/etc/nginx/sites-enabled&lt;/code&gt; and that should be fine now to &lt;code&gt;service nginx restart&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# top-level http config for websocket headers
+# If Upgrade is defined, Connection = upgrade
+# If Upgrade is empty, Connection = close
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    &#39;&#39;      close;
+}
+
+# HTTP server to redirect all 80 traffic to SSL/HTTPS
+server {
+    listen 80;
+    server_name math.computer;
+
+    # Tell all requests to port 80 to be 302 redirected to HTTPS
+    return 302 https://$host$request_uri;
+}
+
+# HTTPS server to handle JupyterHub
+server {
+    listen 443 ssl;
+
+    server_name math.computer;
+
+    ssl_certificate /etc/letsencrypt/live/math.computer/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/math.computer/privkey.pem;
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+    ssl_ciphers &#39;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA&#39;;
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:SSL:50m;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    add_header Strict-Transport-Security max-age=15768000;
+
+    # Managing requests to verify letsencrypt host
+        location ~ /.well-known {
+            allow all;
+        }
+    
+    location / {
+                proxy_pass http://127.0.0.1:8000;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header Host $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+                # websocket headers
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection $connection_upgrade;
+            }
+}
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -3733,410 +4221,6 @@ TO DO: Go make a publicly accessible redundant copy of JS script, query it. Ask 
 &lt;li&gt;&lt;p&gt;After conversing with Elliott last night (12/19/19), I think that writing a simple WebSocket atop Flask with his help may be a good solution. A JSON file gets passed back and forth, manipulations happen on a server. Still would prefer to just learn how to make the widgets do this part.
 &lt;em&gt;Update:&lt;/em&gt; As of 01/01/19, I have found numerous other solutions and there is a &lt;a href=&#34;https://github.com/SamLau95/nbinteract/issues/101&#34; target=&#34;_blank&#34;&gt;feature request&lt;/a&gt; submitted for the nbinteract library that would enable me to run the nbserver that mybinder.org is providing on a machine that I own instead, which would greatly reduce latency. Would docker be able to automatically re-start it? Load balance? Etc. (probably, but that&amp;rsquo;s for later. For now, mybinder.org is fine, but steps should be taken to ensure the visualizations work in posterity). Should also attempt to get their plotting to work again (maybe one of their updates have fixed this?)&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Website Upgrading Logs</title>
-      <link>https://www.michaelpilosov.com/devlog/academicupgrades/</link>
-      <pubDate>Wed, 19 Dec 2018 18:16:07 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/devlog/academicupgrades/</guid>
-      <description>
-
-&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-
-&lt;p&gt;This documents the changes made to the academic theme to make this website work when upgrading from Hugo ver=0.47 and Academic Theme ver=2.4.&lt;/p&gt;
-
-&lt;p&gt;The upgrade for this website was performed on 12-19-2018.&lt;/p&gt;
-
-&lt;p&gt;All in all, it took the better part of an entire day to get familiar with all the nooks and crannies of the new updates and plan out the migration of the more complicated website&amp;hellip; &lt;a href=&#34;https://www.mathematicalmichael.com&#34; target=&#34;_blank&#34;&gt;Mathematical Michael&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;changes-made-to-theme&#34;&gt;Changes Made to Theme&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Removed Weibo sharing icon in &lt;code&gt;/layouts/partials/share&lt;/code&gt; in the theme directory.&lt;/li&gt;
-&lt;li&gt;Changed footer in &lt;code&gt;layouts/partials/footer_section.html&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Re-did &lt;code&gt;config.toml&lt;/code&gt; line-by-line, disabled night/day mode.&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Created slides and docs based on the &lt;code&gt;exampleSite&lt;/code&gt; folder, including creating the directory &lt;code&gt;/assets/css/reveal_custom.css&lt;/code&gt; for the Reveal.js slideshows.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;added &lt;code&gt;boards.jpg&lt;/code&gt; to &lt;code&gt;/static/img/&lt;/code&gt; to test headers and embeds in the example slideshow.&lt;/li&gt;
-&lt;li&gt;created &lt;code&gt;slides.md&lt;/code&gt; in &lt;code&gt;/content/&lt;/code&gt; to link to &lt;code&gt;/content/slides/&lt;/code&gt; folder since using an index file does not work to list the available slideshows in that folder.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;created &lt;code&gt;/wid/&lt;/code&gt; and &lt;code&gt;/dockerhub/&lt;/code&gt; to experiment with new &lt;code&gt;docs&lt;/code&gt; template.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;copied over dummy project files, still need to migrate own projects to new formatting, remove dummy projects.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Changed &lt;code&gt;work&lt;/code&gt; hyperlink and &lt;code&gt;resume&lt;/code&gt; to reflect new migration to the &lt;code&gt;docs&lt;/code&gt; template.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;resume widget changed to hyperlink to resume doc.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;to-do&#34;&gt;To-Do&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;header/feature images for post, check how fb/twitter scrapes them.
-
-&lt;ul&gt;
-&lt;li&gt;optional feature image without becoming header will be useful for posts that are galleries.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;migrate any posts/projects to new formatting.&lt;/li&gt;
-&lt;li&gt;think about how to migrate MathematicalMichael.&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;next-steps&#34;&gt;Next Steps&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;Things I&amp;rsquo;m Considering&lt;/em&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;No need to re-make publication type.
-
-&lt;ul&gt;
-&lt;li&gt;Since posts can be linked to projects, and filters can be applied within widgets, we should have all the flexibility we need.&lt;/li&gt;
-&lt;li&gt;Taken with the new folder structure of pages, the overall directory structure remains quite clean.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Use widgets pagetype to construct/mimick the &lt;code&gt;/artwork&lt;/code&gt; page.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Have carousels and project widgets linking to galleries and slideshows.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Can additionally link out to a &lt;code&gt;docs&lt;/code&gt; page that describes the art in more depth, also linked to from the projects page of &lt;code&gt;Probably Art&lt;/code&gt; to tell the &amp;ldquo;story&amp;rdquo; of this project over time and in its phases.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Phase 1: Directed Study&lt;/li&gt;
-&lt;li&gt;Phase 2: Pickup with Pocket CHIP, restart coding in Python&lt;/li&gt;
-&lt;li&gt;Phase 3: After some time, picked it up again and added a whole bunch of functionality, attempted to get random art automated in Squarespace&lt;/li&gt;
-&lt;li&gt;Phase 4: Pick up again when I get into GCode. Adds functionality.&lt;/li&gt;
-&lt;li&gt;Phase 5: Lapse again. Then finally tackle creating a framework that will work long-term. Talk about requirements. How is has to be in Python, based on stable packages, recreatable and deterministic. GCode scalable. Talk about some to-do&amp;rsquo;s (bumpers, bash scripts that wrap around to position plotter better). Show images of getting plotter back up again.&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Phase 6: Merge with Animation code/projects. Talk about goals, current progress. Random animations on non-random images&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Have another to tell the story of &lt;code&gt;Moving Pictures&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;upgrading-to-hugo-v0-52&#34;&gt;Upgrading to Hugo v0.52&lt;/h1&gt;
-
-&lt;p&gt;Date: 12/21/18&lt;/p&gt;
-
-&lt;p&gt;Today I began to structure and fill in the basic information for the &lt;a href=&#34;https://www.michaelpilosov.com/openscience&#34;&gt;Open Science&lt;/a&gt; Documentation.
-It involved some research and collection of resources from disparated places and things I&amp;rsquo;ve done before.&lt;/p&gt;
-
-&lt;p&gt;I also sat down and in a couple minutes managed to figure out the &amp;ldquo;breaking changes&amp;rdquo; to my MathematicalMichael website under Hugo v0.52.
-The only file that needed to be changed (before updating the theme, that is) was the &lt;code&gt;$i,&lt;/code&gt; reference in a file I made myself:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vim themes/academic/layouts/partials/artwork_links.html 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Next step was to copy the theme from &lt;code&gt;michaelpilosov/&lt;/code&gt; (which pulled from the github repo only a few days prior, and to which some minor changes were made) into &lt;code&gt;mathematicalmichael/themes/&lt;/code&gt; along with a copy of the config file.&lt;/p&gt;
-
-&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
-
-&lt;p&gt;Once the reference to the new theme is made, I expect a number of things to break.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Here I will attempt to document one-by-one the changes I had to make to port my theme over, which I will attempt to do by leveraging the &amp;ldquo;lookup structure&amp;rdquo; of Hugo (something I read online).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The idea is that rather than make changes to a theme that result in deviations that make merging new changes difficult, one makes changes by copying files into directories that are checked first, before &lt;code&gt;themes/&lt;/code&gt; is searched for &lt;code&gt;layouts&lt;/code&gt; or &lt;code&gt;partials&lt;/code&gt; files.
-My hope is that this will aid in future upgrades, since less differences will exist between my version of the theme and the master branch.
-A really useful command (for comparing files), that I used to see what needed to change in the master configuration file for my theme (compared to the updated one from this website) was:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;diff -y file1.md file2.md
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;which will print out two files side-by-side directly into the UNIX Terminal. Excellent.&lt;/p&gt;
-
-&lt;h2 id=&#34;academic-theme-v0-3-32&#34;&gt;Academic Theme v0.3.32&lt;/h2&gt;
-
-&lt;p&gt;After making the appropriate changes to the &lt;code&gt;config.toml&lt;/code&gt; file (which were all straightforward), I ensured that the site built with the new Hugo &lt;em&gt;and&lt;/em&gt; the new configuration file but &lt;em&gt;without&lt;/em&gt; the new theme. It did. All was well.&lt;/p&gt;
-
-&lt;p&gt;Then I changed the theme to point to the updated one:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;theme = &amp;quot;hugo-academic&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;which yielded the following error (kind of expected to be honest):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Error: 
-Error building site: 
-failed to render pages: 
-render of &amp;quot;home&amp;quot; failed: 
-execute of template failed: 
-template: index.html:4:3: 
-executing &amp;quot;index.html&amp;quot; at &amp;lt;partial widget_page...&amp;gt;: 
-error calling partial: 
-&amp;quot;/media/mathematicalmichael/HANK/repos/mathematicalmichael/themes/hugo-academic/layouts/partials/widget_page.html:23:9&amp;quot;: 
-execute of template failed: 
-template: partials/widget_page.html:23:9: 
-executing &amp;quot;partials/widget_page.html&amp;quot; at &amp;lt;partial $widget $par...&amp;gt;: 
-error calling partial: 
-Partial &amp;quot;widgets/artworks.html&amp;quot; not found
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So why did this happen?&lt;/p&gt;
-
-&lt;p&gt;Well, I had defined my own template page called &lt;code&gt;artworks&lt;/code&gt; that was modeled on the &lt;code&gt;publications&lt;/code&gt; style of page.
-I used this to publish a webpage for each piece of art, complete with a rich tagging-system automated through Python.
-I made random art and had written code that created pages for that art to live on.
-Any changes made to the front-matter could be easily applied later.&lt;/p&gt;
-
-&lt;p&gt;I believe that simply moving some files to directories that exist &lt;em&gt;above&lt;/em&gt; &lt;code&gt;themes&lt;/code&gt; will resolve my problems.&lt;/p&gt;
-
-&lt;h2 id=&#34;image-galleries&#34;&gt;Image Galleries&lt;/h2&gt;
-
-&lt;p&gt;However, I know there will be an opportunity to switch to page-bundles and leverage the &lt;code&gt;image-gallery&lt;/code&gt; feature in &lt;code&gt;v3.0&lt;/code&gt; of &lt;code&gt;Hugo-Academic&lt;/code&gt;. My thinking is as follows:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Instead of daily pages, make weekly ones as galleries.&lt;/li&gt;
-&lt;li&gt;Alternatively, keep daily postings as-is, and add galleries additionally. See if you can link images to the main folder, so all art can continue to live in one folder without duplicates.&lt;/li&gt;
-&lt;li&gt;You can make galleries using page-bundles as a separate way to interact with the art.&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Definitely need to integrate a widget page that hosts all the art. I don&amp;rsquo;t want to clutter the home page with everything.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I think that clicking from the main menu to &lt;code&gt;art/&lt;/code&gt; should suffice.&lt;/li&gt;
-&lt;li&gt;Curate the experience, minimize contact with &lt;code&gt;/artwork/&lt;/code&gt; page (i.e. make slideshows link to other content rather than the search they perform now, which can be a bit slow.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Since slideshows are just a markdown file, we should have no trouble linking to images in another folder!&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;will take some playing around to figure out exactly the right directory structure.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;** Main Goal ** for the time being is to make sure the site builds with the new theme. We can add features and functionality later on.&lt;/p&gt;
-
-&lt;p&gt;Today&amp;rsquo;s agenda is simply to allow migration to Hugo v0.52 on my Macbook by ensuring the site builds with the new version.
-Having the new theme work would be an added bonus.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;I suspect all that needs to happen is a little migration of &lt;code&gt;partials&lt;/code&gt; and &lt;code&gt;shortcodes&lt;/code&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cp themes/academic/layouts/partials/artwork_* layouts/partials/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Did not change the error.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mkdir layouts/partials/widgets/
-cp themes/academic/layouts/partials/widgets/artworks* layouts/partials/widgets/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Resolved that but sprang a new error:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Error: 
-Error building site: 
-failed to render pages: 
-render of &amp;quot;home&amp;quot; failed: 
-execute of template failed: 
-template: 
-index.html:4:3: 
-executing &amp;quot;index.html&amp;quot; at &amp;lt;partial widget_page...&amp;gt;: 
-error calling partial: 
-&amp;quot;/media/mathematicalmichael/HANK/repos/mathematicalmichael/themes/hugo-academic/layouts/partials/widget_page.html:23:9&amp;quot;: 
-execute of template failed: 
-template: 
-partials/widget_page.html:23:9: 
-executing &amp;quot;partials/widget_page.html&amp;quot; at &amp;lt;partial $widget $par...&amp;gt;: 
-error calling partial: 
-Partial &amp;quot;widgets/search.html&amp;quot; not found
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Okay, so let&amp;rsquo;s move &lt;code&gt;widgets/search.html&lt;/code&gt; over?&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cp themes/academic/layouts/partials/widgets/search.html layouts/partials/widgets/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hugo server --disableFastRender
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And that did it! Wow, relatively painless. Now let&amp;rsquo;s see how it looks.&lt;/p&gt;
-
-&lt;p&gt;The layout is dark for some reason&amp;hellip; Enabling light/dark mode shows me the white I want to see but with inverted header.
-&lt;code&gt;:mailto&lt;/code&gt; icon is broken. Change to &amp;ldquo;fas&amp;rdquo; instead of &amp;ldquo;fab&amp;rdquo; in &lt;code&gt;config.toml&lt;/code&gt;, line 293.&lt;/p&gt;
-
-&lt;p&gt;Back to the theme.. let&amp;rsquo;s grab a file and move it to the root directory and figure out where to put it.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cp themes/hugo-academic/data/themes/dark.toml .
-mkdir data
-mkdir data/themes
-mv dark.toml data/themes/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;I then proceeded to change some things to get the right colors. Still not sure if this is correct. I also changed the theme to &lt;code&gt;self.toml&lt;/code&gt; and referenced that in the &lt;code&gt;config.toml&lt;/code&gt; file.&lt;/p&gt;
-
-&lt;h2 id=&#34;dark-mode&#34;&gt;Dark Mode&lt;/h2&gt;
-
-&lt;p&gt;Next test: Day/Night mode (re-enable, see what happens).&lt;/p&gt;
-
-&lt;p&gt;Day Mode is fine.
-Night mode makes my logos look weird (though I do like the look overall). Top bar is also white instead of black for some reason.&lt;/p&gt;
-
-&lt;p&gt;Editing &lt;code&gt;data/themes/self.toml&lt;/code&gt; to rename the theme (mistake to not have done that before), and toggle &lt;code&gt;light = true&lt;/code&gt;, since I did make it into a light theme.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# Theme metadata
-name = &amp;quot;Self&amp;quot;
-
-# Is theme light or dark?
-light = true
-
-# Primary
-primary = &amp;quot;hsl(339, 90%, 68%)&amp;quot;
-primary_light = &amp;quot;hsl(339, 90%, 78%)&amp;quot;
-primary_dark = &amp;quot;hsl(339, 90%, 58%)&amp;quot;
-
-# Menu
-menu_primary = &amp;quot;#fff&amp;quot;
-menu_text = &amp;quot;rgba(0,0,0,0.6)&amp;quot;
-menu_text_active = &amp;quot;hsl(339, 90%, 68%)&amp;quot;
-menu_title = &amp;quot;#2b2b2b&amp;quot;
-
-# Home sections
-home_section_odd = &amp;quot;rgb(255, 255, 255)&amp;quot;
-home_section_even = &amp;quot;rgb(247, 247, 247)&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;Note&lt;/em&gt;: Also broken is the search widget. Sad.&lt;/p&gt;
-
-&lt;p&gt;Disable search widget&amp;hellip; Should not have moved it in the first place!
-&lt;em&gt;There is a new search feature&lt;/em&gt; that renders this one useless. I will now remove the &lt;code&gt;search.html&lt;/code&gt; widget (and &lt;code&gt;search.md&lt;/code&gt; from &lt;code&gt;content/home/&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Contact form&amp;hellip;
-Had to paste in the new format. I was using a custom partial code (note to self&amp;hellip; &lt;em&gt;delete that&lt;/em&gt;) to make a formspree link. Now I don&amp;rsquo;t have to!&lt;/p&gt;
-
-&lt;p&gt;Also, remove &lt;code&gt;Search&lt;/code&gt; from menu in &lt;code&gt;config.toml&lt;/code&gt;.
-After deleting &lt;code&gt;layouts/shortcodes/contactme.html&lt;/code&gt; (my custom formspree link), in favor of using the one the upgraded theme provided, it appears that my website is now settled into the new theme. I did have to remove all references to this deleted shortcode, of course.&lt;/p&gt;
-
-&lt;p&gt;Day/night mode works correctly. (would like to make my logo transparent though).&lt;/p&gt;
-
-&lt;h2 id=&#34;page-bundles&#34;&gt;Page Bundles&lt;/h2&gt;
-
-&lt;p&gt;Okay, well I knew it was too good to be true that things just worked. While pages loaded correctly, before building the final site, I made sure to investigate the directories a bit more and found that a bunch of files prepended with &lt;code&gt;._XXX.md&lt;/code&gt; had populated my website directories.
-&lt;em&gt;This must be how they&amp;rsquo;re ensuring backward-compatibility.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Well, I refactored the pages into page bundles with this shell script:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
-
-# Helps migrate from v2.4.0 to v3.0.0
-#
-# Refactor a page named `X.md` to `content/&amp;lt;section&amp;gt;/X/index.md` to use the
-# new page bundles and featured image system
-#
-# - E.g. a post `content/post/X.md` is converted to `content/post/X/index.md`
-
-refactor_pages_to_page_bundles()
-{
-  if [ ! -d ./content/ ]; then
-    echo &amp;quot;Please run script from root of hugo site&amp;quot;
-  fi
-  local files=&amp;quot;$(find ./content/ -iname &#39;*.md&#39; -not -iname &#39;*index.md&#39; -not -ipath &#39;./content/home/*&#39;)&amp;quot;
-  for file in ${files}; do
-    local pagedir=&amp;quot;${file%.md}&amp;quot;
-
-    echo &amp;quot;${file} -&amp;gt; ${pagedir}/index.md&amp;quot;
-    if [ ! -d &amp;quot;${pagedir}&amp;quot; ]; then
-      mkdir &amp;quot;${pagedir}&amp;quot;
-    fi
-
-    mv &amp;quot;${file}&amp;quot; &amp;quot;${pagedir}/index.md&amp;quot;
-  done
-}
-
-# Bash Strict Mode
-set -eu
-
-# set -x
-refactor_pages_to_page_bundles &amp;quot;$@&amp;quot;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/sourcethemes/academic-scripts/blob/master/refactor-pages-to-page-bundles.sh&#34; target=&#34;_blank&#34;&gt;Source&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;After poking around, it looks like the pages obey the proper structure now (for the most part)&amp;hellip; There are a few stray &lt;code&gt;.md&lt;/code&gt; files around.&lt;/p&gt;
-
-&lt;p&gt;I will push the changes live but later on go through both websites to ensure that bundles are everywhere and no stray pages are left.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;search-filter&#34;&gt;Search/Filter&lt;/h2&gt;
-
-&lt;p&gt;Notably, I will need to&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;update my python script that writes project pages and art pages.&lt;/li&gt;
-&lt;li&gt;ensure featured images (optional) are properly handled&lt;/li&gt;
-&lt;li&gt;find out how galleries can work with the &lt;code&gt;artwork/images&lt;/code&gt; directory, which so far doesn&amp;rsquo;t seem to be conflicting with the page-bundle format.&lt;/li&gt;
-&lt;li&gt;Make sure the artwork search works. Seems to be broken, though &lt;code&gt;publications&lt;/code&gt; search still works.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Oh, I think all that needs to happen is to move
-&lt;code&gt;/themes/academic/layouts/artwork&lt;/code&gt; into the &lt;code&gt;layouts&lt;/code&gt; folder I have in my root directory.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mv themes/academic/layouts/artwork/ layouts/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;But that led to an error regarding &lt;code&gt;partial header_image.html&lt;/code&gt;. Thus, it seems like I will need to copy the new publication template over and edit it again. At least this time I will document it.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cp themes/hugo-academic/layouts/publication/single.html  layouts/artwork/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And then I replaced all instances of &lt;code&gt;publication&lt;/code&gt; with &lt;code&gt;artwork&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;But that still didn&amp;rsquo;t lead to the filter-ability that I wanted.&lt;/p&gt;
-
-&lt;p&gt;The default behavior was to paginate and list all of the art, which doesn&amp;rsquo;t have image previews but honestly is just fine, especially since it loads quickly.&lt;/p&gt;
-
-&lt;p&gt;The widget on the homepage that links to the search of artwork though is now broken as a consequence. I can fall back on searching by tags, or disable the widget temporarily until I set up galleries for the artworks.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;If I write a python script that scrapes the &lt;code&gt;artwork/images&lt;/code&gt; folder and creates galleries linked to that, well that would be just perfect.&lt;/li&gt;
-&lt;li&gt;This widget can be linked to those galleries, or slideshows.&lt;/li&gt;
-&lt;li&gt;Disable it for now.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Okay, later at night I had to come across this as well, but I wanted the listing of artworks in their projects, so I copied the new &lt;code&gt;layouts/partials/project/single.html&lt;/code&gt; into the &lt;code&gt;layouts/partials/projects/&lt;/code&gt; directory I created and pasted the following relevant chunk of code:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;br&amp;gt;
-      &amp;lt;h4&amp;gt; Archive &amp;lt;/h4&amp;gt;
-      {{ $items := where (where .Site.RegularPages &amp;quot;Type&amp;quot; &amp;quot;artwork&amp;quot;) &amp;quot;.Params.projects&amp;quot; &amp;quot;intersect&amp;quot; (slice $project) }}
-      {{ $items := $items | union (where (where .Site.RegularPages &amp;quot;Type&amp;quot; &amp;quot;artwork&amp;quot;) &amp;quot;.Params.url_project&amp;quot; $project_path) }}
-      {{ $arts_len := len $items }}
-      {{ if ge $arts_len 1 }}
-        &amp;lt;h4&amp;gt;{{ (i18n &amp;quot;artworks&amp;quot;) }}&amp;lt;/h4&amp;gt;
-        {{ range $items }}
-          {{ if eq $page.Site.Params.projects.artwork_format 1 }}
-            {{ partial &amp;quot;artwork_li_detailed&amp;quot; . }}
-          {{ else }}
-            {{ partial &amp;quot;artwork_li_simple&amp;quot; . }}
-          {{ end }}
-        {{ end }}
-      {{ end }}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And I got my desired lists!&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.mathematicalmichael.com/project/rnr&#34; target=&#34;_blank&#34;&gt;See here for example&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
-
-&lt;p&gt;I also realized I needed to edit the table of contents with some custom CSS.&lt;/p&gt;
-
-&lt;p&gt;Create a custom file in &lt;code&gt;/static/css&lt;/code&gt; and link it to line &lt;code&gt;custom_css = []&lt;/code&gt; in &lt;code&gt;config.toml&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#TableOfContents{
-    padding-left: 10px
-}
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

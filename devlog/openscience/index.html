@@ -641,14 +641,14 @@ server {
 
 <p>Talk about how you had to generate letsencrypt scripts for nginx with <code>certbot</code>.</p>
 
-<pre><code>sudo apt install python-certbot-nginx
+<pre><code>sudo apt install python-certbot
 sudo apt-get update
 sudo apt-get install software-properties-common
 sudo add-apt-repository universe
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
 sudo apt-get install python-certbot-nginx 
-sudo certbot --nginx certonly
+sudo certbot certonly
 </code></pre>
 
 <p>I actually ran into trouble being unable to start nginx with the sites enabled. Kind of a catch-22. Removed letsencrypt files</p>

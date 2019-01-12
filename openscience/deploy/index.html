@@ -371,11 +371,15 @@ Kubernetes What is it? Why use it? Possibilities &ldquo;Bare Metal&rdquo; What i
   </div>
   
   <div class="docs-toc-item">
-    <a class="docs-toc-link" href="/openscience/docker/">3. Walkthrough</a>
+    <a class="docs-toc-link" href="/openscience/walkthrough/">3. Walkthrough</a>
     <ul class="nav docs-sidenav">
       
       <li >
-        <a href="/openscience/docker/">Docker</a>
+        <a href="/openscience/walkthrough/">Walk-Through</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/docker/">Docker Reference</a>
       </li>
       
       <li >
@@ -501,12 +505,20 @@ Alternatively, your university or company may already have available server reso
 
 <p>Grab stuff from  <a href="https://github.com/mathematicalmichael/jupyterhub-deploy-docker.git" target="_blank">https://github.com/mathematicalmichael/jupyterhub-deploy-docker.git</a></p>
 
-<pre><code>useradd admin -m -s /bin/bash
-chpasswd admin:default_password_goes_here
-usermod -aG sudo admin
+<pre><code>sudo apt update -y &amp;&amp; sudo apt upgrade -y
+apt install vim htop -y
+useradd mathematicalmichael -m -s /bin/bash
+passwd mathematicalmichael
 </code></pre>
 
-<pre><code>su - admin
+<p>Make sure to change the line above to be a different password. We are assuming that you will be using this account as user <code>mathematicalmichael</code>.</p>
+
+<pre><code>usermod -aG sudo mathematicalmichael
+</code></pre>
+
+<p>This adds privileges we will need. Now we switch users.</p>
+
+<pre><code>su - mathematicalmichael
 export DOCKER_COMPOSE_VERSION=1.23.2
 
 sudo apt update

@@ -31,6 +31,17 @@
     </item>
     
     <item>
+      <title>Deploying</title>
+      <link>https://www.michaelpilosov.com/openscience/walkthrough/</link>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/walkthrough/</guid>
+      <description>Deployment I presume the use of vim in a few of these commands. If you are more comfortable using nano for editing text, please be sure to make the appropriate substitutions.
+ On a brand new server&amp;hellip; (Change the top line to be your name)
+export USER_NAME=mathematicalmichael sudo apt update -y &amp;amp;&amp;amp; sudo apt upgrade -y sudo apt install vim htop make -y useradd $USER_NAME -m -s /bin/bash passwd $USER_NAME usermod -aG sudo $USER_NAME su - $USER_NAME  Now set your password.</description>
+    </item>
+    
+    <item>
       <title>Remote Connection</title>
       <link>https://www.michaelpilosov.com/openscience/remote/</link>
       <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>

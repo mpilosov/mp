@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 3.2.0">
+  <meta name="generator" content="Hugo 0.52" />
+  <meta name="author" content="Michael Pilosov">
+
+  
+  
+  
+  
+    
+  
+  <meta name="description" content="Deployment I presume the use of vim in a few of these commands. If you are more comfortable using nano for editing text, please be sure to make the appropriate substitutions.
+ On a brand new server&hellip; (Change the top line to be your name)
+export USER_NAME=mathematicalmichael sudo apt update -y &amp;&amp; sudo apt upgrade -y sudo apt install vim htop make -y useradd $USER_NAME -m -s /bin/bash passwd $USER_NAME usermod -aG sudo $USER_NAME su - $USER_NAME  Now set your password.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/openscience/walkthrough/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="hsl(339, 90%, 68%)">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css" crossorigin="anonymous">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700|Merriweather|Roboto+Mono">
+  
+
+  <link rel="stylesheet" href="/styles.css">
+  
+  <link rel="stylesheet" href="/css/custom_css.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-122657370-3', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+  <link rel="alternate" href="https://www.michaelpilosov.com/index.xml" type="application/rss+xml" title="Michael Pilosov | Academic Website">
+  <link rel="feed" href="https://www.michaelpilosov.com/index.xml" type="application/rss+xml" title="Michael Pilosov | Academic Website">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://www.michaelpilosov.com/openscience/walkthrough/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@Mathematical_MP">
+  <meta property="twitter:creator" content="@Mathematical_MP">
+  
+  <meta property="og:site_name" content="Michael Pilosov | Academic Website">
+  <meta property="og:url" content="https://www.michaelpilosov.com/openscience/walkthrough/">
+  <meta property="og:title" content="Deploying | Michael Pilosov | Academic Website">
+  <meta property="og:description" content="Deployment I presume the use of vim in a few of these commands. If you are more comfortable using nano for editing text, please be sure to make the appropriate substitutions.
+ On a brand new server&hellip; (Change the top line to be your name)
+export USER_NAME=mathematicalmichael sudo apt update -y &amp;&amp; sudo apt upgrade -y sudo apt install vim htop make -y useradd $USER_NAME -m -s /bin/bash passwd $USER_NAME usermod -aG sudo $USER_NAME su - $USER_NAME  Now set your password."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-12-22T00:00:00-07:00">
+  
+  <meta property="article:modified_time" content="2018-12-22T00:00:00-07:00">
+  
+
+  
+
+  
+
+  <title>Deploying | Michael Pilosov | Academic Website</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/"><img src="/img/logo-dark.png" alt="Michael Pilosov | Academic Website"></a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">
+            
+            <span>About</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/openscience">
+            
+            <span>Open Science</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#resume">
+            
+            <span>Resume</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" id="search-query" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/">Overview</a>
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/intro/">1. Motivations</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/openscience/intro/">Introduction</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/usage/">Use-Cases</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/demo/">Demonstration</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/example/">Examples</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/getting-started/">2. Getting Started</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/openscience/getting-started/">Relevant Projects</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/anaconda/">Installing Anaconda</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/remote/">Connecting Remotely</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/walkthrough/">3. Walkthrough</a>
+    <ul class="nav docs-sidenav">
+      
+      <li class="active">
+        <a href="/openscience/walkthrough/">Walk-Through</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/docker/">Docker Reference</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/jupyterhub/">JupyterHub</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/deploy/">4. Deploy</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/openscience/deploy/">Choosing Your Platform</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+      <p class="docs-toc-title">On this page</p>
+      
+
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#deployment">Deployment</a>
+<ul>
+<li><a href="#docker-install">Docker Install</a></li>
+<li><a href="#ssh-keys">SSH Keys</a></li>
+<li><a href="#hub-setup">Hub Setup</a></li>
+<li><a href="#single-user-notebooks">Single-User Notebooks</a></li>
+<li><a href="#hub-build">Hub Build</a>
+<ul>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ul></li>
+<li><a href="#configurations">Configurations</a></li>
+<li><a href="#logging-in">Logging in</a></li>
+</ul></li>
+<li><a href="#management">Management</a>
+<ul>
+<li><a href="#adding-packages">Adding Packages</a></li>
+<li><a href="#managing-users-work">Managing Users/Work</a></li>
+<li><a href="#group-sharing">Group Sharing</a></li>
+</ul></li>
+<li><a href="#security">Security</a>
+<ul>
+<li><a href="#nginx-config">Nginx Config</a></li>
+</ul></li>
+</ul>
+</nav>
+
+      <ul class="nav toc-top">
+        <li><a href="#">Back to top</a></li>
+      </ul>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article" itemscope itemtype="http://schema.org/Article">
+
+        <div class="docs-article-container">
+          <h1 itemprop="name">Deploying</h1>
+
+          <div class="article-style" itemprop="articleBody">
+            
+
+<h1 id="deployment">Deployment</h1>
+
+<div class="alert alert-">
+  <p>I presume the use of <code>vim</code> in a few of these commands. If you are more comfortable using <code>nano</code> for editing text, please be sure to make the appropriate substitutions.</p>
+
+</div>
+
+
+<p>On a brand new server&hellip;
+(Change the top line to be your name)</p>
+
+<pre><code class="language-bash">export USER_NAME=mathematicalmichael
+sudo apt update -y &amp;&amp; sudo apt upgrade -y
+sudo apt install vim htop make -y
+useradd $USER_NAME -m -s /bin/bash
+passwd $USER_NAME
+usermod -aG sudo $USER_NAME
+su - $USER_NAME
+</code></pre>
+
+<p>Now set your password.
+We then set privileges and switch to this new user (and new shell, which should appear in color!).</p>
+
+<p>If you already had an account with <code>sudo</code> privileges, then you can start from here assuming you are logged in as such. The code that follows installs Docker, and runs a little test by checking the version to make sure everything worked.</p>
+
+<pre><code class="language-bash">export DOCKER_COMPOSE_VERSION=1.23.2
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+</code></pre>
+
+<p>(You will be prompted for your password)</p>
+
+<h2 id="docker-install">Docker Install</h2>
+
+<pre><code class="language-bash">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable&quot;
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install docker-ce -y
+docker --version 
+</code></pre>
+
+<p>Success?</p>
+
+<pre><code class="language-bash">sudo usermod -aG docker root
+sudo usermod -aG docker ${USER}
+sudo curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+</code></pre>
+
+<p>Success?</p>
+
+<h2 id="ssh-keys">SSH Keys</h2>
+
+<p>Now is a good time to reboot the machine since we just updated and installed a bunch of things. Before we do that, let us make sure we can <code>ssh</code> in with either of the usernames now.
+Hit enter at the prompt.
+<em>YOUR COMPUTER WILL REBOOT AFTER</em></p>
+
+<pre><code class="language-bash">ssh-keygen 
+sudo cat /root/.ssh/authorized_keys &gt; ~/.ssh/authorized_keys
+reboot
+</code></pre>
+
+<div class="alert alert-warning">
+  <p>Your computer/server might take a minute or two to reboot.</p>
+
+</div>
+
+
+<h2 id="hub-setup">Hub Setup</h2>
+
+<p>Then <code>ssh</code> in as <code>your-name@your-website.com</code>. Now we will handle setting up the hub.</p>
+
+<pre><code class="language-bash">git clone https://github.com/mathematicalmichael/jupyterhub-deploy-docker.git
+mv jupyterhub-deploy-docker/ deploy/
+cd deploy
+mkdir secrets
+make secrets/postgres.env
+make secrets/oauth.env
+make userlist
+</code></pre>
+
+<p>You will see some dialogue regarding how to add users to the hub initially.
+We only need to be concerned with adding one administrative user at this time since we can add users later through the Hub&rsquo;s interface.
+Run the following command and edit the <code>userlist</code> according to the prompt you just saw.</p>
+
+<pre><code class="language-bash">vim userlist
+</code></pre>
+
+<p>(optional): <code>vim .env</code> to change the name of your hub and some of the settings.</p>
+
+<p>For testing purposes, let us edit <code>jupyterhub_config.py</code> and comment out the following line (at or around 107):</p>
+
+<pre><code class="language-python">#c.JupyterHub.base_url = u'/%s/'%hub_name
+</code></pre>
+
+<p>This way, we will be able to access our hub to make sure it is running before we handle securing it behind a proxy and encryption.</p>
+
+<h2 id="single-user-notebooks">Single-User Notebooks</h2>
+
+<p>The noteboook image that gets built by default is quite sizable.
+You may consider changing this in the <code>.env</code> file (<code>$DOCKER_NOTEBOOK_IMAGE</code>) if you&rsquo;re just testing it out and want to make sure it works (perhaps to <code>jupyter/minimal-notebook</code>).
+But, the one we ship is <em>feature-rich</em>. Consider it a &ldquo;show off what this can do&rdquo; example.</p>
+
+<p>To change the image, edit <code>singleuser/Dockerfile</code> and delete as much as you would like. This file along with the <code>$DOCKER_NOTEBOOK_IMAGE</code> line in <code>.env</code> determine the notebook that gets launched.</p>
+
+<p><strong>At any point you can re-build this image with <code>make notebook_image</code> (which we will run in a moment in the next step).</strong></p>
+
+<h2 id="hub-build">Hub Build</h2>
+
+<p>We are now ready to build our hub! The last line also <em>runs</em> it as a background process.</p>
+
+<pre><code class="language-bash">make build
+make notebook_image
+docker-compose up -d
+</code></pre>
+
+<p>And that is all. Sit back and wait.
+It will take a while.</p>
+
+<p>When you want to destroy the images that <code>build</code> (<code>make build</code> runs <code>docker-compose build</code> with some other options to configure it properly), creates, and the associated containers created from them, you can run:</p>
+
+<pre><code class="language-bash">docker-compose down
+</code></pre>
+
+<div class="alert alert-">
+  <p>If successful, you should see green <code>done</code> output at the very end.</p>
+
+</div>
+
+
+<h3 id="troubleshooting">Troubleshooting</h3>
+
+<p>You might see a bunch of red messages like these fly by during the build process.</p>
+
+<pre><code>chgrp: changing group of '/opt/conda/var/cache/fontconfig/0c78243b-3123-48a4-91b4-49cb45a27aaf-le64.cache-7': Operation not permitted
+chgrp: changing group of '/opt/conda/var/cache/fontconfig/2fd305a6-4303-4a09-8894-d1594f7ec636-le64.cache-7': Operation not permitted
+.
+.
+.
+</code></pre>
+
+<p>As far as I can tell, this is not a problem and occurs somewhere outside of the instructions I have added on top of the pre-built images supplied by Jupyter.</p>
+
+<h2 id="configurations">Configurations</h2>
+
+<p>While you wait for the build, feel free to open up another terminal and do the following. It will make</p>
+
+<p>Here are some aliases I like to have in my <code>~/.bash_aliases</code> file:
+<code>vim ~/.bash_aliases</code></p>
+
+<pre><code class="language-bash"># show users logged into the hub who have open sessions.
+alias dpsu='docker ps --format &quot;table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}&quot; -f &quot;name=r*user*&quot;'
+# both of these show/filter docker processes with prettier formatting. 
+alias dps='docker ps --format &quot;table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}&quot;'
+
+alias ..='cd ../'                         # Move up 1 directory
+alias ...='cd ../../'                     # Move up 2 directories
+alias ....='cd ../../../'                 # Move up 3 directories
+alias clc='clear'
+alias ll='ls -ltr' ## see list of files in reverse chronological order.
+alias la='ls -A' ## show hidden files (can add a/A to the above too... preference)
+
+# completion from history. VERY USEFUL
+alias cic='set completion-ignore-case On'
+alias cico='set completion-ignore-case Off'
+alias rr='source ~/.bashrc' # refresh environment
+alias erc='vim ~/.bash_aliases' # shortcut to edit my shortcuts.
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+HISTSIZE=10000
+HISTFILESIZE=5000
+# the following bind up/down to history search
+bind '&quot;\e[A&quot;: history-search-backward'
+bind '&quot;\e[B&quot;: history-search-forward'
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+</code></pre>
+
+<p>Then run <code>source ~/.bashrc</code> and you&rsquo;ll have a nice environment.</p>
+
+<h2 id="logging-in">Logging in</h2>
+
+<p>Check out <code>dps</code> (if you added the aliases above, if not, go copy that line instead). Your hub and database should now be live (<code>website.com:port</code>). The port it is on is given in <code>.env</code> and will match what you see in this output.</p>
+
+<p>To get your password, <code>vim Makefile</code> and uncomment the following line (around 5): <code>include secrets/oauth.env</code>
+(Alternatively, you can just run <code>source secrets/oauth.env)</code>.</p>
+
+<p>Once that is done, you can run <code>make login</code> to find out the password for whatever user is specified in <code>.env</code> (hopefully it matches at least one of the admin users you put in <code>userlist</code>, otherwise you would be querying passwords for non-existent users).</p>
+
+<p>You can now log in and see that everything works out of the box!!!</p>
+
+<p><img src="[hub-admin]:" alt="snapshot-of-login" /></p>
+
+<p>You can add users through <code>Control Panel &gt; Admin</code>!
+![snapshot-of-admin][hub-admin]</p>
+
+<p>If you navigate to <code>/hub/login_list</code> you will see passwords for everyone in <code>userlist</code>. Since the connection is not yet secure, do not do this yet.</p>
+
+<p>To secure our connection:
+<code>vim hub.conf</code></p>
+
+<pre><code>
+</code></pre>
+
+<p>That last section starting with <code>location</code> is what we&rsquo;ll be tweaking if we want to host this at <code>hub.mathfight.club</code> or <code>mathfight.club/hub/</code> or whatever we want. (Although in the case of a directory <code>/suffix/</code> format, we will have to make sure the line from the <code>jupyterhub_config.py</code> that we commented out above matches this configuration file.</p>
+
+<div class="alert alert-warning">
+  <p>The assumption (by default) is that the <code>$HUB_NAME</code> is used as the suffix. <code>example.com/math/</code> is the default <code>location</code> we will have to set. The idea here is that we can set up multiple hubs simply by changing the <code>.env</code> file to choose a new name and port number.</p>
+
+</div>
+
+
+<p>As long as we point to the correct port, nginx (our proxy) will handle the rest. The <code>/</code> refers to the fact that we want the hub to be hosted at <code>mathfight.club</code> (with nothing appended/prepended).</p>
+
+<p>If you want some kind of homepage instead of a Hub login, you can configure that to be the case with the following:</p>
+
+<pre><code>TO DO : root code.
+</code></pre>
+
+<h1 id="management">Management</h1>
+
+<h2 id="adding-packages">Adding Packages</h2>
+
+<h2 id="managing-users-work">Managing Users/Work</h2>
+
+<h2 id="group-sharing">Group Sharing</h2>
+
+<p>Sharing files between groups is a feature I personally coded into the <code>jupyterhub_config.py</code> file. Towards the top of the script, the file <code>userlist</code> is opened (in the container&hellip; so if you update it, you can run <code>docker restart hub-name</code> since this configuration file only runs at hub startup). Better yet, do this from the Admin menu directly.</p>
+
+<div class="alert alert-">
+  <p>Each line in <code>userlist</code> has the name of the student, followed by their group names, separated by spaces.</p>
+
+</div>
+
+
+<p>Instead of restarting through the docker command, you can &ldquo;Power Down&rdquo; the Hub from the Control Panel in JupyterHub. This has the effect of propagating changes to lists of users. Docker takes care of re-starting the hub automatically.</p>
+
+<div class="alert alert-">
+  <p>If userlist is given the right permissions with <code>chown 777 userlist</code>, and mounted inside the professor&rsquo;s directory, it may be possible to manage group memberships  without ever logging into the math-hub server (except to update the single-user notebook image), editing the <code>userlist</code> right from the web-interface, provided the group volume permissions have previously been set correctly.</p>
+
+</div>
+
+
+<p><code>jupyterhub_config.py</code> will check the user&rsquo;s groups and mount all appropriate volumes. A volume is created for the group if one does not exist.</p>
+
+<div class="alert alert-warning">
+  <p>By default, when volumes are created, the permissions are not set in a way where users can write files.</p>
+
+</div>
+
+
+<p>To fix this, you would find the shared group volume in question, use <code>docker inspect</code> to find out where it is, and change the permissions with <code>chmod</code>. Here is an example:</p>
+
+<pre><code class="language-bash">pilosovm@math-hub:~$ docker volume ls | grep &quot;shared-*&quot; | awk '{print $2}'
+ro_shared_volume
+rw_shared_volume
+shared-broncos
+shared-test-group
+pilosovm@math-hub:~$
+pilosovm@math-hub:~$ docker volume inspect shared-broncos | grep &quot;Mountpoint&quot;
+        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/shared-broncos/_data&quot;,
+pilosovm@math-hub:~$ chmod 777 /var/lib/docker/volumes/shared-broncos/_data
+</code></pre>
+
+<hr />
+
+<hr />
+
+<p>In this manner, you can create new volumes (e.g. <code>docker volume create shared-groupname</code>) and set the permissions as desired with <code>chmod</code>, modifying <code>userlist</code> to add <code>groupname</code> to the appropriate users.</p>
+
+<p>Rinse, repeat.</p>
+
+<div class="alert alert-">
+  <p>The architecture implemented here mounts volumes based on the words that follow the username in <code>userlist</code> and prepends them with <code>shared</code>. If you want to avoid naming conflicts, use group names such as <code>math8660-group1</code>, <code>math8660-group2</code>, etc., or something unique chosen by the group members). <strong>It is up to you to avoid naming conflicts across multiple hubs when sharing group volumes.</strong></p>
+
+</div>
+
+
+<p>More customization is possible. For example, you can have multiple hubs set up on the same server (e.g. at <code>math.computer/hub1/</code> and <code>math.computer/hub2/</code>, etc.) but create one <code>shared-admin</code> volume that every administrator has access to. To accomplish this, (<em>or to add any new group volume</em>):</p>
+
+<pre><code>docker volume create shared-admin
+docker volume inspect shared-admin | grep &quot;Mountpoint&quot;
+</code></pre>
+
+<p>then use <code>chmod 777 PATH</code> where <code>PATH</code> matches the path in the output of the last command. Now this volume is visible to anyone for whom it is mounted.</p>
+
+<p>However, in <code>jupyterhub_config.py</code>, we have this:</p>
+
+<pre><code class="language-python">33                 for i in range(1,len(parts)):
+34                     group_id = parts.pop()
+35                     if group_id != 'admin': # no need for an admin group.
+36                         group_map[user_name].append(group_id)
+</code></pre>
+
+<p>We purposefully disable this from happening by default. To enable it, simply change the logic here. Erase line 35, un-indent line 36, and the <code>shared-admin</code> volume will be mounted for all admins of all hubs. Don&rsquo;t forget to restart your hub for the changes to take effect.</p>
+
+<hr />
+
+<hr />
+
+<hr />
+
+<h1 id="security">Security</h1>
+
+<p>We will use this guy&rsquo;s <a href="https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71" target="_blank">walkthrough</a>.</p>
+
+<pre><code class="language-bash">curl -L https://raw.githubusercontent.com/wmnnd/nginx-certbot/master/init-letsencrypt.sh &gt; init-letsencrypt.sh
+sed 's/example.com/mathfight.club/g' init-letsencrypt.sh &gt; letsencrypt.sh
+mv letsencrypt.sh init-letsencrypt.sh
+chmod +x init-letsencrypt.sh
+sudo ./init-letsencrypt.sh
+</code></pre>
+
+<p>Had to edit some lines, ran out of requests for letsencrypt.</p>
+
+<p>Here is how you do it without a container:</p>
+
+<pre><code>sudo apt-get update
+sudo apt install nginx
+sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install certbot 
+sudo certbot certonly
+</code></pre>
+
+<p>Follow prompts, enter in info for your site.
+Then run the following,
+<code>sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096</code></p>
+
+<hr />
+
+<h2 id="nginx-config">Nginx Config</h2>
+
+<p>move the <code>hub.conf</code> file to <code>/etc/nginx/sites-enabled</code> and that should be fine now to <code>service nginx restart</code>.</p>
+
+<pre><code># top-level http config for websocket headers
+# If Upgrade is defined, Connection = upgrade
+# If Upgrade is empty, Connection = close
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ''      close;
+}
+
+# HTTP server to redirect all 80 traffic to SSL/HTTPS
+server {
+    listen 80;
+    server_name math.computer;
+
+    # Tell all requests to port 80 to be 302 redirected to HTTPS
+    return 302 https://$host$request_uri;
+}
+
+# HTTPS server to handle JupyterHub
+server {
+    listen 443 ssl;
+
+    server_name math.computer;
+
+    ssl_certificate /etc/letsencrypt/live/math.computer/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/math.computer/privkey.pem;
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+    ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA';
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:SSL:50m;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    add_header Strict-Transport-Security max-age=15768000;
+
+    # Managing requests to verify letsencrypt host
+        location ~ /.well-known {
+            allow all;
+        }
+    
+    location / {
+                proxy_pass http://127.0.0.1:8000;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header Host $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+                # websocket headers
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection $connection_upgrade;
+            }
+}
+</code></pre>
+
+          </div>
+
+          
+
+        </div>
+
+        <div class="body-footer">
+          Last updated on Dec 22, 2018
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="/privacy/">Privacy Policy</a>
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; 2018 Michael Pilosov &middot; 
+
+    
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic</a> +
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.d037ee5294b166a79dec317c58aea9cc.js"></script>
+
+    
+
+  </body>
+</html>
+
+
