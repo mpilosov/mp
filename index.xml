@@ -531,7 +531,24 @@ jupyter/datascience-notebook    latest              18c805bb3afb        3 days a
 jupyterhub/jupyterhub-onbuild   0.9.4               9ca16c1a77c3        3 months ago        812MB
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;However, my Disk-Usage on Digital Ocean reads 15GB. This tells me that &lt;code&gt;math-user&lt;/code&gt; includes the size &lt;code&gt;jupyter/datascience-notebook&lt;/code&gt;, since the sum of these two alone would exceed 15GB.&lt;/p&gt;
+&lt;p&gt;However, my Disk-Usage on Digital Ocean reads 15GB. This tells me that &lt;code&gt;math-user&lt;/code&gt; includes the size &lt;code&gt;jupyter/datascience-notebook&lt;/code&gt;, since the sum of these two alone would exceed 15GB. &amp;lsquo;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Jan 15&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Copying over from walkthrough.&lt;/p&gt;
+
+&lt;p&gt;We will use this guy&amp;rsquo;s &lt;a href=&#34;https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71&#34; target=&#34;_blank&#34;&gt;walkthrough&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -L https://raw.githubusercontent.com/wmnnd/nginx-certbot/master/init-letsencrypt.sh &amp;gt; init-letsencrypt.sh
+sed &#39;s/example.com/mathfight.club/g&#39; init-letsencrypt.sh &amp;gt; letsencrypt.sh
+mv letsencrypt.sh init-letsencrypt.sh
+chmod +x init-letsencrypt.sh
+sudo ./init-letsencrypt.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Had to edit some lines, ran out of requests for letsencrypt.&lt;/p&gt;
 </description>
     </item>
     
@@ -2687,6 +2704,303 @@ gzip -dc image.tgz | docker import - flat-image-name
     </item>
     
     <item>
+      <title>Deploying a New Hub</title>
+      <link>https://www.michaelpilosov.com/openscience/hubsetup/</link>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/hubsetup/</guid>
+      <description>
+
+&lt;h1 id=&#34;adding-a-hub&#34;&gt;Adding a Hub&lt;/h1&gt;
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;This document assumes that you have followed the walkthrough at least once before. You already have:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Logged in with an account that has &lt;code&gt;sudo&lt;/code&gt; permissions&lt;/li&gt;
+&lt;li&gt;Docker installed&lt;/li&gt;
+&lt;li&gt;Proxy configured, secured with HTTPS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This walk-through will guide you through the bare-minimal steps to set up a new hub.&lt;/p&gt;
+
+&lt;h2 id=&#34;preliminaries&#34;&gt;Preliminaries&lt;/h2&gt;
+
+&lt;p&gt;First, we need to decide on the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Name of new hub&lt;/li&gt;
+&lt;li&gt;An available port for it to be hosted on&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We will run the following commands to find out what is already in use:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker ps --format &amp;quot;table {{.Names}}\t{{.Status}}\t{{.Ports}}&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You will see the names and ports formatted printed out. Here is an example of what that might look like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;NAMES                STATUS              PORTS
+math8660-user-troy   Up 32 minutes       8888/tcp
+math-user-michael    Up 3 days           8888/tcp
+math8660             Up 3 days           0.0.0.0:8002-&amp;gt;8000/tcp
+math8660-db          Up 3 days           5432/tcp
+math                 Up 3 days           0.0.0.0:8000-&amp;gt;8000/tcp
+math-db              Up 3 days           5432/tcp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What we are seeing is a list of processes being run by Docker and their respective ports. The ones that read &lt;code&gt;8888/tcp&lt;/code&gt; are on the local docker-network (these are the single-user notebook servers).&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;If the output of this command is blank (perhaps this is your first time), then &lt;em&gt;nothing is running&lt;/em&gt;, and so you can stick with the default name and port number in our deployment.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;We can also see that three hubs are live on this server, listening for connections on local ports &lt;code&gt;8000&lt;/code&gt; and &lt;code&gt;8001&lt;/code&gt; in addition to the two user containers. The databases on &lt;code&gt;5432&lt;/code&gt; are similarly of no concern to us. &lt;strong&gt;We simply need to choose any port other than &lt;code&gt;8000&lt;/code&gt; or &lt;code&gt;8002&lt;/code&gt;&lt;/strong&gt; (e.g. &lt;code&gt;8001&lt;/code&gt;, &lt;code&gt;8003&lt;/code&gt;, &lt;code&gt;8451&lt;/code&gt;, &lt;code&gt;8762&lt;/code&gt;, etc.).&lt;/p&gt;
+
+&lt;p&gt;We also see that the two names in use are &lt;code&gt;math&lt;/code&gt; (default in our deployment) and &lt;code&gt;math8660&lt;/code&gt;, so we would have to choose a different name.
+In our deployment, this name is ALSO where your hub will live (&lt;code&gt;example.com/math8660&lt;/code&gt; and &lt;code&gt;example.com/math&lt;/code&gt; are live in the above output).&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;The proxy configurations must direct traffic to these &amp;ldquo;locations&amp;rdquo; (&lt;code&gt;/math&lt;/code&gt; and &lt;code&gt;/math8660&lt;/code&gt;) for it to be publicly accessible. See the &lt;a href=&#34;./openscience/walkthrough#proxy&#34;&gt;Proxy section of the Walkthrough&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;Before proceeding, let us get the necessary repository. Clone the repository from GitHub or copy an existing hub&amp;rsquo;s directory and rename the folder, or upload the files in any way you want. Rename it to something memorable (perhaps the name of your hub). Here we choose &amp;ldquo;deploy&amp;rdquo; as our folder name.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/mathematicalmichael/jupyterhub-deploy-docker.git
+mv jupyterhub-deploy-docker/ deploy/
+cd deploy
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The last line brings us into the &lt;code&gt;deploy&lt;/code&gt; directory, where the instructions that follow pick up. They assume that you have cloned the repo.&lt;/p&gt;
+
+&lt;h2 id=&#34;configure-settings&#34;&gt;Configure Settings&lt;/h2&gt;
+
+&lt;p&gt;Now that we are in the &lt;code&gt;deploy&lt;/code&gt; directory (or whatever you named your hub):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mkdir secrets
+make secrets/postgres.env
+make secrets/oauth.env
+make userlist
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;If you copied an existing hub, be aware that your secret files will be shared between the two (same login credentials).&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;At the very least, remove &lt;code&gt;postgres.env&lt;/code&gt; and re-make the secret key there.
+If you want &lt;em&gt;passwords to be shared&lt;/em&gt; for users across hubs, keep &lt;code&gt;oauth.env&lt;/code&gt; the same among the hubs. &lt;em&gt;Passwords are set during the build process.&lt;/em&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;You will see some dialogue regarding how to add users to the hub initially.
+We only need to be concerned with adding one administrative user at this time since we can add users later through the Hub&amp;rsquo;s interface.
+Run the following command and edit the &lt;code&gt;userlist&lt;/code&gt; according to the prompt you just saw, which will show you how to format this file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vim userlist
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, run &lt;code&gt;vim .env&lt;/code&gt; to change the name of your hub and the port to avoid conflicts with running Docker processes.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;The noteboook image that gets built by default is quite sizable.&lt;/p&gt;
+
+&lt;p&gt;You may consider changing this in the &lt;code&gt;.env&lt;/code&gt; file (&lt;code&gt;$DOCKER_NOTEBOOK_IMAGE&lt;/code&gt;) if you&amp;rsquo;re just testing it out and want to make sure it works (perhaps to &lt;code&gt;jupyter/minimal-notebook&lt;/code&gt; or another &lt;a href=&#34;https://github.com/jupyter/docker-stacks&#34; target=&#34;_blank&#34;&gt;pre-built stack&lt;/a&gt; ).
+But, the one we ship is &lt;em&gt;feature-rich&lt;/em&gt;. Consider it a &amp;ldquo;show off what this can do&amp;rdquo; example.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;The notebook image that gets build starts off with &lt;code&gt;$DOCKER_NOTEBOOK_IMAGE&lt;/code&gt; and adds in some features.
+To change the image, edit &lt;code&gt;singleuser/Dockerfile&lt;/code&gt; and delete as much as you would like.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;At any point you can re-build this image with &lt;code&gt;make notebook_image&lt;/code&gt; (which we will run in a moment in the next step).&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;build&#34;&gt;Build&lt;/h2&gt;
+
+&lt;p&gt;We are now ready to build our hub! The last line also &lt;em&gt;runs&lt;/em&gt; it as a background process.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;make build
+make notebook_image
+docker-compose up -d
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that is all. Sit back and wait.
+It will take a while.&lt;/p&gt;
+
+&lt;p&gt;You might see a bunch of red messages like these fly by during the build process.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chgrp: changing group of &#39;/opt/conda/var/cache/fontconfig/0c78243b-3123-48a4-91b4-49cb45a27aaf-le64.cache-7&#39;: Operation not permitted
+chgrp: changing group of &#39;/opt/conda/var/cache/fontconfig/2fd305a6-4303-4a09-8894-d1594f7ec636-le64.cache-7&#39;: Operation not permitted
+.
+.
+.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As far as I can tell, this is not a problem and occurs somewhere outside of the instructions I have added on top of the pre-built images supplied by Jupyter.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;If successful, you should see green &lt;code&gt;done&lt;/code&gt; output at the very end.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;When you want to destroy the images that get built (&lt;code&gt;make build&lt;/code&gt; runs &lt;code&gt;docker-compose build&lt;/code&gt; with some other options to configure it properly), and the associated containers created from them, you can run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker-compose down
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;to clean up. Since data is external to the containers that host our application, you won&amp;rsquo;t lose any configurations at all.&lt;/p&gt;
+
+&lt;h2 id=&#34;direct-traffic&#34;&gt;Direct Traffic&lt;/h2&gt;
+
+&lt;p&gt;From the &lt;a href=&#34;./openscience/walkthrough&#34;&gt;walkthrough&lt;/a&gt;, you should have already configured the nginx proxy. Now all that is left is to tell our proxy the &amp;ldquo;location&amp;rdquo; of our hub so that it can become publicly accessible.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo vim /etc/nginx/sites-enabled/hub.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You need to look for the &lt;code&gt;server&lt;/code&gt; object (if secured, on port &lt;code&gt;443&lt;/code&gt;) that matches the domain name that this hub will exist on, and add an entry inside of this server configuration. It will look like this (for the default hub that ships with the deployment, specified in &lt;code&gt;.env&lt;/code&gt;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;location /math {
+    proxy_pass http://127.0.0.1:8000;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    # websocket headers
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection $connection_upgrade;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, when &lt;code&gt;example.com/math&lt;/code&gt; is hit, our proxy (nginx) will direct traffic to &lt;code&gt;localhost&lt;/code&gt; (&lt;code&gt;127.0.0.1&lt;/code&gt;). Specifically, to port &lt;code&gt;8000&lt;/code&gt;. Make sure that the entry you add matches the &lt;code&gt;.env&lt;/code&gt; file. Here, we show the default.&lt;/p&gt;
+
+&lt;h2 id=&#34;acquire-credentials&#34;&gt;Acquire Credentials&lt;/h2&gt;
+
+&lt;p&gt;To get your password, &lt;code&gt;vim Makefile&lt;/code&gt; and uncomment the following line (around 5): &lt;code&gt;include secrets/oauth.env&lt;/code&gt;
+(Alternatively, you can just run &lt;code&gt;source secrets/oauth.env&lt;/code&gt; and skip editing the file).&lt;/p&gt;
+
+&lt;p&gt;Once that is done, you can run &lt;code&gt;make login&lt;/code&gt; to find out the password for whatever user is specified in &lt;code&gt;.env&lt;/code&gt;.
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;Hopefully the user in &lt;code&gt;.env&lt;/code&gt; matches at least one of the admin users you put in &lt;code&gt;userlist&lt;/code&gt;, otherwise you would be querying passwords for non-existent users. If not, edit &lt;code&gt;.env&lt;/code&gt; and &lt;code&gt;userlist&lt;/code&gt; and run &lt;code&gt;docker-compose down; docker-compose up -d&lt;/code&gt; to re-build the images.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&#34;test&#34;&gt;Test&lt;/h2&gt;
+
+&lt;p&gt;You can now log in by visiting &lt;code&gt;example.com/math&lt;/code&gt; and ensure that everything is working as expected out of the box.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;[hub-admin]:&#34; alt=&#34;snapshot-of-login&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can add users through &lt;code&gt;Control Panel &amp;gt; Admin&lt;/code&gt;!
+![snapshot-of-admin][hub-admin]&lt;/p&gt;
+
+&lt;p&gt;Now that you have your password, log in to the hub. If you navigate to &lt;code&gt;/hub/login_list&lt;/code&gt; you will see passwords for everyone in &lt;code&gt;userlist&lt;/code&gt;. Since the connection is not yet secure, do not do this yet.&lt;/p&gt;
+
+&lt;p&gt;You can bring up or take down your hub with
+&lt;code&gt;docker-compose up -d&lt;/code&gt; and
+&lt;code&gt;docker-compose down&lt;/code&gt;, but must run these in the same directory as the &lt;code&gt;docker-compose.yml&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;management&#34;&gt;Management&lt;/h1&gt;
+
+&lt;h2 id=&#34;adding-packages&#34;&gt;Adding Packages&lt;/h2&gt;
+
+&lt;p&gt;Assuming you are ssh&amp;rsquo;ed into the server and inside the directory that has your hub, simply edit &lt;code&gt;singleuser/Dockerfile&lt;/code&gt; and use the &lt;a href=&#34;https://www.michaelpilosov.com/openscience/docker&#34;&gt;Docker Reference&lt;/a&gt; on the next page to run commands.&lt;/p&gt;
+
+&lt;h2 id=&#34;managing-users-work&#34;&gt;Managing Users/Work&lt;/h2&gt;
+
+&lt;p&gt;When logged in to the hub, you can access &lt;code&gt;Control Panel &amp;gt; Admin&lt;/code&gt; to add users and access their servers.&lt;/p&gt;
+
+&lt;p&gt;To disable the feature of Admins being able to log in as the students, set &lt;code&gt;c.JupyterHub.admin_access = False&lt;/code&gt; in &lt;code&gt;jupyterhub_config.py&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;group-sharing&#34;&gt;Group Sharing&lt;/h2&gt;
+
+&lt;p&gt;Sharing files between groups is a feature I personally coded into the &lt;code&gt;jupyterhub_config.py&lt;/code&gt; file. Towards the top of the script, the file &lt;code&gt;userlist&lt;/code&gt; is opened (in the container&amp;hellip; so if you update it, you can run &lt;code&gt;docker restart hub-name&lt;/code&gt; since this configuration file only runs at hub startup). Better yet, do this from the Admin menu directly.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;Each line in &lt;code&gt;userlist&lt;/code&gt; has the name of the student, followed by their group names, separated by spaces.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;Instead of restarting through the docker command, you can &amp;ldquo;Power Down&amp;rdquo; the Hub from the Control Panel in JupyterHub. This has the effect of propagating changes to lists of users. Docker takes care of re-starting the hub automatically.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;If userlist is given the right permissions with &lt;code&gt;chown 777 userlist&lt;/code&gt;, and mounted inside the professor&amp;rsquo;s directory, it may be possible to manage group memberships  without ever logging into the math-hub server (except to update the single-user notebook image), editing the &lt;code&gt;userlist&lt;/code&gt; right from the web-interface, provided the group volume permissions have previously been set correctly.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;jupyterhub_config.py&lt;/code&gt; will check the user&amp;rsquo;s groups and mount all appropriate volumes. A volume is created for the group if one does not exist.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;By default, when volumes are created, the permissions are not set in a way where users can write files.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;To fix this, you would find the shared group volume in question, use &lt;code&gt;docker inspect&lt;/code&gt; to find out where it is, and change the permissions with &lt;code&gt;chmod&lt;/code&gt;. Here is an example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pilosovm@math-hub:~$ docker volume ls | grep &amp;quot;shared-*&amp;quot; | awk &#39;{print $2}&#39;
+ro_shared_volume
+rw_shared_volume
+shared-broncos
+shared-test-group
+pilosovm@math-hub:~$
+pilosovm@math-hub:~$ docker volume inspect shared-broncos | grep &amp;quot;Mountpoint&amp;quot;
+        &amp;quot;Mountpoint&amp;quot;: &amp;quot;/var/lib/docker/volumes/shared-broncos/_data&amp;quot;,
+pilosovm@math-hub:~$ chmod 777 /var/lib/docker/volumes/shared-broncos/_data
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;In this manner, you can create new volumes (e.g. &lt;code&gt;docker volume create shared-groupname&lt;/code&gt;) and set the permissions as desired with &lt;code&gt;chmod&lt;/code&gt;, modifying &lt;code&gt;userlist&lt;/code&gt; to add &lt;code&gt;groupname&lt;/code&gt; to the appropriate users.&lt;/p&gt;
+
+&lt;p&gt;Rinse, repeat.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;The architecture implemented here mounts volumes based on the words that follow the username in &lt;code&gt;userlist&lt;/code&gt; and prepends them with &lt;code&gt;shared&lt;/code&gt;. If you want to avoid naming conflicts, use group names such as &lt;code&gt;math8660-group1&lt;/code&gt;, &lt;code&gt;math8660-group2&lt;/code&gt;, etc., or something unique chosen by the group members). &lt;strong&gt;It is up to you to avoid naming conflicts across multiple hubs when sharing group volumes.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;More customization is possible. For example, you can have multiple hubs set up on the same server (e.g. at &lt;code&gt;example.com/hub1/&lt;/code&gt; and &lt;code&gt;example.com/hub2/&lt;/code&gt;, etc.) but create one &lt;code&gt;shared-admin&lt;/code&gt; volume that every administrator has access to. To accomplish this, (&lt;em&gt;or to add any new group volume&lt;/em&gt;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker volume create shared-admin
+docker volume inspect shared-admin | grep &amp;quot;Mountpoint&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;then use &lt;code&gt;chmod 777 PATH&lt;/code&gt; where &lt;code&gt;PATH&lt;/code&gt; matches the path in the output of the last command. Now this volume is visible to anyone for whom it is mounted.&lt;/p&gt;
+
+&lt;p&gt;However, in &lt;code&gt;jupyterhub_config.py&lt;/code&gt;, we have this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;33                 for i in range(1,len(parts)):
+34                     group_id = parts.pop()
+35                     if group_id != &#39;admin&#39;: # no need for an admin group.
+36                         group_map[user_name].append(group_id)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We purposefully disable this from happening by default. To enable it, simply change the logic here. Erase line 35, un-indent line 36, and the &lt;code&gt;shared-admin&lt;/code&gt; volume will be mounted for all admins of all hubs. Don&amp;rsquo;t forget to restart your hub for the changes to take effect.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>JupyterHub</title>
       <link>https://www.michaelpilosov.com/openscience/jupyterhub/</link>
       <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
@@ -3374,7 +3688,7 @@ I wouldn&amp;rsquo;t suggest sharing directories automatically for the container
       <guid>https://www.michaelpilosov.com/openscience/walkthrough/</guid>
       <description>
 
-&lt;h1 id=&#34;deployment&#34;&gt;Deployment&lt;/h1&gt;
+&lt;h1 id=&#34;inital-setup&#34;&gt;Inital Setup&lt;/h1&gt;
 
 &lt;div class=&#34;alert alert-&#34;&gt;
   &lt;p&gt;I presume the use of &lt;code&gt;vim&lt;/code&gt; in a few of these commands. If you are more comfortable using &lt;code&gt;nano&lt;/code&gt; for editing text, please be sure to make the appropriate substitutions.&lt;/p&gt;
@@ -3397,133 +3711,11 @@ su - $USER_NAME
 &lt;p&gt;Now set your password.
 We then set privileges and switch to this new user (and new shell, which should appear in color!).&lt;/p&gt;
 
-&lt;p&gt;If you already had an account with &lt;code&gt;sudo&lt;/code&gt; privileges, then you can start from here assuming you are logged in as such. The code that follows installs Docker, and runs a little test by checking the version to make sure everything worked.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;export DOCKER_COMPOSE_VERSION=1.23.2
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;(You will be prompted for your password)&lt;/p&gt;
-
-&lt;h2 id=&#34;docker-install&#34;&gt;Docker Install&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository &amp;quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable&amp;quot;
-sudo apt update
-apt-cache policy docker-ce
-sudo apt install docker-ce -y
-docker --version 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Success?&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo usermod -aG docker root
-sudo usermod -aG docker ${USER}
-sudo curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-docker-compose --version
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Success?&lt;/p&gt;
-
-&lt;h2 id=&#34;ssh-keys&#34;&gt;SSH Keys&lt;/h2&gt;
-
-&lt;p&gt;Now is a good time to reboot the machine since we just updated and installed a bunch of things. Before we do that, let us make sure we can &lt;code&gt;ssh&lt;/code&gt; in with either of the usernames now.
-Hit enter at the prompt.
-&lt;em&gt;YOUR COMPUTER WILL REBOOT AFTER&lt;/em&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh-keygen 
-sudo cat /root/.ssh/authorized_keys &amp;gt; ~/.ssh/authorized_keys
-reboot
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div class=&#34;alert alert-warning&#34;&gt;
-  &lt;p&gt;Your computer/server might take a minute or two to reboot.&lt;/p&gt;
-
-&lt;/div&gt;
-
-
-&lt;h2 id=&#34;hub-setup&#34;&gt;Hub Setup&lt;/h2&gt;
-
-&lt;p&gt;Then &lt;code&gt;ssh&lt;/code&gt; in as &lt;code&gt;your-name@your-website.com&lt;/code&gt;. Now we will handle setting up the hub.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git clone https://github.com/mathematicalmichael/jupyterhub-deploy-docker.git
-mv jupyterhub-deploy-docker/ deploy/
-cd deploy
-mkdir secrets
-make secrets/postgres.env
-make secrets/oauth.env
-make userlist
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You will see some dialogue regarding how to add users to the hub initially.
-We only need to be concerned with adding one administrative user at this time since we can add users later through the Hub&amp;rsquo;s interface.
-Run the following command and edit the &lt;code&gt;userlist&lt;/code&gt; according to the prompt you just saw.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vim userlist
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;(optional): &lt;code&gt;vim .env&lt;/code&gt; to change the name of your hub and some of the settings.&lt;/p&gt;
-
-&lt;p&gt;For testing purposes, let us edit &lt;code&gt;jupyterhub_config.py&lt;/code&gt; and comment out the following line (at or around 107):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#c.JupyterHub.base_url = u&#39;/%s/&#39;%hub_name
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This way, we will be able to access our hub to make sure it is running before we handle securing it behind a proxy and encryption.&lt;/p&gt;
-
-&lt;h2 id=&#34;single-user-notebooks&#34;&gt;Single-User Notebooks&lt;/h2&gt;
-
-&lt;p&gt;The noteboook image that gets built by default is quite sizable.
-You may consider changing this in the &lt;code&gt;.env&lt;/code&gt; file (&lt;code&gt;$DOCKER_NOTEBOOK_IMAGE&lt;/code&gt;) if you&amp;rsquo;re just testing it out and want to make sure it works (perhaps to &lt;code&gt;jupyter/minimal-notebook&lt;/code&gt;).
-But, the one we ship is &lt;em&gt;feature-rich&lt;/em&gt;. Consider it a &amp;ldquo;show off what this can do&amp;rdquo; example.&lt;/p&gt;
-
-&lt;p&gt;To change the image, edit &lt;code&gt;singleuser/Dockerfile&lt;/code&gt; and delete as much as you would like. This file along with the &lt;code&gt;$DOCKER_NOTEBOOK_IMAGE&lt;/code&gt; line in &lt;code&gt;.env&lt;/code&gt; determine the notebook that gets launched.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;At any point you can re-build this image with &lt;code&gt;make notebook_image&lt;/code&gt; (which we will run in a moment in the next step).&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;hub-build&#34;&gt;Hub Build&lt;/h2&gt;
-
-&lt;p&gt;We are now ready to build our hub! The last line also &lt;em&gt;runs&lt;/em&gt; it as a background process.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;make build
-make notebook_image
-docker-compose up -d
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And that is all. Sit back and wait.
-It will take a while.&lt;/p&gt;
-
-&lt;p&gt;When you want to destroy the images that &lt;code&gt;build&lt;/code&gt; (&lt;code&gt;make build&lt;/code&gt; runs &lt;code&gt;docker-compose build&lt;/code&gt; with some other options to configure it properly), creates, and the associated containers created from them, you can run:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker-compose down
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div class=&#34;alert alert-&#34;&gt;
-  &lt;p&gt;If successful, you should see green &lt;code&gt;done&lt;/code&gt; output at the very end.&lt;/p&gt;
-
-&lt;/div&gt;
-
-
-&lt;h3 id=&#34;troubleshooting&#34;&gt;Troubleshooting&lt;/h3&gt;
-
-&lt;p&gt;You might see a bunch of red messages like these fly by during the build process.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;chgrp: changing group of &#39;/opt/conda/var/cache/fontconfig/0c78243b-3123-48a4-91b4-49cb45a27aaf-le64.cache-7&#39;: Operation not permitted
-chgrp: changing group of &#39;/opt/conda/var/cache/fontconfig/2fd305a6-4303-4a09-8894-d1594f7ec636-le64.cache-7&#39;: Operation not permitted
-.
-.
-.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As far as I can tell, this is not a problem and occurs somewhere outside of the instructions I have added on top of the pre-built images supplied by Jupyter.&lt;/p&gt;
-
 &lt;h2 id=&#34;configurations&#34;&gt;Configurations&lt;/h2&gt;
 
-&lt;p&gt;While you wait for the build, feel free to open up another terminal and do the following. It will make&lt;/p&gt;
+&lt;p&gt;Here are some aliases I like to have in my &lt;code&gt;~/.bash_aliases&lt;/code&gt; file:&lt;/p&gt;
 
-&lt;p&gt;Here are some aliases I like to have in my &lt;code&gt;~/.bash_aliases&lt;/code&gt; file:
-&lt;code&gt;vim ~/.bash_aliases&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;vim ~/.bash_aliases&lt;/code&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# show users logged into the hub who have open sessions.
 alias dpsu=&#39;docker ps --format &amp;quot;table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}&amp;quot; -f &amp;quot;name=r*user*&amp;quot;&#39;
@@ -3565,28 +3757,180 @@ fi
 
 &lt;p&gt;Then run &lt;code&gt;source ~/.bashrc&lt;/code&gt; and you&amp;rsquo;ll have a nice environment.&lt;/p&gt;
 
-&lt;h2 id=&#34;logging-in&#34;&gt;Logging in&lt;/h2&gt;
+&lt;h2 id=&#34;docker-install&#34;&gt;Docker Install&lt;/h2&gt;
 
-&lt;p&gt;Check out &lt;code&gt;dps&lt;/code&gt; (if you added the aliases above, if not, go copy that line instead). Your hub and database should now be live (&lt;code&gt;website.com:port&lt;/code&gt;). The port it is on is given in &lt;code&gt;.env&lt;/code&gt; and will match what you see in this output.&lt;/p&gt;
+&lt;p&gt;If you already had an account with &lt;code&gt;sudo&lt;/code&gt; privileges, then you can start from here assuming you are logged in as such. The code that follows installs Docker, and runs a little test by checking the version to make sure everything worked.&lt;/p&gt;
 
-&lt;p&gt;To get your password, &lt;code&gt;vim Makefile&lt;/code&gt; and uncomment the following line (around 5): &lt;code&gt;include secrets/oauth.env&lt;/code&gt;
-(Alternatively, you can just run &lt;code&gt;source secrets/oauth.env)&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;export DOCKER_COMPOSE_VERSION=1.23.2
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Once that is done, you can run &lt;code&gt;make login&lt;/code&gt; to find out the password for whatever user is specified in &lt;code&gt;.env&lt;/code&gt; (hopefully it matches at least one of the admin users you put in &lt;code&gt;userlist&lt;/code&gt;, otherwise you would be querying passwords for non-existent users).&lt;/p&gt;
+&lt;p&gt;(You will be prompted for your password)&lt;/p&gt;
 
-&lt;p&gt;You can now log in and see that everything works out of the box!!!&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository &amp;quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable&amp;quot;
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install docker-ce -y
+docker --version 
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;[hub-admin]:&#34; alt=&#34;snapshot-of-login&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Success?&lt;/p&gt;
 
-&lt;p&gt;You can add users through &lt;code&gt;Control Panel &amp;gt; Admin&lt;/code&gt;!
-![snapshot-of-admin][hub-admin]&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo usermod -aG docker root
+sudo usermod -aG docker ${USER}
+sudo curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;If you navigate to &lt;code&gt;/hub/login_list&lt;/code&gt; you will see passwords for everyone in &lt;code&gt;userlist&lt;/code&gt;. Since the connection is not yet secure, do not do this yet.&lt;/p&gt;
+&lt;p&gt;Success?&lt;/p&gt;
 
-&lt;p&gt;To secure our connection:
-&lt;code&gt;vim hub.conf&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ssh-keys&#34;&gt;SSH Keys&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;
+&lt;p&gt;Now is a good time to reboot the machine since we just updated and installed a bunch of things. Before we do that, let us make sure we can &lt;code&gt;ssh&lt;/code&gt; in with either of the usernames now.
+Hit enter at the prompt.
+&lt;em&gt;YOUR COMPUTER WILL REBOOT AFTER&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh-keygen 
+sudo cat /root/.ssh/authorized_keys &amp;gt; ~/.ssh/authorized_keys
+reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;Your computer/server might take a minute or two to reboot.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;After restarting &lt;code&gt;ssh&lt;/code&gt; in as &lt;code&gt;your-name@your-website.com&lt;/code&gt;.
+We will take care of the proxy and security set up first (in order to complete the instructions that only need to be performed initially).&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;security&#34;&gt;Security&lt;/h1&gt;
+
+&lt;p&gt;Here is how you do it without a container (ideally we could containerize this whole aspect as well into our &lt;code&gt;docker-compose.yml&lt;/code&gt; file, but that is not yet the case). Run all this first.&lt;/p&gt;
+
+&lt;h2 id=&#34;encryption&#34;&gt;Encryption&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install certbot 
+sudo certbot certonly
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Follow prompts, enter info for your site.
+This creates a public/private key pair with a certificate authority so that browsers can trust the connection is valid.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;If you are behind a private network (&lt;code&gt;.pvt&lt;/code&gt; or any other non-public domain), then you must acquire this certificate and key from another (presumably the school&amp;rsquo;s) certificate authority. Make sure the paths are set properly in the configuration to reflect where you placed these keys. Furthermore, you may have to comment out the &lt;code&gt;ssl-ciphers&lt;/code&gt; line (we had to at CU Denver to make it work, but this isn&amp;rsquo;t required on public domains).&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;The keys generated will by default be in &lt;code&gt;/etc/ssl/live/example.com/&lt;/code&gt;, which you will see reflected in the example configuration below (set for &lt;code&gt;example.com&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Then run the following,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This creates a long encryption key that we will pass to nginx (our proxy) in the next step for additional security.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;proxy&#34;&gt;Proxy&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get update
+sudo apt install nginx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;nginx-config&#34;&gt;Nginx Config&lt;/h3&gt;
+
+&lt;p&gt;To secure our connection, we will create the following file in &lt;code&gt;/etc/nginx/sites-enabled/&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;You may need to remove &lt;code&gt;default.conf&lt;/code&gt;, or edit it directly to match the following instead.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;If you choose to edit &lt;code&gt;default.conf&lt;/code&gt;, make sure to add the following line to override the default nginx settings, which will prevent you from saving notebooks greater than 1MB in size: &lt;code&gt;client_max_body_size 20m;&lt;/code&gt; (see example below).&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;Run &lt;code&gt;sudo vim /etc/nginx/sites-enabled/hub.conf&lt;/code&gt; and edit the file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# top-level http config for websocket headers
+# If Upgrade is defined, Connection = upgrade
+# If Upgrade is empty, Connection = close
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    &#39;&#39;      close;
+}
+
+# HTTP server to redirect all 80 traffic to SSL/HTTPS
+server {
+    listen 80;
+    server_name example.com;
+
+    # Tell all requests to port 80 to be 302 redirected to HTTPS
+    return 302 https://$host$request_uri;
+}
+
+# HTTPS server to handle JupyterHub
+server {
+    listen 443;
+    ssl on;
+
+    server_name example.com;
+    
+     ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
+     ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+
+    # memory limits need to be upped for notebooks. default of 1mb is insufficient. 
+    client_max_body_size 20m;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+    ssl_ciphers &#39;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:E$
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:SSL:50m;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    add_header Strict-Transport-Security max-age=15768000;
+
+    # Managing literal requests to the JupyterHub front end
+    location /math {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # websocket headers
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+    }
+
+
+    location /math8660 {
+        proxy_pass http://127.0.0.1:8002;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # websocket headers
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+    }
+
+    # Managing requests to verify letsencrypt host
+    location ~ /.well-known {
+        allow all;
+    }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;That last section starting with &lt;code&gt;location&lt;/code&gt; is what we&amp;rsquo;ll be tweaking if we want to host this at &lt;code&gt;hub.mathfight.club&lt;/code&gt; or &lt;code&gt;mathfight.club/hub/&lt;/code&gt; or whatever we want. (Although in the case of a directory &lt;code&gt;/suffix/&lt;/code&gt; format, we will have to make sure the line from the &lt;code&gt;jupyterhub_config.py&lt;/code&gt; that we commented out above matches this configuration file.&lt;/p&gt;
@@ -3601,181 +3945,20 @@ fi
 
 &lt;p&gt;If you want some kind of homepage instead of a Hub login, you can configure that to be the case with the following:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;TO DO : root code.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;management&#34;&gt;Management&lt;/h1&gt;
-
-&lt;h2 id=&#34;adding-packages&#34;&gt;Adding Packages&lt;/h2&gt;
-
-&lt;h2 id=&#34;managing-users-work&#34;&gt;Managing Users/Work&lt;/h2&gt;
-
-&lt;h2 id=&#34;group-sharing&#34;&gt;Group Sharing&lt;/h2&gt;
-
-&lt;p&gt;Sharing files between groups is a feature I personally coded into the &lt;code&gt;jupyterhub_config.py&lt;/code&gt; file. Towards the top of the script, the file &lt;code&gt;userlist&lt;/code&gt; is opened (in the container&amp;hellip; so if you update it, you can run &lt;code&gt;docker restart hub-name&lt;/code&gt; since this configuration file only runs at hub startup). Better yet, do this from the Admin menu directly.&lt;/p&gt;
-
-&lt;div class=&#34;alert alert-&#34;&gt;
-  &lt;p&gt;Each line in &lt;code&gt;userlist&lt;/code&gt; has the name of the student, followed by their group names, separated by spaces.&lt;/p&gt;
-
-&lt;/div&gt;
-
-
-&lt;p&gt;Instead of restarting through the docker command, you can &amp;ldquo;Power Down&amp;rdquo; the Hub from the Control Panel in JupyterHub. This has the effect of propagating changes to lists of users. Docker takes care of re-starting the hub automatically.&lt;/p&gt;
-
-&lt;div class=&#34;alert alert-&#34;&gt;
-  &lt;p&gt;If userlist is given the right permissions with &lt;code&gt;chown 777 userlist&lt;/code&gt;, and mounted inside the professor&amp;rsquo;s directory, it may be possible to manage group memberships  without ever logging into the math-hub server (except to update the single-user notebook image), editing the &lt;code&gt;userlist&lt;/code&gt; right from the web-interface, provided the group volume permissions have previously been set correctly.&lt;/p&gt;
-
-&lt;/div&gt;
-
-
-&lt;p&gt;&lt;code&gt;jupyterhub_config.py&lt;/code&gt; will check the user&amp;rsquo;s groups and mount all appropriate volumes. A volume is created for the group if one does not exist.&lt;/p&gt;
-
-&lt;div class=&#34;alert alert-warning&#34;&gt;
-  &lt;p&gt;By default, when volumes are created, the permissions are not set in a way where users can write files.&lt;/p&gt;
-
-&lt;/div&gt;
-
-
-&lt;p&gt;To fix this, you would find the shared group volume in question, use &lt;code&gt;docker inspect&lt;/code&gt; to find out where it is, and change the permissions with &lt;code&gt;chmod&lt;/code&gt;. Here is an example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pilosovm@math-hub:~$ docker volume ls | grep &amp;quot;shared-*&amp;quot; | awk &#39;{print $2}&#39;
-ro_shared_volume
-rw_shared_volume
-shared-broncos
-shared-test-group
-pilosovm@math-hub:~$
-pilosovm@math-hub:~$ docker volume inspect shared-broncos | grep &amp;quot;Mountpoint&amp;quot;
-        &amp;quot;Mountpoint&amp;quot;: &amp;quot;/var/lib/docker/volumes/shared-broncos/_data&amp;quot;,
-pilosovm@math-hub:~$ chmod 777 /var/lib/docker/volumes/shared-broncos/_data
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;In this manner, you can create new volumes (e.g. &lt;code&gt;docker volume create shared-groupname&lt;/code&gt;) and set the permissions as desired with &lt;code&gt;chmod&lt;/code&gt;, modifying &lt;code&gt;userlist&lt;/code&gt; to add &lt;code&gt;groupname&lt;/code&gt; to the appropriate users.&lt;/p&gt;
-
-&lt;p&gt;Rinse, repeat.&lt;/p&gt;
-
-&lt;div class=&#34;alert alert-&#34;&gt;
-  &lt;p&gt;The architecture implemented here mounts volumes based on the words that follow the username in &lt;code&gt;userlist&lt;/code&gt; and prepends them with &lt;code&gt;shared&lt;/code&gt;. If you want to avoid naming conflicts, use group names such as &lt;code&gt;math8660-group1&lt;/code&gt;, &lt;code&gt;math8660-group2&lt;/code&gt;, etc., or something unique chosen by the group members). &lt;strong&gt;It is up to you to avoid naming conflicts across multiple hubs when sharing group volumes.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;/div&gt;
-
-
-&lt;p&gt;More customization is possible. For example, you can have multiple hubs set up on the same server (e.g. at &lt;code&gt;math.computer/hub1/&lt;/code&gt; and &lt;code&gt;math.computer/hub2/&lt;/code&gt;, etc.) but create one &lt;code&gt;shared-admin&lt;/code&gt; volume that every administrator has access to. To accomplish this, (&lt;em&gt;or to add any new group volume&lt;/em&gt;):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker volume create shared-admin
-docker volume inspect shared-admin | grep &amp;quot;Mountpoint&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;then use &lt;code&gt;chmod 777 PATH&lt;/code&gt; where &lt;code&gt;PATH&lt;/code&gt; matches the path in the output of the last command. Now this volume is visible to anyone for whom it is mounted.&lt;/p&gt;
-
-&lt;p&gt;However, in &lt;code&gt;jupyterhub_config.py&lt;/code&gt;, we have this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;33                 for i in range(1,len(parts)):
-34                     group_id = parts.pop()
-35                     if group_id != &#39;admin&#39;: # no need for an admin group.
-36                         group_map[user_name].append(group_id)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We purposefully disable this from happening by default. To enable it, simply change the logic here. Erase line 35, un-indent line 36, and the &lt;code&gt;shared-admin&lt;/code&gt; volume will be mounted for all admins of all hubs. Don&amp;rsquo;t forget to restart your hub for the changes to take effect.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;hr /&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;security&#34;&gt;Security&lt;/h1&gt;
-
-&lt;p&gt;We will use this guy&amp;rsquo;s &lt;a href=&#34;https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71&#34; target=&#34;_blank&#34;&gt;walkthrough&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -L https://raw.githubusercontent.com/wmnnd/nginx-certbot/master/init-letsencrypt.sh &amp;gt; init-letsencrypt.sh
-sed &#39;s/example.com/mathfight.club/g&#39; init-letsencrypt.sh &amp;gt; letsencrypt.sh
-mv letsencrypt.sh init-letsencrypt.sh
-chmod +x init-letsencrypt.sh
-sudo ./init-letsencrypt.sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Had to edit some lines, ran out of requests for letsencrypt.&lt;/p&gt;
-
-&lt;p&gt;Here is how you do it without a container:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get update
-sudo apt install nginx
-sudo apt-get install software-properties-common
-sudo add-apt-repository universe
-
-sudo add-apt-repository ppa:certbot/certbot
-sudo apt-get update
-sudo apt-get install certbot 
-sudo certbot certonly
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Follow prompts, enter in info for your site.
-Then run the following,
-&lt;code&gt;sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096&lt;/code&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;nginx-config&#34;&gt;Nginx Config&lt;/h2&gt;
-
-&lt;p&gt;move the &lt;code&gt;hub.conf&lt;/code&gt; file to &lt;code&gt;/etc/nginx/sites-enabled&lt;/code&gt; and that should be fine now to &lt;code&gt;service nginx restart&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# top-level http config for websocket headers
-# If Upgrade is defined, Connection = upgrade
-# If Upgrade is empty, Connection = close
-map $http_upgrade $connection_upgrade {
-    default upgrade;
-    &#39;&#39;      close;
-}
-
-# HTTP server to redirect all 80 traffic to SSL/HTTPS
-server {
-    listen 80;
-    server_name math.computer;
-
-    # Tell all requests to port 80 to be 302 redirected to HTTPS
-    return 302 https://$host$request_uri;
-}
-
-# HTTPS server to handle JupyterHub
-server {
-    listen 443 ssl;
-
-    server_name math.computer;
-
-    ssl_certificate /etc/letsencrypt/live/math.computer/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/math.computer/privkey.pem;
-
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_prefer_server_ciphers on;
-    ssl_dhparam /etc/ssl/certs/dhparam.pem;
-    ssl_ciphers &#39;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA&#39;;
-    ssl_session_timeout 1d;
-    ssl_session_cache shared:SSL:50m;
-    ssl_stapling on;
-    ssl_stapling_verify on;
-    add_header Strict-Transport-Security max-age=15768000;
-
-    # Managing requests to verify letsencrypt host
-        location ~ /.well-known {
-            allow all;
-        }
-    
-    location / {
-                proxy_pass http://127.0.0.1:8000;
-                proxy_set_header X-Real-IP $remote_addr;
-                proxy_set_header Host $host;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-
-                # websocket headers
-                proxy_set_header Upgrade $http_upgrade;
-                proxy_set_header Connection $connection_upgrade;
-            }
+&lt;pre&gt;&lt;code&gt;location / {
+    root /var/www/public_html;
+    .
+    .
+    .
 }
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Restart nginx for changes to take effect:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;service nginx restart
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can now proceed to adding a hub in the &lt;a href=&#34;https://www.michaelpilosov.com/openscience/hubsetup&#34;&gt;Hub Setup&lt;/a&gt; documentation.&lt;/p&gt;
 </description>
     </item>
     
@@ -4183,44 +4366,6 @@ for administration of the Hub and its users.&lt;/p&gt;
 
 &lt;p&gt;I personally run Jupyterhub on a remote server so that I always have access to a secure and familiar environment if I ever need to test out some code and find myself without my laptop.
 By default, it accepts the login information of just the user who is running it, but we will see later how it can be configured for its intended use as a multi-user authentication hub.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Day 2</title>
-      <link>https://www.michaelpilosov.com/devlog/widgets/</link>
-      <pubDate>Thu, 20 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/devlog/widgets/</guid>
-      <description>
-
-&lt;h1 id=&#34;summary&#34;&gt;Summary&lt;/h1&gt;
-
-&lt;p&gt;I spent the day working with the widget library and understanding how interpolating polynomials are handled by &lt;code&gt;scipy&lt;/code&gt;.
-Most of today&amp;rsquo;s developments were concerned with my random art and animation libraries, and I completed some of the most important components of the interface: setting time-dependent functions (independent of frames), and creating a widget that properly reads/writes data to a dictionary.&lt;/p&gt;
-
-&lt;p&gt;I still need to link the interfaces for the existing GUIs that write the properties.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Allow removal feature?&lt;/li&gt;
-&lt;li&gt;scrape the widgets and write to dictionary.&lt;/li&gt;
-&lt;li&gt;New GUI for stacking effects, connecting each effect to the needed time-series based on available entries in aforementioned dictionary.&lt;/li&gt;
-&lt;li&gt;All effects get applied with their time series, passed to animation function to be written to file.&lt;/li&gt;
-&lt;li&gt;Maybe use the Play button to preview? (Have a GUI focused on the &lt;code&gt;num_frames&lt;/code&gt; perspective). It is linked to the index.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;em&gt;Update:&lt;/em&gt; As of 01/01/19, dictionary writing is working. Preview button is segmented out. Play button implemented. No removal, bare-bones working time-series manipulation. Need to add in hyperbolic tangent functions (should also write blog about these).&lt;/p&gt;
-
-&lt;h1 id=&#34;notes&#34;&gt;Notes&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Still having trouble with the mybinder.org connections with my &lt;code&gt;giftplanning&lt;/code&gt; library that tests out my deployment solutions for interactive blogs.
-&lt;em&gt;Update:&lt;/em&gt; As of 01/01/19, devs and I have been in touch on &lt;a href=&#34;https://gitter.im/nbinteract/Lobby&#34; target=&#34;_blank&#34;&gt;gitter&lt;/a&gt;. Sam pushed a fix to unpkg.com and my site started to work again.
-TO DO: Go make a publicly accessible redundant copy of JS script, query it. Ask Elliott how to only trigger it if the first one fails.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;After conversing with Elliott last night (12/19/19), I think that writing a simple WebSocket atop Flask with his help may be a good solution. A JSON file gets passed back and forth, manipulations happen on a server. Still would prefer to just learn how to make the widgets do this part.
-&lt;em&gt;Update:&lt;/em&gt; As of 01/01/19, I have found numerous other solutions and there is a &lt;a href=&#34;https://github.com/SamLau95/nbinteract/issues/101&#34; target=&#34;_blank&#34;&gt;feature request&lt;/a&gt; submitted for the nbinteract library that would enable me to run the nbserver that mybinder.org is providing on a machine that I own instead, which would greatly reduce latency. Would docker be able to automatically re-start it? Load balance? Etc. (probably, but that&amp;rsquo;s for later. For now, mybinder.org is fine, but steps should be taken to ensure the visualizations work in posterity). Should also attempt to get their plotting to work again (maybe one of their updates have fixed this?)&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

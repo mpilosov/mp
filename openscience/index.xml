@@ -22,6 +22,18 @@
     </item>
     
     <item>
+      <title>Deploying a New Hub</title>
+      <link>https://www.michaelpilosov.com/openscience/hubsetup/</link>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/hubsetup/</guid>
+      <description>Adding a Hub Introduction This document assumes that you have followed the walkthrough at least once before. You already have:
+ Logged in with an account that has sudo permissions Docker installed Proxy configured, secured with HTTPS  This walk-through will guide you through the bare-minimal steps to set up a new hub.
+Preliminaries First, we need to decide on the following:
+ Name of new hub An available port for it to be hosted on  We will run the following commands to find out what is already in use:</description>
+    </item>
+    
+    <item>
       <title>JupyterHub</title>
       <link>https://www.michaelpilosov.com/openscience/jupyterhub/</link>
       <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
@@ -36,7 +48,7 @@
       <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/openscience/walkthrough/</guid>
-      <description>Deployment I presume the use of vim in a few of these commands. If you are more comfortable using nano for editing text, please be sure to make the appropriate substitutions.
+      <description>Inital Setup I presume the use of vim in a few of these commands. If you are more comfortable using nano for editing text, please be sure to make the appropriate substitutions.
  On a brand new server&amp;hellip; (Change the top line to be your name)
 export USER_NAME=mathematicalmichael sudo apt update -y &amp;amp;&amp;amp; sudo apt upgrade -y sudo apt install vim htop make -y useradd $USER_NAME -m -s /bin/bash passwd $USER_NAME usermod -aG sudo $USER_NAME su - $USER_NAME  Now set your password.</description>
     </item>

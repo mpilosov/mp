@@ -909,7 +909,24 @@ jupyter/datascience-notebook    latest              18c805bb3afb        3 days a
 jupyterhub/jupyterhub-onbuild   0.9.4               9ca16c1a77c3        3 months ago        812MB
 </code></pre>
 
-<p>However, my Disk-Usage on Digital Ocean reads 15GB. This tells me that <code>math-user</code> includes the size <code>jupyter/datascience-notebook</code>, since the sum of these two alone would exceed 15GB.</p>
+<p>However, my Disk-Usage on Digital Ocean reads 15GB. This tells me that <code>math-user</code> includes the size <code>jupyter/datascience-notebook</code>, since the sum of these two alone would exceed 15GB. &lsquo;</p>
+
+<hr />
+
+<p>Jan 15</p>
+
+<p><em>Note:</em> Copying over from walkthrough.</p>
+
+<p>We will use this guy&rsquo;s <a href="https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71" target="_blank">walkthrough</a>.</p>
+
+<pre><code class="language-bash">curl -L https://raw.githubusercontent.com/wmnnd/nginx-certbot/master/init-letsencrypt.sh &gt; init-letsencrypt.sh
+sed 's/example.com/mathfight.club/g' init-letsencrypt.sh &gt; letsencrypt.sh
+mv letsencrypt.sh init-letsencrypt.sh
+chmod +x init-letsencrypt.sh
+sudo ./init-letsencrypt.sh
+</code></pre>
+
+<p>Had to edit some lines, ran out of requests for letsencrypt.</p>
 
           </div>
 

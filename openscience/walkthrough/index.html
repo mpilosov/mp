@@ -15,7 +15,7 @@
   
     
   
-  <meta name="description" content="Deployment I presume the use of vim in a few of these commands. If you are more comfortable using nano for editing text, please be sure to make the appropriate substitutions.
+  <meta name="description" content="Inital Setup I presume the use of vim in a few of these commands. If you are more comfortable using nano for editing text, please be sure to make the appropriate substitutions.
  On a brand new server&hellip; (Change the top line to be your name)
 export USER_NAME=mathematicalmichael sudo apt update -y &amp;&amp; sudo apt upgrade -y sudo apt install vim htop make -y useradd $USER_NAME -m -s /bin/bash passwd $USER_NAME usermod -aG sudo $USER_NAME su - $USER_NAME  Now set your password.">
 
@@ -126,7 +126,7 @@ export USER_NAME=mathematicalmichael sudo apt update -y &amp;&amp; sudo apt upgr
   <meta property="og:site_name" content="Michael Pilosov | Academic Website">
   <meta property="og:url" content="https://www.michaelpilosov.com/openscience/walkthrough/">
   <meta property="og:title" content="Deploying | Michael Pilosov | Academic Website">
-  <meta property="og:description" content="Deployment I presume the use of vim in a few of these commands. If you are more comfortable using nano for editing text, please be sure to make the appropriate substitutions.
+  <meta property="og:description" content="Inital Setup I presume the use of vim in a few of these commands. If you are more comfortable using nano for editing text, please be sure to make the appropriate substitutions.
  On a brand new server&hellip; (Change the top line to be your name)
 export USER_NAME=mathematicalmichael sudo apt update -y &amp;&amp; sudo apt upgrade -y sudo apt install vim htop make -y useradd $USER_NAME -m -s /bin/bash passwd $USER_NAME usermod -aG sudo $USER_NAME su - $USER_NAME  Now set your password."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
   <meta property="og:locale" content="en-us">
@@ -371,19 +371,23 @@ export USER_NAME=mathematicalmichael sudo apt update -y &amp;&amp; sudo apt upgr
   </div>
   
   <div class="docs-toc-item">
-    <a class="docs-toc-link" href="/openscience/walkthrough/">3. Walkthrough</a>
+    <a class="docs-toc-link" href="/openscience/jupyterhub/">3. Walkthrough</a>
     <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/openscience/jupyterhub/">JupyterHub</a>
+      </li>
       
       <li class="active">
         <a href="/openscience/walkthrough/">Walk-Through</a>
       </li>
       
       <li >
-        <a href="/openscience/docker/">Docker Reference</a>
+        <a href="/openscience/hubsetup/">Hub Setup</a>
       </li>
       
       <li >
-        <a href="/openscience/jupyterhub/">JupyterHub</a>
+        <a href="/openscience/docker/">Docker Reference</a>
       </li>
       
     </ul>
@@ -417,28 +421,19 @@ export USER_NAME=mathematicalmichael sudo apt update -y &amp;&amp; sudo apt upgr
 
       <nav id="TableOfContents">
 <ul>
-<li><a href="#deployment">Deployment</a>
+<li><a href="#inital-setup">Inital Setup</a>
 <ul>
+<li><a href="#configurations">Configurations</a></li>
 <li><a href="#docker-install">Docker Install</a></li>
 <li><a href="#ssh-keys">SSH Keys</a></li>
-<li><a href="#hub-setup">Hub Setup</a></li>
-<li><a href="#single-user-notebooks">Single-User Notebooks</a></li>
-<li><a href="#hub-build">Hub Build</a>
-<ul>
-<li><a href="#troubleshooting">Troubleshooting</a></li>
-</ul></li>
-<li><a href="#configurations">Configurations</a></li>
-<li><a href="#logging-in">Logging in</a></li>
-</ul></li>
-<li><a href="#management">Management</a>
-<ul>
-<li><a href="#adding-packages">Adding Packages</a></li>
-<li><a href="#managing-users-work">Managing Users/Work</a></li>
-<li><a href="#group-sharing">Group Sharing</a></li>
 </ul></li>
 <li><a href="#security">Security</a>
 <ul>
+<li><a href="#encryption">Encryption</a></li>
+<li><a href="#proxy">Proxy</a>
+<ul>
 <li><a href="#nginx-config">Nginx Config</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -461,7 +456,7 @@ export USER_NAME=mathematicalmichael sudo apt update -y &amp;&amp; sudo apt upgr
           <div class="article-style" itemprop="articleBody">
             
 
-<h1 id="deployment">Deployment</h1>
+<h1 id="inital-setup">Inital Setup</h1>
 
 <div class="alert alert-">
   <p>I presume the use of <code>vim</code> in a few of these commands. If you are more comfortable using <code>nano</code> for editing text, please be sure to make the appropriate substitutions.</p>
@@ -484,133 +479,11 @@ su - $USER_NAME
 <p>Now set your password.
 We then set privileges and switch to this new user (and new shell, which should appear in color!).</p>
 
-<p>If you already had an account with <code>sudo</code> privileges, then you can start from here assuming you are logged in as such. The code that follows installs Docker, and runs a little test by checking the version to make sure everything worked.</p>
-
-<pre><code class="language-bash">export DOCKER_COMPOSE_VERSION=1.23.2
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
-</code></pre>
-
-<p>(You will be prompted for your password)</p>
-
-<h2 id="docker-install">Docker Install</h2>
-
-<pre><code class="language-bash">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable&quot;
-sudo apt update
-apt-cache policy docker-ce
-sudo apt install docker-ce -y
-docker --version 
-</code></pre>
-
-<p>Success?</p>
-
-<pre><code class="language-bash">sudo usermod -aG docker root
-sudo usermod -aG docker ${USER}
-sudo curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-docker-compose --version
-</code></pre>
-
-<p>Success?</p>
-
-<h2 id="ssh-keys">SSH Keys</h2>
-
-<p>Now is a good time to reboot the machine since we just updated and installed a bunch of things. Before we do that, let us make sure we can <code>ssh</code> in with either of the usernames now.
-Hit enter at the prompt.
-<em>YOUR COMPUTER WILL REBOOT AFTER</em></p>
-
-<pre><code class="language-bash">ssh-keygen 
-sudo cat /root/.ssh/authorized_keys &gt; ~/.ssh/authorized_keys
-reboot
-</code></pre>
-
-<div class="alert alert-warning">
-  <p>Your computer/server might take a minute or two to reboot.</p>
-
-</div>
-
-
-<h2 id="hub-setup">Hub Setup</h2>
-
-<p>Then <code>ssh</code> in as <code>your-name@your-website.com</code>. Now we will handle setting up the hub.</p>
-
-<pre><code class="language-bash">git clone https://github.com/mathematicalmichael/jupyterhub-deploy-docker.git
-mv jupyterhub-deploy-docker/ deploy/
-cd deploy
-mkdir secrets
-make secrets/postgres.env
-make secrets/oauth.env
-make userlist
-</code></pre>
-
-<p>You will see some dialogue regarding how to add users to the hub initially.
-We only need to be concerned with adding one administrative user at this time since we can add users later through the Hub&rsquo;s interface.
-Run the following command and edit the <code>userlist</code> according to the prompt you just saw.</p>
-
-<pre><code class="language-bash">vim userlist
-</code></pre>
-
-<p>(optional): <code>vim .env</code> to change the name of your hub and some of the settings.</p>
-
-<p>For testing purposes, let us edit <code>jupyterhub_config.py</code> and comment out the following line (at or around 107):</p>
-
-<pre><code class="language-python">#c.JupyterHub.base_url = u'/%s/'%hub_name
-</code></pre>
-
-<p>This way, we will be able to access our hub to make sure it is running before we handle securing it behind a proxy and encryption.</p>
-
-<h2 id="single-user-notebooks">Single-User Notebooks</h2>
-
-<p>The noteboook image that gets built by default is quite sizable.
-You may consider changing this in the <code>.env</code> file (<code>$DOCKER_NOTEBOOK_IMAGE</code>) if you&rsquo;re just testing it out and want to make sure it works (perhaps to <code>jupyter/minimal-notebook</code>).
-But, the one we ship is <em>feature-rich</em>. Consider it a &ldquo;show off what this can do&rdquo; example.</p>
-
-<p>To change the image, edit <code>singleuser/Dockerfile</code> and delete as much as you would like. This file along with the <code>$DOCKER_NOTEBOOK_IMAGE</code> line in <code>.env</code> determine the notebook that gets launched.</p>
-
-<p><strong>At any point you can re-build this image with <code>make notebook_image</code> (which we will run in a moment in the next step).</strong></p>
-
-<h2 id="hub-build">Hub Build</h2>
-
-<p>We are now ready to build our hub! The last line also <em>runs</em> it as a background process.</p>
-
-<pre><code class="language-bash">make build
-make notebook_image
-docker-compose up -d
-</code></pre>
-
-<p>And that is all. Sit back and wait.
-It will take a while.</p>
-
-<p>When you want to destroy the images that <code>build</code> (<code>make build</code> runs <code>docker-compose build</code> with some other options to configure it properly), creates, and the associated containers created from them, you can run:</p>
-
-<pre><code class="language-bash">docker-compose down
-</code></pre>
-
-<div class="alert alert-">
-  <p>If successful, you should see green <code>done</code> output at the very end.</p>
-
-</div>
-
-
-<h3 id="troubleshooting">Troubleshooting</h3>
-
-<p>You might see a bunch of red messages like these fly by during the build process.</p>
-
-<pre><code>chgrp: changing group of '/opt/conda/var/cache/fontconfig/0c78243b-3123-48a4-91b4-49cb45a27aaf-le64.cache-7': Operation not permitted
-chgrp: changing group of '/opt/conda/var/cache/fontconfig/2fd305a6-4303-4a09-8894-d1594f7ec636-le64.cache-7': Operation not permitted
-.
-.
-.
-</code></pre>
-
-<p>As far as I can tell, this is not a problem and occurs somewhere outside of the instructions I have added on top of the pre-built images supplied by Jupyter.</p>
-
 <h2 id="configurations">Configurations</h2>
 
-<p>While you wait for the build, feel free to open up another terminal and do the following. It will make</p>
+<p>Here are some aliases I like to have in my <code>~/.bash_aliases</code> file:</p>
 
-<p>Here are some aliases I like to have in my <code>~/.bash_aliases</code> file:
-<code>vim ~/.bash_aliases</code></p>
+<p><code>vim ~/.bash_aliases</code></p>
 
 <pre><code class="language-bash"># show users logged into the hub who have open sessions.
 alias dpsu='docker ps --format &quot;table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}&quot; -f &quot;name=r*user*&quot;'
@@ -652,28 +525,180 @@ fi
 
 <p>Then run <code>source ~/.bashrc</code> and you&rsquo;ll have a nice environment.</p>
 
-<h2 id="logging-in">Logging in</h2>
+<h2 id="docker-install">Docker Install</h2>
 
-<p>Check out <code>dps</code> (if you added the aliases above, if not, go copy that line instead). Your hub and database should now be live (<code>website.com:port</code>). The port it is on is given in <code>.env</code> and will match what you see in this output.</p>
+<p>If you already had an account with <code>sudo</code> privileges, then you can start from here assuming you are logged in as such. The code that follows installs Docker, and runs a little test by checking the version to make sure everything worked.</p>
 
-<p>To get your password, <code>vim Makefile</code> and uncomment the following line (around 5): <code>include secrets/oauth.env</code>
-(Alternatively, you can just run <code>source secrets/oauth.env)</code>.</p>
+<pre><code class="language-bash">export DOCKER_COMPOSE_VERSION=1.23.2
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+</code></pre>
 
-<p>Once that is done, you can run <code>make login</code> to find out the password for whatever user is specified in <code>.env</code> (hopefully it matches at least one of the admin users you put in <code>userlist</code>, otherwise you would be querying passwords for non-existent users).</p>
+<p>(You will be prompted for your password)</p>
 
-<p>You can now log in and see that everything works out of the box!!!</p>
+<pre><code class="language-bash">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable&quot;
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install docker-ce -y
+docker --version 
+</code></pre>
 
-<p><img src="[hub-admin]:" alt="snapshot-of-login" /></p>
+<p>Success?</p>
 
-<p>You can add users through <code>Control Panel &gt; Admin</code>!
-![snapshot-of-admin][hub-admin]</p>
+<pre><code class="language-bash">sudo usermod -aG docker root
+sudo usermod -aG docker ${USER}
+sudo curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+</code></pre>
 
-<p>If you navigate to <code>/hub/login_list</code> you will see passwords for everyone in <code>userlist</code>. Since the connection is not yet secure, do not do this yet.</p>
+<p>Success?</p>
 
-<p>To secure our connection:
-<code>vim hub.conf</code></p>
+<h2 id="ssh-keys">SSH Keys</h2>
 
-<pre><code>
+<p>Now is a good time to reboot the machine since we just updated and installed a bunch of things. Before we do that, let us make sure we can <code>ssh</code> in with either of the usernames now.
+Hit enter at the prompt.
+<em>YOUR COMPUTER WILL REBOOT AFTER</em></p>
+
+<pre><code class="language-bash">ssh-keygen 
+sudo cat /root/.ssh/authorized_keys &gt; ~/.ssh/authorized_keys
+reboot
+</code></pre>
+
+<div class="alert alert-warning">
+  <p>Your computer/server might take a minute or two to reboot.</p>
+
+</div>
+
+
+<p>After restarting <code>ssh</code> in as <code>your-name@your-website.com</code>.
+We will take care of the proxy and security set up first (in order to complete the instructions that only need to be performed initially).</p>
+
+<hr />
+
+<hr />
+
+<hr />
+
+<h1 id="security">Security</h1>
+
+<p>Here is how you do it without a container (ideally we could containerize this whole aspect as well into our <code>docker-compose.yml</code> file, but that is not yet the case). Run all this first.</p>
+
+<h2 id="encryption">Encryption</h2>
+
+<pre><code class="language-bash">sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install certbot 
+sudo certbot certonly
+</code></pre>
+
+<p>Follow prompts, enter info for your site.
+This creates a public/private key pair with a certificate authority so that browsers can trust the connection is valid.</p>
+
+<div class="alert alert-warning">
+  <p>If you are behind a private network (<code>.pvt</code> or any other non-public domain), then you must acquire this certificate and key from another (presumably the school&rsquo;s) certificate authority. Make sure the paths are set properly in the configuration to reflect where you placed these keys. Furthermore, you may have to comment out the <code>ssl-ciphers</code> line (we had to at CU Denver to make it work, but this isn&rsquo;t required on public domains).</p>
+
+</div>
+
+
+<p>The keys generated will by default be in <code>/etc/ssl/live/example.com/</code>, which you will see reflected in the example configuration below (set for <code>example.com</code>).</p>
+
+<p>Then run the following,</p>
+
+<pre><code class="language-bash">sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096
+</code></pre>
+
+<p>This creates a long encryption key that we will pass to nginx (our proxy) in the next step for additional security.</p>
+
+<hr />
+
+<h2 id="proxy">Proxy</h2>
+
+<pre><code class="language-bash">sudo apt-get update
+sudo apt install nginx
+</code></pre>
+
+<h3 id="nginx-config">Nginx Config</h3>
+
+<p>To secure our connection, we will create the following file in <code>/etc/nginx/sites-enabled/</code>:</p>
+
+<p>You may need to remove <code>default.conf</code>, or edit it directly to match the following instead.</p>
+
+<div class="alert alert-warning">
+  <p>If you choose to edit <code>default.conf</code>, make sure to add the following line to override the default nginx settings, which will prevent you from saving notebooks greater than 1MB in size: <code>client_max_body_size 20m;</code> (see example below).</p>
+
+</div>
+
+
+<p>Run <code>sudo vim /etc/nginx/sites-enabled/hub.conf</code> and edit the file:</p>
+
+<pre><code># top-level http config for websocket headers
+# If Upgrade is defined, Connection = upgrade
+# If Upgrade is empty, Connection = close
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ''      close;
+}
+
+# HTTP server to redirect all 80 traffic to SSL/HTTPS
+server {
+    listen 80;
+    server_name example.com;
+
+    # Tell all requests to port 80 to be 302 redirected to HTTPS
+    return 302 https://$host$request_uri;
+}
+
+# HTTPS server to handle JupyterHub
+server {
+    listen 443;
+    ssl on;
+
+    server_name example.com;
+    
+     ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
+     ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+
+    # memory limits need to be upped for notebooks. default of 1mb is insufficient. 
+    client_max_body_size 20m;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+    ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:E$
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:SSL:50m;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    add_header Strict-Transport-Security max-age=15768000;
+
+    # Managing literal requests to the JupyterHub front end
+    location /math {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # websocket headers
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+    }
+
+
+    location /math8660 {
+        proxy_pass http://127.0.0.1:8002;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # websocket headers
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+    }
+
+    # Managing requests to verify letsencrypt host
+    location ~ /.well-known {
+        allow all;
+    }
 </code></pre>
 
 <p>That last section starting with <code>location</code> is what we&rsquo;ll be tweaking if we want to host this at <code>hub.mathfight.club</code> or <code>mathfight.club/hub/</code> or whatever we want. (Although in the case of a directory <code>/suffix/</code> format, we will have to make sure the line from the <code>jupyterhub_config.py</code> that we commented out above matches this configuration file.</p>
@@ -688,181 +713,20 @@ fi
 
 <p>If you want some kind of homepage instead of a Hub login, you can configure that to be the case with the following:</p>
 
-<pre><code>TO DO : root code.
-</code></pre>
-
-<h1 id="management">Management</h1>
-
-<h2 id="adding-packages">Adding Packages</h2>
-
-<h2 id="managing-users-work">Managing Users/Work</h2>
-
-<h2 id="group-sharing">Group Sharing</h2>
-
-<p>Sharing files between groups is a feature I personally coded into the <code>jupyterhub_config.py</code> file. Towards the top of the script, the file <code>userlist</code> is opened (in the container&hellip; so if you update it, you can run <code>docker restart hub-name</code> since this configuration file only runs at hub startup). Better yet, do this from the Admin menu directly.</p>
-
-<div class="alert alert-">
-  <p>Each line in <code>userlist</code> has the name of the student, followed by their group names, separated by spaces.</p>
-
-</div>
-
-
-<p>Instead of restarting through the docker command, you can &ldquo;Power Down&rdquo; the Hub from the Control Panel in JupyterHub. This has the effect of propagating changes to lists of users. Docker takes care of re-starting the hub automatically.</p>
-
-<div class="alert alert-">
-  <p>If userlist is given the right permissions with <code>chown 777 userlist</code>, and mounted inside the professor&rsquo;s directory, it may be possible to manage group memberships  without ever logging into the math-hub server (except to update the single-user notebook image), editing the <code>userlist</code> right from the web-interface, provided the group volume permissions have previously been set correctly.</p>
-
-</div>
-
-
-<p><code>jupyterhub_config.py</code> will check the user&rsquo;s groups and mount all appropriate volumes. A volume is created for the group if one does not exist.</p>
-
-<div class="alert alert-warning">
-  <p>By default, when volumes are created, the permissions are not set in a way where users can write files.</p>
-
-</div>
-
-
-<p>To fix this, you would find the shared group volume in question, use <code>docker inspect</code> to find out where it is, and change the permissions with <code>chmod</code>. Here is an example:</p>
-
-<pre><code class="language-bash">pilosovm@math-hub:~$ docker volume ls | grep &quot;shared-*&quot; | awk '{print $2}'
-ro_shared_volume
-rw_shared_volume
-shared-broncos
-shared-test-group
-pilosovm@math-hub:~$
-pilosovm@math-hub:~$ docker volume inspect shared-broncos | grep &quot;Mountpoint&quot;
-        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/shared-broncos/_data&quot;,
-pilosovm@math-hub:~$ chmod 777 /var/lib/docker/volumes/shared-broncos/_data
-</code></pre>
-
-<hr />
-
-<hr />
-
-<p>In this manner, you can create new volumes (e.g. <code>docker volume create shared-groupname</code>) and set the permissions as desired with <code>chmod</code>, modifying <code>userlist</code> to add <code>groupname</code> to the appropriate users.</p>
-
-<p>Rinse, repeat.</p>
-
-<div class="alert alert-">
-  <p>The architecture implemented here mounts volumes based on the words that follow the username in <code>userlist</code> and prepends them with <code>shared</code>. If you want to avoid naming conflicts, use group names such as <code>math8660-group1</code>, <code>math8660-group2</code>, etc., or something unique chosen by the group members). <strong>It is up to you to avoid naming conflicts across multiple hubs when sharing group volumes.</strong></p>
-
-</div>
-
-
-<p>More customization is possible. For example, you can have multiple hubs set up on the same server (e.g. at <code>math.computer/hub1/</code> and <code>math.computer/hub2/</code>, etc.) but create one <code>shared-admin</code> volume that every administrator has access to. To accomplish this, (<em>or to add any new group volume</em>):</p>
-
-<pre><code>docker volume create shared-admin
-docker volume inspect shared-admin | grep &quot;Mountpoint&quot;
-</code></pre>
-
-<p>then use <code>chmod 777 PATH</code> where <code>PATH</code> matches the path in the output of the last command. Now this volume is visible to anyone for whom it is mounted.</p>
-
-<p>However, in <code>jupyterhub_config.py</code>, we have this:</p>
-
-<pre><code class="language-python">33                 for i in range(1,len(parts)):
-34                     group_id = parts.pop()
-35                     if group_id != 'admin': # no need for an admin group.
-36                         group_map[user_name].append(group_id)
-</code></pre>
-
-<p>We purposefully disable this from happening by default. To enable it, simply change the logic here. Erase line 35, un-indent line 36, and the <code>shared-admin</code> volume will be mounted for all admins of all hubs. Don&rsquo;t forget to restart your hub for the changes to take effect.</p>
-
-<hr />
-
-<hr />
-
-<hr />
-
-<h1 id="security">Security</h1>
-
-<p>We will use this guy&rsquo;s <a href="https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71" target="_blank">walkthrough</a>.</p>
-
-<pre><code class="language-bash">curl -L https://raw.githubusercontent.com/wmnnd/nginx-certbot/master/init-letsencrypt.sh &gt; init-letsencrypt.sh
-sed 's/example.com/mathfight.club/g' init-letsencrypt.sh &gt; letsencrypt.sh
-mv letsencrypt.sh init-letsencrypt.sh
-chmod +x init-letsencrypt.sh
-sudo ./init-letsencrypt.sh
-</code></pre>
-
-<p>Had to edit some lines, ran out of requests for letsencrypt.</p>
-
-<p>Here is how you do it without a container:</p>
-
-<pre><code>sudo apt-get update
-sudo apt install nginx
-sudo apt-get install software-properties-common
-sudo add-apt-repository universe
-
-sudo add-apt-repository ppa:certbot/certbot
-sudo apt-get update
-sudo apt-get install certbot 
-sudo certbot certonly
-</code></pre>
-
-<p>Follow prompts, enter in info for your site.
-Then run the following,
-<code>sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096</code></p>
-
-<hr />
-
-<h2 id="nginx-config">Nginx Config</h2>
-
-<p>move the <code>hub.conf</code> file to <code>/etc/nginx/sites-enabled</code> and that should be fine now to <code>service nginx restart</code>.</p>
-
-<pre><code># top-level http config for websocket headers
-# If Upgrade is defined, Connection = upgrade
-# If Upgrade is empty, Connection = close
-map $http_upgrade $connection_upgrade {
-    default upgrade;
-    ''      close;
-}
-
-# HTTP server to redirect all 80 traffic to SSL/HTTPS
-server {
-    listen 80;
-    server_name math.computer;
-
-    # Tell all requests to port 80 to be 302 redirected to HTTPS
-    return 302 https://$host$request_uri;
-}
-
-# HTTPS server to handle JupyterHub
-server {
-    listen 443 ssl;
-
-    server_name math.computer;
-
-    ssl_certificate /etc/letsencrypt/live/math.computer/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/math.computer/privkey.pem;
-
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_prefer_server_ciphers on;
-    ssl_dhparam /etc/ssl/certs/dhparam.pem;
-    ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA';
-    ssl_session_timeout 1d;
-    ssl_session_cache shared:SSL:50m;
-    ssl_stapling on;
-    ssl_stapling_verify on;
-    add_header Strict-Transport-Security max-age=15768000;
-
-    # Managing requests to verify letsencrypt host
-        location ~ /.well-known {
-            allow all;
-        }
-    
-    location / {
-                proxy_pass http://127.0.0.1:8000;
-                proxy_set_header X-Real-IP $remote_addr;
-                proxy_set_header Host $host;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-
-                # websocket headers
-                proxy_set_header Upgrade $http_upgrade;
-                proxy_set_header Connection $connection_upgrade;
-            }
+<pre><code>location / {
+    root /var/www/public_html;
+    .
+    .
+    .
 }
 </code></pre>
+
+<p>Restart nginx for changes to take effect:</p>
+
+<pre><code class="language-bash">service nginx restart
+</code></pre>
+
+<p>You can now proceed to adding a hub in the <a href="/openscience/hubsetup">Hub Setup</a> documentation.</p>
 
           </div>
 
