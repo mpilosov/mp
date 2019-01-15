@@ -2750,7 +2750,10 @@ math                 Up 3 days           0.0.0.0:8000-&amp;gt;8000/tcp
 math-db              Up 3 days           5432/tcp
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;What we are seeing is a list of processes being run by Docker and their respective ports. The ones that read &lt;code&gt;8888/tcp&lt;/code&gt; are on the local docker-network (these are the single-user notebook servers).&lt;/p&gt;
+&lt;p&gt;What we are seeing is a list of processes being run by Docker and their respective ports.
+The ones that read &lt;code&gt;8888/tcp&lt;/code&gt; are on the local docker-network (these are the single-user notebook servers).
+It is fine for these numbers to conflict since they are not ports open on the main server.
+The databases on &lt;code&gt;5432&lt;/code&gt; are similarly of no concern to us.&lt;/p&gt;
 
 &lt;div class=&#34;alert alert-&#34;&gt;
   &lt;p&gt;If the output of this command is blank (perhaps this is your first time), then &lt;em&gt;nothing is running&lt;/em&gt;, and so you can stick with the default name and port number in our deployment.&lt;/p&gt;
@@ -2758,7 +2761,9 @@ math-db              Up 3 days           5432/tcp
 &lt;/div&gt;
 
 
-&lt;p&gt;We can also see that three hubs are live on this server, listening for connections on local ports &lt;code&gt;8000&lt;/code&gt; and &lt;code&gt;8001&lt;/code&gt; in addition to the two user containers. The databases on &lt;code&gt;5432&lt;/code&gt; are similarly of no concern to us. &lt;strong&gt;We simply need to choose any port other than &lt;code&gt;8000&lt;/code&gt; or &lt;code&gt;8002&lt;/code&gt;&lt;/strong&gt; (e.g. &lt;code&gt;8001&lt;/code&gt;, &lt;code&gt;8003&lt;/code&gt;, &lt;code&gt;8451&lt;/code&gt;, &lt;code&gt;8762&lt;/code&gt;, etc.).&lt;/p&gt;
+&lt;p&gt;We can also see that three hubs are live on this server, listening for connections on local ports &lt;code&gt;8000&lt;/code&gt; and &lt;code&gt;8001&lt;/code&gt; in addition to the two user containers.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;We simply need to choose any port other than &lt;code&gt;8000&lt;/code&gt; or &lt;code&gt;8002&lt;/code&gt;&lt;/strong&gt; (e.g. &lt;code&gt;8001&lt;/code&gt;, &lt;code&gt;8003&lt;/code&gt;, &lt;code&gt;8451&lt;/code&gt;, &lt;code&gt;8762&lt;/code&gt;, etc.).&lt;/p&gt;
 
 &lt;p&gt;We also see that the two names in use are &lt;code&gt;math&lt;/code&gt; (default in our deployment) and &lt;code&gt;math8660&lt;/code&gt;, so we would have to choose a different name.
 In our deployment, this name is ALSO where your hub will live (&lt;code&gt;example.com/math8660&lt;/code&gt; and &lt;code&gt;example.com/math&lt;/code&gt; are live in the above output).&lt;/p&gt;
@@ -2769,7 +2774,12 @@ In our deployment, this name is ALSO where your hub will live (&lt;code&gt;examp
 &lt;/div&gt;
 
 
-&lt;p&gt;Before proceeding, let us get the necessary repository. Clone the repository from GitHub or copy an existing hub&amp;rsquo;s directory and rename the folder, or upload the files in any way you want. Rename it to something memorable (perhaps the name of your hub). Here we choose &amp;ldquo;deploy&amp;rdquo; as our folder name.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Before proceeding, let us get the necessary files.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Clone the repository from GitHub or copy an existing hub&amp;rsquo;s directory and rename the folder, or upload the files in any way you want.&lt;/p&gt;
+
+&lt;p&gt;Rename it to something memorable (perhaps the name of your hub).
+Here we choose &amp;ldquo;deploy&amp;rdquo; as our folder name.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;git clone https://github.com/mathematicalmichael/jupyterhub-deploy-docker.git
 mv jupyterhub-deploy-docker/ deploy/

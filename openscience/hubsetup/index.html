@@ -499,7 +499,10 @@ math                 Up 3 days           0.0.0.0:8000-&gt;8000/tcp
 math-db              Up 3 days           5432/tcp
 </code></pre>
 
-<p>What we are seeing is a list of processes being run by Docker and their respective ports. The ones that read <code>8888/tcp</code> are on the local docker-network (these are the single-user notebook servers).</p>
+<p>What we are seeing is a list of processes being run by Docker and their respective ports.
+The ones that read <code>8888/tcp</code> are on the local docker-network (these are the single-user notebook servers).
+It is fine for these numbers to conflict since they are not ports open on the main server.
+The databases on <code>5432</code> are similarly of no concern to us.</p>
 
 <div class="alert alert-">
   <p>If the output of this command is blank (perhaps this is your first time), then <em>nothing is running</em>, and so you can stick with the default name and port number in our deployment.</p>
@@ -507,7 +510,9 @@ math-db              Up 3 days           5432/tcp
 </div>
 
 
-<p>We can also see that three hubs are live on this server, listening for connections on local ports <code>8000</code> and <code>8001</code> in addition to the two user containers. The databases on <code>5432</code> are similarly of no concern to us. <strong>We simply need to choose any port other than <code>8000</code> or <code>8002</code></strong> (e.g. <code>8001</code>, <code>8003</code>, <code>8451</code>, <code>8762</code>, etc.).</p>
+<p>We can also see that three hubs are live on this server, listening for connections on local ports <code>8000</code> and <code>8001</code> in addition to the two user containers.</p>
+
+<p><strong>We simply need to choose any port other than <code>8000</code> or <code>8002</code></strong> (e.g. <code>8001</code>, <code>8003</code>, <code>8451</code>, <code>8762</code>, etc.).</p>
 
 <p>We also see that the two names in use are <code>math</code> (default in our deployment) and <code>math8660</code>, so we would have to choose a different name.
 In our deployment, this name is ALSO where your hub will live (<code>example.com/math8660</code> and <code>example.com/math</code> are live in the above output).</p>
@@ -518,7 +523,12 @@ In our deployment, this name is ALSO where your hub will live (<code>example.com
 </div>
 
 
-<p>Before proceeding, let us get the necessary repository. Clone the repository from GitHub or copy an existing hub&rsquo;s directory and rename the folder, or upload the files in any way you want. Rename it to something memorable (perhaps the name of your hub). Here we choose &ldquo;deploy&rdquo; as our folder name.</p>
+<p><em>Before proceeding, let us get the necessary files.</em></p>
+
+<p>Clone the repository from GitHub or copy an existing hub&rsquo;s directory and rename the folder, or upload the files in any way you want.</p>
+
+<p>Rename it to something memorable (perhaps the name of your hub).
+Here we choose &ldquo;deploy&rdquo; as our folder name.</p>
 
 <pre><code>git clone https://github.com/mathematicalmichael/jupyterhub-deploy-docker.git
 mv jupyterhub-deploy-docker/ deploy/
