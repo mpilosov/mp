@@ -2812,11 +2812,14 @@ It will also print out the entry that needs to be added to &lt;code&gt;/etc/ngin
 &lt;/div&gt;
 
 
-&lt;p&gt;A dialogue will come across the screen tell you the password to get into the hub and what to add to the proxy configuration. Once you log in, you can add users through the Admin panel. However, to manage&lt;/p&gt;
+&lt;p&gt;A dialogue will come across the screen tell you the password to get into the hub and what to add to the proxy configuration.
+Once you log in, you can add users through the Admin panel.&lt;/p&gt;
+
+&lt;p&gt;However, to manage shared volumes for groups/teams, you must change &lt;code&gt;userlist&lt;/code&gt; accordingly.&lt;/p&gt;
 
 &lt;h2 id=&#34;group-memberships&#34;&gt;Group Memberships&lt;/h2&gt;
 
-&lt;p&gt;This script additionally creates one &amp;ldquo;shared&amp;rdquo; group and volume, mounting it to &lt;code&gt;hub-admin&lt;/code&gt;&amp;rsquo;s working directory.
+&lt;p&gt;The &lt;code&gt;setup.sh&lt;/code&gt; script additionally creates one group (team) named &lt;code&gt;shared&lt;/code&gt; and associated volume, mounting it to &lt;code&gt;hub-admin&lt;/code&gt;&amp;rsquo;s working directory.
 All shared (group) directories are prepended with &lt;code&gt;shared-&lt;/code&gt;, which is what &lt;code&gt;jupyterhub_config.py&lt;/code&gt; is expecting when it reads &lt;code&gt;userlist&lt;/code&gt; to determine group memberships.&lt;/p&gt;
 
 &lt;p&gt;If you open up &lt;code&gt;userlist&lt;/code&gt; and add more users who belong to the &lt;code&gt;shared&lt;/code&gt; group, they will also see this folder and be able to read/write to it. You can add any phrase (groupname) to a user&amp;rsquo;s line, but be sure to create the volume and set its permissions before refreshing the hub (if you do not do this, Docker will create the volume automatically, but users will only be given read permissions by default).&lt;/p&gt;
@@ -2834,11 +2837,30 @@ sudo chmod 777 $(docker inspect shared-$SHARED_VOLUME_NAME | grep &amp;quot;Moun
 &lt;/div&gt;
 
 
+&lt;p&gt;An example &lt;code&gt;userlist&lt;/code&gt; might look like (group orders do not matter):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hub-admin shared admin 
+mpilosov admin shared team-1
+halljord team-1
+tbutler admin team-1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;finding-out-passwords&#34;&gt;Finding out Passwords&lt;/h2&gt;
+
+&lt;p&gt;After adding users/groups to &lt;code&gt;userlist&lt;/code&gt;, you will have to restart hub for changes to take effect.
+This can be accomplished through the Control Panel by clicking &amp;ldquo;Shut Down Hub&amp;rdquo; and refreshing the page).&lt;/p&gt;
+
+&lt;p&gt;Log in as &lt;code&gt;hub-admin&lt;/code&gt; and visit &lt;code&gt;/hub/login_list&lt;/code&gt; to see all users and passwords from &lt;code&gt;userlist&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Additionally, if you edit the last line of &lt;code&gt;.env&lt;/code&gt; and uncomment the last lines of &lt;code&gt;show_login.sh&lt;/code&gt;, you can see individual user passwords from the command-line by running &lt;code&gt;./show_login.sh&lt;/code&gt; from the root project directory (here, &lt;code&gt;/deploy&lt;/code&gt;).&lt;/p&gt;
+
 &lt;h2 id=&#34;sharing-passwords&#34;&gt;Sharing Passwords&lt;/h2&gt;
 
 &lt;p&gt;To share passwords across hubs, simply be sure that &lt;code&gt;secrets/oauth.env&lt;/code&gt; is the same. Copy it over from any existing hubs you desire.&lt;/p&gt;
 
-&lt;p&gt;You will need to run the following from the hub&amp;rsquo;s root directory for these changes to take effect:&lt;/p&gt;
+&lt;h2 id=&#34;restarting-the-hub&#34;&gt;Restarting the Hub&lt;/h2&gt;
+
+&lt;p&gt;You will need to run the following from the hub&amp;rsquo;s root directory for these changes (as well as those made to &lt;code&gt;userlist&lt;/code&gt;), to take effect:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker-compose down
 docker-compose build

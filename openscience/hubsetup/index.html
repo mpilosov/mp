@@ -432,7 +432,9 @@ Preliminaries First, we need to decide on the following:
 <ul>
 <li><a href="#instructions">Instructions</a></li>
 <li><a href="#group-memberships">Group Memberships</a></li>
+<li><a href="#finding-out-passwords">Finding out Passwords</a></li>
 <li><a href="#sharing-passwords">Sharing Passwords</a></li>
+<li><a href="#restarting-the-hub">Restarting the Hub</a></li>
 </ul></li>
 <li><a href="#manual-install">Manual Install</a>
 <ul>
@@ -570,11 +572,14 @@ It will also print out the entry that needs to be added to <code>/etc/nginx/site
 </div>
 
 
-<p>A dialogue will come across the screen tell you the password to get into the hub and what to add to the proxy configuration. Once you log in, you can add users through the Admin panel. However, to manage</p>
+<p>A dialogue will come across the screen tell you the password to get into the hub and what to add to the proxy configuration.
+Once you log in, you can add users through the Admin panel.</p>
+
+<p>However, to manage shared volumes for groups/teams, you must change <code>userlist</code> accordingly.</p>
 
 <h2 id="group-memberships">Group Memberships</h2>
 
-<p>This script additionally creates one &ldquo;shared&rdquo; group and volume, mounting it to <code>hub-admin</code>&rsquo;s working directory.
+<p>The <code>setup.sh</code> script additionally creates one group (team) named <code>shared</code> and associated volume, mounting it to <code>hub-admin</code>&rsquo;s working directory.
 All shared (group) directories are prepended with <code>shared-</code>, which is what <code>jupyterhub_config.py</code> is expecting when it reads <code>userlist</code> to determine group memberships.</p>
 
 <p>If you open up <code>userlist</code> and add more users who belong to the <code>shared</code> group, they will also see this folder and be able to read/write to it. You can add any phrase (groupname) to a user&rsquo;s line, but be sure to create the volume and set its permissions before refreshing the hub (if you do not do this, Docker will create the volume automatically, but users will only be given read permissions by default).</p>
@@ -592,11 +597,30 @@ sudo chmod 777 $(docker inspect shared-$SHARED_VOLUME_NAME | grep &quot;Mountpoi
 </div>
 
 
+<p>An example <code>userlist</code> might look like (group orders do not matter):</p>
+
+<pre><code>hub-admin shared admin 
+mpilosov admin shared team-1
+halljord team-1
+tbutler admin team-1
+</code></pre>
+
+<h2 id="finding-out-passwords">Finding out Passwords</h2>
+
+<p>After adding users/groups to <code>userlist</code>, you will have to restart hub for changes to take effect.
+This can be accomplished through the Control Panel by clicking &ldquo;Shut Down Hub&rdquo; and refreshing the page).</p>
+
+<p>Log in as <code>hub-admin</code> and visit <code>/hub/login_list</code> to see all users and passwords from <code>userlist</code>.</p>
+
+<p>Additionally, if you edit the last line of <code>.env</code> and uncomment the last lines of <code>show_login.sh</code>, you can see individual user passwords from the command-line by running <code>./show_login.sh</code> from the root project directory (here, <code>/deploy</code>).</p>
+
 <h2 id="sharing-passwords">Sharing Passwords</h2>
 
 <p>To share passwords across hubs, simply be sure that <code>secrets/oauth.env</code> is the same. Copy it over from any existing hubs you desire.</p>
 
-<p>You will need to run the following from the hub&rsquo;s root directory for these changes to take effect:</p>
+<h2 id="restarting-the-hub">Restarting the Hub</h2>
+
+<p>You will need to run the following from the hub&rsquo;s root directory for these changes (as well as those made to <code>userlist</code>), to take effect:</p>
 
 <pre><code class="language-bash">docker-compose down
 docker-compose build
