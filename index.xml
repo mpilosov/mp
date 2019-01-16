@@ -3137,7 +3137,7 @@ docker volume inspect shared-admin | grep &amp;quot;Mountpoint&amp;quot;
 &lt;hr /&gt;
 
 &lt;ol&gt;
-&lt;li id=&#34;fn:reuse&#34;&gt;The command &lt;code&gt;docker-compose down&lt;/code&gt; does not remove volumes created during the build process. If using a name of a hub that once existed, remove the old volumes with &lt;code&gt;docker volume rm&lt;/code&gt; (use &lt;code&gt;docker volume ls&lt;/code&gt; to list existing volumes and look for &lt;code&gt;-data&lt;/code&gt; endings.
+&lt;li id=&#34;fn:reuse&#34;&gt;The command &lt;code&gt;docker-compose down&lt;/code&gt; does not remove volumes created during the build process. If using a name of a hub that once existed, remove the old volumes with &lt;code&gt;docker volume rm&lt;/code&gt; (use &lt;code&gt;docker volume ls&lt;/code&gt; to list existing volumes and look for &lt;code&gt;-data&lt;/code&gt; endings).
  &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:reuse&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
