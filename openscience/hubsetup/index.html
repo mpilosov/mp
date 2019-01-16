@@ -557,7 +557,7 @@ It will also print out the entry that needs to be added to <code>/etc/nginx/site
 
 <h2 id="instructions">Instructions</h2>
 
-<p>If you have no existing hub named <code>math</code> and port <code>8000</code> is available, then nothing needs to be edited. (If you need to reassign <code>HUB_NAME</code> and <code>PORT_NUM</code>, edit the first lines of <code>.env</code>). Once you are ready, run:</p>
+<p>If you have no existing hub named <code>math</code> and port <code>8000</code> is available, then nothing needs to be edited. (If you need to reassign <code>HUB_NAME</code> and <code>PORT_NUM</code>, edit the first lines of <code>.env</code>). Be aware of re-using old names from previous deployments<sup class="footnote-ref" id="fnref:reuse"><a href="#fn:reuse">1</a></sup>. Once you are ready, run:</p>
 
 <div class="alert alert-">
   <p>This may take 10-15 minutes in total but will handle everything for you.</p>
@@ -864,6 +864,15 @@ docker volume inspect shared-admin | grep &quot;Mountpoint&quot;
 </code></pre>
 
 <p>We purposefully disable this from happening by default. To enable it, simply change the logic here. Erase line 35, un-indent line 36, and the <code>shared-admin</code> volume will be mounted for all admins of all hubs. Don&rsquo;t forget to restart your hub for the changes to take effect.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:reuse">The command <code>docker-compose down</code> does not remove volumes created during the build process. If using a name of a hub that once existed, remove the old volumes with <code>docker volume rm</code> (use <code>docker volume ls</code> to list existing volumes and look for <code>-data</code> endings.
+ <a class="footnote-return" href="#fnref:reuse"><sup>^</sup></a></li>
+</ol>
+</div>
 
           </div>
 

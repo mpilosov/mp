@@ -2825,7 +2825,7 @@ It will also print out the entry that needs to be added to &lt;code&gt;/etc/ngin
 
 &lt;h2 id=&#34;instructions&#34;&gt;Instructions&lt;/h2&gt;
 
-&lt;p&gt;If you have no existing hub named &lt;code&gt;math&lt;/code&gt; and port &lt;code&gt;8000&lt;/code&gt; is available, then nothing needs to be edited. (If you need to reassign &lt;code&gt;HUB_NAME&lt;/code&gt; and &lt;code&gt;PORT_NUM&lt;/code&gt;, edit the first lines of &lt;code&gt;.env&lt;/code&gt;). Once you are ready, run:&lt;/p&gt;
+&lt;p&gt;If you have no existing hub named &lt;code&gt;math&lt;/code&gt; and port &lt;code&gt;8000&lt;/code&gt; is available, then nothing needs to be edited. (If you need to reassign &lt;code&gt;HUB_NAME&lt;/code&gt; and &lt;code&gt;PORT_NUM&lt;/code&gt;, edit the first lines of &lt;code&gt;.env&lt;/code&gt;). Be aware of re-using old names from previous deployments&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:reuse&#34;&gt;&lt;a href=&#34;#fn:reuse&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. Once you are ready, run:&lt;/p&gt;
 
 &lt;div class=&#34;alert alert-&#34;&gt;
   &lt;p&gt;This may take 10-15 minutes in total but will handle everything for you.&lt;/p&gt;
@@ -3132,6 +3132,15 @@ docker volume inspect shared-admin | grep &amp;quot;Mountpoint&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;We purposefully disable this from happening by default. To enable it, simply change the logic here. Erase line 35, un-indent line 36, and the &lt;code&gt;shared-admin&lt;/code&gt; volume will be mounted for all admins of all hubs. Don&amp;rsquo;t forget to restart your hub for the changes to take effect.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:reuse&#34;&gt;The command &lt;code&gt;docker-compose down&lt;/code&gt; does not remove volumes created during the build process. If using a name of a hub that once existed, remove the old volumes with &lt;code&gt;docker volume rm&lt;/code&gt; (use &lt;code&gt;docker volume ls&lt;/code&gt; to list existing volumes and look for &lt;code&gt;-data&lt;/code&gt; endings.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:reuse&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 </description>
     </item>
     
