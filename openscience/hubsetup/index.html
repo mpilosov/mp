@@ -83,6 +83,8 @@ Preliminaries First, we need to decide on the following:
   
   <link rel="stylesheet" href="/css/custom_css.css">
   
+  <link rel="stylesheet" href="/css/style.css">
+  
 
   
   
@@ -427,6 +429,17 @@ Preliminaries First, we need to decide on the following:
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#preliminaries">Preliminaries</a></li>
+</ul></li>
+<li><a href="#quick-install">Quick Install</a>
+<ul>
+<li><a href="#instructions">Instructions</a></li>
+<li><a href="#group-memberships">Group Memberships</a></li>
+<li><a href="#finding-out-passwords">Finding out Passwords</a></li>
+<li><a href="#sharing-passwords">Sharing Passwords</a></li>
+<li><a href="#restarting-the-hub">Restarting the Hub</a></li>
+</ul></li>
+<li><a href="#manual-install">Manual Install</a>
+<ul>
 <li><a href="#configure-settings">Configure Settings</a></li>
 <li><a href="#build">Build</a></li>
 <li><a href="#direct-traffic">Direct Traffic</a></li>
@@ -536,6 +549,112 @@ cd deploy
 </code></pre>
 
 <p>The last line brings us into the <code>deploy</code> directory, where the instructions that follow pick up. They assume that you have cloned the repo.</p>
+
+<h1 id="quick-install">Quick Install</h1>
+
+<p>I have added a convenience script that allows for automatic creation of a hub. It creates one default <code>hub-admin</code> user and prints the password as output when it completes the build process and the hub is live.
+It will also print out the entry that needs to be added to <code>/etc/nginx/sites-enabled/hub.conf</code> in order to add your hub.</p>
+
+<h2 id="instructions">Instructions</h2>
+
+<p>If you have no existing hub named <code>math</code> and port <code>8000</code> is available, then nothing needs to be edited. (If you need to reassign <code>HUB_NAME</code> and <code>PORT_NUM</code>, edit the first lines of <code>.env</code>). Be aware of re-using old names from previous deployments<sup class="footnote-ref" id="fnref:reuse"><a href="#fn:reuse">1</a></sup>. Once you are ready, run:</p>
+
+<div class="alert alert-">
+  <p>This may take 10-15 minutes in total but will handle everything for you.</p>
+
+</div>
+
+
+<pre><code class="language-bash">./setup.sh
+</code></pre>
+
+<div class="alert alert-warning">
+  <p>This script presumes this is your first run. It creates several files that are only required initially, and re-running it will delete any changes you made to <code>userlist</code> unless you comment out the first line (which creates this file).</p>
+
+</div>
+
+
+<p>A dialogue will come across the screen tell you the password to get into the hub and what to add to the proxy configuration.
+Once you log in, you can add users through the Admin panel.</p>
+
+<div class="alert alert-warning">
+  <p>On the CU Denver campus, (or from behind any private network), you will likely encounter a warning in your browser that you must <em>Add an Exception</em> to handle.</p>
+
+<p><img src="/img/hub-error.png" alt="hub-error" />
+Chrome, Firefox, Edge, etc. all have variations on the following dialogue windows that you must go through before seeing your hub:</p>
+
+<p><img src="/img/hub-error-confirm.png" alt="hub-error-confirm" /></p>
+
+</div>
+
+
+<p>However, to manage shared volumes for groups/teams, you must change <code>userlist</code> accordingly.</p>
+
+<h2 id="group-memberships">Group Memberships</h2>
+
+<p>The <code>setup.sh</code> script additionally creates one group (team) named <code>shared</code> and associated volume, mounting it to <code>hub-admin</code>&rsquo;s working directory.
+All shared (group) directories are prepended with <code>shared-</code>, which is what <code>jupyterhub_config.py</code> is expecting when it reads <code>userlist</code> to determine group memberships.</p>
+
+<p>If you open up <code>userlist</code> and add more users who belong to the <code>shared</code> group, they will also see this folder and be able to read/write to it. You can add any phrase (groupname) to a user&rsquo;s line, but be sure to create the volume and set its permissions before refreshing the hub (if you do not do this, Docker will create the volume automatically, but users will only be given read permissions by default).</p>
+
+<p>To create volumes for new groups and set the permissions, run the following command (which parses information to find where Docker has linked the new volume, and passes the directory to <code>chmod</code>:</p>
+
+<pre><code class="language-bash">export SHARED_VOLUME_NAME=newGroupNameHere
+docker volume create shared-$SHARED_VOLUME_NAME
+sudo chmod 777 $(docker inspect shared-$SHARED_VOLUME_NAME | grep &quot;Mountpoint&quot; | awk '{print $2}' | sed 's/&quot;//g' | sed 's/,//g')
+</code></pre>
+
+<div class="alert alert-">
+  <p>Be sure to change the above to reflect any group names you (or your students) choose, and run it for every new group name.</p>
+
+</div>
+
+
+<p>An example <code>userlist</code> might look like (group orders do not matter):</p>
+
+<pre><code>hub-admin shared admin 
+mpilosov admin shared team-1
+halljord team-1
+tbutler admin team-1
+</code></pre>
+
+<h2 id="finding-out-passwords">Finding out Passwords</h2>
+
+<p>After adding users/groups to <code>userlist</code>, you will have to restart hub for changes to take effect.
+This can be accomplished through the Control Panel by clicking &ldquo;Shut Down Hub&rdquo; and refreshing the page).</p>
+
+<p>Log in as <code>hub-admin</code> and visit <code>/hub/login_list</code> to see all users and passwords from <code>userlist</code>.</p>
+
+<p>Additionally, if you edit the last line of <code>.env</code> and uncomment the last lines of <code>show_login.sh</code>, you can see individual user passwords from the command-line by running <code>./show_login.sh</code> from the root project directory (here, <code>/deploy</code>).</p>
+
+<h2 id="sharing-passwords">Sharing Passwords</h2>
+
+<p>To share passwords across hubs, simply be sure that <code>secrets/oauth.env</code> is the same. Copy it over from any existing hubs you desire.</p>
+
+<h2 id="restarting-the-hub">Restarting the Hub</h2>
+
+<p>You will need to run the following from the hub&rsquo;s root directory for these changes (as well as those made to <code>userlist</code>), to take effect:</p>
+
+<pre><code class="language-bash">docker-compose down
+docker-compose build
+docker-compose up -d
+</code></pre>
+
+<div class="alert alert-">
+  <p>These commands stop and destroy the containers running the hub and database, remove the existing image, re-build the Hub&rsquo;s image and re-launch it (with no data loss, since volumes and networks are preserved).</p>
+
+</div>
+
+
+<hr />
+
+<hr />
+
+<hr />
+
+<h1 id="manual-install">Manual Install</h1>
+
+<p>If you want to perform the steps carried out in <code>setup.sh</code> yourself, you can follow these directions (or simply run the commands in that file one-by-one). This script is designed to save you time and effort.</p>
 
 <h2 id="configure-settings">Configure Settings</h2>
 
@@ -756,6 +875,15 @@ docker volume inspect shared-admin | grep &quot;Mountpoint&quot;
 </code></pre>
 
 <p>We purposefully disable this from happening by default. To enable it, simply change the logic here. Erase line 35, un-indent line 36, and the <code>shared-admin</code> volume will be mounted for all admins of all hubs. Don&rsquo;t forget to restart your hub for the changes to take effect.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:reuse">The command <code>docker-compose down</code> does not remove volumes created during the build process. If using a name of a hub that once existed, remove the old volumes with <code>docker volume rm</code> (use <code>docker volume ls</code> to list existing volumes and look for <code>-data</code> endings).
+ <a class="footnote-return" href="#fnref:reuse"><sup>^</sup></a></li>
+</ol>
+</div>
 
           </div>
 

@@ -38,6 +38,36 @@
     </item>
     
     <item>
+      <title>GitHub Activity</title>
+      <link>https://www.michaelpilosov.com/activity/</link>
+      <pubDate>Tue, 15 Jan 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/activity/</guid>
+      <description>&lt;p&gt;Here is a summary of my activity on Github from my legacy username.&lt;/p&gt;
+
+
+&lt;script
+  src=&#34;https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.min.js&#34;
+&gt;
+&lt;/script&gt;
+
+
+
+
+
+&lt;div class=&#34;calendar&#34;&gt;
+    
+    Loading the data just for you.
+&lt;/div&gt;
+
+&lt;script&gt;
+    new GitHubCalendar(&#34;.calendar&#34;, &#34;mpilosov&#34;);
+&lt;/script&gt;
+
+</description>
+    </item>
+    
+    <item>
       <title>Jupyterhub Configuration</title>
       <link>https://www.michaelpilosov.com/devlog/jupyterhub/</link>
       <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
@@ -2788,6 +2818,112 @@ cd deploy
 
 &lt;p&gt;The last line brings us into the &lt;code&gt;deploy&lt;/code&gt; directory, where the instructions that follow pick up. They assume that you have cloned the repo.&lt;/p&gt;
 
+&lt;h1 id=&#34;quick-install&#34;&gt;Quick Install&lt;/h1&gt;
+
+&lt;p&gt;I have added a convenience script that allows for automatic creation of a hub. It creates one default &lt;code&gt;hub-admin&lt;/code&gt; user and prints the password as output when it completes the build process and the hub is live.
+It will also print out the entry that needs to be added to &lt;code&gt;/etc/nginx/sites-enabled/hub.conf&lt;/code&gt; in order to add your hub.&lt;/p&gt;
+
+&lt;h2 id=&#34;instructions&#34;&gt;Instructions&lt;/h2&gt;
+
+&lt;p&gt;If you have no existing hub named &lt;code&gt;math&lt;/code&gt; and port &lt;code&gt;8000&lt;/code&gt; is available, then nothing needs to be edited. (If you need to reassign &lt;code&gt;HUB_NAME&lt;/code&gt; and &lt;code&gt;PORT_NUM&lt;/code&gt;, edit the first lines of &lt;code&gt;.env&lt;/code&gt;). Be aware of re-using old names from previous deployments&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:reuse&#34;&gt;&lt;a href=&#34;#fn:reuse&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. Once you are ready, run:&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;This may take 10-15 minutes in total but will handle everything for you.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;./setup.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;This script presumes this is your first run. It creates several files that are only required initially, and re-running it will delete any changes you made to &lt;code&gt;userlist&lt;/code&gt; unless you comment out the first line (which creates this file).&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;A dialogue will come across the screen tell you the password to get into the hub and what to add to the proxy configuration.
+Once you log in, you can add users through the Admin panel.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;On the CU Denver campus, (or from behind any private network), you will likely encounter a warning in your browser that you must &lt;em&gt;Add an Exception&lt;/em&gt; to handle.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.michaelpilosov.com/img/hub-error.png&#34; alt=&#34;hub-error&#34; /&gt;
+Chrome, Firefox, Edge, etc. all have variations on the following dialogue windows that you must go through before seeing your hub:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.michaelpilosov.com/img/hub-error-confirm.png&#34; alt=&#34;hub-error-confirm&#34; /&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;However, to manage shared volumes for groups/teams, you must change &lt;code&gt;userlist&lt;/code&gt; accordingly.&lt;/p&gt;
+
+&lt;h2 id=&#34;group-memberships&#34;&gt;Group Memberships&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code&gt;setup.sh&lt;/code&gt; script additionally creates one group (team) named &lt;code&gt;shared&lt;/code&gt; and associated volume, mounting it to &lt;code&gt;hub-admin&lt;/code&gt;&amp;rsquo;s working directory.
+All shared (group) directories are prepended with &lt;code&gt;shared-&lt;/code&gt;, which is what &lt;code&gt;jupyterhub_config.py&lt;/code&gt; is expecting when it reads &lt;code&gt;userlist&lt;/code&gt; to determine group memberships.&lt;/p&gt;
+
+&lt;p&gt;If you open up &lt;code&gt;userlist&lt;/code&gt; and add more users who belong to the &lt;code&gt;shared&lt;/code&gt; group, they will also see this folder and be able to read/write to it. You can add any phrase (groupname) to a user&amp;rsquo;s line, but be sure to create the volume and set its permissions before refreshing the hub (if you do not do this, Docker will create the volume automatically, but users will only be given read permissions by default).&lt;/p&gt;
+
+&lt;p&gt;To create volumes for new groups and set the permissions, run the following command (which parses information to find where Docker has linked the new volume, and passes the directory to &lt;code&gt;chmod&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;export SHARED_VOLUME_NAME=newGroupNameHere
+docker volume create shared-$SHARED_VOLUME_NAME
+sudo chmod 777 $(docker inspect shared-$SHARED_VOLUME_NAME | grep &amp;quot;Mountpoint&amp;quot; | awk &#39;{print $2}&#39; | sed &#39;s/&amp;quot;//g&#39; | sed &#39;s/,//g&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;Be sure to change the above to reflect any group names you (or your students) choose, and run it for every new group name.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;p&gt;An example &lt;code&gt;userlist&lt;/code&gt; might look like (group orders do not matter):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hub-admin shared admin 
+mpilosov admin shared team-1
+halljord team-1
+tbutler admin team-1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;finding-out-passwords&#34;&gt;Finding out Passwords&lt;/h2&gt;
+
+&lt;p&gt;After adding users/groups to &lt;code&gt;userlist&lt;/code&gt;, you will have to restart hub for changes to take effect.
+This can be accomplished through the Control Panel by clicking &amp;ldquo;Shut Down Hub&amp;rdquo; and refreshing the page).&lt;/p&gt;
+
+&lt;p&gt;Log in as &lt;code&gt;hub-admin&lt;/code&gt; and visit &lt;code&gt;/hub/login_list&lt;/code&gt; to see all users and passwords from &lt;code&gt;userlist&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Additionally, if you edit the last line of &lt;code&gt;.env&lt;/code&gt; and uncomment the last lines of &lt;code&gt;show_login.sh&lt;/code&gt;, you can see individual user passwords from the command-line by running &lt;code&gt;./show_login.sh&lt;/code&gt; from the root project directory (here, &lt;code&gt;/deploy&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h2 id=&#34;sharing-passwords&#34;&gt;Sharing Passwords&lt;/h2&gt;
+
+&lt;p&gt;To share passwords across hubs, simply be sure that &lt;code&gt;secrets/oauth.env&lt;/code&gt; is the same. Copy it over from any existing hubs you desire.&lt;/p&gt;
+
+&lt;h2 id=&#34;restarting-the-hub&#34;&gt;Restarting the Hub&lt;/h2&gt;
+
+&lt;p&gt;You will need to run the following from the hub&amp;rsquo;s root directory for these changes (as well as those made to &lt;code&gt;userlist&lt;/code&gt;), to take effect:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker-compose down
+docker-compose build
+docker-compose up -d
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-&#34;&gt;
+  &lt;p&gt;These commands stop and destroy the containers running the hub and database, remove the existing image, re-build the Hub&amp;rsquo;s image and re-launch it (with no data loss, since volumes and networks are preserved).&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;manual-install&#34;&gt;Manual Install&lt;/h1&gt;
+
+&lt;p&gt;If you want to perform the steps carried out in &lt;code&gt;setup.sh&lt;/code&gt; yourself, you can follow these directions (or simply run the commands in that file one-by-one). This script is designed to save you time and effort.&lt;/p&gt;
+
 &lt;h2 id=&#34;configure-settings&#34;&gt;Configure Settings&lt;/h2&gt;
 
 &lt;p&gt;Now that we are in the &lt;code&gt;deploy&lt;/code&gt; directory (or whatever you named your hub):&lt;/p&gt;
@@ -3007,6 +3143,15 @@ docker volume inspect shared-admin | grep &amp;quot;Mountpoint&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;We purposefully disable this from happening by default. To enable it, simply change the logic here. Erase line 35, un-indent line 36, and the &lt;code&gt;shared-admin&lt;/code&gt; volume will be mounted for all admins of all hubs. Don&amp;rsquo;t forget to restart your hub for the changes to take effect.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:reuse&#34;&gt;The command &lt;code&gt;docker-compose down&lt;/code&gt; does not remove volumes created during the build process. If using a name of a hub that once existed, remove the old volumes with &lt;code&gt;docker volume rm&lt;/code&gt; (use &lt;code&gt;docker volume ls&lt;/code&gt; to list existing volumes and look for &lt;code&gt;-data&lt;/code&gt; endings).
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:reuse&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 </description>
     </item>
     
@@ -4266,116 +4411,6 @@ wd.FloatSlider()
  &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:notebooks&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Relevant Projects</title>
-      <link>https://www.michaelpilosov.com/openscience/getting-started/</link>
-      <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/openscience/getting-started/</guid>
-      <description>
-
-&lt;h1 id=&#34;basics&#34;&gt;Basics&lt;/h1&gt;
-
-&lt;p&gt;In this documentation, we will research and likely leverage (most if not all of) the following open-source projects.
-We will eventually address each in depth within this documentation and will update this section with relevant links as necessary.
-For now, we provide a brief overview and summary of what we are looking into.&lt;/p&gt;
-
-&lt;h2 id=&#34;widgets&#34;&gt;Widgets&lt;/h2&gt;
-
-&lt;p&gt;If you have ever tried developing a graphical user interface (GUI) for your code, you&amp;rsquo;ll know how cumbersome it can be.
-Thankfully, the &lt;a href=&#34;http://jupyter.org/widgets&#34; target=&#34;_blank&#34;&gt;Widgets&lt;/a&gt; package from Project Jupyter greatly simplifies linking your code to a large library of existing &amp;ldquo;widgets,&amp;rdquo; which do everything from giving you sliders to fully-interactive maps.&lt;/p&gt;
-
-&lt;p&gt;I highly encourage you to see what is possible to embed in your notebooks (and webpages) by scrolling through their &lt;a href=&#34;http://jupyter.org/widgets&#34; target=&#34;_blank&#34;&gt;examples&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;jupyter-nbviewer&#34;&gt;Jupyter nbviewer&lt;/h2&gt;
-
-&lt;p&gt;Paste a link to a notebook into &lt;a href=&#34;https://nbviewer.jupyter.org/&#34; target=&#34;_blank&#34;&gt;this form&lt;/a&gt; and this website will render the notebook for your reading pleasure.&lt;/p&gt;
-
-&lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
-
-&lt;h2 id=&#34;github&#34;&gt;Github&lt;/h2&gt;
-
-&lt;h2 id=&#34;anaconda&#34;&gt;Anaconda&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;binderhub&#34;&gt;BinderHub&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/jupyterhub/binderhub&#34; target=&#34;_blank&#34;&gt;BinderHub&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;BinderHub allows you to &lt;code&gt;BUILD&lt;/code&gt; and &lt;code&gt;REGISTER&lt;/code&gt; a Docker image using a GitHub repository, then CONNECT with JupyterHub, allowing you to create a public IP address that allows users to interact with the code and environment within a live JupyterHub instance. You can select a specific branch name, commit, or tag to serve.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;repo2docker&#34;&gt;Repo2Docker&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/jupyter/repo2docker&#34; target=&#34;_blank&#34;&gt;repo2docker&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;As the title suggest, this package turns a github repository into a docker image that can be built.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;repo2docker fetches a git repository and builds a container image based on the configuration files found in the repository.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Binder leverages this to then serve the contents of the image in conjuction with JupyterHub.&lt;/p&gt;
-
-&lt;h2 id=&#34;kubernetes&#34;&gt;Kubernetes&lt;/h2&gt;
-
-&lt;p&gt;Google is a provider. Links/info should go here to a couple other platforms, some basic information.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;jupyterhub&#34;&gt;JupyterHub&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/jupyterhub/jupyterhub&#34; target=&#34;_blank&#34;&gt;JupyterHub&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;taken from the repository description&lt;/em&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;With &lt;a href=&#34;https://jupyterhub.readthedocs.io&#34; target=&#34;_blank&#34;&gt;JupyterHub&lt;/a&gt; you can create a
-&lt;strong&gt;multi-user Hub&lt;/strong&gt; which spawns, manages, and proxies multiple instances of the
-single-user &lt;a href=&#34;https://jupyter-notebook.readthedocs.io&#34; target=&#34;_blank&#34;&gt;Jupyter notebook&lt;/a&gt;
-server.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://jupyter.org&#34; target=&#34;_blank&#34;&gt;Project Jupyter&lt;/a&gt; created JupyterHub to support many
-users. The Hub can offer notebook servers to a class of students, a corporate
-data science workgroup, a scientific research project, or a high performance
-computing group.&lt;/p&gt;
-
-&lt;h2 id=&#34;technical-overview&#34;&gt;Technical overview&lt;/h2&gt;
-
-&lt;p&gt;Three main actors make up JupyterHub:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;multi-user &lt;strong&gt;Hub&lt;/strong&gt; (tornado process)&lt;/li&gt;
-&lt;li&gt;configurable http &lt;strong&gt;proxy&lt;/strong&gt; (node-http-proxy)&lt;/li&gt;
-&lt;li&gt;multiple &lt;strong&gt;single-user Jupyter notebook servers&lt;/strong&gt; (Python/Jupyter/tornado)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Basic principles for operation are:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Hub launches a proxy.&lt;/li&gt;
-&lt;li&gt;Proxy forwards all requests to Hub by default.&lt;/li&gt;
-&lt;li&gt;Hub handles login, and spawns single-user servers on demand.&lt;/li&gt;
-&lt;li&gt;Hub configures proxy to forward url prefixes to the single-user notebook
-servers.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;JupyterHub also provides a
-&lt;a href=&#34;http://petstore.swagger.io/?url=https://raw.githubusercontent.com/jupyter/jupyterhub/master/docs/rest-api.yml#/default&#34; target=&#34;_blank&#34;&gt;REST API&lt;/a&gt;
-for administration of the Hub and its users.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;I personally run Jupyterhub on a remote server so that I always have access to a secure and familiar environment if I ever need to test out some code and find myself without my laptop.
-By default, it accepts the login information of just the user who is running it, but we will see later how it can be configured for its intended use as a multi-user authentication hub.&lt;/p&gt;
 </description>
     </item>
     
