@@ -316,22 +316,6 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/post/</loc>
-      <lastmod>2017-01-01T00:00:00-07:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://www.michaelpilosov.com/post/2018/</loc>
-      <lastmod>2017-01-01T00:00:00-07:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>https://www.michaelpilosov.com/talk/</loc>
       <lastmod>2017-01-01T00:00:00-07:00</lastmod>
     </url>
@@ -366,14 +350,6 @@
     
       <loc>https://www.michaelpilosov.com/project/internal-project/</loc>
       <lastmod>2016-04-27T00:00:00-06:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://www.michaelpilosov.com/post/2018/getting-started/</loc>
-      <lastmod>2018-01-13T00:00:00-07:00</lastmod>
     </url>
     
   
@@ -495,15 +471,6 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/tags/academic/</loc>
-      <lastmod>2018-01-13T00:00:00-07:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>https://www.michaelpilosov.com/categories/artwork/</loc>
       <lastmod>2018-12-19T18:16:07-07:00</lastmod>
       <priority>0</priority>
@@ -523,7 +490,6 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/demo/</loc>
-      <lastmod>2018-01-13T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -581,7 +547,6 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/</loc>
-      <lastmod>2018-01-13T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     
