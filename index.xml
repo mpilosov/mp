@@ -38,6 +38,33 @@
     </item>
     
     <item>
+      <title>Slide Decks</title>
+      <link>https://www.michaelpilosov.com/slides/</link>
+      <pubDate>Wed, 06 Feb 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/slides/</guid>
+      <description>
+
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;These slideshows are created as single markdown files using &lt;a href=&#34;https://github.com/hakimel/reveal.js&#34; target=&#34;_blank&#34;&gt;Reveal.js&lt;/a&gt; implemented into the &lt;a href=&#34;https://sourcethemes.com/academic/&#34; target=&#34;_blank&#34;&gt;Academic Theme for Hugo&lt;/a&gt;, which was used as the template for this website.&lt;/p&gt;
+
+&lt;p&gt;The slideshows will open in a new tab (with any browser, including mobile ones). You can use the arrow keys to move through slides.
+If you are presenting using a laptop/desktop whose screen is extended to a monitor/projection, pressing the &lt;code&gt;S&lt;/code&gt; key will enable a talk-timer in a separate browser window.&lt;/p&gt;
+
+&lt;p&gt;This presentation interface will be familiar to anyone who has used one of the leading presentation software tools, complete with a preview of the next slide and speaker notes.&lt;/p&gt;
+
+&lt;h1 id=&#34;slideshows&#34;&gt;Slideshows&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.michaelpilosov.com/slides/example-slides/&#34; target=&#34;_blank&#34; &gt;Example Slides (packaged with theme)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Talk given on Wednesday Feb 6, 2019 as part of the Student-Led Seminar Series at the University of Colorado Denver: Department of Mathematical and Statistical Studies.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.michaelpilosov.com/slides/website/&#34; target=&#34;_blank&#34; &gt;Introduction To Web Development&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>GitHub Activity</title>
       <link>https://www.michaelpilosov.com/activity/</link>
       <pubDate>Tue, 15 Jan 2019 00:00:00 -0700</pubDate>
@@ -4212,207 +4239,6 @@ wd.FloatSlider()
       <description>&lt;p&gt;There are a number of organizations with deployments you can experiment with.&lt;/p&gt;
 
 &lt;p&gt;We list some of them here, along with useful links for more information (some of these may be turned into future pages).&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Installing Anaconda</title>
-      <link>https://www.michaelpilosov.com/openscience/anaconda/</link>
-      <pubDate>Fri, 21 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/openscience/anaconda/</guid>
-      <description>
-
-&lt;p&gt;These instructions originally appeared on the &lt;a href=&#34;https://www.mathematicalmichael.com&#34; target=&#34;_blank&#34;&gt;&amp;ldquo;Resources&amp;rdquo; page of my website&lt;/a&gt;, where I link to my &lt;a href=&#34;https://gist.github.com/mpilosov/233ccfae58d182d43f690be209b58ba5&#34; target=&#34;_blank&#34;&gt;Github Gist&lt;/a&gt;.
-As of &lt;em&gt;Dec 21, 2018&lt;/em&gt;, I am abandoning the aforementioned gist and will keep this webpage updated as my primary source of information for installing Anaconda&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:note&#34;&gt;&lt;a href=&#34;#fn:note&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-
-&lt;h1 id=&#34;anaconda-basics&#34;&gt;Anaconda Basics&lt;/h1&gt;
-
-&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;It is a package manager.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;WRITE MORE ABOUT WHAT A PACKAGE MANAGER IS/DOES AND WHY IT SHOULD BE USED&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;download&#34;&gt;Download&lt;/h2&gt;
-
-&lt;p&gt;Go download it from
-&lt;a href=&#34;https://www.anaconda.com/download/&#34; target=&#34;_blank&#34;&gt;https://www.anaconda.com/download/&lt;/a&gt;
-for your Linux/Windows/OSX&lt;/p&gt;
-
-&lt;p&gt;I like to use&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;wget http://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;or if I want to keep things lightweight (may lead to more manual installations later on):&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;install&#34;&gt;Install&lt;/h2&gt;
-
-&lt;p&gt;It will likely be saved in the Downloads folder, so you will install it with something like&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;bash ~/Downloads/Anaconda3-5.0.1-Linux-x86_64.sh&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Use all the defaults, agree to everything, and at the end, hit &lt;code&gt;ENTER&lt;/code&gt; to prepend it to your &lt;code&gt;PATH&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;environments&#34;&gt;Environments&lt;/h2&gt;
-
-&lt;p&gt;Now let&amp;rsquo;s create an environment for python3:&lt;br /&gt;
-&lt;code&gt;conda create -n py3 python=3.6&lt;/code&gt; where &lt;code&gt;py3&lt;/code&gt; is just my personal preferred shorthand for python 3. Feel free to use your own.&lt;/p&gt;
-
-&lt;p&gt;And one for python2:&lt;br /&gt;
-&lt;code&gt;conda create -n py2 python=2.7&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;To remove:&lt;br /&gt;
-&lt;code&gt;conda remove --name py2 --all&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;We can now switch between versions of python with commands like&lt;br /&gt;
-&lt;code&gt;source activate py3&lt;/code&gt; and &lt;code&gt;source activate py2&lt;/code&gt; and then &lt;code&gt;source deactivate&lt;/code&gt; when you&amp;rsquo;re ready to be done.&lt;/p&gt;
-
-&lt;h1 id=&#34;diving-deeper&#34;&gt;Diving Deeper&lt;/h1&gt;
-
-&lt;h2 id=&#34;widgets&#34;&gt;Widgets&lt;/h2&gt;
-
-&lt;p&gt;Overview:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;pip install ipywidgets&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;jupyter nbextension install --py --user widgetsnbextension&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;jupyter nbextension enable --py widgetsnbextension&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;More information about widgets &lt;a href=&#34;https://ipywidgets.readthedocs.io/en/stable/user_install.html&#34; target=&#34;_blank&#34;&gt;can be found here&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Alternatively, in each of these environments, run&lt;br /&gt;
-&lt;code&gt;conda install -c conda-forge ipywidgets&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;which will install all sorts of dependencies, including Jupyter notebooks&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:notebooks&#34;&gt;&lt;a href=&#34;#fn:notebooks&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. It supposedly enables the widgets too but you can run&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;jupyter nbextension enable --py widgetsnbextension&lt;/code&gt; to make sure.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;python -m ipykernel install --name py3 --user&lt;/code&gt; will then link the kernel to jupyter.&lt;/p&gt;
-
-&lt;p&gt;Then &lt;code&gt;--name py3&lt;/code&gt; flag is optional and just assigns a name of your choosing to that kernel.
-The version of python used for the kernel is whatever is returned when you ask bash &lt;code&gt;which python&lt;/code&gt; (so if you used source &lt;code&gt;activate&lt;/code&gt; earlier, it will be the version associated with the kernel whose name is in parentheses in your Terminal session).
-&lt;strong&gt;The &lt;code&gt;--user&lt;/code&gt; flag is necessary.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;ipyparallel&#34;&gt;iPyParallel&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/ipython/ipyparallel&#34; target=&#34;_blank&#34;&gt;https://github.com/ipython/ipyparallel&lt;/a&gt;&lt;br /&gt;
-&lt;code&gt;pip install ipyparallel&lt;/code&gt; to install.&lt;br /&gt;
-&lt;code&gt;ipcluster nbextension enable&lt;/code&gt; (add the &lt;code&gt;--user&lt;/code&gt; flag as well if you encounter an error).
-This one also seems to be necessary to get the clusters to show up:&lt;br /&gt;
-&lt;code&gt;jupyter serverextension enable --sys-prefix --py ipyparallel&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;To install for all users (as root):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;jupyter nbextension install --sys-prefix --py ipyparallel
-jupyter nbextension enable --sys-prefix --py ipyparallel
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;kernels&#34;&gt;Kernels&lt;/h1&gt;
-
-&lt;h2 id=&#34;introduction-1&#34;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;TODO: WRITE MORE ABOUT MULTI-KERNEL SUPPORT, provide an example.&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;To see all the kernels jupyter is aware of:
-&lt;code&gt;jupyter kernelspec list&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;management&#34;&gt;Management&lt;/h2&gt;
-
-&lt;p&gt;To remove kernels, use &lt;code&gt;jupyter kernelspec remove&lt;/code&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;jupyterhub&#34;&gt;JupyterHub&lt;/h1&gt;
-
-&lt;h2 id=&#34;introduction-2&#34;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;More information here about installation would be helpful, but we&amp;rsquo;ll be going through this in more detail at another time since JupyterHub will form the basis for the solutions we will use for our classroom environments.&lt;/p&gt;
-
-&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
-
-&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
-
-&lt;p&gt;(for personal use)&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://jupyterhub.readthedocs.io/en/stable/getting-started/&#34; target=&#34;_blank&#34;&gt;Getting Started&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://jupyter-notebook.readthedocs.io/en/latest/public_server.html&#34; target=&#34;_blank&#34;&gt;Running a notebook server&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;jupyterlab&#34;&gt;JupyterLab&lt;/h1&gt;
-
-&lt;h2 id=&#34;introduction-3&#34;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;I love this environment but it is a little tricky to set up properly and get everything working as expected. Though once you do, I doubt you will want to use anything else.&lt;/p&gt;
-
-&lt;h2 id=&#34;install-1&#34;&gt;Install&lt;/h2&gt;
-
-&lt;p&gt;Once Jupyter Lab is installed, go ahead and run it the same way you would a notebook:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;jupyter lab (--no-browser)&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;widget-extensions&#34;&gt;Widget Extensions&lt;/h2&gt;
-
-&lt;p&gt;By default (as of Dec 2018), it will be accessible through &lt;code&gt;localhost:8888&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Go ahead and launch an instance of Python and see if widgets work.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;import ipywidgets as wd
-wd.FloatSlider()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If the output of the following is text instead of a widget, try running the following in the command-line (shutdown the server with &lt;code&gt;Ctrl-C&lt;/code&gt; twice, then&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;jupyter labextension install @jupyter-widgets/jupyterlab-manager&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;And relaunch JupyterLab (if you didn&amp;rsquo;t close your browswer window, a simple refresh will work to re-establish the connection and pick up where you left off), and try the example above again.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Something that came up once&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;I saw my server output spitting out &lt;code&gt;TypeError: __init__() got an unexpected keyword argument &#39;io_loop&#39;&lt;/code&gt; over and over again when any kernel was started. Something was going on with the WebSocket I/O communication (whatever that means), but the following downgrade of the Python Web Framework worked to &lt;a href=&#34;https://stackoverflow.com/questions/48090119/jupyter-notebook-typeerror-init-got-an-unexpected-keyword-argument-io-l&#34; target=&#34;_blank&#34;&gt;fix it&lt;/a&gt;:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;pip install tornado==4.5.3&lt;/code&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;sharing&#34;&gt;Sharing&lt;/h1&gt;
-
-&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;TODO&lt;/code&gt; write about why this is useful&lt;/p&gt;
-
-&lt;h2 id=&#34;exporting&#34;&gt;Exporting&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;conda env export &amp;gt; environment.yml&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Which you then load up with
-&lt;code&gt;conda env create -f environment.yml&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;cloning&#34;&gt;Cloning&lt;/h2&gt;
-
-&lt;p&gt;You can make an exact copy of an environment by creating a clone of it:&lt;br /&gt;
-&lt;code&gt;conda create --name myclone --clone myenv&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;To verify that the copy was made:&lt;br /&gt;
-&lt;code&gt;conda info --envs&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-&lt;li id=&#34;fn:note&#34;&gt;Github Gists are actually surprisingly difficult to sort through, and navigating to this webpage will be much easier, anyway.
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:note&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li id=&#34;fn:notebooks&#34;&gt;It does appear though that &lt;code&gt;notebooks&lt;/code&gt; is pre-packaged now with Anaconda, so it will likely already be installed.
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:notebooks&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
 </description>
     </item>
     
