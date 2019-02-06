@@ -93,6 +93,15 @@
     </item>
     
     <item>
+      <title>hugo</title>
+      <link>https://www.michaelpilosov.com/tags/hugo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>jupyter</title>
       <link>https://www.michaelpilosov.com/tags/jupyter/</link>
       <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
@@ -120,11 +129,38 @@
     </item>
     
     <item>
+      <title>python</title>
+      <link>https://www.michaelpilosov.com/tags/python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>https://www.michaelpilosov.com/tags/tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>webdev</title>
       <link>https://www.michaelpilosov.com/tags/webdev/</link>
       <pubDate>Thu, 20 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/webdev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>website</title>
+      <link>https://www.michaelpilosov.com/tags/website/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/website/</guid>
       <description></description>
     </item>
     

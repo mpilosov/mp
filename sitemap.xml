@@ -480,6 +480,13 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/slides/website/</loc>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/categories/</loc>
       <lastmod>2018-12-19T18:16:07-07:00</lastmod>
       <priority>0</priority>
@@ -652,6 +659,14 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/tags/hugo/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/tags/jupyter/</loc>
       <lastmod>2019-01-01T14:43:00-07:00</lastmod>
       <priority>0</priority>
@@ -679,8 +694,32 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/tags/python/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/tutorial/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/tags/webdev/</loc>
       <lastmod>2019-01-01T14:23:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/website/</loc>
       <priority>0</priority>
     </url>
     
