@@ -7,6 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
+    <lastBuildDate>Fri, 08 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/continuous-integration/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +15,7 @@
     <item>
       <title>BET Development</title>
       <link>https://www.michaelpilosov.com/slides/dev/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/slides/dev/</guid>
       <description>BET Development [Butler, Estep, Tavener] Method
