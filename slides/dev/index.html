@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 3.2.0">
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://www.michaelpilosov.com/slides/dev/">
+
+  <title>BET Development | Michael Pilosov | Academic Website</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/css/reveal.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/css/theme/black.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css" crossorigin="anonymous">
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/reveal_custom.min.css">
+
+  
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.7.0/css/print/pdf.css' : 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.7.0/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+
+</head>
+<body>
+
+  
+<div class="reveal">
+  <div class="slides">
+    
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h1 id="bet-development">BET Development</h1>
+
+<p>[Butler, Estep, Tavener] Method</p>
+
+<p>+ Mattis, Graham, Walsh, Pilosov</p>
+
+<p><a href="https://github.com/UT-CHG/BET" target="_blank">github.com/UT-CHG/BET</a></p>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="about">About</h2>
+
+<ul>
+<li>Purpose: Implement the novel method developed by the aforementioned authors</li>
+<li>GNU General Public License</li>
+<li>First released 2014</li>
+<li>Python 2.7, upgraded to 3.6</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="overview">Overview</h2>
+
+<ul>
+<li>About/Motivation</li>
+<li>Git-Based Workflow</li>
+<li>Contribution, Communication</li>
+<li>Testing, Coverage, Versioning</li>
+<li>Pull Requests</li>
+<li>Continuous Integration</li>
+<li>Documentation</li>
+<li>Publishing, Releases, Licenses</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="about-motivation">About/Motivation</h2>
+
+<ul>
+<li>Reproduce results in research</li>
+<li>Demonstrate utility of approach</li>
+<li>Upgrading
+
+<ul>
+<li>Python 2.7 will be deprecated by 2020</li>
+<li>New features in ConsistentBayes repo</li>
+<li>Desire to unify frameworks</li>
+<li>Repository needed some love</li>
+</ul></li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="git-based-workflow">Git-Based Workflow</h2>
+
+<ul>
+<li>Fork project</li>
+<li>Clone your fork</li>
+<li>Create branch for new feature(s)</li>
+<li>Checkout branch, make changes</li>
+<li>Commit files with informative messages</li>
+<li>Push branch back to your remote fork</li>
+<li>Use GitHub to start Pull-Request</li>
+<li>Communicate (if needed) until PR is merged (or not)</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="contribution-communication">Contribution, Communication</h2>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="testing-coverage-versioning">Testing, Coverage, Versioning</h2>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="pull-requests">Pull Requests</h2>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="continuous-integration">Continuous Integration</h2>
+
+<ul>
+<li>Server runs UNIX image
+
+<ul>
+<li>Carries out instructions</li>
+<li>Reproducibility is focus</li>
+</ul></li>
+<li>Ensures consistency of installation</li>
+<li>Someone has to pay for the computer</li>
+<li>Can run local versions</li>
+<li>Most &ldquo;real&rdquo; projects include CI
+
+<ul>
+<li>Travis, Shippable, etc.</li>
+</ul></li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="documentation">Documentation</h2>
+
+<p>BET is <em>auto-documented</em> using a tool called <a href="http://www.sphinx-doc.org/en/master/" target="_blank">Sphinx</a></p>
+
+<pre><code class="language-python">r&quot;&quot;&quot;
+This is a description of the method.
+All sorts of formatting options are understood by Sphinx.
+(kind of something to learn on its own, but usually you
+can make sense of syntax by looking at existing ones)
+&quot;&quot;&quot;
+</code></pre>
+
+<ul>
+<li>Comments that are formatted inside blocks are converted into web-page documentation</li>
+<li>Updating docs through command-line</li>
+<li>GitHub pages used to host the resulting output</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="licensing">Licensing</h2>
+
+<p>Many open-source models to choose from.</p>
+
+<ul>
+<li>GNU GPL</li>
+<li>BSD</li>
+<li>MIT</li>
+<li>Creative Commons</li>
+<li><a href="https://help.github.com/articles/licensing-a-repository/" target="_blank">Github: Choosing a License</a></li>
+<li><a href="https://help.github.com/articles/adding-a-license-to-a-repository/" target="_blank">Github: Adding a License</a></li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="publishing">Publishing</h2>
+
+<ul>
+<li>GitHub (Microsoft)</li>
+<li>GitLab (VC-funded, Private)</li>
+<li>Bitbucket (Atlassian)</li>
+<li>Anaconda (Community)</li>
+<li>PyPi (Community)</li>
+<li>(Suggested) Website</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h1 id="questions">Questions?</h1>
+
+<p><a href="/">Homepage</a></p>
+
+<p><a href="/slides/">Slideshows</a></p>
+
+<p><a href="https://github.com/UT-CHG/BET" target="_blank">BET</a></p>
+
+    </section>
+    
+
+    
+    
+  </div>
+</div>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/lib/js/head.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/js/reveal.min.js"></script>
+
+  <script>
+    window.revealPlugins = { dependencies: [
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.7.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.7.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.7.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.7.0/plugin/zoom-js/zoom.js', async: true },
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.7.0/plugin/math/math.js', async: true },
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.7.0/plugin/print-pdf/print-pdf.js', async: true },
+      
+      { src: '\/js\/vendor\/reveal.js\/plugin\/notes\/notes.js', async: true }
+    ]};
+
+    let revealDefaults = { center: true, controls: true, history: true, progress: true, transition: 'slide', mouseWheel: true };
+    let revealOptions = Object.assign({}, revealDefaults, revealPlugins);
+    Reveal.initialize(revealOptions);
+  </script>
+
+</body>
+</html>

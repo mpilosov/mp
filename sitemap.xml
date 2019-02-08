@@ -480,6 +480,13 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/slides/dev/</loc>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/slides/website/</loc>
     </url>
     
@@ -605,8 +612,24 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/tags/continuous-integration/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/tags/dev/</loc>
       <lastmod>2019-01-01T14:43:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/development/</loc>
       <priority>0</priority>
     </url>
     
@@ -652,6 +675,22 @@
     
       <loc>https://www.michaelpilosov.com/tags/geology/</loc>
       <lastmod>2018-07-21T00:00:00-06:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/git/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/github/</loc>
       <priority>0</priority>
     </url>
     

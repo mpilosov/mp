@@ -12,6 +12,18 @@
     
     
     <item>
+      <title>BET Development</title>
+      <link>https://www.michaelpilosov.com/slides/dev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/slides/dev/</guid>
+      <description>BET Development [Butler, Estep, Tavener] Method
++ Mattis, Graham, Walsh, Pilosov
+github.com/UT-CHG/BET
+About  Purpose: Implement the novel method developed by the aforementioned authors GNU General Public License First released 2014 Python 2.7, upgraded to 3.6  Overview  About/Motivation Git-Based Workflow Contribution, Communication Testing, Coverage, Versioning Pull Requests Continuous Integration Documentation Publishing, Releases, Licenses  About/Motivation  Reproduce results in research Demonstrate utility of approach Upgrading  Python 2.</description>
+    </item>
+    
+    <item>
       <title>Building Websites</title>
       <link>https://www.michaelpilosov.com/slides/website/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
