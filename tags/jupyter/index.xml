@@ -34,5 +34,15 @@
 Today I started by watching a video to be aware of the problems I might face going forward with JupyterHub. I watched someone from Berkeley describe how they&amp;rsquo;ve scaled to thousands of users across many professors and managed to not grow their IT team while doing so.</description>
     </item>
     
+    <item>
+      <title>Jupyter for All the Things</title>
+      <link>https://www.michaelpilosov.com/slides/jupyter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/slides/jupyter/</guid>
+      <description>Scientific Computation for Research and Teaching with Jupyter Michael Pilosov, University of Colorado Denver
+Motivation and Qualifiers  Love applied math&amp;hellip; Hate the learning curve Want to make (computational) math accessible Some familiarity with website design Vague understanding of application architecture  Backstory  Wanted to embed interactive content into website Difficulty with back-end, lack of understanding Kept seeing some of the same words/phrases  Docker, Servers, Sockets, Ports, Containers, NFS, Volumes, Mounting, Spawning, etc.</description>
+    </item>
+    
   </channel>
 </rss>
