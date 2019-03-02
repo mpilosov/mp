@@ -105,12 +105,13 @@
 <li>Kept seeing some of the same words/phrases
 
 <ul>
-<li>Docker, Servers, Sockets, Ports, Containers, NFS, Volumes, Mounting, Spawning, etc.</li>
+<li>Docker, Servers, Databases, Ports, Containers, Volumes, Mounting, Images, Spawning, etc.</li>
 </ul></li>
 <li>Some experience with JupyterHub (barely).
 
 <ul>
 <li>Understood a server was involved (somehow)</li>
+<li>User during SIAM G2S3 Summer School</li>
 </ul></li>
 </ul>
 
@@ -133,6 +134,181 @@
 <li>Focus on key design choices/features</li>
 <li>Discuss implementation process, challenges</li>
 <li>Demonstrate features, use-cases, future</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="start-at-the-beginning-ending">Start at the <del>Beginning</del> Ending&hellip;</h2>
+
+<h3 id="overarching-goal-ease-of-use">Overarching Goal: <em>Ease of Use</em></h3>
+
+<ul>
+<li>Outline the &ldquo;end-user&rdquo; experience for
+
+<ul>
+<li>Students</li>
+<li>Teachers</li>
+<li>IT Admins (maybe)</li>
+</ul></li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="the-process">The Process</h2>
+
+<ul>
+<li>Saw series of conference talks on YouTube</li>
+<li>Spent ~3 weeks &ldquo;playing&rdquo; with the technology
+
+<ul>
+<li>Documented everything on website</li>
+</ul></li>
+<li>Showed advisor, implemented it for a few professors
+
+<ul>
+<li>Two servers (2 cores, 36 threads/core, 500-1000GB RAM)</li>
+<li>S19 is &ldquo;trial period&rdquo; to work out the problems</li>
+</ul></li>
+<li>Now actively &ldquo;maintaining&rdquo; the servers</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="student-experience">Student Experience</h2>
+
+<ul>
+<li>Get username/password from professor</li>
+<li>Log in from ANY computer
+
+<ul>
+<li>Platform independent</li>
+</ul></li>
+<li>&ldquo;All&rdquo; software is pre-installed
+
+<ul>
+<li>Additional packages can be installed by students</li>
+</ul></li>
+<li><code>work/</code> folder allows data to persist</li>
+<li>Computations are performed on Dept. servers
+
+<ul>
+<li>better battery life!</li>
+<li>cheaper computers, laboratories</li>
+</ul></li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="teacher-experience">Teacher Experience</h2>
+
+<p>(TBD)</p>
+
+<ul>
+<li>Depends on technical ability of professors
+
+<ul>
+<li><code>setup.sh</code> script simplifies first-time deployment</li>
+</ul></li>
+<li>Troubleshooting and Customization
+
+<ul>
+<li>professors seem to &ldquo;prefer&rdquo; outsourcing problems</li>
+<li>UC Berkeley takes the opposite approach.</li>
+</ul></li>
+<li><code>jupyterhub_config.py</code> allows for tweaks</li>
+<li><code>singleuser/Dockerfile</code> defines environments</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="potential-upside">Potential Upside</h2>
+
+<ul>
+<li>After growing pains: can scale class sizes</li>
+<li>Automatic-grading</li>
+<li>Interactive Textbooks/Notebooks/Labs</li>
+<li>Drop outdated technology contracts (MyMathLab)</li>
+<li>Students using cutting-edge open-source software
+
+<ul>
+<li>can start coding &ldquo;early&rdquo;</li>
+<li>looks great on resume</li>
+</ul></li>
+<li>Professors/IT people can avoid cross-platform software support for computing courses</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="features">Features</h2>
+
+<ul>
+<li>Students are &ldquo;isolated&rdquo; in their environments
+
+<ul>
+<li>Restricted permissions</li>
+<li>Harder for them to &ldquo;break&rdquo; things</li>
+</ul></li>
+<li>Data and Application are divorced
+
+<ul>
+<li>&ldquo;Light&rdquo; server-load due to containerization</li>
+<li>Backups are &ldquo;easier&rdquo;</li>
+</ul></li>
+<li>Can scale with class-size</li>
 </ul>
 
 
