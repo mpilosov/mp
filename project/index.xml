@@ -7,10 +7,46 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
-    <lastBuildDate>Sat, 21 Jul 2018 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/project/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Math Club</title>
+      <link>https://www.michaelpilosov.com/project/mathclub/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/mathclub/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Math || Art?</title>
+      <link>https://www.michaelpilosov.com/project/mathart/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/mathart/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SIAM</title>
+      <link>https://www.michaelpilosov.com/project/siam/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/siam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Open Science</title>
+      <link>https://www.michaelpilosov.com/project/openscience/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/openscience/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>A New Game of Poker</title>
@@ -38,15 +74,6 @@
       
       <guid>https://www.michaelpilosov.com/project/consistentbayes/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>Internal Project</title>
-      <link>https://www.michaelpilosov.com/project/internal-project/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/internal-project/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</description>
     </item>
     
   </channel>
