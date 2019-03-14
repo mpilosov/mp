@@ -49,11 +49,29 @@
     </item>
     
     <item>
-      <title>Consistent Bayes</title>
-      <link>https://www.michaelpilosov.com/project/consistentbayes/</link>
+      <title>BET</title>
+      <link>https://www.michaelpilosov.com/project/bet/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
       
-      <guid>https://www.michaelpilosov.com/project/consistentbayes/</guid>
+      <guid>https://www.michaelpilosov.com/project/bet/</guid>
+      <description>Link to project, explain the process of updating, merging cbayes.</description>
+    </item>
+    
+    <item>
+      <title>Consistent Bayes</title>
+      <link>https://www.michaelpilosov.com/project/cbayes/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/cbayes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data-Consistent Inversion</title>
+      <link>https://www.michaelpilosov.com/project/dci/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/dci/</guid>
       <description></description>
     </item>
     

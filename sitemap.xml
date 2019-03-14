@@ -492,7 +492,23 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/project/consistentbayes/</loc>
+      <loc>https://www.michaelpilosov.com/project/bet/</loc>
+      <lastmod>2016-04-27T00:00:00-06:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/cbayes/</loc>
+      <lastmod>2016-04-27T00:00:00-06:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/dci/</loc>
       <lastmod>2016-04-27T00:00:00-06:00</lastmod>
     </url>
     
@@ -813,6 +829,15 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/inverse-problems/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/julia/</loc>
       <lastmod>2019-03-01T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
