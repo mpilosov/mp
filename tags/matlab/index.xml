@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>matlab on Michael Pilosov | Academic Website</title>
+    <link>https://www.michaelpilosov.com/tags/matlab/</link>
+    <description>Recent content in matlab on Michael Pilosov | Academic Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
+    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
+    
+	<atom:link href="https://www.michaelpilosov.com/tags/matlab/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Long-Term Sustainability of a Coffee Cooperative</title>
+      <link>https://www.michaelpilosov.com/project/guatemala/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/guatemala/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pharma Mutuals</title>
+      <link>https://www.michaelpilosov.com/project/pharma/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/pharma/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Probably Art</title>
+      <link>https://www.michaelpilosov.com/project/probablyart/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

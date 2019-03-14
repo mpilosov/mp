@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>animation</title>
+      <link>https://www.michaelpilosov.com/tags/animation/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/animation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>biology</title>
       <link>https://www.michaelpilosov.com/tags/biology/</link>
       <pubDate>Mon, 15 Aug 2016 00:00:00 -0600</pubDate>
@@ -23,18 +32,9 @@
     <item>
       <title>code</title>
       <link>https://www.michaelpilosov.com/tags/code/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/code/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>computation</title>
-      <link>https://www.michaelpilosov.com/tags/computation/</link>
-      <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/computation/</guid>
       <description></description>
     </item>
     
@@ -50,36 +50,72 @@
     <item>
       <title>docker</title>
       <link>https://www.michaelpilosov.com/tags/docker/</link>
-      <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>events</title>
+      <link>https://www.michaelpilosov.com/tags/events/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/events/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>evolution</title>
       <link>https://www.michaelpilosov.com/tags/evolution/</link>
-      <pubDate>Mon, 15 Aug 2016 00:00:00 -0600</pubDate>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/evolution/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>geology</title>
-      <link>https://www.michaelpilosov.com/tags/geology/</link>
-      <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
+      <title>grad</title>
+      <link>https://www.michaelpilosov.com/tags/grad/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
-      <guid>https://www.michaelpilosov.com/tags/geology/</guid>
+      <guid>https://www.michaelpilosov.com/tags/grad/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>images</title>
+      <link>https://www.michaelpilosov.com/tags/images/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/images/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>inverse problems</title>
+      <link>https://www.michaelpilosov.com/tags/inverse-problems/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/inverse-problems/</guid>
       <description></description>
     </item>
     
     <item>
       <title>jupyter</title>
       <link>https://www.michaelpilosov.com/tags/jupyter/</link>
-      <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/jupyter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>matlab</title>
+      <link>https://www.michaelpilosov.com/tags/matlab/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/matlab/</guid>
       <description></description>
     </item>
     
@@ -93,11 +129,38 @@
     </item>
     
     <item>
-      <title>openscience</title>
-      <link>https://www.michaelpilosov.com/tags/openscience/</link>
+      <title>oed</title>
+      <link>https://www.michaelpilosov.com/tags/oed/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/oed/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>open source</title>
+      <link>https://www.michaelpilosov.com/tags/open-source/</link>
       <pubDate>Fri, 01 Feb 2019 00:00:00 -0700</pubDate>
       
+      <guid>https://www.michaelpilosov.com/tags/open-source/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openscience</title>
+      <link>https://www.michaelpilosov.com/tags/openscience/</link>
+      <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
+      
       <guid>https://www.michaelpilosov.com/tags/openscience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>optimization</title>
+      <link>https://www.michaelpilosov.com/tags/optimization/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/optimization/</guid>
       <description></description>
     </item>
     
@@ -107,6 +170,69 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/outreach/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>projects</title>
+      <link>https://www.michaelpilosov.com/tags/projects/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://www.michaelpilosov.com/tags/python/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>research</title>
+      <link>https://www.michaelpilosov.com/tags/research/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/research/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>science</title>
+      <link>https://www.michaelpilosov.com/tags/science/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>summer</title>
+      <link>https://www.michaelpilosov.com/tags/summer/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/summer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>technology</title>
+      <link>https://www.michaelpilosov.com/tags/technology/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/technology/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>undergrad</title>
+      <link>https://www.michaelpilosov.com/tags/undergrad/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/undergrad/</guid>
       <description></description>
     </item>
     

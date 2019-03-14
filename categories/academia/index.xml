@@ -7,18 +7,172 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
-    <lastBuildDate>Sat, 21 Jul 2018 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/categories/academia/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Tracking Toxins</title>
-      <link>https://www.michaelpilosov.com/project/contaminant-transport/</link>
+      <title>Chess Club</title>
+      <link>https://www.michaelpilosov.com/project/chessclub/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/chessclub/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Counting Cards: Worth It?</title>
+      <link>https://www.michaelpilosov.com/project/blackjack/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/blackjack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Evolution of Cooperation</title>
+      <link>https://www.michaelpilosov.com/project/evolution/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/evolution/</guid>
+      <description>Publication</description>
+    </item>
+    
+    <item>
+      <title>G2S3 SIAM Summer School</title>
+      <link>https://www.michaelpilosov.com/project/summerschool/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/summerschool/</guid>
+      <description>C</description>
+    </item>
+    
+    <item>
+      <title>Math Club</title>
+      <link>https://www.michaelpilosov.com/project/mathclub/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/mathclub/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Men of Action and Change</title>
+      <link>https://www.michaelpilosov.com/project/mac/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/mac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Moving Pictures: Animating Still Images</title>
+      <link>https://www.michaelpilosov.com/project/animation/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/animation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Numerical Linear Algebra</title>
+      <link>https://www.michaelpilosov.com/project/lapack/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/lapack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pharma Mutuals</title>
+      <link>https://www.michaelpilosov.com/project/pharma/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/pharma/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pi Day</title>
+      <link>https://www.michaelpilosov.com/project/piday/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/piday/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SIAM</title>
+      <link>https://www.michaelpilosov.com/project/siam/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/siam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Students Today, Alumni Tomorrow</title>
+      <link>https://www.michaelpilosov.com/project/stat/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/stat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Study Hall</title>
+      <link>https://www.michaelpilosov.com/project/studyhall/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/studyhall/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tracking Wildlife (on a budget)</title>
+      <link>https://www.michaelpilosov.com/project/wildlife/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/wildlife/</guid>
+      <description>Publication</description>
+    </item>
+    
+    <item>
+      <title>Open Science</title>
+      <link>https://www.michaelpilosov.com/project/openscience/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/openscience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Subsurface Contaminant Transport</title>
+      <link>https://www.michaelpilosov.com/project/toxins/</link>
       <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
       
-      <guid>https://www.michaelpilosov.com/project/contaminant-transport/</guid>
+      <guid>https://www.michaelpilosov.com/project/toxins/</guid>
       <description>More to Come Soon.</description>
+    </item>
+    
+    <item>
+      <title>Group-level events are catalysts in the evolution of cooperation</title>
+      <link>https://www.michaelpilosov.com/publication/cooperation/</link>
+      <pubDate>Mon, 15 Aug 2016 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/publication/cooperation/</guid>
+      <description>Some Notes from the (co)author I worked on this topic primarily in summer 2014, with occasional contributions into early 2016. There is ample room for extending the work, but ultimately I did not venture into this field for my doctoral research.
+I now recognize that we were attempting to answer an inverse problem in this paper and managed to get a glimpse of the solution by solving many forward problems, holding certain parameters fixed.</description>
+    </item>
+    
+    <item>
+      <title>Consistent Bayes</title>
+      <link>https://www.michaelpilosov.com/project/consistentbayes/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/consistentbayes/</guid>
+      <description></description>
     </item>
     
   </channel>

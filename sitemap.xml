@@ -18,6 +18,46 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/project/chessclub/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/blackjack/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/evolution/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/summerschool/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/guatemala/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/project/mathclub/</loc>
       <lastmod>2019-03-01T00:00:00-07:00</lastmod>
     </url>
@@ -34,7 +74,79 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/project/mac/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/animation/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/lapack/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/pharma/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/piday/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/probablyart/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/project/siam/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/stat/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/studyhall/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/wildlife/</loc>
       <lastmod>2019-03-01T00:00:00-07:00</lastmod>
     </url>
     
@@ -234,7 +346,7 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/wid/</loc>
+      <loc>https://www.michaelpilosov.com/widgetpage/</loc>
       <lastmod>2018-09-09T00:00:00-06:00</lastmod>
     </url>
     
@@ -266,7 +378,7 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/project/contaminant-transport/</loc>
+      <loc>https://www.michaelpilosov.com/project/toxins/</loc>
       <lastmod>2018-07-21T00:00:00-06:00</lastmod>
     </url>
     
@@ -557,7 +669,25 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/categories/academia/</loc>
-      <lastmod>2018-07-21T00:00:00-06:00</lastmod>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/animation/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/categories/art/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -575,16 +705,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/code/</loc>
-      <lastmod>2016-04-27T00:00:00-06:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://www.michaelpilosov.com/tags/computation/</loc>
-      <lastmod>2018-07-21T00:00:00-06:00</lastmod>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -602,7 +723,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/docker/</loc>
-      <lastmod>2019-01-01T14:43:00-07:00</lastmod>
+      <lastmod>2019-02-01T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -619,8 +740,26 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/categories/drugs/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/categories/environment/</loc>
-      <lastmod>2018-07-21T00:00:00-06:00</lastmod>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/events/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -629,7 +768,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/evolution/</loc>
-      <lastmod>2016-08-15T00:00:00-06:00</lastmod>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -637,8 +776,44 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/tags/geology/</loc>
-      <lastmod>2018-07-21T00:00:00-06:00</lastmod>
+      <loc>https://www.michaelpilosov.com/categories/finance/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/categories/fundraising/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/grad/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/images/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/inverse-problems/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -647,7 +822,25 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/jupyter/</loc>
-      <lastmod>2019-01-01T14:43:00-07:00</lastmod>
+      <lastmod>2019-02-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/categories/leadership/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/matlab/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -664,7 +857,16 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/tags/openscience/</loc>
+      <loc>https://www.michaelpilosov.com/tags/oed/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/open-source/</loc>
       <lastmod>2019-02-01T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
@@ -673,7 +875,97 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/tags/openscience/</loc>
+      <lastmod>2019-01-01T14:43:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/optimization/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/tags/outreach/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/projects/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/python/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/research/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/science/</loc>
+      <lastmod>2019-02-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/categories/software/</loc>
+      <lastmod>2019-02-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/summer/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/technology/</loc>
+      <lastmod>2019-03-01T00:00:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/undergrad/</loc>
       <lastmod>2019-03-01T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>

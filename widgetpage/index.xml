@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Overview on Michael Pilosov | Academic Website</title>
+    <link>https://www.michaelpilosov.com/widgetpage/</link>
+    <description>Recent content in Overview on Michael Pilosov | Academic Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
+    <lastBuildDate>Sun, 09 Sep 2018 00:00:00 -0600</lastBuildDate>
+    
+	<atom:link href="https://www.michaelpilosov.com/widgetpage/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Overview</title>
+      <link>https://www.michaelpilosov.com/widgetpage/experience/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/experience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Resources</title>
+      <link>https://www.michaelpilosov.com/widgetpage/resources/</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/resources/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recent Galleries</title>
+      <link>https://www.michaelpilosov.com/widgetpage/posts/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/posts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.michaelpilosov.com/widgetpage/resume/</link>
+      <pubDate>Tue, 21 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/resume/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://www.michaelpilosov.com/widgetpage/projects/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/projects/</guid>
+      <description>Test words.</description>
+    </item>
+    
+  </channel>
+</rss>
