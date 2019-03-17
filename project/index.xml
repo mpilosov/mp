@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Projects on Michael Pilosov | Academic Website</title>
+    <title>Projects on Michael Pilosov: The Archives</title>
     <link>https://www.michaelpilosov.com/project/</link>
-    <description>Recent content in Projects on Michael Pilosov | Academic Website</description>
+    <description>Recent content in Projects on Michael Pilosov: The Archives</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
-    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 17 Mar 2019 00:00:00 -0600</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/project/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DCI</title>
+      <link>https://www.michaelpilosov.com/project/dci/</link>
+      <pubDate>Sun, 17 Mar 2019 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/dci/</guid>
+      <description>The novel framework for solving inverse problems in which all of my doctoral work has been grounded.
+Talk about the method in broad terms. What makes it different?
+  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
+    </item>
+    
+    <item>
+      <title>Agricultural Prediction &amp; Sustainability</title>
+      <link>https://www.michaelpilosov.com/project/guatemala/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/guatemala/</guid>
+      <description>Introduction As Green As It Gets (formerly “AGAIG”, now &amp;ldquo;De La Gente&amp;rdquo;/ &amp;ldquo;DLG&amp;rdquo;) is a Non-Governmental Organization founded in 2004 which is focused on the economic development of the coffee farmers that are members of the San Miguel-Escobar coffee cooperative.
+By providing loans, planning, and invaluable marketing connections, the organization seeks to direct the profits from coffee sales towards the farmers, allowing them to lift themselves out of poverty and improve opportunities for their children and themselves.</description>
+    </item>
     
     <item>
       <title>Chess Club</title>
@@ -18,7 +39,10 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/chessclub/</guid>
-      <description></description>
+      <description>Summary Along with some good friends, I helped re-establish this defunct club and secure funding for club meetings and events.
+My primary responsibilities included all publicity operations and planning the charity fundraisers.
+We held weekly meetings and grew from two tables to as many as twelve simultaneous games happening. Snacks were provided and occasionally we were able to provide pizza.
+  Waiting for announcements to end so chess can start.</description>
     </item>
     
     <item>
@@ -27,7 +51,7 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/blackjack/</guid>
-      <description></description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -36,7 +60,9 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/evolution/</guid>
-      <description>Publication</description>
+      <description>I began graduate school in the summer of 2014
+You can find more information about the article, including links to code, pdf, and the co-author&amp;rsquo;s website on the publication page.
+  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
     </item>
     
     <item>
@@ -45,16 +71,16 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/summerschool/</guid>
-      <description>C</description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
-      <title>Long-Term Sustainability of a Coffee Cooperative</title>
-      <link>https://www.michaelpilosov.com/project/guatemala/</link>
+      <title>LAPACK</title>
+      <link>https://www.michaelpilosov.com/project/lapack/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
-      <guid>https://www.michaelpilosov.com/project/guatemala/</guid>
-      <description></description>
+      <guid>https://www.michaelpilosov.com/project/lapack/</guid>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -63,7 +89,7 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/mathclub/</guid>
-      <description></description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -72,7 +98,7 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/mathart/</guid>
-      <description></description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -81,34 +107,28 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/mac/</guid>
-      <description></description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
-      <title>Moving Pictures: Animating Still Images</title>
+      <title>Mentor Lunch</title>
+      <link>https://www.michaelpilosov.com/project/mentorlunch/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/mentorlunch/</guid>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+    </item>
+    
+    <item>
+      <title>Moving Pictures</title>
       <link>https://www.michaelpilosov.com/project/animation/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/animation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Numerical Linear Algebra</title>
-      <link>https://www.michaelpilosov.com/project/lapack/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/lapack/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pharma Mutuals</title>
-      <link>https://www.michaelpilosov.com/project/pharma/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/pharma/</guid>
-      <description></description>
+      <description>My time as a Geneseo Foundation STEM Undergraduate Summer Research Fellow.
+Summer Research
+Readings Course (follow up)
+  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
     </item>
     
     <item>
@@ -117,7 +137,7 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/piday/</guid>
-      <description></description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -126,7 +146,7 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
-      <description></description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -135,7 +155,7 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/siam/</guid>
-      <description></description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -144,25 +164,7 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/stat/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Study Hall</title>
-      <link>https://www.michaelpilosov.com/project/studyhall/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/studyhall/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tracking Wildlife (on a budget)</title>
-      <link>https://www.michaelpilosov.com/project/wildlife/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/wildlife/</guid>
-      <description>Publication</description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -171,7 +173,7 @@
       <pubDate>Fri, 01 Feb 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/openscience/</guid>
-      <description></description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -180,8 +182,28 @@
       <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/poker/</guid>
+      <description>This was a really fun project I undertook for a Math Club game night in 2016 with my friend Elliott Regan, who helped me program this in Javascript and embed into an earlier version of my website.
+Premise Dr. Burt Simon and I had previously collaborated on a paper.
+Rules The rules are listed in short form below the game demonstration below. Gambling would occur on pre-determined intervals (timer), or whenever someone wants to (if you enjoy a bit of chaos).</description>
+    </item>
+    
+    <item>
+      <title>Mathematics of Billiards</title>
+      <link>https://www.michaelpilosov.com/project/billiards/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/billiards/</guid>
       <description>This was a really fun project I undertook for a Math Club game night in 2016 with my friend Elliott Regan.
  current  min  max   Start New Game   var canvas = document.getElementById(&#39;plotCanvas&#39;); var ctx = canvas.getContext(&#39;2d&#39;); var num, maxnum, minnum; var interval = 5; var B = [0] var brakes = 200; var ht = canvas.height; var n = canvas.width; var alpha = 5; initPlot(); drawWalk(); function reset() { B = [0]; var id = window.</description>
+    </item>
+    
+    <item>
+      <title>Poker &amp; Game Night</title>
+      <link>https://www.michaelpilosov.com/project/gamenight/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/gamenight/</guid>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -190,7 +212,7 @@
       <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/toxins/</guid>
-      <description>More to Come Soon.</description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -199,7 +221,8 @@
       <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/bet/</guid>
-      <description>Link to project, explain the process of updating, merging cbayes.</description>
+      <description>Link to project, explain the process of updating, merging cbayes.
+  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -208,16 +231,52 @@
       <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/cbayes/</guid>
-      <description></description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
-      <title>Data-Consistent Inversion</title>
-      <link>https://www.michaelpilosov.com/project/dci/</link>
+      <title>Research Topics</title>
+      <link>https://www.michaelpilosov.com/project/research/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
       
-      <guid>https://www.michaelpilosov.com/project/dci/</guid>
-      <description></description>
+      <guid>https://www.michaelpilosov.com/project/research/</guid>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+    </item>
+    
+    <item>
+      <title>Tracking Wildlife (on a budget)</title>
+      <link>https://www.michaelpilosov.com/project/wildlife/</link>
+      <pubDate>Sat, 09 Jan 2016 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/wildlife/</guid>
+      <description>I managed a group of four undergraduates through a semester-long research project concerning the placement of sensors in an environment where the travel patterns of animals is unknown. My responsibilities included:
+ defining the scope of research and breaking goals down into explicit deliverables, overseeing timeline of research progress, keeping students on deadline, developing outlines of software and clearly defined what their contributions would be.  We chose to define a problem that everyone had some shared interest in and that would be relevant to Distance Geometry (the topic of the Math Clinic that semester).</description>
+    </item>
+    
+    <item>
+      <title>Study Hall</title>
+      <link>https://www.michaelpilosov.com/project/studyhall/</link>
+      <pubDate>Tue, 01 Dec 2015 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/studyhall/</guid>
+      <description>Download Posters JPEG      PNG Download &amp;ldquo;Buried Alive&amp;rdquo;
+Download &amp;ldquo;Burning Candle&amp;rdquo;
+Download &amp;ldquo;Over Head&amp;rdquo;
+Download &amp;ldquo;Snowed Under&amp;rdquo;
+PDF Download &amp;ldquo;Buried Alive&amp;rdquo;
+Download &amp;ldquo;Burning Candle&amp;rdquo;
+Download &amp;ldquo;Over Head&amp;rdquo;
+Download &amp;ldquo;Snowed Under&amp;rdquo;</description>
+    </item>
+    
+    <item>
+      <title>Pharma Mutuals</title>
+      <link>https://www.michaelpilosov.com/project/pharma/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/pharma/</guid>
+      <description>This was a self-directed research project that had its origins in my desire to better understand the contents of an enticing TED talk that I watched during the first week of my last semester as an undergraduate student.
+  What grabbed my attention was that the speaker (Stein) invited scrutiny of their source code, making it [publicly available on GitHub][code]. This event likely seeded my interest in open-source philosophies and diving into this project was an early attempt to learn more about how other people write code.</description>
     </item>
     
   </channel>

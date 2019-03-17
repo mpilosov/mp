@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>poker on Michael Pilosov: The Archives</title>
+    <link>https://www.michaelpilosov.com/tags/poker/</link>
+    <description>Recent content in poker on Michael Pilosov: The Archives</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
+    <lastBuildDate>Sat, 21 Jul 2018 00:00:00 -0600</lastBuildDate>
+    
+	<atom:link href="https://www.michaelpilosov.com/tags/poker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A New Game of Poker</title>
+      <link>https://www.michaelpilosov.com/project/poker/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/poker/</guid>
+      <description>This was a really fun project I undertook for a Math Club game night in 2016 with my friend Elliott Regan, who helped me program this in Javascript and embed into an earlier version of my website.
+Premise Dr. Burt Simon and I had previously collaborated on a paper.
+Rules The rules are listed in short form below the game demonstration below. Gambling would occur on pre-determined intervals (timer), or whenever someone wants to (if you enjoy a bit of chaos).</description>
+    </item>
+    
+    <item>
+      <title>Poker &amp; Game Night</title>
+      <link>https://www.michaelpilosov.com/project/gamenight/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/gamenight/</guid>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+    </item>
+    
+  </channel>
+</rss>

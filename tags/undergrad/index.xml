@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>undergrad on Michael Pilosov | Academic Website</title>
+    <title>undergrad on Michael Pilosov: The Archives</title>
     <link>https://www.michaelpilosov.com/tags/undergrad/</link>
-    <description>Recent content in undergrad on Michael Pilosov | Academic Website</description>
+    <description>Recent content in undergrad on Michael Pilosov: The Archives</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
@@ -13,12 +13,25 @@
     
     
     <item>
+      <title>Agricultural Prediction &amp; Sustainability</title>
+      <link>https://www.michaelpilosov.com/project/guatemala/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/guatemala/</guid>
+      <description>Introduction As Green As It Gets (formerly “AGAIG”, now &amp;ldquo;De La Gente&amp;rdquo;/ &amp;ldquo;DLG&amp;rdquo;) is a Non-Governmental Organization founded in 2004 which is focused on the economic development of the coffee farmers that are members of the San Miguel-Escobar coffee cooperative.
+By providing loans, planning, and invaluable marketing connections, the organization seeks to direct the profits from coffee sales towards the farmers, allowing them to lift themselves out of poverty and improve opportunities for their children and themselves.</description>
+    </item>
+    
+    <item>
       <title>Chess Club</title>
       <link>https://www.michaelpilosov.com/project/chessclub/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/chessclub/</guid>
-      <description></description>
+      <description>Summary Along with some good friends, I helped re-establish this defunct club and secure funding for club meetings and events.
+My primary responsibilities included all publicity operations and planning the charity fundraisers.
+We held weekly meetings and grew from two tables to as many as twelve simultaneous games happening. Snacks were provided and occasionally we were able to provide pizza.
+  Waiting for announcements to end so chess can start.</description>
     </item>
     
     <item>
@@ -27,16 +40,7 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/blackjack/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Long-Term Sustainability of a Coffee Cooperative</title>
-      <link>https://www.michaelpilosov.com/project/guatemala/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/guatemala/</guid>
-      <description></description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -45,16 +49,7 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/mac/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pharma Mutuals</title>
-      <link>https://www.michaelpilosov.com/project/pharma/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/pharma/</guid>
-      <description></description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -63,7 +58,17 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
-      <description></description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+    </item>
+    
+    <item>
+      <title>Pharma Mutuals</title>
+      <link>https://www.michaelpilosov.com/project/pharma/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/pharma/</guid>
+      <description>This was a self-directed research project that had its origins in my desire to better understand the contents of an enticing TED talk that I watched during the first week of my last semester as an undergraduate student.
+  What grabbed my attention was that the speaker (Stein) invited scrutiny of their source code, making it [publicly available on GitHub][code]. This event likely seeded my interest in open-source philosophies and diving into this project was an early attempt to learn more about how other people write code.</description>
     </item>
     
   </channel>

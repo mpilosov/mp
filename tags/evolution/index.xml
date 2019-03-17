@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>evolution on Michael Pilosov | Academic Website</title>
+    <title>evolution on Michael Pilosov: The Archives</title>
     <link>https://www.michaelpilosov.com/tags/evolution/</link>
-    <description>Recent content in evolution on Michael Pilosov | Academic Website</description>
+    <description>Recent content in evolution on Michael Pilosov: The Archives</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
@@ -18,7 +18,9 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/evolution/</guid>
-      <description>Publication</description>
+      <description>I began graduate school in the summer of 2014
+You can find more information about the article, including links to code, pdf, and the co-author&amp;rsquo;s website on the publication page.
+  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
     </item>
     
     <item>
@@ -27,8 +29,7 @@
       <pubDate>Mon, 15 Aug 2016 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/publication/cooperation/</guid>
-      <description>Some Notes from the (co)author I worked on this topic primarily in summer 2014, with occasional contributions into early 2016. There is ample room for extending the work, but ultimately I did not venture into this field for my doctoral research.
-I now recognize that we were attempting to answer an inverse problem in this paper and managed to get a glimpse of the solution by solving many forward problems, holding certain parameters fixed.</description>
+      <description>Some Notes from the (co)author I worked on this topic primarily in summer 2014, with occasional contributions into early 2016 under the direction of Burt Simon. My primary contributions involved handling all software and experimental simulations, but I aided in the narrative framing and editing of the paper as well. There is ample room for extending the work, but ultimately I did not venture into this field for my doctoral research.</description>
     </item>
     
   </channel>

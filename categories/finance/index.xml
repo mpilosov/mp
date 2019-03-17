@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>finance on Michael Pilosov | Academic Website</title>
+    <title>finance on Michael Pilosov: The Archives</title>
     <link>https://www.michaelpilosov.com/categories/finance/</link>
-    <description>Recent content in finance on Michael Pilosov | Academic Website</description>
+    <description>Recent content in finance on Michael Pilosov: The Archives</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
@@ -13,21 +13,23 @@
     
     
     <item>
-      <title>Long-Term Sustainability of a Coffee Cooperative</title>
+      <title>Agricultural Prediction &amp; Sustainability</title>
       <link>https://www.michaelpilosov.com/project/guatemala/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/guatemala/</guid>
-      <description></description>
+      <description>Introduction As Green As It Gets (formerly “AGAIG”, now &amp;ldquo;De La Gente&amp;rdquo;/ &amp;ldquo;DLG&amp;rdquo;) is a Non-Governmental Organization founded in 2004 which is focused on the economic development of the coffee farmers that are members of the San Miguel-Escobar coffee cooperative.
+By providing loans, planning, and invaluable marketing connections, the organization seeks to direct the profits from coffee sales towards the farmers, allowing them to lift themselves out of poverty and improve opportunities for their children and themselves.</description>
     </item>
     
     <item>
       <title>Pharma Mutuals</title>
       <link>https://www.michaelpilosov.com/project/pharma/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/pharma/</guid>
-      <description></description>
+      <description>This was a self-directed research project that had its origins in my desire to better understand the contents of an enticing TED talk that I watched during the first week of my last semester as an undergraduate student.
+  What grabbed my attention was that the speaker (Stein) invited scrutiny of their source code, making it [publicly available on GitHub][code]. This event likely seeded my interest in open-source philosophies and diving into this project was an early attempt to learn more about how other people write code.</description>
     </item>
     
   </channel>

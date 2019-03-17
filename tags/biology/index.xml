@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>biology on Michael Pilosov | Academic Website</title>
+    <title>biology on Michael Pilosov: The Archives</title>
     <link>https://www.michaelpilosov.com/tags/biology/</link>
-    <description>Recent content in biology on Michael Pilosov | Academic Website</description>
+    <description>Recent content in biology on Michael Pilosov: The Archives</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
@@ -18,8 +18,17 @@
       <pubDate>Mon, 15 Aug 2016 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/publication/cooperation/</guid>
-      <description>Some Notes from the (co)author I worked on this topic primarily in summer 2014, with occasional contributions into early 2016. There is ample room for extending the work, but ultimately I did not venture into this field for my doctoral research.
-I now recognize that we were attempting to answer an inverse problem in this paper and managed to get a glimpse of the solution by solving many forward problems, holding certain parameters fixed.</description>
+      <description>Some Notes from the (co)author I worked on this topic primarily in summer 2014, with occasional contributions into early 2016 under the direction of Burt Simon. My primary contributions involved handling all software and experimental simulations, but I aided in the narrative framing and editing of the paper as well. There is ample room for extending the work, but ultimately I did not venture into this field for my doctoral research.</description>
+    </item>
+    
+    <item>
+      <title>Tracking Wildlife (on a budget)</title>
+      <link>https://www.michaelpilosov.com/project/wildlife/</link>
+      <pubDate>Sat, 09 Jan 2016 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/wildlife/</guid>
+      <description>I managed a group of four undergraduates through a semester-long research project concerning the placement of sensors in an environment where the travel patterns of animals is unknown. My responsibilities included:
+ defining the scope of research and breaking goals down into explicit deliverables, overseeing timeline of research progress, keeping students on deadline, developing outlines of software and clearly defined what their contributions would be.  We chose to define a problem that everyone had some shared interest in and that would be relevant to Distance Geometry (the topic of the Math Clinic that semester).</description>
     </item>
     
   </channel>

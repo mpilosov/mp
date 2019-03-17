@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>inverse problems on Michael Pilosov | Academic Website</title>
+    <title>inverse problems on Michael Pilosov: The Archives</title>
     <link>https://www.michaelpilosov.com/tags/inverse-problems/</link>
-    <description>Recent content in inverse problems on Michael Pilosov | Academic Website</description>
+    <description>Recent content in inverse problems on Michael Pilosov: The Archives</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
-    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 17 Mar 2019 00:00:00 -0600</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/inverse-problems/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DCI</title>
+      <link>https://www.michaelpilosov.com/project/dci/</link>
+      <pubDate>Sun, 17 Mar 2019 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/dci/</guid>
+      <description>The novel framework for solving inverse problems in which all of my doctoral work has been grounded.
+Talk about the method in broad terms. What makes it different?
+  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
+    </item>
     
     <item>
       <title>G2S3 SIAM Summer School</title>
@@ -18,16 +29,7 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/summerschool/</guid>
-      <description>C</description>
-    </item>
-    
-    <item>
-      <title>Tracking Wildlife (on a budget)</title>
-      <link>https://www.michaelpilosov.com/project/wildlife/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/wildlife/</guid>
-      <description>Publication</description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -36,7 +38,8 @@
       <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/bet/</guid>
-      <description>Link to project, explain the process of updating, merging cbayes.</description>
+      <description>Link to project, explain the process of updating, merging cbayes.
+  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -45,16 +48,26 @@
       <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/cbayes/</guid>
-      <description></description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
-      <title>Data-Consistent Inversion</title>
-      <link>https://www.michaelpilosov.com/project/dci/</link>
+      <title>Research Topics</title>
+      <link>https://www.michaelpilosov.com/project/research/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
       
-      <guid>https://www.michaelpilosov.com/project/dci/</guid>
-      <description></description>
+      <guid>https://www.michaelpilosov.com/project/research/</guid>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+    </item>
+    
+    <item>
+      <title>Tracking Wildlife (on a budget)</title>
+      <link>https://www.michaelpilosov.com/project/wildlife/</link>
+      <pubDate>Sat, 09 Jan 2016 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/wildlife/</guid>
+      <description>I managed a group of four undergraduates through a semester-long research project concerning the placement of sensors in an environment where the travel patterns of animals is unknown. My responsibilities included:
+ defining the scope of research and breaking goals down into explicit deliverables, overseeing timeline of research progress, keeping students on deadline, developing outlines of software and clearly defined what their contributions would be.  We chose to define a problem that everyone had some shared interest in and that would be relevant to Distance Geometry (the topic of the Math Clinic that semester).</description>
     </item>
     
   </channel>

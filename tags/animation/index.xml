@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>animation on Michael Pilosov | Academic Website</title>
+    <title>animation on Michael Pilosov: The Archives</title>
     <link>https://www.michaelpilosov.com/tags/animation/</link>
-    <description>Recent content in animation on Michael Pilosov | Academic Website</description>
+    <description>Recent content in animation on Michael Pilosov: The Archives</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
@@ -13,12 +13,15 @@
     
     
     <item>
-      <title>Moving Pictures: Animating Still Images</title>
+      <title>Moving Pictures</title>
       <link>https://www.michaelpilosov.com/project/animation/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/animation/</guid>
-      <description></description>
+      <description>My time as a Geneseo Foundation STEM Undergraduate Summer Research Fellow.
+Summer Research
+Readings Course (follow up)
+  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
     </item>
     
   </channel>

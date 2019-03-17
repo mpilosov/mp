@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>technology on Michael Pilosov | Academic Website</title>
+    <title>technology on Michael Pilosov: The Archives</title>
     <link>https://www.michaelpilosov.com/tags/technology/</link>
-    <description>Recent content in technology on Michael Pilosov | Academic Website</description>
+    <description>Recent content in technology on Michael Pilosov: The Archives</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
-    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 01 Feb 2019 00:00:00 -0700</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/technology/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Pharma Mutuals</title>
-      <link>https://www.michaelpilosov.com/project/pharma/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/pharma/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Open Science</title>
@@ -27,7 +18,17 @@
       <pubDate>Fri, 01 Feb 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/openscience/</guid>
-      <description></description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+    </item>
+    
+    <item>
+      <title>Pharma Mutuals</title>
+      <link>https://www.michaelpilosov.com/project/pharma/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/pharma/</guid>
+      <description>This was a self-directed research project that had its origins in my desire to better understand the contents of an enticing TED talk that I watched during the first week of my last semester as an undergraduate student.
+  What grabbed my attention was that the speaker (Stein) invited scrutiny of their source code, making it [publicly available on GitHub][code]. This event likely seeded my interest in open-source philosophies and diving into this project was an early attempt to learn more about how other people write code.</description>
     </item>
     
   </channel>

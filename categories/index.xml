@@ -1,30 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Michael Pilosov | Academic Website</title>
+    <title>Categories on Michael Pilosov: The Archives</title>
     <link>https://www.michaelpilosov.com/categories/</link>
-    <description>Recent content in Categories on Michael Pilosov | Academic Website</description>
+    <description>Recent content in Categories on Michael Pilosov: The Archives</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
-    <lastBuildDate>Wed, 19 Dec 2018 18:16:07 -0700</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Artwork</title>
-      <link>https://www.michaelpilosov.com/categories/artwork/</link>
-      <pubDate>Wed, 19 Dec 2018 18:16:07 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/categories/artwork/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>academia</title>
       <link>https://www.michaelpilosov.com/categories/academia/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Sun, 17 Mar 2019 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/categories/academia/</guid>
       <description></description>
@@ -67,6 +57,15 @@
     </item>
     
     <item>
+      <title>events</title>
+      <link>https://www.michaelpilosov.com/categories/events/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/categories/events/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>finance</title>
       <link>https://www.michaelpilosov.com/categories/finance/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
@@ -94,9 +93,36 @@
     </item>
     
     <item>
+      <title>mentorship</title>
+      <link>https://www.michaelpilosov.com/categories/mentorship/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/categories/mentorship/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>outreach</title>
+      <link>https://www.michaelpilosov.com/categories/outreach/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/categories/outreach/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>research</title>
+      <link>https://www.michaelpilosov.com/categories/research/</link>
+      <pubDate>Sun, 17 Mar 2019 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/categories/research/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>software</title>
       <link>https://www.michaelpilosov.com/categories/software/</link>
-      <pubDate>Fri, 01 Feb 2019 00:00:00 -0700</pubDate>
+      <pubDate>Sun, 17 Mar 2019 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/categories/software/</guid>
       <description></description>

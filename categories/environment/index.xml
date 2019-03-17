@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>environment on Michael Pilosov | Academic Website</title>
+    <title>environment on Michael Pilosov: The Archives</title>
     <link>https://www.michaelpilosov.com/categories/environment/</link>
-    <description>Recent content in environment on Michael Pilosov | Academic Website</description>
+    <description>Recent content in environment on Michael Pilosov: The Archives</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
@@ -13,12 +13,13 @@
     
     
     <item>
-      <title>Long-Term Sustainability of a Coffee Cooperative</title>
+      <title>Agricultural Prediction &amp; Sustainability</title>
       <link>https://www.michaelpilosov.com/project/guatemala/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/guatemala/</guid>
-      <description></description>
+      <description>Introduction As Green As It Gets (formerly “AGAIG”, now &amp;ldquo;De La Gente&amp;rdquo;/ &amp;ldquo;DLG&amp;rdquo;) is a Non-Governmental Organization founded in 2004 which is focused on the economic development of the coffee farmers that are members of the San Miguel-Escobar coffee cooperative.
+By providing loans, planning, and invaluable marketing connections, the organization seeks to direct the profits from coffee sales towards the farmers, allowing them to lift themselves out of poverty and improve opportunities for their children and themselves.</description>
     </item>
     
     <item>
@@ -27,7 +28,17 @@
       <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/toxins/</guid>
-      <description>More to Come Soon.</description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+    </item>
+    
+    <item>
+      <title>Tracking Wildlife (on a budget)</title>
+      <link>https://www.michaelpilosov.com/project/wildlife/</link>
+      <pubDate>Sat, 09 Jan 2016 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/wildlife/</guid>
+      <description>I managed a group of four undergraduates through a semester-long research project concerning the placement of sensors in an environment where the travel patterns of animals is unknown. My responsibilities included:
+ defining the scope of research and breaking goals down into explicit deliverables, overseeing timeline of research progress, keeping students on deadline, developing outlines of software and clearly defined what their contributions would be.  We chose to define a problem that everyone had some shared interest in and that would be relevant to Distance Geometry (the topic of the Math Clinic that semester).</description>
     </item>
     
   </channel>
