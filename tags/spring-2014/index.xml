@@ -13,18 +13,6 @@
     
     
     <item>
-      <title>Chess Club</title>
-      <link>https://www.michaelpilosov.com/project/chessclub/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/chessclub/</guid>
-      <description>Summary Along with some good friends, I helped re-establish this defunct club and secure funding for club meetings and events.
-My primary responsibilities included all publicity operations and planning the charity fundraisers.
-We held weekly meetings and grew from two tables to as many as twelve simultaneous games happening. Snacks were provided and occasionally we were able to provide pizza.
-  Waiting for announcements to end so chess can start.</description>
-    </item>
-    
-    <item>
       <title>Men of Action and Change</title>
       <link>https://www.michaelpilosov.com/project/mac/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
@@ -41,6 +29,18 @@ We held weekly meetings and grew from two tables to as many as twelve simultaneo
       <guid>https://www.michaelpilosov.com/project/pharma/</guid>
       <description>This was a self-directed research project that had its origins in my desire to better understand the contents of an enticing TED talk that I watched during the first week of my last semester as an undergraduate student.
   What grabbed my attention was that the speaker (Stein) invited scrutiny of their source code, making it [publicly available on GitHub][code]. This event likely seeded my interest in open-source philosophies and diving into this project was an early attempt to learn more about how other people write code.</description>
+    </item>
+    
+    <item>
+      <title>Chess Club</title>
+      <link>https://www.michaelpilosov.com/project/chessclub/</link>
+      <pubDate>Sat, 01 Jun 2013 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/chessclub/</guid>
+      <description>Summary Along with some good friends, I helped re-establish this defunct club and secure funding for club meetings and events.
+My primary responsibilities included all publicity operations and planning the charity fundraisers.
+We held weekly meetings and grew from two tables to as many as twelve simultaneous games happening. Snacks were provided and occasionally we were able to provide pizza.
+  Waiting for announcements to end so chess can start.</description>
     </item>
     
   </channel>
