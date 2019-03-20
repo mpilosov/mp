@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
-    <lastBuildDate>Fri, 01 Feb 2019 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>BET</title>
+      <link>https://www.michaelpilosov.com/project/bet/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/bet/</guid>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+    </item>
     
     <item>
       <title>Open Science</title>

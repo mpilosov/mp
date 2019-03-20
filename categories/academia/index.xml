@@ -7,20 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
-    <lastBuildDate>Sun, 17 Mar 2019 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/categories/academia/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>DCI</title>
-      <link>https://www.michaelpilosov.com/project/dci/</link>
-      <pubDate>Sun, 17 Mar 2019 00:00:00 -0600</pubDate>
+      <title>BET</title>
+      <link>https://www.michaelpilosov.com/project/bet/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
-      <guid>https://www.michaelpilosov.com/project/dci/</guid>
-      <description>The novel framework for solving inverse problems in which all of my doctoral work has been grounded.
-Talk about the method in broad terms. What makes it different?
-  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
+      <guid>https://www.michaelpilosov.com/project/bet/</guid>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -44,38 +42,11 @@ You can find more information about the article, including links to code, pdf, a
     </item>
     
     <item>
-      <title>Food Bank</title>
-      <link>https://www.michaelpilosov.com/project/foodbank/</link>
+      <title>Math || Art?</title>
+      <link>https://www.michaelpilosov.com/project/mathart/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
-      <guid>https://www.michaelpilosov.com/project/foodbank/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
-    </item>
-    
-    <item>
-      <title>G2S3 SIAM Summer School</title>
-      <link>https://www.michaelpilosov.com/project/summerschool/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/summerschool/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
-    </item>
-    
-    <item>
-      <title>LAPACK</title>
-      <link>https://www.michaelpilosov.com/project/lapack/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/lapack/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
-    </item>
-    
-    <item>
-      <title>Math Club</title>
-      <link>https://www.michaelpilosov.com/project/mathclub/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/mathclub/</guid>
+      <guid>https://www.michaelpilosov.com/project/mathart/</guid>
       <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
@@ -89,24 +60,12 @@ You can find more information about the article, including links to code, pdf, a
     </item>
     
     <item>
-      <title>Mentor Lunch</title>
-      <link>https://www.michaelpilosov.com/project/mentorlunch/</link>
+      <title>PhD</title>
+      <link>https://www.michaelpilosov.com/project/thesis/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
-      <guid>https://www.michaelpilosov.com/project/mentorlunch/</guid>
+      <guid>https://www.michaelpilosov.com/project/thesis/</guid>
       <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
-    </item>
-    
-    <item>
-      <title>Moving Pictures</title>
-      <link>https://www.michaelpilosov.com/project/animation/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/animation/</guid>
-      <description>My time as a Geneseo Foundation STEM Undergraduate Summer Research Fellow.
-Summer Research
-Readings Course (follow up)
-  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
     </item>
     
     <item>
@@ -168,30 +127,80 @@ Rules The rules are listed in short form below the game demonstration below. Gam
     </item>
     
     <item>
-      <title>Mathematics of Billiards</title>
-      <link>https://www.michaelpilosov.com/project/billiards/</link>
-      <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
+      <title>G2S3</title>
+      <link>https://www.michaelpilosov.com/project/summerschool/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
       
-      <guid>https://www.michaelpilosov.com/project/billiards/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Poker &amp; Game Night</title>
-      <link>https://www.michaelpilosov.com/project/gamenight/</link>
-      <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/gamenight/</guid>
+      <guid>https://www.michaelpilosov.com/project/summerschool/</guid>
       <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
       <title>Subsurface Contaminant Transport</title>
       <link>https://www.michaelpilosov.com/project/toxins/</link>
-      <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/toxins/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+      <description>Overview I went to work with Dr. Velimir Vesselinov in the summer of 2017 at the Los Alamos National Laboratory (LANL). This experience drastically changed the direction of my research. I spent much of my time reading papers on Bayesian Inverse Problems and Subsurface Contaminant Transport Problems. Part of what I did was learn the Julia programming language1, implementing some Markov chain Monte Carlo methods to practice, and converting some algorithms from Python to Julia.</description>
+    </item>
+    
+    <item>
+      <title>Master of Science</title>
+      <link>https://www.michaelpilosov.com/project/masters/</link>
+      <pubDate>Mon, 01 May 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/masters/</guid>
+      <description>Summary My advisor developed a framework for solving a large class of problems of particular interest to the engineering disciplines. Starting as a graduate research assistant under his direction in the summer of 2015, I began to learn about this new method and explore implications of how measurements of physical systems are taken on our ability to accurately describe parameter uncertainty sets.
+You can read more about it below, but overall, my focus on skewness ended up playing a less important role when we developed a sample-based approach to solving the same problems.</description>
+    </item>
+    
+    <item>
+      <title>Movie Nights</title>
+      <link>https://www.michaelpilosov.com/project/movienight/</link>
+      <pubDate>Mon, 01 May 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/movienight/</guid>
+      <description>Math Club began to host regular movie nights each semester, highlighting films about mathematicians. We hoped to reach a broader audience outside the math department by hosting these events in very public locations with generous catering budgets.
+Films Watched:
+ The Imitation Game The Man Who Knew Infinity Hidden Figures  Download Game Night Funding Presentation</description>
+    </item>
+    
+    <item>
+      <title>Poker &amp; Game Night</title>
+      <link>https://www.michaelpilosov.com/project/gamenight/</link>
+      <pubDate>Mon, 01 May 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/gamenight/</guid>
+      <description>Math Club held several Poker and Game nights, where we provided food and snacks for students to come and relax after a long day at school and enjoy some social spaces that did not involve alcohol or drugs (or math). At one of these, we also had the opportunity to introduce a game that Dr. Simon I had worked on, since I finally managed to write a program in a way that could be used by other people.</description>
+    </item>
+    
+    <item>
+      <title>Mentor Lunch</title>
+      <link>https://www.michaelpilosov.com/project/mentorlunch/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/mentorlunch/</guid>
+      <description>As President of SIAM, I organized a regular mentor lunch that we started to run every semester. What motivated me was noticing that undergraduates with whom I spoke were routinely unaware of their career options. It was completely unclear what courses they should take because they had a hard time connecting what they liked to possible career paths. Many did not know that graduate school could be paid for! The course descriptions were not particularly helpful since they contained jargon that was unfamiliar to students.</description>
+    </item>
+    
+    <item>
+      <title>DCI</title>
+      <link>https://www.michaelpilosov.com/project/dci/</link>
+      <pubDate>Thu, 01 Sep 2016 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/dci/</guid>
+      <description>The novel framework for solving inverse problems in which all of my doctoral work has been grounded.
+Talk about the method in broad terms. What makes it different?
+  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
+    </item>
+    
+    <item>
+      <title>Mathematics of Billiards</title>
+      <link>https://www.michaelpilosov.com/project/billiards/</link>
+      <pubDate>Thu, 01 Sep 2016 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/billiards/</guid>
+      <description>Billiards night was one of the first events that Christina and I plan for Math Club. It was a relatively simple event, focused on bringing together people For a night of pool and pizza. We played videos about billiards, including ones that went over the geometry of planning different types of shots on televisions in the background of the pool hall. We held this event several times over the years.</description>
     </item>
     
     <item>
@@ -204,13 +213,21 @@ Rules The rules are listed in short form below the game demonstration below. Gam
     </item>
     
     <item>
-      <title>BET</title>
-      <link>https://www.michaelpilosov.com/project/bet/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
+      <title>Food Bank</title>
+      <link>https://www.michaelpilosov.com/project/foodbank/</link>
+      <pubDate>Wed, 01 Jun 2016 00:00:00 -0600</pubDate>
       
-      <guid>https://www.michaelpilosov.com/project/bet/</guid>
-      <description>Link to project, explain the process of updating, merging cbayes.
-  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+      <guid>https://www.michaelpilosov.com/project/foodbank/</guid>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+    </item>
+    
+    <item>
+      <title>Math Club</title>
+      <link>https://www.michaelpilosov.com/project/mathclub/</link>
+      <pubDate>Wed, 01 Jun 2016 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/mathclub/</guid>
+      <description>Summary During the last semester of my first year in graduate school (spring 2015), I volunteered for the Study Hall that was being put on by the department. I was inspired by that event to get in touch with the professor who organized it, and asked about interest in a Math Club. I was told that it had languished over the years but I was welcome to revive it (he was willing to be the faculty advisor), and he put me in touch with an undergraduate student that he thought would be good to partner up with.</description>
     </item>
     
     <item>
@@ -267,6 +284,18 @@ Rules The rules are listed in short form below the game demonstration below. Gam
       <guid>https://www.michaelpilosov.com/project/pharma/</guid>
       <description>This was a self-directed research project that had its origins in my desire to better understand the contents of an enticing TED talk that I watched during the first week of my last semester as an undergraduate student.
   What grabbed my attention was that the speaker (Stein) invited scrutiny of their source code, making it [publicly available on GitHub][code]. This event likely seeded my interest in open-source philosophies and diving into this project was an early attempt to learn more about how other people write code.</description>
+    </item>
+    
+    <item>
+      <title>Moving Pictures</title>
+      <link>https://www.michaelpilosov.com/project/animation/</link>
+      <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/animation/</guid>
+      <description>My time as a Geneseo Foundation STEM Undergraduate Summer Research Fellow.
+Summer Research
+Readings Course (follow up)
+  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
     </item>
     
     <item>

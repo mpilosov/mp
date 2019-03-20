@@ -13,20 +13,11 @@
     
     
     <item>
-      <title>Food Bank</title>
-      <link>https://www.michaelpilosov.com/project/foodbank/</link>
+      <title>PhD</title>
+      <link>https://www.michaelpilosov.com/project/thesis/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
-      <guid>https://www.michaelpilosov.com/project/foodbank/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
-    </item>
-    
-    <item>
-      <title>Mentor Lunch</title>
-      <link>https://www.michaelpilosov.com/project/mentorlunch/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/mentorlunch/</guid>
+      <guid>https://www.michaelpilosov.com/project/thesis/</guid>
       <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
@@ -39,6 +30,24 @@
       <description>The following is an edited version of an end-of-year summary report sent to the SIAM.
 SIAM and Math Club have established three core pillars upon which to form themselves within the Department of Mathematical and Statistical Sciences at CU Denver:
  service, scholarship, and community engagement.  In addressing service, we have regularly facilitated participation in regional science fairs, organized a semesterly food bank drive to benefit homeless students on campus (Note: our department was the most successful donor on campus last semester), and have begun to integrate charitable fundraising into our community events.</description>
+    </item>
+    
+    <item>
+      <title>Subsurface Contaminant Transport</title>
+      <link>https://www.michaelpilosov.com/project/toxins/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/toxins/</guid>
+      <description>Overview I went to work with Dr. Velimir Vesselinov in the summer of 2017 at the Los Alamos National Laboratory (LANL). This experience drastically changed the direction of my research. I spent much of my time reading papers on Bayesian Inverse Problems and Subsurface Contaminant Transport Problems. Part of what I did was learn the Julia programming language1, implementing some Markov chain Monte Carlo methods to practice, and converting some algorithms from Python to Julia.</description>
+    </item>
+    
+    <item>
+      <title>Mentor Lunch</title>
+      <link>https://www.michaelpilosov.com/project/mentorlunch/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/mentorlunch/</guid>
+      <description>As President of SIAM, I organized a regular mentor lunch that we started to run every semester. What motivated me was noticing that undergraduates with whom I spoke were routinely unaware of their career options. It was completely unclear what courses they should take because they had a hard time connecting what they liked to possible career paths. Many did not know that graduate school could be paid for! The course descriptions were not particularly helpful since they contained jargon that was unfamiliar to students.</description>
     </item>
     
   </channel>

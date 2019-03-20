@@ -129,9 +129,9 @@
   <meta property="og:description" content="Environmental remediation for Hexavalent Chromium."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2018-07-21T00:00:00-06:00">
+  <meta property="article:published_time" content="2017-09-01T00:00:00-06:00">
   
-  <meta property="article:modified_time" content="2019-03-17T18:00:00-06:00">
+  <meta property="article:modified_time" content="2019-03-19T15:30:00-06:00">
   
 
   
@@ -332,9 +332,9 @@
     
         Last updated on
     
-    <meta content="2018-07-21 00:00:00 -0600 MDT" itemprop="datePublished">
-    <time datetime="2019-03-17 18:00:00 -0600 MDT" itemprop="dateModified">
-      Mar 17, 2019
+    <meta content="2017-09-01 00:00:00 -0600 MDT" itemprop="datePublished">
+    <time datetime="2019-03-19 15:30:00 -0600 MDT" itemprop="dateModified">
+      Mar 19, 2019
     </time>
   </span>
   <span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
@@ -355,7 +355,9 @@
     
     <a href="/categories/environment/">environment</a>, 
     
-    <a href="/categories/academia/">academia</a>
+    <a href="/categories/academia/">academia</a>, 
+    
+    <a href="/categories/research/">research</a>
     
   </span>
   
@@ -424,26 +426,78 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      <center>
-<h1>
-Please pardon our mess.
-</h1>
-<br>
-<h2>
-This page is still a work in progress.
-</h2>
-<br>
-<br>
-<small>
-I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.
-</small>
-<br>
-<br>
-Please feel free to <a href="/#contact">contact me</a> if you want me to finish this particular page immediately.
-<br>
-<br>
-<br>
-</center>
+      
+
+<h1 id="overview">Overview</h1>
+
+<p>I went to work with <a href="https://montyv.github.io/" target="_blank">Dr. Velimir Vesselinov</a> in the summer of 2017 at the Los Alamos National Laboratory <a href="https://lanl.gov" target="_blank">(LANL)</a>.
+This experience drastically changed the direction of my research.
+I spent much of my time reading papers on Bayesian Inverse Problems and Subsurface Contaminant Transport Problems.
+Part of what I did was learn the <a href="https://julialang.org/" target="_blank">Julia</a> programming language<sup class="footnote-ref" id="fnref:v0-52-and-v0-6-a"><a href="#fn:v0-52-and-v0-6-a">1</a></sup>, implementing some <a href="https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo" target="_blank">Markov chain Monte Carlo</a> methods to practice, and converting some algorithms from Python to Julia.</p>
+
+<p>Part of the reason that my research direction changed was that I ran into a scenario with which I was completely unfamiliar, and that the methods I had been researching were not quite suited to handle.
+I ended up sketching out several ideas of how to adopt our <a href="../dci">framework</a> to handle situations where the number of data points far outnumbers the number of uncertain input parameters.</p>
+
+<p>In the <a href="/tags/fall-2017">fall of 2017</a> and <a href="/tags/spring-2018">spring of 2018</a>, I worked extensively with <a href="http://www.math.ucdenver.edu/~tbutler/" target="_blank">my advisor</a> to extend the theory behind some of what I had developed.
+By the time of the <a href="/talk/siam_uq18">SIAM UQ</a> conference in 2018, I had some results that appeared to be working insofar as that they could handle arbitrary dataset sizes (in theory).
+We would continue to improve on this <a href="../dci">data-generated maps approach</a> and it formed the basis for my thesis work.</p>
+
+<p>In order to accomplish <em>something</em> over the summer that I was at LANL, I ended up somewhat changing the problem to one that I could handle tackling in the short number of weeks that remained before I had to leave.
+I ended up asking questions regarding the optimal sub-selection of information with respect to the precision and accuracy of the estimates of parameter uncertainty.
+Basically, if you could gather data from only some subset of wells at a particular point in time, how do we understand <em>a priori</em> which measurements would provide the most useful data?</p>
+
+<p>After this summer, though, my foray in to Optimal Experimental Design (which I had been doing a bit of for the past semester) ended.
+My focus turned to actually formulating a theory and method for <a href="/talk/siam_cse19">Parameter Identification under Uncertainty</a> in our <a href="../dci">Data-Consistent Inversion</a> framework.</p>
+
+<h1 id="original-proposal">Original Proposal</h1>
+
+<p>(2017-01-26)</p>
+
+<blockquote>
+<p>We would like to investigate the use of machine learning to enhance optimal selection of quantities of interest for use in solving stochastic inverse problems in a measure-theoretic framework.
+Much of the work is focused on improving numerical accuracy and precision using novel sampling techniques.
+We hope to develop methods that leverage locally optimal Quantity of Interest choices to guide designs of data collection networks which can potentially quantify and reduce uncertainty more efficiently than existing approaches.
+The goals of this research project include the publication of a research paper and the development of existing LANL open-source code.</p>
+</blockquote>
+
+<h2 id="references">References</h2>
+
+<p>For more information on the Measure-Theoretic framework developed by Dr. Butler <em>et al</em>, as well as an overview of the open-source software BET which implements the novel developments in Python 2.7, please refer to:</p>
+
+<blockquote>
+<p><em>A measure-theoretic computational method for inverse sensitivity problems I: Basic Method and Analysis</em>, J. Breidt, T. Butler, D. Estep, SIAM Journal on Numerical Analysis, Vol. 49, (2011), pp. 1836-1859</p>
+
+<p><em>A computational measure-theoretic approach to inverse sensitivity problems II: A posteriori error analysis</em>, T. Butler, D. Estep, J. Sandelin, SIAM Journal on Numerical Analysis, Vol. 50, (2012), pp. 22-45</p>
+
+<p><em>A measure-theoretic computational method for inverse sensitivity problems III: Multiple Quantities of Interest</em>, T. Butler, D. Estep, S. Tavener, C. Dawson, J.J. Westerink, SIAM/ASA Journal on Uncertainty Quantification, Vol. 2, (2014), pp. 174-202</p>
+</blockquote>
+
+<h1 id="at-summer-s-end">At Summer&rsquo;s End</h1>
+
+<p>(2017-08-17)</p>
+
+<h2 id="abstract-for-agu-conference-that-i-did-not-end-up-attending">Abstract for AGU Conference (that I did not end up attending)</h2>
+
+<blockquote>
+<p>The decision of where to take measurements of groundwater contaminant concentrations is of importance to a number of scientific disciplines.
+However, not all measurements are equally useful in determining unknown parameters.
+Through the use of model simulations, decisions regarding measurement locations that reduce uncertainty can be compared and scrutinized before any fieldwork is performed.</p>
+
+<p>Recent advances in optimal experimental design in the context of a measure-theoretic approach to the solution of stochastic inverse problems sheds a new perspective on making such decisions.</p>
+
+<p>We present some motivating examples that illustrate core features of several scenarios a scientist might encounter in the course of their work.
+We compare the choices that arise under several competing decision criteria and discuss the merits of each approach.</p>
+
+<p>Our analyses are representative of the LANL groundwater contamination sites but the general approach is applicable to a number of physical processes that are studied with numerical models.</p>
+</blockquote>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:v0-52-and-v0-6-a">(<code>v0.52</code> and <code>v0.6</code> at the time I was there) <a class="footnote-return" href="#fnref:v0-52-and-v0-6-a"><sup>^</sup></a></li>
+</ol>
+</div>
 
     </div>
 
@@ -461,6 +515,16 @@ Please feel free to <a href="/#contact">contact me</a> if you want me to finish 
   <a class="badge badge-light" href="/tags/grad/">grad</a>
   
   <a class="badge badge-light" href="/tags/summer/">summer</a>
+  
+  <a class="badge badge-light" href="/tags/summer-2017/">summer 2017</a>
+  
+  <a class="badge badge-light" href="/tags/fall-2017/">fall 2017</a>
+  
+  <a class="badge badge-light" href="/tags/2017/">2017</a>
+  
+  <a class="badge badge-light" href="/tags/inverse-problems/">inverse problems</a>
+  
+  <a class="badge badge-light" href="/tags/oed/">oed</a>
   
 </div>
 
@@ -601,13 +665,13 @@ Please feel free to <a href="/#contact">contact me</a> if you want me to finish 
   
   <div class="post-nav-item">
     <div class="meta-nav">Next</div>
-    <a href="https://www.michaelpilosov.com/project/gamenight/" rel="next">Poker &amp; Game Night</a>
+    <a href="https://www.michaelpilosov.com/project/summerschool/" rel="next">G2S3</a>
   </div>
   
   
   <div class="post-nav-item">
     <div class="meta-nav">Previous</div>
-    <a href="https://www.michaelpilosov.com/project/bet/" rel="prev">BET</a>
+    <a href="https://www.michaelpilosov.com/project/masters/" rel="prev">Master of Science</a>
   </div>
   
 </div>
