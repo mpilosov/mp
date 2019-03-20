@@ -13,22 +13,13 @@
     
     
     <item>
-      <title>Agricultural Prediction &amp; Sustainability</title>
+      <title>Agricultural Prediction</title>
       <link>https://www.michaelpilosov.com/project/guatemala/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/guatemala/</guid>
       <description>Introduction As Green As It Gets (formerly “AGAIG”, now &amp;ldquo;De La Gente&amp;rdquo;/ &amp;ldquo;DLG&amp;rdquo;) is a Non-Governmental Organization founded in 2004 which is focused on the economic development of the coffee farmers that are members of the San Miguel-Escobar coffee cooperative.
 By providing loans, planning, and invaluable marketing connections, the organization seeks to direct the profits from coffee sales towards the farmers, allowing them to lift themselves out of poverty and improve opportunities for their children and themselves.</description>
-    </item>
-    
-    <item>
-      <title>Probably Art</title>
-      <link>https://www.michaelpilosov.com/project/probablyart/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
@@ -39,6 +30,15 @@ By providing loans, planning, and invaluable marketing connections, the organiza
       <guid>https://www.michaelpilosov.com/project/pharma/</guid>
       <description>This was a self-directed research project that had its origins in my desire to better understand the contents of an enticing TED talk that I watched during the first week of my last semester as an undergraduate student.
   What grabbed my attention was that the speaker (Stein) invited scrutiny of their source code, making it [publicly available on GitHub][code]. This event likely seeded my interest in open-source philosophies and diving into this project was an early attempt to learn more about how other people write code.</description>
+    </item>
+    
+    <item>
+      <title>Probably Art</title>
+      <link>https://www.michaelpilosov.com/project/probablyart/</link>
+      <pubDate>Thu, 01 May 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
   </channel>

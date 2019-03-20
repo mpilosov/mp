@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
-    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 01 Sep 2010 00:00:00 -0600</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>2010</title>
       <link>https://www.michaelpilosov.com/tags/2010/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/2010/</guid>
       <description></description>
@@ -24,7 +24,7 @@
     <item>
       <title>2011</title>
       <link>https://www.michaelpilosov.com/tags/2011/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/2011/</guid>
       <description></description>
@@ -51,7 +51,7 @@
     <item>
       <title>2014</title>
       <link>https://www.michaelpilosov.com/tags/2014/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Mon, 01 Sep 2014 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/2014/</guid>
       <description></description>
@@ -121,6 +121,15 @@
     </item>
     
     <item>
+      <title>clang</title>
+      <link>https://www.michaelpilosov.com/tags/clang/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/clang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>code</title>
       <link>https://www.michaelpilosov.com/tags/code/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
@@ -159,7 +168,7 @@
     <item>
       <title>evolution</title>
       <link>https://www.michaelpilosov.com/tags/evolution/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Mon, 15 Aug 2016 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/evolution/</guid>
       <description></description>
@@ -168,7 +177,7 @@
     <item>
       <title>fall 2010</title>
       <link>https://www.michaelpilosov.com/tags/fall-2010/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/fall-2010/</guid>
       <description></description>
@@ -177,7 +186,7 @@
     <item>
       <title>fall 2011</title>
       <link>https://www.michaelpilosov.com/tags/fall-2011/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/fall-2011/</guid>
       <description></description>
@@ -195,7 +204,7 @@
     <item>
       <title>fall 2013</title>
       <link>https://www.michaelpilosov.com/tags/fall-2013/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/fall-2013/</guid>
       <description></description>
@@ -204,7 +213,7 @@
     <item>
       <title>fall 2014</title>
       <link>https://www.michaelpilosov.com/tags/fall-2014/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Mon, 01 Sep 2014 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/fall-2014/</guid>
       <description></description>
@@ -247,11 +256,29 @@
     </item>
     
     <item>
+      <title>fortran</title>
+      <link>https://www.michaelpilosov.com/tags/fortran/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/fortran/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>games</title>
       <link>https://www.michaelpilosov.com/tags/games/</link>
       <pubDate>Mon, 01 May 2017 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/games/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://www.michaelpilosov.com/tags/git/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/git/</guid>
       <description></description>
     </item>
     
@@ -267,7 +294,7 @@
     <item>
       <title>images</title>
       <link>https://www.michaelpilosov.com/tags/images/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Thu, 01 May 2014 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/images/</guid>
       <description></description>
@@ -366,7 +393,7 @@
     <item>
       <title>optimization</title>
       <link>https://www.michaelpilosov.com/tags/optimization/</link>
-      <pubDate>Sat, 09 Jan 2016 00:00:00 -0700</pubDate>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/optimization/</guid>
       <description></description>
@@ -402,7 +429,7 @@
     <item>
       <title>python</title>
       <link>https://www.michaelpilosov.com/tags/python/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/python/</guid>
       <description></description>
@@ -429,7 +456,7 @@
     <item>
       <title>siam</title>
       <link>https://www.michaelpilosov.com/tags/siam/</link>
-      <pubDate>Sat, 01 Apr 2017 00:00:00 -0600</pubDate>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/siam/</guid>
       <description></description>
@@ -438,7 +465,7 @@
     <item>
       <title>spring 2011</title>
       <link>https://www.michaelpilosov.com/tags/spring-2011/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/spring-2011/</guid>
       <description></description>
@@ -447,7 +474,7 @@
     <item>
       <title>spring 2012</title>
       <link>https://www.michaelpilosov.com/tags/spring-2012/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/spring-2012/</guid>
       <description></description>
@@ -465,7 +492,7 @@
     <item>
       <title>spring 2014</title>
       <link>https://www.michaelpilosov.com/tags/spring-2014/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/spring-2014/</guid>
       <description></description>
@@ -537,7 +564,7 @@
     <item>
       <title>summer 2014</title>
       <link>https://www.michaelpilosov.com/tags/summer-2014/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Mon, 01 Sep 2014 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/summer-2014/</guid>
       <description></description>
@@ -567,6 +594,15 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/summer-2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>summer 2018</title>
+      <link>https://www.michaelpilosov.com/tags/summer-2018/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/summer-2018/</guid>
       <description></description>
     </item>
     

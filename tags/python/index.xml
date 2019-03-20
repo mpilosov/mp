@@ -7,19 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
-    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 01 Jul 2018 00:00:00 -0600</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Probably Art</title>
-      <link>https://www.michaelpilosov.com/project/probablyart/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
-    </item>
     
     <item>
       <title>G2S3</title>
@@ -27,6 +18,17 @@
       <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/summerschool/</guid>
+      <description>Program The summer school was focused on Uncertainty Quantification, specifically pretending to Inverse Problems.
+Structure We sat through hours of lecture and about half the days we managed to spend programming/implementing some of what we learned.
+Project At the end of the summer school we had to perform a project, and I paired up with a couple of students to work on an inverse problem involving the Helmholtz equation.</description>
+    </item>
+    
+    <item>
+      <title>Probably Art</title>
+      <link>https://www.michaelpilosov.com/project/probablyart/</link>
+      <pubDate>Thu, 01 May 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
       <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     

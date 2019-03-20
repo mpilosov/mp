@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>Agricultural Prediction &amp; Sustainability</title>
+      <title>Agricultural Prediction</title>
       <link>https://www.michaelpilosov.com/project/guatemala/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
@@ -32,26 +32,6 @@ By providing loans, planning, and invaluable marketing connections, the organiza
     </item>
     
     <item>
-      <title>Evolution of Cooperation</title>
-      <link>https://www.michaelpilosov.com/project/evolution/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/evolution/</guid>
-      <description>I began graduate school in the summer of 2014
-You can find more information about the article, including links to code, pdf, and the co-author&amp;rsquo;s website on the publication page.
-  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
-    </item>
-    
-    <item>
-      <title>Probably Art</title>
-      <link>https://www.michaelpilosov.com/project/probablyart/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
-    </item>
-    
-    <item>
       <title>A New Game of Poker</title>
       <link>https://www.michaelpilosov.com/project/poker/</link>
       <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
@@ -63,13 +43,35 @@ Rules The rules are listed in short form below the game demonstration below. Gam
     </item>
     
     <item>
-      <title>Tracking Wildlife (on a budget)</title>
+      <title>G2S3</title>
+      <link>https://www.michaelpilosov.com/project/summerschool/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/summerschool/</guid>
+      <description>Program The summer school was focused on Uncertainty Quantification, specifically pretending to Inverse Problems.
+Structure We sat through hours of lecture and about half the days we managed to spend programming/implementing some of what we learned.
+Project At the end of the summer school we had to perform a project, and I paired up with a couple of students to work on an inverse problem involving the Helmholtz equation.</description>
+    </item>
+    
+    <item>
+      <title>Tracking Wildlife</title>
       <link>https://www.michaelpilosov.com/project/wildlife/</link>
       <pubDate>Sat, 09 Jan 2016 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/wildlife/</guid>
-      <description>I managed a group of four undergraduates through a semester-long research project concerning the placement of sensors in an environment where the travel patterns of animals is unknown. My responsibilities included:
- defining the scope of research and breaking goals down into explicit deliverables, overseeing timeline of research progress, keeping students on deadline, developing outlines of software and clearly defined what their contributions would be.  We chose to define a problem that everyone had some shared interest in and that would be relevant to Distance Geometry (the topic of the Math Clinic that semester).</description>
+      <description>Given that we do not know exactly where animals will go, how do we set up a network of sensors to track them?
+I managed a group of four undergraduates through a semester-long research project concerning the placement of sensors in an environment where the travel patterns of animals is unknown. My responsibilities included:
+ defining the scope of research and breaking goals down into explicit deliverables, overseeing timeline of research progress, keeping students on deadline, developing outlines of software and clearly defined what their contributions would be.</description>
+    </item>
+    
+    <item>
+      <title>Evolution of Cooperation</title>
+      <link>https://www.michaelpilosov.com/project/evolution/</link>
+      <pubDate>Mon, 01 Sep 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/evolution/</guid>
+      <description>I began graduate school in the summer of 2014 as a summer graduate research assistant. I approached Dr. Burt Simon to learn about his research as I was casually walking around the department while working on the LAPACK project. His research was concerned with modeling population dynamics to study the conditions under which cooperation could evolve from a mutation to the norm within a system that is inherently competitive.
+I was really interested in the problem he was working on and asked if I could see his software.</description>
     </item>
     
     <item>
@@ -80,6 +82,15 @@ Rules The rules are listed in short form below the game demonstration below. Gam
       <guid>https://www.michaelpilosov.com/project/pharma/</guid>
       <description>This was a self-directed research project that had its origins in my desire to better understand the contents of an enticing TED talk that I watched during the first week of my last semester as an undergraduate student.
   What grabbed my attention was that the speaker (Stein) invited scrutiny of their source code, making it [publicly available on GitHub][code]. This event likely seeded my interest in open-source philosophies and diving into this project was an early attempt to learn more about how other people write code.</description>
+    </item>
+    
+    <item>
+      <title>Probably Art</title>
+      <link>https://www.michaelpilosov.com/project/probablyart/</link>
+      <pubDate>Thu, 01 May 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
   </channel>

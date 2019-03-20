@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
-    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Mon, 01 Sep 2014 00:00:00 -0600</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/2014/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,12 +15,21 @@
     <item>
       <title>Evolution of Cooperation</title>
       <link>https://www.michaelpilosov.com/project/evolution/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Mon, 01 Sep 2014 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/evolution/</guid>
-      <description>I began graduate school in the summer of 2014
-You can find more information about the article, including links to code, pdf, and the co-author&amp;rsquo;s website on the publication page.
-  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
+      <description>I began graduate school in the summer of 2014 as a summer graduate research assistant. I approached Dr. Burt Simon to learn about his research as I was casually walking around the department while working on the LAPACK project. His research was concerned with modeling population dynamics to study the conditions under which cooperation could evolve from a mutation to the norm within a system that is inherently competitive.
+I was really interested in the problem he was working on and asked if I could see his software.</description>
+    </item>
+    
+    <item>
+      <title>LAPACK</title>
+      <link>https://www.michaelpilosov.com/project/lapack/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/lapack/</guid>
+      <description>My Brief Experience I was fortunate enough to be funded by Dr. Julien Langou during my summer proceeding entering graduate school. This relief from teaching was especially helpful for my transition into post-graduate education, and I was given the opportunity to explore a number of topics that I knew nothing about.
+For the first time, I found myself working on an object-oriented task in a programming language that was strongly typed.</description>
     </item>
     
     <item>

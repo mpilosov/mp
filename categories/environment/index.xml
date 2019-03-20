@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>Agricultural Prediction &amp; Sustainability</title>
+      <title>Agricultural Prediction</title>
       <link>https://www.michaelpilosov.com/project/guatemala/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
@@ -23,7 +23,7 @@ By providing loans, planning, and invaluable marketing connections, the organiza
     </item>
     
     <item>
-      <title>Subsurface Contaminant Transport</title>
+      <title>Tracking Toxins</title>
       <link>https://www.michaelpilosov.com/project/toxins/</link>
       <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
       
@@ -32,13 +32,14 @@ By providing loans, planning, and invaluable marketing connections, the organiza
     </item>
     
     <item>
-      <title>Tracking Wildlife (on a budget)</title>
+      <title>Tracking Wildlife</title>
       <link>https://www.michaelpilosov.com/project/wildlife/</link>
       <pubDate>Sat, 09 Jan 2016 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/wildlife/</guid>
-      <description>I managed a group of four undergraduates through a semester-long research project concerning the placement of sensors in an environment where the travel patterns of animals is unknown. My responsibilities included:
- defining the scope of research and breaking goals down into explicit deliverables, overseeing timeline of research progress, keeping students on deadline, developing outlines of software and clearly defined what their contributions would be.  We chose to define a problem that everyone had some shared interest in and that would be relevant to Distance Geometry (the topic of the Math Clinic that semester).</description>
+      <description>Given that we do not know exactly where animals will go, how do we set up a network of sensors to track them?
+I managed a group of four undergraduates through a semester-long research project concerning the placement of sensors in an environment where the travel patterns of animals is unknown. My responsibilities included:
+ defining the scope of research and breaking goals down into explicit deliverables, overseeing timeline of research progress, keeping students on deadline, developing outlines of software and clearly defined what their contributions would be.</description>
     </item>
     
   </channel>

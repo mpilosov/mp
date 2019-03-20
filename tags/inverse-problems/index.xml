@@ -36,11 +36,13 @@
       <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/summerschool/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+      <description>Program The summer school was focused on Uncertainty Quantification, specifically pretending to Inverse Problems.
+Structure We sat through hours of lecture and about half the days we managed to spend programming/implementing some of what we learned.
+Project At the end of the summer school we had to perform a project, and I paired up with a couple of students to work on an inverse problem involving the Helmholtz equation.</description>
     </item>
     
     <item>
-      <title>Subsurface Contaminant Transport</title>
+      <title>Tracking Toxins</title>
       <link>https://www.michaelpilosov.com/project/toxins/</link>
       <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
       
@@ -49,7 +51,7 @@
     </item>
     
     <item>
-      <title>Master of Science</title>
+      <title>Masters</title>
       <link>https://www.michaelpilosov.com/project/masters/</link>
       <pubDate>Mon, 01 May 2017 00:00:00 -0600</pubDate>
       
@@ -75,7 +77,7 @@ Talk about the method in broad terms. What makes it different?
       <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/cbayes/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+      <description>A repository I wrote for my PhD research.</description>
     </item>
     
     <item>
@@ -88,13 +90,14 @@ Talk about the method in broad terms. What makes it different?
     </item>
     
     <item>
-      <title>Tracking Wildlife (on a budget)</title>
+      <title>Tracking Wildlife</title>
       <link>https://www.michaelpilosov.com/project/wildlife/</link>
       <pubDate>Sat, 09 Jan 2016 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/wildlife/</guid>
-      <description>I managed a group of four undergraduates through a semester-long research project concerning the placement of sensors in an environment where the travel patterns of animals is unknown. My responsibilities included:
- defining the scope of research and breaking goals down into explicit deliverables, overseeing timeline of research progress, keeping students on deadline, developing outlines of software and clearly defined what their contributions would be.  We chose to define a problem that everyone had some shared interest in and that would be relevant to Distance Geometry (the topic of the Math Clinic that semester).</description>
+      <description>Given that we do not know exactly where animals will go, how do we set up a network of sensors to track them?
+I managed a group of four undergraduates through a semester-long research project concerning the placement of sensors in an environment where the travel patterns of animals is unknown. My responsibilities included:
+ defining the scope of research and breaking goals down into explicit deliverables, overseeing timeline of research progress, keeping students on deadline, developing outlines of software and clearly defined what their contributions would be.</description>
     </item>
     
   </channel>
