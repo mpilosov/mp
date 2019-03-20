@@ -61,17 +61,6 @@ You can read more about it below, but overall, my focus on skewness ended up pla
     </item>
     
     <item>
-      <title>DCI</title>
-      <link>https://www.michaelpilosov.com/project/dci/</link>
-      <pubDate>Thu, 01 Sep 2016 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/dci/</guid>
-      <description>The novel framework for solving inverse problems in which all of my doctoral work has been grounded.
-Talk about the method in broad terms. What makes it different?
-  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
-    </item>
-    
-    <item>
       <title>Consistent Bayes</title>
       <link>https://www.michaelpilosov.com/project/cbayes/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
@@ -81,12 +70,14 @@ Talk about the method in broad terms. What makes it different?
     </item>
     
     <item>
-      <title>Research Topics</title>
-      <link>https://www.michaelpilosov.com/project/research/</link>
+      <title>DCI</title>
+      <link>https://www.michaelpilosov.com/project/dci/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
       
-      <guid>https://www.michaelpilosov.com/project/research/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+      <guid>https://www.michaelpilosov.com/project/dci/</guid>
+      <description>The novel framework for solving inverse problems in which all of my doctoral work has been grounded.
+Talk about the method in broad terms. What makes it different?
+  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
     </item>
     
     <item>
@@ -98,6 +89,15 @@ Talk about the method in broad terms. What makes it different?
       <description>Given that we do not know exactly where animals will go, how do we set up a network of sensors to track them?
 I managed a group of four undergraduates through a semester-long research project concerning the placement of sensors in an environment where the travel patterns of animals is unknown. My responsibilities included:
  defining the scope of research and breaking goals down into explicit deliverables, overseeing timeline of research progress, keeping students on deadline, developing outlines of software and clearly defined what their contributions would be.</description>
+    </item>
+    
+    <item>
+      <title>Research Topics</title>
+      <link>https://www.michaelpilosov.com/project/research/</link>
+      <pubDate>Fri, 01 Jan 2016 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/research/</guid>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
   </channel>

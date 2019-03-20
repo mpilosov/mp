@@ -492,14 +492,6 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/project/dci/</loc>
-      <lastmod>2019-03-19T15:00:00-06:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>https://www.michaelpilosov.com/project/billiards/</loc>
       <lastmod>2019-03-19T19:45:00-06:00</lastmod>
     </url>
@@ -540,8 +532,8 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/project/research/</loc>
-      <lastmod>2019-03-17T18:00:00-06:00</lastmod>
+      <loc>https://www.michaelpilosov.com/project/dci/</loc>
+      <lastmod>2019-03-19T15:00:00-06:00</lastmod>
     </url>
     
   
@@ -558,6 +550,14 @@
     
       <loc>https://www.michaelpilosov.com/project/wildlife/</loc>
       <lastmod>2019-03-15T00:00:00-06:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/research/</loc>
+      <lastmod>2019-03-17T18:00:00-06:00</lastmod>
     </url>
     
   
@@ -974,7 +974,7 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/tags/events/</loc>
+      <loc>https://www.michaelpilosov.com/categories/events/</loc>
       <lastmod>2019-03-17T18:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
@@ -983,7 +983,7 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/categories/events/</loc>
+      <loc>https://www.michaelpilosov.com/tags/events/</loc>
       <lastmod>2019-03-17T18:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
@@ -1227,7 +1227,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/oed/</loc>
-      <lastmod>2019-03-19T18:00:00-06:00</lastmod>
+      <lastmod>2019-03-19T15:30:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -1262,8 +1262,8 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/tags/outreach/</loc>
-      <lastmod>2019-03-17T18:00:00-06:00</lastmod>
+      <loc>https://www.michaelpilosov.com/categories/outreach/</loc>
+      <lastmod>2019-03-19T22:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -1271,8 +1271,8 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/categories/outreach/</loc>
-      <lastmod>2019-03-19T22:00:00-06:00</lastmod>
+      <loc>https://www.michaelpilosov.com/tags/outreach/</loc>
+      <lastmod>2019-03-17T18:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -1307,7 +1307,7 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/tags/research/</loc>
+      <loc>https://www.michaelpilosov.com/categories/research/</loc>
       <lastmod>2019-03-17T18:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
@@ -1316,7 +1316,7 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/categories/research/</loc>
+      <loc>https://www.michaelpilosov.com/tags/research/</loc>
       <lastmod>2019-03-17T18:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
