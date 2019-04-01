@@ -7,19 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
-    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Sat, 01 Apr 2017 00:00:00 -0600</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/math-club/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Pi Day</title>
-      <link>https://www.michaelpilosov.com/project/piday/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/piday/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
-    </item>
     
     <item>
       <title>Mentor Lunch</title>
@@ -37,6 +28,16 @@
       
       <guid>https://www.michaelpilosov.com/project/billiards/</guid>
       <description>Billiards night was one of the first events that Christina and I plan for Math Club. It was a relatively simple event, focused on bringing together people For a night of pool and pizza. We played videos about billiards, including ones that went over the geometry of planning different types of shots on televisions in the background of the pool hall. We held this event several times over the years.</description>
+    </item>
+    
+    <item>
+      <title>Pi Day</title>
+      <link>https://www.michaelpilosov.com/project/piday/</link>
+      <pubDate>Sun, 01 Mar 2015 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/piday/</guid>
+      <description>In my first year (2014-2015) of becoming involved in Math Club, I threw this poster together for a pretty simple event.   For Pi Day, Math Club organized several events over the years that focused on simply enjoying the festivities, eating pie, and trying to bring in people from outside of the department&amp;rsquo;s and engage with the broader community.
+  Second year.   One year we chose to fundraise and partnered with a local pizzeria to set up a day where a portion of their profits would be donated to girls who code, a nonprofit that focuses on education in programming.</description>
     </item>
     
   </channel>

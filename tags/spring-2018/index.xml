@@ -32,5 +32,27 @@ SIAM and Math Club have established three core pillars upon which to form themse
  service, scholarship, and community engagement.  In addressing service, we have regularly facilitated participation in regional science fairs, organized a semesterly food bank drive to benefit homeless students on campus (Note: our department was the most successful donor on campus last semester), and have begun to integrate charitable fundraising into our community events.</description>
     </item>
     
+    <item>
+      <title>Twitterbots</title>
+      <link>https://www.michaelpilosov.com/project/twitterbots/</link>
+      <pubDate>Tue, 01 May 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/twitterbots/</guid>
+      <description>I decided to explore the use of Twitter&amp;rsquo;s API in Python to perform some fun projects.
+I wrote a Twitter bot called &amp;ldquo;Random Art Baby&amp;rdquo; that when prompted, would respond to users with artwork.
+This art was randomly generated using the library I had developed for my initial exploration with graphical user interfaces for visualizing probability distributions.
+This also provided me the opportunity to explore some machine learning code for the generation of natural language speech based on training examples.</description>
+    </item>
+    
+    <item>
+      <title>Consistent Bayes</title>
+      <link>https://www.michaelpilosov.com/project/cbayes/</link>
+      <pubDate>Thu, 27 Apr 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/cbayes/</guid>
+      <description>This was my first attempt at writing a software library from scratch. I had a bunch of code in different places that performed many of the same tasks and wanted to unify it under one framework. It implemented the Data-Consistent Inversion framework (before it was called that), namely our sample-based approach for inverting probability measures.
+This was an excellent opportunity to learn the process of writing object-oriented code, unit-tests, and so much more.</description>
+    </item>
+    
   </channel>
 </rss>

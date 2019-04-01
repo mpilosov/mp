@@ -22,6 +22,18 @@
     </item>
     
     <item>
+      <title>Twitterbots</title>
+      <link>https://www.michaelpilosov.com/project/twitterbots/</link>
+      <pubDate>Tue, 01 May 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/twitterbots/</guid>
+      <description>I decided to explore the use of Twitter&amp;rsquo;s API in Python to perform some fun projects.
+I wrote a Twitter bot called &amp;ldquo;Random Art Baby&amp;rdquo; that when prompted, would respond to users with artwork.
+This art was randomly generated using the library I had developed for my initial exploration with graphical user interfaces for visualizing probability distributions.
+This also provided me the opportunity to explore some machine learning code for the generation of natural language speech based on training examples.</description>
+    </item>
+    
+    <item>
       <title>Pharma Mutuals</title>
       <link>https://www.michaelpilosov.com/project/pharma/</link>
       <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>

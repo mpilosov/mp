@@ -47,7 +47,7 @@ Project At the end of the summer school we had to perform a project, and I paire
       <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/toxins/</guid>
-      <description>Overview I went to work with Dr. Velimir Vesselinov in the summer of 2017 at the Los Alamos National Laboratory (LANL). This experience drastically changed the direction of my research. I spent much of my time reading papers on Bayesian Inverse Problems and Subsurface Contaminant Transport Problems. Part of what I did was learn the Julia programming language1, implementing some Markov chain Monte Carlo methods to practice, and converting some algorithms from Python to Julia.</description>
+      <description>Slamming one of the servers when no one else was using it.   Overview I went to work with Dr. Velimir Vesselinov in the summer of 2017 at the Los Alamos National Laboratory (LANL). This experience drastically changed the direction of my research. I spent much of my time reading papers on Bayesian Inverse Problems and Subsurface Contaminant Transport Problems. Part of what I did was learn the Julia programming language1, implementing some Markov chain Monte Carlo methods to practice, and converting some algorithms from Python to Julia.</description>
     </item>
     
     <item>
@@ -63,10 +63,11 @@ You can read more about it below, but overall, my focus on skewness ended up pla
     <item>
       <title>Consistent Bayes</title>
       <link>https://www.michaelpilosov.com/project/cbayes/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Thu, 27 Apr 2017 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/cbayes/</guid>
-      <description>A repository I wrote for my PhD research.</description>
+      <description>This was my first attempt at writing a software library from scratch. I had a bunch of code in different places that performed many of the same tasks and wanted to unify it under one framework. It implemented the Data-Consistent Inversion framework (before it was called that), namely our sample-based approach for inverting probability measures.
+This was an excellent opportunity to learn the process of writing object-oriented code, unit-tests, and so much more.</description>
     </item>
     
     <item>
@@ -107,6 +108,17 @@ I was really interested in the problem he was working on and asked if I could se
       <guid>https://www.michaelpilosov.com/project/lapack/</guid>
       <description>My Brief Experience I was fortunate enough to be funded by Dr. Julien Langou during my summer proceeding entering graduate school. This relief from teaching was especially helpful for my transition into post-graduate education, and I was given the opportunity to explore a number of topics that I knew nothing about.
 For the first time, I found myself working on an object-oriented task in a programming language that was strongly typed.</description>
+    </item>
+    
+    <item>
+      <title>Moving Pictures</title>
+      <link>https://www.michaelpilosov.com/project/animation/</link>
+      <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/animation/</guid>
+      <description>Overview I received an Undergraduate Fellowship from the Geneseo Foundation to pursue a self-directed research project wherein I would explore the interface of Arts, Mathematics and Computer Science.
+ My initial goal was to figure out how to take a still image and turn it into an animation without resorting to frame-by-frame editing.
+ Story My mentor introduced me to a professor in the computer science department and we composed a successful proposal for the fellowship program.</description>
     </item>
     
   </channel>

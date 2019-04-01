@@ -22,21 +22,12 @@
     </item>
     
     <item>
-      <title>Counting Cards</title>
-      <link>https://www.michaelpilosov.com/project/blackjack/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/blackjack/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
-    </item>
-    
-    <item>
       <title>Math || Art?</title>
       <link>https://www.michaelpilosov.com/project/mathart/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/mathart/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+      <description></description>
     </item>
     
     <item>
@@ -45,15 +36,6 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/thesis/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
-    </item>
-    
-    <item>
-      <title>Pi Day</title>
-      <link>https://www.michaelpilosov.com/project/piday/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/piday/</guid>
       <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
@@ -76,7 +58,7 @@ SIAM and Math Club have established three core pillars upon which to form themse
       <guid>https://www.michaelpilosov.com/project/stat/</guid>
       <description>Co-President focusing on growing a new organization in the Office of Advancement, with a particular emphasis on developing a social media strategy.
 I began my co-presidency of Students Today, Alumni Tomorrow officially in the spring semester of 2019, though technically I was serving as interim President for fall 2018 as well.
-  Events Our primary event was CU Taco Bout Philanthropy, where we fundraised for scholarships using a variety of methods, including texting students.</description>
+The focus of the organization is to better connect students and alumni, educating students about the ways in which University Advancement operates and why it is so important.</description>
     </item>
     
     <item>
@@ -116,7 +98,7 @@ Project At the end of the summer school we had to perform a project, and I paire
       <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/toxins/</guid>
-      <description>Overview I went to work with Dr. Velimir Vesselinov in the summer of 2017 at the Los Alamos National Laboratory (LANL). This experience drastically changed the direction of my research. I spent much of my time reading papers on Bayesian Inverse Problems and Subsurface Contaminant Transport Problems. Part of what I did was learn the Julia programming language1, implementing some Markov chain Monte Carlo methods to practice, and converting some algorithms from Python to Julia.</description>
+      <description>Slamming one of the servers when no one else was using it.   Overview I went to work with Dr. Velimir Vesselinov in the summer of 2017 at the Los Alamos National Laboratory (LANL). This experience drastically changed the direction of my research. I spent much of my time reading papers on Bayesian Inverse Problems and Subsurface Contaminant Transport Problems. Part of what I did was learn the Julia programming language1, implementing some Markov chain Monte Carlo methods to practice, and converting some algorithms from Python to Julia.</description>
     </item>
     
     <item>
@@ -146,7 +128,18 @@ Films Watched:
       <pubDate>Mon, 01 May 2017 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/gamenight/</guid>
-      <description>Math Club held several Poker and Game nights, where we provided food and snacks for students to come and relax after a long day at school and enjoy some social spaces that did not involve alcohol or drugs (or math). At one of these, we also had the opportunity to introduce a game that Dr. Simon I had worked on, since I finally managed to write a program in a way that could be used by other people.</description>
+      <description>Math Club held several Poker and Game nights, where we provided food and snacks for students to come and relax after a long day at school and enjoy a social space that did not involve alcohol/drugs (nor much math).
+At one of these, we also had the opportunity to introduce a game that Dr. Simon I had worked on, since I finally managed to write a program in a way that could be used by other people.</description>
+    </item>
+    
+    <item>
+      <title>Consistent Bayes</title>
+      <link>https://www.michaelpilosov.com/project/cbayes/</link>
+      <pubDate>Thu, 27 Apr 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/cbayes/</guid>
+      <description>This was my first attempt at writing a software library from scratch. I had a bunch of code in different places that performed many of the same tasks and wanted to unify it under one framework. It implemented the Data-Consistent Inversion framework (before it was called that), namely our sample-based approach for inverting probability measures.
+This was an excellent opportunity to learn the process of writing object-oriented code, unit-tests, and so much more.</description>
     </item>
     
     <item>
@@ -182,7 +175,9 @@ Films Watched:
       <pubDate>Wed, 01 Jun 2016 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/foodbank/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+      <description>As part of the activities we implemented in Math Club, we got the Math Department involved in a campus-wide competition to donate food to the campus food pantry, which serves students in crisis1.
+We routinely placed in the top three, and even took first place twice, beating out the Office of the Dean and the Graduate School.
+  We had three purple bins in the department, and we made sure they all looked like this.</description>
     </item>
     
     <item>
@@ -192,15 +187,6 @@ Films Watched:
       
       <guid>https://www.michaelpilosov.com/project/mathclub/</guid>
       <description>Summary During the last semester of my first year in graduate school (spring 2015), I volunteered for the Study Hall that was being put on by the department. I was inspired by that event to get in touch with the professor who organized it, and asked about interest in a Math Club. I was told that it had languished over the years but I was welcome to revive it (he was willing to be the faculty advisor), and he put me in touch with an undergraduate student that he thought would be good to partner up with.</description>
-    </item>
-    
-    <item>
-      <title>Consistent Bayes</title>
-      <link>https://www.michaelpilosov.com/project/cbayes/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/cbayes/</guid>
-      <description>A repository I wrote for my PhD research.</description>
     </item>
     
     <item>
@@ -250,7 +236,19 @@ As President I helped change the way we secure funding for the event and increas
       <pubDate>Tue, 01 Dec 2015 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/studyhall/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+      <description>The department’s semesterly two-day study hall that precedes final examinations experienced a dramatic increase in attendance.
+I attribute this to my aggressive advertising efforts and the President (Christina Ebben, pictured below) and I coordinating an unprecedented funding campaign to attract attendees.
+Snacks (fruits, nuts, chips, sodas, etc) and coffee were plentiful fuel for students, and lunches were purchased for the volunteers. The tutors provided by Math Club and SIAM provide much needed emotional and educational support for the student body.</description>
+    </item>
+    
+    <item>
+      <title>Pi Day</title>
+      <link>https://www.michaelpilosov.com/project/piday/</link>
+      <pubDate>Sun, 01 Mar 2015 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/piday/</guid>
+      <description>In my first year (2014-2015) of becoming involved in Math Club, I threw this poster together for a pretty simple event.   For Pi Day, Math Club organized several events over the years that focused on simply enjoying the festivities, eating pie, and trying to bring in people from outside of the department&amp;rsquo;s and engage with the broader community.
+  Second year.   One year we chose to fundraise and partnered with a local pizzeria to set up a day where a portion of their profits would be donated to girls who code, a nonprofit that focuses on education in programming.</description>
     </item>
     
     <item>
@@ -289,7 +287,9 @@ For the first time, I found myself working on an object-oriented task in a progr
       <pubDate>Thu, 01 May 2014 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+      <description>After my first experience with writing software in the summer of 2013, I wanted to learn how to write software that was usable by other people1.
+I thought that learning how graphical user interfaces work would be a good place to start. Since I already knew Matlab, I chose that for my programming language.
+I performed the project under the direction of use of Dr. Yusuf Bilgic, who generally gave me free rein to pursue the project in any direction.</description>
     </item>
     
     <item>
@@ -298,10 +298,9 @@ For the first time, I found myself working on an object-oriented task in a progr
       <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/animation/</guid>
-      <description>My time as a Geneseo Foundation STEM Undergraduate Summer Research Fellow.
-Summer Research
-Readings Course (follow up)
-  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
+      <description>Overview I received an Undergraduate Fellowship from the Geneseo Foundation to pursue a self-directed research project wherein I would explore the interface of Arts, Mathematics and Computer Science.
+ My initial goal was to figure out how to take a still image and turn it into an animation without resorting to frame-by-frame editing.
+ Story My mentor introduced me to a professor in the computer science department and we composed a successful proposal for the fellowship program.</description>
     </item>
     
     <item>
@@ -317,13 +316,25 @@ We held weekly meetings and grew from two tables to as many as twelve simultaneo
     </item>
     
     <item>
+      <title>Counting Cards</title>
+      <link>https://www.michaelpilosov.com/project/blackjack/</link>
+      <pubDate>Wed, 01 May 2013 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/blackjack/</guid>
+      <description>As part of a course I took, I was tasked to perform a semester-long research project on a topic of my choosing. I had a nascent interest in blackjack after seeing the film 21, and wanted to learn more about the history and mathematics behind how/why card counting worked for the MIT blackjack team so well.
+This research project was my first introduction of Monte-Carlo methods, probability and expectation, and game theory.</description>
+    </item>
+    
+    <item>
       <title>MAC</title>
       <link>https://www.michaelpilosov.com/project/mac/</link>
       <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/mac/</guid>
       <description>Four years of active participation in a Service Organization. Almost countless events.
-  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+I joined my first semester in undergrad, and remained an active member every semester that I was enrolled in college.
+Pillars of the Organization  Scholarship Service Unity Fitness Loyalty   Here is a reproduction of a Lamron Article about the organization. It was written the semester I joined! 
+ Men of Action and Change, an organization founded at Geneseo in 1997, is a multicultural group dedicated to continuing a legacy of service and support to the local and global communities.</description>
     </item>
     
   </channel>

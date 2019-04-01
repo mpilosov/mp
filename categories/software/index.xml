@@ -42,10 +42,11 @@
     <item>
       <title>Consistent Bayes</title>
       <link>https://www.michaelpilosov.com/project/cbayes/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Thu, 27 Apr 2017 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/cbayes/</guid>
-      <description>A repository I wrote for my PhD research.</description>
+      <description>This was my first attempt at writing a software library from scratch. I had a bunch of code in different places that performed many of the same tasks and wanted to unify it under one framework. It implemented the Data-Consistent Inversion framework (before it was called that), namely our sample-based approach for inverting probability measures.
+This was an excellent opportunity to learn the process of writing object-oriented code, unit-tests, and so much more.</description>
     </item>
     
     <item>

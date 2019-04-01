@@ -7,28 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
-    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jul 2013 00:00:00 -0600</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/2013/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Counting Cards</title>
-      <link>https://www.michaelpilosov.com/project/blackjack/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/blackjack/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
-    </item>
-    
-    <item>
-      <title>Probably Art</title>
-      <link>https://www.michaelpilosov.com/project/probablyart/</link>
-      <pubDate>Thu, 01 May 2014 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
-    </item>
     
     <item>
       <title>Moving Pictures</title>
@@ -36,10 +18,9 @@
       <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/animation/</guid>
-      <description>My time as a Geneseo Foundation STEM Undergraduate Summer Research Fellow.
-Summer Research
-Readings Course (follow up)
-  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
+      <description>Overview I received an Undergraduate Fellowship from the Geneseo Foundation to pursue a self-directed research project wherein I would explore the interface of Arts, Mathematics and Computer Science.
+ My initial goal was to figure out how to take a still image and turn it into an animation without resorting to frame-by-frame editing.
+ Story My mentor introduced me to a professor in the computer science department and we composed a successful proposal for the fellowship program.</description>
     </item>
     
     <item>
@@ -55,13 +36,35 @@ We held weekly meetings and grew from two tables to as many as twelve simultaneo
     </item>
     
     <item>
+      <title>Counting Cards</title>
+      <link>https://www.michaelpilosov.com/project/blackjack/</link>
+      <pubDate>Wed, 01 May 2013 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/blackjack/</guid>
+      <description>As part of a course I took, I was tasked to perform a semester-long research project on a topic of my choosing. I had a nascent interest in blackjack after seeing the film 21, and wanted to learn more about the history and mathematics behind how/why card counting worked for the MIT blackjack team so well.
+This research project was my first introduction of Monte-Carlo methods, probability and expectation, and game theory.</description>
+    </item>
+    
+    <item>
+      <title>Agricultural Prediction</title>
+      <link>https://www.michaelpilosov.com/project/guatemala/</link>
+      <pubDate>Sat, 01 Dec 2012 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/guatemala/</guid>
+      <description>Introduction As Green As It Gets (formerly “AGAIG”, now &amp;ldquo;De La Gente&amp;rdquo;/ &amp;ldquo;DLG&amp;rdquo;) is a Non-Governmental Organization founded in 2004 which is focused on the economic development of the coffee farmers that are members of the San Miguel-Escobar coffee cooperative.
+By providing loans, planning, and invaluable marketing connections, the organization seeks to direct the profits from coffee sales towards the farmers, allowing them to lift themselves out of poverty and improve opportunities for their children and themselves.</description>
+    </item>
+    
+    <item>
       <title>MAC</title>
       <link>https://www.michaelpilosov.com/project/mac/</link>
       <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/mac/</guid>
       <description>Four years of active participation in a Service Organization. Almost countless events.
-  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+I joined my first semester in undergrad, and remained an active member every semester that I was enrolled in college.
+Pillars of the Organization  Scholarship Service Unity Fitness Loyalty   Here is a reproduction of a Lamron Article about the organization. It was written the semester I joined! 
+ Men of Action and Change, an organization founded at Geneseo in 1997, is a multicultural group dedicated to continuing a legacy of service and support to the local and global communities.</description>
     </item>
     
   </channel>

@@ -40,7 +40,7 @@ SIAM and Math Club have established three core pillars upon which to form themse
       <guid>https://www.michaelpilosov.com/project/stat/</guid>
       <description>Co-President focusing on growing a new organization in the Office of Advancement, with a particular emphasis on developing a social media strategy.
 I began my co-presidency of Students Today, Alumni Tomorrow officially in the spring semester of 2019, though technically I was serving as interim President for fall 2018 as well.
-  Events Our primary event was CU Taco Bout Philanthropy, where we fundraised for scholarships using a variety of methods, including texting students.</description>
+The focus of the organization is to better connect students and alumni, educating students about the ways in which University Advancement operates and why it is so important.</description>
     </item>
     
     <item>
@@ -52,6 +52,28 @@ I began my co-presidency of Students Today, Alumni Tomorrow officially in the sp
       <description>Program The summer school was focused on Uncertainty Quantification, specifically pretending to Inverse Problems.
 Structure We sat through hours of lecture and about half the days we managed to spend programming/implementing some of what we learned.
 Project At the end of the summer school we had to perform a project, and I paired up with a couple of students to work on an inverse problem involving the Helmholtz equation.</description>
+    </item>
+    
+    <item>
+      <title>Twitterbots</title>
+      <link>https://www.michaelpilosov.com/project/twitterbots/</link>
+      <pubDate>Tue, 01 May 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/twitterbots/</guid>
+      <description>I decided to explore the use of Twitter&amp;rsquo;s API in Python to perform some fun projects.
+I wrote a Twitter bot called &amp;ldquo;Random Art Baby&amp;rdquo; that when prompted, would respond to users with artwork.
+This art was randomly generated using the library I had developed for my initial exploration with graphical user interfaces for visualizing probability distributions.
+This also provided me the opportunity to explore some machine learning code for the generation of natural language speech based on training examples.</description>
+    </item>
+    
+    <item>
+      <title>Consistent Bayes</title>
+      <link>https://www.michaelpilosov.com/project/cbayes/</link>
+      <pubDate>Thu, 27 Apr 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/cbayes/</guid>
+      <description>This was my first attempt at writing a software library from scratch. I had a bunch of code in different places that performed many of the same tasks and wanted to unify it under one framework. It implemented the Data-Consistent Inversion framework (before it was called that), namely our sample-based approach for inverting probability measures.
+This was an excellent opportunity to learn the process of writing object-oriented code, unit-tests, and so much more.</description>
     </item>
     
   </channel>

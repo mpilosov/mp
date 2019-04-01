@@ -18,7 +18,9 @@
       <pubDate>Thu, 01 May 2014 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+      <description>After my first experience with writing software in the summer of 2013, I wanted to learn how to write software that was usable by other people1.
+I thought that learning how graphical user interfaces work would be a good place to start. Since I already knew Matlab, I chose that for my programming language.
+I performed the project under the direction of use of Dr. Yusuf Bilgic, who generally gave me free rein to pursue the project in any direction.</description>
     </item>
     
     <item>
@@ -27,10 +29,9 @@
       <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/animation/</guid>
-      <description>My time as a Geneseo Foundation STEM Undergraduate Summer Research Fellow.
-Summer Research
-Readings Course (follow up)
-  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
+      <description>Overview I received an Undergraduate Fellowship from the Geneseo Foundation to pursue a self-directed research project wherein I would explore the interface of Arts, Mathematics and Computer Science.
+ My initial goal was to figure out how to take a still image and turn it into an animation without resorting to frame-by-frame editing.
+ Story My mentor introduced me to a professor in the computer science department and we composed a successful proposal for the fellowship program.</description>
     </item>
     
   </channel>

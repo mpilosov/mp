@@ -40,12 +40,24 @@
     </item>
     
     <item>
+      <title>Twitterbots</title>
+      <link>https://www.michaelpilosov.com/project/twitterbots/</link>
+      <pubDate>Tue, 01 May 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/twitterbots/</guid>
+      <description>I decided to explore the use of Twitter&amp;rsquo;s API in Python to perform some fun projects.
+I wrote a Twitter bot called &amp;ldquo;Random Art Baby&amp;rdquo; that when prompted, would respond to users with artwork.
+This art was randomly generated using the library I had developed for my initial exploration with graphical user interfaces for visualizing probability distributions.
+This also provided me the opportunity to explore some machine learning code for the generation of natural language speech based on training examples.</description>
+    </item>
+    
+    <item>
       <title>Tracking Toxins</title>
       <link>https://www.michaelpilosov.com/project/toxins/</link>
       <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/toxins/</guid>
-      <description>Overview I went to work with Dr. Velimir Vesselinov in the summer of 2017 at the Los Alamos National Laboratory (LANL). This experience drastically changed the direction of my research. I spent much of my time reading papers on Bayesian Inverse Problems and Subsurface Contaminant Transport Problems. Part of what I did was learn the Julia programming language1, implementing some Markov chain Monte Carlo methods to practice, and converting some algorithms from Python to Julia.</description>
+      <description>Slamming one of the servers when no one else was using it.   Overview I went to work with Dr. Velimir Vesselinov in the summer of 2017 at the Los Alamos National Laboratory (LANL). This experience drastically changed the direction of my research. I spent much of my time reading papers on Bayesian Inverse Problems and Subsurface Contaminant Transport Problems. Part of what I did was learn the Julia programming language1, implementing some Markov chain Monte Carlo methods to practice, and converting some algorithms from Python to Julia.</description>
     </item>
     
     <item>
@@ -61,10 +73,11 @@ You can read more about it below, but overall, my focus on skewness ended up pla
     <item>
       <title>Consistent Bayes</title>
       <link>https://www.michaelpilosov.com/project/cbayes/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Thu, 27 Apr 2017 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/cbayes/</guid>
-      <description>A repository I wrote for my PhD research.</description>
+      <description>This was my first attempt at writing a software library from scratch. I had a bunch of code in different places that performed many of the same tasks and wanted to unify it under one framework. It implemented the Data-Consistent Inversion framework (before it was called that), namely our sample-based approach for inverting probability measures.
+This was an excellent opportunity to learn the process of writing object-oriented code, unit-tests, and so much more.</description>
     </item>
     
     <item>
@@ -103,7 +116,9 @@ For the first time, I found myself working on an object-oriented task in a progr
       <pubDate>Thu, 01 May 2014 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+      <description>After my first experience with writing software in the summer of 2013, I wanted to learn how to write software that was usable by other people1.
+I thought that learning how graphical user interfaces work would be a good place to start. Since I already knew Matlab, I chose that for my programming language.
+I performed the project under the direction of use of Dr. Yusuf Bilgic, who generally gave me free rein to pursue the project in any direction.</description>
     </item>
     
     <item>
@@ -112,10 +127,9 @@ For the first time, I found myself working on an object-oriented task in a progr
       <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/animation/</guid>
-      <description>My time as a Geneseo Foundation STEM Undergraduate Summer Research Fellow.
-Summer Research
-Readings Course (follow up)
-  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
+      <description>Overview I received an Undergraduate Fellowship from the Geneseo Foundation to pursue a self-directed research project wherein I would explore the interface of Arts, Mathematics and Computer Science.
+ My initial goal was to figure out how to take a still image and turn it into an animation without resorting to frame-by-frame editing.
+ Story My mentor introduced me to a professor in the computer science department and we composed a successful proposal for the fellowship program.</description>
     </item>
     
   </channel>

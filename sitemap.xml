@@ -60,23 +60,7 @@
     
     <url>
     
-      <loc>https://www.michaelpilosov.com/project/guatemala/</loc>
-      <lastmod>2019-03-17T18:00:00-06:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>https://www.michaelpilosov.com/project/bet/</loc>
-      <lastmod>2019-03-17T18:00:00-06:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://www.michaelpilosov.com/project/blackjack/</loc>
       <lastmod>2019-03-17T18:00:00-06:00</lastmod>
     </url>
     
@@ -94,14 +78,6 @@
     
       <loc>https://www.michaelpilosov.com/project/thesis/</loc>
       <lastmod>2019-03-19T18:00:00-06:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://www.michaelpilosov.com/project/piday/</loc>
-      <lastmod>2019-03-17T18:00:00-06:00</lastmod>
     </url>
     
   
@@ -126,6 +102,14 @@
     
       <loc>https://www.michaelpilosov.com/talk/siam_cse19/</loc>
       <lastmod>2019-02-27T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/slides/dev/</loc>
+      <lastmod>2019-02-08T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -372,6 +356,14 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/project/twitterbots/</loc>
+      <lastmod>2019-03-31T17:00:00-06:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/talk/siam_uq18/</loc>
       <lastmod>2018-04-01T00:00:00-06:00</lastmod>
     </url>
@@ -444,6 +436,14 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/project/cbayes/</loc>
+      <lastmod>2019-03-27T18:00:00-06:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/project/mentorlunch/</loc>
       <lastmod>2019-03-17T18:00:00-06:00</lastmod>
     </url>
@@ -509,7 +509,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/project/foodbank/</loc>
-      <lastmod>2019-03-19T18:00:00-06:00</lastmod>
+      <lastmod>2019-03-29T20:30:00-06:00</lastmod>
     </url>
     
   
@@ -518,14 +518,6 @@
     
       <loc>https://www.michaelpilosov.com/project/mathclub/</loc>
       <lastmod>2019-03-19T13:00:00-06:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://www.michaelpilosov.com/project/cbayes/</loc>
-      <lastmod>2019-03-17T18:00:00-06:00</lastmod>
     </url>
     
   
@@ -596,6 +588,14 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/project/piday/</loc>
+      <lastmod>2019-03-17T18:00:00-06:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/talk/framsc15/</loc>
       <lastmod>2015-02-28T00:00:00-07:00</lastmod>
     </url>
@@ -629,7 +629,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/project/probablyart/</loc>
-      <lastmod>2019-03-19T22:00:00-06:00</lastmod>
+      <lastmod>2019-03-28T10:00:00-06:00</lastmod>
     </url>
     
   
@@ -693,7 +693,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/project/animation/</loc>
-      <lastmod>2019-03-19T16:00:00-06:00</lastmod>
+      <lastmod>2019-03-31T18:00:00-06:00</lastmod>
     </url>
     
   
@@ -702,6 +702,14 @@
     
       <loc>https://www.michaelpilosov.com/project/chessclub/</loc>
       <lastmod>2019-03-17T18:00:00-06:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/blackjack/</loc>
+      <lastmod>2019-03-31T18:00:00-06:00</lastmod>
     </url>
     
   
@@ -718,6 +726,14 @@
     
       <loc>https://www.michaelpilosov.com/talk/great13-poker/</loc>
       <lastmod>2013-04-16T00:00:00-06:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/project/guatemala/</loc>
+      <lastmod>2019-03-17T18:00:00-06:00</lastmod>
     </url>
     
   
@@ -769,7 +785,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/2013/</loc>
-      <lastmod>2019-03-17T18:00:00-06:00</lastmod>
+      <lastmod>2019-03-31T18:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -831,8 +847,30 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/slides/website/</loc>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/categories/</loc>
       <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/demo/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/slides/jupyter/</loc>
     </url>
     
   
@@ -842,6 +880,13 @@
       <loc>https://www.michaelpilosov.com/</loc>
       <lastmod>2018-01-01T00:00:00-07:00</lastmod>
       <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/slides/test/</loc>
     </url>
     
   
@@ -866,8 +911,32 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/slides/</loc>
+      <lastmod>2019-02-08T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/slides/example-slides/</loc>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/tags/</loc>
       <lastmod>2019-03-19T22:00:00-06:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/test/</loc>
       <priority>0</priority>
     </url>
     
@@ -885,7 +954,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/animation/</loc>
-      <lastmod>2019-03-19T16:00:00-06:00</lastmod>
+      <lastmod>2019-03-31T18:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -894,7 +963,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/categories/art/</loc>
-      <lastmod>2019-03-19T22:00:00-06:00</lastmod>
+      <lastmod>2019-03-31T17:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -929,8 +998,26 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/tags/continuous-integration/</loc>
+      <lastmod>2019-02-08T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/tags/dev/</loc>
       <lastmod>2019-01-01T14:43:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/development/</loc>
+      <lastmod>2019-02-08T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -957,7 +1044,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/categories/drugs/</loc>
-      <lastmod>2019-03-17T18:00:00-06:00</lastmod>
+      <lastmod>2019-03-17T11:52:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -966,7 +1053,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/categories/environment/</loc>
-      <lastmod>2019-03-17T18:00:00-06:00</lastmod>
+      <lastmod>2019-03-19T15:30:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -1029,7 +1116,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/fall-2013/</loc>
-      <lastmod>2019-03-19T16:00:00-06:00</lastmod>
+      <lastmod>2019-03-31T18:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -1083,7 +1170,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/categories/finance/</loc>
-      <lastmod>2019-03-17T18:00:00-06:00</lastmod>
+      <lastmod>2019-03-17T11:52:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -1119,7 +1206,16 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/git/</loc>
-      <lastmod>2019-03-19T22:00:00-06:00</lastmod>
+      <lastmod>2019-02-08T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/github/</loc>
+      <lastmod>2019-02-08T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -1136,8 +1232,16 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/tags/hugo/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/tags/images/</loc>
-      <lastmod>2019-03-19T22:00:00-06:00</lastmod>
+      <lastmod>2019-03-28T10:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -1191,7 +1295,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/matlab/</loc>
-      <lastmod>2019-03-17T18:00:00-06:00</lastmod>
+      <lastmod>2019-03-17T11:52:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -1272,7 +1376,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/categories/outreach/</loc>
-      <lastmod>2019-03-19T22:00:00-06:00</lastmod>
+      <lastmod>2019-03-31T17:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -1327,6 +1431,15 @@
     
       <loc>https://www.michaelpilosov.com/tags/science/</loc>
       <lastmod>2019-03-17T18:00:00-06:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/categories/service/</loc>
+      <lastmod>2019-03-19T22:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -1443,7 +1556,7 @@
     <url>
     
       <loc>https://www.michaelpilosov.com/tags/summer-2013/</loc>
-      <lastmod>2019-03-19T16:00:00-06:00</lastmod>
+      <lastmod>2019-03-31T18:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -1514,8 +1627,16 @@
     
     <url>
     
+      <loc>https://www.michaelpilosov.com/tags/tutorial/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://www.michaelpilosov.com/tags/undergrad/</loc>
-      <lastmod>2019-03-17T18:00:00-06:00</lastmod>
+      <lastmod>2019-03-17T11:52:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -1525,6 +1646,14 @@
     
       <loc>https://www.michaelpilosov.com/tags/webdev/</loc>
       <lastmod>2019-01-01T14:23:00-07:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://www.michaelpilosov.com/tags/website/</loc>
       <priority>0</priority>
     </url>
     
