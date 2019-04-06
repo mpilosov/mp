@@ -64,10 +64,10 @@ The focus of the organization is to better connect students and alumni, educatin
     <item>
       <title>Open Science</title>
       <link>https://www.michaelpilosov.com/project/openscience/</link>
-      <pubDate>Fri, 01 Feb 2019 00:00:00 -0700</pubDate>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/openscience/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+      <description>Improved student access to technology by deploying JupyterHub on powerful servers in my Math Department, learning a ton of dev-ops along the way.</description>
     </item>
     
     <item>
@@ -102,6 +102,17 @@ Project At the end of the summer school we had to perform a project, and I paire
 I wrote a Twitter bot called &amp;ldquo;Random Art Baby&amp;rdquo; that when prompted, would respond to users with artwork.
 This art was randomly generated using the library I had developed for my initial exploration with graphical user interfaces for visualizing probability distributions.
 This also provided me the opportunity to explore some machine learning code for the generation of natural language speech based on training examples.</description>
+    </item>
+    
+    <item>
+      <title>DCI</title>
+      <link>https://www.michaelpilosov.com/project/dci/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/dci/</guid>
+      <description>The novel framework for solving inverse problems in which all of my doctoral work has been grounded.
+In the broadest terms possible, Data-Consistent Inversion (DCI) is a new approach to answer questions about the conditions under which observations can occur.
+What makes it particularly special is that in a sense, this approach leverages the &amp;ldquo;best of both worlds&amp;rdquo; in the statistical inference world. The two schools of thought: Deterministic Optimization and Bayesian Statistics have different philosophical frameworks for answering questions pertaining to the explanation of observed data.</description>
     </item>
     
     <item>
@@ -190,17 +201,6 @@ We routinely placed in the top three, and even took first place twice, beating o
       
       <guid>https://www.michaelpilosov.com/project/mathclub/</guid>
       <description>Summary During the last semester of my first year in graduate school (spring 2015), I volunteered for the Study Hall that was being put on by the department. I was inspired by that event to get in touch with the professor who organized it, and asked about interest in a Math Club. I was told that it had languished over the years but I was welcome to revive it (he was willing to be the faculty advisor), and he put me in touch with an undergraduate student that he thought would be good to partner up with.</description>
-    </item>
-    
-    <item>
-      <title>DCI</title>
-      <link>https://www.michaelpilosov.com/project/dci/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/project/dci/</guid>
-      <description>The novel framework for solving inverse problems in which all of my doctoral work has been grounded.
-Talk about the method in broad terms. What makes it different?
-  Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.</description>
     </item>
     
     <item>

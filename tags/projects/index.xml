@@ -7,20 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
-    <lastBuildDate>Sat, 21 Jul 2018 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Tue, 01 Jan 2019 00:00:00 -0700</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/projects/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>A New Game of Poker</title>
-      <link>https://www.michaelpilosov.com/project/poker/</link>
-      <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
+      <title>Open Science</title>
+      <link>https://www.michaelpilosov.com/project/openscience/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
       
-      <guid>https://www.michaelpilosov.com/project/poker/</guid>
-      <description>This was a really fun project I undertook for a Math Club game night in 2016 with my friend Elliott Regan, who helped me program this in Javascript and embed into an earlier version of my website.
-Premise Dr. Burt Simon and I had previously collaborated on a paper.
-Rules The rules are listed in short form below the game demonstration below. Gambling would occur on pre-determined intervals (timer), or whenever someone wants to (if you enjoy a bit of chaos).</description>
+      <guid>https://www.michaelpilosov.com/project/openscience/</guid>
+      <description>Improved student access to technology by deploying JupyterHub on powerful servers in my Math Department, learning a ton of dev-ops along the way.</description>
     </item>
     
     <item>

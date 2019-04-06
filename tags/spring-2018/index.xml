@@ -45,6 +45,26 @@ This also provided me the opportunity to explore some machine learning code for 
     </item>
     
     <item>
+      <title></title>
+      <link>https://www.michaelpilosov.com/talk/racas18/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/talk/racas18/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DCI</title>
+      <link>https://www.michaelpilosov.com/project/dci/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/dci/</guid>
+      <description>The novel framework for solving inverse problems in which all of my doctoral work has been grounded.
+In the broadest terms possible, Data-Consistent Inversion (DCI) is a new approach to answer questions about the conditions under which observations can occur.
+What makes it particularly special is that in a sense, this approach leverages the &amp;ldquo;best of both worlds&amp;rdquo; in the statistical inference world. The two schools of thought: Deterministic Optimization and Bayesian Statistics have different philosophical frameworks for answering questions pertaining to the explanation of observed data.</description>
+    </item>
+    
+    <item>
       <title>Consistent Bayes</title>
       <link>https://www.michaelpilosov.com/project/cbayes/</link>
       <pubDate>Thu, 27 Apr 2017 00:00:00 -0600</pubDate>

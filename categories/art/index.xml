@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
-    <lastBuildDate>Tue, 01 May 2018 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/categories/art/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Math || Art?</title>
+      <link>https://www.michaelpilosov.com/project/mathart/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/mathart/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Twitterbots</title>

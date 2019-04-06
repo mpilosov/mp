@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Michael Pilosov</copyright>
-    <lastBuildDate>Tue, 01 May 2018 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/categories/outreach/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Math || Art?</title>
+      <link>https://www.michaelpilosov.com/project/mathart/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/mathart/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Twitterbots</title>
@@ -22,6 +31,15 @@
 I wrote a Twitter bot called &amp;ldquo;Random Art Baby&amp;rdquo; that when prompted, would respond to users with artwork.
 This art was randomly generated using the library I had developed for my initial exploration with graphical user interfaces for visualizing probability distributions.
 This also provided me the opportunity to explore some machine learning code for the generation of natural language speech based on training examples.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.michaelpilosov.com/talk/racas18/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/talk/racas18/</guid>
+      <description></description>
     </item>
     
     <item>
