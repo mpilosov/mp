@@ -52,9 +52,7 @@ Motivation and Qualifiers  Love applied math&amp;hellip; Hate the learning curve
       <guid>https://www.michaelpilosov.com/slides/openscience/</guid>
       <description>Scientific Computation for Research and Teaching (with Jupyter)
 Michael Pilosov, University of Colorado Denver
-   Professional Document Editor
-Source
-Student Experience  Get username/password from professor Log in from ANY computer  Platform independent  &amp;ldquo;All&amp;rdquo; software is pre-installed  Additional packages can be installed by students  work/ folder allows data to persist Computations are performed on Dept. servers  better battery life! cheaper computers, laboratories   Potential Upside  After growing pains: can scale class sizes Automatic-grading Interactive Textbooks/Notebooks/Labs Drop outdated technology contracts (MyMathLab) Students using cutting-edge open-source software  can start coding &amp;ldquo;early&amp;rdquo; looks great on resume  Professors/IT people can avoid cross-platform software support  Features  Students are &amp;ldquo;isolated&amp;rdquo; in their environments  Restricted permissions Harder for them to &amp;ldquo;break&amp;rdquo; things  Data and Application are divorced  &amp;ldquo;Light&amp;rdquo; server-load due to containerization Backups are &amp;ldquo;easier&amp;rdquo;  Can scale with class-size  Questions?</description>
+Background  Open-source community growing rapidly  MOOCs, textbooks  Disrupting traditional software stacks  no licenses/contracts!  Students often feel intimidated by coding Address scientific reproducibility crisis  Student Experience  Get username/password from professor Log in from ANY computer  Platform independent  &amp;ldquo;All&amp;rdquo; software is pre-installed  Additional packages can be installed by students  work/ folder allows data to persist Computations are performed on Dept.</description>
     </item>
     
     <item>
