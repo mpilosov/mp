@@ -52,7 +52,7 @@ Motivation and Qualifiers  Love applied math&amp;hellip; Hate the learning curve
       <guid>https://www.michaelpilosov.com/slides/openscience/</guid>
       <description>Scientific Computation for Research and Teaching (with Jupyter)
 Michael Pilosov, University of Colorado Denver
-Background  Open-source community growing rapidly  MOOCs, textbooks  Disrupting traditional software stacks  no licenses/contracts!  Students often feel intimidated by coding Address scientific reproducibility crisis  Student Experience  Get username/password from professor Log in from ANY computer  Platform independent  &amp;ldquo;All&amp;rdquo; software is pre-installed  Additional packages can be installed by students  work/ folder allows data to persist Computations are performed on Dept.</description>
+Background  Open-source community growing rapidly  MOOCs, textbooks  Disrupting traditional software stacks  no licenses/contracts!  Students often feel intimidated by coding  installations vary widely  Address scientific reproducibility crisis  Simplify Setup for Students  Get username/password from professor Log in from ANY computer  Platform independent  &amp;ldquo;All&amp;rdquo; software is pre-installed  Additional packages can be installed by students  work/ folder allows data to persist Computations are performed &amp;ldquo;in the cloud&amp;rdquo;  better battery life!</description>
     </item>
     
     <item>
