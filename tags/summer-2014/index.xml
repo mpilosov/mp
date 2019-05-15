@@ -18,8 +18,7 @@
       <pubDate>Mon, 01 Sep 2014 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/evolution/</guid>
-      <description>I began graduate school in the summer of 2014 as a summer graduate research assistant. I approached Dr. Burt Simon to learn about his research as I was casually walking around the department while working on the LAPACK project. His research was concerned with modeling population dynamics to study the conditions under which cooperation could evolve from a mutation to the norm within a system that is inherently competitive.
-I was really interested in the problem he was working on and asked if I could see his software.</description>
+      <description>From a mutation to the norm, but how?</description>
     </item>
     
     <item>
@@ -28,8 +27,7 @@ I was really interested in the problem he was working on and asked if I could se
       <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/lapack/</guid>
-      <description>My Brief Experience I was fortunate enough to be funded by Dr. Julien Langou during my summer proceeding entering graduate school. This relief from teaching was especially helpful for my transition into post-graduate education, and I was given the opportunity to explore a number of topics that I knew nothing about.
-For the first time, I found myself working on an object-oriented task in a programming language that was strongly typed.</description>
+      <description>First Research Project.</description>
     </item>
     
     <item>
@@ -38,9 +36,7 @@ For the first time, I found myself working on an object-oriented task in a progr
       <pubDate>Thu, 01 May 2014 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
-      <description>After my first experience with writing software in the summer of 2013, I wanted to learn how to write software that was usable by other people1.
-I thought that learning how graphical user interfaces work would be a good place to start. Since I already knew Matlab, I chose that for my programming language.
-I performed the project under the direction of use of Dr. Yusuf Bilgic, who generally gave me free rein to pursue the project in any direction.</description>
+      <description>Code to art. From directed study to long-term hobby.</description>
     </item>
     
   </channel>

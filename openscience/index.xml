@@ -18,7 +18,11 @@
       <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/openscience/docker/</guid>
-      <description>Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info Cleaning up Load/Save image  Layers Containers  Lifecycle Starting and Stopping Info Import / Export Executing Commands Container Import/Export  Management  CPU Constraints Memory Constraints Capabilities  Dockerfile  Instructions Tutorial Examples  Networks  Lifecycle Info Connection  Registries  Registries v.</description>
+      <description>Table of Contents HAHAHUGOSHORTCODE-TOC0-HBHB
+Introduction From the Docker Documentation:
+ Docker is a platform for developers and sysadmins to develop, deploy, and run applications with containers. &amp;gt; The use of Linux containers to deploy applications is called containerization. Containers are not new, but their use for easily deploying applications is.
+Containerization is increasingly popular because containers are:
+ Flexible: Even the most complex applications can be containerized. Lightweight: Containers leverage and share the host kernel.</description>
     </item>
     
     <item>
@@ -48,8 +52,7 @@ Preliminaries First, we need to decide on the following:
       <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/openscience/walkthrough/</guid>
-      <description>Inital Setup I presume the use of vim in a few of these commands. If you are more comfortable using nano for editing text, please be sure to make the appropriate substitutions.
- On a brand new server&amp;hellip; (Change the top line to be your name)
+      <description>Inital Setup I presume the use of `vim` in a few of these commands. If you are more comfortable using `nano` for editing text, please be sure to make the appropriate substitutions.  On a brand new server&amp;hellip; (Change the top line to be your name)
 export USER_NAME=mathematicalmichael sudo apt update -y &amp;amp;&amp;amp; sudo apt upgrade -y sudo apt install vim htop make -y useradd $USER_NAME -m -s /bin/bash passwd $USER_NAME usermod -aG sudo $USER_NAME su - $USER_NAME  Now set your password.</description>
     </item>
     

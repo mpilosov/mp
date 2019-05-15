@@ -18,7 +18,7 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/bet/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+      <description>Implementation of Data-Consistent Inversion.</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@
       <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/openscience/</guid>
-      <description>Improved student access to technology by deploying JupyterHub on powerful servers in my Math Department, learning a ton of dev-ops along the way.</description>
+      <description>Learning dev-ops for reproducible research</description>
     </item>
     
   </channel>

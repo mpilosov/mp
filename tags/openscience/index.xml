@@ -18,9 +18,7 @@
       <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/devlog/jupyterhub/</guid>
-      <description>Jan 1, 2019 Status Report Okay so where are we at?
- Spawner needs to be sussed out. Right now I really like DockerSpawner, and it seems to persist storage.  Each student gets a user account but it&amp;rsquo;s only used for authenetication right now. Can&amp;rsquo;t figure out volume-mapping.  With dockerspawner.DockerSpawner:
- Each time someone is logged in, a container is either loaded up or built from jupyterlab_img container.</description>
+      <description>Notes from configuring Jupyterhub</description>
     </item>
     
     <item>
@@ -29,9 +27,7 @@
       <pubDate>Mon, 24 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/devlog/docker/</guid>
-      <description>Dec 22, 2018 Today I began to structure and fill in the basic information for the Open Science/Docker Documentation.
-12/24/2019 - 01/01/2019
-Today I started by watching a video to be aware of the problems I might face going forward with JupyterHub. I watched someone from Berkeley describe how they&amp;rsquo;ve scaled to thousands of users across many professors and managed to not grow their IT team while doing so.</description>
+      <description>JupyterHub Day!!</description>
     </item>
     
     <item>
@@ -40,8 +36,7 @@ Today I started by watching a video to be aware of the problems I might face goi
       <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/devlog/openscience/</guid>
-      <description>Jan 1, 2019 Today I split up the documentation here on devlog and began the write-ups for Jupyterhub. I think I should segment out a section that goes through the entire process of deployment
-Notes: - bash script to give you nice shortcuts - SSH key generated ahead of time, ready to log in without passwords - get Traefik proxy working - It seems extremely straightforward except that I do not know how to direct traffic to a folder.</description>
+      <description>Filling in the Docs</description>
     </item>
     
     <item>
@@ -52,17 +47,6 @@ Notes: - bash script to give you nice shortcuts - SSH key generated ahead of tim
       <guid>https://www.michaelpilosov.com/slides/jupyter/</guid>
       <description>Scientific Computation for Research and Teaching with Jupyter Michael Pilosov, University of Colorado Denver
 Motivation and Qualifiers  Love applied math&amp;hellip; Hate the learning curve Want to make (computational) math accessible Some familiarity with website design Vague understanding of application architecture  Backstory  Wanted to embed interactive content into website Difficulty with back-end, lack of understanding Kept seeing some of the same words/phrases  Docker, Servers, Databases, Ports, Containers, Volumes, Mounting, Images, Spawning, etc.</description>
-    </item>
-    
-    <item>
-      <title>Jupyter for All the Things</title>
-      <link>https://www.michaelpilosov.com/slides/openscience/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/slides/openscience/</guid>
-      <description>Scientific Computation for Research and Teaching (with Jupyter)
-Michael Pilosov, University of Colorado Denver
-Background  Open-source community growing rapidly  MOOCs, textbooks  Disrupting traditional software stacks  no licenses/contracts!  Students often feel intimidated by coding  installations vary widely  Address scientific reproducibility crisis  Simplify Setup for Students  Get username/password from professor Log in from ANY computer  Platform independent  &amp;ldquo;All&amp;rdquo; software is pre-installed  Additional packages can be installed by students  work/ folder allows data to persist Computations are performed &amp;ldquo;in the cloud&amp;rdquo;  better battery life!</description>
     </item>
     
   </channel>

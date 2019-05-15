@@ -18,7 +18,7 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/bet/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+      <description>Implementation of Data-Consistent Inversion.</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/thesis/</guid>
-      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+      <description>Computational Advances in Data-Consistent Inversion.</description>
     </item>
     
     <item>
@@ -47,7 +47,7 @@ The focus of the organization is to better connect students and alumni, educatin
       <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/openscience/</guid>
-      <description>Improved student access to technology by deploying JupyterHub on powerful servers in my Math Department, learning a ton of dev-ops along the way.</description>
+      <description>Learning dev-ops for reproducible research</description>
     </item>
     
     <item>
@@ -56,9 +56,7 @@ The focus of the organization is to better connect students and alumni, educatin
       <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/dci/</guid>
-      <description>The novel framework for solving inverse problems in which all of my doctoral work has been grounded.
-In the broadest terms possible, Data-Consistent Inversion (DCI) is a new approach to answer questions about the conditions under which observations can occur.
-What makes it particularly special is that in a sense, this approach leverages the &amp;ldquo;best of both worlds&amp;rdquo; in the statistical inference world. The two schools of thought: Deterministic Optimization and Bayesian Statistics have different philosophical frameworks for answering questions pertaining to the explanation of observed data.</description>
+      <description>A novel framework for stochastic inverse problems.</description>
     </item>
     
   </channel>

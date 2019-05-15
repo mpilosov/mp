@@ -18,9 +18,7 @@
       <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/summerschool/</guid>
-      <description>Program The summer school was focused on Uncertainty Quantification, specifically pretending to Inverse Problems.
-Structure We sat through hours of lecture and about half the days we managed to spend programming/implementing some of what we learned.
-Project At the end of the summer school we had to perform a project, and I paired up with a couple of students to work on an inverse problem involving the Helmholtz equation.</description>
+      <description>Uncertainty Quantification and Inverse Problems.</description>
     </item>
     
     <item>
@@ -29,9 +27,7 @@ Project At the end of the summer school we had to perform a project, and I paire
       <pubDate>Sat, 09 Jan 2016 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/wildlife/</guid>
-      <description>Given that we do not know exactly where animals will go, how do we set up a network of sensors to track them?
-I managed a group of four undergraduates through a semester-long research project concerning the placement of sensors in an environment where the travel patterns of animals is unknown. My responsibilities included:
- defining the scope of research and breaking goals down into explicit deliverables, overseeing timeline of research progress, keeping students on deadline, developing outlines of software and clearly defined what their contributions would be.</description>
+      <description>Deploying sensors on a budget.</description>
     </item>
     
   </channel>

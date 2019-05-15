@@ -7,6 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
+    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -30,47 +31,11 @@
     </item>
     
     <item>
-      <title>documentation</title>
-      <link>https://www.michaelpilosov.com/categories/documentation/</link>
-      <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/categories/documentation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>drugs</title>
-      <link>https://www.michaelpilosov.com/categories/drugs/</link>
-      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/categories/drugs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>environment</title>
-      <link>https://www.michaelpilosov.com/categories/environment/</link>
-      <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/categories/environment/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>events</title>
       <link>https://www.michaelpilosov.com/categories/events/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/categories/events/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>finance</title>
-      <link>https://www.michaelpilosov.com/categories/finance/</link>
-      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/categories/finance/</guid>
       <description></description>
     </item>
     
@@ -93,15 +58,6 @@
     </item>
     
     <item>
-      <title>mentorship</title>
-      <link>https://www.michaelpilosov.com/categories/mentorship/</link>
-      <pubDate>Sat, 01 Apr 2017 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/categories/mentorship/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>outreach</title>
       <link>https://www.michaelpilosov.com/categories/outreach/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
@@ -120,20 +76,65 @@
     </item>
     
     <item>
-      <title>service</title>
-      <link>https://www.michaelpilosov.com/categories/service/</link>
-      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/categories/service/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>software</title>
       <link>https://www.michaelpilosov.com/categories/software/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/categories/software/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>documentation</title>
+      <link>https://www.michaelpilosov.com/categories/documentation/</link>
+      <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/categories/documentation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>environment</title>
+      <link>https://www.michaelpilosov.com/categories/environment/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/categories/environment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mentorship</title>
+      <link>https://www.michaelpilosov.com/categories/mentorship/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/categories/mentorship/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>drugs</title>
+      <link>https://www.michaelpilosov.com/categories/drugs/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/categories/drugs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>finance</title>
+      <link>https://www.michaelpilosov.com/categories/finance/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/categories/finance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>service</title>
+      <link>https://www.michaelpilosov.com/categories/service/</link>
+      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/categories/service/</guid>
       <description></description>
     </item>
     

@@ -7,55 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
-    <lastBuildDate>Wed, 01 Sep 2010 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>2010</title>
-      <link>https://www.michaelpilosov.com/tags/2010/</link>
-      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/2010/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>2011</title>
-      <link>https://www.michaelpilosov.com/tags/2011/</link>
-      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/2011/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>2012</title>
-      <link>https://www.michaelpilosov.com/tags/2012/</link>
-      <pubDate>Sat, 01 Dec 2012 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/2012/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>2013</title>
-      <link>https://www.michaelpilosov.com/tags/2013/</link>
-      <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/2013/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>2014</title>
-      <link>https://www.michaelpilosov.com/tags/2014/</link>
-      <pubDate>Mon, 01 Sep 2014 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/2014/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>2015</title>
@@ -103,51 +58,6 @@
     </item>
     
     <item>
-      <title>Demo</title>
-      <link>https://www.michaelpilosov.com/tags/demo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/demo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Test</title>
-      <link>https://www.michaelpilosov.com/tags/test/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/test/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>animation</title>
-      <link>https://www.michaelpilosov.com/tags/animation/</link>
-      <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/animation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>biology</title>
-      <link>https://www.michaelpilosov.com/tags/biology/</link>
-      <pubDate>Mon, 15 Aug 2016 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/biology/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>clang</title>
-      <link>https://www.michaelpilosov.com/tags/clang/</link>
-      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/clang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>code</title>
       <link>https://www.michaelpilosov.com/tags/code/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
@@ -157,101 +67,11 @@
     </item>
     
     <item>
-      <title>continuous integration</title>
-      <link>https://www.michaelpilosov.com/tags/continuous-integration/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/continuous-integration/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>dev</title>
-      <link>https://www.michaelpilosov.com/tags/dev/</link>
-      <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/dev/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>development</title>
-      <link>https://www.michaelpilosov.com/tags/development/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/development/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>docker</title>
-      <link>https://www.michaelpilosov.com/tags/docker/</link>
-      <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>events</title>
       <link>https://www.michaelpilosov.com/tags/events/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/events/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>evolution</title>
-      <link>https://www.michaelpilosov.com/tags/evolution/</link>
-      <pubDate>Mon, 15 Aug 2016 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/evolution/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>fall 2010</title>
-      <link>https://www.michaelpilosov.com/tags/fall-2010/</link>
-      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/fall-2010/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>fall 2011</title>
-      <link>https://www.michaelpilosov.com/tags/fall-2011/</link>
-      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/fall-2011/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>fall 2012</title>
-      <link>https://www.michaelpilosov.com/tags/fall-2012/</link>
-      <pubDate>Sat, 01 Dec 2012 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/fall-2012/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>fall 2013</title>
-      <link>https://www.michaelpilosov.com/tags/fall-2013/</link>
-      <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/fall-2013/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>fall 2014</title>
-      <link>https://www.michaelpilosov.com/tags/fall-2014/</link>
-      <pubDate>Mon, 01 Sep 2014 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/fall-2014/</guid>
       <description></description>
     </item>
     
@@ -292,74 +112,11 @@
     </item>
     
     <item>
-      <title>fall 2019</title>
-      <link>https://www.michaelpilosov.com/tags/fall-2019/</link>
-      <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/fall-2019/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>fortran</title>
-      <link>https://www.michaelpilosov.com/tags/fortran/</link>
-      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/fortran/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>games</title>
-      <link>https://www.michaelpilosov.com/tags/games/</link>
-      <pubDate>Mon, 01 May 2017 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/games/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>https://www.michaelpilosov.com/tags/git/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>github</title>
-      <link>https://www.michaelpilosov.com/tags/github/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/github/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>grad</title>
       <link>https://www.michaelpilosov.com/tags/grad/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/grad/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>https://www.michaelpilosov.com/tags/hugo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>images</title>
-      <link>https://www.michaelpilosov.com/tags/images/</link>
-      <pubDate>Thu, 01 May 2014 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/images/</guid>
       <description></description>
     </item>
     
@@ -373,92 +130,11 @@
     </item>
     
     <item>
-      <title>julia</title>
-      <link>https://www.michaelpilosov.com/tags/julia/</link>
-      <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/julia/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>jupyter</title>
-      <link>https://www.michaelpilosov.com/tags/jupyter/</link>
-      <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/jupyter/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>math club</title>
-      <link>https://www.michaelpilosov.com/tags/math-club/</link>
-      <pubDate>Sat, 01 Apr 2017 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/math-club/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>matlab</title>
-      <link>https://www.michaelpilosov.com/tags/matlab/</link>
-      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/matlab/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>movies</title>
-      <link>https://www.michaelpilosov.com/tags/movies/</link>
-      <pubDate>Mon, 01 May 2017 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/movies/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>national lab</title>
-      <link>https://www.michaelpilosov.com/tags/national-lab/</link>
-      <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/national-lab/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>oed</title>
-      <link>https://www.michaelpilosov.com/tags/oed/</link>
-      <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/oed/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>open source</title>
       <link>https://www.michaelpilosov.com/tags/open-source/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/open-source/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>openscience</title>
-      <link>https://www.michaelpilosov.com/tags/openscience/</link>
-      <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/openscience/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>optimization</title>
-      <link>https://www.michaelpilosov.com/tags/optimization/</link>
-      <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/optimization/</guid>
       <description></description>
     </item>
     
@@ -472,33 +148,6 @@
     </item>
     
     <item>
-      <title>poker</title>
-      <link>https://www.michaelpilosov.com/tags/poker/</link>
-      <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/poker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>projects</title>
-      <link>https://www.michaelpilosov.com/tags/projects/</link>
-      <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/projects/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://www.michaelpilosov.com/tags/python/</link>
-      <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>research</title>
       <link>https://www.michaelpilosov.com/tags/research/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
@@ -508,56 +157,11 @@
     </item>
     
     <item>
-      <title>science</title>
-      <link>https://www.michaelpilosov.com/tags/science/</link>
-      <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/science/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>siam</title>
       <link>https://www.michaelpilosov.com/tags/siam/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/tags/siam/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>spring 2011</title>
-      <link>https://www.michaelpilosov.com/tags/spring-2011/</link>
-      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/spring-2011/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>spring 2012</title>
-      <link>https://www.michaelpilosov.com/tags/spring-2012/</link>
-      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/spring-2012/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>spring 2013</title>
-      <link>https://www.michaelpilosov.com/tags/spring-2013/</link>
-      <pubDate>Sat, 01 Jun 2013 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/spring-2013/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>spring 2014</title>
-      <link>https://www.michaelpilosov.com/tags/spring-2014/</link>
-      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/spring-2014/</guid>
       <description></description>
     </item>
     
@@ -616,20 +220,218 @@
     </item>
     
     <item>
-      <title>summer 2013</title>
-      <link>https://www.michaelpilosov.com/tags/summer-2013/</link>
-      <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
+      <title>summer 2017</title>
+      <link>https://www.michaelpilosov.com/tags/summer-2017/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
       
-      <guid>https://www.michaelpilosov.com/tags/summer-2013/</guid>
+      <guid>https://www.michaelpilosov.com/tags/summer-2017/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>summer 2014</title>
-      <link>https://www.michaelpilosov.com/tags/summer-2014/</link>
-      <pubDate>Mon, 01 Sep 2014 00:00:00 -0600</pubDate>
+      <title>continuous integration</title>
+      <link>https://www.michaelpilosov.com/tags/continuous-integration/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.michaelpilosov.com/tags/summer-2014/</guid>
+      <guid>https://www.michaelpilosov.com/tags/continuous-integration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>development</title>
+      <link>https://www.michaelpilosov.com/tags/development/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://www.michaelpilosov.com/tags/git/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>github</title>
+      <link>https://www.michaelpilosov.com/tags/github/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://www.michaelpilosov.com/tags/docker/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jupyter</title>
+      <link>https://www.michaelpilosov.com/tags/jupyter/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/jupyter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>projects</title>
+      <link>https://www.michaelpilosov.com/tags/projects/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>science</title>
+      <link>https://www.michaelpilosov.com/tags/science/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>technology</title>
+      <link>https://www.michaelpilosov.com/tags/technology/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/technology/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dev</title>
+      <link>https://www.michaelpilosov.com/tags/dev/</link>
+      <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/dev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openscience</title>
+      <link>https://www.michaelpilosov.com/tags/openscience/</link>
+      <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/openscience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>webdev</title>
+      <link>https://www.michaelpilosov.com/tags/webdev/</link>
+      <pubDate>Thu, 20 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/webdev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>poker</title>
+      <link>https://www.michaelpilosov.com/tags/poker/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/poker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>julia</title>
+      <link>https://www.michaelpilosov.com/tags/julia/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/julia/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>optimization</title>
+      <link>https://www.michaelpilosov.com/tags/optimization/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/optimization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://www.michaelpilosov.com/tags/python/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>summer 2018</title>
+      <link>https://www.michaelpilosov.com/tags/summer-2018/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/summer-2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fall 2019</title>
+      <link>https://www.michaelpilosov.com/tags/fall-2019/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/fall-2019/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>national lab</title>
+      <link>https://www.michaelpilosov.com/tags/national-lab/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/national-lab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>oed</title>
+      <link>https://www.michaelpilosov.com/tags/oed/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/oed/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>summer 2019</title>
+      <link>https://www.michaelpilosov.com/tags/summer-2019/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/summer-2019/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>games</title>
+      <link>https://www.michaelpilosov.com/tags/games/</link>
+      <pubDate>Mon, 01 May 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/games/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>movies</title>
+      <link>https://www.michaelpilosov.com/tags/movies/</link>
+      <pubDate>Mon, 01 May 2017 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/movies/</guid>
       <description></description>
     </item>
     
@@ -652,33 +454,6 @@
     </item>
     
     <item>
-      <title>summer 2017</title>
-      <link>https://www.michaelpilosov.com/tags/summer-2017/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/summer-2017/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>summer 2018</title>
-      <link>https://www.michaelpilosov.com/tags/summer-2018/</link>
-      <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/summer-2018/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>summer 2019</title>
-      <link>https://www.michaelpilosov.com/tags/summer-2019/</link>
-      <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
-      
-      <guid>https://www.michaelpilosov.com/tags/summer-2019/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>summers</title>
       <link>https://www.michaelpilosov.com/tags/summers/</link>
       <pubDate>Mon, 01 May 2017 00:00:00 -0600</pubDate>
@@ -688,20 +463,92 @@
     </item>
     
     <item>
-      <title>technology</title>
-      <link>https://www.michaelpilosov.com/tags/technology/</link>
-      <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
+      <title>math club</title>
+      <link>https://www.michaelpilosov.com/tags/math-club/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 -0600</pubDate>
       
-      <guid>https://www.michaelpilosov.com/tags/technology/</guid>
+      <guid>https://www.michaelpilosov.com/tags/math-club/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>tutorial</title>
-      <link>https://www.michaelpilosov.com/tags/tutorial/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>biology</title>
+      <link>https://www.michaelpilosov.com/tags/biology/</link>
+      <pubDate>Mon, 15 Aug 2016 00:00:00 -0600</pubDate>
       
-      <guid>https://www.michaelpilosov.com/tags/tutorial/</guid>
+      <guid>https://www.michaelpilosov.com/tags/biology/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>evolution</title>
+      <link>https://www.michaelpilosov.com/tags/evolution/</link>
+      <pubDate>Mon, 15 Aug 2016 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/evolution/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2014</title>
+      <link>https://www.michaelpilosov.com/tags/2014/</link>
+      <pubDate>Mon, 01 Sep 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/2014/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fall 2014</title>
+      <link>https://www.michaelpilosov.com/tags/fall-2014/</link>
+      <pubDate>Mon, 01 Sep 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/fall-2014/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>summer 2014</title>
+      <link>https://www.michaelpilosov.com/tags/summer-2014/</link>
+      <pubDate>Mon, 01 Sep 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/summer-2014/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>clang</title>
+      <link>https://www.michaelpilosov.com/tags/clang/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/clang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fortran</title>
+      <link>https://www.michaelpilosov.com/tags/fortran/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/fortran/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>matlab</title>
+      <link>https://www.michaelpilosov.com/tags/matlab/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/matlab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spring 2014</title>
+      <link>https://www.michaelpilosov.com/tags/spring-2014/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/spring-2014/</guid>
       <description></description>
     </item>
     
@@ -715,11 +562,164 @@
     </item>
     
     <item>
-      <title>webdev</title>
-      <link>https://www.michaelpilosov.com/tags/webdev/</link>
-      <pubDate>Thu, 20 Dec 2018 00:00:00 -0700</pubDate>
+      <title>images</title>
+      <link>https://www.michaelpilosov.com/tags/images/</link>
+      <pubDate>Thu, 01 May 2014 00:00:00 -0600</pubDate>
       
-      <guid>https://www.michaelpilosov.com/tags/webdev/</guid>
+      <guid>https://www.michaelpilosov.com/tags/images/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2013</title>
+      <link>https://www.michaelpilosov.com/tags/2013/</link>
+      <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/2013/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>animation</title>
+      <link>https://www.michaelpilosov.com/tags/animation/</link>
+      <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/animation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fall 2013</title>
+      <link>https://www.michaelpilosov.com/tags/fall-2013/</link>
+      <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/fall-2013/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>summer 2013</title>
+      <link>https://www.michaelpilosov.com/tags/summer-2013/</link>
+      <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/summer-2013/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spring 2013</title>
+      <link>https://www.michaelpilosov.com/tags/spring-2013/</link>
+      <pubDate>Sat, 01 Jun 2013 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/spring-2013/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2012</title>
+      <link>https://www.michaelpilosov.com/tags/2012/</link>
+      <pubDate>Sat, 01 Dec 2012 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/2012/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fall 2012</title>
+      <link>https://www.michaelpilosov.com/tags/fall-2012/</link>
+      <pubDate>Sat, 01 Dec 2012 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/fall-2012/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2010</title>
+      <link>https://www.michaelpilosov.com/tags/2010/</link>
+      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/2010/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2011</title>
+      <link>https://www.michaelpilosov.com/tags/2011/</link>
+      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/2011/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fall 2010</title>
+      <link>https://www.michaelpilosov.com/tags/fall-2010/</link>
+      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/fall-2010/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fall 2011</title>
+      <link>https://www.michaelpilosov.com/tags/fall-2011/</link>
+      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/fall-2011/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spring 2011</title>
+      <link>https://www.michaelpilosov.com/tags/spring-2011/</link>
+      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/spring-2011/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spring 2012</title>
+      <link>https://www.michaelpilosov.com/tags/spring-2012/</link>
+      <pubDate>Wed, 01 Sep 2010 00:00:00 -0600</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/spring-2012/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Demo</title>
+      <link>https://www.michaelpilosov.com/tags/demo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/demo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Test</title>
+      <link>https://www.michaelpilosov.com/tags/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://www.michaelpilosov.com/tags/hugo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>https://www.michaelpilosov.com/tags/tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/tags/tutorial/</guid>
       <description></description>
     </item>
     

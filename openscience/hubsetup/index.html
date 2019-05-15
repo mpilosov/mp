@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Source Themes Academic 3.2.0">
-  <meta name="generator" content="Hugo 0.52" />
+  <meta name="generator" content="Hugo 0.55.3" />
   <meta name="author" content="Michael Pilosov">
 
   
@@ -514,10 +514,10 @@ It is fine for these numbers to conflict since they are not ports open on the ma
 The databases on <code>5432</code> are similarly of no concern to us.</p>
 
 <div class="alert alert-">
-  <p>If the output of this command is blank (perhaps this is your first time), then <em>nothing is running</em>, and so you can stick with the default name and port number in our deployment.</p>
+  
+If the output of this command is blank (perhaps this is your first time), then _nothing is running_, and so you can stick with the default name and port number in our deployment.
 
 </div>
-
 
 <p>We can also see that three hubs are live on this server, listening for connections on local ports <code>8000</code> and <code>8001</code> in addition to the two user containers.</p>
 
@@ -527,10 +527,10 @@ The databases on <code>5432</code> are similarly of no concern to us.</p>
 In our deployment, this name is ALSO where your hub will live (<code>example.com/math8660</code> and <code>example.com/math</code> are live in the above output).</p>
 
 <div class="alert alert-">
-  <p>The proxy configurations must direct traffic to these &ldquo;locations&rdquo; (<code>/math</code> and <code>/math8660</code>) for it to be publicly accessible. See the <a href="./openscience/walkthrough#proxy">Proxy section of the Walkthrough</a>.</p>
+  
+The proxy configurations must direct traffic to these "locations" (`/math` and `/math8660`) for it to be publicly accessible. See the [Proxy section of the Walkthrough](./openscience/walkthrough#proxy). 
 
 </div>
-
 
 <p><em>Before proceeding, let us get the necessary files.</em></p>
 
@@ -556,33 +556,34 @@ It will also print out the entry that needs to be added to <code>/etc/nginx/site
 <p>If you have no existing hub named <code>math</code> and port <code>8000</code> is available, then nothing needs to be edited. (If you need to reassign <code>HUB_NAME</code> and <code>PORT_NUM</code>, edit the first lines of <code>.env</code>). Be aware of re-using old names from previous deployments<sup class="footnote-ref" id="fnref:reuse"><a href="#fn:reuse">1</a></sup>. Once you are ready, run:</p>
 
 <div class="alert alert-">
-  <p>This may take 10-15 minutes in total but will handle everything for you.</p>
+  
+This may take 10-15 minutes in total but will handle everything for you.
 
 </div>
-
 
 <pre><code class="language-bash">./setup.sh
 </code></pre>
 
 <div class="alert alert-warning">
-  <p>This script presumes this is your first run. It creates several files that are only required initially, and re-running it will delete any changes you made to <code>userlist</code> unless you comment out the first line (which creates this file).</p>
+  
+This script presumes this is your first run. It creates several files that are only required initially, and re-running it will delete any changes you made to `userlist` unless you comment out the first line (which creates this file). 
 
 </div>
-
 
 <p>A dialogue will come across the screen tell you the password to get into the hub and what to add to the proxy configuration.
 Once you log in, you can add users through the Admin panel.</p>
 
 <div class="alert alert-warning">
-  <p>On the CU Denver campus, (or from behind any private network), you will likely encounter a warning in your browser that you must <em>Add an Exception</em> to handle.</p>
+  
+On the CU Denver campus, (or from behind any private network), you will likely encounter a warning in your browser that you must _Add an Exception_ to handle. 
 
-<p><img src="/img/hub-error.png" alt="hub-error" />
-Chrome, Firefox, Edge, etc. all have variations on the following dialogue windows that you must go through before seeing your hub:</p>
+![hub-error](/img/hub-error.png)
+Chrome, Firefox, Edge, etc. all have variations on the following dialogue windows that you must go through before seeing your hub:
 
-<p><img src="/img/hub-error-confirm.png" alt="hub-error-confirm" /></p>
+![hub-error-confirm](/img/hub-error-confirm.png)
+
 
 </div>
-
 
 <p>However, to manage shared volumes for groups/teams, you must change <code>userlist</code> accordingly.</p>
 
@@ -601,10 +602,10 @@ sudo chmod 777 $(docker inspect shared-$SHARED_VOLUME_NAME | grep &quot;Mountpoi
 </code></pre>
 
 <div class="alert alert-">
-  <p>Be sure to change the above to reflect any group names you (or your students) choose, and run it for every new group name.</p>
+  
+Be sure to change the above to reflect any group names you (or your students) choose, and run it for every new group name.
 
 </div>
-
 
 <p>An example <code>userlist</code> might look like (group orders do not matter):</p>
 
@@ -637,10 +638,10 @@ docker-compose up -d
 </code></pre>
 
 <div class="alert alert-">
-  <p>These commands stop and destroy the containers running the hub and database, remove the existing image, re-build the Hub&rsquo;s image and re-launch it (with no data loss, since volumes and networks are preserved).</p>
+  
+These commands stop and destroy the containers running the hub and database, remove the existing image, re-build the Hub's image and re-launch it (with no data loss, since volumes and networks are preserved).
 
 </div>
-
 
 <hr />
 
@@ -663,17 +664,17 @@ make userlist
 </code></pre>
 
 <div class="alert alert-warning">
-  <p>If you copied an existing hub, be aware that your secret files will be shared between the two (same login credentials).</p>
+  
+If you copied an existing hub, be aware that your secret files will be shared between the two (same login credentials). 
 
 </div>
-
 
 <div class="alert alert-">
-  <p>At the very least, remove <code>postgres.env</code> and re-make the secret key there.
-If you want <em>passwords to be shared</em> for users across hubs, keep <code>oauth.env</code> the same among the hubs. <em>Passwords are set during the build process.</em></p>
+  
+At the very least, remove `postgres.env` and re-make the secret key there.
+If you want _passwords to be shared_ for users across hubs, keep `oauth.env` the same among the hubs. _Passwords are set during the build process._
 
 </div>
-
 
 <p>You will see some dialogue regarding how to add users to the hub initially.
 We only need to be concerned with adding one administrative user at this time since we can add users later through the Hub&rsquo;s interface.
@@ -685,13 +686,14 @@ Run the following command and edit the <code>userlist</code> according to the pr
 <p>Now, run <code>vim .env</code> to change the name of your hub and the port to avoid conflicts with running Docker processes.</p>
 
 <div class="alert alert-">
-  <p>The noteboook image that gets built by default is quite sizable.</p>
+  
+The noteboook image that gets built by default is quite sizable. 
 
-<p>You may consider changing this in the <code>.env</code> file (<code>$DOCKER_NOTEBOOK_IMAGE</code>) if you&rsquo;re just testing it out and want to make sure it works (perhaps to <code>jupyter/minimal-notebook</code> or another <a href="https://github.com/jupyter/docker-stacks" target="_blank">pre-built stack</a> ).
-But, the one we ship is <em>feature-rich</em>. Consider it a &ldquo;show off what this can do&rdquo; example.</p>
+You may consider changing this in the `.env` file (`$DOCKER_NOTEBOOK_IMAGE`) if you're just testing it out and want to make sure it works (perhaps to `jupyter/minimal-notebook` or another [pre-built stack](https://github.com/jupyter/docker-stacks 
+) ). 
+But, the one we ship is _feature-rich_. Consider it a "show off what this can do" example.
 
 </div>
-
 
 <p>The notebook image that gets build starts off with <code>$DOCKER_NOTEBOOK_IMAGE</code> and adds in some features.
 To change the image, edit <code>singleuser/Dockerfile</code> and delete as much as you would like.</p>
@@ -722,10 +724,10 @@ chgrp: changing group of '/opt/conda/var/cache/fontconfig/2fd305a6-4303-4a09-889
 <p>As far as I can tell, this is not a problem and occurs somewhere outside of the instructions I have added on top of the pre-built images supplied by Jupyter.</p>
 
 <div class="alert alert-">
-  <p>If successful, you should see green <code>done</code> output at the very end.</p>
+  
+If successful, you should see green `done` output at the very end.
 
 </div>
-
 
 <p>When you want to destroy the images that get built (<code>make build</code> runs <code>docker-compose build</code> with some other options to configure it properly), and the associated containers created from them, you can run:</p>
 
@@ -762,11 +764,11 @@ chgrp: changing group of '/opt/conda/var/cache/fontconfig/2fd305a6-4303-4a09-889
 (Alternatively, you can just run <code>source secrets/oauth.env</code> and skip editing the file).</p>
 
 <p>Once that is done, you can run <code>make login</code> to find out the password for whatever user is specified in <code>.env</code>.
-<div class="alert alert-">
-  <p>Hopefully the user in <code>.env</code> matches at least one of the admin users you put in <code>userlist</code>, otherwise you would be querying passwords for non-existent users. If not, edit <code>.env</code> and <code>userlist</code> and run <code>docker-compose down; docker-compose up -d</code> to re-build the images.</p>
+<div class="alert alert-"></p>
 
-</div>
-</p>
+<p>Hopefully the user in <code>.env</code> matches at least one of the admin users you put in <code>userlist</code>, otherwise you would be querying passwords for non-existent users. If not, edit <code>.env</code> and <code>userlist</code> and run <code>docker-compose down; docker-compose up -d</code> to re-build the images.</p>
+
+<p></div></p>
 
 <h2 id="test">Test</h2>
 
@@ -806,26 +808,26 @@ chgrp: changing group of '/opt/conda/var/cache/fontconfig/2fd305a6-4303-4a09-889
 <p>Sharing files between groups is a feature I personally coded into the <code>jupyterhub_config.py</code> file. Towards the top of the script, the file <code>userlist</code> is opened (in the container&hellip; so if you update it, you can run <code>docker restart hub-name</code> since this configuration file only runs at hub startup). Better yet, do this from the Admin menu directly.</p>
 
 <div class="alert alert-">
-  <p>Each line in <code>userlist</code> has the name of the student, followed by their group names, separated by spaces.</p>
+  
+Each line in `userlist` has the name of the student, followed by their group names, separated by spaces. 
 
 </div>
-
 
 <p>Instead of restarting through the docker command, you can &ldquo;Power Down&rdquo; the Hub from the Control Panel in JupyterHub. This has the effect of propagating changes to lists of users. Docker takes care of re-starting the hub automatically.</p>
 
 <div class="alert alert-">
-  <p>If userlist is given the right permissions with <code>chown 777 userlist</code>, and mounted inside the professor&rsquo;s directory, it may be possible to manage group memberships  without ever logging into the math-hub server (except to update the single-user notebook image), editing the <code>userlist</code> right from the web-interface, provided the group volume permissions have previously been set correctly.</p>
+  
+If userlist is given the right permissions with `chown 777 userlist`, and mounted inside the professor's directory, it may be possible to manage group memberships  without ever logging into the math-hub server (except to update the single-user notebook image), editing the `userlist` right from the web-interface, provided the group volume permissions have previously been set correctly.
 
 </div>
-
 
 <p><code>jupyterhub_config.py</code> will check the user&rsquo;s groups and mount all appropriate volumes. A volume is created for the group if one does not exist.</p>
 
 <div class="alert alert-warning">
-  <p>By default, when volumes are created, the permissions are not set in a way where users can write files.</p>
+  
+By default, when volumes are created, the permissions are not set in a way where users can write files. 
 
 </div>
-
 
 <p>To fix this, you would find the shared group volume in question, use <code>docker inspect</code> to find out where it is, and change the permissions with <code>chmod</code>. Here is an example:</p>
 
@@ -849,10 +851,10 @@ pilosovm@math-hub:~$ chmod 777 /var/lib/docker/volumes/shared-broncos/_data
 <p>Rinse, repeat.</p>
 
 <div class="alert alert-">
-  <p>The architecture implemented here mounts volumes based on the words that follow the username in <code>userlist</code> and prepends them with <code>shared</code>. If you want to avoid naming conflicts, use group names such as <code>math8660-group1</code>, <code>math8660-group2</code>, etc., or something unique chosen by the group members). <strong>It is up to you to avoid naming conflicts across multiple hubs when sharing group volumes.</strong></p>
+  
+The architecture implemented here mounts volumes based on the words that follow the username in `userlist` and prepends them with `shared`. If you want to avoid naming conflicts, use group names such as `math8660-group1`, `math8660-group2`, etc., or something unique chosen by the group members). **It is up to you to avoid naming conflicts across multiple hubs when sharing group volumes.**
 
 </div>
-
 
 <p>More customization is possible. For example, you can have multiple hubs set up on the same server (e.g. at <code>example.com/hub1/</code> and <code>example.com/hub2/</code>, etc.) but create one <code>shared-admin</code> volume that every administrator has access to. To accomplish this, (<em>or to add any new group volume</em>):</p>
 

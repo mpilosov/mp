@@ -18,7 +18,7 @@
       <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/toxins/</guid>
-      <description>Slamming one of the servers when no one else was using it.   Overview I went to work with Dr. Velimir Vesselinov in the summer of 2017 at the Los Alamos National Laboratory (LANL). This experience drastically changed the direction of my research. I spent much of my time reading papers on Bayesian Inverse Problems and Subsurface Contaminant Transport Problems. Part of what I did was learn the Julia programming language1, implementing some Markov chain Monte Carlo methods to practice, and converting some algorithms from Python to Julia.</description>
+      <description>Subsurface Contaminant Transport.</description>
     </item>
     
   </channel>
