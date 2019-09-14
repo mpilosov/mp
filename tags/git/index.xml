@@ -27,10 +27,11 @@ About  Purpose: Implement the novel method developed by the aforementioned autho
     <item>
       <title>LAPACK</title>
       <link>https://www.michaelpilosov.com/project/lapack/</link>
-      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/lapack/</guid>
-      <description>First Research Project.</description>
+      <description>My Brief Experience I was fortunate enough to be funded by Dr. Julien Langou during my summer proceeding entering graduate school. This relief from teaching was especially helpful for my transition into post-graduate education, and I was given the opportunity to explore a number of topics that I knew nothing about.
+For the first time, I found myself working on an object-oriented task in a programming language that was strongly typed.</description>
     </item>
     
   </channel>

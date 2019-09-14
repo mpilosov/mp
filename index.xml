@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Michael Pilosov: The Archives on Michael Pilosov: The Archives</title>
@@ -6,13 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
-    <lastBuildDate>Tue, 19 Mar 2019 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Experience</title>
       <link>https://www.michaelpilosov.com/widgetpage/years/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/years/</guid>
       <description></description>
@@ -21,7 +22,7 @@
     <item>
       <title>Skills</title>
       <link>https://www.michaelpilosov.com/widgetpage/skills/</link>
-      <pubDate>Wed, 20 Sep 2017 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/skills/</guid>
       <description></description>
@@ -30,7 +31,7 @@
     <item>
       <title>Experience</title>
       <link>https://www.michaelpilosov.com/widgetpage/semesters/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/semesters/</guid>
       <description></description>
@@ -39,7 +40,7 @@
     <item>
       <title></title>
       <link>https://www.michaelpilosov.com/widgetpage/hero_carousel/</link>
-      <pubDate>Sun, 15 Oct 2017 00:00:00 -0600</pubDate>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/hero_carousel/</guid>
       <description></description>
@@ -48,7 +49,7 @@
     <item>
       <title>Consistent Bayes</title>
       <link>https://www.michaelpilosov.com/widgetpage/consistentbayes/</link>
-      <pubDate>Sun, 15 Oct 2017 00:00:00 -0600</pubDate>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/consistentbayes/</guid>
       <description>&lt;p&gt;A Measure-Theoretic Method for Stochastic Inverse Problems.&lt;/p&gt;
@@ -85,7 +86,7 @@
     <item>
       <title>Publications</title>
       <link>https://www.michaelpilosov.com/widgetpage/publications/</link>
-      <pubDate>Wed, 05 Sep 2018 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/publications/</guid>
       <description></description>
@@ -94,7 +95,7 @@
     <item>
       <title>Selected Publications</title>
       <link>https://www.michaelpilosov.com/widgetpage/publications_selected/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/publications_selected/</guid>
       <description></description>
@@ -103,7 +104,7 @@
     <item>
       <title>Teaching</title>
       <link>https://www.michaelpilosov.com/widgetpage/teaching/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/teaching/</guid>
       <description>&lt;p&gt;This is an example of using the &lt;em&gt;custom&lt;/em&gt; widget to create your own homepage section.&lt;/p&gt;
@@ -125,7 +126,7 @@
     <item>
       <title>Tags</title>
       <link>https://www.michaelpilosov.com/widgetpage/tags/</link>
-      <pubDate>Wed, 20 Sep 2017 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/tags/</guid>
       <description></description>
@@ -134,7 +135,7 @@
     <item>
       <title>Recent Galleries</title>
       <link>https://www.michaelpilosov.com/widgetpage/posts/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/posts/</guid>
       <description></description>
@@ -143,7 +144,7 @@
     <item>
       <title>Resources</title>
       <link>https://www.michaelpilosov.com/widgetpage/resources/</link>
-      <pubDate>Fri, 20 Apr 2018 00:00:00 -0600</pubDate>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/resources/</guid>
       <description></description>
@@ -161,7 +162,7 @@
     <item>
       <title>Projects</title>
       <link>https://www.michaelpilosov.com/projects/</link>
-      <pubDate>Tue, 19 Mar 2019 00:00:00 -0600</pubDate>
+      <pubDate>Tue, 19 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/projects/</guid>
       <description>&lt;p&gt;&lt;meta http-equiv=&#34;refresh&#34; content=&#34;0; url=../project&#34; /&gt;&lt;/p&gt;
@@ -171,7 +172,7 @@
     <item>
       <title>Publications</title>
       <link>https://www.michaelpilosov.com/publications/</link>
-      <pubDate>Tue, 19 Mar 2019 00:00:00 -0600</pubDate>
+      <pubDate>Tue, 19 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/publications/</guid>
       <description>&lt;p&gt;&lt;meta http-equiv=&#34;refresh&#34; content=&#34;0; url=../publication&#34; /&gt;&lt;/p&gt;
@@ -181,7 +182,7 @@
     <item>
       <title>Talks</title>
       <link>https://www.michaelpilosov.com/talks/</link>
-      <pubDate>Tue, 19 Mar 2019 00:00:00 -0600</pubDate>
+      <pubDate>Tue, 19 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/talks/</guid>
       <description>&lt;p&gt;&lt;meta http-equiv=&#34;refresh&#34; content=&#34;0; url=../talk&#34; /&gt;&lt;/p&gt;

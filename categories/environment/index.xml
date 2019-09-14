@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
-    <lastBuildDate>Fri, 01 Sep 2017 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 01 Sep 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/categories/environment/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,28 +15,31 @@
     <item>
       <title>Tracking Toxins</title>
       <link>https://www.michaelpilosov.com/project/toxins/</link>
-      <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/toxins/</guid>
-      <description>Subsurface Contaminant Transport.</description>
+      <description>Slamming one of the servers when no one else was using it.   Overview I went to work with Dr. Velimir Vesselinov in the summer of 2017 at the Los Alamos National Laboratory (LANL). This experience drastically changed the direction of my research. I spent much of my time reading papers on Bayesian Inverse Problems and Subsurface Contaminant Transport Problems. Part of what I did was learn the Julia programming language1, implementing some Markov chain Monte Carlo methods to practice, and converting some algorithms from Python to Julia.</description>
     </item>
     
     <item>
       <title>Tracking Wildlife</title>
       <link>https://www.michaelpilosov.com/project/wildlife/</link>
-      <pubDate>Sat, 09 Jan 2016 00:00:00 -0700</pubDate>
+      <pubDate>Sat, 09 Jan 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/wildlife/</guid>
-      <description>Deploying sensors on a budget.</description>
+      <description>Given that we do not know exactly where animals will go, how do we set up a network of sensors to track them?
+I managed a group of four undergraduates through a semester-long research project concerning the placement of sensors in an environment where the travel patterns of animals is unknown. My responsibilities included:
+ defining the scope of research and breaking goals down into explicit deliverables, overseeing timeline of research progress, keeping students on deadline, developing outlines of software and clearly defined what their contributions would be.</description>
     </item>
     
     <item>
       <title>Agricultural Prediction</title>
       <link>https://www.michaelpilosov.com/project/guatemala/</link>
-      <pubDate>Sat, 01 Dec 2012 00:00:00 -0700</pubDate>
+      <pubDate>Sat, 01 Dec 2012 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/guatemala/</guid>
-      <description>Building models for a Guatemalan coffee cooperative.</description>
+      <description>Introduction As Green As It Gets (formerly “AGAIG”, now &amp;ldquo;De La Gente&amp;rdquo;/ &amp;ldquo;DLG&amp;rdquo;) is a Non-Governmental Organization founded in 2004 which is focused on the economic development of the coffee farmers that are members of the San Miguel-Escobar coffee cooperative.
+By providing loans, planning, and invaluable marketing connections, the organization seeks to direct the profits from coffee sales towards the farmers, allowing them to lift themselves out of poverty and improve opportunities for their children and themselves.</description>
     </item>
     
   </channel>

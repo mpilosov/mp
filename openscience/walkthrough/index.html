@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Source Themes Academic 3.2.0">
-  <meta name="generator" content="Hugo 0.55.3" />
+  <meta name="generator" content="Hugo 0.53" />
   <meta name="author" content="Michael Pilosov">
 
   
@@ -15,7 +15,8 @@
   
     
   
-  <meta name="description" content="Inital Setup I presume the use of `vim` in a few of these commands. If you are more comfortable using `nano` for editing text, please be sure to make the appropriate substitutions.  On a brand new server&hellip; (Change the top line to be your name)
+  <meta name="description" content="Inital Setup I presume the use of vim in a few of these commands. If you are more comfortable using nano for editing text, please be sure to make the appropriate substitutions.
+ On a brand new server&hellip; (Change the top line to be your name)
 export USER_NAME=mathematicalmichael sudo apt update -y &amp;&amp; sudo apt upgrade -y sudo apt install vim htop make -y useradd $USER_NAME -m -s /bin/bash passwd $USER_NAME usermod -aG sudo $USER_NAME su - $USER_NAME  Now set your password.">
 
   
@@ -127,13 +128,14 @@ export USER_NAME=mathematicalmichael sudo apt update -y &amp;&amp; sudo apt upgr
   <meta property="og:site_name" content="Michael Pilosov: The Archives">
   <meta property="og:url" content="https://www.michaelpilosov.com/openscience/walkthrough/">
   <meta property="og:title" content="Deploying | Michael Pilosov: The Archives">
-  <meta property="og:description" content="Inital Setup I presume the use of `vim` in a few of these commands. If you are more comfortable using `nano` for editing text, please be sure to make the appropriate substitutions.  On a brand new server&hellip; (Change the top line to be your name)
+  <meta property="og:description" content="Inital Setup I presume the use of vim in a few of these commands. If you are more comfortable using nano for editing text, please be sure to make the appropriate substitutions.
+ On a brand new server&hellip; (Change the top line to be your name)
 export USER_NAME=mathematicalmichael sudo apt update -y &amp;&amp; sudo apt upgrade -y sudo apt install vim htop make -y useradd $USER_NAME -m -s /bin/bash passwd $USER_NAME usermod -aG sudo $USER_NAME su - $USER_NAME  Now set your password."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2018-12-22T00:00:00-07:00">
+  <meta property="article:published_time" content="2018-12-22T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2018-12-22T00:00:00-07:00">
+  <meta property="article:modified_time" content="2018-12-22T00:00:00&#43;00:00">
   
 
   
@@ -455,10 +457,10 @@ export USER_NAME=mathematicalmichael sudo apt update -y &amp;&amp; sudo apt upgr
 <h1 id="inital-setup">Inital Setup</h1>
 
 <div class="alert alert-">
-  
-I presume the use of `vim` in a few of these commands. If you are more comfortable using `nano` for editing text, please be sure to make the appropriate substitutions. 
+  <p>I presume the use of <code>vim</code> in a few of these commands. If you are more comfortable using <code>nano</code> for editing text, please be sure to make the appropriate substitutions.</p>
 
 </div>
+
 
 <p>On a brand new server&hellip;
 (Change the top line to be your name)</p>
@@ -562,10 +564,10 @@ reboot
 </code></pre>
 
 <div class="alert alert-warning">
-  
-Your computer/server might take a minute or two to reboot.
+  <p>Your computer/server might take a minute or two to reboot.</p>
 
 </div>
+
 
 <p>After restarting <code>ssh</code> in as <code>your-name@your-website.com</code>.
 We will take care of the proxy and security set up first (in order to complete the instructions that only need to be performed initially).</p>
@@ -594,10 +596,10 @@ sudo certbot certonly
 This creates a public/private key pair with a certificate authority so that browsers can trust the connection is valid.</p>
 
 <div class="alert alert-warning">
-  
-If you are behind a private network (`.pvt` or any other non-public domain), then you must acquire this certificate and key from another (presumably the school's) certificate authority. Make sure the paths are set properly in the configuration to reflect where you placed these keys. Furthermore, you may have to comment out the `ssl-ciphers` line (we had to at CU Denver to make it work, but this isn't required on public domains).
+  <p>If you are behind a private network (<code>.pvt</code> or any other non-public domain), then you must acquire this certificate and key from another (presumably the school&rsquo;s) certificate authority. Make sure the paths are set properly in the configuration to reflect where you placed these keys. Furthermore, you may have to comment out the <code>ssl-ciphers</code> line (we had to at CU Denver to make it work, but this isn&rsquo;t required on public domains).</p>
 
 </div>
+
 
 <p>The keys generated will by default be in <code>/etc/ssl/live/example.com/</code>, which you will see reflected in the example configuration below (set for <code>example.com</code>).</p>
 
@@ -623,10 +625,10 @@ sudo apt install nginx
 <p>You may need to remove <code>default.conf</code>, or edit it directly to match the following instead.</p>
 
 <div class="alert alert-warning">
-  
-If you choose to edit `default.conf`, make sure to add the following line to override the default nginx settings, which will prevent you from saving notebooks greater than 1MB in size: `client_max_body_size 20m;` (see example below).
+  <p>If you choose to edit <code>default.conf</code>, make sure to add the following line to override the default nginx settings, which will prevent you from saving notebooks greater than 1MB in size: <code>client_max_body_size 20m;</code> (see example below).</p>
 
 </div>
+
 
 <p>Run <code>sudo vim /etc/nginx/sites-enabled/hub.conf</code> and edit the file:</p>
 
@@ -700,10 +702,10 @@ server {
 <p>That last section starting with <code>location</code> is what we&rsquo;ll be tweaking if we want to host this at <code>hub.mathfight.club</code> or <code>mathfight.club/hub/</code> or whatever we want. (Although in the case of a directory <code>/suffix/</code> format, we will have to make sure the line from the <code>jupyterhub_config.py</code> that we commented out above matches this configuration file.</p>
 
 <div class="alert alert-warning">
-  
-The assumption (by default) is that the `$HUB_NAME` is used as the suffix. `example.com/math/` is the default `location` we will have to set. The idea here is that we can set up multiple hubs simply by changing the `.env` file to choose a new name and port number.
+  <p>The assumption (by default) is that the <code>$HUB_NAME</code> is used as the suffix. <code>example.com/math/</code> is the default <code>location</code> we will have to set. The idea here is that we can set up multiple hubs simply by changing the <code>.env</code> file to choose a new name and port number.</p>
 
 </div>
+
 
 <p>As long as we point to the correct port, nginx (our proxy) will handle the rest. The <code>/</code> refers to the fact that we want the hub to be hosted at <code>mathfight.club</code> (with nothing appended/prepended).</p>
 

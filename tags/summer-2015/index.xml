@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
-    <lastBuildDate>Mon, 01 May 2017 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Mon, 01 May 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/summer-2015/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,10 +15,11 @@
     <item>
       <title>Masters</title>
       <link>https://www.michaelpilosov.com/project/masters/</link>
-      <pubDate>Mon, 01 May 2017 00:00:00 -0600</pubDate>
+      <pubDate>Mon, 01 May 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/masters/</guid>
-      <description>An Investigation into Accuracy.</description>
+      <description>Summary My advisor developed a framework for solving a large class of problems of particular interest to the engineering disciplines. Starting as a graduate research assistant under his direction in the summer of 2015, I began to learn about this new method and explore implications of how measurements of physical systems are taken on our ability to accurately describe parameter uncertainty sets.
+You can read more about it below, but overall, my focus on skewness ended up playing a less important role when we developed a sample-based approach to solving the same problems.</description>
     </item>
     
   </channel>

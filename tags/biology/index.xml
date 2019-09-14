@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
-    <lastBuildDate>Mon, 15 Aug 2016 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Mon, 15 Aug 2016 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/biology/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Group-level events are catalysts in the evolution of cooperation</title>
       <link>https://www.michaelpilosov.com/publication/cooperation/</link>
-      <pubDate>Mon, 15 Aug 2016 00:00:00 -0600</pubDate>
+      <pubDate>Mon, 15 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/publication/cooperation/</guid>
       <description>Some Notes from the (co)author I worked on this topic primarily in summer 2014, with occasional contributions into early 2016 under the direction of Burt Simon. My primary contributions involved handling all software and experimental simulations, but I aided in the narrative framing and editing of the paper as well. There is ample room for extending the work, but ultimately I did not venture into this field for my doctoral research.</description>
@@ -24,10 +24,12 @@
     <item>
       <title>Tracking Wildlife</title>
       <link>https://www.michaelpilosov.com/project/wildlife/</link>
-      <pubDate>Sat, 09 Jan 2016 00:00:00 -0700</pubDate>
+      <pubDate>Sat, 09 Jan 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/wildlife/</guid>
-      <description>Deploying sensors on a budget.</description>
+      <description>Given that we do not know exactly where animals will go, how do we set up a network of sensors to track them?
+I managed a group of four undergraduates through a semester-long research project concerning the placement of sensors in an environment where the travel patterns of animals is unknown. My responsibilities included:
+ defining the scope of research and breaking goals down into explicit deliverables, overseeing timeline of research progress, keeping students on deadline, developing outlines of software and clearly defined what their contributions would be.</description>
     </item>
     
   </channel>

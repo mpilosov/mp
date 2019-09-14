@@ -18,7 +18,9 @@
       <pubDate>Tue, 25 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/devlog/jupyterhub/</guid>
-      <description>Notes from configuring Jupyterhub</description>
+      <description>Jan 1, 2019 Status Report Okay so where are we at?
+ Spawner needs to be sussed out. Right now I really like DockerSpawner, and it seems to persist storage.  Each student gets a user account but it&amp;rsquo;s only used for authenetication right now. Can&amp;rsquo;t figure out volume-mapping.  With dockerspawner.DockerSpawner:
+ Each time someone is logged in, a container is either loaded up or built from jupyterlab_img container.</description>
     </item>
     
     <item>
@@ -27,7 +29,9 @@
       <pubDate>Mon, 24 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/devlog/docker/</guid>
-      <description>JupyterHub Day!!</description>
+      <description>Dec 22, 2018 Today I began to structure and fill in the basic information for the Open Science/Docker Documentation.
+12/24/2019 - 01/01/2019
+Today I started by watching a video to be aware of the problems I might face going forward with JupyterHub. I watched someone from Berkeley describe how they&amp;rsquo;ve scaled to thousands of users across many professors and managed to not grow their IT team while doing so.</description>
     </item>
     
     <item>
@@ -36,7 +40,8 @@
       <pubDate>Sat, 22 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/devlog/openscience/</guid>
-      <description>Filling in the Docs</description>
+      <description>Jan 1, 2019 Today I split up the documentation here on devlog and began the write-ups for Jupyterhub. I think I should segment out a section that goes through the entire process of deployment
+Notes: - bash script to give you nice shortcuts - SSH key generated ahead of time, ready to log in without passwords - get Traefik proxy working - It seems extremely straightforward except that I do not know how to direct traffic to a folder.</description>
     </item>
     
     <item>
@@ -45,7 +50,8 @@
       <pubDate>Thu, 20 Dec 2018 00:00:00 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/devlog/widgets/</guid>
-      <description>An artistic day</description>
+      <description>Summary I spent the day working with the widget library and understanding how interpolating polynomials are handled by scipy. Most of today&amp;rsquo;s developments were concerned with my random art and animation libraries, and I completed some of the most important components of the interface: setting time-dependent functions (independent of frames), and creating a widget that properly reads/writes data to a dictionary.
+I still need to link the interfaces for the existing GUIs that write the properties.</description>
     </item>
     
     <item>
@@ -54,7 +60,9 @@
       <pubDate>Wed, 19 Dec 2018 18:16:07 -0700</pubDate>
       
       <guid>https://www.michaelpilosov.com/devlog/academicupgrades/</guid>
-      <description>Cataloging changes made to the Academic theme.</description>
+      <description>Introduction This documents the changes made to the academic theme to make this website work when upgrading from Hugo ver=0.47 and Academic Theme ver=2.4.
+The upgrade for this website was performed on 12-19-2018.
+All in all, it took the better part of an entire day to get familiar with all the nooks and crannies of the new updates and plan out the migration of the more complicated website&amp;hellip; Mathematical Michael.</description>
     </item>
     
   </channel>

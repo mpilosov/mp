@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
-    <lastBuildDate>Sun, 09 Sep 2018 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/widgetpage/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Experience</title>
       <link>https://www.michaelpilosov.com/widgetpage/years/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/years/</guid>
       <description></description>
@@ -24,7 +24,7 @@
     <item>
       <title>Skills</title>
       <link>https://www.michaelpilosov.com/widgetpage/skills/</link>
-      <pubDate>Wed, 20 Sep 2017 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/skills/</guid>
       <description></description>
@@ -33,7 +33,7 @@
     <item>
       <title>Experience</title>
       <link>https://www.michaelpilosov.com/widgetpage/semesters/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/semesters/</guid>
       <description></description>
@@ -42,7 +42,7 @@
     <item>
       <title></title>
       <link>https://www.michaelpilosov.com/widgetpage/hero_carousel/</link>
-      <pubDate>Sun, 15 Oct 2017 00:00:00 -0600</pubDate>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/hero_carousel/</guid>
       <description></description>
@@ -51,7 +51,7 @@
     <item>
       <title>Consistent Bayes</title>
       <link>https://www.michaelpilosov.com/widgetpage/consistentbayes/</link>
-      <pubDate>Sun, 15 Oct 2017 00:00:00 -0600</pubDate>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/consistentbayes/</guid>
       <description>A Measure-Theoretic Method for Stochastic Inverse Problems.
@@ -64,7 +64,7 @@ Latest release
     <item>
       <title>Publications</title>
       <link>https://www.michaelpilosov.com/widgetpage/publications/</link>
-      <pubDate>Wed, 05 Sep 2018 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/publications/</guid>
       <description></description>
@@ -73,7 +73,7 @@ Latest release
     <item>
       <title>Selected Publications</title>
       <link>https://www.michaelpilosov.com/widgetpage/publications_selected/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/publications_selected/</guid>
       <description></description>
@@ -82,7 +82,7 @@ Latest release
     <item>
       <title>Teaching</title>
       <link>https://www.michaelpilosov.com/widgetpage/teaching/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/teaching/</guid>
       <description>This is an example of using the custom widget to create your own homepage section.
@@ -93,7 +93,7 @@ I am a teaching instructor for the following courses at University X:
     <item>
       <title>Tags</title>
       <link>https://www.michaelpilosov.com/widgetpage/tags/</link>
-      <pubDate>Wed, 20 Sep 2017 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/tags/</guid>
       <description></description>
@@ -102,7 +102,7 @@ I am a teaching instructor for the following courses at University X:
     <item>
       <title>Recent Galleries</title>
       <link>https://www.michaelpilosov.com/widgetpage/posts/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/posts/</guid>
       <description></description>
@@ -111,7 +111,7 @@ I am a teaching instructor for the following courses at University X:
     <item>
       <title>Resources</title>
       <link>https://www.michaelpilosov.com/widgetpage/resources/</link>
-      <pubDate>Fri, 20 Apr 2018 00:00:00 -0600</pubDate>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/widgetpage/resources/</guid>
       <description></description>

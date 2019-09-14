@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
-    <lastBuildDate>Sat, 01 Dec 2012 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Sat, 01 Dec 2012 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/fall-2012/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,10 +15,11 @@
     <item>
       <title>Agricultural Prediction</title>
       <link>https://www.michaelpilosov.com/project/guatemala/</link>
-      <pubDate>Sat, 01 Dec 2012 00:00:00 -0700</pubDate>
+      <pubDate>Sat, 01 Dec 2012 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/guatemala/</guid>
-      <description>Building models for a Guatemalan coffee cooperative.</description>
+      <description>Introduction As Green As It Gets (formerly “AGAIG”, now &amp;ldquo;De La Gente&amp;rdquo;/ &amp;ldquo;DLG&amp;rdquo;) is a Non-Governmental Organization founded in 2004 which is focused on the economic development of the coffee farmers that are members of the San Miguel-Escobar coffee cooperative.
+By providing loans, planning, and invaluable marketing connections, the organization seeks to direct the profits from coffee sales towards the farmers, allowing them to lift themselves out of poverty and improve opportunities for their children and themselves.</description>
     </item>
     
   </channel>

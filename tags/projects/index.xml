@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
-    <lastBuildDate>Tue, 01 Jan 2019 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 01 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/projects/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,82 +15,95 @@
     <item>
       <title>Open Science</title>
       <link>https://www.michaelpilosov.com/project/openscience/</link>
-      <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/openscience/</guid>
-      <description>Learning dev-ops for reproducible research</description>
+      <description>Improved student access to technology by deploying JupyterHub on powerful servers in my Math Department, learning a ton of dev-ops along the way.</description>
     </item>
     
     <item>
       <title>G2S3</title>
       <link>https://www.michaelpilosov.com/project/summerschool/</link>
-      <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/summerschool/</guid>
-      <description>Uncertainty Quantification and Inverse Problems.</description>
+      <description>Program The summer school was focused on Uncertainty Quantification, specifically pretending to Inverse Problems.
+Structure We sat through hours of lecture and about half the days we managed to spend programming/implementing some of what we learned.
+Project At the end of the summer school we had to perform a project, and I paired up with a couple of students to work on an inverse problem involving the Helmholtz equation.</description>
     </item>
     
     <item>
       <title>Twitterbots</title>
       <link>https://www.michaelpilosov.com/project/twitterbots/</link>
-      <pubDate>Tue, 01 May 2018 00:00:00 -0600</pubDate>
+      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/twitterbots/</guid>
-      <description>Using the Twitter API and Python to create digital art projects.</description>
+      <description>I decided to explore the use of Twitter&amp;rsquo;s API in Python to perform some fun projects.
+I wrote a Twitter bot called &amp;ldquo;Random Art Baby&amp;rdquo; that when prompted, would respond to users with artwork.
+This art was randomly generated using the library I had developed for my initial exploration with graphical user interfaces for visualizing probability distributions.
+This also provided me the opportunity to explore some machine learning code for the generation of natural language speech based on training examples.</description>
     </item>
     
     <item>
       <title>Tracking Wildlife</title>
       <link>https://www.michaelpilosov.com/project/wildlife/</link>
-      <pubDate>Sat, 09 Jan 2016 00:00:00 -0700</pubDate>
+      <pubDate>Sat, 09 Jan 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/wildlife/</guid>
-      <description>Deploying sensors on a budget.</description>
+      <description>Given that we do not know exactly where animals will go, how do we set up a network of sensors to track them?
+I managed a group of four undergraduates through a semester-long research project concerning the placement of sensors in an environment where the travel patterns of animals is unknown. My responsibilities included:
+ defining the scope of research and breaking goals down into explicit deliverables, overseeing timeline of research progress, keeping students on deadline, developing outlines of software and clearly defined what their contributions would be.</description>
     </item>
     
     <item>
       <title>Evolution of Cooperation</title>
       <link>https://www.michaelpilosov.com/project/evolution/</link>
-      <pubDate>Mon, 01 Sep 2014 00:00:00 -0600</pubDate>
+      <pubDate>Mon, 01 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/evolution/</guid>
-      <description>From a mutation to the norm, but how?</description>
+      <description>I began graduate school in the summer of 2014 as a summer graduate research assistant. I approached Dr. Burt Simon to learn about his research as I was casually walking around the department while working on the LAPACK project. His research was concerned with modeling population dynamics to study the conditions under which cooperation could evolve from a mutation to the norm within a system that is inherently competitive.
+I was really interested in the problem he was working on and asked if I could see his software.</description>
     </item>
     
     <item>
       <title>Pharma Mutuals</title>
       <link>https://www.michaelpilosov.com/project/pharma/</link>
-      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/pharma/</guid>
-      <description>Commercializing Biomedical Research through Securitization Techniques.</description>
+      <description>This was a self-directed research project that had its origins in my desire to better understand the contents of an enticing TED talk that I watched during the first week of my last semester as an undergraduate student.
+  What grabbed my attention was that the speaker (Stein) invited scrutiny of their source code, making it [publicly available on GitHub][code]. This event likely seeded my interest in open-source philosophies and diving into this project was an early attempt to learn more about how other people write code.</description>
     </item>
     
     <item>
       <title>Probably Art</title>
       <link>https://www.michaelpilosov.com/project/probablyart/</link>
-      <pubDate>Thu, 01 May 2014 00:00:00 -0600</pubDate>
+      <pubDate>Thu, 01 May 2014 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
-      <description>Code to art. From directed study to long-term hobby.</description>
+      <description>After my first experience with writing software in the summer of 2013, I wanted to learn how to write software that was usable by other people1.
+I thought that learning how graphical user interfaces work would be a good place to start. Since I already knew Matlab, I chose that for my programming language.
+I performed the project under the direction of use of Dr. Yusuf Bilgic, who generally gave me free rein to pursue the project in any direction.</description>
     </item>
     
     <item>
       <title>Counting Cards</title>
       <link>https://www.michaelpilosov.com/project/blackjack/</link>
-      <pubDate>Wed, 01 May 2013 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 01 May 2013 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/blackjack/</guid>
-      <description>Is it worth it?</description>
+      <description>As part of a course I took, I was tasked to perform a semester-long research project on a topic of my choosing. I had a nascent interest in blackjack after seeing the film 21, and wanted to learn more about the history and mathematics behind how/why card counting worked for the MIT blackjack team so well.
+This research project was my first introduction of Monte-Carlo methods, probability and expectation, and game theory.</description>
     </item>
     
     <item>
       <title>Agricultural Prediction</title>
       <link>https://www.michaelpilosov.com/project/guatemala/</link>
-      <pubDate>Sat, 01 Dec 2012 00:00:00 -0700</pubDate>
+      <pubDate>Sat, 01 Dec 2012 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/guatemala/</guid>
-      <description>Building models for a Guatemalan coffee cooperative.</description>
+      <description>Introduction As Green As It Gets (formerly “AGAIG”, now &amp;ldquo;De La Gente&amp;rdquo;/ &amp;ldquo;DLG&amp;rdquo;) is a Non-Governmental Organization founded in 2004 which is focused on the economic development of the coffee farmers that are members of the San Miguel-Escobar coffee cooperative.
+By providing loans, planning, and invaluable marketing connections, the organization seeks to direct the profits from coffee sales towards the farmers, allowing them to lift themselves out of poverty and improve opportunities for their children and themselves.</description>
     </item>
     
   </channel>

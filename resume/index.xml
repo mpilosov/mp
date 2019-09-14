@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
-    <lastBuildDate>Sun, 09 Sep 2018 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/resume/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Conference Presentations</title>
       <link>https://www.michaelpilosov.com/resume/presentations/</link>
-      <pubDate>Sun, 09 Sep 2018 00:00:00 -0600</pubDate>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/resume/presentations/</guid>
       <description>Presentations can be sorted/viewed on the Presentations Page.</description>
@@ -24,7 +24,7 @@
     <item>
       <title>Publications</title>
       <link>https://www.michaelpilosov.com/resume/publications/</link>
-      <pubDate>Sun, 09 Sep 2018 00:00:00 -0600</pubDate>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/resume/publications/</guid>
       <description>Publications can be sorted/viewed on the Publications Page.
@@ -34,7 +34,7 @@ Manuscripts in review are not shown.</description>
     <item>
       <title>Academia</title>
       <link>https://www.michaelpilosov.com/resume/academia/</link>
-      <pubDate>Thu, 01 Mar 2018 00:00:00 -0700</pubDate>
+      <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/resume/academia/</guid>
       <description>Funding Sources Graduate Teaching/Research Assistant Fully-funded by the Department of Mathematical &amp;amp; Statistical Sciences at the University of Colorado: Denver
@@ -49,7 +49,7 @@ Pi Mu Epsilon Mathematics Honor Society 2014, SUNY Geneseo, New York Alpha Delta
     <item>
       <title>Employment</title>
       <link>https://www.michaelpilosov.com/resume/employment/</link>
-      <pubDate>Thu, 01 Mar 2018 00:00:00 -0700</pubDate>
+      <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/resume/employment/</guid>
       <description>(only showing academic jobs) University of Colorado: Denver (Downtown Campus)  Student Teaching Assistant, Calculus I (Aug-Dec 2016) Student Research Assistant (Jan-Aug 2016) &amp;ldquo;DiaMonD: An Integrated Multifaceted Approach to Mathematics at the Interfaces of Data, Models, and Decisions,&amp;rdquo; DE-SC0009279 Student Teaching Assistant, Calculus I (Aug-Dec 2015) Tutor, Mathematics Education Research Center (Aug-Dec 2015) Student Research Assistant (Aug 2014-May 2015) &amp;ldquo;CAREER: Foundations for Understanding and Reaching the Limits of Standard Numerical Linear Algebra,&amp;rdquo; NSF CCF 1054864 Student Research Assistant (Jun-Aug 2014) &amp;ldquo;SI2-SSI: Collaborative Research: Sustained Innovation for Linear Algebra Software (SILAS),&amp;rdquo; NSF ACI 1339797  State University of New York: College at Geneseo  Teaching Assistant for Linear Programming &amp;amp; Operations Research (Jan-May 2014) Geneseo Research Foundation Undergraduate STEM Summer Research Fellow (Jun-Aug 2013)  Volunteer Data Analyst for As Green As It Gets (Nov-Dec 2012)</description>
@@ -58,7 +58,7 @@ Pi Mu Epsilon Mathematics Honor Society 2014, SUNY Geneseo, New York Alpha Delta
     <item>
       <title>Skills</title>
       <link>https://www.michaelpilosov.com/resume/skills/</link>
-      <pubDate>Thu, 01 Mar 2018 00:00:00 -0700</pubDate>
+      <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/resume/skills/</guid>
       <description>Python  Lead developer of cbayes. Contributor and researcher on BET. Extensive experience generating technical notebooks with varying levels of interactivity. On-the-bleeding edge of following JupyterHub, JupyterLab, and many more Jupyter projects. Deep interest in reproducible open science and removing all friction towards such an end.  Matlab  First language, used for countless projects. I have since moved away from it in favor of open-source alternatives.  Git  Familiarity with basic repository management.</description>

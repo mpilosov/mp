@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
-    <lastBuildDate>Sun, 01 Jun 2014 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Sun, 01 Jun 2014 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/matlab/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,28 +15,32 @@
     <item>
       <title>Pharma Mutuals</title>
       <link>https://www.michaelpilosov.com/project/pharma/</link>
-      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/pharma/</guid>
-      <description>Commercializing Biomedical Research through Securitization Techniques.</description>
+      <description>This was a self-directed research project that had its origins in my desire to better understand the contents of an enticing TED talk that I watched during the first week of my last semester as an undergraduate student.
+  What grabbed my attention was that the speaker (Stein) invited scrutiny of their source code, making it [publicly available on GitHub][code]. This event likely seeded my interest in open-source philosophies and diving into this project was an early attempt to learn more about how other people write code.</description>
     </item>
     
     <item>
       <title>Probably Art</title>
       <link>https://www.michaelpilosov.com/project/probablyart/</link>
-      <pubDate>Thu, 01 May 2014 00:00:00 -0600</pubDate>
+      <pubDate>Thu, 01 May 2014 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
-      <description>Code to art. From directed study to long-term hobby.</description>
+      <description>After my first experience with writing software in the summer of 2013, I wanted to learn how to write software that was usable by other people1.
+I thought that learning how graphical user interfaces work would be a good place to start. Since I already knew Matlab, I chose that for my programming language.
+I performed the project under the direction of use of Dr. Yusuf Bilgic, who generally gave me free rein to pursue the project in any direction.</description>
     </item>
     
     <item>
       <title>Agricultural Prediction</title>
       <link>https://www.michaelpilosov.com/project/guatemala/</link>
-      <pubDate>Sat, 01 Dec 2012 00:00:00 -0700</pubDate>
+      <pubDate>Sat, 01 Dec 2012 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/guatemala/</guid>
-      <description>Building models for a Guatemalan coffee cooperative.</description>
+      <description>Introduction As Green As It Gets (formerly “AGAIG”, now &amp;ldquo;De La Gente&amp;rdquo;/ &amp;ldquo;DLG&amp;rdquo;) is a Non-Governmental Organization founded in 2004 which is focused on the economic development of the coffee farmers that are members of the San Miguel-Escobar coffee cooperative.
+By providing loans, planning, and invaluable marketing connections, the organization seeks to direct the profits from coffee sales towards the farmers, allowing them to lift themselves out of poverty and improve opportunities for their children and themselves.</description>
     </item>
     
   </channel>

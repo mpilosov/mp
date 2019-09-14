@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
-    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/categories/software/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,64 +15,68 @@
     <item>
       <title>BET</title>
       <link>https://www.michaelpilosov.com/project/bet/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/bet/</guid>
-      <description>Implementation of Data-Consistent Inversion.</description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
       <title>PhD</title>
       <link>https://www.michaelpilosov.com/project/thesis/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0700</pubDate>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/thesis/</guid>
-      <description>Computational Advances in Data-Consistent Inversion.</description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
       <title>Open Science</title>
       <link>https://www.michaelpilosov.com/project/openscience/</link>
-      <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/openscience/</guid>
-      <description>Learning dev-ops for reproducible research</description>
+      <description>Improved student access to technology by deploying JupyterHub on powerful servers in my Math Department, learning a ton of dev-ops along the way.</description>
     </item>
     
     <item>
       <title>DCI</title>
       <link>https://www.michaelpilosov.com/project/dci/</link>
-      <pubDate>Fri, 01 Sep 2017 00:00:00 -0600</pubDate>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/dci/</guid>
-      <description>A novel framework for stochastic inverse problems.</description>
+      <description>The novel framework for solving inverse problems in which all of my doctoral work has been grounded.
+In the broadest terms possible, Data-Consistent Inversion (DCI) is a new approach to answer questions about the conditions under which observations can occur.
+What makes it particularly special is that in a sense, this approach leverages the &amp;ldquo;best of both worlds&amp;rdquo; in the statistical inference world. The two schools of thought: Deterministic Optimization and Bayesian Statistics have different philosophical frameworks for answering questions pertaining to the explanation of observed data.</description>
     </item>
     
     <item>
       <title>Consistent Bayes</title>
       <link>https://www.michaelpilosov.com/project/cbayes/</link>
-      <pubDate>Thu, 27 Apr 2017 00:00:00 -0600</pubDate>
+      <pubDate>Thu, 27 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/cbayes/</guid>
-      <description>First formal software development.</description>
+      <description>This was my first attempt at writing a software library from scratch. I had a bunch of code in different places that performed many of the same tasks and wanted to unify it under one framework. It implemented the Data-Consistent Inversion framework (before it was called that), namely our sample-based approach for inverting probability measures.
+This was an excellent opportunity to learn the process of writing object-oriented code, unit-tests, and so much more.</description>
     </item>
     
     <item>
       <title>Research Topics</title>
       <link>https://www.michaelpilosov.com/project/research/</link>
-      <pubDate>Fri, 01 Jan 2016 00:00:00 -0700</pubDate>
+      <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/research/</guid>
-      <description>Parameter Identification with Push-forward Measures.</description>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
     </item>
     
     <item>
       <title>LAPACK</title>
       <link>https://www.michaelpilosov.com/project/lapack/</link>
-      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/lapack/</guid>
-      <description>First Research Project.</description>
+      <description>My Brief Experience I was fortunate enough to be funded by Dr. Julien Langou during my summer proceeding entering graduate school. This relief from teaching was especially helpful for my transition into post-graduate education, and I was given the opportunity to explore a number of topics that I knew nothing about.
+For the first time, I found myself working on an object-oriented task in a programming language that was strongly typed.</description>
     </item>
     
   </channel>

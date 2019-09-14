@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
-    <lastBuildDate>Sun, 01 Jul 2018 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Sun, 01 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/julia/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,10 +15,12 @@
     <item>
       <title>G2S3</title>
       <link>https://www.michaelpilosov.com/project/summerschool/</link>
-      <pubDate>Sun, 01 Jul 2018 00:00:00 -0600</pubDate>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/summerschool/</guid>
-      <description>Uncertainty Quantification and Inverse Problems.</description>
+      <description>Program The summer school was focused on Uncertainty Quantification, specifically pretending to Inverse Problems.
+Structure We sat through hours of lecture and about half the days we managed to spend programming/implementing some of what we learned.
+Project At the end of the summer school we had to perform a project, and I paired up with a couple of students to work on an inverse problem involving the Helmholtz equation.</description>
     </item>
     
   </channel>

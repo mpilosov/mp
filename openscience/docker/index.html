@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Source Themes Academic 3.2.0">
-  <meta name="generator" content="Hugo 0.55.3" />
+  <meta name="generator" content="Hugo 0.53" />
   <meta name="author" content="Michael Pilosov">
 
   
@@ -129,9 +129,9 @@
   <meta property="og:description" content="Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info Cleaning up Load/Save image  Layers Containers  Lifecycle Starting and Stopping Info Import / Export Executing Commands Container Import/Export  Management  CPU Constraints Memory Constraints Capabilities  Dockerfile  Instructions Tutorial Examples  Networks  Lifecycle Info Connection  Registries  Registries v."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2018-12-22T00:00:00-07:00">
+  <meta property="article:published_time" content="2018-12-22T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2018-12-22T00:00:00-07:00">
+  <meta property="article:modified_time" content="2018-12-22T00:00:00&#43;00:00">
   
 
   
@@ -561,7 +561,7 @@
           <div class="article-style" itemprop="articleBody">
             
 
-<p><h2>Table of Contents</h2>
+<h2>Table of Contents</h2>
 <nav id="TableOfContents">
 <ul>
 <li><a href="#introduction">Introduction</a>
@@ -690,7 +690,8 @@
 <li><a href="#best-practices">Best Practices</a></li>
 </ul></li>
 </ul>
-</nav></p>
+</nav>
+
 
 <hr />
 
@@ -877,26 +878,26 @@ Most current Linux distributions (RHEL, CentOS, Fedora, Ubuntu 16.04 and higher)
 <h2 id="re-route-ip">Re-route IP</h2>
 
 <div class="alert alert-">
-  
-By default, the Docker daemon listens for connections on a UNIX socket to accept requests from local clients. 
+  <p>By default, the Docker daemon listens for connections on a UNIX socket to accept requests from local clients.</p>
 
-It is possible to allow Docker to accept requests from remote hosts by configuring it to listen on an IP address and port as well as the UNIX socket. 
+<p>It is possible to allow Docker to accept requests from remote hosts by configuring it to listen on an IP address and port as well as the UNIX socket.</p>
 
 </div>
+
 
 <p>For more detailed information on this configuration option take a look at “Bind Docker to another host/port or a unix socket” section of the <a href="https://docs.docker.com/engine/reference/commandline/dockerd/" target="_blank">Docker CLI Reference article</a>.</p>
 
 <div class="alert alert-warning">
-  
-**Security Notice**: Before configuring Docker to accept connections from remote hosts it is critically important that you understand the security implications of opening docker to the network. If steps are not taken to secure the connection, it is possible for remote non-root users to gain root access on the host. For more information on how to use TLS certificates to secure this connection, check this article on how to protect the Docker daemon socket.
+  <p><strong>Security Notice</strong>: Before configuring Docker to accept connections from remote hosts it is critically important that you understand the security implications of opening docker to the network. If steps are not taken to secure the connection, it is possible for remote non-root users to gain root access on the host. For more information on how to use TLS certificates to secure this connection, check this article on how to protect the Docker daemon socket.</p>
 
 </div>
+
 
 <div class="alert alert-">
-  
-Configuring Docker to accept remote connections can be done with the `docker.service` `systemd` unit file for Linux distributions using `systemd`.
+  <p>Configuring Docker to accept remote connections can be done with the <code>docker.service</code> <code>systemd</code> unit file for Linux distributions using <code>systemd</code>.</p>
 
 </div>
+
 
 <p>Use the command <code>sudo systemctl edit docker.service</code> to open an override file for <code>docker.service</code> in a text editor.</p>
 
@@ -935,18 +936,18 @@ tcp        0      0 127.0.0.1:2375          0.0.0.0:*               LISTEN      
 <h3 id="ip-forwarding">IP Forwarding</h3>
 
 <div class="alert alert-warning">
-  
-If you manually configure your network using `systemd-network` with `systemd` **version 219 or higher,** _Docker containers may not be able to access your network._ 
+  <p>If you manually configure your network using <code>systemd-network</code> with <code>systemd</code> <strong>version 219 or higher,</strong> <em>Docker containers may not be able to access your network.</em></p>
 
 </div>
+
 
 <div class="alert alert-">
-  
-Beginning with `systemd` **version 220**, the forwarding setting for a given network (`net.ipv4.conf.<interface>.forwarding`) defaults to `off`. 
-This setting prevents IP forwarding. 
-It also conflicts with Docker’s behavior of enabling the `net.ipv4.conf.all.forwarding` setting within containers.
+  <p>Beginning with <code>systemd</code> <strong>version 220</strong>, the forwarding setting for a given network (<code>net.ipv4.conf.&lt;interface&gt;.forwarding</code>) defaults to <code>off</code>.
+This setting prevents IP forwarding.
+It also conflicts with Docker’s behavior of enabling the <code>net.ipv4.conf.all.forwarding</code> setting within containers.</p>
 
 </div>
+
 
 <blockquote>
 <p>To work around this on RHEL, CentOS, or Fedora, edit the <code>&lt;interface&gt;.network</code> file in <code>/usr/lib/systemd/network/</code> on your Docker host (ex: <code>/usr/lib/systemd/network/80-container-host0.network</code>) and add the following block within the <code>[Network]</code> section.</p>
@@ -1016,43 +1017,43 @@ Memory and swap accounting incur an overhead of about 1% of the total available 
 <p>If you are in the <code>docker</code> group, you effectively <a href="http://reventlov.com/advisories/using-the-docker-command-to-root-the-host" target="_blank">have root access</a>.</p>
 
 <div class="alert alert-">
-  
-If you _expose the docker UNIX socket to a container_, you are giving the container [root access to the host](https://www.lvh.io/posts/dont-expose-the-docker-socket-not-even-to-a-container.html).  
+  <p>If you <em>expose the docker UNIX socket to a container</em>, you are giving the container <a href="https://www.lvh.io/posts/dont-expose-the-docker-socket-not-even-to-a-container.html" target="_blank">root access to the host</a>.</p>
 
 </div>
+
 
 <div class="alert alert-warning">
-  
-Docker should not be your only defense. You should secure and harden it.
+  <p>Docker should not be your only defense. You should secure and harden it.</p>
 
 </div>
+
 
 <p>The security tips following are useful if you&rsquo;ve already hardened containers in the past, but are <strong>not a substitute for understanding.</strong> <sup class="footnote-ref" id="fnref:security"><a href="#fn:security">4</a></sup></p>
 
 <h2 id="security-tips">Security Tips</h2>
 
 <div class="alert alert-warning">
-  
-For greatest security, you want to run Docker inside a virtual machine. 
-(Source: Docker Security Team Lead  [slides](http://www.slideshare.net/jpetazzo/linux-containers-lxc-docker-and-security) / [notes](http://www.projectatomic.io/blog/2014/08/is-it-safe-a-look-at-docker-and-security-from-linuxcon/).
+  <p>For greatest security, you want to run Docker inside a virtual machine.
+(Source: Docker Security Team Lead  <a href="http://www.slideshare.net/jpetazzo/linux-containers-lxc-docker-and-security" target="_blank">slides</a> / <a href="http://www.projectatomic.io/blog/2014/08/is-it-safe-a-look-at-docker-and-security-from-linuxcon/" target="_blank">notes</a>.</p>
 
 </div>
+
 
 <p>Then, run with AppArmor / seccomp / SELinux / grsec etc to <a href="http://linux-audit.com/docker-security-best-practices-for-your-vessel-and-containers/" target="_blank">limit the container permissions</a>. See the <a href="https://blog.docker.com/2016/02/docker-engine-1-10-security/" target="_blank">Docker 1.10 security features</a> for more details.</p>
 
 <div class="alert alert-warning">
-  
-Docker image ids are [sensitive information](https://medium.com/@quayio/your-docker-image-ids-are-secrets-and-its-time-you-treated-them-that-way-f55e9f14c1a4) and should not be exposed to the outside world. Treat them like passwords.
+  <p>Docker image ids are <a href="https://medium.com/@quayio/your-docker-image-ids-are-secrets-and-its-time-you-treated-them-that-way-f55e9f14c1a4" target="_blank">sensitive information</a> and should not be exposed to the outside world. Treat them like passwords.</p>
 
 </div>
+
 
 <p>See the <a href="https://github.com/konstruktoid/Docker/blob/master/Security/CheatSheet.adoc" target="_blank">Docker Security Cheat Sheet</a> by <a href="https://github.com/konstruktoid" target="_blank">Thomas Sjögren</a>: some good stuff about container hardening in there.</p>
 
 <div class="alert alert-">
-  
-Check out the **[docker bench security script](https://github.com/docker/docker-bench-security)** for a security benchmark.
+  <p>Check out the <strong><a href="https://github.com/docker/docker-bench-security" target="_blank">docker bench security script</a></strong> for a security benchmark.</p>
 
 </div>
+
 
 <blockquote>
 <p>Download the <a href="https://blog.docker.com/2015/05/understanding-docker-security-and-best-practices/" target="_blank">white papers</a> and subscribe to the <a href="https://www.docker.com/docker-security" target="_blank">mailing lists</a> (unfortunately Docker does not have a unique mailing list, only dev / user). To begin with, see this (foot)note from the cheatsheet <sup class="footnote-ref" id="fnref:begin"><a href="#fn:begin">5</a></sup>.</p>
@@ -1067,10 +1068,10 @@ Check out the **[docker bench security script](https://github.com/docker/docker-
 <h3 id="making-docker-safe-for-production">Making Docker Safe for Production</h3>
 
 <div class="alert alert-">
-  
-Since Docker 1.11, you can easily limit the number of active processes running inside a container to prevent fork bombs. 
+  <p>Since Docker 1.11, you can easily limit the number of active processes running inside a container to prevent fork bombs.</p>
 
 </div>
+
 
 <p>This requires a Linux kernel &gt;= 4.3 with <code>CGROUP_PIDS=y</code> to be in the kernel configuration.</p>
 
@@ -1078,10 +1079,10 @@ Since Docker 1.11, you can easily limit the number of active processes running i
 </code></pre>
 
 <div class="alert alert-">
-  
-Also available since docker 1.11 is the ability to prevent processes from gaining new privileges. 
+  <p>Also available since docker 1.11 is the ability to prevent processes from gaining new privileges.</p>
 
 </div>
+
 
 <p>This feature have been in the Linux kernel since version 3.5. You can read more about it in <a href="http://www.projectatomic.io/blog/2016/03/no-new-privs-docker/" target="_blank">this</a> blog post.</p>
 
@@ -1093,12 +1094,12 @@ Also available since docker 1.11 is the ability to prevent processes from gainin
 </blockquote>
 
 <div class="alert alert-warning">
-  
-Be aware that the following may affect the performance of your applications in unexpected ways if you are not sure what kinds of communications requirements you need. 
+  <p>Be aware that the following may affect the performance of your applications in unexpected ways if you are not sure what kinds of communications requirements you need.</p>
 
-Proceed with caution. Reference the [presentation above][docker-production]. 
+<p>Proceed with caution. Reference the [presentation above][docker-production].</p>
 
 </div>
+
 
 <blockquote>
 <p>Turn off interprocess communication with:</p>
@@ -1135,10 +1136,10 @@ USER user
 <h2 id="port-exposal">Port-Exposal</h2>
 
 <div class="alert alert-">
-  
-Exposing incoming ports through the host container is [fiddly but doable](https://docs.docker.com/engine/reference/run/#expose-incoming-ports).
+  <p>Exposing incoming ports through the host container is <a href="https://docs.docker.com/engine/reference/run/#expose-incoming-ports" target="_blank">fiddly but doable</a>.</p>
 
 </div>
+
 
 <p>This is done by mapping the container port to the host port (only using localhost interface) using <code>-p</code>:</p>
 
@@ -1381,18 +1382,18 @@ You can think of this as mimicking the keystrokes a user would have to enter in 
 </code></pre>
 
 <div class="alert alert-">
-  
-The difference between _loading a saved image_ and importing an exported _container as an image_
+  <p>The difference between <em>loading a saved image</em> and importing an exported <em>container as an image</em></p>
 
 </div>
+
 
 <p>Loading an image using the <code>load</code> command creates a new image including its history.</p>
 
 <div class="alert alert-">
-  
-Importing a container as an image using the `import` command creates a new image, **excluding the history,** which results in a _smaller image size compared to loading an image_.
+  <p>Importing a container as an image using the <code>import</code> command creates a new image, <strong>excluding the history,</strong> which results in a <em>smaller image size compared to loading an image</em>.</p>
 
 </div>
+
 
 <hr />
 
@@ -1431,13 +1432,12 @@ Importing a container as an image using the `import` command creates a new image
 
 <p>Linux capabilities can be set by using <code>cap-add</code> and <code>cap-drop</code>.  See <a href="https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities" target="_blank">https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capabilities</a> for details.</p>
 
-<div class="alert alert-warning">
-  
-This should be used for greater security.
+<p><div class="alert alert-warning">
+  <p>This should be used for greater security.</p>
 
 </div>
 
-<p>To mount a FUSE based filesystem, you need to combine both &ndash;cap-add and &ndash;device:</p>
+To mount a FUSE based filesystem, you need to combine both &ndash;cap-add and &ndash;device:</p>
 
 <pre><code>docker run --rm -it --cap-add SYS_ADMIN --device /dev/fuse sshfs
 </code></pre>
@@ -1568,16 +1568,16 @@ $ curl 203.0.113.2
 <h3 id="registries-v-repositories">Registries v. Repositories</h3>
 
 <div class="alert alert-">
-  
-A repository is a *hosted* collection of tagged images that together create the file system for a container.
+  <p>A repository is a <em>hosted</em> collection of tagged images that together create the file system for a container.</p>
 
 </div>
+
 
 <div class="alert alert-">
-  
-A registry is a *host* -- a server that stores repositories and provides an HTTP API for [managing the uploading and downloading of repositories](https://docs.docker.com/engine/tutorials/dockerrepos/).
+  <p>A registry is a <em>host</em> &ndash; a server that stores repositories and provides an HTTP API for <a href="https://docs.docker.com/engine/tutorials/dockerrepos/" target="_blank">managing the uploading and downloading of repositories</a>.</p>
 
 </div>
+
 
 <blockquote>
 <p>Docker.com hosts its own <a href="https://hub.docker.com/" target="_blank">index</a> to a central registry which contains a large number of repositories.</p>

@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
-    <lastBuildDate>Tue, 01 Jan 2019 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 01 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/tags/technology/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,28 +15,32 @@
     <item>
       <title>Open Science</title>
       <link>https://www.michaelpilosov.com/project/openscience/</link>
-      <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/openscience/</guid>
-      <description>Learning dev-ops for reproducible research</description>
+      <description>Improved student access to technology by deploying JupyterHub on powerful servers in my Math Department, learning a ton of dev-ops along the way.</description>
     </item>
     
     <item>
       <title>Twitterbots</title>
       <link>https://www.michaelpilosov.com/project/twitterbots/</link>
-      <pubDate>Tue, 01 May 2018 00:00:00 -0600</pubDate>
+      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/twitterbots/</guid>
-      <description>Using the Twitter API and Python to create digital art projects.</description>
+      <description>I decided to explore the use of Twitter&amp;rsquo;s API in Python to perform some fun projects.
+I wrote a Twitter bot called &amp;ldquo;Random Art Baby&amp;rdquo; that when prompted, would respond to users with artwork.
+This art was randomly generated using the library I had developed for my initial exploration with graphical user interfaces for visualizing probability distributions.
+This also provided me the opportunity to explore some machine learning code for the generation of natural language speech based on training examples.</description>
     </item>
     
     <item>
       <title>Pharma Mutuals</title>
       <link>https://www.michaelpilosov.com/project/pharma/</link>
-      <pubDate>Sun, 01 Jun 2014 00:00:00 -0600</pubDate>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/project/pharma/</guid>
-      <description>Commercializing Biomedical Research through Securitization Techniques.</description>
+      <description>This was a self-directed research project that had its origins in my desire to better understand the contents of an enticing TED talk that I watched during the first week of my last semester as an undergraduate student.
+  What grabbed my attention was that the speaker (Stein) invited scrutiny of their source code, making it [publicly available on GitHub][code]. This event likely seeded my interest in open-source philosophies and diving into this project was an early attempt to learn more about how other people write code.</description>
     </item>
     
   </channel>
