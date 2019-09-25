@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spring 2015 on Michael Pilosov: The Archives</title>
+    <link>https://www.michaelpilosov.com/tags/spring-2015/</link>
+    <description>Recent content in spring 2015 on Michael Pilosov: The Archives</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
+    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.michaelpilosov.com/tags/spring-2015/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SIAM</title>
+      <link>https://www.michaelpilosov.com/project/siam/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/siam/</guid>
+      <description>The following is an edited version of an end-of-year summary report sent to the SIAM.
+SIAM and Math Club have established three core pillars upon which to form themselves within the Department of Mathematical and Statistical Sciences at CU Denver:
+ service, scholarship, and community engagement.  In addressing service, we have regularly facilitated participation in regional science fairs, organized a semesterly food bank drive to benefit homeless students on campus (Note: our department was the most successful donor on campus last semester), and have begun to integrate charitable fundraising into our community events.</description>
+    </item>
+    
+    <item>
+      <title>FRAMSC</title>
+      <link>https://www.michaelpilosov.com/project/framsc/</link>
+      <pubDate>Tue, 01 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/framsc/</guid>
+      <description>This student conference brings together students from a number of universities in the Rocky Mountain Region to give presentations in an intimate environment. I have been involved in some way or another in its organization for all my years at CU Denver.
+As President I helped change the way we secure funding for the event and increased our budget for food by working out an agreement with our student government association to co-sponsor the event.</description>
+    </item>
+    
+    <item>
+      <title>Study Hall</title>
+      <link>https://www.michaelpilosov.com/project/studyhall/</link>
+      <pubDate>Tue, 01 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/studyhall/</guid>
+      <description>The department’s semesterly two-day study hall that precedes final examinations experienced a dramatic increase in attendance.
+I attribute this to my aggressive advertising efforts and the President (Christina Ebben, pictured below) and I coordinating an unprecedented funding campaign to attract attendees.
+Snacks (fruits, nuts, chips, sodas, etc) and coffee were plentiful fuel for students, and lunches were purchased for the volunteers. The tutors provided by Math Club and SIAM provide much needed emotional and educational support for the student body.</description>
+    </item>
+    
+    <item>
+      <title>Pi Day</title>
+      <link>https://www.michaelpilosov.com/project/piday/</link>
+      <pubDate>Sun, 01 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/piday/</guid>
+      <description>In my first year (2014-2015) of becoming involved in Math Club, I threw this poster together for a pretty simple event.   For Pi Day, Math Club organized several events over the years that focused on simply enjoying the festivities, eating pie, and trying to bring in people from outside of the department&amp;rsquo;s and engage with the broader community.
+  Second year.   One year we chose to fundraise and partnered with a local pizzeria to set up a day where a portion of their profits would be donated to girls who code, a nonprofit that focuses on education in programming.</description>
+    </item>
+    
+    <item>
+      <title>Evolution of Cooperation</title>
+      <link>https://www.michaelpilosov.com/project/evolution/</link>
+      <pubDate>Mon, 01 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/evolution/</guid>
+      <description>I began graduate school in the summer of 2014 as a summer graduate research assistant. I approached Dr. Burt Simon to learn about his research as I was casually walking around the department while working on the LAPACK project. His research was concerned with modeling population dynamics to study the conditions under which cooperation could evolve from a mutation to the norm within a system that is inherently competitive.
+I was really interested in the problem he was working on and asked if I could see his software.</description>
+    </item>
+    
+    <item>
+      <title>LAPACK</title>
+      <link>https://www.michaelpilosov.com/project/lapack/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/lapack/</guid>
+      <description>My Brief Experience I was fortunate enough to be funded by Dr. Julien Langou during my summer proceeding entering graduate school. This relief from teaching was especially helpful for my transition into post-graduate education, and I was given the opportunity to explore a number of topics that I knew nothing about.
+For the first time, I found myself working on an object-oriented task in a programming language that was strongly typed.</description>
+    </item>
+    
+  </channel>
+</rss>

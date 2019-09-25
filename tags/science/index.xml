@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>science on Michael Pilosov: The Archives</title>
+    <link>https://www.michaelpilosov.com/tags/science/</link>
+    <description>Recent content in science on Michael Pilosov: The Archives</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
+    <lastBuildDate>Tue, 01 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.michaelpilosov.com/tags/science/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Open Science</title>
+      <link>https://www.michaelpilosov.com/project/openscience/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/openscience/</guid>
+      <description>Improved student access to technology by deploying JupyterHub on powerful servers in my Math Department, learning a ton of dev-ops along the way.</description>
+    </item>
+    
+  </channel>
+</rss>

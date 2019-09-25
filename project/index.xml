@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Michael Pilosov: The Archives</title>
+    <link>https://www.michaelpilosov.com/project/</link>
+    <description>Recent content in Projects on Michael Pilosov: The Archives</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
+    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.michaelpilosov.com/project/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>BET</title>
+      <link>https://www.michaelpilosov.com/project/bet/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/bet/</guid>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+    </item>
+    
+    <item>
+      <title>Math || Art?</title>
+      <link>https://www.michaelpilosov.com/project/mathart/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/mathart/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PhD</title>
+      <link>https://www.michaelpilosov.com/project/thesis/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/thesis/</guid>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+    </item>
+    
+    <item>
+      <title>SIAM</title>
+      <link>https://www.michaelpilosov.com/project/siam/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/siam/</guid>
+      <description>The following is an edited version of an end-of-year summary report sent to the SIAM.
+SIAM and Math Club have established three core pillars upon which to form themselves within the Department of Mathematical and Statistical Sciences at CU Denver:
+ service, scholarship, and community engagement.  In addressing service, we have regularly facilitated participation in regional science fairs, organized a semesterly food bank drive to benefit homeless students on campus (Note: our department was the most successful donor on campus last semester), and have begun to integrate charitable fundraising into our community events.</description>
+    </item>
+    
+    <item>
+      <title>Students Today, Alumni Tomorrow</title>
+      <link>https://www.michaelpilosov.com/project/stat/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/stat/</guid>
+      <description>Co-President focusing on growing a new organization in the Office of Advancement, with a particular emphasis on developing a social media strategy.
+I began my co-presidency of Students Today, Alumni Tomorrow officially in the spring semester of 2019, though technically I was serving as interim President for fall 2018 as well.
+The focus of the organization is to better connect students and alumni, educating students about the ways in which University Advancement operates and why it is so important.</description>
+    </item>
+    
+    <item>
+      <title>Open Science</title>
+      <link>https://www.michaelpilosov.com/project/openscience/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/openscience/</guid>
+      <description>Improved student access to technology by deploying JupyterHub on powerful servers in my Math Department, learning a ton of dev-ops along the way.</description>
+    </item>
+    
+    <item>
+      <title>A New Game of Poker</title>
+      <link>https://www.michaelpilosov.com/project/poker/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/poker/</guid>
+      <description>This was a really fun project I undertook for a Math Club game night in 2016 with my friend Elliott Regan, who helped me program this in Javascript and embed into an earlier version of my website.
+Premise Dr. Burt Simon and I had previously collaborated on a paper.
+Rules The rules are listed in short form below the game demonstration below. Gambling would occur on pre-determined intervals (timer), or whenever someone wants to (if you enjoy a bit of chaos).</description>
+    </item>
+    
+    <item>
+      <title>G2S3</title>
+      <link>https://www.michaelpilosov.com/project/summerschool/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/summerschool/</guid>
+      <description>Program The summer school was focused on Uncertainty Quantification, specifically pretending to Inverse Problems.
+Structure We sat through hours of lecture and about half the days we managed to spend programming/implementing some of what we learned.
+Project At the end of the summer school we had to perform a project, and I paired up with a couple of students to work on an inverse problem involving the Helmholtz equation.</description>
+    </item>
+    
+    <item>
+      <title>Twitterbots</title>
+      <link>https://www.michaelpilosov.com/project/twitterbots/</link>
+      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/twitterbots/</guid>
+      <description>I decided to explore the use of Twitter&amp;rsquo;s API in Python to perform some fun projects.
+I wrote a Twitter bot called &amp;ldquo;Random Art Baby&amp;rdquo; that when prompted, would respond to users with artwork.
+This art was randomly generated using the library I had developed for my initial exploration with graphical user interfaces for visualizing probability distributions.
+This also provided me the opportunity to explore some machine learning code for the generation of natural language speech based on training examples.</description>
+    </item>
+    
+    <item>
+      <title>DCI</title>
+      <link>https://www.michaelpilosov.com/project/dci/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/dci/</guid>
+      <description>The novel framework for solving inverse problems in which all of my doctoral work has been grounded.
+In the broadest terms possible, Data-Consistent Inversion (DCI) is a new approach to answer questions about the conditions under which observations can occur.
+What makes it particularly special is that in a sense, this approach leverages the &amp;ldquo;best of both worlds&amp;rdquo; in the statistical inference world. The two schools of thought: Deterministic Optimization and Bayesian Statistics have different philosophical frameworks for answering questions pertaining to the explanation of observed data.</description>
+    </item>
+    
+    <item>
+      <title>Tracking Toxins</title>
+      <link>https://www.michaelpilosov.com/project/toxins/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/toxins/</guid>
+      <description>Slamming one of the servers when no one else was using it.   Overview I went to work with Dr. Velimir Vesselinov in the summer of 2017 at the Los Alamos National Laboratory (LANL). This experience drastically changed the direction of my research. I spent much of my time reading papers on Bayesian Inverse Problems and Subsurface Contaminant Transport Problems. Part of what I did was learn the Julia programming language1, implementing some Markov chain Monte Carlo methods to practice, and converting some algorithms from Python to Julia.</description>
+    </item>
+    
+    <item>
+      <title>Masters</title>
+      <link>https://www.michaelpilosov.com/project/masters/</link>
+      <pubDate>Mon, 01 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/masters/</guid>
+      <description>Summary My advisor developed a framework for solving a large class of problems of particular interest to the engineering disciplines. Starting as a graduate research assistant under his direction in the summer of 2015, I began to learn about this new method and explore implications of how measurements of physical systems are taken on our ability to accurately describe parameter uncertainty sets.
+You can read more about it below, but overall, my focus on skewness ended up playing a less important role when we developed a sample-based approach to solving the same problems.</description>
+    </item>
+    
+    <item>
+      <title>Movie Nights</title>
+      <link>https://www.michaelpilosov.com/project/movienight/</link>
+      <pubDate>Mon, 01 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/movienight/</guid>
+      <description>Math Club began to host regular movie nights each semester, highlighting films about mathematicians. We hoped to reach a broader audience outside the math department by hosting these events in very public locations with generous catering budgets.
+Films Watched:
+ The Imitation Game The Man Who Knew Infinity Hidden Figures  Download Game Night Funding Presentation</description>
+    </item>
+    
+    <item>
+      <title>Poker &amp; Game Night</title>
+      <link>https://www.michaelpilosov.com/project/gamenight/</link>
+      <pubDate>Mon, 01 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/gamenight/</guid>
+      <description>Math Club held several Poker and Game nights, where we provided food and snacks for students to come and relax after a long day at school and enjoy a social space that did not involve alcohol/drugs (nor much math).
+At one of these, we also had the opportunity to introduce a game that Dr. Simon I had worked on, since I finally managed to write a program in a way that could be used by other people.</description>
+    </item>
+    
+    <item>
+      <title>Consistent Bayes</title>
+      <link>https://www.michaelpilosov.com/project/cbayes/</link>
+      <pubDate>Thu, 27 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/cbayes/</guid>
+      <description>This was my first attempt at writing a software library from scratch. I had a bunch of code in different places that performed many of the same tasks and wanted to unify it under one framework. It implemented the Data-Consistent Inversion framework (before it was called that), namely our sample-based approach for inverting probability measures.
+This was an excellent opportunity to learn the process of writing object-oriented code, unit-tests, and so much more.</description>
+    </item>
+    
+    <item>
+      <title>Mentor Lunch</title>
+      <link>https://www.michaelpilosov.com/project/mentorlunch/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/mentorlunch/</guid>
+      <description>As President of SIAM, I organized a regular mentor lunch that we started to run every semester. What motivated me was noticing that undergraduates with whom I spoke were routinely unaware of their career options. It was completely unclear what courses they should take because they had a hard time connecting what they liked to possible career paths. Many did not know that graduate school could be paid for! The course descriptions were not particularly helpful since they contained jargon that was unfamiliar to students.</description>
+    </item>
+    
+    <item>
+      <title>Mathematics of Billiards</title>
+      <link>https://www.michaelpilosov.com/project/billiards/</link>
+      <pubDate>Thu, 01 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/billiards/</guid>
+      <description>Billiards night was one of the first events that Christina and I plan for Math Club. It was a relatively simple event, focused on bringing together people For a night of pool and pizza. We played videos about billiards, including ones that went over the geometry of planning different types of shots on televisions in the background of the pool hall. We held this event several times over the years.</description>
+    </item>
+    
+    <item>
+      <title>Food Bank</title>
+      <link>https://www.michaelpilosov.com/project/foodbank/</link>
+      <pubDate>Wed, 01 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/foodbank/</guid>
+      <description>As part of the activities we implemented in Math Club, we got the Math Department involved in a campus-wide competition to donate food to the campus food pantry, which serves students in crisis1.
+We routinely placed in the top three, and even took first place twice, beating out the Office of the Dean and the Graduate School.
+  We had three purple bins in the department, and we made sure they all looked like this.</description>
+    </item>
+    
+    <item>
+      <title>Math Club</title>
+      <link>https://www.michaelpilosov.com/project/mathclub/</link>
+      <pubDate>Wed, 01 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/mathclub/</guid>
+      <description>Summary During the last semester of my first year in graduate school (spring 2015), I volunteered for the Study Hall that was being put on by the department. I was inspired by that event to get in touch with the professor who organized it, and asked about interest in a Math Club. I was told that it had languished over the years but I was welcome to revive it (he was willing to be the faculty advisor), and he put me in touch with an undergraduate student that he thought would be good to partner up with.</description>
+    </item>
+    
+    <item>
+      <title>Tracking Wildlife</title>
+      <link>https://www.michaelpilosov.com/project/wildlife/</link>
+      <pubDate>Sat, 09 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/wildlife/</guid>
+      <description>Given that we do not know exactly where animals will go, how do we set up a network of sensors to track them?
+I managed a group of four undergraduates through a semester-long research project concerning the placement of sensors in an environment where the travel patterns of animals is unknown. My responsibilities included:
+ defining the scope of research and breaking goals down into explicit deliverables, overseeing timeline of research progress, keeping students on deadline, developing outlines of software and clearly defined what their contributions would be.</description>
+    </item>
+    
+    <item>
+      <title>Research Topics</title>
+      <link>https://www.michaelpilosov.com/project/research/</link>
+      <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/research/</guid>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+    </item>
+    
+    <item>
+      <title>FRAMSC</title>
+      <link>https://www.michaelpilosov.com/project/framsc/</link>
+      <pubDate>Tue, 01 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/framsc/</guid>
+      <description>This student conference brings together students from a number of universities in the Rocky Mountain Region to give presentations in an intimate environment. I have been involved in some way or another in its organization for all my years at CU Denver.
+As President I helped change the way we secure funding for the event and increased our budget for food by working out an agreement with our student government association to co-sponsor the event.</description>
+    </item>
+    
+    <item>
+      <title>Study Hall</title>
+      <link>https://www.michaelpilosov.com/project/studyhall/</link>
+      <pubDate>Tue, 01 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/studyhall/</guid>
+      <description>The department’s semesterly two-day study hall that precedes final examinations experienced a dramatic increase in attendance.
+I attribute this to my aggressive advertising efforts and the President (Christina Ebben, pictured below) and I coordinating an unprecedented funding campaign to attract attendees.
+Snacks (fruits, nuts, chips, sodas, etc) and coffee were plentiful fuel for students, and lunches were purchased for the volunteers. The tutors provided by Math Club and SIAM provide much needed emotional and educational support for the student body.</description>
+    </item>
+    
+    <item>
+      <title>Pi Day</title>
+      <link>https://www.michaelpilosov.com/project/piday/</link>
+      <pubDate>Sun, 01 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/piday/</guid>
+      <description>In my first year (2014-2015) of becoming involved in Math Club, I threw this poster together for a pretty simple event.   For Pi Day, Math Club organized several events over the years that focused on simply enjoying the festivities, eating pie, and trying to bring in people from outside of the department&amp;rsquo;s and engage with the broader community.
+  Second year.   One year we chose to fundraise and partnered with a local pizzeria to set up a day where a portion of their profits would be donated to girls who code, a nonprofit that focuses on education in programming.</description>
+    </item>
+    
+    <item>
+      <title>Evolution of Cooperation</title>
+      <link>https://www.michaelpilosov.com/project/evolution/</link>
+      <pubDate>Mon, 01 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/evolution/</guid>
+      <description>I began graduate school in the summer of 2014 as a summer graduate research assistant. I approached Dr. Burt Simon to learn about his research as I was casually walking around the department while working on the LAPACK project. His research was concerned with modeling population dynamics to study the conditions under which cooperation could evolve from a mutation to the norm within a system that is inherently competitive.
+I was really interested in the problem he was working on and asked if I could see his software.</description>
+    </item>
+    
+    <item>
+      <title>LAPACK</title>
+      <link>https://www.michaelpilosov.com/project/lapack/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/lapack/</guid>
+      <description>My Brief Experience I was fortunate enough to be funded by Dr. Julien Langou during my summer proceeding entering graduate school. This relief from teaching was especially helpful for my transition into post-graduate education, and I was given the opportunity to explore a number of topics that I knew nothing about.
+For the first time, I found myself working on an object-oriented task in a programming language that was strongly typed.</description>
+    </item>
+    
+    <item>
+      <title>Pharma Mutuals</title>
+      <link>https://www.michaelpilosov.com/project/pharma/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/pharma/</guid>
+      <description>This was a self-directed research project that had its origins in my desire to better understand the contents of an enticing TED talk that I watched during the first week of my last semester as an undergraduate student.
+  What grabbed my attention was that the speaker (Stein) invited scrutiny of their source code, making it [publicly available on GitHub][code]. This event likely seeded my interest in open-source philosophies and diving into this project was an early attempt to learn more about how other people write code.</description>
+    </item>
+    
+    <item>
+      <title>Probably Art</title>
+      <link>https://www.michaelpilosov.com/project/probablyart/</link>
+      <pubDate>Thu, 01 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/probablyart/</guid>
+      <description>After my first experience with writing software in the summer of 2013, I wanted to learn how to write software that was usable by other people1.
+I thought that learning how graphical user interfaces work would be a good place to start. Since I already knew Matlab, I chose that for my programming language.
+I performed the project under the direction of use of Dr. Yusuf Bilgic, who generally gave me free rein to pursue the project in any direction.</description>
+    </item>
+    
+    <item>
+      <title>Moving Pictures</title>
+      <link>https://www.michaelpilosov.com/project/animation/</link>
+      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/animation/</guid>
+      <description>Overview I received an Undergraduate Fellowship from the Geneseo Foundation to pursue a self-directed research project wherein I would explore the interface of Arts, Mathematics and Computer Science.
+ My initial goal was to figure out how to take a still image and turn it into an animation without resorting to frame-by-frame editing.
+ Story My mentor introduced me to a professor in the computer science department and we composed a successful proposal for the fellowship program.</description>
+    </item>
+    
+    <item>
+      <title>Chess Club</title>
+      <link>https://www.michaelpilosov.com/project/chessclub/</link>
+      <pubDate>Sat, 01 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/chessclub/</guid>
+      <description>Summary Along with some good friends, I helped re-establish this defunct club and secure funding for club meetings and events.
+My primary responsibilities included all publicity operations and planning the charity fundraisers.
+We held weekly meetings and grew from two tables to as many as twelve simultaneous games happening. Snacks were provided and occasionally we were able to provide pizza.
+  Waiting for announcements to end so chess can start.</description>
+    </item>
+    
+    <item>
+      <title>Counting Cards</title>
+      <link>https://www.michaelpilosov.com/project/blackjack/</link>
+      <pubDate>Wed, 01 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/blackjack/</guid>
+      <description>As part of a course I took, I was tasked to perform a semester-long research project on a topic of my choosing. I had a nascent interest in blackjack after seeing the film 21, and wanted to learn more about the history and mathematics behind how/why card counting worked for the MIT blackjack team so well.
+This research project was my first introduction of Monte-Carlo methods, probability and expectation, and game theory.</description>
+    </item>
+    
+    <item>
+      <title>Agricultural Prediction</title>
+      <link>https://www.michaelpilosov.com/project/guatemala/</link>
+      <pubDate>Sat, 01 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/guatemala/</guid>
+      <description>Introduction As Green As It Gets (formerly “AGAIG”, now &amp;ldquo;De La Gente&amp;rdquo;/ &amp;ldquo;DLG&amp;rdquo;) is a Non-Governmental Organization founded in 2004 which is focused on the economic development of the coffee farmers that are members of the San Miguel-Escobar coffee cooperative.
+By providing loans, planning, and invaluable marketing connections, the organization seeks to direct the profits from coffee sales towards the farmers, allowing them to lift themselves out of poverty and improve opportunities for their children and themselves.</description>
+    </item>
+    
+    <item>
+      <title>MAC</title>
+      <link>https://www.michaelpilosov.com/project/mac/</link>
+      <pubDate>Wed, 01 Sep 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/mac/</guid>
+      <description>Four years of active participation in a Service Organization. Almost countless events.
+I joined my first semester in undergrad, and remained an active member every semester that I was enrolled in college.
+Pillars of the Organization  Scholarship Service Unity Fitness Loyalty   Here is a reproduction of a Lamron Article about the organization. It was written the semester I joined! 
+ Men of Action and Change, an organization founded at Geneseo in 1997, is a multicultural group dedicated to continuing a legacy of service and support to the local and global communities.</description>
+    </item>
+    
+  </channel>
+</rss>

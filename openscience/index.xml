@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Open Science on Michael Pilosov: The Archives</title>
+    <link>https://www.michaelpilosov.com/openscience/</link>
+    <description>Recent content in Open Science on Michael Pilosov: The Archives</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
+    <lastBuildDate>Tue, 18 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.michaelpilosov.com/openscience/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker</title>
+      <link>https://www.michaelpilosov.com/openscience/docker/</link>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/docker/</guid>
+      <description>Table of Contents  Introduction  Images Containers  Comparison to Virtual Machines  Documentation  Install  Linux macOS Windows  Configure  Permissions Start on boot Re-route IP Troubleshooting  IP Forwarding Limiting   Security  Security Tips Deployment  Making Docker Safe for Production  Port-Exposal More  User Namespaces The Security Roadmap Security Videos   Cheat Sheet  Images  Lifecycle Info Cleaning up Load/Save image  Layers Containers  Lifecycle Starting and Stopping Info Import / Export Executing Commands Container Import/Export  Management  CPU Constraints Memory Constraints Capabilities  Dockerfile  Instructions Tutorial Examples  Networks  Lifecycle Info Connection  Registries  Registries v.</description>
+    </item>
+    
+    <item>
+      <title>Deploying a New Hub</title>
+      <link>https://www.michaelpilosov.com/openscience/hubsetup/</link>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/hubsetup/</guid>
+      <description>Adding a Hub Introduction This document assumes that you have followed the walkthrough at least once before. You already have:
+ Logged in with an account that has sudo permissions Docker installed Proxy configured, secured with HTTPS  This walk-through will guide you through the bare-minimal steps to set up a new hub.
+Preliminaries First, we need to decide on the following:
+ Name of new hub An available port for it to be hosted on  We will run the following commands to find out what is already in use:</description>
+    </item>
+    
+    <item>
+      <title>JupyterHub</title>
+      <link>https://www.michaelpilosov.com/openscience/jupyterhub/</link>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/jupyterhub/</guid>
+      <description>The End-User Experience You go to a web-address and are confronted with the Jupyterhub login portal. Once you log in, you see a drop-down menu that allows you to choose what &amp;ldquo;stack&amp;rdquo; of software dependencies you would like to use. After you make your selection, you are redirected to an in-browser interface where all your files are available. Jupyter Notebooks, R Scripts, anything you want, can now be run directly through this interface.</description>
+    </item>
+    
+    <item>
+      <title>Deploying</title>
+      <link>https://www.michaelpilosov.com/openscience/walkthrough/</link>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/walkthrough/</guid>
+      <description>Inital Setup I presume the use of vim in a few of these commands. If you are more comfortable using nano for editing text, please be sure to make the appropriate substitutions.
+ On a brand new server&amp;hellip; (Change the top line to be your name)
+export USER_NAME=mathematicalmichael sudo apt update -y &amp;amp;&amp;amp; sudo apt upgrade -y sudo apt install vim htop make -y useradd $USER_NAME -m -s /bin/bash passwd $USER_NAME usermod -aG sudo $USER_NAME su - $USER_NAME  Now set your password.</description>
+    </item>
+    
+    <item>
+      <title>Remote Connection</title>
+      <link>https://www.michaelpilosov.com/openscience/remote/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/remote/</guid>
+      <description>As previously mentioned, the Jupyter Notebook runs in the client (browser) and connects to a server (either running locally or remotely) to perform necessary calculations in a given language.
+The kernels provide the means for establishing this communication, and are effectively what jupyter (the program) is set up to manage.
+Here, we demonstrate why this approach is so valuable.
+Motivation Assuming you followed the instructions in Installing Anaconda on your local machine, you&amp;rsquo;ll notice that you establish a connection to the server (running in your Terminal session, likely outputting information with green-highlighted time-stamps) through the &amp;ldquo;address&amp;rdquo; localhost, which references the fact that you are running this server locally.</description>
+    </item>
+    
+    <item>
+      <title>Demonstration with Jupyter Lab</title>
+      <link>https://www.michaelpilosov.com/openscience/demo/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/demo/</guid>
+      <description>Let&amp;rsquo;s first get a feel for the possibilities, and see what is possible by checking out some existing websites, organizations, and repositories. The idea of removing installation complexities, platform dependencies, etc. from your end-users is beautifully demonstrated by some of the recent advancements made over at Project Jupyter, all visible on their Github repository
+My favorite example that demonstrates how slick this new approach to setting up programming environmnents is the repository demonstration with JupyterLab + Binder from the binder-examples repository collection.</description>
+    </item>
+    
+    <item>
+      <title>Examples of Existing Projects</title>
+      <link>https://www.michaelpilosov.com/openscience/example/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/example/</guid>
+      <description>There are a number of organizations with deployments you can experiment with.
+We list some of them here, along with useful links for more information (some of these may be turned into future pages).</description>
+    </item>
+    
+    <item>
+      <title>Installing Anaconda</title>
+      <link>https://www.michaelpilosov.com/openscience/anaconda/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/anaconda/</guid>
+      <description>These instructions originally appeared on the &amp;ldquo;Resources&amp;rdquo; page of my website, where I link to my Github Gist. As of Dec 21, 2018, I am abandoning the aforementioned gist and will keep this webpage updated as my primary source of information for installing Anaconda1.
+Anaconda Basics Introduction It is a package manager.
+WRITE MORE ABOUT WHAT A PACKAGE MANAGER IS/DOES AND WHY IT SHOULD BE USED
+Download Go download it from https://www.</description>
+    </item>
+    
+    <item>
+      <title>Relevant Projects</title>
+      <link>https://www.michaelpilosov.com/openscience/getting-started/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/getting-started/</guid>
+      <description>Basics In this documentation, we will research and likely leverage (most if not all of) the following open-source projects. We will eventually address each in depth within this documentation and will update this section with relevant links as necessary. For now, we provide a brief overview and summary of what we are looking into.
+Widgets If you have ever tried developing a graphical user interface (GUI) for your code, you&amp;rsquo;ll know how cumbersome it can be.</description>
+    </item>
+    
+    <item>
+      <title>Deployment</title>
+      <link>https://www.michaelpilosov.com/openscience/deploy/</link>
+      <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/deploy/</guid>
+      <description>Here we describe the necessary steps for deployment.
+Please pardon the state of this document as it is a living and breathing set of instructions, and this part of the project has yet to be addressed.
+Kubernetes What is it? Why use it? Possibilities &amp;ldquo;Bare Metal&amp;rdquo; What is it? Why use it? Perhaps you have old computers lying around (if at a university, these may be more than enough for a considerable server) and are looking to repurpose them.</description>
+    </item>
+    
+    <item>
+      <title>Use-Cases</title>
+      <link>https://www.michaelpilosov.com/openscience/usage/</link>
+      <pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/usage/</guid>
+      <description>Here we describe the several use-cases we hope to address within this documentation.
+Local Laboratory Here is how one sets up Jupyter on one&amp;rsquo;s own machine (&amp;ldquo;local installation&amp;rdquo;). Since Project Jupyter relies on web frameworks and operates through your browser, the instructions will also apply for installing on a remote server.
+The instructions for doing so can be found on the Install Anaconda page.
+Classroom Resources You are a teacher with a small-to-medium sized classroom and want to set up a centralized server for your students to have access to notebooks you wrote.</description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>https://www.michaelpilosov.com/openscience/intro/</link>
+      <pubDate>Sun, 16 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/openscience/intro/</guid>
+      <description>Here we briefly describe some of the available resources and possible directions this documentation might take.
+Most notably, there is Binder, which allows you to recreate an entire environment as-needed in an isolated instance that is destroyed once it is no longer needed. The ideal scenario is to have Binder installed on a server, and we discuss the process of setting up such a server in this documentation, but for now we address setting up an environment on your own computer.</description>
+    </item>
+    
+  </channel>
+</rss>

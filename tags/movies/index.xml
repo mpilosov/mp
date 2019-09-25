@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>movies on Michael Pilosov: The Archives</title>
+    <link>https://www.michaelpilosov.com/tags/movies/</link>
+    <description>Recent content in movies on Michael Pilosov: The Archives</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
+    <lastBuildDate>Mon, 01 May 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.michaelpilosov.com/tags/movies/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Movie Nights</title>
+      <link>https://www.michaelpilosov.com/project/movienight/</link>
+      <pubDate>Mon, 01 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/movienight/</guid>
+      <description>Math Club began to host regular movie nights each semester, highlighting films about mathematicians. We hoped to reach a broader audience outside the math department by hosting these events in very public locations with generous catering budgets.
+Films Watched:
+ The Imitation Game The Man Who Knew Infinity Hidden Figures  Download Game Night Funding Presentation</description>
+    </item>
+    
+  </channel>
+</rss>

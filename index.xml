@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Michael Pilosov: The Archives on Michael Pilosov: The Archives</title>
+    <link>https://www.michaelpilosov.com/</link>
+    <description>Recent content in Michael Pilosov: The Archives on Michael Pilosov: The Archives</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
+    <lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Experience</title>
+      <link>https://www.michaelpilosov.com/widgetpage/years/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/years/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Skills</title>
+      <link>https://www.michaelpilosov.com/widgetpage/skills/</link>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/skills/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Experience</title>
+      <link>https://www.michaelpilosov.com/widgetpage/semesters/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/semesters/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.michaelpilosov.com/widgetpage/hero_carousel/</link>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/hero_carousel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Consistent Bayes</title>
+      <link>https://www.michaelpilosov.com/widgetpage/consistentbayes/</link>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/consistentbayes/</guid>
+      <description>&lt;p&gt;A Measure-Theoretic Method for Stochastic Inverse Problems.&lt;/p&gt;
+
+&lt;p&gt;Tackle the uncertainty in the natural variation inherent to input parameters with rigorous theory and simple implementation.&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;
+&lt;small&gt;&lt;a id=&#34;academic-release&#34; href=&#34;https://github.com/mpilosov/consistentbayes&#34;&gt;Latest release&lt;/a&gt;&lt;/small&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;iframe style=&#34;display: inline-block;&#34; src=&#34;https://ghbtns.com/github-btn.html?user=mpilosov&amp;amp;repo=consistentbayes&amp;amp;type=star&amp;amp;count=true&amp;amp;size=large&#34; scrolling=&#34;0&#34; width=&#34;160px&#34; height=&#34;30px&#34; frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
+&lt;iframe style=&#34;display: inline-block;&#34; src=&#34;https://ghbtns.com/github-btn.html?user=mpilosov&amp;amp;repo=consistentbayes&amp;amp;type=fork&amp;amp;count=true&amp;amp;size=large&#34; scrolling=&#34;0&#34; width=&#34;158px&#34; height=&#34;30px&#34; frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+  (function defer() {
+    if (window.jQuery) {
+      jQuery(document).ready(function(){
+        GetLatestReleaseInfo();
+      });
+    } else {
+      setTimeout(function() { defer() }, 50);
+    }
+  })();  
+  function GetLatestReleaseInfo() {
+    $.getJSON(&#39;https://api.github.com/repos/mpilosov/consistentbayes/tags&#39;).done(function (json) {
+      let release = json[0];
+      // let downloadURL = release.zipball_url;
+      $(&#39;#academic-release&#39;).text(&#39;Latest release &#39; + release.name);  
+    });    
+}  
+&lt;/script&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>https://www.michaelpilosov.com/widgetpage/publications/</link>
+      <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/publications/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Selected Publications</title>
+      <link>https://www.michaelpilosov.com/widgetpage/publications_selected/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/publications_selected/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Teaching</title>
+      <link>https://www.michaelpilosov.com/widgetpage/teaching/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/teaching/</guid>
+      <description>&lt;p&gt;This is an example of using the &lt;em&gt;custom&lt;/em&gt; widget to create your own homepage section.&lt;/p&gt;
+
+&lt;p&gt;I am a teaching instructor for the following courses at University X:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CS101: An intro to computer science&lt;/li&gt;
+&lt;li&gt;CS102: An intro to computer science&lt;/li&gt;
+&lt;li&gt;CS103: An intro to computer science&lt;/li&gt;
+&lt;li&gt;CS104: An intro to computer science&lt;/li&gt;
+&lt;li&gt;CS105: An intro to computer science&lt;/li&gt;
+&lt;li&gt;CS106: An intro to computer science&lt;/li&gt;
+&lt;li&gt;CS107: An intro to computer science&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tags</title>
+      <link>https://www.michaelpilosov.com/widgetpage/tags/</link>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/tags/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recent Galleries</title>
+      <link>https://www.michaelpilosov.com/widgetpage/posts/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/posts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Resources</title>
+      <link>https://www.michaelpilosov.com/widgetpage/resources/</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/resources/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Overview</title>
+      <link>https://www.michaelpilosov.com/widgetpage/experience/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/experience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Thesis Progress Update</title>
+      <link>https://www.michaelpilosov.com/slides/thesis-update/</link>
+      <pubDate>Sat, 21 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/slides/thesis-update/</guid>
+      <description>
+
+&lt;h2 id=&#34;computational-advances-in-data-consistent-inversion&#34;&gt;Computational Advances in Data-Consistent Inversion&lt;/h2&gt;
+
+&lt;p&gt;Measure-Theoretic Methods for Improving Predictions&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;bet&#34;&gt;BET&lt;/h2&gt;
+
+&lt;p&gt;[Butler, Estep, Tavener] Method&lt;/p&gt;
+
+&lt;p&gt;+ Mattis, Graham, Walsh, Pilosov&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/UT-CHG/BET&#34; target=&#34;_blank&#34;&gt;github.com/UT-CHG/BET&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;about&#34;&gt;About&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Purpose: Implement the novel method developed by the aforementioned authors&lt;/li&gt;
+&lt;li&gt;GNU General Public License&lt;/li&gt;
+&lt;li&gt;First released 2014&lt;/li&gt;
+&lt;li&gt;Python 2.7, upgraded to 3.6&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;About/Motivation&lt;/li&gt;
+&lt;li&gt;Git-Based Workflow&lt;/li&gt;
+&lt;li&gt;Contribution, Communication&lt;/li&gt;
+&lt;li&gt;Testing, Coverage, Versioning&lt;/li&gt;
+&lt;li&gt;Pull Requests&lt;/li&gt;
+&lt;li&gt;Continuous Integration&lt;/li&gt;
+&lt;li&gt;Documentation&lt;/li&gt;
+&lt;li&gt;Publishing, Releases, Licenses&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;about-motivation&#34;&gt;About/Motivation&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Reproduce results in research&lt;/li&gt;
+&lt;li&gt;Demonstrate utility of approach&lt;/li&gt;
+&lt;li&gt;Upgrading
+
+&lt;ul&gt;
+&lt;li&gt;Python 2.7 will be deprecated by 2020&lt;/li&gt;
+&lt;li&gt;New features in ConsistentBayes repo&lt;/li&gt;
+&lt;li&gt;Desire to unify frameworks&lt;/li&gt;
+&lt;li&gt;Repository needed some love&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;git-based-workflow&#34;&gt;Git-Based Workflow&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fork project&lt;/li&gt;
+&lt;li&gt;Clone your fork&lt;/li&gt;
+&lt;li&gt;Create branch for new feature(s)&lt;/li&gt;
+&lt;li&gt;Checkout branch, make changes&lt;/li&gt;
+&lt;li&gt;Commit files with informative messages&lt;/li&gt;
+&lt;li&gt;Push branch back to your remote fork&lt;/li&gt;
+&lt;li&gt;Use GitHub to start Pull-Request&lt;/li&gt;
+&lt;li&gt;Communicate (if needed) until PR is merged (or not)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;contribution-communication&#34;&gt;Contribution, Communication&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Make sure your contribution would be welcome
+
+&lt;ul&gt;
+&lt;li&gt;Consider starting a new &amp;ldquo;Issue&amp;rdquo; on GitHub to ask&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Read the existing documentation (&lt;code&gt;README&lt;/code&gt;, &lt;code&gt;CONTRIBUTE&lt;/code&gt;, etc)
+
+&lt;ul&gt;
+&lt;li&gt;Ensure you understand the necessary requirements&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;unit-testing-coverage-versioning&#34;&gt;Unit-Testing, Coverage, Versioning&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;nose&lt;/code&gt; is a Python package/framework for unit testing&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;codecov&lt;/code&gt; works in conjuction
+
+&lt;ul&gt;
+&lt;li&gt;checks which lines of code your test called&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;setup.py&lt;/code&gt; contains versioning information
+
+&lt;ul&gt;
+&lt;li&gt;Major/Minor releases depend on extent of changes&lt;/li&gt;
+&lt;li&gt;The third number in &lt;code&gt;v1.2.3&lt;/code&gt; is for incremental changes, such as bug-fixes, typos, patches, etc.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;nosetests&#34;&gt;Nosetests&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;One-to-one file structure
+
+&lt;ul&gt;
+&lt;li&gt;one test (class) for each sub-module method&lt;/li&gt;
+&lt;li&gt;multiple &amp;ldquo;tests&amp;rdquo; within each&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Class consists of several methods
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;setup&lt;/code&gt; and &lt;code&gt;teardown&lt;/code&gt; required&lt;/li&gt;
+&lt;li&gt;test for each function within module&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Each test should anticipate mixtures of arguments that could be passed to each function&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;nosetest-example&#34;&gt;Nosetest Example&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from unnecessary_math import multiply
+ 
+def test_numbers_3_4():
+    assert multiply(3,4) == 12 
+ 
+def test_strings_a_3():
+    assert multiply(&#39;a&#39;,3) == &#39;aaa&#39; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nosetests -v test_um_nose.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;small&gt; &lt;a href=&#34;http://pythontesting.net/framework/nose/nose-introduction/&#34; target=&#34;_blank&#34;&gt;Source&lt;/a&gt; &lt;/small&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;pull-requests&#34;&gt;Pull Requests&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://help.github.com/assets/images/help/pull_requests/pull-request-review-edit-branch.png&#34; alt=&#34;github-pr&#34; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://help.github.com/assets/images/help/pull_requests/pull-request-start-review-button.png&#34; alt=&#34;github-pr&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://help.github.com/assets/images/help/pull_requests/pullrequest-send.png&#34; alt=&#34;github-pr&#34; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;continuous-integration&#34;&gt;Continuous Integration&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If enabled, remote server then
+
+&lt;ul&gt;
+&lt;li&gt;Carries out instructions on UNIX image&lt;/li&gt;
+&lt;li&gt;Communicates with GitHub about test status&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Ensures consistency of installation&lt;/li&gt;
+&lt;li&gt;Someone has to pay for the computer&lt;/li&gt;
+&lt;li&gt;Can run local versions&lt;/li&gt;
+&lt;li&gt;Most &amp;ldquo;real&amp;rdquo; projects include CI
+
+&lt;ul&gt;
+&lt;li&gt;Travis, Shippable, etc.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;continuous-integration-1&#34;&gt;Continuous Integration&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Travis runs when you submit a PR to check that everything works&lt;/li&gt;
+&lt;li&gt;GitHub checks for ability to merge automatically&lt;/li&gt;
+&lt;li&gt;Passing does not ensure a PR is merged
+
+&lt;ul&gt;
+&lt;li&gt;Ultimiately up to the admininstrators of the repo&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Helpful for contributors to debug before admins take a look
+
+&lt;ul&gt;
+&lt;li&gt;If checks do not pass, adding commits to your branch will automatically trigger new CI builds, updates to the PR&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
+
+&lt;p&gt;BET is &lt;em&gt;auto-documented&lt;/em&gt; using a tool called &lt;a href=&#34;http://www.sphinx-doc.org/en/master/&#34; target=&#34;_blank&#34;&gt;Sphinx&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;r&amp;quot;&amp;quot;&amp;quot;
+This is a description of the method.
+All sorts of formatting options are understood by Sphinx.
+(kind of something to learn on its own, but usually you
+can make sense of syntax by looking at existing ones)
+&amp;quot;&amp;quot;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Comments that are formatted inside blocks are converted into web-page documentation&lt;/li&gt;
+&lt;li&gt;Updating docs through command-line&lt;/li&gt;
+&lt;li&gt;GitHub pages used to host the resulting output&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;licensing&#34;&gt;Licensing&lt;/h2&gt;
+
+&lt;p&gt;Many open-source models to choose from.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;GNU GPL&lt;/li&gt;
+&lt;li&gt;BSD&lt;/li&gt;
+&lt;li&gt;MIT&lt;/li&gt;
+&lt;li&gt;Creative Commons&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.github.com/articles/licensing-a-repository/&#34; target=&#34;_blank&#34;&gt;Github: Choosing a License&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.github.com/articles/adding-a-license-to-a-repository/&#34; target=&#34;_blank&#34;&gt;Github: Adding a License&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;publishing&#34;&gt;Publishing&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;GitHub (Microsoft)&lt;/li&gt;
+&lt;li&gt;GitLab (VC-funded, Private)&lt;/li&gt;
+&lt;li&gt;Bitbucket (Atlassian)&lt;/li&gt;
+&lt;li&gt;Anaconda (Community)&lt;/li&gt;
+&lt;li&gt;PyPi (Community)&lt;/li&gt;
+&lt;li&gt;(Suggested) Website&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;what-i-did&#34;&gt;What I Did&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Most of what was written about here&lt;/li&gt;
+&lt;li&gt;Intent was to upgrade to Python 3.6&lt;/li&gt;
+&lt;li&gt;Used a tool called &lt;code&gt;2to3&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Takes care of most major changes&lt;/li&gt;
+&lt;li&gt;Two weeks fixing tests&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Once tests fixed, worked on upgrading dependencies&lt;/li&gt;
+&lt;li&gt;Updated examples, copyrights, comments, styling&lt;/li&gt;
+&lt;li&gt;Preparing for release &lt;code&gt;2.1.0&lt;/code&gt;, PR ready to be merged&lt;/li&gt;
+&lt;li&gt;Version &lt;code&gt;3.0.0&lt;/code&gt; will incorporate &lt;code&gt;cbayes&lt;/code&gt; features&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;questions&#34;&gt;Questions?&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.michaelpilosov.com/&#34;&gt;Homepage&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.michaelpilosov.com/slides/&#34;&gt;Slideshows&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/UT-CHG/BET&#34; target=&#34;_blank&#34;&gt;BET&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://www.michaelpilosov.com/projects/</link>
+      <pubDate>Tue, 19 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/projects/</guid>
+      <description>&lt;p&gt;&lt;meta http-equiv=&#34;refresh&#34; content=&#34;0; url=../project&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>https://www.michaelpilosov.com/publications/</link>
+      <pubDate>Tue, 19 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/publications/</guid>
+      <description>&lt;p&gt;&lt;meta http-equiv=&#34;refresh&#34; content=&#34;0; url=../publication&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

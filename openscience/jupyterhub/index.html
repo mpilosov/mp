@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 3.2.0">
+  <meta name="generator" content="Hugo 0.53" />
+  <meta name="author" content="Michael Pilosov">
+
+  
+  
+  
+  
+    
+  
+  <meta name="description" content="The End-User Experience You go to a web-address and are confronted with the Jupyterhub login portal. Once you log in, you see a drop-down menu that allows you to choose what &ldquo;stack&rdquo; of software dependencies you would like to use. After you make your selection, you are redirected to an in-browser interface where all your files are available. Jupyter Notebooks, R Scripts, anything you want, can now be run directly through this interface.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/openscience/jupyterhub/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="hsl(339, 90%, 68%)">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css" crossorigin="anonymous">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Niramit:400,400italic,700|Niramit+Mono">
+  
+
+  <link rel="stylesheet" href="/styles.css">
+  
+  <link rel="stylesheet" href="/css/custom_css.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-122657370-3', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+  <link rel="alternate" href="https://www.michaelpilosov.com/index.xml" type="application/rss+xml" title="Michael Pilosov: The Archives">
+  <link rel="feed" href="https://www.michaelpilosov.com/index.xml" type="application/rss+xml" title="Michael Pilosov: The Archives">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://www.michaelpilosov.com/openscience/jupyterhub/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@Mathematical_MP">
+  <meta property="twitter:creator" content="@Mathematical_MP">
+  
+  <meta property="og:site_name" content="Michael Pilosov: The Archives">
+  <meta property="og:url" content="https://www.michaelpilosov.com/openscience/jupyterhub/">
+  <meta property="og:title" content="JupyterHub | Michael Pilosov: The Archives">
+  <meta property="og:description" content="The End-User Experience You go to a web-address and are confronted with the Jupyterhub login portal. Once you log in, you see a drop-down menu that allows you to choose what &ldquo;stack&rdquo; of software dependencies you would like to use. After you make your selection, you are redirected to an in-browser interface where all your files are available. Jupyter Notebooks, R Scripts, anything you want, can now be run directly through this interface."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-12-22T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2019-01-09T10:20:00&#43;00:00">
+  
+
+  
+
+  
+
+  <title>JupyterHub | Michael Pilosov: The Archives</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/"><img src="/img/logo-dark.png" alt="Michael Pilosov: The Archives"></a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">
+            
+            <span>About</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#resume">
+            
+            <span>Résumé</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" id="search-query" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/">Overview</a>
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/intro/">1. Motivations</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/openscience/intro/">Introduction</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/usage/">Use-Cases</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/demo/">Demonstration</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/example/">Examples</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/getting-started/">2. Getting Started</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/openscience/getting-started/">Relevant Projects</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/anaconda/">Installing Anaconda</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/remote/">Connecting Remotely</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/jupyterhub/">3. Walkthrough</a>
+    <ul class="nav docs-sidenav">
+      
+      <li class="active">
+        <a href="/openscience/jupyterhub/">JupyterHub</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/walkthrough/">Walk-Through</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/hubsetup/">Hub Setup</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/docker/">Docker Reference</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/deploy/">4. Deploy</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/openscience/deploy/">Choosing Your Platform</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+      <p class="docs-toc-title">On this page</p>
+      
+
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#the-end-user-experience">The End-User Experience</a>
+<ul>
+<li><a href="#benefits">Benefits</a></li>
+<li><a href="#application-architecture">Application Architecture</a></li>
+</ul></li>
+<li><a href="#jupyterhub">Jupyterhub</a>
+<ul>
+<li><a href="#notebook-server">Notebook Server</a></li>
+<li><a href="#spawning">Spawning</a>
+<ul>
+<li><a href="#containerization">Containerization</a></li>
+<li><a href="#docker">Docker</a></li>
+</ul></li>
+<li><a href="#database">Database</a></li>
+<li><a href="#authenticator">Authenticator</a></li>
+<li><a href="#proxy">Proxy</a></li>
+<li><a href="#volumes">Volumes</a></li>
+</ul></li>
+</ul>
+</nav>
+
+      <ul class="nav toc-top">
+        <li><a href="#">Back to top</a></li>
+      </ul>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article" itemscope itemtype="http://schema.org/Article">
+
+        <div class="docs-article-container">
+          <h1 itemprop="name">JupyterHub</h1>
+
+          <div class="article-style" itemprop="articleBody">
+            
+
+<h1 id="the-end-user-experience">The End-User Experience</h1>
+
+<p>You go to a web-address and are confronted with the Jupyterhub login portal.
+Once you log in, you see a drop-down menu that allows you to choose what &ldquo;stack&rdquo; of software dependencies you would like to use.
+After you make your selection, you are redirected to an in-browser interface where all your files are available.
+Jupyter Notebooks, R Scripts, anything you want, can now be run directly through this interface.</p>
+
+<p>The work is performed &ldquo;in the cloud.&rdquo; What this means is that a connection is established between your browser window (the client) and a server (the host) elsewhere that is capable of performing the calculations you need.</p>
+
+<h2 id="benefits">Benefits</h2>
+
+<p>You do not have to worry about installing software dependencies, since the administrator has already loaded them into the environment that you selected.
+The machine you are working on will not be doing anything except communicating commands to the host and displaying the result, which means your computer will run on less energy.</p>
+
+<p>Moreover, it means that since <em>all you need is a functional internet browser,</em> you can do all of your scientific work with a budget laptop (or in a pinch, a phone/tablet).
+For academic institutions, this means that entire laboratories of computers can be re-purposed for better uses, since students will not be limited by the technology they can afford.</p>
+
+<p>If you are an administrative user, you can add other users through a control-panel available through this interface, and even be able to see when these users are logged in.
+If configured by the system administrator who set all this up, you may also be able to start an environment <em>as</em> any of these users, and look around their folders/files, perhaps as a teacher helping de-bug some code during remotely-held office hours.</p>
+
+<p><em>Sounds neat, doesn&rsquo;t it?</em>
+Especially for academics, this lowering of friction to programming is especially appealing.
+The hardest parts of setting up a class with the resources they need to start learning how to code have all been abstracted away for both the students and teachers who serve as administrators.
+All of this is already possible, and there are <em>a lot</em> of ways to set this exact thing up, which makes navigating how to do so a little difficult.
+We will discuss this later after building up the proper motivation.</p>
+
+<h2 id="application-architecture">Application Architecture</h2>
+
+<p>This separation of where work is performed and where its results are shown is actually essential to understanding how most modern  &ldquo;applications&rdquo; are built.
+By not burdening end-users with installation dependencies that vary with the technology they own, application developers avoid worrying about cross-platform support.
+Most applications are now simply re-skinned versions of a browser called Chromium<sup class="footnote-ref" id="fnref:chrome"><a href="#fn:chrome">1</a></sup>, which direct you to the company&rsquo;s servers where all the work is performed.</p>
+
+<p>In this spirit, the Jupyter Project has done the same thing for scientists and programmers.
+The open-source community that powers most of the work done by Jupyter is largely concentrated at UC Berkeley, and the adoption of their work is spreading fast across the world.
+However, due to the rapid pace of development, a cohesive narrative that explains how all the technologies developed by the Jupyter Project are connected is hard to come by.
+We attempt to address this problem with this document, stepping through the layers of abstraction and building up a story that helps develop an understanding of how these underlying technologies interface and the many ways in which they can be configured<sup class="footnote-ref" id="fnref:config"><a href="#fn:config">2</a></sup>.</p>
+
+<h1 id="jupyterhub">Jupyterhub</h1>
+
+<p>The management of users and the environments they are able to use is done through the interface known as Jupyterhub (the &ldquo;Hub&rdquo; for short).
+The Hub controls who is allowed to access a notebook server through an <em>Authenticator</em>.
+This can be a username/password combination, or a one-click login through a third-party such as Github, Gitlab, Google, Azure, or your university&rsquo;s login page.</p>
+
+<p>Jupyterhub passes information to an Authenticator, which returns a &ldquo;successful&rdquo; (or not) message to the Hub, which (if successful) then performs some action.
+In the example above, the action is performed was to first display a drop-down menu that allows a user to select an environment.
+(This can be bypassed if you want every end-user to have the same environment).
+Jupyterhub then &ldquo;spawns&rdquo; a &ldquo;single-user (notebook) server&rdquo; to establish the connection between computational resources and the user-facing interface through the browser<sup class="footnote-ref" id="fnref:server"><a href="#fn:server">3</a></sup>.
+The Hub launches such a server for each user that successfully logs in.</p>
+
+<p>Jupyterhub is thus made up of:</p>
+
+<ul>
+<li>An Authenticator (that lets people in or keeps them out),</li>
+<li>a Spawner (which defines individual environments),</li>
+<li>a Database (to store users), and</li>
+<li>a Server (to connect all of it).</li>
+</ul>
+
+<p><img src="https://github.com/jupyterhub/jupyterhub-deploy-docker/raw/master/internal/jupyterhub-docker.png" alt="schematic" /></p>
+
+<h2 id="notebook-server">Notebook Server</h2>
+
+<p>At the heart of the system is the Jupyter Notebook (server).
+The notebook server communicates with the relevant processes on the host machine to carry out the computations that you (the client) asked it to perform through your browser interface.
+The machine running the notebook server has all the necessary dependencies to perform the work, and your end-user experienced is managed through the Jupyter notebook server.</p>
+
+<p>The native file-format for the interface the notebook server is the &ldquo;interactive notebook&rdquo; (which has the <code>.ipynb</code> ending).
+All that these notebooks are is a collection of key-value pairs (dictionaries, linked lists, many words exist), each of which corresponds to one &ldquo;cell&rdquo; in the notebook and carries input/output information along with formatting specifications.
+Since it is best to see by example, here is an abstraction of what this looks like:</p>
+
+<pre><code class="language-python">{&quot;cell_1&quot;: {info} }
+{&quot;cell_2&quot;: {info} }
+{&quot;cell_3&quot;: {info} }
+</code></pre>
+
+<p>where each one of these <code>{info}</code> elements corresponds to a dictionary itself, which might look something like:</p>
+
+<pre><code class="language-python">{&quot;input&quot;: &lt;&gt;, 
+ &quot;output&quot;: &lt;&gt;,
+ &quot;execution_count&quot;: &lt;&gt;, 
+ &quot;kernel&quot;: &lt;&gt;, ...
+}
+</code></pre>
+
+<p>All of this information is used to format an HTML page that is then rendered by a browser of your choice, since at this point it is simply a web page.</p>
+
+<p>Now, it is important to note at this time that if you are using a computer that has all the required software dependencies you need, then you can become the &ldquo;host&rdquo; yourself, and run the notebook server locally.
+In the event that you do this, the website you visit to see the notebook server file-browsing interface and work with notebooks will look something like <code>http://localhost:8000</code>, where <code>localhost</code> is telling your browser that &hellip; well, the host is <em>local</em>, not somewhere <em>remote</em>&hellip;<sup class="footnote-ref" id="fnref:web"><a href="#fn:web">4</a></sup>.
+The <code>:8000</code> (the number can differ) is the <em>port</em> that is being opened on the machine to allow for input/output connections, which is what is handled by the server.
+<em>(Remember this&hellip; it&rsquo;ll come up later).</em></p>
+
+<blockquote>
+<p><strong>An Analogy</strong></p>
+
+<p>If the website is considered the &ldquo;address&rdquo; of the machine(s), the port is the &ldquo;apartment number.&rdquo;
+Many &ldquo;tenants&rdquo; (applications) can &ldquo;live&rdquo; (be hosted) at the same &ldquo;address&rdquo; (website).
+Some buildings choose to have a doorman, so you can ask for directions to the right place <em>by name</em> instead of apartment number.
+So if you do not see a port number (<code>:XXXX</code>) anywhere in the browser address, you can assume that the configuration implemented has a &ldquo;doorman&rdquo; (proxy) directing traffic to the right places.</p>
+</blockquote>
+
+<p>This about sums up what you need to know about the notebook server.
+<em>Somewhere there exists a machine that can do what you want.
+By running a notebook server on this machine, you can connect to it through a web-browser.</em></p>
+
+<h2 id="spawning">Spawning</h2>
+
+<p>There are many ways to start the (single-user) notebook servers.
+They can be started as individual processes on the same machine that the Hub is running on, which is the default behavior, and the implementation used in <a href="https://github.com/jupyterhub/the-littlest-jupyterhub" target="_blank">The Littlest Jupyterhub</a>.</p>
+
+<p>However, in the spirit of modularity, they can also be started on machines elsewhere in the world.
+These machines may be set up with all the dependencies, waiting for authenticated connections from Hub, or they can be created (and destroyed) <em>on-demand.</em>
+They can be physical machines, or &ldquo;virtual machines,&rdquo; which (as the name suggests) are emulations of computers that run as processes on top of some existing architecture.</p>
+
+<h3 id="containerization">Containerization</h3>
+
+<p>Virtual machines allow for something called &ldquo;containerization,&rdquo; which isolated applications in (usually Linux) virtual environments that contain little else but the bare necessities for running a given application.</p>
+
+<p>To scale to millions of users, services exist that allow for the creation and destruction of virtual machines on-demand, with low latency, and pricing computed by the second.
+Such services sit atop a software platform called Kubernetes, and require a decent amount of technical experience to configure.
+Jupyterhub can be configured to &ldquo;spawn&rdquo; single-user notebook servers through such a service using an extension called &ldquo;Kubespawner.&rdquo;
+However, we do not provide any more information about this herein because the wiki for Jupyterhub is written specifically for this implementation case.</p>
+
+<blockquote>
+<p>We focus on a solution that is capable of scaling to hundreds of users and can be built with existing server resources that a department may have that are underutilized, but is a little more technically challenging to implement than <a href="https://github.com/jupyterhub/the-littlest-jupyterhub" target="_blank">The Littlest Jupyterhub</a>, which basically functions as a one-click install and provides its own set of configuration scripts.</p>
+</blockquote>
+
+<h3 id="docker">Docker</h3>
+
+<p>A simpler solution though, can be achieved through <a href="/openscience/docker">Docker</a>, which (although it has a learning curve), is capable of scaling to very large workloads and can be configured to connect multiple servers and balance traffic amongst them.</p>
+
+<blockquote>
+<p>We choose to run Jupyterhub within a Docker container, the Database in another container, and then spawn single-user notebook servers each in isolated containers as well.
+The latter containers are ephemeral, which means that once a user shuts down their single-user server (or it is shut down due to inactivity after a predetermined amount of time), the container is destroyed.
+Containerizing every aspect of this project allows for a really simple deployment scenario, which we walk through on the <a href="/openscience/deploy">Deployment</a> page.</p>
+</blockquote>
+
+<p>We can &ldquo;containerize&rdquo; the environments we want our users to experience in their single-user notebook servers through the use of a &ldquo;Dockerfile,&rdquo; which simply lists a set of instructions to configure a brand-new Ubuntu (Linux distribution) machine to handle all the dependencies.</p>
+
+<p>The single-user notebook servers can be launched from a choice of <a href="/openscience/docker/#images">&ldquo;images,&rdquo;</a> which define the containers that are created/destroyed on-demand.</p>
+
+<p>In this way, our applications are &ldquo;stateless,&rdquo; which means that all the information (files, data, configuration) is connected to the application virtually (Docker handles these connections through something called <a href="/openscience/docker#volumes">&ldquo;volumes&rdquo;</a>.
+So, if properly configured, <em>a student can launch any environment they want and still see the same set of files.</em></p>
+
+<h2 id="database">Database</h2>
+
+<p>A basic SQL database comes prepackaged and configured with Jupyterhub, but for &ldquo;production&rdquo; purposes, the developers in the Jupyter Project advise using a more resilient database such as PostgresDB, which is the solution we implemented, following the <a href="https://github.com/jupyterhub/jupyterhub-deploy-docker" target="_blank">Deployment Example</a> provided by Jupyter.</p>
+
+<p>This postgres database will exist inside its own container and be connected to an external volume (managed by Docker), so that we can create/destroy the Hub and not lose any of our user data.</p>
+
+<h2 id="authenticator">Authenticator</h2>
+
+<p>The <a href="https://github.com/jupyterhub/jupyterhub/wiki/Authenticators" target="_blank">Wiki</a> has a list of authenticator options.
+The default behavior is to check the system users on the machine running Jupyterhub.
+In the <code>jupyterhub_config.py</code> file which is used to set up the Hub, a <code>whitelist</code> and <code>admins</code> attribute are defined to control who is allowed in.
+If inside a container, this means that users must be created inside of there!
+The nice thing about using an authentication service such as OAuth is that it simplifies the login entirely, since accounts exist on other platforms to verify users.
+The downside is that you must own a &ldquo;fully qualified domain name&rdquo; in order to do this, which means you must own the website (can be as low as $2-10/year, available via <a href="https://namecheap.com or similar provider" target="_blank">Namecheap</a>).</p>
+
+<h2 id="proxy">Proxy</h2>
+
+<p>As mentioned in the analogy in <a href="./#notebook-server">earlier sections</a>, the &ldquo;doorman&rdquo; that directs traffic around is the component of this application known as the &ldquo;proxy&rdquo;, and is the last part left in securing and configuring your server.</p>
+
+<h2 id="volumes">Volumes</h2>
+
+<p>Files and folders, as mentioned, persist on the machine that is hosting the application, and can even be configured (e.g., with symbolic links), to connect to file-servers elsewhere.
+My university, for example, has a system for all of us to be able to store files on a remote server, and we can &ldquo;mount&rdquo; these connections appropriately by configuring Jupyterhub so that students can more readily access such resources.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:chrome">which serves as the backbone for Google Chrome.
+ <a class="footnote-return" href="#fnref:chrome"><sup>^</sup></a></li>
+<li id="fn:config">We note that the reason that there are so many possible ways to set up such a system is because the developers ensured the modularity of all the application components. There is a lot of segmentation that allows for this technology to scale to thousands of users. The lessons learned by mobile developers about scaling in popularity have all been implemented here.
+ <a class="footnote-return" href="#fnref:config"><sup>^</sup></a></li>
+<li id="fn:server">The distinction is made for (single-user) servers since Jupyterhub itself is a server communicating with other applications/servers.
+ <a class="footnote-return" href="#fnref:server"><sup>^</sup></a></li>
+<li id="fn:web">I suppose this would be a good time to mention that any website you visit is simply an alias for an &ldquo;address&rdquo; to some other computer elsewhere in the world. The address system used on the internet is known as the &ldquo;IP address&rdquo;, so the <code>localhost</code> is telling the browser to look for a connection on the same machine.
+ <a class="footnote-return" href="#fnref:web"><sup>^</sup></a></li>
+</ol>
+</div>
+
+          </div>
+
+          
+
+        </div>
+
+        <div class="body-footer">
+          Last updated on Jan 9, 2019
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="/privacy/">Privacy Policy</a>
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; 2019 Michael Pilosov &middot; 
+
+    
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic</a> +
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.d037ee5294b166a79dec317c58aea9cc.js"></script>
+
+    
+
+  </body>
+</html>
+
+

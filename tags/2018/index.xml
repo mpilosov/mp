@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2018 on Michael Pilosov: The Archives</title>
+    <link>https://www.michaelpilosov.com/tags/2018/</link>
+    <description>Recent content in 2018 on Michael Pilosov: The Archives</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
+    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.michaelpilosov.com/tags/2018/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PhD</title>
+      <link>https://www.michaelpilosov.com/project/thesis/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/thesis/</guid>
+      <description>Please pardon our mess.   This page is still a work in progress.   I have many projects that I am documenting simultaneously and am doing my best to be thorough and embed a lot of rich metadata so that you can click around based on what you find interesting.  Please feel free to contact me if you want me to finish this particular page immediately.</description>
+    </item>
+    
+    <item>
+      <title>SIAM</title>
+      <link>https://www.michaelpilosov.com/project/siam/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/siam/</guid>
+      <description>The following is an edited version of an end-of-year summary report sent to the SIAM.
+SIAM and Math Club have established three core pillars upon which to form themselves within the Department of Mathematical and Statistical Sciences at CU Denver:
+ service, scholarship, and community engagement.  In addressing service, we have regularly facilitated participation in regional science fairs, organized a semesterly food bank drive to benefit homeless students on campus (Note: our department was the most successful donor on campus last semester), and have begun to integrate charitable fundraising into our community events.</description>
+    </item>
+    
+    <item>
+      <title>Students Today, Alumni Tomorrow</title>
+      <link>https://www.michaelpilosov.com/project/stat/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/stat/</guid>
+      <description>Co-President focusing on growing a new organization in the Office of Advancement, with a particular emphasis on developing a social media strategy.
+I began my co-presidency of Students Today, Alumni Tomorrow officially in the spring semester of 2019, though technically I was serving as interim President for fall 2018 as well.
+The focus of the organization is to better connect students and alumni, educating students about the ways in which University Advancement operates and why it is so important.</description>
+    </item>
+    
+    <item>
+      <title>G2S3</title>
+      <link>https://www.michaelpilosov.com/project/summerschool/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/summerschool/</guid>
+      <description>Program The summer school was focused on Uncertainty Quantification, specifically pretending to Inverse Problems.
+Structure We sat through hours of lecture and about half the days we managed to spend programming/implementing some of what we learned.
+Project At the end of the summer school we had to perform a project, and I paired up with a couple of students to work on an inverse problem involving the Helmholtz equation.</description>
+    </item>
+    
+    <item>
+      <title>Twitterbots</title>
+      <link>https://www.michaelpilosov.com/project/twitterbots/</link>
+      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/twitterbots/</guid>
+      <description>I decided to explore the use of Twitter&amp;rsquo;s API in Python to perform some fun projects.
+I wrote a Twitter bot called &amp;ldquo;Random Art Baby&amp;rdquo; that when prompted, would respond to users with artwork.
+This art was randomly generated using the library I had developed for my initial exploration with graphical user interfaces for visualizing probability distributions.
+This also provided me the opportunity to explore some machine learning code for the generation of natural language speech based on training examples.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.michaelpilosov.com/talk/racas18/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/talk/racas18/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DCI</title>
+      <link>https://www.michaelpilosov.com/project/dci/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/dci/</guid>
+      <description>The novel framework for solving inverse problems in which all of my doctoral work has been grounded.
+In the broadest terms possible, Data-Consistent Inversion (DCI) is a new approach to answer questions about the conditions under which observations can occur.
+What makes it particularly special is that in a sense, this approach leverages the &amp;ldquo;best of both worlds&amp;rdquo; in the statistical inference world. The two schools of thought: Deterministic Optimization and Bayesian Statistics have different philosophical frameworks for answering questions pertaining to the explanation of observed data.</description>
+    </item>
+    
+    <item>
+      <title>Consistent Bayes</title>
+      <link>https://www.michaelpilosov.com/project/cbayes/</link>
+      <pubDate>Thu, 27 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/project/cbayes/</guid>
+      <description>This was my first attempt at writing a software library from scratch. I had a bunch of code in different places that performed many of the same tasks and wanted to unify it under one framework. It implemented the Data-Consistent Inversion framework (before it was called that), namely our sample-based approach for inverting probability measures.
+This was an excellent opportunity to learn the process of writing object-oriented code, unit-tests, and so much more.</description>
+    </item>
+    
+  </channel>
+</rss>

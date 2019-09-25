@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 3.2.0">
+  <meta name="generator" content="Hugo 0.53" />
+  <meta name="author" content="Michael Pilosov">
+
+  
+  
+  
+  
+    
+  
+  <meta name="description" content="Subsurface Contaminant Transport.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/project/toxins/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="hsl(339, 90%, 68%)">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css" crossorigin="anonymous">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Niramit:400,400italic,700|Niramit+Mono">
+  
+
+  <link rel="stylesheet" href="/styles.css">
+  
+  <link rel="stylesheet" href="/css/custom_css.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-122657370-3', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+  <link rel="alternate" href="https://www.michaelpilosov.com/index.xml" type="application/rss+xml" title="Michael Pilosov: The Archives">
+  <link rel="feed" href="https://www.michaelpilosov.com/index.xml" type="application/rss+xml" title="Michael Pilosov: The Archives">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://www.michaelpilosov.com/project/toxins/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@Mathematical_MP">
+  <meta property="twitter:creator" content="@Mathematical_MP">
+  
+  <meta property="og:site_name" content="Michael Pilosov: The Archives">
+  <meta property="og:url" content="https://www.michaelpilosov.com/project/toxins/">
+  <meta property="og:title" content="Tracking Toxins | Michael Pilosov: The Archives">
+  <meta property="og:description" content="Subsurface Contaminant Transport."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2017-09-01T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2019-03-19T15:30:00&#43;00:00">
+  
+
+  
+
+  
+
+  <title>Tracking Toxins | Michael Pilosov: The Archives</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/"><img src="/img/logo-dark.png" alt="Michael Pilosov: The Archives"></a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">
+            
+            <span>About</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#resume">
+            
+            <span>Résumé</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article article-project" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">Tracking Toxins</h1>
+
+  
+  <p class="page-subtitle">Environmental remediation for Hexavalent Chromium</p>
+  
+
+  
+    
+
+<div class="article-metadata">
+
+  
+  
+  <span itemscope itemprop="author" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Michael Pilosov">
+  </span>
+  
+
+  <span class="article-date">
+    
+        Last updated on
+    
+    <meta content="2017-09-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+    <time datetime="2019-03-19 15:30:00 &#43;0000 UTC" itemprop="dateModified">
+      Mar 19, 2019
+    </time>
+  </span>
+  <span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Michael Pilosov">
+  </span>
+
+  
+
+  
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="/categories/environment/">environment</a>, 
+    
+    <a href="/categories/academia/">academia</a>, 
+    
+    <a href="/categories/research/">research</a>
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Tracking%20Toxins&amp;url=https%3a%2f%2fwww.michaelpilosov.com%2fproject%2ftoxins%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.michaelpilosov.com%2fproject%2ftoxins%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.michaelpilosov.com%2fproject%2ftoxins%2f&amp;title=Tracking%20Toxins"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+   <li>
+      <a class="email"
+         href="mailto:?subject=Tracking%20Toxins&amp;body=https%3a%2f%2fwww.michaelpilosov.com%2fproject%2ftoxins%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+
+
+
+<figure>
+
+<img src="all-cores.jpg" alt="Slamming one of the servers when no one else was using it." />
+
+
+
+<figcaption data-pre="Figure " data-post=":" >
+  
+  <p>
+    Slamming one of the servers when no one else was using it.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<h1 id="overview">Overview</h1>
+
+<p>I went to work with <a href="https://montyv.github.io/" target="_blank">Dr. Velimir Vesselinov</a> in the summer of 2017 at the Los Alamos National Laboratory <a href="https://lanl.gov" target="_blank">(LANL)</a>.
+This experience drastically changed the direction of my research.
+I spent much of my time reading papers on Bayesian Inverse Problems and Subsurface Contaminant Transport Problems.
+Part of what I did was learn the <a href="https://julialang.org/" target="_blank">Julia</a> programming language<sup class="footnote-ref" id="fnref:v0-52-and-v0-6-a"><a href="#fn:v0-52-and-v0-6-a">1</a></sup>, implementing some <a href="https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo" target="_blank">Markov chain Monte Carlo</a> methods to practice, and converting some algorithms from Python to Julia.</p>
+
+<p>Part of the reason that my research direction changed was that I ran into a scenario with which I was completely unfamiliar, and that the methods I had been researching were not quite suited to handle.
+I ended up sketching out several ideas of how to adopt our <a href="../dci">framework</a> to handle situations where the number of data points far outnumbers the number of uncertain input parameters.</p>
+
+<p>In the <a href="/tags/fall-2017">fall of 2017</a> and <a href="/tags/spring-2018">spring of 2018</a>, I worked extensively with <a href="http://www.math.ucdenver.edu/~tbutler/" target="_blank">my advisor</a> to extend the theory behind some of what I had developed.
+By the time of the <a href="/talk/siam_uq18">SIAM UQ</a> conference in 2018, I had some results that appeared to be working insofar as that they could handle arbitrary dataset sizes (in theory).
+We would continue to improve on this <a href="../dci">data-generated maps approach</a> and it formed the basis for my thesis work.</p>
+
+
+
+
+<figure>
+
+<img src="partial-cores.jpg" alt="I learned how to parallelize computations that summer." />
+
+
+
+<figcaption data-pre="Figure " data-post=":" >
+  
+  <p>
+    I learned how to parallelize computations that summer.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>In order to accomplish <em>something</em> over the summer that I was at LANL, I ended up somewhat changing the problem to one that I could handle tackling in the short number of weeks that remained before I had to leave.
+I ended up asking questions regarding the optimal sub-selection of information with respect to the precision and accuracy of the estimates of parameter uncertainty.
+Basically, if you could gather data from only some subset of wells at a particular point in time, how do we understand <em>a priori</em> which measurements would provide the most useful data?</p>
+
+
+
+
+<figure>
+
+<img src="rainbow.jpg" alt="I was not allowed to take any pictures on the LANL property, so here is a pretty rainbow I managed to capture on my drive home one day." />
+
+
+
+<figcaption data-pre="Figure " data-post=":" >
+  
+  <p>
+    I was not allowed to take any pictures on the LANL property, so here is a pretty rainbow I managed to capture on my drive home one day.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>After this summer, though, my foray in to Optimal Experimental Design (which I had been doing a bit of for the past semester) ended.
+My focus turned to actually formulating a theory and method for <a href="/talk/siam_cse19">Parameter Identification under Uncertainty</a> in our <a href="../dci">Data-Consistent Inversion</a> framework.</p>
+
+<h1 id="original-proposal">Original Proposal</h1>
+
+<p>(2017-01-26)</p>
+
+<blockquote>
+<p>We would like to investigate the use of machine learning to enhance optimal selection of quantities of interest for use in solving stochastic inverse problems in a measure-theoretic framework.
+Much of the work is focused on improving numerical accuracy and precision using novel sampling techniques.
+We hope to develop methods that leverage locally optimal Quantity of Interest choices to guide designs of data collection networks which can potentially quantify and reduce uncertainty more efficiently than existing approaches.
+The goals of this research project include the publication of a research paper and the development of existing LANL open-source code.</p>
+</blockquote>
+
+<h2 id="references">References</h2>
+
+<p>For more information on the Measure-Theoretic framework developed by Dr. Butler <em>et al</em>, as well as an overview of the open-source software BET which implements the novel developments in Python 2.7, please refer to:</p>
+
+<blockquote>
+<p><em>A measure-theoretic computational method for inverse sensitivity problems I: Basic Method and Analysis</em>, J. Breidt, T. Butler, D. Estep, SIAM Journal on Numerical Analysis, Vol. 49, (2011), pp. 1836-1859</p>
+
+<p><em>A computational measure-theoretic approach to inverse sensitivity problems II: A posteriori error analysis</em>, T. Butler, D. Estep, J. Sandelin, SIAM Journal on Numerical Analysis, Vol. 50, (2012), pp. 22-45</p>
+
+<p><em>A measure-theoretic computational method for inverse sensitivity problems III: Multiple Quantities of Interest</em>, T. Butler, D. Estep, S. Tavener, C. Dawson, J.J. Westerink, SIAM/ASA Journal on Uncertainty Quantification, Vol. 2, (2014), pp. 174-202</p>
+</blockquote>
+
+<h1 id="at-summer-s-end">At Summer&rsquo;s End</h1>
+
+<p>(2017-08-17)</p>
+
+<h2 id="abstract-for-agu-conference-that-i-did-not-end-up-attending">Abstract for AGU Conference (that I did not end up attending)</h2>
+
+<blockquote>
+<p>The decision of where to take measurements of groundwater contaminant concentrations is of importance to a number of scientific disciplines.
+However, not all measurements are equally useful in determining unknown parameters.
+Through the use of model simulations, decisions regarding measurement locations that reduce uncertainty can be compared and scrutinized before any fieldwork is performed.</p>
+
+<p>Recent advances in optimal experimental design in the context of a measure-theoretic approach to the solution of stochastic inverse problems sheds a new perspective on making such decisions.</p>
+
+<p>We present some motivating examples that illustrate core features of several scenarios a scientist might encounter in the course of their work.
+We compare the choices that arise under several competing decision criteria and discuss the merits of each approach.</p>
+
+<p>Our analyses are representative of the LANL groundwater contamination sites but the general approach is applicable to a number of physical processes that are studied with numerical models.</p>
+</blockquote>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:v0-52-and-v0-6-a">(<code>v0.52</code> and <code>v0.6</code> at the time I was there) <a class="footnote-return" href="#fnref:v0-52-and-v0-6-a"><sup>^</sup></a></li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/code/">code</a>
+  
+  <a class="badge badge-light" href="/tags/national-lab/">national lab</a>
+  
+  <a class="badge badge-light" href="/tags/research/">research</a>
+  
+  <a class="badge badge-light" href="/tags/grad/">grad</a>
+  
+  <a class="badge badge-light" href="/tags/summer/">summer</a>
+  
+  <a class="badge badge-light" href="/tags/summer-2017/">summer 2017</a>
+  
+  <a class="badge badge-light" href="/tags/fall-2017/">fall 2017</a>
+  
+  <a class="badge badge-light" href="/tags/2017/">2017</a>
+  
+  <a class="badge badge-light" href="/tags/inverse-problems/">inverse problems</a>
+  
+  <a class="badge badge-light" href="/tags/oed/">oed</a>
+  
+</div>
+
+
+
+    
+
+
+
+
+
+
+<div class="media author-card" itemscope itemtype="http://schema.org/Person">
+  
+  <img class="portrait mr-3" src="/img/profile.png" itemprop="image" alt="Avatar">
+  
+  <div class="media-body">
+    <h5 class="card-title" itemprop="name"><a href="/">Michael Pilosov</a></h5>
+    <h6 class="card-subtitle">(applied) math nerd on a mission.</h6>
+    
+    <ul class="network-icon" aria-hidden="true">
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="//linkedin.com/in/mathematicalmichael" >
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="//twitter.com/Mathematical_MP" >
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="//instagram.com/mathematicalmichael" >
+          <i class="fab fa-instagram"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      <li>
+        <a itemprop="sameAs" href="mailto:mpilosov@gmail.com" >
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="//github.com/mpilosov" >
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+
+    
+    
+
+    
+
+      
+      
+      
+
+      
+      
+      
+
+      
+      
+      
+    
+
+  </div>
+</article>
+<center><small><a href="/project">see all</a></small></center>
+
+
+<div class="article-container article-widget">
+  <div class="post-nav">
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="https://www.michaelpilosov.com/project/dci/" rel="next">DCI</a>
+  </div>
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="https://www.michaelpilosov.com/project/masters/" rel="prev">Masters</a>
+  </div>
+  
+</div>
+
+</div>
+
+<div class="container">
+  <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="/privacy/">Privacy Policy</a>
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; 2019 Michael Pilosov &middot; 
+
+    
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic</a> +
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.d037ee5294b166a79dec317c58aea9cc.js"></script>
+
+    
+
+  </body>
+</html>
+

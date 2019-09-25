@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 3.2.0">
+  <meta name="generator" content="Hugo 0.53" />
+  <meta name="author" content="Michael Pilosov">
+
+  
+  
+  
+  
+    
+  
+  <meta name="description" content="Notes from configuring Jupyterhub">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/devlog/jupyterhub/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="hsl(339, 90%, 68%)">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css" crossorigin="anonymous">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Niramit:400,400italic,700|Niramit+Mono">
+  
+
+  <link rel="stylesheet" href="/styles.css">
+  
+  <link rel="stylesheet" href="/css/custom_css.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-122657370-3', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+  <link rel="alternate" href="https://www.michaelpilosov.com/index.xml" type="application/rss+xml" title="Michael Pilosov: The Archives">
+  <link rel="feed" href="https://www.michaelpilosov.com/index.xml" type="application/rss+xml" title="Michael Pilosov: The Archives">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://www.michaelpilosov.com/devlog/jupyterhub/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@Mathematical_MP">
+  <meta property="twitter:creator" content="@Mathematical_MP">
+  
+  <meta property="og:site_name" content="Michael Pilosov: The Archives">
+  <meta property="og:url" content="https://www.michaelpilosov.com/devlog/jupyterhub/">
+  <meta property="og:title" content="Jupyterhub Configuration | Michael Pilosov: The Archives">
+  <meta property="og:description" content="Notes from configuring Jupyterhub"><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-12-25T00:00:00-07:00">
+  
+  <meta property="article:modified_time" content="2019-01-01T14:43:00-07:00">
+  
+
+  
+
+  
+
+  <title>Jupyterhub Configuration | Michael Pilosov: The Archives</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/"><img src="/img/logo-dark.png" alt="Michael Pilosov: The Archives"></a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">
+            
+            <span>About</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#resume">
+            
+            <span>Résumé</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" id="search-query" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/devlog/academicupgrades/">Website</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/devlog/academicupgrades/">Upgrading</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/devlog/">devlog</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/devlog/docker/">Phase 0</a>
+      </li>
+      
+      <li >
+        <a href="/devlog/openscience/">Phase 1</a>
+      </li>
+      
+      <li class="active">
+        <a href="/devlog/jupyterhub/">Phase 2</a>
+      </li>
+      
+      <li >
+        <a href="/devlog/widgets/">Widgets</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+      <p class="docs-toc-title">On this page</p>
+      
+
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#jan-1-2019">Jan 1, 2019</a>
+<ul>
+<li><a href="#status-report">Status Report</a></li>
+<li><a href="#new-server">New Server</a></li>
+</ul></li>
+<li><a href="#jan-2-3-2019">Jan 2-3, 2019</a>
+<ul>
+<li><a href="#useful-reading">Useful Reading</a></li>
+<li><a href="#dockerspawner">Dockerspawner</a></li>
+<li><a href="#file-storage">File Storage</a></li>
+<li><a href="#kubernetes">Kubernetes</a></li>
+</ul></li>
+<li><a href="#jan-4-5-2019">Jan 4-5, 2019</a>
+<ul>
+<li><a href="#file-permissions">File permissions</a></li>
+<li><a href="#database">Database</a></li>
+<li><a href="#multiple-spawners">Multiple Spawners</a></li>
+</ul></li>
+<li><a href="#jan-6-7-2019">Jan 6-7, 2019</a>
+<ul>
+<li><a href="#math-hub">Math-hub</a></li>
+</ul></li>
+<li><a href="#jan-8-2019">Jan 8, 2019</a>
+<ul>
+<li><a href="#python-2">Python 2</a></li>
+<li><a href="#mixed-authentication">Mixed Authentication</a></li>
+</ul></li>
+<li><a href="#jan-8-10-2019">Jan 8-10, 2019</a>
+<ul>
+<li><a href="#final-challenges">Final Challenges</a></li>
+</ul></li>
+<li><a href="#jan-11-2019">Jan 11, 2019</a>
+<ul>
+<li><a href="#finishing-touches">Finishing Touches</a></li>
+<li><a href="#customizing-spawning-options">Customizing Spawning Options</a></li>
+</ul></li>
+</ul>
+</nav>
+
+      <ul class="nav toc-top">
+        <li><a href="#">Back to top</a></li>
+      </ul>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article" itemscope itemtype="http://schema.org/Article">
+
+        <div class="docs-article-container">
+          <h1 itemprop="name">Jupyterhub Configuration</h1>
+
+          <div class="article-style" itemprop="articleBody">
+            
+
+<h1 id="jan-1-2019">Jan 1, 2019</h1>
+
+<h2 id="status-report">Status Report</h2>
+
+<p>Okay so where are we at?</p>
+
+<ul>
+<li><code>Spawner</code> needs to be sussed out. Right now I really like DockerSpawner, and it seems to persist storage.
+
+<ul>
+<li>Each student gets a user account but it&rsquo;s only used for authenetication right now. Can&rsquo;t figure out volume-mapping.</li>
+</ul></li>
+
+<li><p>With <code>dockerspawner.DockerSpawner</code>:</p>
+
+<ul>
+<li>Each time someone is logged in, a container is either loaded up or built from <code>jupyterlab_img</code> container. These are very flexible, many stacks available.</li>
+<li>In this set-up, each student gets a container, which is a full-fledged linux machine. Since Docker is managing these alongside Dockerhub in the network, communication between containers is not possible right now. <em>should be</em></li>
+<li>One hour of inactivity results in shutdown of container thanks to a python script from jupyter.</li>
+</ul></li>
+
+<li><p>What we want: <code>dockerspawner.SystemUserSpawner</code></p>
+
+<ul>
+<li>with maps to home directories that exist on the <code>jupyterhub</code> container.</li>
+<li>this way a teacher opens the docker container with the &ldquo;hub&rdquo; and all the students are there.</li>
+</ul></li>
+
+<li><p>What we have now:</p>
+
+<ul>
+<li>each student has a container with their name on it. each is its own linux machine</li>
+<li>to get into their linux machines, run <code>docker exec -ti jupyter-{surname} /bin/bash</code>, do your thing, <code>Ctrl-D</code> to exit.</li>
+<li>The script that gets installed in the hub container stops idle single-user servers (<em>I think this means it shuts down the containers that are inactive</em>).</li>
+<li>The containers are spun up based on a jupyterlab image.
+
+<ul>
+<li><em>What happens when we update this? Perhaps to include files for every student?</em></li>
+</ul></li>
+<li><strong>Alternatively, you have all of them learn to manage push/pull from a class repository</strong></li>
+<li>It appears that to do this, we <a href="https://github.com/jupyterhub/dockerspawner/issues/172" target="_blank">sub-class the Spawner</a>.</li>
+</ul></li>
+</ul>
+
+<pre><code class="language-python">    from dockerspawner import DockerSpawner
+    class MyDockerSpawner(DockerSpawner):
+        team_map = {
+            'user1': 'team1',
+            'user2': 'team1',
+            'user3': 'team2',
+        }
+
+        def start(self):
+            team = self.team_map[self.user.name]
+            # add team volume to volumes
+            self.volumes['jupyterhub-team-{}'.format(team)] = {
+                'bind': '/home/shared/{}'.format(team),
+                'mode': 'rw',  # or ro for read-only
+            }
+
+    c.JupyterHub.spawner_class = MyDockerSpawner
+</code></pre>
+
+<hr />
+
+<h2 id="new-server">New Server</h2>
+
+<p>As root:</p>
+
+<pre><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&quot;
+sudo apt-get update
+apt-cache policy docker-ce
+sudo apt-get install -y docker-ce
+
+sudo groupadd docker
+sudo usermod -aG docker $USER
+# also add any users you want to be running docker. 
+# I added `michael` on my machine. will have to log out/in to refresh group membership. 
+
+sudo apt-get install -y docker-compose
+</code></pre>
+
+<p>As user <code>michael</code>:</p>
+
+<pre><code>cd repos/
+git clone git clone https://github.com/mathematicalmichael/hubsetup.git
+cd hubsetup/
+
+# make sure you clean up images/volumes/containers. I didn't have much there from before, did have hello-world.
+
+docker-compose build
+</code></pre>
+
+<p>This came up, may be a problem?</p>
+
+<pre><code>WARNING: The COMPOSE_PROJECT_NAME variable is not set. Defaulting to a blank string.
+</code></pre>
+
+<p>But it kept going&hellip;</p>
+
+<p>but then.</p>
+
+<pre><code>ERROR: Service 'jupyterlab' failed to build: failed to register layer: Error processing tar file(exit status 1): write /opt/conda/lib/python3.6/site-packages/pandas/_libs/tslibs/timestamps.cpython-36m-x86_64-linux-gnu.so: no space left on device
+</code></pre>
+
+<p>So I went ahead and deleted a couple GB of space by removing unused conda environments and Lucas&rsquo; user account.</p>
+
+<pre><code>docker-compose up 
+</code></pre>
+
+<p>fairly sure this will fail because of a mis-specified IP address.
+Should also enable security since now I have them on this server.</p>
+
+<p>the SSL is messing with me since I already have it set up on the server.</p>
+
+<p>trying to launch jupyterhub with dockerspawner with jupyterhub local install.</p>
+
+<p><code>export DOCKER_JUPYTER_IMAGE=jupyter/datascience-notebook:7254cdcfa22b</code></p>
+
+<p>Okay well the hub worked and spawner did not.</p>
+
+<p>I dove into making a custom spawner (may be necessary?), but it was a rabbit hole.</p>
+
+<p><em>Note from 1/8/19:</em> The image needs to be available on the machine. It is separate from the hub, so just make sure the names line up correctly by checking <code>docker images</code> against the <code>jupyterhub_config.py</code> file.</p>
+
+<hr />
+
+<h1 id="jan-2-3-2019">Jan 2-3, 2019</h1>
+
+<p>See <a href="/devlog/proxy">proxy</a> page.</p>
+
+<h2 id="useful-reading">Useful Reading</h2>
+
+<p>Here is something interesting for version-controlling notebooks.
+<a href="https://github.com/mwouts/jupytext" target="_blank">https://github.com/mwouts/jupytext</a></p>
+
+<p>Here is an introduction to the notebook format.
+<a href="https://nbformat.readthedocs.io/en/latest/format_description.html" target="_blank">https://nbformat.readthedocs.io/en/latest/format_description.html</a>
+<em>TODO:</em> You should turn this into a write-up.</p>
+
+<p>The basic examples in here are actually a great demo of publishing LaTeX documents right from Jupyter.
+<a href="https://github.com/jupyter/nbconvert-examples" target="_blank">https://github.com/jupyter/nbconvert-examples</a></p>
+
+<p>Nice article
+<a href="https://blog.dominodatalab.com/data-science-vs-engineering-tension-points/" target="_blank">https://blog.dominodatalab.com/data-science-vs-engineering-tension-points/</a></p>
+
+<p>This might be how to set up binderhub on your own &ndash; minikube
+<a href="https://github.com/jupyterhub/binderhub/blob/master/CONTRIBUTING.md" target="_blank">https://github.com/jupyterhub/binderhub/blob/master/CONTRIBUTING.md</a></p>
+
+<p>Other Projects for sharing results:
+<a href="https://github.com/minrk/thebelab" target="_blank">https://github.com/minrk/thebelab</a>
+<a href="https://github.com/QuantStack/voila" target="_blank">https://github.com/QuantStack/voila</a>
+Write about them in a new section summarizing sharing results.</p>
+
+<p><a href="https://github.com/jupyter/dashboards" target="_blank">https://github.com/jupyter/dashboards</a></p>
+
+<p>Adding extra libraries to the jupyter-stacks image
+<a href="https://github.com/binder-examples/jupyter-stacks" target="_blank">https://github.com/binder-examples/jupyter-stacks</a></p>
+
+<p>Allowing students to get latest files without knowing git
+<a href="https://github.com/jupyterhub/nbgitpuller" target="_blank">https://github.com/jupyterhub/nbgitpuller</a></p>
+
+<blockquote>
+<p>When a link is clicked, we try to make opinionated intelligent guesses on how to do a merge automatically, without making the user do a conflict resolution. nbgitpuller is designed to be used by folks who do not know that git is being used underneath, and are only pulling content one way from a source and modifying it - not pushing it back. So we have made the following opinionated decisions.</p>
+
+<ul>
+<li>If content has changed in both places, prefer local changes over remote changes.</li>
+<li>If a file was deleted locally but present in the remote, remote file is restored to local repository. This allows users to get a &lsquo;fresh copy&rsquo; of a file by just deleting the file locally &amp; clicking the link again.</li>
+<li>If a file exists locally but is untracked by git (maybe someone uploaded it manually), then rename the file, and pull in remote copy.</li>
+</ul>
+</blockquote>
+
+<p>Hippylib-Hub, example to follow.
+<a href="https://github.com/g2s3-2018/hippylib-hub" target="_blank">https://github.com/g2s3-2018/hippylib-hub</a></p>
+
+<h2 id="dockerspawner">Dockerspawner</h2>
+
+<p>Want:
+    - Dockerspawner is nice (can restart hub without issues).
+    - Although, restarting if all-in-one isn&rsquo;t that bad, either. Temporary inconvenience.</p>
+
+<p>Add this to installations!!! It&rsquo;s amazing.
+<a href="https://github.com/yuvipanda/nbresuse" target="_blank">https://github.com/yuvipanda/nbresuse</a></p>
+
+<p>This might be a good thing to test on our server.
+<a href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/" target="_blank">https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/</a></p>
+
+<p>USEFUL: in Vim:
+<code>r:! openssl rand -hex 32</code> will paste a token into a file like <code>config.yaml</code></p>
+
+<pre><code>proxy:
+    secretToken: xxxx
+</code></pre>
+
+<h2 id="file-storage">File Storage</h2>
+
+<p>Wow I can&rsquo;t believe this exists.
+<a href="https://www.katacoda.com/" target="_blank">https://www.katacoda.com/</a></p>
+
+<p>This is a good file-storage solution
+<a href="https://www.youtube.com/watch?v=hqE5c5pyfrk" target="_blank">https://www.youtube.com/watch?v=hqE5c5pyfrk</a>
+<a href="https://storageos.com/developers/" target="_blank">https://storageos.com/developers/</a>
+another alternative, which appears to be a bit more complicated to set-up (though helm-chart should be available by now), but is open-source and from redhat: <a href="https://www.youtube.com/watch?v=Fgpr2lMnBVY" target="_blank">https://www.youtube.com/watch?v=Fgpr2lMnBVY</a> [16:30]</p>
+
+<h2 id="kubernetes">Kubernetes</h2>
+
+<p>Kubernetes 101 introduction
+<a href="https://medium.com/google-cloud/kubernetes-101-pods-nodes-containers-and-clusters-c1509e409e16" target="_blank">https://medium.com/google-cloud/kubernetes-101-pods-nodes-containers-and-clusters-c1509e409e16</a></p>
+
+<p>The monitoring of my memory usage led me to discover that repeated execution of plotting cells led to memory usage going through the roof. The solution was to add this cell-magic to the top of any plotting-cell: <code>%reset -f out</code>. What this does is purge the output of the cell</p>
+
+<hr />
+
+<h1 id="jan-4-5-2019">Jan 4-5, 2019</h1>
+
+<p>Tried and failed to get Traefik working. See <a href="/devlog/proxy">proxy</a> notes. Took some time to relax.</p>
+
+<p>Note</p>
+
+<p>If you base a Dockerfile on this image:</p>
+
+<p>FROM juptyerhub/jupyterhub-onbuild:0.6
+&hellip;
+then your jupyterhub_config.py adjacent to your Dockerfile will be loaded into the image and used by JupyterHub.</p>
+
+<h2 id="file-permissions">File permissions</h2>
+
+<p>Correct permissions for exposed shared directories require
+<code>chmod -R 777</code> for the folder at the top</p>
+
+<p>What this means:</p>
+
+<p>Permissions:
+1 – can execute
+2 – can write
+4 – can read</p>
+
+<p>The octal number is the sum of those free permissions, i.e.
+3 (1+2) – can execute and write
+6 (2+4) – can write and read</p>
+
+<p>Position of the digit in value:
+1 – what owner can
+2 – what users in the file group(class) can
+3 – what users <em>not</em> in the file group(class) can</p>
+
+<p>So the third is what we care about since no we don&rsquo;t want to create users on the machine running docker.</p>
+
+<h2 id="database">Database</h2>
+
+<p><a href="https://jupyterhub.readthedocs.io/en/stable/reference/database.html" target="_blank">https://jupyterhub.readthedocs.io/en/stable/reference/database.html</a>
+It comes pre-packaged with one, but it is recommended to use something else for production, which we will do!</p>
+
+<p>Hash authentication&hellip; Very nice
+<a href="https://github.com/thedataincubator/jupyterhub-hashauthenticator" target="_blank">https://github.com/thedataincubator/jupyterhub-hashauthenticator</a></p>
+
+<p>You can generate a good <code>secret key</code> with <code>openssl rand -hex 32</code>.</p>
+
+<pre><code>c.JupyterHub.authenticator_class = 'hashauthenticator.HashAuthenticator'
+c.HashAuthenticator.secret_key = 'my secret key'  # Defaults to ''
+c.HashAuthenticator.password_length = 10          # Defaults to 6
+c.HashAuthenticator.show_logins = True            # Optional, defaults to False
+</code></pre>
+
+<p>If the <code>show_logins</code> option is set to <code>True</code>, a CSV file containing login names and passwords will be served (to admins only) at <code>/hub/login_list</code>. <em>Do we want this?</em> Maybe for analytics? If possible.</p>
+
+<p>To figure out my password, I used
+<code>hashauthpw --length 10 mathematicalmichael [secret key]</code> on any computer that has run <code>pip install jupyterhub-hashauthenticator</code></p>
+
+<h2 id="multiple-spawners">Multiple Spawners</h2>
+
+<p>multiple spawners! definitely my favorite way to go. Says this will allow them to choose upon login.
+If so&hellip; amazing.</p>
+
+<p>[multiple spawners issue on github][<a href="https://github.com/jupyterhub/dockerspawner/issues/236]:" target="_blank">https://github.com/jupyterhub/dockerspawner/issues/236]:</a></p>
+
+<pre><code>from dockerspawner import SystemUserSpawner
+
+class MultiDockerImageSpawner(SystemUserSpawner):
+    images = {
+        'SciPy': 'jupyter/scipy-notebook:0f73f7488fa0',
+        'Tensorflow': 'jupyter/tensorflow-notebook:59904dd7776a',
+        'R': 'jupyter/r-notebook:59904dd7776a',
+    }
+    def _options_form_default(self):
+        outval = &quot;&quot;&quot;
+        &lt;label for=&quot;image&quot;&gt;Docker Image&lt;/label&gt;
+        &lt;select name=&quot;image&quot;&gt;
+        &quot;&quot;&quot;
+        for name, image in self.images.items():
+            outval += &quot;&lt;option value=\&quot;%s\&quot;&gt;%s (%s)&lt;/option&gt;&quot; % (name, name, image)
+
+        outval += &quot;&quot;&quot;
+        &lt;/select&gt;
+        &quot;&quot;&quot;
+        return outval
+
+    def options_from_form(self, formdata):
+        options = {}
+        options['image'] = formdata.get('image', ['SciPy'])[0]
+        self.image = self.images[options['image']]
+        return options
+</code></pre>
+
+<p>Everything is now up and running! New images can be added with total ease, the hub restart only has minimal disruption.</p>
+
+<p><em>A note on startup files:</em>
+&gt; IPython startup files, placed in ~/.ipython/profile_default/startup will be executed. These can be Python scripts (.py) or IPython scripts (.ipy with %magic commands). Notebooks aren&rsquo;t supported as startup files, but if it really needs to be a notebook, you can use %run /path/to/notebook.ipynb in a .ipy startup file.</p>
+
+<p>This means that for testing, we can create an image with a file that gets run at startup, set it as the temporary default, and launch servers.</p>
+
+<p>I GOT RSTUDIO WORKING.
+Okay, so just, build any image you want, and reference it in the spawner.
+If you can execute the following and see the same output, you&rsquo;ll have something working properly.</p>
+
+<pre><code>mpilosov@math-ws-204:~/Packages/deploy/singleuser$ docker run --rm -ti rstudio_test
+Executing the command: jupyter notebook
+[I 22:39:24.130 NotebookApp] Writing notebook server cookie secret to /home/jovyan/.local/share/jupyter/runtime/notebook_cookie_secret
+[I 22:39:24.745 NotebookApp] JupyterLab extension loaded from /opt/conda/lib/python3.7/site-packages/jupyterlab
+[I 22:39:24.745 NotebookApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
+[I 22:39:24.748 NotebookApp] Serving notebooks from local directory: /home/jovyan
+[I 22:39:24.748 NotebookApp] The Jupyter Notebook is running at:
+[I 22:39:24.748 NotebookApp] http://(620acce394ce or 127.0.0.1):8888/?token=cbf208a110db20a3fce4814d5cf1bf2e41aca5e4a165c69d
+[I 22:39:24.749 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 22:39:24.749 NotebookApp]
+
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://(620acce394ce or 127.0.0.1):8888/?token=cbf208a110db20a3fce4814d5cf1bf2e41aca5e4a165c69d
+^C[I 22:39:36.445 NotebookApp] interrupted
+Serving notebooks from local directory: /home/jovyan
+0 active kernels
+The Jupyter Notebook is running at:
+http://(620acce394ce or 127.0.0.1):8888/?token=cbf208a110db20a3fce4814d5cf1bf2e41aca5e4a165c69d
+Shutdown this notebook server (y/[n])? ^C[C 22:39:37.364 NotebookApp] received signal 2, stopping
+[I 22:39:37.366 NotebookApp] Shutting down 0 kernels
+</code></pre>
+
+<hr />
+
+<h1 id="jan-6-7-2019">Jan 6-7, 2019</h1>
+
+<h2 id="math-hub">Math-hub</h2>
+
+<p>everything is up and running on math-hub,
+100 notebooks idle take up 8gb of ram.</p>
+
+<p>I managed to mount volumes easily, but if you create a new volume with docker, use <code>docker inspect</code> to find out where it is and change the permissions.</p>
+
+<pre><code>pilosovm@math-hub:~/repos/deploy$ docker inspect rw_shared_volume
+[
+    {
+        &quot;CreatedAt&quot;: &quot;2019-01-04T17:57:04-07:00&quot;,
+        &quot;Driver&quot;: &quot;local&quot;,
+        &quot;Labels&quot;: {},
+        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/rw_shared_volume/_data&quot;,
+        &quot;Name&quot;: &quot;rw_shared_volume&quot;,
+        &quot;Options&quot;: {},
+        &quot;Scope&quot;: &quot;local&quot;
+    }
+]
+pilosovm@math-hub:~/repos/deploy$ sudo chmod 777 /var/lib/docker/volumes/rw_shared_volume/_data
+[sudo] password for pilosovm:
+pilosovm@math-hub:~/repos/deploy$
+</code></pre>
+
+<p>startup scripts: bootstrap scripts <a href="https://github.com/jupyterhub/jupyterhub/tree/master/examples/bootstrap-script" target="_blank">https://github.com/jupyterhub/jupyterhub/tree/master/examples/bootstrap-script</a></p>
+
+<hr />
+
+<h1 id="jan-8-2019">Jan 8, 2019</h1>
+
+<p><a href="https://www.paraview.org/web/" target="_blank">https://www.paraview.org/web/</a>
+Paraview in-browser is now a thing&hellip; Can we somehow create a container that includes the ability to launch this application?</p>
+
+<p><a href="https://jupyter-docker-stacks.readthedocs.io/en/latest/using/recipes.html" target="_blank">https://jupyter-docker-stacks.readthedocs.io/en/latest/using/recipes.html</a>
+Jupyter Docker-Stacks</p>
+
+<h2 id="python-2">Python 2</h2>
+
+<p>Adding Python 2:
+dd a Python 2.x environment
+Python 2.x was removed from all images on August 10th, 2017, starting in tag cc9feab481f7. You can add a Python 2.x environment by defining your own Dockerfile inheriting from one of the images like so:</p>
+
+<pre><code># Choose your desired base image
+FROM jupyter/scipy-notebook:latest
+
+# Create a Python 2.x environment using conda including at least the ipython kernel
+# and the kernda utility. Add any additional packages you want available for use
+# in a Python 2 notebook to the first line here (e.g., pandas, matplotlib, etc.)
+RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 ipython ipykernel kernda numpy pandas matplotlib ipywidgets yaml &amp;&amp; \
+    conda clean -tipsy
+
+USER root
+
+# Create a global kernelspec in the image and modify it so that it properly activates
+# the python2 conda environment.
+RUN $CONDA_DIR/envs/python2/bin/python -m ipykernel install &amp;&amp; \
+$CONDA_DIR/envs/python2/bin/kernda -o -y /usr/local/share/jupyter/kernels/python2/kernel.json
+
+USER $NB_USER
+</code></pre>
+
+<h2 id="mixed-authentication">Mixed Authentication</h2>
+
+<p>The main <a href="https://github.com/jupyterhub/jupyterhub/wiki/Authenticators" target="_blank">authentication page</a> on the Jupyterhub wiki is pretty useful but also kind of incomplete.</p>
+
+<p>Right now I am creating users based on the folders in <code>/home/math</code>, authenticating with <code>HashAuthenticator</code>, but <a href="https://github.com/compmodels/jupyterhub/blob/master/docker_oauth.py" target="_blank">this example</a> demonstrates how to mix Authentication methods.</p>
+
+<p><em>TO DO</em>
+Try <a href="https://github.com/jupyterhub/oauthenticator#google-setup" target="_blank">google authentication</a> on your own website.</p>
+
+<hr />
+
+<h1 id="jan-8-10-2019">Jan 8-10, 2019</h1>
+
+<h2 id="final-challenges">Final Challenges</h2>
+
+<p>Proxy stress, user testing, configuration, security.</p>
+
+<p>I spoke with Audrey about setting up a hub.
+She wants very clear set of instructions.</p>
+
+<hr />
+
+<h1 id="jan-11-2019">Jan 11, 2019</h1>
+
+<h2 id="finishing-touches">Finishing Touches</h2>
+
+<p>Need to write up an entire summary.</p>
+
+<p>Here&rsquo;s what needs to happen:</p>
+
+<ol>
+<li>Project Name (minimal changes)</li>
+<li>Document Process on Hub using newest version of repo.</li>
+<li>Nginx / Letsencrypt Instructions</li>
+<li>Re-do with math.computer on a new Droplet, screen cap?</li>
+<li>Wrap procedure into bash script?</li>
+</ol>
+
+<p>Changes for a user to make to set up a new hub:
+- touch <code>secrets/postgres.env</code> and <code>touch userlist</code>
+- rename project folder <em>before</em> running anything else.
+- change <code>.env</code> to reflect project name, include the port in there (no changes should be necessary to any other files)
+- (optional) tweak limits in <code>jupyterhub_config.py</code>
+- (goal: no secrets, auth, etc). try to edit <code>makefile</code> so that it takes care of all of that stuff. (or wrap into a <code>first_run.sh</code> script).
+- get password the first time? hashauth&hellip; (or automate it so that it&rsquo;s printed to a file)?</p>
+
+<h2 id="customizing-spawning-options">Customizing Spawning Options</h2>
+
+<p>Based on users&hellip;</p>
+
+<pre><code class="language-python">from dockerspawner import DockerSpawner
+class MyDockerSpawner(DockerSpawner):
+    team_map = {
+        'username1': 'team-a',
+        'username2': 'team-b',
+        'username3': 'team-a',
+    }
+
+    def start(self):
+        if self.user.name in self.team_map:
+            team = self.team_map[self.user.name]
+            # add team volume to volumes
+            self.volumes['/directory/jupyterhub-team-{}'.format(team)] = {
+                'bind': '/home/jovyan/teamfolder',
+                'mode': 'rw',  # or ro for read-only
+            }
+        return super().start()
+
+c.JupyterHub.spawner_class = MyDockerSpawner
+</code></pre>
+
+<p>So, with that, refer to <code>jupyterhub_config.py</code> for instances of <code>DockerSpawner</code> and the children of that subclass. You can modify these properties (such as <code>image</code>)</p>
+
+<pre><code class="language-bash">mathematicalmichael@math-hub:~$ docker images
+REPOSITORY                      TAG                 IMAGE ID            CREATED             SIZE
+math-user                       latest              64698da59274        3 hours ago         11.5GB
+math                            latest              7368bc798b20        4 hours ago         1.05GB
+postgres                        9.5                 fc003c9dded6        29 hours ago        227MB
+jupyter/datascience-notebook    latest              18c805bb3afb        3 days ago          6.32GB
+jupyterhub/jupyterhub-onbuild   0.9.4               9ca16c1a77c3        3 months ago        812MB
+</code></pre>
+
+<p>However, my Disk-Usage on Digital Ocean reads 15GB. This tells me that <code>math-user</code> includes the size <code>jupyter/datascience-notebook</code>, since the sum of these two alone would exceed 15GB. &lsquo;</p>
+
+<hr />
+
+<p>Jan 15</p>
+
+<p><em>Note:</em> Copying over from walkthrough.</p>
+
+<p>We will use this guy&rsquo;s <a href="https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71" target="_blank">walkthrough</a>.</p>
+
+<pre><code class="language-bash">curl -L https://raw.githubusercontent.com/wmnnd/nginx-certbot/master/init-letsencrypt.sh &gt; init-letsencrypt.sh
+sed 's/example.com/mathfight.club/g' init-letsencrypt.sh &gt; letsencrypt.sh
+mv letsencrypt.sh init-letsencrypt.sh
+chmod +x init-letsencrypt.sh
+sudo ./init-letsencrypt.sh
+</code></pre>
+
+<p>Had to edit some lines, ran out of requests for letsencrypt.</p>
+
+          </div>
+
+          
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/dev/">dev</a>
+  
+  <a class="badge badge-light" href="/tags/jupyter/">jupyter</a>
+  
+  <a class="badge badge-light" href="/tags/openscience/">openscience</a>
+  
+  <a class="badge badge-light" href="/tags/docker/">docker</a>
+  
+</div>
+
+
+
+        </div>
+
+        <div class="body-footer">
+          Last updated on Jan 1, 2019
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="/privacy/">Privacy Policy</a>
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; 2019 Michael Pilosov &middot; 
+
+    
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic</a> +
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.d037ee5294b166a79dec317c58aea9cc.js"></script>
+
+    
+
+  </body>
+</html>
+
+
