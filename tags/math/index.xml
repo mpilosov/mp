@@ -19,10 +19,10 @@
       
       <guid>https://www.michaelpilosov.com/slides/thesis-update/</guid>
       <description>Computational Advances in Data-Consistent Inversion Measure-Theoretic Methods for Improving Predictions
-BET [Butler, Estep, Tavener] Method
-+ Mattis, Graham, Walsh, Pilosov
-github.com/UT-CHG/BET
-About  Purpose: Implement the novel method developed by the aforementioned authors GNU General Public License First released 2014 Python 2.7, upgraded to 3.6  Overview  About/Motivation Git-Based Workflow Contribution, Communication Testing, Coverage, Versioning Pull Requests Continuous Integration Documentation Publishing, Releases, Licenses  About/Motivation  Reproduce results in research Demonstrate utility of approach Upgrading  Python 2.</description>
+Motivation  Ideas beget prototype notebooks/scripts Spawned other branches of development Eventually would attempt to scale code  school servers, office workstation cloud (??)   
+ FAILURE TO RUN 
+ A Pattern  Prototype script for idea: ~10-20 lines Production-grade class/module: ~200-500 lines  or,
+ Figure generates on Mac OSX, crashes on Linux Figure generates on Linux, looks weird on Mac OSX  etc.</description>
     </item>
     
   </channel>

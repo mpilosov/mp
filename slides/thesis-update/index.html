@@ -73,6 +73,220 @@
     
       
 
+<h3 id="motivation">Motivation</h3>
+
+<ul>
+<li>Ideas beget prototype notebooks/scripts</li>
+<li>Spawned other branches of development</li>
+<li>Eventually would attempt to scale code
+
+<ul>
+<li>school servers, office workstation</li>
+<li>cloud (??)</li>
+</ul></li>
+</ul>
+
+<p><br>
+<br></p>
+
+<span class="fragment " >
+  <p><center>
+FAILURE TO RUN
+</center></p>
+
+</span>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h3 id="a-pattern">A Pattern</h3>
+
+<ul>
+<li>Prototype script for idea: ~10-20 lines</li>
+<li>Production-grade class/module: ~200-500 lines</li>
+</ul>
+
+<p>or,</p>
+
+<ul>
+<li>Figure generates on Mac OSX, crashes on Linux</li>
+<li>Figure generates on Linux, looks weird on Mac OSX</li>
+</ul>
+
+<p>etc.</p>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h3 id="motivation-1">Motivation</h3>
+
+<p>Result: Began studying Software Development</p>
+
+<ul>
+<li>Dependencies, Packaging</li>
+<li>Environment, Reproducibility
+
+<ul>
+<li>Images, Containers, Docker</li>
+<li>Registries, Cloud Solutions</li>
+</ul></li>
+<li>Unit Testing</li>
+<li>Continuous Integration/Deployment</li>
+<li>Organization of Git-Based Workflows</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h3 id="what-if">What if&hellip;?</h3>
+
+<h4 id="one-applied-best-practices-for-software-development-to-all-aspects-of-the-dissertation-process">One applied best practices for software development to <em>all</em> aspects of the dissertation process?</h4>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h3 id="what-if-1">What if&hellip;?</h3>
+
+<ul>
+<li><p>Document (PDF) itself can be re-created</p>
+
+<ul>
+<li>resolve LaTeX dependencies</li>
+<li>package into Docker container</li>
+</ul></li>
+
+<li><p>Examples/Figures/Tables <em>Completely</em> Reproducible</p>
+
+<ul>
+<li>resolve Python dependencies</li>
+<li>re-usable command-line Python scripts</li>
+<li>provide convenience bash scripts</li>
+</ul></li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h3 id="what-if-2">What if&hellip;?</h3>
+
+<ul>
+<li><p>Novel math is implemented as open-source code</p>
+
+<ul>
+<li>update, extend, and enrich <a href="https://github.com/UT-CHG/BET" target="_blank">BET</a></li>
+<li>enables thesis examples</li>
+<li>ensures robustness (unit testing)</li>
+</ul></li>
+
+<li><p>Package an All-in-One Docker Image</p>
+
+<ul>
+<li>host in cloud-based registries (DockerHub)</li>
+<li>original build files publicly hosted (GitHub)</li>
+<li>thesis repository contains full instructions</li>
+</ul></li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h3 id="order-of-operations">Order of Operations</h3>
+
+<ol>
+<li>Resolve environment for thesis repository</li>
+<li>Get BET up-to-date</li>
+<li>Add features to BET implementing new approach</li>
+<li>Make more user-friendly, capable of automation</li>
+<li>Write scripts for each example in thesis</li>
+<li>Assured of results, write them up</li>
+<li>Ensure thesis still compiles, generates figures</li>
+</ol>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h3 id="a-reproducible-thesis">A Reproducible Thesis</h3>
+
+<ul>
+<li>One-click launch in-browser via <a href="https://mybinder.org" target="_blank">Binder</a></li>
+<li>Executable scripts: <code>#!/bin/bash, chmod +x</code></li>
+<li>Minimal tool-set in Dockerfile, options available
+
+<ul>
+<li>include command-line tools (e.g. image resizing)</li>
+</ul></li>
+<li>Dockerfile for LaTeX (standalone), no figure-creation</li>
+<li>Dockerfile for Python+LaTeX (reproducibility)</li>
+<li>Dockerfile for full-stack environment (JupyterLab)</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
 <h2 id="bet">BET</h2>
 
 <p>[Butler, Estep, Tavener] Method</p>
@@ -92,24 +306,22 @@
     
       
 
-
-    </section>
-    
-
-    
-    
-    
-    <section>
-    
-      
-
-<h2 id="about">About</h2>
+<h3 id="about-bet">About BET</h3>
 
 <ul>
-<li>Purpose: Implement the novel method developed by the aforementioned authors</li>
+<li>Purpose: Implement Measure-Theoretic Methods
+
+<ul>
+<li><em>Data-Consistent Inversion</em></li>
+</ul></li>
 <li>GNU General Public License</li>
 <li>First released 2014</li>
-<li>Python 2.7, upgraded to 3.6</li>
+<li>Python 2.7, upgraded to 3.6+
+
+<ul>
+<li>Tested weekly on 2.7, 3.6, 3.7</li>
+</ul></li>
+<li>Fully documented</li>
 </ul>
 
 
@@ -123,279 +335,7 @@
     
       
 
-<h2 id="overview">Overview</h2>
-
-<ul>
-<li>About/Motivation</li>
-<li>Git-Based Workflow</li>
-<li>Contribution, Communication</li>
-<li>Testing, Coverage, Versioning</li>
-<li>Pull Requests</li>
-<li>Continuous Integration</li>
-<li>Documentation</li>
-<li>Publishing, Releases, Licenses</li>
-</ul>
-
-
-    </section>
-    
-
-    
-    
-    
-    <section>
-    
-      
-
-<h2 id="about-motivation">About/Motivation</h2>
-
-<ul>
-<li>Reproduce results in research</li>
-<li>Demonstrate utility of approach</li>
-<li>Upgrading
-
-<ul>
-<li>Python 2.7 will be deprecated by 2020</li>
-<li>New features in ConsistentBayes repo</li>
-<li>Desire to unify frameworks</li>
-<li>Repository needed some love</li>
-</ul></li>
-</ul>
-
-
-    </section>
-    
-
-    
-    
-    
-    <section>
-    
-      
-
-<h2 id="git-based-workflow">Git-Based Workflow</h2>
-
-<ul>
-<li>Fork project</li>
-<li>Clone your fork</li>
-<li>Create branch for new feature(s)</li>
-<li>Checkout branch, make changes</li>
-<li>Commit files with informative messages</li>
-<li>Push branch back to your remote fork</li>
-<li>Use GitHub to start Pull-Request</li>
-<li>Communicate (if needed) until PR is merged (or not)</li>
-</ul>
-
-
-    </section>
-    
-
-    
-    
-    
-    <section>
-    
-      
-
-<h2 id="contribution-communication">Contribution, Communication</h2>
-
-<ul>
-<li>Make sure your contribution would be welcome
-
-<ul>
-<li>Consider starting a new &ldquo;Issue&rdquo; on GitHub to ask</li>
-</ul></li>
-<li>Read the existing documentation (<code>README</code>, <code>CONTRIBUTE</code>, etc)
-
-<ul>
-<li>Ensure you understand the necessary requirements</li>
-</ul></li>
-</ul>
-
-
-    </section>
-    
-
-    
-    
-    
-    <section>
-    
-      
-
-<h2 id="unit-testing-coverage-versioning">Unit-Testing, Coverage, Versioning</h2>
-
-<ul>
-<li><code>nose</code> is a Python package/framework for unit testing</li>
-<li><code>codecov</code> works in conjuction
-
-<ul>
-<li>checks which lines of code your test called</li>
-</ul></li>
-<li><code>setup.py</code> contains versioning information
-
-<ul>
-<li>Major/Minor releases depend on extent of changes</li>
-<li>The third number in <code>v1.2.3</code> is for incremental changes, such as bug-fixes, typos, patches, etc.</li>
-</ul></li>
-</ul>
-
-
-    </section>
-    
-
-    
-    
-    
-    <section>
-    
-      
-
-<h2 id="nosetests">Nosetests</h2>
-
-<ul>
-<li>One-to-one file structure
-
-<ul>
-<li>one test (class) for each sub-module method</li>
-<li>multiple &ldquo;tests&rdquo; within each</li>
-</ul></li>
-<li>Class consists of several methods
-
-<ul>
-<li><code>setup</code> and <code>teardown</code> required</li>
-<li>test for each function within module</li>
-</ul></li>
-<li>Each test should anticipate mixtures of arguments that could be passed to each function</li>
-</ul>
-
-
-    </section>
-    
-
-    
-    
-    
-    <section>
-    
-      
-
-<h2 id="nosetest-example">Nosetest Example</h2>
-
-<pre><code class="language-python">from unnecessary_math import multiply
- 
-def test_numbers_3_4():
-    assert multiply(3,4) == 12 
- 
-def test_strings_a_3():
-    assert multiply('a',3) == 'aaa' 
-</code></pre>
-
-<pre><code class="language-python">nosetests -v test_um_nose.py
-</code></pre>
-
-<p><small> <a href="http://pythontesting.net/framework/nose/nose-introduction/" target="_blank">Source</a> </small></p>
-
-
-    </section>
-    
-
-    
-    
-    
-    <section>
-    
-      
-
-<h2 id="pull-requests">Pull Requests</h2>
-
-<p><img src="https://help.github.com/assets/images/help/pull_requests/pull-request-review-edit-branch.png" alt="github-pr" /></p>
-
-
-    </section>
-    
-
-    
-    
-    
-    <section>
-    
-      
-
-<p><img src="https://help.github.com/assets/images/help/pull_requests/pull-request-start-review-button.png" alt="github-pr" /></p>
-
-<p><img src="https://help.github.com/assets/images/help/pull_requests/pullrequest-send.png" alt="github-pr" /></p>
-
-
-    </section>
-    
-
-    
-    
-    
-    <section>
-    
-      
-
-<h2 id="continuous-integration">Continuous Integration</h2>
-
-<ul>
-<li>If enabled, remote server then
-
-<ul>
-<li>Carries out instructions on UNIX image</li>
-<li>Communicates with GitHub about test status</li>
-</ul></li>
-<li>Ensures consistency of installation</li>
-<li>Someone has to pay for the computer</li>
-<li>Can run local versions</li>
-<li>Most &ldquo;real&rdquo; projects include CI
-
-<ul>
-<li>Travis, Shippable, etc.</li>
-</ul></li>
-</ul>
-
-
-    </section>
-    
-
-    
-    
-    
-    <section>
-    
-      
-
-<h2 id="continuous-integration-1">Continuous Integration</h2>
-
-<ul>
-<li>Travis runs when you submit a PR to check that everything works</li>
-<li>GitHub checks for ability to merge automatically</li>
-<li>Passing does not ensure a PR is merged
-
-<ul>
-<li>Ultimiately up to the admininstrators of the repo</li>
-</ul></li>
-<li>Helpful for contributors to debug before admins take a look
-
-<ul>
-<li>If checks do not pass, adding commits to your branch will automatically trigger new CI builds, updates to the PR</li>
-</ul></li>
-</ul>
-
-
-    </section>
-    
-
-    
-    
-    
-    <section>
-    
-      
-
-<h2 id="documentation">Documentation</h2>
+<h3 id="documentation">Documentation</h3>
 
 <p>BET is <em>auto-documented</em> using a tool called <a href="http://www.sphinx-doc.org/en/master/" target="_blank">Sphinx</a></p>
 
@@ -424,17 +364,23 @@ can make sense of syntax by looking at existing ones)
     
       
 
-<h2 id="licensing">Licensing</h2>
-
-<p>Many open-source models to choose from.</p>
+<h3 id="unit-testing-coverage-versioning">Unit-Testing, Coverage, Versioning</h3>
 
 <ul>
-<li>GNU GPL</li>
-<li>BSD</li>
-<li>MIT</li>
-<li>Creative Commons</li>
-<li><a href="https://help.github.com/articles/licensing-a-repository/" target="_blank">Github: Choosing a License</a></li>
-<li><a href="https://help.github.com/articles/adding-a-license-to-a-repository/" target="_blank">Github: Adding a License</a></li>
+<li><code>nose</code> is a Python framework for unit testing
+
+<ul>
+<li><em>desirable</em>: compatible with <code>unittest</code></li>
+</ul></li>
+<li><code>codecov</code> works alongside it as a tracker</li>
+<li><code>setup.py</code> contains versioning information
+
+<ul>
+<li><code>pip install .</code>, or</li>
+<li>`python setup.py install</li>
+<li>Major/Minor releases ~ extent of changes</li>
+<li>The third number in <code>v1.2.3</code> is for incremental changes, such as bug-fixes, typos, patches, etc.</li>
+</ul></li>
 </ul>
 
 
@@ -448,15 +394,22 @@ can make sense of syntax by looking at existing ones)
     
       
 
-<h2 id="publishing">Publishing</h2>
+<h3 id="unit-testing-with-nose">UNit Testing with Nose</h3>
 
 <ul>
-<li>GitHub (Microsoft)</li>
-<li>GitLab (VC-funded, Private)</li>
-<li>Bitbucket (Atlassian)</li>
-<li>Anaconda (Community)</li>
-<li>PyPi (Community)</li>
-<li>(Suggested) Website</li>
+<li>One-to-one file structure
+
+<ul>
+<li>one test (class) for each sub-module method</li>
+<li>multiple &ldquo;tests&rdquo; within each</li>
+</ul></li>
+<li>Class consists of several methods
+
+<ul>
+<li><code>setup</code> and <code>teardown</code> required</li>
+<li>test for each function within module</li>
+</ul></li>
+<li>Each test should anticipate mixtures of arguments that could be passed to each function</li>
 </ul>
 
 
@@ -470,21 +423,79 @@ can make sense of syntax by looking at existing ones)
     
       
 
-<h2 id="what-i-did">What I Did</h2>
+<h3 id="unit-testing">Unit Testing</h3>
+
+<pre><code class="language-python">from unnecessary_math import multiply
+ 
+def test_numbers_3_4():
+    assert multiply(3,4) == 12 
+ 
+def test_strings_a_3():
+    assert multiply('a',3) == 'aaa' 
+</code></pre>
+
+<pre><code class="language-python">nosetests -v test_um_nose.py
+</code></pre>
+
+<p><small> <a href="http://pythontesting.net/framework/nose/nose-introduction/" target="_blank">Source</a> </small></p>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h3 id="continuous-integration">Continuous Integration</h3>
 
 <ul>
-<li>Most of what was written about here</li>
-<li>Intent was to upgrade to Python 3.6</li>
+<li>Cloud instance carries out instructions</li>
+<li>Travis runs when you submit a PR to check that everything works</li>
+<li>GitHub checks for ability to merge automatically</li>
+<li>Passing does not ensure a PR is merged
+
+<ul>
+<li>Ultimately up to the administrators of the repo</li>
+</ul></li>
+<li>Helpful for contributors to debug before admins take a look</li>
+<li>Used to prevent broken <code>master</code> branches</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h3 id="upgrading-bet">Upgrading BET</h3>
+
+<ul>
+<li>Python 2 support ending by 2020</li>
 <li>Used a tool called <code>2to3</code>
 
 <ul>
 <li>Takes care of most major changes</li>
 <li>Two weeks fixing tests</li>
 </ul></li>
-<li>Once tests fixed, worked on upgrading dependencies</li>
-<li>Updated examples, copyrights, comments, styling</li>
-<li>Preparing for release <code>2.1.0</code>, PR ready to be merged</li>
-<li>Version <code>3.0.0</code> will incorporate <code>cbayes</code> features</li>
+<li>Fixed tests for CI pipeline (Travis)
+
+<ul>
+<li>only handled <code>numprocs=1,2</code></li>
+</ul></li>
+<li>Addressed matplotlib upgrades, warnings
+
+<ul>
+<li>Released via PR as v2.1.0</li>
+</ul></li>
 </ul>
 
 
@@ -498,7 +509,312 @@ can make sense of syntax by looking at existing ones)
     
       
 
-<h1 id="questions">Questions?</h1>
+<h3 id="enhancing-bet">Enhancing BET</h3>
+
+<ol>
+<li>Ability to measure accuracy of solutions.
+
+<ul>
+<li>ensure it will be future-compatible</li>
+</ul></li>
+<li>Sampling-based approach
+
+<ul>
+<li>ensure ability to switch methods</li>
+</ul></li>
+<li>Handle data-driven methods
+
+<ul>
+<li>be capable of loading/transforming data</li>
+</ul></li>
+<li>Automate some decisions, defaults for users (WIP)</li>
+<li>Update documentation, installation options (WIP)</li>
+<li>Publish to PyPi, Anaconda</li>
+</ol>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h3 id="novel-theoretical-advancements">Novel Theoretical Advancements</h3>
+
+<ul>
+<li>New framework based on Bayes&rsquo; Rule</li>
+<li>New framework for &ldquo;parameter identification&rdquo;</li>
+<li>Motivates different user experience with code
+
+<ul>
+<li>define &ldquo;initial&rdquo; assumptions</li>
+</ul></li>
+<li>&ldquo;Consistent Bayes&rdquo; -&gt; &ldquo;Data-Consistent Inversion&rdquo;</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h3 id="data-consistent-inversion">Data-Consistent Inversion</h3>
+
+<ul>
+<li>In directions informed by data,
+
+<ul>
+<li>&ldquo;turn off&rdquo; regularization</li>
+</ul></li>
+<li>Use &ldquo;initial&rdquo; distribution to regularize in the nullspace of the QoI map</li>
+<li>Existence, Uniqueness, Stability given by <em>Disintegration Theorem</em></li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h4 id="connection-to-deterministic-optimization">Connection to Deterministic Optimization</h4>
+
+<p>$$\pi^{up} = \pi^{in} (\lambda) \frac{\pi^{ob} (Q(\lambda)) }{\pi^{pr} (Q(\lambda)) }$$</p>
+
+<ul>
+<li>Given a <em>linear map</em>, full rank, and
+
+<ul>
+<li>Gaussian prior/initial</li>
+<li>Gaussian likelihood (1 datum)</li>
+</ul></li>
+</ul>
+
+<p>There exists a connection to Tikonov regularization.</p>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<p><img src="/data/regularization.png" alt="img" /></p>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h3 id="new-developments">New Developments</h3>
+
+<ul>
+<li>Parameter Identification
+
+<ul>
+<li>&ldquo;data-driven maps&rdquo;</li>
+</ul></li>
+<li>Closed-form solution for linear maps</li>
+<li>Iterative Algorithm
+
+<ul>
+<li>sequential projections onto solution manifolds</li>
+<li>gradient-free optimization</li>
+</ul></li>
+<li>Classification (variant of Naive Bayes)
+
+<ul>
+<li>handles unequal class-representation</li>
+<li>comparison still unclear</li>
+</ul></li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h3 id="challenges-with-implementation">Challenges with Implementation</h3>
+
+<ul>
+<li>Implementation v.s. Theory: many nuances
+
+<ul>
+<li>various packages, approaches, optimizations</li>
+</ul></li>
+<li>How to be efficient with parallel processors?</li>
+<li>Where are the &ldquo;memory bottlenecks?&rdquo;
+
+<ul>
+<li>Can we trade off approximation accuracy?</li>
+</ul></li>
+<li>Choice of QoI (columns) impacts solution quality
+
+<ul>
+<li>Allow flexibility to do feature-selection</li>
+</ul></li>
+<li>Working on a project with wide scope
+
+<ul>
+<li>Work often siloed in development</li>
+<li>Sensitivity/robustness analysis before MVP</li>
+</ul></li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h3 id="structure-of-thesis-pt-1">Structure of Thesis (Pt 1)</h3>
+
+<pre><code class="language-md">1. Introduction &amp; Motivations
+      i. Preliminaries
+     ii. Framework
+    iii. Software Contributions
+
+2. Background on DCI
+      i. Notation
+     ii. Set-Valued
+    iii. Sample-Based
+     iv. Software Contributions
+      v. Illustrative Examples
+
+3. Impact on Accuracy
+    - sections mirror Chapter 2.
+</code></pre>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h3 id="structure-of-thesis-pt-2">Structure of Thesis (Pt 2)</h3>
+
+<pre><code class="language-md">4. Data-Driven Maps &amp; Consistent Inversion
+      i. Stochastic Map Framework
+     ii. Data-Driven Maps
+    iii. Software Contributions
+     iv. Numerical Results &amp; Analysis
+
+5. Research Directions
+    - Fit in extensions
+    - Work-in-progress, draft ideas
+    - Approaches to approximation
+
+6. References, Appendix
+</code></pre>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h4 id="status">Status</h4>
+
+<ul>
+<li>Dissertation repository largely in place</li>
+<li>Docker experience level improving
+
+<ul>
+<li>still missing minimal versions</li>
+<li>one-click launch &ldquo;working&rdquo;</li>
+</ul></li>
+<li>Architecture/Structure of thesis mostly settled</li>
+<li>Some bash/python scripts completed for examples
+
+<ul>
+<li>Larger examples in notebooks, uncoverted</li>
+</ul></li>
+<li>Still a lot of content to be written up</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h4 id="status-1">Status</h4>
+
+<ul>
+<li>Software going through final rounds of testing</li>
+<li>Documentation for new features still missing</li>
+<li>Some (new) tests failing in parallel</li>
+<li>Haven&rsquo;t fully integrated with mybinder.org yet</li>
+<li>No progress on demonstration/example repository
+
+<ul>
+<li>plan: use thesis examples as basis for content</li>
+</ul></li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h1 id="fin">Fin</h1>
+
+<p><em>Links</em>:</p>
 
 <p><a href="/">Homepage</a></p>
 
