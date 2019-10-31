@@ -484,9 +484,9 @@ We then set privileges and switch to this new user (and new shell, which should 
 <p><code>vim ~/.bash_aliases</code></p>
 
 <pre><code class="language-bash"># show users logged into the hub who have open sessions.
-alias dpsu='docker ps --format &quot;table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}&quot; -f &quot;name=r*user*&quot;'
+alias dpsu='docker ps --format &quot;table {{.ID}} | {{.Names}} | {{.Status}} | {{.Ports}}&quot; -f &quot;name=r*user*&quot;'
 # both of these show/filter docker processes with prettier formatting. 
-alias dps='docker ps --format &quot;table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}&quot;'
+alias dps='docker ps --format &quot;table {{.ID}} | {{.Names}} | {{.Status}} | {{.Ports}}&quot;'
 
 alias ..='cd ../'                         # Move up 1 directory
 alias ...='cd ../../'                     # Move up 2 directories
@@ -527,7 +527,9 @@ fi
 
 <p>If you already had an account with <code>sudo</code> privileges, then you can start from here assuming you are logged in as such. The code that follows installs Docker, and runs a little test by checking the version to make sure everything worked.</p>
 
-<pre><code class="language-bash">export DOCKER_COMPOSE_VERSION=1.23.2
+<p><a href="https://docs.docker.com/release-notes/docker-compose/" target="_blank">see here for latest version info</a></p>
+
+<pre><code class="language-bash">export DOCKER_COMPOSE_VERSION=1.24.1
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 </code></pre>
 
