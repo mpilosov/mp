@@ -6,7 +6,7 @@
     <description>Recent content in Homes on Michael Pilosov: The Archives</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
+    <copyright>&amp;copy; 2021 Michael Pilosov</copyright>
     <lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.michaelpilosov.com/home/index.xml" rel="self" type="application/rss+xml" />
@@ -27,10 +27,9 @@
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.michaelpilosov.com/home/about/</guid>
-      <description>Biography I work on collecting useful information from scientific experiments, describing and minimizing uncertainty.
-After graduation, I will work on diverse problems in a variety of fields that serve a humanitarian purpose.
-If you are curious about whether you have a problem that can benefit from risk assessment or experimental design, let&amp;rsquo;s talk about how.
- Click here for my digital résumé, or just scroll down.</description>
+      <description>Biography Computational Mathematician and Machine-Learning Software Architect.
+This website (in contrast to my main one) primarily serves as a database of my academic history, an interactive CV, so to speak.
+I have spent a lot of time focusing on computational reproducibility in science (inspired by struggles replicating my own research), and thinking about how to democratize access to quantitative decision-making tools. If you have ideas, please get in touch.</description>
     </item>
     
     <item>
