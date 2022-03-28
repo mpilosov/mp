@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Overview on Michael Pilosov: The Archives</title>
+    <link>https://www.michaelpilosov.com/widgetpage/</link>
+    <description>Recent content in Overview on Michael Pilosov: The Archives</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
+    <lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.michaelpilosov.com/widgetpage/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Experience</title>
+      <link>https://www.michaelpilosov.com/widgetpage/years/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/years/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Skills</title>
+      <link>https://www.michaelpilosov.com/widgetpage/skills/</link>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/skills/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Experience</title>
+      <link>https://www.michaelpilosov.com/widgetpage/semesters/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/semesters/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.michaelpilosov.com/widgetpage/hero_carousel/</link>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/hero_carousel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Consistent Bayes</title>
+      <link>https://www.michaelpilosov.com/widgetpage/consistentbayes/</link>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/consistentbayes/</guid>
+      <description>A Measure-Theoretic Method for Stochastic Inverse Problems.
+Tackle the uncertainty in the natural variation inherent to input parameters with rigorous theory and simple implementation.
+
+Latest release  
+(function defer() { if (window.jQuery) { jQuery(document).ready(function(){ GetLatestReleaseInfo(); }); } else { setTimeout(function() { defer() }, 50); } })(); function GetLatestReleaseInfo() { $.getJSON(&#39;https://api.github.com/repos/mpilosov/consistentbayes/tags&#39;).done(function (json) { let release = json[0]; // let downloadURL = release.zipball_url; $(&#39;#academic-release&#39;).text(&#39;Latest release &#39; + release.name); }); }  </description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>https://www.michaelpilosov.com/widgetpage/publications/</link>
+      <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/publications/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Selected Publications</title>
+      <link>https://www.michaelpilosov.com/widgetpage/publications_selected/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/publications_selected/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Teaching</title>
+      <link>https://www.michaelpilosov.com/widgetpage/teaching/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/teaching/</guid>
+      <description>This is an example of using the custom widget to create your own homepage section.
+I am a teaching instructor for the following courses at University X:
+ CS101: An intro to computer science CS102: An intro to computer science CS103: An intro to computer science CS104: An intro to computer science CS105: An intro to computer science CS106: An intro to computer science CS107: An intro to computer science  </description>
+    </item>
+    
+    <item>
+      <title>Tags</title>
+      <link>https://www.michaelpilosov.com/widgetpage/tags/</link>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/tags/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recent Galleries</title>
+      <link>https://www.michaelpilosov.com/widgetpage/posts/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/posts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Resources</title>
+      <link>https://www.michaelpilosov.com/widgetpage/resources/</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/resources/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Overview</title>
+      <link>https://www.michaelpilosov.com/widgetpage/experience/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/experience/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

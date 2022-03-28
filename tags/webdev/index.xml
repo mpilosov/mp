@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>webdev on Michael Pilosov: The Archives</title>
+    <link>https://www.michaelpilosov.com/tags/webdev/</link>
+    <description>Recent content in webdev on Michael Pilosov: The Archives</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
+    <lastBuildDate>Thu, 20 Dec 2018 00:00:00 -0700</lastBuildDate>
+    
+	<atom:link href="https://www.michaelpilosov.com/tags/webdev/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Day 2</title>
+      <link>https://www.michaelpilosov.com/devlog/widgets/</link>
+      <pubDate>Thu, 20 Dec 2018 00:00:00 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/devlog/widgets/</guid>
+      <description>Summary I spent the day working with the widget library and understanding how interpolating polynomials are handled by scipy. Most of today&amp;rsquo;s developments were concerned with my random art and animation libraries, and I completed some of the most important components of the interface: setting time-dependent functions (independent of frames), and creating a widget that properly reads/writes data to a dictionary.
+I still need to link the interfaces for the existing GUIs that write the properties.</description>
+    </item>
+    
+    <item>
+      <title>Website Upgrading Logs</title>
+      <link>https://www.michaelpilosov.com/devlog/academicupgrades/</link>
+      <pubDate>Wed, 19 Dec 2018 18:16:07 -0700</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/devlog/academicupgrades/</guid>
+      <description>Introduction This documents the changes made to the academic theme to make this website work when upgrading from Hugo ver=0.47 and Academic Theme ver=2.4.
+The upgrade for this website was performed on 12-19-2018.
+All in all, it took the better part of an entire day to get familiar with all the nooks and crannies of the new updates and plan out the migration of the more complicated website&amp;hellip; Mathematical Michael.</description>
+    </item>
+    
+  </channel>
+</rss>

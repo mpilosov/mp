@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 3.2.0">
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://www.michaelpilosov.com/slides/jupyter/">
+
+  <title>Jupyter for All the Things | Michael Pilosov: The Archives</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/css/reveal.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/css/theme/solarized.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css" crossorigin="anonymous">
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/reveal_custom.min.css">
+
+  
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.7.0/css/print/pdf.css' : 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.7.0/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+
+</head>
+<body>
+
+  
+<div class="reveal">
+  <div class="slides">
+    
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="scientific-computation">Scientific Computation</h2>
+
+<h3 id="for-research-and-teaching">for Research and Teaching</h3>
+
+<h2 id="with-jupyter">with Jupyter</h2>
+
+<p>Michael Pilosov, <em>University of Colorado Denver</em></p>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="motivation-and-qualifiers">Motivation and Qualifiers</h2>
+
+<ul>
+<li>Love applied math&hellip; Hate the learning curve</li>
+<li>Want to make (computational) math accessible</li>
+<li>Some familiarity with website design</li>
+<li>Vague understanding of application architecture</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="backstory">Backstory</h2>
+
+<ul>
+<li>Wanted to embed interactive content into website</li>
+<li>Difficulty with back-end, lack of understanding</li>
+<li>Kept seeing some of the same words/phrases
+
+<ul>
+<li>Docker, Servers, Databases, Ports, Containers, Volumes, Mounting, Images, Spawning, etc.</li>
+</ul></li>
+<li>Some experience with JupyterHub (barely).
+
+<ul>
+<li>Understood a server was involved (somehow)</li>
+<li>User during SIAM G2S3 Summer School</li>
+</ul></li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="purpose-of-talk">Purpose of Talk</h2>
+
+<ul>
+<li>Will not explain exactly how this all works</li>
+<li>Will explain Jupyter &ldquo;ecosystem&rdquo;</li>
+<li>Focus on key design choices/features</li>
+<li>Discuss implementation process, challenges</li>
+<li>Demonstrate features, use-cases, future</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="start-at-the-beginning-ending">Start at the <del>Beginning</del> Ending&hellip;</h2>
+
+<h3 id="overarching-goal-ease-of-use">Overarching Goal: <em>Ease of Use</em></h3>
+
+<ul>
+<li>Outline the &ldquo;end-user&rdquo; experience for
+
+<ul>
+<li>Students</li>
+<li>Teachers</li>
+<li>IT Admins (maybe)</li>
+</ul></li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="the-process">The Process</h2>
+
+<ul>
+<li>Saw series of conference talks on YouTube</li>
+<li>Spent ~3 weeks &ldquo;playing&rdquo; with the technology
+
+<ul>
+<li>Documented everything on website</li>
+</ul></li>
+<li>Showed advisor, implemented it for a few professors
+
+<ul>
+<li>Two servers (2 cores, 36 threads/core, 500-1000GB RAM)</li>
+<li>S19 is &ldquo;trial period&rdquo; to work out the problems</li>
+</ul></li>
+<li>Now actively &ldquo;maintaining&rdquo; the servers</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="student-experience">Student Experience</h2>
+
+<ul>
+<li>Get username/password from professor</li>
+<li>Log in from ANY computer
+
+<ul>
+<li>Platform independent</li>
+</ul></li>
+<li>&ldquo;All&rdquo; software is pre-installed
+
+<ul>
+<li>Additional packages can be installed by students</li>
+</ul></li>
+<li><code>work/</code> folder allows data to persist</li>
+<li>Computations are performed on Dept. servers
+
+<ul>
+<li>better battery life!</li>
+<li>cheaper computers, laboratories</li>
+</ul></li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="teacher-experience">Teacher Experience</h2>
+
+<p>(TBD)</p>
+
+<ul>
+<li>Depends on technical ability of professors
+
+<ul>
+<li><code>setup.sh</code> script simplifies first-time deployment</li>
+</ul></li>
+<li>Troubleshooting and Customization
+
+<ul>
+<li>professors seem to &ldquo;prefer&rdquo; outsourcing problems</li>
+<li>UC Berkeley takes the opposite approach.</li>
+</ul></li>
+<li><code>jupyterhub_config.py</code> allows for tweaks</li>
+<li><code>singleuser/Dockerfile</code> defines environments</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="potential-upside">Potential Upside</h2>
+
+<ul>
+<li>After growing pains: can scale class sizes</li>
+<li>Automatic-grading</li>
+<li>Interactive Textbooks/Notebooks/Labs</li>
+<li>Drop outdated technology contracts (MyMathLab)</li>
+<li>Students using cutting-edge open-source software
+
+<ul>
+<li>can start coding &ldquo;early&rdquo;</li>
+<li>looks great on resume</li>
+</ul></li>
+<li>Professors/IT people can avoid cross-platform software support for computing courses</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="features">Features</h2>
+
+<ul>
+<li>Students are &ldquo;isolated&rdquo; in their environments
+
+<ul>
+<li>Restricted permissions</li>
+<li>Harder for them to &ldquo;break&rdquo; things</li>
+</ul></li>
+<li>Data and Application are divorced
+
+<ul>
+<li>&ldquo;Light&rdquo; server-load due to containerization</li>
+<li>Backups are &ldquo;easier&rdquo;</li>
+</ul></li>
+<li>Can scale with class-size</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h2 id="demonstration">Demonstration</h2>
+
+<ul>
+<li>Show off the Hub</li>
+</ul>
+
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+
+<h1 id="questions">Questions?</h1>
+
+<p><a href="/">Homepage</a></p>
+
+    </section>
+    
+
+    
+    
+  </div>
+</div>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/lib/js/head.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/js/reveal.min.js"></script>
+
+  <script>
+    window.revealPlugins = { dependencies: [
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.7.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.7.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.7.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.7.0/plugin/zoom-js/zoom.js', async: true },
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.7.0/plugin/math/math.js', async: true },
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.7.0/plugin/print-pdf/print-pdf.js', async: true },
+      
+      { src: '\/js\/vendor\/reveal.js\/plugin\/notes\/notes.js', async: true }
+    ]};
+
+    let revealDefaults = { center: true, controls: true, history: true, progress: true, transition: 'slide', mouseWheel: true };
+    let revealOptions = Object.assign({}, revealDefaults, revealPlugins);
+    Reveal.initialize(revealOptions);
+  </script>
+
+</body>
+</html>

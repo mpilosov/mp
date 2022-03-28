@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Michael Pilosov: The Archives on Michael Pilosov: The Archives</title>
+    <link>https://www.michaelpilosov.com/</link>
+    <description>Recent content in Michael Pilosov: The Archives on Michael Pilosov: The Archives</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
+    <lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Experience</title>
+      <link>https://www.michaelpilosov.com/widgetpage/years/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/years/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Skills</title>
+      <link>https://www.michaelpilosov.com/widgetpage/skills/</link>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/skills/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Experience</title>
+      <link>https://www.michaelpilosov.com/widgetpage/semesters/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/semesters/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.michaelpilosov.com/widgetpage/hero_carousel/</link>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/hero_carousel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Consistent Bayes</title>
+      <link>https://www.michaelpilosov.com/widgetpage/consistentbayes/</link>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/consistentbayes/</guid>
+      <description>&lt;p&gt;A Measure-Theoretic Method for Stochastic Inverse Problems.&lt;/p&gt;
+
+&lt;p&gt;Tackle the uncertainty in the natural variation inherent to input parameters with rigorous theory and simple implementation.&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;
+&lt;small&gt;&lt;a id=&#34;academic-release&#34; href=&#34;https://github.com/mpilosov/consistentbayes&#34;&gt;Latest release&lt;/a&gt;&lt;/small&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;iframe style=&#34;display: inline-block;&#34; src=&#34;https://ghbtns.com/github-btn.html?user=mpilosov&amp;amp;repo=consistentbayes&amp;amp;type=star&amp;amp;count=true&amp;amp;size=large&#34; scrolling=&#34;0&#34; width=&#34;160px&#34; height=&#34;30px&#34; frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
+&lt;iframe style=&#34;display: inline-block;&#34; src=&#34;https://ghbtns.com/github-btn.html?user=mpilosov&amp;amp;repo=consistentbayes&amp;amp;type=fork&amp;amp;count=true&amp;amp;size=large&#34; scrolling=&#34;0&#34; width=&#34;158px&#34; height=&#34;30px&#34; frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34;&gt;
+  (function defer() {
+    if (window.jQuery) {
+      jQuery(document).ready(function(){
+        GetLatestReleaseInfo();
+      });
+    } else {
+      setTimeout(function() { defer() }, 50);
+    }
+  })();  
+  function GetLatestReleaseInfo() {
+    $.getJSON(&#39;https://api.github.com/repos/mpilosov/consistentbayes/tags&#39;).done(function (json) {
+      let release = json[0];
+      // let downloadURL = release.zipball_url;
+      $(&#39;#academic-release&#39;).text(&#39;Latest release &#39; + release.name);  
+    });    
+}  
+&lt;/script&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>https://www.michaelpilosov.com/widgetpage/publications/</link>
+      <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/publications/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Selected Publications</title>
+      <link>https://www.michaelpilosov.com/widgetpage/publications_selected/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/publications_selected/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Teaching</title>
+      <link>https://www.michaelpilosov.com/widgetpage/teaching/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/teaching/</guid>
+      <description>&lt;p&gt;This is an example of using the &lt;em&gt;custom&lt;/em&gt; widget to create your own homepage section.&lt;/p&gt;
+
+&lt;p&gt;I am a teaching instructor for the following courses at University X:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CS101: An intro to computer science&lt;/li&gt;
+&lt;li&gt;CS102: An intro to computer science&lt;/li&gt;
+&lt;li&gt;CS103: An intro to computer science&lt;/li&gt;
+&lt;li&gt;CS104: An intro to computer science&lt;/li&gt;
+&lt;li&gt;CS105: An intro to computer science&lt;/li&gt;
+&lt;li&gt;CS106: An intro to computer science&lt;/li&gt;
+&lt;li&gt;CS107: An intro to computer science&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tags</title>
+      <link>https://www.michaelpilosov.com/widgetpage/tags/</link>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/tags/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recent Galleries</title>
+      <link>https://www.michaelpilosov.com/widgetpage/posts/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/posts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Resources</title>
+      <link>https://www.michaelpilosov.com/widgetpage/resources/</link>
+      <pubDate>Fri, 20 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/resources/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Overview</title>
+      <link>https://www.michaelpilosov.com/widgetpage/experience/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/widgetpage/experience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Thesis Progress Update</title>
+      <link>https://www.michaelpilosov.com/slides/thesis-update/</link>
+      <pubDate>Sat, 21 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/slides/thesis-update/</guid>
+      <description>
+
+&lt;h2 id=&#34;computational-advances-in-data-consistent-inversion&#34;&gt;Computational Advances in Data-Consistent Inversion&lt;/h2&gt;
+
+&lt;p&gt;Measure-Theoretic Methods for Improving Predictions&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;motivation&#34;&gt;Motivation&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ideas beget prototype notebooks/scripts&lt;/li&gt;
+&lt;li&gt;Spawned other branches of development&lt;/li&gt;
+&lt;li&gt;Eventually would attempt to scale code
+
+&lt;ul&gt;
+&lt;li&gt;school servers, office workstation&lt;/li&gt;
+&lt;li&gt;cloud (??)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+
+&lt;span class=&#34;fragment &#34; &gt;
+  &lt;p&gt;&lt;center&gt;
+FAILURE TO RUN
+&lt;/center&gt;&lt;/p&gt;
+
+&lt;/span&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;a-pattern&#34;&gt;A Pattern&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Prototype script for idea: ~10-20 lines&lt;/li&gt;
+&lt;li&gt;Production-grade class/module: ~200-500 lines&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;or,&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Figure generates on Mac OSX, crashes on Linux&lt;/li&gt;
+&lt;li&gt;Figure generates on Linux, looks weird on Mac OSX&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;etc.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;motivation-1&#34;&gt;Motivation&lt;/h3&gt;
+
+&lt;p&gt;Result: Began studying Software Development&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Dependencies, Packaging&lt;/li&gt;
+&lt;li&gt;Environment, Reproducibility
+
+&lt;ul&gt;
+&lt;li&gt;Images, Containers, Docker&lt;/li&gt;
+&lt;li&gt;Registries, Cloud Solutions&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Unit Testing&lt;/li&gt;
+&lt;li&gt;Continuous Integration/Deployment&lt;/li&gt;
+&lt;li&gt;Organization of Git-Based Workflows&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;what-if&#34;&gt;What if&amp;hellip;?&lt;/h3&gt;
+
+&lt;h4 id=&#34;one-applied-best-practices-for-software-development-to-all-aspects-of-the-dissertation-process&#34;&gt;One applied best practices for software development to &lt;em&gt;all&lt;/em&gt; aspects of the dissertation process?&lt;/h4&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;what-if-1&#34;&gt;What if&amp;hellip;?&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Document (PDF) itself can be re-created&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;resolve LaTeX dependencies&lt;/li&gt;
+&lt;li&gt;package into Docker container&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Examples/Figures/Tables &lt;em&gt;Completely&lt;/em&gt; Reproducible&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;resolve Python dependencies&lt;/li&gt;
+&lt;li&gt;re-usable command-line Python scripts&lt;/li&gt;
+&lt;li&gt;provide convenience bash scripts&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;what-if-2&#34;&gt;What if&amp;hellip;?&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Novel math is implemented as open-source code&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;update, extend, and enrich &lt;a href=&#34;https://github.com/UT-CHG/BET&#34; target=&#34;_blank&#34;&gt;BET&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;enables thesis examples&lt;/li&gt;
+&lt;li&gt;ensures robustness (unit testing)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Package an All-in-One Docker Image&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;host in cloud-based registries (DockerHub)&lt;/li&gt;
+&lt;li&gt;original build files publicly hosted (GitHub)&lt;/li&gt;
+&lt;li&gt;thesis repository contains full instructions&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;order-of-operations&#34;&gt;Order of Operations&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Resolve environment for thesis repository&lt;/li&gt;
+&lt;li&gt;Get BET up-to-date&lt;/li&gt;
+&lt;li&gt;Add features to BET implementing new approach&lt;/li&gt;
+&lt;li&gt;Make more user-friendly, capable of automation&lt;/li&gt;
+&lt;li&gt;Write scripts for each example in thesis&lt;/li&gt;
+&lt;li&gt;Assured of results, write them up&lt;/li&gt;
+&lt;li&gt;Ensure thesis still compiles, generates figures&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;a-reproducible-thesis&#34;&gt;A Reproducible Thesis&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;One-click launch in-browser via &lt;a href=&#34;https://mybinder.org&#34; target=&#34;_blank&#34;&gt;Binder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Executable scripts: &lt;code&gt;#!/bin/bash, chmod +x&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Minimal tool-set in Dockerfile, options available
+
+&lt;ul&gt;
+&lt;li&gt;include command-line tools (e.g. image resizing)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Dockerfile for LaTeX (standalone), no figure-creation&lt;/li&gt;
+&lt;li&gt;Dockerfile for Python+LaTeX (reproducibility)&lt;/li&gt;
+&lt;li&gt;Dockerfile for full-stack environment (JupyterLab)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;bet&#34;&gt;BET&lt;/h2&gt;
+
+&lt;p&gt;[Butler, Estep, Tavener] Method&lt;/p&gt;
+
+&lt;p&gt;+ Mattis, Graham, Walsh, Pilosov&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/UT-CHG/BET&#34; target=&#34;_blank&#34;&gt;github.com/UT-CHG/BET&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;about-bet&#34;&gt;About BET&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Purpose: Implement Measure-Theoretic Methods
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Data-Consistent Inversion&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;GNU General Public License&lt;/li&gt;
+&lt;li&gt;First released 2014&lt;/li&gt;
+&lt;li&gt;Python 2.7, upgraded to 3.6+
+
+&lt;ul&gt;
+&lt;li&gt;Tested weekly on 2.7, 3.6, 3.7&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Fully documented&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;documentation&#34;&gt;Documentation&lt;/h3&gt;
+
+&lt;p&gt;BET is &lt;em&gt;auto-documented&lt;/em&gt; using a tool called &lt;a href=&#34;http://www.sphinx-doc.org/en/master/&#34; target=&#34;_blank&#34;&gt;Sphinx&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;r&amp;quot;&amp;quot;&amp;quot;
+This is a description of the method.
+All sorts of formatting options are understood by Sphinx.
+(kind of something to learn on its own, but usually you
+can make sense of syntax by looking at existing ones)
+&amp;quot;&amp;quot;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Comments that are formatted inside blocks are converted into web-page documentation&lt;/li&gt;
+&lt;li&gt;Updating docs through command-line&lt;/li&gt;
+&lt;li&gt;GitHub pages used to host the resulting output&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;unit-testing-coverage-versioning&#34;&gt;Unit-Testing, Coverage, Versioning&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;nose&lt;/code&gt; is a Python framework for unit testing
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;desirable&lt;/em&gt;: compatible with &lt;code&gt;unittest&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;codecov&lt;/code&gt; works alongside it as a tracker&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;setup.py&lt;/code&gt; contains versioning information
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pip install .&lt;/code&gt;, or&lt;/li&gt;
+&lt;li&gt;`python setup.py install&lt;/li&gt;
+&lt;li&gt;Major/Minor releases ~ extent of changes&lt;/li&gt;
+&lt;li&gt;The third number in &lt;code&gt;v1.2.3&lt;/code&gt; is for incremental changes, such as bug-fixes, typos, patches, etc.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;unit-testing-with-nose&#34;&gt;UNit Testing with Nose&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;One-to-one file structure
+
+&lt;ul&gt;
+&lt;li&gt;one test (class) for each sub-module method&lt;/li&gt;
+&lt;li&gt;multiple &amp;ldquo;tests&amp;rdquo; within each&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Class consists of several methods
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;setup&lt;/code&gt; and &lt;code&gt;teardown&lt;/code&gt; required&lt;/li&gt;
+&lt;li&gt;test for each function within module&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Each test should anticipate mixtures of arguments that could be passed to each function&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;unit-testing&#34;&gt;Unit Testing&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from unnecessary_math import multiply
+ 
+def test_numbers_3_4():
+    assert multiply(3,4) == 12 
+ 
+def test_strings_a_3():
+    assert multiply(&#39;a&#39;,3) == &#39;aaa&#39; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nosetests -v test_um_nose.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;small&gt; &lt;a href=&#34;http://pythontesting.net/framework/nose/nose-introduction/&#34; target=&#34;_blank&#34;&gt;Source&lt;/a&gt; &lt;/small&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;continuous-integration&#34;&gt;Continuous Integration&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cloud instance carries out instructions&lt;/li&gt;
+&lt;li&gt;Travis runs when you submit a PR to check that everything works&lt;/li&gt;
+&lt;li&gt;GitHub checks for ability to merge automatically&lt;/li&gt;
+&lt;li&gt;Passing does not ensure a PR is merged
+
+&lt;ul&gt;
+&lt;li&gt;Ultimately up to the administrators of the repo&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Helpful for contributors to debug before admins take a look&lt;/li&gt;
+&lt;li&gt;Used to prevent broken &lt;code&gt;master&lt;/code&gt; branches&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;upgrading-bet&#34;&gt;Upgrading BET&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Python 2 support ending by 2020&lt;/li&gt;
+&lt;li&gt;Used a tool called &lt;code&gt;2to3&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Takes care of most major changes&lt;/li&gt;
+&lt;li&gt;Two weeks fixing tests&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Fixed tests for CI pipeline (Travis)
+
+&lt;ul&gt;
+&lt;li&gt;only handled &lt;code&gt;numprocs=1,2&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Addressed matplotlib upgrades, warnings
+
+&lt;ul&gt;
+&lt;li&gt;Released via PR as v2.1.0&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;enhancing-bet&#34;&gt;Enhancing BET&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Ability to measure accuracy of solutions.
+
+&lt;ul&gt;
+&lt;li&gt;ensure it will be future-compatible&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Sampling-based approach
+
+&lt;ul&gt;
+&lt;li&gt;ensure ability to switch methods&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Handle data-driven methods
+
+&lt;ul&gt;
+&lt;li&gt;be capable of loading/transforming data&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Automate some decisions, defaults for users (WIP)&lt;/li&gt;
+&lt;li&gt;Update documentation, installation options (WIP)&lt;/li&gt;
+&lt;li&gt;Publish to PyPi, Anaconda&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;novel-theoretical-advancements&#34;&gt;Novel Theoretical Advancements&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;New framework based on Bayes&amp;rsquo; Rule&lt;/li&gt;
+&lt;li&gt;New framework for &amp;ldquo;parameter identification&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Motivates different user experience with code
+
+&lt;ul&gt;
+&lt;li&gt;define &amp;ldquo;initial&amp;rdquo; assumptions&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Consistent Bayes&amp;rdquo; -&amp;gt; &amp;ldquo;Data-Consistent Inversion&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;data-consistent-inversion&#34;&gt;Data-Consistent Inversion&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;In directions informed by data,
+
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;turn off&amp;rdquo; regularization&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Use &amp;ldquo;initial&amp;rdquo; distribution to regularize in the nullspace of the QoI map&lt;/li&gt;
+&lt;li&gt;Existence, Uniqueness, Stability given by &lt;em&gt;Disintegration Theorem&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&#34;connection-to-deterministic-optimization&#34;&gt;Connection to Deterministic Optimization&lt;/h4&gt;
+
+&lt;p&gt;$$\pi^{up} = \pi^{in} (\lambda) \frac{\pi^{ob} (Q(\lambda)) }{\pi^{pr} (Q(\lambda)) }$$&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Given a &lt;em&gt;linear map&lt;/em&gt;, full rank, and
+
+&lt;ul&gt;
+&lt;li&gt;Gaussian prior/initial&lt;/li&gt;
+&lt;li&gt;Gaussian likelihood (1 datum)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There exists a connection to Tikonov regularization.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.michaelpilosov.com/data/regularization.png&#34; alt=&#34;img&#34; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;new-developments&#34;&gt;New Developments&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Parameter Identification
+
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;data-driven maps&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Closed-form solution for linear maps&lt;/li&gt;
+&lt;li&gt;Iterative Algorithm
+
+&lt;ul&gt;
+&lt;li&gt;sequential projections onto solution manifolds&lt;/li&gt;
+&lt;li&gt;gradient-free optimization&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Classification (variant of Naive Bayes)
+
+&lt;ul&gt;
+&lt;li&gt;handles unequal class-representation&lt;/li&gt;
+&lt;li&gt;comparison still unclear&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;challenges-with-implementation&#34;&gt;Challenges with Implementation&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Implementation v.s. Theory: many nuances
+
+&lt;ul&gt;
+&lt;li&gt;various packages, approaches, optimizations&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;How to be efficient with parallel processors?&lt;/li&gt;
+&lt;li&gt;Where are the &amp;ldquo;memory bottlenecks?&amp;rdquo;
+
+&lt;ul&gt;
+&lt;li&gt;Can we trade off approximation accuracy?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Choice of QoI (columns) impacts solution quality
+
+&lt;ul&gt;
+&lt;li&gt;Allow flexibility to do feature-selection&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Working on a project with wide scope
+
+&lt;ul&gt;
+&lt;li&gt;Work often siloed in development&lt;/li&gt;
+&lt;li&gt;Sensitivity/robustness analysis before MVP&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;structure-of-thesis-pt-1&#34;&gt;Structure of Thesis (Pt 1)&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-md&#34;&gt;1. Introduction &amp;amp; Motivations
+      i. Preliminaries
+     ii. Framework
+    iii. Software Contributions
+
+2. Background on DCI
+      i. Notation
+     ii. Set-Valued
+    iii. Sample-Based
+     iv. Software Contributions
+      v. Illustrative Examples
+
+3. Impact on Accuracy
+    - sections mirror Chapter 2.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;structure-of-thesis-pt-2&#34;&gt;Structure of Thesis (Pt 2)&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-md&#34;&gt;4. Data-Driven Maps &amp;amp; Consistent Inversion
+      i. Stochastic Map Framework
+     ii. Data-Driven Maps
+    iii. Software Contributions
+     iv. Numerical Results &amp;amp; Analysis
+
+5. Research Directions
+    - Fit in extensions
+    - Work-in-progress, draft ideas
+    - Approaches to approximation
+
+6. References, Appendix
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&#34;status&#34;&gt;Status&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Dissertation repository largely in place&lt;/li&gt;
+&lt;li&gt;Docker experience level improving
+
+&lt;ul&gt;
+&lt;li&gt;still missing minimal versions&lt;/li&gt;
+&lt;li&gt;one-click launch &amp;ldquo;working&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Architecture/Structure of thesis mostly settled&lt;/li&gt;
+&lt;li&gt;Some bash/python scripts completed for examples
+
+&lt;ul&gt;
+&lt;li&gt;Larger examples in notebooks, uncoverted&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Still a lot of content to be written up&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&#34;status-1&#34;&gt;Status&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Software going through final rounds of testing&lt;/li&gt;
+&lt;li&gt;Documentation for new features still missing&lt;/li&gt;
+&lt;li&gt;Some (new) tests failing in parallel&lt;/li&gt;
+&lt;li&gt;Haven&amp;rsquo;t fully integrated with mybinder.org yet&lt;/li&gt;
+&lt;li&gt;No progress on demonstration/example repository
+
+&lt;ul&gt;
+&lt;li&gt;plan: use thesis examples as basis for content&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;fin&#34;&gt;Fin&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;Links&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.michaelpilosov.com/&#34;&gt;Homepage&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.michaelpilosov.com/slides/&#34;&gt;Slideshows&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/UT-CHG/BET&#34; target=&#34;_blank&#34;&gt;BET&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://www.michaelpilosov.com/projects/</link>
+      <pubDate>Tue, 19 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/projects/</guid>
+      <description>&lt;p&gt;&lt;meta http-equiv=&#34;refresh&#34; content=&#34;0; url=../project&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>https://www.michaelpilosov.com/publications/</link>
+      <pubDate>Tue, 19 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/publications/</guid>
+      <description>&lt;p&gt;&lt;meta http-equiv=&#34;refresh&#34; content=&#34;0; url=../publication&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

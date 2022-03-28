@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 3.2.0">
+  <meta name="generator" content="Hugo 0.53" />
+  <meta name="author" content="Michael Pilosov">
+
+  
+  
+  
+  
+    
+  
+  <meta name="description" content="Inital Setup I presume the use of vim in a few of these commands. If you are more comfortable using nano for editing text, please be sure to make the appropriate substitutions.
+ On a brand new server&hellip; (Change the top line to be your name)
+export USER_NAME=mathematicalmichael sudo apt update -y &amp;&amp; sudo apt upgrade -y sudo apt install vim htop make -y useradd $USER_NAME -m -s /bin/bash passwd $USER_NAME usermod -aG sudo $USER_NAME su - $USER_NAME  Now set your password.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://www.michaelpilosov.com/openscience/walkthrough/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="hsl(339, 90%, 68%)">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css" crossorigin="anonymous">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Niramit:400,400italic,700|Niramit+Mono">
+  
+
+  <link rel="stylesheet" href="/styles.css">
+  
+  <link rel="stylesheet" href="/css/custom_css.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-122657370-3', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+  <link rel="alternate" href="https://www.michaelpilosov.com/index.xml" type="application/rss+xml" title="Michael Pilosov: The Archives">
+  <link rel="feed" href="https://www.michaelpilosov.com/index.xml" type="application/rss+xml" title="Michael Pilosov: The Archives">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://www.michaelpilosov.com/openscience/walkthrough/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@Mathematical_MP">
+  <meta property="twitter:creator" content="@Mathematical_MP">
+  
+  <meta property="og:site_name" content="Michael Pilosov: The Archives">
+  <meta property="og:url" content="https://www.michaelpilosov.com/openscience/walkthrough/">
+  <meta property="og:title" content="Deploying | Michael Pilosov: The Archives">
+  <meta property="og:description" content="Inital Setup I presume the use of vim in a few of these commands. If you are more comfortable using nano for editing text, please be sure to make the appropriate substitutions.
+ On a brand new server&hellip; (Change the top line to be your name)
+export USER_NAME=mathematicalmichael sudo apt update -y &amp;&amp; sudo apt upgrade -y sudo apt install vim htop make -y useradd $USER_NAME -m -s /bin/bash passwd $USER_NAME usermod -aG sudo $USER_NAME su - $USER_NAME  Now set your password."><meta property="og:image" content="https://www.michaelpilosov.com/img/logo-dark.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-12-22T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-12-22T00:00:00&#43;00:00">
+  
+
+  
+
+  
+
+  <title>Deploying | Michael Pilosov: The Archives</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/"><img src="/img/logo-dark.png" alt="Michael Pilosov: The Archives"></a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">
+            
+            <span>About</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#resume">
+            
+            <span>Résumé</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" id="search-query" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/">Overview</a>
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/intro/">1. Motivations</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/openscience/intro/">Introduction</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/usage/">Use-Cases</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/demo/">Demonstration</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/example/">Examples</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/getting-started/">2. Getting Started</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/openscience/getting-started/">Relevant Projects</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/anaconda/">Installing Anaconda</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/remote/">Connecting Remotely</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/jupyterhub/">3. Walkthrough</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/openscience/jupyterhub/">JupyterHub</a>
+      </li>
+      
+      <li class="active">
+        <a href="/openscience/walkthrough/">Walk-Through</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/hubsetup/">Hub Setup</a>
+      </li>
+      
+      <li >
+        <a href="/openscience/docker/">Docker Reference</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/openscience/deploy/">4. Deploy</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/openscience/deploy/">Choosing Your Platform</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+      <p class="docs-toc-title">On this page</p>
+      
+
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#inital-setup">Inital Setup</a>
+<ul>
+<li><a href="#configurations">Configurations</a></li>
+<li><a href="#docker-install">Docker Install</a></li>
+<li><a href="#ssh-keys">SSH Keys</a></li>
+</ul></li>
+<li><a href="#security">Security</a>
+<ul>
+<li><a href="#encryption">Encryption</a></li>
+<li><a href="#proxy">Proxy</a>
+<ul>
+<li><a href="#nginx-config">Nginx Config</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+
+      <ul class="nav toc-top">
+        <li><a href="#">Back to top</a></li>
+      </ul>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article" itemscope itemtype="http://schema.org/Article">
+
+        <div class="docs-article-container">
+          <h1 itemprop="name">Deploying</h1>
+
+          <div class="article-style" itemprop="articleBody">
+            
+
+<h1 id="inital-setup">Inital Setup</h1>
+
+<div class="alert alert-">
+  <p>I presume the use of <code>vim</code> in a few of these commands. If you are more comfortable using <code>nano</code> for editing text, please be sure to make the appropriate substitutions.</p>
+
+</div>
+
+
+<p>On a brand new server&hellip;
+(Change the top line to be your name)</p>
+
+<pre><code class="language-bash">export USER_NAME=mathematicalmichael
+sudo apt update -y &amp;&amp; sudo apt upgrade -y
+sudo apt install vim htop make -y
+useradd $USER_NAME -m -s /bin/bash
+passwd $USER_NAME
+usermod -aG sudo $USER_NAME
+su - $USER_NAME
+</code></pre>
+
+<p>Now set your password.
+We then set privileges and switch to this new user (and new shell, which should appear in color!).</p>
+
+<h2 id="configurations">Configurations</h2>
+
+<p>Here are some aliases I like to have in my <code>~/.bash_aliases</code> file:</p>
+
+<p><code>vim ~/.bash_aliases</code></p>
+
+<pre><code class="language-bash"># show users logged into the hub who have open sessions.
+alias dpsu='docker ps --format &quot;table {{.ID}} | {{.Names}} | {{.Status}} | {{.Ports}}&quot; -f &quot;name=r*user*&quot;'
+# both of these show/filter docker processes with prettier formatting. 
+alias dps='docker ps --format &quot;table {{.ID}} | {{.Names}} | {{.Status}} | {{.Ports}}&quot;'
+
+alias ..='cd ../'                         # Move up 1 directory
+alias ...='cd ../../'                     # Move up 2 directories
+alias ....='cd ../../../'                 # Move up 3 directories
+alias clc='clear'
+alias ll='ls -ltr' ## see list of files in reverse chronological order.
+alias la='ls -A' ## show hidden files (can add a/A to the above too... preference)
+
+# completion from history. VERY USEFUL
+alias cic='set completion-ignore-case On'
+alias cico='set completion-ignore-case Off'
+alias rr='source ~/.bashrc' # refresh environment
+alias erc='vim ~/.bash_aliases' # shortcut to edit my shortcuts.
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+HISTSIZE=10000
+HISTFILESIZE=5000
+# the following bind up/down to history search
+bind '&quot;\e[A&quot;: history-search-backward'
+bind '&quot;\e[B&quot;: history-search-forward'
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+</code></pre>
+
+<p>Then run <code>source ~/.bashrc</code> and you&rsquo;ll have a nice environment.</p>
+
+<h2 id="docker-install">Docker Install</h2>
+
+<p>If you already had an account with <code>sudo</code> privileges, then you can start from here assuming you are logged in as such. The code that follows installs Docker, and runs a little test by checking the version to make sure everything worked.</p>
+
+<p><a href="https://docs.docker.com/release-notes/docker-compose/" target="_blank">see here for latest version info</a></p>
+
+<pre><code class="language-bash">export DOCKER_COMPOSE_VERSION=1.24.1
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+</code></pre>
+
+<p>(You will be prompted for your password)</p>
+
+<pre><code class="language-bash">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable&quot;
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install docker-ce -y
+docker --version 
+</code></pre>
+
+<p>Success?</p>
+
+<pre><code class="language-bash">sudo usermod -aG docker root
+sudo usermod -aG docker ${USER}
+sudo curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+</code></pre>
+
+<p>Success?</p>
+
+<h2 id="ssh-keys">SSH Keys</h2>
+
+<p>Now is a good time to reboot the machine since we just updated and installed a bunch of things. Before we do that, let us make sure we can <code>ssh</code> in with either of the usernames now.
+Hit enter at the prompt.
+<em>YOUR COMPUTER WILL REBOOT AFTER</em></p>
+
+<pre><code class="language-bash">ssh-keygen 
+sudo cat /root/.ssh/authorized_keys &gt; ~/.ssh/authorized_keys
+reboot
+</code></pre>
+
+<div class="alert alert-warning">
+  <p>Your computer/server might take a minute or two to reboot.</p>
+
+</div>
+
+
+<p>After restarting <code>ssh</code> in as <code>your-name@your-website.com</code>.
+We will take care of the proxy and security set up first (in order to complete the instructions that only need to be performed initially).</p>
+
+<hr />
+
+<hr />
+
+<hr />
+
+<h1 id="security">Security</h1>
+
+<p>Here is how you do it without a container (ideally we could containerize this whole aspect as well into our <code>docker-compose.yml</code> file, but that is not yet the case). Run all this first.</p>
+
+<h2 id="encryption">Encryption</h2>
+
+<pre><code class="language-bash">sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install certbot 
+sudo certbot certonly
+</code></pre>
+
+<p>Follow prompts, enter info for your site.
+This creates a public/private key pair with a certificate authority so that browsers can trust the connection is valid.</p>
+
+<div class="alert alert-warning">
+  <p>If you are behind a private network (<code>.pvt</code> or any other non-public domain), then you must acquire this certificate and key from another (presumably the school&rsquo;s) certificate authority. Make sure the paths are set properly in the configuration to reflect where you placed these keys. Furthermore, you may have to comment out the <code>ssl-ciphers</code> line (we had to at CU Denver to make it work, but this isn&rsquo;t required on public domains).</p>
+
+</div>
+
+
+<p>The keys generated will by default be in <code>/etc/ssl/live/example.com/</code>, which you will see reflected in the example configuration below (set for <code>example.com</code>).</p>
+
+<p>Then run the following,</p>
+
+<pre><code class="language-bash">sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096
+</code></pre>
+
+<p>This creates a long encryption key that we will pass to nginx (our proxy) in the next step for additional security.</p>
+
+<hr />
+
+<h2 id="proxy">Proxy</h2>
+
+<pre><code class="language-bash">sudo apt-get update
+sudo apt install nginx
+</code></pre>
+
+<h3 id="nginx-config">Nginx Config</h3>
+
+<p>To secure our connection, we will create the following file in <code>/etc/nginx/sites-enabled/</code>:</p>
+
+<p>You may need to remove <code>default.conf</code>, or edit it directly to match the following instead.</p>
+
+<div class="alert alert-warning">
+  <p>If you choose to edit <code>default.conf</code>, make sure to add the following line to override the default nginx settings, which will prevent you from saving notebooks greater than 1MB in size: <code>client_max_body_size 20m;</code> (see example below).</p>
+
+</div>
+
+
+<p>Run <code>sudo vim /etc/nginx/sites-enabled/hub.conf</code> and edit the file:</p>
+
+<pre><code># top-level http config for websocket headers
+# If Upgrade is defined, Connection = upgrade
+# If Upgrade is empty, Connection = close
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ''      close;
+}
+
+# HTTP server to redirect all 80 traffic to SSL/HTTPS
+server {
+    listen 80;
+    server_name example.com;
+
+    # Tell all requests to port 80 to be 302 redirected to HTTPS
+    return 302 https://$host$request_uri;
+}
+
+# HTTPS server to handle JupyterHub
+server {
+    listen 443;
+    ssl on;
+
+    server_name example.com;
+    
+     ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
+     ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+
+    # memory limits need to be upped for notebooks. default of 1mb is insufficient. 
+    client_max_body_size 20m;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+    ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:E$
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:SSL:50m;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    add_header Strict-Transport-Security max-age=15768000;
+
+    # Managing literal requests to the JupyterHub front end
+    location /math {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # websocket headers
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+    }
+
+
+    location /math8660 {
+        proxy_pass http://127.0.0.1:8002;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # websocket headers
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+    }
+
+    # Managing requests to verify letsencrypt host
+    location ~ /.well-known {
+        allow all;
+    }
+</code></pre>
+
+<p>That last section starting with <code>location</code> is what we&rsquo;ll be tweaking if we want to host this at <code>hub.mathfight.club</code> or <code>mathfight.club/hub/</code> or whatever we want. (Although in the case of a directory <code>/suffix/</code> format, we will have to make sure the line from the <code>jupyterhub_config.py</code> that we commented out above matches this configuration file.</p>
+
+<div class="alert alert-warning">
+  <p>The assumption (by default) is that the <code>$HUB_NAME</code> is used as the suffix. <code>example.com/math/</code> is the default <code>location</code> we will have to set. The idea here is that we can set up multiple hubs simply by changing the <code>.env</code> file to choose a new name and port number.</p>
+
+</div>
+
+
+<p>As long as we point to the correct port, nginx (our proxy) will handle the rest. The <code>/</code> refers to the fact that we want the hub to be hosted at <code>mathfight.club</code> (with nothing appended/prepended).</p>
+
+<p>If you want some kind of homepage instead of a Hub login, you can configure that to be the case with the following:</p>
+
+<pre><code>location / {
+    root /var/www/public_html;
+    .
+    .
+    .
+}
+</code></pre>
+
+<p>Restart nginx for changes to take effect:</p>
+
+<pre><code class="language-bash">service nginx restart
+</code></pre>
+
+<p>You can now proceed to adding a hub in the <a href="/openscience/hubsetup">Hub Setup</a> documentation.</p>
+
+          </div>
+
+          
+
+        </div>
+
+        <div class="body-footer">
+          Last updated on Dec 22, 2018
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="/privacy/">Privacy Policy</a>
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; 2019 Michael Pilosov &middot; 
+
+    
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic</a> +
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.d037ee5294b166a79dec317c58aea9cc.js"></script>
+
+    
+
+  </body>
+</html>
+
+

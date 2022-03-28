@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>development on Michael Pilosov: The Archives</title>
+    <link>https://www.michaelpilosov.com/tags/development/</link>
+    <description>Recent content in development on Michael Pilosov: The Archives</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Michael Pilosov</copyright>
+    <lastBuildDate>Sat, 21 Sep 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.michaelpilosov.com/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Thesis Progress Update</title>
+      <link>https://www.michaelpilosov.com/slides/thesis-update/</link>
+      <pubDate>Sat, 21 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/slides/thesis-update/</guid>
+      <description>Computational Advances in Data-Consistent Inversion Measure-Theoretic Methods for Improving Predictions
+Motivation  Ideas beget prototype notebooks/scripts Spawned other branches of development Eventually would attempt to scale code  school servers, office workstation cloud (??)   
+ FAILURE TO RUN 
+ A Pattern  Prototype script for idea: ~10-20 lines Production-grade class/module: ~200-500 lines  or,
+ Figure generates on Mac OSX, crashes on Linux Figure generates on Linux, looks weird on Mac OSX  etc.</description>
+    </item>
+    
+    <item>
+      <title>BET Development</title>
+      <link>https://www.michaelpilosov.com/slides/dev/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.michaelpilosov.com/slides/dev/</guid>
+      <description>BET Development [Butler, Estep, Tavener] Method
++ Mattis, Graham, Walsh, Pilosov
+github.com/UT-CHG/BET
+About  Purpose: Implement the novel method developed by the aforementioned authors GNU General Public License First released 2014 Python 2.7, upgraded to 3.6  Overview  About/Motivation Git-Based Workflow Contribution, Communication Testing, Coverage, Versioning Pull Requests Continuous Integration Documentation Publishing, Releases, Licenses  About/Motivation  Reproduce results in research Demonstrate utility of approach Upgrading  Python 2.</description>
+    </item>
+    
+  </channel>
+</rss>
